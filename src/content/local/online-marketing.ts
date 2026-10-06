@@ -70,7 +70,7 @@ export const marketingLocal: LocalService[] = [
         name: "Granges",
         slug: "marketing-digital-granges",
         meta: {
-          title: "Marketing digital Granges : Google Ads & réseaux sociaux",
+          title: "Marketing digital Granges : Google Ads et réseaux",
           description:
             "Marketing digital à Granges : Google Ads, publicité sur les réseaux sociaux et recrutement en ligne pour PME et industrie. Premier conseil gratuit.",
         },
@@ -322,7 +322,7 @@ export const marketingLocal: LocalService[] = [
         name: "Soleure",
         slug: "marketing-digital-soleure",
         meta: {
-          title: "Marketing digital Soleure : Google Ads & réseaux sociaux",
+          title: "Marketing digital Soleure : Google Ads et réseaux",
           description:
             "Marketing digital à Soleure : campagnes pour hôtels, restaurants, commerces et prestataires, au rythme des saisons. Premier conseil gratuit.",
         },

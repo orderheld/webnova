@@ -3,7 +3,7 @@ import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href, routes } from "./routes";
-import { site } from "./site";
+import { showReferences, site } from "./site";
 
 export function buildNav(locale: Locale): NavData {
   const d = getDict(locale);
@@ -24,7 +24,7 @@ export function buildNav(locale: Locale): NavData {
       .filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail")
       .map((s) => ({ label: s.content[locale].navLabel, href: href(locale, `service:${s.key}`), icon: s.icon })),
     links: [
-      { label: d.nav.references, href: href(locale, "references") },
+      ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references") }] : []),
       { label: d.nav.regions, href: href(locale, "regions") },
       { label: d.nav.guides, href: href(locale, "guides") },
       { label: d.nav.about, href: href(locale, "about") },

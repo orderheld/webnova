@@ -11,6 +11,8 @@ import { getDict } from "@/i18n/dict";
 import { buildNav } from "@/lib/nav";
 import { isLocale } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { cities } from "@/content/cities";
+import { JsonLd, organizationLd, websiteLd } from "@/lib/seo";
 import "../../globals.css";
 
 const jakarta = localFont({
@@ -48,6 +50,8 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col">
+        <JsonLd data={organizationLd(lang, cities.map((c) => c.content[lang].name))} />
+        <JsonLd data={websiteLd(lang)} />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-night focus:px-4 focus:py-2">
           {d.skip}
         </a>

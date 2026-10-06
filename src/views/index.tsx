@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { legal } from "@/content/legal";
@@ -52,7 +53,13 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
       return m({ title: d.thanksMetaTitle, description: d.requestMetaDesc });
     case "legal": {
       const l = legal[entry.key as keyof typeof legal][locale];
-      return m({ title: l.title, description: `${l.title} – Webnova, Grenchen` });
+      return m({
+        title: l.title,
+        description:
+          locale === "de"
+            ? `${l.title} von ${site.legalName}, Webdesign-Agentur in Grenchen: Anbieter, Kontakt und rechtliche Angaben zur Webseite.`
+            : `${l.title} de ${site.legalName}, agence web à Granges : éditeur, contact et informations légales du site.`,
+      });
     }
     case "lp":
       return m(lpMeta(locale, entry.key));

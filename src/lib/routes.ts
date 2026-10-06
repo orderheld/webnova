@@ -1,4 +1,5 @@
 import { cities } from "@/content/cities";
+import { showReferences } from "./site";
 import { guides } from "@/content/guides";
 import { legal } from "@/content/legal";
 import { localServices } from "@/content/local";
@@ -50,7 +51,7 @@ function buildRoutes(): RouteEntry[] {
     page("home", "", ""),
     page("services", "leistungen", "services"),
     page("regions", "standorte", "regions"),
-    page("references", "referenzen", "references"),
+    ...(showReferences ? [page("references", "referenzen", "references")] : []),
     page("guides", "ratgeber", "conseils"),
     page("about", "ueber-uns", "a-propos"),
     page("contact", "kontakt", "contact"),
@@ -66,7 +67,7 @@ function buildRoutes(): RouteEntry[] {
       r.push({ id: `citySeo:${c.key}`, kind: "citySeo", key: c.key, paths: { de: c.seo.de.slug, fr: c.seo.fr.slug } });
     }
   }
-  for (const ref of references) {
+  for (const ref of showReferences ? references : []) {
     r.push({ id: `reference:${ref.key}`, kind: "reference", key: ref.key, paths: { de: `referenzen/${ref.key}`, fr: `references/${ref.key}` } });
   }
   for (const ls of localServices) {
