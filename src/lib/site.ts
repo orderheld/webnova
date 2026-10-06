@@ -1,6 +1,6 @@
 export const site = {
   name: "Webnova",
-  legalName: "Webnova",
+  legalName: "webnova solutions",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webnova.ch",
   email: "kontakt@webnova.ch",
   phone: "+41 32 543 80 96",

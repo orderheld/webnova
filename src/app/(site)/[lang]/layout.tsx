@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -12,6 +13,13 @@ import { isLocale } from "@/lib/routes";
 import { site } from "@/lib/site";
 import "../../globals.css";
 
+const jakarta = localFont({
+  src: "../../fonts/plus-jakarta-sans.woff2",
+  weight: "200 800",
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -19,7 +27,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#f7f6f3",
+  themeColor: "#0b0c0a",
 };
 
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
@@ -38,12 +46,12 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
   return (
-    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col">
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-night focus:px-4 focus:py-2">
           {d.skip}
         </a>
-        <Header nav={buildNav(lang)} logo={<Logo />} />
+        <Header nav={buildNav(lang)} logo={<Logo className="h-7 sm:h-8" />} />
         <main id="main" className="flex-1">
           {children}
         </main>

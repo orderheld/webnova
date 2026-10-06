@@ -30,9 +30,12 @@ export function ServicesPage({ locale }: { locale: Locale }) {
         lead={d.pages.servicesLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.pages.servicesTitle }]}
       />
-      {groups.map((g) => (
-        <section key={g.key} className="container-x pb-20">
-          <h2 className="mb-6 border-b border-line pb-4 text-[15px] font-medium uppercase tracking-[0.12em] text-muted">{g.label}</h2>
+      {groups.map((g, gi) => (
+        <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
+          <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+            <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+            {g.label}
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services
               .filter((s) => s.group === g.key)
@@ -85,13 +88,13 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}>
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
       </PageHero>
 
-      <section className="container-x pb-20 md:pb-28">
+      <section className="container-x relative z-10 -mt-10 pb-20 md:pb-28">
         <FeatureGrid items={c.features} />
       </section>
 
@@ -100,10 +103,10 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           <Prose sections={c.sections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 rounded-[28px] bg-night p-8 text-white">
-            <h2 className="text-[26px] font-medium leading-tight tracking-tight">{c.ctaTitle}</h2>
+          <div className="sticky top-28 overflow-hidden rounded-[28px] bg-night p-8 text-white shadow-[inset_0_0_0_1px_rgba(210,255,40,0.15)]">
+            <h2 className="text-[26px] font-bold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/70">{c.ctaText}</p>
-            <ButtonLink href={href(locale, "request")} variant="light" className="mt-8 w-full">
+            <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
               {d.nav.cta}
             </ButtonLink>
             <p className="mt-4 text-center text-[13px] text-white/50">{d.common.free}</p>
@@ -119,7 +122,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
               <Link
                 key={city.key}
                 href={href(locale, `city:${city.key}`)}
-                className="rounded-full border border-line px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
               >
                 {locale === "de" ? "Webdesign" : "Site internet"} {city.content[locale].name}
               </Link>

@@ -13,20 +13,22 @@ export function Footer({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-night text-white">
+    <footer className="relative isolate overflow-hidden bg-night text-white">
+      <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-60" />
+      <div aria-hidden="true" className="absolute -bottom-40 left-1/2 -z-10 h-[380px] w-[900px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]" />
       <div className="container-x grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Logo invert />
+          <Logo className="h-9" />
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">{d.footer.tagline}</p>
           <div className="mt-8 space-y-3 text-[15px]">
-            <a href={site.phoneHref} className="flex items-center gap-3 text-white/80 hover:text-white">
-              <Icon name="phone" className="h-4 w-4" /> {site.phone}
+            <a href={site.phoneHref} className="flex items-center gap-3 text-white/80 transition-colors hover:text-accent">
+              <Icon name="phone" className="h-4 w-4 text-accent" /> {site.phone}
             </a>
-            <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-white/80 hover:text-white">
-              <Icon name="mail" className="h-4 w-4" /> {site.email}
+            <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-white/80 transition-colors hover:text-accent">
+              <Icon name="mail" className="h-4 w-4 text-accent" /> {site.email}
             </a>
             <p className="flex items-start gap-3 text-white/80">
-              <Icon name="pin" className="mt-0.5 h-4 w-4" />
+              <Icon name="pin" className="mt-0.5 h-4 w-4 text-accent" />
               <span>
                 {site.address.street}
                 <br />
@@ -93,7 +95,7 @@ function FooterCol({ title, children, className = "" }: { title: string; childre
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link href={href} className="text-[15px] text-white/70 transition-colors hover:text-white">
+      <Link href={href} className="text-[15px] text-white/65 transition-colors hover:text-accent">
         {children}
       </Link>
     </li>

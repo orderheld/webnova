@@ -19,10 +19,10 @@ export function escapeHtml(s: string) {
 
 /** Simple, robust HTML wrapper for transactional mails. */
 export function mailLayout(bodyHtml: string, footer = true) {
-  return `<!doctype html><html><body style="margin:0;background:#f7f6f3;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#0e0e10">
+  return `<!doctype html><html><body style="margin:0;background:#f4f5f0;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#0e0e10">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" style="max-width:600px;background:#ffffff;border-radius:20px;border:1px solid #e3e1db" cellpadding="0" cellspacing="0">
-<tr><td style="padding:28px 32px 0 32px;font-size:20px;font-weight:600;letter-spacing:-0.5px">webnova<span style="color:#3b4cf5">.</span></td></tr>
+<tr><td style="padding:28px 32px 0 32px"><img src="${site.url}/logo-email.png" width="150" height="28" alt="Webnova" style="display:block;border:0;height:auto"></td></tr>
 <tr><td style="padding:20px 32px 32px 32px;font-size:15px;line-height:1.6">${bodyHtml}</td></tr>
 </table>
 ${

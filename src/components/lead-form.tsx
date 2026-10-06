@@ -126,7 +126,7 @@ export function LeadForm({
         </p>
         <div className="flex gap-1.5" aria-hidden="true">
           {Array.from({ length: steps }).map((_, i) => (
-            <span key={i} className={`h-1.5 w-8 rounded-full transition-colors duration-300 ${i <= step ? "bg-accent" : "bg-line"}`} />
+            <span key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i <= step ? "w-10 bg-night" : "w-6 bg-line"} ${i === step ? "!bg-accent ring-1 ring-night/20" : ""}`} />
           ))}
         </div>
       </div>
@@ -151,11 +151,11 @@ export function LeadForm({
                   aria-pressed={on}
                   onClick={() => set("services", on ? s.services.filter((x) => x !== o) : [...s.services, o])}
                   className={`flex min-h-[64px] items-center justify-between gap-2 rounded-2xl border px-4 py-3 text-left text-[15px] transition-all ${
-                    on ? "border-accent bg-accent-soft text-ink" : "border-line hover:border-ink/30"
+                    on ? "border-night bg-accent font-medium text-night" : "border-line hover:-translate-y-0.5 hover:border-night/40"
                   }`}
                 >
                   {t.options.services[o]}
-                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${on ? "border-accent bg-accent text-white" : "border-line"}`}>
+                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${on ? "border-night bg-night text-accent" : "border-line"}`}>
                     {on && <Icon name="check" className="h-3 w-3" />}
                   </span>
                 </button>
@@ -262,7 +262,7 @@ export function LeadForm({
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-[15px] font-medium text-white transition-colors hover:bg-ink disabled:opacity-60"
+          className="group inline-flex items-center gap-2 rounded-full bg-night px-7 py-4 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-accent hover:text-night disabled:opacity-60"
         >
           {step < steps - 1 ? t.next : pending ? t.sending : t.submit}
           <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -275,7 +275,7 @@ export function LeadForm({
 function Fieldset({ legend, hint, error, children }: { legend: string; hint?: string; error?: string; children: React.ReactNode }) {
   return (
     <fieldset>
-      <legend className="mb-1 text-[22px] font-medium leading-tight tracking-tight sm:text-[26px]">{legend}</legend>
+      <legend className="mb-1 font-display text-[22px] font-bold leading-tight tracking-[-0.03em] sm:text-[27px]">{legend}</legend>
       {hint ? <p className="mb-5 text-[14px] text-muted">{hint}</p> : <div className="mb-5" />}
       {children}
       {error && <p className="mt-3 text-[13px] text-danger">{error}</p>}
@@ -313,7 +313,7 @@ function Choice<T extends string | boolean>({
             aria-pressed={on}
             onClick={() => onChange(o.v)}
             className={`rounded-full border px-5 py-3 text-[15px] transition-all ${
-              on ? "border-ink bg-ink text-white" : "border-line hover:border-ink/40"
+              on ? "border-night bg-accent font-medium text-night" : "border-line hover:-translate-y-0.5 hover:border-night/40"
             }`}
           >
             {o.l}

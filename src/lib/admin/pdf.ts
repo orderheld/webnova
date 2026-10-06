@@ -1,4 +1,6 @@
 import "server-only";
+import fs from "node:fs";
+import path from "node:path";
 import { eq } from "drizzle-orm";
 import PDFDocument from "pdfkit";
 import { SwissQRBill } from "swissqrbill/pdf";
@@ -11,7 +13,6 @@ import { getSettings, type CompanySettings } from "./settings";
 const MM = 2.8346456693;
 const INK = "#0e0e10";
 const MUTED = "#66666d";
-const ACCENT = "#3b4cf5";
 const LINE = "#e3e1db";
 
 interface Doc {
@@ -64,7 +65,9 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     const width = right - left;
 
     // Letterhead
-    pdf.font("Helvetica-Bold").fontSize(18).fillColor(INK).text("webnova", left, 18 * MM, { continued: true }).fillColor(ACCENT).text(".");
+    const logo = logoImage();
+    if (logo) pdf.image(logo, left, 18 * MM, { width: 46 * MM });
+    else pdf.font("Helvetica-Bold").fontSize(18).fillColor(INK).text("Webnova", left, 18 * MM);
     pdf
       .font("Helvetica")
       .fontSize(8.5)
@@ -230,6 +233,18 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
 
     pdf.end();
   });
+}
+
+let logoCache: Buffer | null | undefined;
+function logoImage() {
+  if (logoCache === undefined) {
+    try {
+      logoCache = fs.readFileSync(path.join(process.cwd(), "src/lib/admin/logo-print.png"));
+    } catch {
+      logoCache = null;
+    }
+  }
+  return logoCache;
 }
 
 const fmtQty = (n: number) => (Number.isInteger(Number(n)) ? String(n) : Number(n).toFixed(2).replace(/0$/, ""));

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AdminRoot({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de-CH" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="min-h-screen bg-bg text-ink">{children}</body>
+      <body className="admin-theme min-h-screen bg-bg text-ink">{children}</body>
     </html>
   );
 }

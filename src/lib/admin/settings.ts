@@ -32,7 +32,7 @@ export interface CompanySettings {
 
 export const defaultSettings: CompanySettings = {
   companyName: site.legalName,
-  owner: "Ferhat",
+  owner: "Ferhat Demir",
   street: site.address.street,
   zip: site.address.zip,
   city: site.address.city,

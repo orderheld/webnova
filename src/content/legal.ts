@@ -11,7 +11,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Kontaktadresse",
           paragraphs: [
-            "Webnova",
+            "webnova solutions (Einzelunternehmen)",
             "Bettlachstrasse 45",
             "2540 Grenchen",
             "Schweiz",
@@ -21,11 +21,11 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Vertretungsberechtigte Person",
-          paragraphs: ["Ferhat [Nachname ergänzen], Inhaber"],
+          paragraphs: ["Ferhat Demir, Inhaber"],
         },
         {
           h2: "Unternehmensidentifikation",
-          paragraphs: ["UID: [UID ergänzen, falls vorhanden]"],
+          paragraphs: ["UID: CHE-439.891.660"],
         },
         {
           h2: "Haftungsausschluss",
@@ -58,7 +58,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Adresse de contact",
           paragraphs: [
-            "Webnova",
+            "webnova solutions (entreprise individuelle)",
             "Bettlachstrasse 45",
             "2540 Granges (Grenchen)",
             "Suisse",
@@ -68,11 +68,11 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Personne habilitée à représenter l'entreprise",
-          paragraphs: ["Ferhat [Nachname ergänzen], propriétaire"],
+          paragraphs: ["Ferhat Demir, propriétaire"],
         },
         {
           h2: "Identification de l'entreprise",
-          paragraphs: ["IDE : [UID ergänzen, falls vorhanden]"],
+          paragraphs: ["IDE : CHE-439.891.660"],
         },
         {
           h2: "Exclusion de responsabilité",
@@ -114,7 +114,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Verantwortliche Stelle",
           paragraphs: [
-            "Verantwortlich für die Bearbeitung von Personendaten auf dieser Webseite ist: Webnova, Ferhat [Nachname ergänzen], Bettlachstrasse 45, 2540 Grenchen, Schweiz, Telefon +41 32 543 80 96, E-Mail kontakt@webnova.ch.",
+            "Verantwortlich für die Bearbeitung von Personendaten auf dieser Webseite ist: webnova solutions, Ferhat Demir, Bettlachstrasse 45, 2540 Grenchen, Schweiz, Telefon +41 32 543 80 96, E-Mail kontakt@webnova.ch.",
             "Für Fragen zum Datenschutz und zur Ausübung Ihrer Rechte erreichen Sie uns unter derselben Adresse oder per E-Mail an kontakt@webnova.ch.",
           ],
         },
@@ -169,7 +169,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Aufbewahrungsdauer",
           paragraphs: [
-            "Wir speichern Personendaten nur so lange, wie es für die genannten Zwecke erforderlich ist. Anfragen, aus denen kein Auftrag entsteht, löschen wir spätestens nach [Frist ergänzen, z. B. 24 Monaten].",
+            "Wir speichern Personendaten nur so lange, wie es für die genannten Zwecke erforderlich ist. Anfragen, aus denen kein Auftrag entsteht, löschen wir spätestens nach 24 Monaten.",
             "Führt eine Anfrage zu einem Auftrag, bewahren wir die geschäftsrelevanten Unterlagen gemäss den gesetzlichen Aufbewahrungspflichten auf, in der Schweiz in der Regel während zehn Jahren. Server-Logfiles werden nur kurzfristig gespeichert und anschliessend automatisch gelöscht.",
           ],
         },
@@ -209,7 +209,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Responsable du traitement",
           paragraphs: [
-            "Le responsable du traitement des données personnelles sur ce site est : Webnova, Ferhat [Nachname ergänzen], Bettlachstrasse 45, 2540 Granges (Grenchen), Suisse, téléphone +41 32 543 80 96, e-mail kontakt@webnova.ch.",
+            "Le responsable du traitement des données personnelles sur ce site est : webnova solutions, Ferhat Demir, Bettlachstrasse 45, 2540 Granges (Grenchen), Suisse, téléphone +41 32 543 80 96, e-mail kontakt@webnova.ch.",
             "Pour toute question relative à la protection des données ou pour exercer vos droits, vous pouvez nous joindre à la même adresse ou par e-mail à kontakt@webnova.ch.",
           ],
         },
@@ -264,7 +264,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Durée de conservation",
           paragraphs: [
-            "Nous ne conservons les données personnelles que le temps nécessaire aux finalités indiquées. Les demandes qui n'aboutissent pas à un mandat sont supprimées au plus tard après [délai à compléter, p. ex. 24 mois].",
+            "Nous ne conservons les données personnelles que le temps nécessaire aux finalités indiquées. Les demandes qui n'aboutissent pas à un mandat sont supprimées au plus tard après 24 mois.",
             "Lorsqu'une demande débouche sur un mandat, nous conservons les documents commerciaux conformément aux obligations légales, en Suisse en règle générale pendant dix ans. Les fichiers journaux du serveur ne sont conservés que brièvement, puis supprimés automatiquement.",
           ],
         },

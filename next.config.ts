@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   // pdfkit reads its font metrics from disk at runtime, so it must not be bundled.
   serverExternalPackages: ["pdfkit", "swissqrbill"],
   outputFileTracingIncludes: {
-    "/admin/**": ["./node_modules/pdfkit/js/data/**"],
-    "/api/**": ["./node_modules/pdfkit/js/data/**"],
+    "/admin/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png"],
+    "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png"],
   },
   poweredByHeader: false,
   async redirects() {

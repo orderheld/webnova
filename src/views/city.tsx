@@ -32,9 +32,12 @@ export function RegionsPage({ locale }: { locale: Locale }) {
         lead={d.pages.regionsLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.regions }]}
       />
-      {groups.map((g) => (
-        <section key={g.label} className="container-x pb-16">
-          <h2 className="mb-6 border-b border-line pb-4 text-[15px] font-medium uppercase tracking-[0.12em] text-muted">{g.label}</h2>
+      {groups.map((g, gi) => (
+        <section key={g.label} className={`container-x pb-16 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
+          <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+            <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+            {g.label}
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {g.items.map((c) => (
               <CardLink
@@ -48,7 +51,10 @@ export function RegionsPage({ locale }: { locale: Locale }) {
         </section>
       ))}
       <section className="container-x pb-20">
-        <h2 className="mb-6 border-b border-line pb-4 text-[15px] font-medium uppercase tracking-[0.12em] text-muted">{d.pages.seoPages}</h2>
+        <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
+          <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+          {d.pages.seoPages}
+        </h2>
         <div className="flex flex-wrap gap-2">
           {cities
             .filter((c) => c.seo)
@@ -56,7 +62,7 @@ export function RegionsPage({ locale }: { locale: Locale }) {
               <Link
                 key={c.key}
                 href={href(locale, `citySeo:${c.key}`)}
-                className="rounded-full border border-line px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
               >
                 {locale === "de" ? "SEO" : "Référencement"} {c.content[locale].name}
               </Link>
@@ -114,24 +120,24 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
           {city.minutesFromOffice > 0 && (
-            <span className="ml-1 inline-flex items-center gap-2 text-[14px] text-muted">
-              <Icon name="pin" className="h-4 w-4" /> ~{city.minutesFromOffice} {d.common.minutesFromOffice}
+            <span className="ml-1 inline-flex items-center gap-2 text-[14px] text-white/55">
+              <Icon name="pin" className="h-4 w-4 text-accent" /> ~{city.minutesFromOffice} {d.common.minutesFromOffice}
             </span>
           )}
         </div>
       </PageHero>
 
-      <section className="container-x grid gap-12 pb-12 lg:grid-cols-12">
+      <section className="container-x grid gap-12 pb-12 pt-16 md:pt-24 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <Prose sections={c.sections} />
         </div>
         <aside className="space-y-4 lg:col-span-4">
           <div className="sticky top-28 space-y-4">
-            <div className="rounded-[28px] bg-night p-8 text-white">
+            <div className="rounded-[28px] bg-night p-8 text-white shadow-[inset_0_0_0_1px_rgba(210,255,40,0.15)]">
               <p className="text-[13px] uppercase tracking-[0.12em] text-white/50">{d.pages.office}</p>
               <p className="mt-3 text-[18px] leading-snug">
                 Webnova
@@ -140,7 +146,7 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
                 <br />
                 {site.address.zip} {locale === "fr" ? "Granges" : site.address.city}
               </p>
-              <ButtonLink href={href(locale, "request")} variant="light" className="mt-8 w-full">
+              <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
                 {d.nav.cta}
               </ButtonLink>
               <p className="mt-4 text-center text-[13px] text-white/50">{d.common.free}</p>
@@ -166,7 +172,7 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
           {variant === "seo" && (
             <Link
               href={href(locale, `city:${city.key}`)}
-              className="rounded-full border border-ink bg-ink px-4 py-2 text-[14px] text-white"
+              className="rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night"
             >
               {cityLabel(locale, city.content[locale].name)}
             </Link>
@@ -174,7 +180,7 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
           {variant === "webdesign" && city.seo && (
             <Link
               href={href(locale, `citySeo:${city.key}`)}
-              className="rounded-full border border-ink bg-ink px-4 py-2 text-[14px] text-white"
+              className="rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night"
             >
               {locale === "de" ? "SEO" : "Référencement"} {city.content[locale].name}
             </Link>
@@ -183,7 +189,7 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
             <Link
               key={n.key}
               href={href(locale, `city:${n.key}`)}
-              className="rounded-full border border-line px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+              className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
             >
               {cityLabel(locale, n.content[locale].name)}
             </Link>

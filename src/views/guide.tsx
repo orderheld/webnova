@@ -20,7 +20,7 @@ export function GuidesPage({ locale }: { locale: Locale }) {
         lead={d.pages.guidesLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.guides }]}
       />
-      <section className="container-x pb-24">
+      <section className="container-x pb-24 pt-16 md:pt-24">
         <div className="grid gap-4 md:grid-cols-3">
           {guides.map((g) => (
             <CardLink
@@ -77,7 +77,7 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
           { name: d.nav.guides, url: href(locale, "guides") },
         ]}
       />
-      <article className="container-x pb-12">
+      <article className="container-x pb-12 pt-14 md:pt-20">
         <div className="max-w-3xl">
           <Prose sections={c.sections} />
         </div>

@@ -74,6 +74,7 @@ const de = {
     title: "Bereit für eine Webseite, die für Sie arbeitet?",
     text: "Erzählen Sie uns in zwei Minuten von Ihrem Projekt. Sie erhalten innert eines Arbeitstages eine persönliche Antwort.",
     button: "Projekt anfragen",
+    badge: "Kostenlos anfragen · Webnova · ",
   },
   footer: {
     tagline: "Webdesign, SEO und Marketing für Schweizer KMU. Aus Grenchen, für die Region und die ganze Schweiz.",
@@ -257,6 +258,7 @@ const fr: Dict = {
     title: "Prêt pour un site qui travaille pour vous ?",
     text: "Décrivez votre projet en deux minutes. Vous recevez une réponse personnelle dans un délai d'un jour ouvrable.",
     button: "Demander un devis",
+    badge: "Demande gratuite · Webnova · ",
   },
   footer: {
     tagline: "Création de sites, SEO et marketing pour les PME suisses. Depuis Granges, pour la région et toute la Suisse.",

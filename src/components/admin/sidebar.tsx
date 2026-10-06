@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Icon } from "@/components/icons";
+import { Logo } from "@/components/logo";
 import { logoutAction } from "@/lib/admin/actions";
 
 const items = [
@@ -43,9 +44,7 @@ export function Sidebar({ newLeads, user }: { newLeads: number; user: string }) 
   return (
     <>
       <div className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-surface px-4 py-3 lg:hidden">
-        <span className="text-[18px] font-semibold tracking-[-0.04em]">
-          webnova<span className="text-accent">.</span>
-        </span>
+        <Logo tone="dark" className="h-6" />
         <button onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center rounded-full border border-line" aria-label="Menü">
           <Icon name={open ? "close" : "menu"} />
         </button>
@@ -53,8 +52,8 @@ export function Sidebar({ newLeads, user }: { newLeads: number; user: string }) 
       {open && <div className="border-b border-line bg-surface p-3 lg:hidden">{nav}</div>}
       <aside className="sticky top-0 hidden h-screen w-[248px] shrink-0 flex-col justify-between border-r border-line bg-surface p-4 lg:flex">
         <div>
-          <Link href="/admin" className="mb-8 block px-3 pt-2 text-[20px] font-semibold tracking-[-0.04em]">
-            webnova<span className="text-accent">.</span> <span className="text-[13px] font-normal tracking-normal text-muted">admin</span>
+          <Link href="/admin" className="mb-8 flex items-end gap-2 px-3 pt-2">
+            <Logo tone="dark" className="h-6" /> <span className="text-[13px] text-muted">admin</span>
           </Link>
           {nav}
         </div>
