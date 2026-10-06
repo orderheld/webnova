@@ -33,22 +33,35 @@ export function PageHero({
   lead,
   children,
   crumbs,
+  aside,
 }: {
   eyebrow?: string;
   title: string;
   lead?: string;
   children?: React.ReactNode;
   crumbs?: { name: string; url?: string }[];
+  /** Optional visual on the right (desktop) or below (mobile). */
+  aside?: React.ReactNode;
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-night text-white">
       <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="bg-noise absolute inset-0 -z-10 opacity-50" />
       <div className="container-x pb-20 pt-8 md:pb-28 md:pt-12">
         {crumbs && <Breadcrumbs items={crumbs} />}
-        {eyebrow && <p className="eyebrow mb-6 animate-rise !text-white/55">{eyebrow}</p>}
-        <h1 className="display max-w-5xl animate-rise text-[clamp(2.6rem,6.6vw,5.4rem)] [animation-delay:80ms]">{title}</h1>
-        {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:160ms] md:text-[20px]">{lead}</p>}
-        {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
+        <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
+          <div className={aside ? "lg:col-span-7" : ""}>
+            {eyebrow && <p className="eyebrow mb-6 animate-rise !text-white/55">{eyebrow}</p>}
+            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.6rem,5.6vw,4.8rem)]" : "text-[clamp(2.6rem,6.6vw,5.4rem)]"}`}>{title}</h1>
+            {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:160ms] md:text-[20px]">{lead}</p>}
+            {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
+          </div>
+          {aside && (
+            <div className="animate-rise [animation-delay:300ms] lg:col-span-5">
+              <div className="mx-auto h-64 max-w-[460px] sm:h-72">{aside}</div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

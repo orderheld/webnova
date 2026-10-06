@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ServiceArt } from "@/components/service-art";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
@@ -171,6 +172,7 @@ export function CityPage({
         title={c.h1}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
+        aside={<ServiceArt k={service?.key ?? (variant === "seo" ? "seo" : "webdesign")} locale={locale} />}
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
