@@ -33,6 +33,8 @@ export function buildNav(locale: Locale): NavData {
     menuLabel: d.nav.menu,
     closeLabel: d.nav.close,
     phone: { label: site.phone, href: site.phoneHref },
+    whatsappHref: site.whatsappHref,
+    email: site.email,
     switchMap,
   };
 }

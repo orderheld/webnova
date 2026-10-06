@@ -18,6 +18,8 @@ export interface NavData {
   menuLabel: string;
   closeLabel: string;
   phone: { label: string; href: string };
+  whatsappHref: string;
+  email: string;
   /** maps every localized path to its counterpart in the other language */
   switchMap: Record<string, string>;
 }
@@ -48,7 +50,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
     <>
       <header
         className={`sticky top-0 z-50 text-white transition-all duration-300 ${
-          scrolled ? "border-b border-white/10 bg-night/95 backdrop-blur-xl" : "border-b border-transparent bg-night"
+          scrolled && !open ? "border-b border-white/10 bg-night/95 backdrop-blur-xl" : `border-b bg-night ${open ? "border-white/10" : "border-transparent"}`
         }`}
       >
         <div className="container-x flex h-[72px] items-center justify-between gap-6">
@@ -138,34 +140,101 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
 
       {/* Outside the header: its backdrop-filter would make it the containing block of this fixed panel. */}
       {open && !minimal && (
-        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-night text-white lg:hidden">
-          <div className="container-x flex flex-col gap-1 py-6">
-            <Link href={nav.servicesHref} className="py-3 font-display text-3xl font-bold tracking-tight">
-              {nav.servicesLabel}
-            </Link>
-            <div className="mb-4 grid grid-cols-1 gap-1 border-b border-white/10 pb-4">
-              {nav.services.map((s) => (
-                <Link key={s.href} href={s.href} className="flex items-center gap-3 py-2 text-lg text-white/75">
-                  <Icon name={s.icon} className="h-5 w-5 text-accent" />
-                  {s.label}
+        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col overflow-hidden bg-night text-white lg:hidden">
+          <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+          <div
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/20 blur-[90px]"
+            aria-hidden
+          />
+
+          <div className="relative flex-1 overflow-y-auto">
+            <div className="container-x pb-8 pt-6">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">{nav.servicesLabel}</span>
+                <Link href={nav.servicesHref} className="flex items-center gap-1 text-[13px] font-medium text-accent">
+                  {nav.allServicesLabel}
+                  <Icon name="arrow" className="h-3.5 w-3.5" />
                 </Link>
-              ))}
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                {nav.services.map((s, i) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    style={{ animationDelay: `${i * 35}ms` }}
+                    className="animate-pop group flex min-h-[92px] flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-3.5 transition-colors active:border-accent/60 active:bg-white/[0.08]"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent/10 text-accent">
+                      <Icon name={s.icon} className="h-[18px] w-[18px]" />
+                    </span>
+                    <span className="text-[15px] font-medium leading-tight text-white/90">{s.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <nav className="mt-8 border-t border-white/10" aria-label="Menü">
+                {nav.links.map((l, i) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    style={{ animationDelay: `${200 + i * 50}ms` }}
+                    className="animate-rise flex items-center justify-between border-b border-white/10 py-4"
+                  >
+                    <span className="flex items-baseline gap-4">
+                      <span className="font-mono text-[11px] text-accent/80">{String(i + 1).padStart(2, "0")}</span>
+                      <span
+                        className={`font-display text-[1.75rem] font-bold tracking-[-0.03em] ${
+                          pathname === l.href ? "text-accent" : ""
+                        }`}
+                      >
+                        {l.label}
+                      </span>
+                    </span>
+                    <Icon name="arrow" className="h-5 w-5 -rotate-45 text-white/40" />
+                  </Link>
+                ))}
+              </nav>
+
+              <div className="mt-6 flex items-center justify-between text-[13px] text-white/50">
+                <a href={`mailto:${nav.email}`} className="hover:text-white">
+                  {nav.email}
+                </a>
+                <Link
+                  href={switchHref}
+                  hrefLang={other}
+                  className="rounded-full border border-white/15 px-3 py-1.5 font-medium uppercase tracking-wider text-white/70"
+                >
+                  {other === "fr" ? "Français" : "Deutsch"}
+                </Link>
+              </div>
             </div>
-            {nav.links.map((l) => (
-              <Link key={l.href} href={l.href} className="py-3 font-display text-3xl font-bold tracking-tight">
-                {l.label}
-              </Link>
-            ))}
-            <div className="mt-6 flex flex-col gap-3">
-              <Link href={nav.cta.href} className="rounded-full bg-accent px-6 py-4 text-center text-lg font-semibold text-night">
-                {nav.cta.label}
-              </Link>
-              <a href={nav.phone.href} className="rounded-full border border-white/15 px-6 py-4 text-center text-lg">
-                {nav.phone.label}
+          </div>
+
+          <div className="relative border-t border-white/10 bg-night/90 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur-xl">
+            <Link
+              href={nav.cta.href}
+              className="flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-[16px] font-semibold text-night shadow-[0_0_40px_rgba(210,255,40,0.25)]"
+            >
+              {nav.cta.label}
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+            <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+              <a
+                href={nav.phone.href}
+                className="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3 text-[14px] font-medium"
+              >
+                <Icon name="phone" className="h-4 w-4 text-accent" />
+                {nav.locale === "fr" ? "Appeler" : "Anrufen"}
               </a>
-              <Link href={switchHref} hrefLang={other} className="py-3 text-center text-sm uppercase tracking-wider text-white/50">
-                {other === "fr" ? "Français" : "Deutsch"}
-              </Link>
+              <a
+                href={nav.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3 text-[14px] font-medium"
+              >
+                <Icon name="chat" className="h-4 w-4 text-accent" />
+                WhatsApp
+              </a>
             </div>
           </div>
         </div>
