@@ -10,7 +10,7 @@ const t = {
       eyebrow: "Kennen Sie das?",
       title: "Sie sind richtig gut in dem, was Sie tun. Online merkt das nur kaum jemand.",
       items: [
-        { title: "Die Website ist Ihnen ein bisschen peinlich.", text: "Sie geben die Adresse ungern weiter, weil sie nicht mehr zeigt, wer Sie heute sind." },
+        { title: "Die Website ist in die Jahre gekommen.", text: "Ihr Betrieb hat sich weiterentwickelt, Ihr Auftritt aber nicht. Er zeigt nicht mehr, wer Sie heute sind." },
         { title: "Das Telefon bleibt still.", text: "Die Website ist zwar da, aber es kommen kaum Anfragen. Neue Kunden finden Sie nur über Empfehlungen." },
         { title: "Bei Google steht die Konkurrenz vorne.", text: "Wer in Ihrer Region sucht, landet beim Mitbewerber, obwohl Sie das bessere Angebot haben." },
       ],
@@ -66,7 +66,7 @@ const t = {
       eyebrow: "Ça vous parle ?",
       title: "Vous excellez dans votre métier. Mais en ligne, presque personne ne le remarque.",
       items: [
-        { title: "Votre site vous gêne un peu.", text: "Vous hésitez à donner l'adresse, parce qu'il ne montre plus qui vous êtes aujourd'hui." },
+        { title: "Votre site a pris de l'âge.", text: "Votre entreprise a évolué, votre site pas encore. Il ne montre plus qui vous êtes aujourd'hui." },
         { title: "Le téléphone reste muet.", text: "Le site existe, mais les demandes n'arrivent pas. Les nouveaux clients viennent seulement du bouche-à-oreille." },
         { title: "Sur Google, la concurrence passe devant.", text: "Ceux qui cherchent dans votre région tombent sur un concurrent, alors que votre offre est meilleure." },
       ],
