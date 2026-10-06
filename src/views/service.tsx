@@ -3,9 +3,10 @@ import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
 import { services } from "@/content/services";
+import { localServices } from "@/content/local";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
-import { href } from "@/lib/routes";
+import { href, localId } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, faqLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -63,6 +64,23 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
   const url = href(locale, `service:${s.key}`);
   const related = s.related.map((k) => services.find((x) => x.key === k)).filter((x) => x !== undefined);
   const isWeb = s.group !== "pos";
+  // Local landing pages for this service: its own city pages, else SEO or webdesign per city.
+  const local = localServices.filter((l) => l.service === s.key);
+  const regionLinks = local.length
+    ? local.map((l) => ({
+        href: href(locale, localId(s.key, l.city)),
+        label: `${c.navLabel} ${cities.find((x) => x.key === l.city)!.content[locale].name}`,
+      }))
+    : s.key === "seo"
+      ? cities
+          .filter((x) => x.seo)
+          .map((x) => ({ href: href(locale, `citySeo:${x.key}`), label: `${c.navLabel} ${x.content[locale].name}` }))
+      : isWeb
+        ? cities.map((x) => ({
+            href: href(locale, `city:${x.key}`),
+            label: `${locale === "de" ? "Webdesign" : "Site internet"} ${x.content[locale].name}`,
+          }))
+        : [];
   const crumbs = [
     { name: d.common.home, url: href(locale, "home") },
     { name: d.pages.servicesTitle, url: href(locale, "services") },
@@ -114,17 +132,17 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         </aside>
       </section>
 
-      {isWeb && (
+      {regionLinks.length > 0 && (
         <section className="container-x pt-8">
           <p className="eyebrow mb-4">{d.nav.regions}</p>
           <div className="flex flex-wrap gap-2">
-            {cities.map((city) => (
+            {regionLinks.map((l) => (
               <Link
-                key={city.key}
-                href={href(locale, `city:${city.key}`)}
+                key={l.href}
+                href={l.href}
                 className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
               >
-                {locale === "de" ? "Webdesign" : "Site internet"} {city.content[locale].name}
+                {l.label}
               </Link>
             ))}
           </div>

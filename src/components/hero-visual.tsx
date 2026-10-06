@@ -4,22 +4,22 @@ import { Icon } from "./icons";
 const t = {
   de: {
     notif: "Neue Anfrage",
-    notifSub: "Webseite · Bäckerei in Grenchen",
+    notifSub: "Offertanfrage über die Webseite",
     now: "gerade eben",
     cta: "Offerte anfragen",
     chart: "Anfragen über die Webseite",
-    query: "webdesign grenchen",
-    result: "Webnova · Webdesign Agentur Grenchen",
+    query: "elektriker in der nähe",
+    result: "Ihre Firma · Elektroinstallationen",
     pills: ["Mobil optimiert", "Google-ready", "Blitzschnell"],
   },
   fr: {
     notif: "Nouvelle demande",
-    notifSub: "Site web · Boulangerie à Bienne",
+    notifSub: "Demande de devis via le site",
     now: "à l'instant",
     cta: "Demander un devis",
     chart: "Demandes via le site",
-    query: "création site internet bienne",
-    result: "Webnova · Agence web Bienne",
+    query: "électricien près de moi",
+    result: "Votre entreprise · Installations électriques",
     pills: ["Optimisé mobile", "Prêt pour Google", "Ultra rapide"],
   },
 };
@@ -120,8 +120,8 @@ export function HeroVisual({ locale }: { locale: Locale }) {
           <Icon name="search" className="h-3.5 w-3.5" /> {s.query}
         </div>
         <div className="mt-3 rounded-xl bg-accent-soft p-3">
-          <p className="text-[11px] text-muted">webnova.ch</p>
-          <p className="text-[13px] font-semibold text-[#1a3fbf]">{s.result}</p>
+          <p className="text-[11px] text-muted">ihre-firma.ch</p>
+          <p className="text-[13px] font-semibold text-night">{s.result}</p>
           <span className="mt-1.5 block h-1.5 w-11/12 rounded-full bg-night/10" />
         </div>
       </div>

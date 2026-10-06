@@ -86,3 +86,10 @@ export interface Guide {
   related: string[]; // service keys
   content: Localized<GuideContent>;
 }
+
+/** A service offered in one city, e.g. "Onlineshop erstellen in Biel". Content must be specific to both. */
+export interface LocalService {
+  service: string; // key of a Service
+  city: string; // key of a City
+  content: Localized<CityContent>;
+}

@@ -18,7 +18,7 @@ export const neuchatel: City = {
       },
       h1: "Webdesign Neuenburg: Webseiten für Unternehmen in Neuchâtel",
       lead:
-        "Webnova erstellt Webseiten auf Französisch und Deutsch für Unternehmen in Neuenburg und am Neuenburgersee. Von Grenchen aus erreichen wir Neuchâtel über die A5 in rund 35 Minuten.",
+        "Webnova erstellt Webseiten auf Französisch und Deutsch für Unternehmen in Neuenburg und am Neuenburgersee. Für Besprechungen kommen wir gerne zu Ihnen nach Neuchâtel.",
       sections: [
         {
           h2: "Neuenburg: französischsprachig, technologisch, international",
@@ -43,7 +43,7 @@ export const neuchatel: City = {
         {
           h2: "Zusammenarbeit über die Sprachgrenze",
           paragraphs: [
-            "Für das Erstgespräch und wichtige Workshops kommen wir gerne nach Neuenburg, die Fahrt über Biel dauert nur rund eine halbe Stunde. Zwischendurch arbeiten wir per Videocall und Telefon, auf Französisch oder Deutsch, ganz wie es Ihnen lieber ist. Sie haben während des ganzen Projekts eine feste Ansprechperson und erhalten Entwürfe früh zur Ansicht.",
+            "Für das Erstgespräch und wichtige Workshops kommen wir gerne zu Ihnen nach Neuenburg. Zwischendurch arbeiten wir per Videocall und Telefon, auf Französisch oder Deutsch, ganz wie es Ihnen lieber ist. Sie haben während des ganzen Projekts eine feste Ansprechperson und erhalten Entwürfe früh zur Ansicht.",
             "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, Suchmaschinenoptimierung und Werbekampagnen auf Google und Meta. So erhalten Sie eine Webagentur aus der Nachbarregion, die schnell erreichbar ist, ohne Overhead einer Grossagentur arbeitet und den Schweizer KMU-Alltag beidseits der Sprachgrenze gut kennt.",
           ],
         },
@@ -54,8 +54,8 @@ export const neuchatel: City = {
           a: "Ja. Wir führen Gespräche, Workshops und die Korrespondenz gerne auf Französisch und erstellen französische Inhalte, die natürlich klingen und nicht wie eine Übersetzung wirken.",
         },
         {
-          q: "Wie weit ist Neuenburg von Ihrem Büro entfernt?",
-          a: "Von Grenchen erreichen wir Neuchâtel über die A5 in rund 35 Minuten. Für wichtige Termine kommen wir gerne vor Ort.",
+          q: "Kommen Sie für Besprechungen nach Neuenburg?",
+          a: "Ja. Für das Erstgespräch und wichtige Termine kommen wir gerne zu Ihnen, alles Weitere erledigen wir per Videocall oder Telefon.",
         },
         {
           q: "Können Sie eine dreisprachige Webseite umsetzen?",
@@ -73,7 +73,7 @@ export const neuchatel: City = {
       },
       h1: "Création de site internet à Neuchâtel",
       lead:
-        "Webnova crée des sites internet en français et en allemand pour les entreprises de Neuchâtel et du Littoral. Depuis Granges, nous rejoignons Neuchâtel en une trentaine de minutes par l'A5.",
+        "Webnova crée des sites internet en français et en allemand pour les entreprises de Neuchâtel et du Littoral. Nous nous déplaçons volontiers chez vous à Neuchâtel.",
       sections: [
         {
           h2: "Neuchâtel : innovation, horlogerie et art de vivre",
@@ -98,7 +98,7 @@ export const neuchatel: City = {
         {
           h2: "Une collaboration simple, en français",
           paragraphs: [
-            "Pour le premier entretien et les ateliers importants, nous venons volontiers à Neuchâtel : le trajet par Bienne ne prend qu'une demi-heure environ. Le reste du temps, nous échangeons par visioconférence ou par téléphone, en français. Vous avez un interlocuteur unique pendant tout le projet et voyez les premières maquettes rapidement.",
+            "Pour le premier entretien et les ateliers importants, nous venons volontiers chez vous à Neuchâtel. Le reste du temps, nous échangeons par visioconférence ou par téléphone, en français. Vous avez un interlocuteur unique pendant tout le projet et voyez les premières maquettes rapidement.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta. Vous bénéficiez d'une agence web voisine, réactive, qui connaît le quotidien des PME suisses des deux côtés de la frontière linguistique, sans les frais d'une grande structure.",
           ],
         },
@@ -109,8 +109,8 @@ export const neuchatel: City = {
           a: "Oui. Les entretiens, les ateliers, les échanges et les contenus du site peuvent se faire entièrement en français. Nous rédigeons des textes naturels, pas des traductions littérales.",
         },
         {
-          q: "À quelle distance de Neuchâtel êtes-vous ?",
-          a: "Notre bureau de Granges est à environ 35 minutes de Neuchâtel par l'A5. Nous nous déplaçons volontiers pour les rendez-vous importants.",
+          q: "Venez-vous à Neuchâtel pour les rendez-vous ?",
+          a: "Oui. Nous nous déplaçons volontiers pour le premier entretien et les rendez-vous importants, le reste se règle par visioconférence ou par téléphone.",
         },
         {
           q: "Pourquoi un site bilingue pour une entreprise neuchâteloise ?",

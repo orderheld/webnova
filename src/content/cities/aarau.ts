@@ -18,7 +18,7 @@ export const aarau: City = {
       },
       h1: "Webdesign Aarau: Webseiten für Aargauer KMU",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Aarau und im Aargau. Von unserem Büro in Grenchen erreichen wir Aarau in rund 45 Minuten.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Aarau und im Aargau. Für Besprechungen kommen wir gerne zu Ihnen nach Aarau.",
       sections: [
         {
           h2: "Aarau: Kantonshauptstadt im KMU-Kanton",
@@ -31,7 +31,7 @@ export const aarau: City = {
           h2: "Was Aargauer Unternehmen online brauchen",
           paragraphs: [
             "Für Produktions- und Industriebetriebe in der Region Aarau sind verständliche Leistungsseiten, gute Referenzen und ein überzeugender Karrierebereich zentral, denn qualifizierte Fachkräfte und motivierte Lernende sind auch im Aargau sehr gesucht. Für Händler und Hersteller kann ein Onlineshop neue Absatzwege öffnen, in der ganzen Schweiz und mit wenig zusätzlichem Aufwand im Alltag.",
-            "Geschäfte, Restaurants und Dienstleister in Aarau, Buchs, Suhr oder Küttigen brauchen vor allem lokale Sichtbarkeit. Wer in der Region nach einem Handwerker, einer Praxis oder einem Restaurant sucht, entscheidet oft innerhalb von Sekunden anhand der Google-Karte und der Bewertungen. Wir kombinieren deshalb eine schnelle, mobilfreundliche Homepage mit einem gepflegten Google Unternehmensprofil und lokaler Suchmaschinenoptimierung.",
+            "Geschäfte, Restaurants und Dienstleister in Aarau und Umgebung brauchen vor allem lokale Sichtbarkeit. Wer in der Region nach einem Handwerker, einer Praxis oder einem Restaurant sucht, entscheidet oft innerhalb von Sekunden anhand der Google-Karte und der Bewertungen. Wir kombinieren deshalb eine schnelle, mobilfreundliche Homepage mit einem gepflegten Google Unternehmensprofil und lokaler Suchmaschinenoptimierung.",
           ],
           bullets: [
             "Webseiten für Gewerbe und Industrie",
@@ -43,7 +43,7 @@ export const aarau: City = {
         {
           h2: "So arbeiten wir mit Ihnen in Aarau",
           paragraphs: [
-            "Unser Büro liegt in Grenchen, etwa eine Dreiviertelstunde von Aarau entfernt. Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die übrigen Abstimmungen erledigen wir effizient per Videocall oder Telefon. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt, und keine wechselnden Teams, unklaren Zuständigkeiten oder langen Abstimmungsketten.",
+            "Unser Büro liegt in Grenchen. Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die übrigen Abstimmungen erledigen wir effizient per Videocall oder Telefon. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt, und keine wechselnden Teams, unklaren Zuständigkeiten oder langen Abstimmungsketten.",
             "Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO sowie Werbekampagnen auf Google und Meta. So erhalten Aargauer KMU eine persönliche Webagentur mit fairem Fokus auf Wirkung statt Overhead.",
           ],
         },
@@ -51,7 +51,7 @@ export const aarau: City = {
       faq: [
         {
           q: "Kommen Sie für Termine nach Aarau?",
-          a: "Ja. Aarau liegt rund 45 Minuten von unserem Büro in Grenchen entfernt. Für das Erstgespräch und wichtige Workshops kommen wir gerne vorbei.",
+          a: "Ja. Für das Erstgespräch und wichtige Workshops kommen wir gerne vorbei.",
         },
         {
           q: "Betreuen Sie auch Unternehmen aus dem übrigen Aargau?",
@@ -73,7 +73,7 @@ export const aarau: City = {
       },
       h1: "Création de site internet à Aarau pour les PME argoviennes",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises d'Aarau et d'Argovie. Depuis notre bureau de Granges, nous rejoignons Aarau en environ 45 minutes.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises d'Aarau et d'Argovie. Nous nous déplaçons volontiers chez vous à Aarau.",
       sections: [
         {
           h2: "Aarau, capitale d'un canton de PME",
@@ -98,7 +98,7 @@ export const aarau: City = {
         {
           h2: "Notre collaboration à Aarau",
           paragraphs: [
-            "Notre bureau se trouve à Granges, à environ trois quarts d'heure d'Aarau. Pour le premier entretien, un atelier ou des photos, nous venons chez vous. Le reste des échanges se fait efficacement par visioconférence ou téléphone. Vous avez un interlocuteur fixe qui réalise lui-même votre projet, sans équipes changeantes ni longues chaînes de validation.",
+            "Notre bureau se trouve à Granges. Pour le premier entretien, un atelier ou des photos, nous venons chez vous. Le reste des échanges se fait efficacement par visioconférence ou téléphone. Vous avez un interlocuteur fixe qui réalise lui-même votre projet, sans équipes changeantes ni longues chaînes de validation.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta. Une agence web personnelle, centrée sur l'efficacité plutôt que sur les frais de structure.",
           ],
         },
@@ -106,7 +106,7 @@ export const aarau: City = {
       faq: [
         {
           q: "Venez-vous à Aarau pour les rendez-vous ?",
-          a: "Oui. Aarau se trouve à environ 45 minutes de notre bureau de Granges. Nous venons volontiers pour le premier entretien et les ateliers importants.",
+          a: "Oui. Nous venons volontiers pour le premier entretien et les ateliers importants.",
         },
         {
           q: "Pouvez-vous moderniser notre site existant ?",

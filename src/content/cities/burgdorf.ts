@@ -18,7 +18,7 @@ export const burgdorf: City = {
       },
       h1: "Webdesign Burgdorf: Webseiten für das Tor zum Emmental",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Burgdorf und im Emmental. Von Grenchen aus sind wir in rund 35 Minuten bei Ihnen.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Burgdorf und im Emmental. Für Besprechungen kommen wir gerne zu Ihnen.",
       sections: [
         {
           h2: "Burgdorf: Gewerbe, Handel und Emmentaler Verwurzelung",
@@ -51,7 +51,7 @@ export const burgdorf: City = {
       faq: [
         {
           q: "Kommen Sie für Besprechungen nach Burgdorf?",
-          a: "Ja. Burgdorf liegt rund 35 Minuten von unserem Büro in Grenchen entfernt. Für das Erstgespräch und Fotoaufnahmen kommen wir gerne zu Ihnen.",
+          a: "Ja. Für das Erstgespräch und Fotoaufnahmen kommen wir gerne zu Ihnen.",
         },
         {
           q: "Betreuen Sie auch Betriebe im Emmental ausserhalb von Burgdorf?",
@@ -73,7 +73,7 @@ export const burgdorf: City = {
       },
       h1: "Création de site internet à Berthoud, porte de l'Emmental",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Berthoud et de l'Emmental. Depuis Granges, nous sommes chez vous en environ 35 minutes.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Berthoud et de l'Emmental. Nous nous déplaçons volontiers chez vous.",
       sections: [
         {
           h2: "Berthoud, centre régional de l'Emmental",
@@ -106,7 +106,7 @@ export const burgdorf: City = {
       faq: [
         {
           q: "Venez-vous à Berthoud pour les rendez-vous ?",
-          a: "Oui. Berthoud se trouve à environ 35 minutes de notre bureau de Granges. Nous venons volontiers pour le premier entretien et les séances photo.",
+          a: "Oui. Nous venons volontiers pour le premier entretien et les séances photo.",
         },
         {
           q: "Travaillez-vous aussi pour des entreprises de l'Emmental ?",

@@ -139,7 +139,7 @@ export function CtaBand({ locale }: { locale: Locale }) {
 
 export function FeatureGrid({ items }: { items: { title: string; text: string }[] }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
         <div key={i} className="reveal group rounded-[24px] border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-night">
           <span className="mb-6 grid h-11 w-11 place-items-center rounded-2xl bg-night font-display text-[14px] font-bold text-accent transition-transform duration-300 group-hover:rotate-[-8deg] group-hover:scale-110">

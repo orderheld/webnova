@@ -23,7 +23,7 @@ export const grenchen: City = {
         {
           h2: "Eine Webagentur aus Grenchen für Grenchner Unternehmen",
           paragraphs: [
-            "Grenchen ist unser Zuhause. Hier liegt unser Büro, hier kennen wir die Strassen, die Gewerbezonen und viele der Betriebe, die das Stadtbild prägen. Wenn Sie in Grenchen eine Webseite erstellen lassen möchten, sind wir in wenigen Minuten bei Ihnen oder Sie besuchen uns an der Bettlachstrasse. Kurze Wege bedeuten schnelle Entscheidungen, persönliche Gespräche und einen Ansprechpartner, der Ihr Unternehmen nicht nur vom Bildschirm kennt.",
+            "Grenchen ist unser Zuhause. Hier liegt unser Büro, hier kennen wir die Strassen, die Gewerbezonen und viele der Betriebe, die das Stadtbild prägen. Wenn Sie in Grenchen eine Webseite erstellen lassen möchten, kommen wir gerne zu Ihnen oder Sie besuchen uns an der Bettlachstrasse. Kurze Wege bedeuten schnelle Entscheidungen, persönliche Gespräche und einen Ansprechpartner, der Ihr Unternehmen nicht nur vom Bildschirm kennt.",
             "Als lokale Webagentur in Grenchen arbeiten wir mit Handwerksbetrieben, Detailhändlern, Restaurants, Praxen und Industriezulieferern zusammen. Jedes Projekt beginnt mit einem Gespräch über Ihre Ziele: Wollen Sie mehr Anfragen, Fachkräfte gewinnen oder Ihre Produkte online verkaufen? Erst danach entwerfen wir Struktur, Texte und Design. So entsteht eine Homepage, die zu Ihrem Betrieb passt und nicht nach Baukasten aussieht.",
           ],
         },
@@ -82,7 +82,7 @@ export const grenchen: City = {
         {
           h2: "Une agence web installée à Granges",
           paragraphs: [
-            "Granges, c'est chez nous. Notre bureau s'y trouve et nous connaissons bien le tissu économique local, de la zone industrielle aux commerces du centre. Si vous souhaitez faire créer votre site internet à Granges, nous pouvons passer chez vous en quelques minutes ou vous accueillir dans nos locaux. Des trajets courts, ce sont des décisions rapides et un interlocuteur qui connaît vraiment votre entreprise.",
+            "Granges, c'est chez nous. Notre bureau s'y trouve et nous connaissons bien le tissu économique local, de la zone industrielle aux commerces du centre. Si vous souhaitez faire créer votre site internet à Granges, nous passons volontiers chez vous ou vous accueillons dans nos locaux. La proximité, ce sont des décisions rapides et un interlocuteur qui connaît vraiment votre entreprise.",
             "En tant qu'agence web à Granges, nous travaillons avec des artisans, des commerçants, des restaurants, des cabinets et des sous-traitants industriels. Beaucoup ont des clients des deux côtés de la frontière linguistique. Nous commençons toujours par comprendre vos objectifs : plus de demandes, recruter du personnel qualifié, vendre en ligne. Ensuite seulement viennent la structure, les textes et le design.",
           ],
         },
@@ -140,7 +140,7 @@ export const grenchen: City = {
           h2: "Warum lokale Suchmaschinenoptimierung in Grenchen zählt",
           paragraphs: [
             "Wer in Grenchen einen Elektriker, ein Restaurant oder eine Physiotherapie sucht, tippt meist nur wenige Wörter in Google ein, oft mit dem Ortsnamen oder einfach „in der Nähe“. Angezeigt werden dann zuerst die Karte mit drei Einträgen und danach die organischen Treffer. Wer dort fehlt, wird kaum angeklickt. Lokale Suchmaschinenoptimierung sorgt dafür, dass Ihr Betrieb genau in diesen Momenten sichtbar ist.",
-            "In einer Stadt wie Grenchen ist der Wettbewerb in vielen Branchen überschaubar. Das ist eine Chance: Mit einer sauber optimierten Webseite und einem gepflegten Google Unternehmensprofil lassen sich gute Positionen oft schneller erreichen als in grossen Städten. Gleichzeitig suchen viele Menschen aus Bettlach, Selzach, Lengnau oder Pieterlen nach Angeboten in Grenchen. Auch diese Suchen wollen wir für Sie gewinnen.",
+            "In einer Stadt wie Grenchen ist der Wettbewerb in vielen Branchen überschaubar. Das ist eine Chance: Mit einer sauber optimierten Webseite und einem gepflegten Google Unternehmensprofil lassen sich gute Positionen oft schneller erreichen als in grossen Städten. Gleichzeitig suchen viele Menschen aus den umliegenden Gemeinden wie Bettlach nach Angeboten in Grenchen. Auch diese Suchen wollen wir für Sie gewinnen.",
           ],
         },
         {
@@ -176,7 +176,7 @@ export const grenchen: City = {
         },
         {
           q: "Hilft SEO auch Kunden aus den Nachbargemeinden?",
-          a: "Ja. Wir berücksichtigen Suchen aus Bettlach, Lengnau, Pieterlen, Selzach und der weiteren Region, etwa mit passenden Inhalten und einem korrekt definierten Einzugsgebiet im Unternehmensprofil.",
+          a: "Ja. Wir berücksichtigen auch Suchen aus den Nachbargemeinden und der weiteren Region, etwa mit passenden Inhalten und einem korrekt definierten Einzugsgebiet im Unternehmensprofil.",
         },
       ],
     },

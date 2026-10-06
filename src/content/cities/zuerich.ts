@@ -24,7 +24,7 @@ export const zuerich: City = {
           h2: "Warum eine Webagentur aus Grenchen für Zürich?",
           paragraphs: [
             "In Zürich gibt es unzählige Webagenturen, viele davon auf grosse Unternehmen und Konzernbudgets ausgerichtet. Kleine und mittlere Unternehmen fühlen sich dort oft wie ein Nebenprojekt: wechselnde Ansprechpartner, lange Abstimmungsrunden, Stunden für Koordination statt Umsetzung. Wir sind bewusst anders aufgestellt. Bei Webnova sprechen Sie direkt mit den Menschen, die Ihre Webseite konzipieren, gestalten und programmieren.",
-            "Unser Büro liegt in Grenchen, gut eine Stunde von Zürich entfernt. Das sagen wir offen. Die meisten Projekte mit Zürcher Kunden laufen effizient per Videocall, Telefon und gemeinsamen Online-Dokumenten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Zürich. So erhalten Sie persönliche Betreuung, ohne dass Sie den Overhead einer grossen Stadtagentur mitfinanzieren.",
+            "Unser Büro liegt in Grenchen, das sagen wir offen. Die meisten Projekte mit Zürcher Kunden laufen effizient per Videocall, Telefon und gemeinsamen Online-Dokumenten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Zürich. So erhalten Sie persönliche Betreuung, ohne dass Sie den Overhead einer grossen Stadtagentur mitfinanzieren.",
           ],
         },
         {
@@ -51,7 +51,7 @@ export const zuerich: City = {
       faq: [
         {
           q: "Funktioniert die Zusammenarbeit, obwohl Sie in Grenchen sind?",
-          a: "Ja. Die meisten Abstimmungen laufen heute ohnehin per Videocall. Für den Projektstart, Workshops oder Fotos kommen wir nach Zürich, die Fahrt dauert gut eine Stunde.",
+          a: "Ja. Die meisten Abstimmungen laufen heute ohnehin per Videocall. Für den Projektstart, Workshops oder Fotos kommen wir gerne persönlich nach Zürich.",
         },
         {
           q: "Was unterscheidet Webnova von grossen Zürcher Agenturen?",
@@ -79,7 +79,7 @@ export const zuerich: City = {
           h2: "Pourquoi une agence de Granges pour Zurich ?",
           paragraphs: [
             "Zurich compte un très grand nombre d'agences web, souvent orientées vers les grandes entreprises et leurs budgets. Les PME s'y sentent parfois reléguées au second plan : interlocuteurs qui changent, longues boucles de validation, heures facturées pour la coordination plutôt que pour le travail. Chez Webnova, vous échangez directement avec les personnes qui conçoivent, dessinent et développent votre site.",
-            "Notre bureau est à Granges, à un peu plus d'une heure de Zurich, et nous le disons franchement. La plupart des projets avec des clients zurichois se déroulent efficacement en visioconférence, par téléphone et avec des documents partagés. Pour le lancement, un atelier ou des photos, nous venons à Zurich. Vous profitez d'un suivi personnel sans financer la structure d'une grande agence urbaine.",
+            "Notre bureau est à Granges, et nous le disons franchement. La plupart des projets avec des clients zurichois se déroulent efficacement en visioconférence, par téléphone et avec des documents partagés. Pour le lancement, un atelier ou des photos, nous venons à Zurich. Vous profitez d'un suivi personnel sans financer la structure d'une grande agence urbaine.",
           ],
         },
         {
@@ -106,7 +106,7 @@ export const zuerich: City = {
       faq: [
         {
           q: "La collaboration fonctionne-t-elle à distance ?",
-          a: "Oui. La plupart des échanges se font aujourd'hui en visioconférence. Pour le lancement, les ateliers ou les photos, nous venons à Zurich, à un peu plus d'une heure de route.",
+          a: "Oui. La plupart des échanges se font aujourd'hui en visioconférence. Pour le lancement, les ateliers ou les photos, nous venons volontiers à Zurich.",
         },
         {
           q: "Qu'est-ce qui distingue Webnova des grandes agences zurichoises ?",

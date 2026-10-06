@@ -1,6 +1,8 @@
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { legal } from "@/content/legal";
+import { localServices } from "@/content/local";
+import { references } from "@/content/references";
 import { services } from "@/content/services";
 import { locales, type Locale, type Localized } from "@/content/types";
 
@@ -11,9 +13,12 @@ export type RouteKind =
   | "regions"
   | "city"
   | "citySeo"
+  | "localService"
   | "guides"
   | "guide"
   | "about"
+  | "references"
+  | "reference"
   | "contact"
   | "request"
   | "thanks"
@@ -45,6 +50,7 @@ function buildRoutes(): RouteEntry[] {
     page("home", "", ""),
     page("services", "leistungen", "services"),
     page("regions", "standorte", "regions"),
+    page("references", "referenzen", "references"),
     page("guides", "ratgeber", "conseils"),
     page("about", "ueber-uns", "a-propos"),
     page("contact", "kontakt", "contact"),
@@ -59,6 +65,17 @@ function buildRoutes(): RouteEntry[] {
     if (c.seo) {
       r.push({ id: `citySeo:${c.key}`, kind: "citySeo", key: c.key, paths: { de: c.seo.de.slug, fr: c.seo.fr.slug } });
     }
+  }
+  for (const ref of references) {
+    r.push({ id: `reference:${ref.key}`, kind: "reference", key: ref.key, paths: { de: `referenzen/${ref.key}`, fr: `references/${ref.key}` } });
+  }
+  for (const ls of localServices) {
+    r.push({
+      id: localId(ls.service, ls.city),
+      kind: "localService",
+      key: `${ls.service}:${ls.city}`,
+      paths: { de: ls.content.de.slug, fr: ls.content.fr.slug },
+    });
   }
   for (const g of guides) {
     r.push({
@@ -76,6 +93,11 @@ function buildRoutes(): RouteEntry[] {
   return r;
 }
 
+/** Route id of a service × city page, e.g. localId("onlineshop", "biel"). */
+export function localId(service: string, city: string): string {
+  return `local:${service}:${city}`;
+}
+
 export const routes = buildRoutes();
 const byId = new Map(routes.map((r) => [r.id, r]));
 
@@ -90,6 +112,10 @@ export function getRoute(id: string): RouteEntry {
 }
 
 /** Absolute-path href for a route id, e.g. href("de", "service:seo") -> "/de/seo-agentur" */
+export function hasRoute(id: string): boolean {
+  return byId.has(id);
+}
+
 export function href(locale: Locale, id: string): string {
   const p = getRoute(id).paths[locale];
   return p ? `/${locale}/${p}` : `/${locale}`;

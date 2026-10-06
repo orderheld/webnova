@@ -43,7 +43,7 @@ export const basel: City = {
         {
           h2: "Ehrlich und effizient: unsere Zusammenarbeit",
           paragraphs: [
-            "Wir sagen es offen: Unser Büro ist in Grenchen, rund eine Stunde von Basel entfernt. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, was für beide Seiten Zeit spart. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Basel. Sie haben eine feste Ansprechperson, die Ihr Projekt kennt und selbst umsetzt.",
+            "Wir sagen es offen: Unser Büro ist in Grenchen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, was für beide Seiten Zeit spart. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Basel. Sie haben eine feste Ansprechperson, die Ihr Projekt kennt und selbst umsetzt.",
             "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, Suchmaschinenoptimierung und Werbekampagnen. Unser Fokus liegt auf Schweizer KMU, fairer Zusammenarbeit und messbaren Resultaten statt auf teurem Agentur-Overhead. Vereinbaren Sie jetzt Ihre kostenlose Erstberatung.",
           ],
         },
@@ -51,7 +51,7 @@ export const basel: City = {
       faq: [
         {
           q: "Wie arbeiten Sie mit Kunden aus Basel zusammen?",
-          a: "Grösstenteils per Videocall, Telefon und E-Mail. Für wichtige Termine wie den Projektstart oder Fotos kommen wir nach Basel, die Fahrt ab Grenchen dauert rund eine Stunde.",
+          a: "Grösstenteils per Videocall, Telefon und E-Mail. Für wichtige Termine wie den Projektstart oder Fotos kommen wir gerne persönlich nach Basel.",
         },
         {
           q: "Erstellen Sie auch englischsprachige Webseiten?",
@@ -98,7 +98,7 @@ export const basel: City = {
         {
           h2: "Une collaboration franche et efficace",
           paragraphs: [
-            "Nous le disons clairement : notre bureau se trouve à Granges, à environ une heure de Bâle. Le suivi courant se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps aux deux parties. Pour le lancement, un atelier ou des photos, nous venons volontiers à Bâle. Vous avez un interlocuteur fixe qui connaît votre projet et le réalise lui-même.",
+            "Nous le disons clairement : notre bureau se trouve à Granges. Le suivi courant se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps aux deux parties. Pour le lancement, un atelier ou des photos, nous venons volontiers à Bâle. Vous avez un interlocuteur fixe qui connaît votre projet et le réalise lui-même.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes. Notre priorité : les PME suisses, une collaboration loyale et des résultats mesurables.",
           ],
         },
@@ -106,7 +106,7 @@ export const basel: City = {
       faq: [
         {
           q: "Comment travaillez-vous avec des clients bâlois ?",
-          a: "Principalement par visioconférence, téléphone et e-mail. Pour les étapes importantes comme le lancement ou les photos, nous venons à Bâle, à environ une heure de Granges.",
+          a: "Principalement par visioconférence, téléphone et e-mail. Pour les étapes importantes comme le lancement ou les photos, nous venons volontiers à Bâle.",
         },
         {
           q: "Proposez-vous des sites en anglais et en français ?",

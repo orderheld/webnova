@@ -18,7 +18,7 @@ export const biel: City = {
       },
       h1: "Webdesign Biel: zweisprachige Webseiten für Biel/Bienne",
       lead:
-        "Sie möchten in Biel eine Webseite erstellen lassen, die auf Deutsch und Französisch überzeugt? Webnova arbeitet von Grenchen aus, rund 20 Minuten von Biel entfernt, und kennt die Bedürfnisse der zweisprachigen Stadt.",
+        "Sie möchten in Biel eine Webseite erstellen lassen, die auf Deutsch und Französisch überzeugt? Webnova arbeitet von Grenchen aus und kennt die Bedürfnisse der zweisprachigen Stadt.",
       sections: [
         {
           h2: "Biel/Bienne: eine Stadt, zwei Sprachen, ein Webauftritt",
@@ -43,7 +43,7 @@ export const biel: City = {
         {
           h2: "Persönlich in Biel, effizient aus Grenchen",
           paragraphs: [
-            "Von unserem Büro in Grenchen sind wir mit dem Auto oder dem Zug schnell in Biel. Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen, ob in die Altstadt, ins Bözingenfeld oder nach Nidau. Zwischendurch arbeiten wir effizient per Videocall und Telefon. Sie haben während des ganzen Projekts eine feste Ansprechperson, die beide Sprachen versteht.",
+            "Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen, ob in die Altstadt oder ins Bözingenfeld. Zwischendurch arbeiten wir effizient per Videocall und Telefon. Sie haben während des ganzen Projekts eine feste Ansprechperson, die beide Sprachen versteht.",
             "Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entwickeln wir Struktur, Texte und Design gemeinsam mit Ihnen und zeigen Entwürfe früh. Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Hosting, Google Ads und laufende Optimierung. So haben Bieler KMU eine Webagentur in der Nähe, ohne den Aufwand und Overhead einer Grossagentur.",
           ],
         },
@@ -55,7 +55,7 @@ export const biel: City = {
         },
         {
           q: "Kommen Sie für Besprechungen nach Biel?",
-          a: "Gerne. Biel liegt rund 20 Minuten von unserem Büro in Grenchen entfernt. Wir treffen Sie vor Ort oder per Videocall, ganz wie es für Sie passt.",
+          a: "Gerne. Wir treffen Sie vor Ort oder per Videocall, ganz wie es für Sie passt.",
         },
         {
           q: "Arbeiten Sie auch für Zulieferer der Uhrenindustrie?",
@@ -77,7 +77,7 @@ export const biel: City = {
       },
       h1: "Création de site internet à Bienne : une agence web bilingue",
       lead:
-        "Vous souhaitez un site internet qui parle aussi bien aux Biennois francophones qu'aux germanophones ? Webnova travaille depuis Granges, à une vingtaine de minutes de Bienne, et connaît bien les réalités de la ville bilingue.",
+        "Vous souhaitez un site internet qui parle aussi bien aux Biennois francophones qu'aux germanophones ? Webnova travaille depuis Granges et connaît bien les réalités de la ville bilingue.",
       sections: [
         {
           h2: "À Bienne, votre site doit parler deux langues",
@@ -102,7 +102,7 @@ export const biel: City = {
         {
           h2: "Proche de vous, sans la lourdeur d'une grande agence",
           paragraphs: [
-            "Depuis notre bureau de Granges, nous sommes rapidement à Bienne. Pour le premier entretien, un atelier ou une séance photo, nous venons volontiers chez vous, que ce soit dans la vieille ville, aux Champs-de-Boujean ou à Nidau. Le reste du temps, nous travaillons efficacement par visioconférence et par téléphone. Vous avez un seul interlocuteur du début à la fin, qui comprend les deux langues.",
+            "Pour le premier entretien, un atelier ou une séance photo, nous venons volontiers chez vous, que ce soit dans la vieille ville ou aux Champs-de-Boujean. Le reste du temps, nous travaillons efficacement par visioconférence et par téléphone. Vous avez un seul interlocuteur du début à la fin, qui comprend les deux langues.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Nous élaborons ensuite avec vous la structure, les textes et le design, et vous montrons les maquettes très tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, les campagnes Google Ads et l'optimisation continue. Une agence web proche des PME biennoises, sans frais de structure inutiles.",
           ],
         },
@@ -114,7 +114,7 @@ export const biel: City = {
         },
         {
           q: "Pouvez-vous nous rencontrer à Bienne ?",
-          a: "Bien sûr. Bienne se trouve à une vingtaine de minutes de notre bureau de Granges. Nous nous rencontrons chez vous ou en visioconférence, selon ce qui vous convient le mieux.",
+          a: "Bien sûr. Nous nous rencontrons chez vous ou en visioconférence, selon ce qui vous convient le mieux.",
         },
         {
           q: "Travaillez-vous avec des entreprises liées à l'horlogerie ?",
@@ -161,9 +161,9 @@ export const biel: City = {
           ],
         },
         {
-          h2: "Ihre SEO-Agentur für Biel, 20 Minuten entfernt",
+          h2: "Ihre SEO-Agentur für Biel, persönlich vor Ort",
           paragraphs: [
-            "Wir sind in Grenchen zuhause und schnell in Biel, wenn ein Treffen vor Ort sinnvoll ist, etwa für den Start, Fotos für das Unternehmensprofil oder die Besprechung der Resultate. Die laufende Arbeit erledigen wir effizient aus dem Büro und berichten Ihnen regelmässig, was wir gemacht haben und was es bewirkt. Verständlich, ohne Fachchinesisch und in Ihrer Sprache.",
+            "Wir sind in Grenchen zuhause und kommen gerne nach Biel, wenn ein Treffen vor Ort sinnvoll ist, etwa für den Start, Fotos für das Unternehmensprofil oder die Besprechung der Resultate. Die laufende Arbeit erledigen wir effizient aus dem Büro und berichten Ihnen regelmässig, was wir gemacht haben und was es bewirkt. Verständlich, ohne Fachchinesisch und in Ihrer Sprache.",
             "Am Anfang steht eine kostenlose Erstberatung mit einem Blick auf Ihre aktuelle Sichtbarkeit in beiden Sprachen. Danach erhalten Sie eine unverbindliche Offerte mit konkreten Massnahmen. Eine Garantie für Platz 1 geben wir nicht, weil das niemand seriös kann. Was wir zusichern: sorgfältige Arbeit, Transparenz und eine feste Ansprechperson für Ihr Unternehmen in Biel.",
           ],
         },
@@ -216,7 +216,7 @@ export const biel: City = {
           ],
         },
         {
-          h2: "Une agence SEO à vingt minutes de Bienne",
+          h2: "Une agence SEO proche de vous à Bienne",
           paragraphs: [
             "Basés à Granges, nous venons à Bienne lorsqu'une rencontre est utile : lancement du projet, photos pour votre profil Google ou présentation des résultats. Le travail courant se fait efficacement depuis notre bureau, et nous vous expliquons régulièrement ce qui a été fait et avec quel effet. Clairement, sans jargon, et en français si vous le souhaitez.",
             "Tout commence par un premier conseil gratuit avec une analyse de votre visibilité dans les deux langues. Vous recevez ensuite une offre sans engagement avec des mesures concrètes. Nous ne garantissons pas la première place, car aucune agence sérieuse ne peut le faire. Nous garantissons en revanche un travail soigné, de la transparence et un interlocuteur fixe.",

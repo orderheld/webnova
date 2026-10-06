@@ -71,7 +71,7 @@ export const kassensystem: Service = {
         {
           h2: "Persönlich eingerichtet, lokal betreut",
           paragraphs: [
-            "Ein neues Kassensystem einzuführen, bedeutet Umstellung. Darum lassen wir Sie damit nicht allein. Wir erfassen mit Ihnen Artikel und Preise, installieren Geräte und Drucker vor Ort und schulen Ihr Team, bis die Abläufe sitzen. In der Region Grenchen, Biel, Solothurn und Bern sind wir schnell bei Ihnen.",
+            "Ein neues Kassensystem einzuführen, bedeutet Umstellung. Darum lassen wir Sie damit nicht allein. Wir erfassen mit Ihnen Artikel und Preise, installieren Geräte und Drucker vor Ort und schulen Ihr Team, bis die Abläufe sitzen. Dafür kommen wir persönlich zu Ihnen in den Betrieb.",
             "Auch nach dem Start bleiben wir Ihr Ansprechpartner. Wenn Fragen auftauchen oder Sie Ihr System erweitern möchten, erreichen Sie uns direkt. Und wenn Sie auch online verkaufen, verbinden wir Kasse und Webseite oder Onlineshop zu einem stimmigen Ganzen. So arbeiten alle Teile Ihres Auftritts zusammen.",
           ],
         },
@@ -125,7 +125,7 @@ export const kassensystem: Service = {
         },
         {
           title: "Articles et stock",
-          text: "Articles, prix et stocks se gèrent de façon centralisée. Vous savez ce qui se vend et ce qu'il faut recommander.",
+          text: "Articles, prix et stocks se gèrent de façon centralisée. Vous savez ce qui se vend et ce qu'il faut réapprovisionner.",
         },
         {
           title: "Clôture et rapports",

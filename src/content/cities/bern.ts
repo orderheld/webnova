@@ -18,13 +18,13 @@ export const bern: City = {
       },
       h1: "Webdesign Bern: Webseiten für Berner KMU",
       lead:
-        "Sie möchten in Bern eine Webseite erstellen lassen und suchen eine Webagentur, die zuhört und direkt erreichbar ist? Webnova arbeitet von Grenchen aus, rund 35 Minuten von Bern, für KMU aus der Stadt und dem Bern-Mittelland.",
+        "Sie möchten in Bern eine Webseite erstellen lassen und suchen eine Webagentur, die zuhört und direkt erreichbar ist? Webnova arbeitet von Grenchen aus für KMU aus der Stadt und dem Bern-Mittelland und kommt für Besprechungen gerne zu Ihnen.",
       sections: [
         {
           h2: "Eine persönliche Webagentur für Bern",
           paragraphs: [
             "In Bern gibt es viele Webagenturen, von kleinen Studios bis zu grossen Digitalagenturen. Was KMU oft fehlt, ist eine Ansprechperson, die das Projekt vom ersten Gespräch bis nach dem Launch selbst begleitet. Genau so arbeiten wir: Sie sprechen immer mit den Menschen, die Ihre Webseite tatsächlich planen und umsetzen, ohne Umwege über Projektmanager und Account-Teams.",
-            "Unser Büro liegt in Grenchen, über die A5 und A1 sind wir in gut einer halben Stunde in Bern. Für Kick-off, Workshops und Fotoaufnahmen kommen wir zu Ihnen, die übrigen Abstimmungen erledigen wir effizient per Videocall. Als Webagentur für Bern konzentrieren wir uns auf Schweizer KMU und stimmen Umfang und Funktionen auf Ihre tatsächlichen Bedürfnisse ab.",
+            "Unser Büro liegt in Grenchen. Für Kick-off, Workshops und Fotoaufnahmen kommen wir zu Ihnen, die übrigen Abstimmungen erledigen wir effizient per Videocall. Als Webagentur für Bern konzentrieren wir uns auf Schweizer KMU und stimmen Umfang und Funktionen auf Ihre tatsächlichen Bedürfnisse ab.",
           ],
         },
         {
@@ -51,7 +51,7 @@ export const bern: City = {
       faq: [
         {
           q: "Warum eine Webagentur aus Grenchen für ein Projekt in Bern?",
-          a: "Wir sind in rund 35 Minuten in Bern, arbeiten persönlich und ohne den Overhead einer Grossagentur. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
+          a: "Wir kommen für wichtige Termine nach Bern, arbeiten persönlich und ohne den Overhead einer Grossagentur. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
         },
         {
           q: "Treffen Sie Kunden in Bern vor Ort?",
@@ -77,13 +77,13 @@ export const bern: City = {
       },
       h1: "Création de site internet à Berne pour les PME",
       lead:
-        "Vous cherchez une agence web à Berne qui écoute et reste joignable ? Webnova travaille depuis Granges, à environ 35 minutes de la ville fédérale, pour les PME de Berne et de la région.",
+        "Vous cherchez une agence web à Berne qui écoute et reste joignable ? Webnova travaille depuis Granges pour les PME de Berne et de la région, et se déplace volontiers chez vous.",
       sections: [
         {
           h2: "Une agence web à taille humaine pour Berne",
           paragraphs: [
             "Berne compte de nombreuses agences, des petits studios aux grandes agences digitales. Ce qui manque souvent aux PME, c'est un interlocuteur qui suit le projet du premier entretien jusqu'après la mise en ligne. C'est notre façon de travailler : vous parlez toujours aux personnes qui conçoivent et réalisent réellement votre site, sans passer par plusieurs niveaux de gestion de projet.",
-            "Notre bureau est à Granges et nous rejoignons Berne en un peu plus d'une demi-heure par l'autoroute. Pour le lancement, les ateliers et les photos, nous venons chez vous. Les autres échanges se font efficacement en visioconférence. Nous nous concentrons sur les PME suisses et dimensionnons chaque site selon vos besoins réels, sans fonctions superflues.",
+            "Notre bureau est à Granges. Pour le lancement, les ateliers et les photos, nous venons chez vous. Les autres échanges se font efficacement en visioconférence. Nous nous concentrons sur les PME suisses et dimensionnons chaque site selon vos besoins réels, sans fonctions superflues.",
           ],
         },
         {
@@ -110,7 +110,7 @@ export const bern: City = {
       faq: [
         {
           q: "Pourquoi choisir une agence de Granges pour un projet à Berne ?",
-          a: "Nous sommes à Berne en environ 35 minutes et travaillons de manière personnelle, sans la structure d'une grande agence. Vous avez un interlocuteur fixe qui réalise lui-même votre projet.",
+          a: "Nous venons à Berne pour les rendez-vous importants et travaillons de manière personnelle, sans la structure d'une grande agence. Vous avez un interlocuteur fixe qui réalise lui-même votre projet.",
         },
         {
           q: "Pouvez-vous rédiger la version française de notre site ?",
@@ -140,7 +140,7 @@ export const bern: City = {
           h2: "Warum SEO in Bern Strategie braucht",
           paragraphs: [
             "In einer Stadt wie Bern konkurrieren in fast jeder Branche viele Anbieter um dieselben Suchbegriffe. Für allgemeine Begriffe ganz oben zu stehen, ist aufwendig und dauert. Erfolgreiche Suchmaschinenoptimierung in Bern setzt deshalb auf eine klare Strategie: Welche Suchanfragen bringen wirklich Kunden? In welchen Quartieren oder Gemeinden sind Sie tätig? Wo ist die Konkurrenz schwächer, als es scheint?",
-            "Oft liegt das grösste Potenzial in spezifischen Suchen, etwa einer Leistung kombiniert mit einem Quartier wie Länggasse, Breitenrain oder Bümpliz, oder mit Gemeinden wie Köniz, Ostermundigen und Muri. Solche Anfragen haben weniger Volumen, aber eine hohe Abschlusswahrscheinlichkeit. Wir identifizieren diese Chancen und bauen Ihre Sichtbarkeit Schritt für Schritt aus, auf Deutsch und bei Bedarf auf Französisch.",
+            "Oft liegt das grösste Potenzial in spezifischen Suchen, etwa einer Leistung kombiniert mit einem Quartier wie der Länggasse oder einer Gemeinde wie Köniz. Solche Anfragen haben weniger Volumen, aber eine hohe Abschlusswahrscheinlichkeit. Wir identifizieren diese Chancen und bauen Ihre Sichtbarkeit Schritt für Schritt aus, auf Deutsch und bei Bedarf auf Französisch.",
           ],
         },
         {

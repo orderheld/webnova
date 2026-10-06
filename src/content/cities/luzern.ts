@@ -31,7 +31,7 @@ export const luzern: City = {
           h2: "Was Luzerner Unternehmen online brauchen",
           paragraphs: [
             "Für Hotels, Restaurants und Geschäfte in Luzern zählen schnelle, mobile Webseiten, aktuelle Angebote, Reservationsmöglichkeiten und ein gepflegtes Google Unternehmensprofil mit guten Fotos und echten Bewertungen. Viele Gäste entscheiden spontan und unterwegs auf dem Smartphone, wo sie essen oder einkaufen. Mehrsprachige Inhalte, mindestens Deutsch und Englisch, oft auch Französisch, erhöhen die Reichweite deutlich.",
-            "Gewerbebetriebe und Dienstleister in Luzern, Kriens, Emmen oder Horw profitieren von klar strukturierten Leistungsseiten, lokaler Suchmaschinenoptimierung und einem Karrierebereich für die Fachkräftesuche. Wer Produkte verkauft, erreicht mit einem Onlineshop neue Kundschaft, und für Gastronomie und Detailhandel richten wir zusätzlich moderne Kassensysteme ein, die Laden, Lager und Onlineshop sinnvoll miteinander verbinden.",
+            "Gewerbebetriebe und Dienstleister in Luzern und Umgebung profitieren von klar strukturierten Leistungsseiten, lokaler Suchmaschinenoptimierung und einem Karrierebereich für die Fachkräftesuche. Wer Produkte verkauft, erreicht mit einem Onlineshop neue Kundschaft, und für Gastronomie und Detailhandel richten wir zusätzlich moderne Kassensysteme ein, die Laden, Lager und Onlineshop sinnvoll miteinander verbinden.",
           ],
           bullets: [
             "Mehrsprachige Webseiten für Tourismus",
@@ -43,7 +43,7 @@ export const luzern: City = {
         {
           h2: "Offen gesagt: Zusammenarbeit aus der Distanz",
           paragraphs: [
-            "Webnova hat ihr Büro in Grenchen, etwas mehr als eine Stunde von Luzern entfernt. Den grössten Teil der Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail. Das spart Zeit auf beiden Seiten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Luzern. Sie haben jederzeit eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
+            "Webnova hat ihr Büro in Grenchen. Den grössten Teil der Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail. Das spart Zeit auf beiden Seiten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Luzern. Sie haben jederzeit eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
             "Dafür erhalten Sie direkte Kommunikation, einen klaren KMU-Fokus und keinen Agentur-Overhead. Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO und saisonale Kampagnen auf Google und Meta, etwa für die Hauptsaison, Festtage oder besondere Anlässe in der Stadt.",
           ],
         },
@@ -51,7 +51,7 @@ export const luzern: City = {
       faq: [
         {
           q: "Wie läuft die Zusammenarbeit mit einem Luzerner Unternehmen ab?",
-          a: "Die meisten Abstimmungen laufen per Videocall und Telefon. Für den Projektstart, Workshops oder Fotos kommen wir nach Luzern, die Fahrt ab Grenchen dauert etwas mehr als eine Stunde.",
+          a: "Die meisten Abstimmungen laufen per Videocall und Telefon. Für den Projektstart, Workshops oder Fotos kommen wir gerne persönlich nach Luzern.",
         },
         {
           q: "Können Sie mehrsprachige Webseiten für Tourismusbetriebe umsetzen?",
@@ -98,7 +98,7 @@ export const luzern: City = {
         {
           h2: "En toute franchise : travailler à distance",
           paragraphs: [
-            "Webnova a son bureau à Granges, à un peu plus d'une heure de Lucerne. L'essentiel de la collaboration se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps à tout le monde. Pour le lancement, un atelier ou des photos, nous venons volontiers à Lucerne. Vous gardez le même interlocuteur, qui réalise lui-même votre projet.",
+            "Webnova a son bureau à Granges. L'essentiel de la collaboration se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps à tout le monde. Pour le lancement, un atelier ou des photos, nous venons volontiers à Lucerne. Vous gardez le même interlocuteur, qui réalise lui-même votre projet.",
             "Vous bénéficiez d'une communication directe, d'une agence centrée sur les PME suisses et d'aucuns frais de structure superflus. Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et des campagnes saisonnières sur Google et Meta.",
           ],
         },
@@ -106,7 +106,7 @@ export const luzern: City = {
       faq: [
         {
           q: "Comment se passe la collaboration avec une entreprise de Lucerne ?",
-          a: "La plupart des échanges se font en visioconférence et par téléphone. Pour le lancement, les ateliers ou les photos, nous venons à Lucerne, à un peu plus d'une heure de Granges.",
+          a: "La plupart des échanges se font en visioconférence et par téléphone. Pour le lancement, les ateliers ou les photos, nous venons volontiers à Lucerne.",
         },
         {
           q: "Réalisez-vous des sites multilingues pour l'hôtellerie ?",
