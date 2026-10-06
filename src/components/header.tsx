@@ -44,6 +44,10 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenFor(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
   return (
@@ -58,7 +62,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             {logo}
           </Link>
 
-          <nav className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1`} aria-label="Hauptnavigation">
+          <nav className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1`} aria-label={nav.locale === "de" ? "Hauptnavigation" : "Navigation principale"}>
             <div className="group relative">
               <Link
                 href={nav.servicesHref}
@@ -110,6 +114,8 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             <Link
               href={switchHref}
               hrefLang={other}
+              lang={other}
+              aria-label={other === "fr" ? "Français" : "Deutsch"}
               className="hidden rounded-full px-3 py-2 text-[13px] font-medium uppercase tracking-wider text-white/50 transition-colors hover:text-white sm:block"
             >
               {other}
@@ -130,6 +136,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
               onClick={() => setOpenFor(open ? null : pathname)}
               className={`${minimal ? "hidden" : "grid lg:hidden"} h-11 w-11 place-items-center rounded-full border border-white/15`}
               aria-expanded={open}
+              aria-controls="mobile-menu"
               aria-label={open ? nav.closeLabel : nav.menuLabel}
             >
               <Icon name={open ? "close" : "menu"} />
@@ -140,7 +147,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
 
       {/* Outside the header: its backdrop-filter would make it the containing block of this fixed panel. */}
       {open && !minimal && (
-        <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col overflow-hidden bg-night text-white lg:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col overflow-hidden bg-night text-white lg:hidden">
           <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
           <div
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/20 blur-[90px]"
@@ -172,7 +179,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 ))}
               </div>
 
-              <nav className="mt-8 border-t border-white/10" aria-label="Menü">
+              <nav className="mt-8 border-t border-white/10" aria-label={nav.locale === "de" ? "Menü" : "Menu"}>
                 {nav.links.map((l, i) => (
                   <Link
                     key={l.href}
