@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList } from "@/components/blocks";
 import { HeroVisual } from "@/components/hero-visual";
+import { ReferenceCard } from "@/components/reference-card";
 import { RegionMap } from "@/components/region-map";
+import { references } from "@/content/references";
 import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
@@ -196,6 +198,28 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* REFERENCES */}
+      <section className="container-x pb-24 md:pb-32">
+        <div className="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-4">{d.home.referencesEyebrow}</p>
+            <h2 className="h-section">{d.home.referencesTitle}</h2>
+            <p className="mt-5 text-[18px] leading-relaxed text-ink-soft">{d.home.referencesLead}</p>
+          </div>
+          <ButtonLink href={href(lang, "references")} variant="ghost">
+            {d.home.referencesAll}
+          </ButtonLink>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {references
+            .filter((r) => r.image)
+            .slice(0, 2)
+            .map((r) => (
+              <ReferenceCard key={r.key} r={r} locale={lang} large />
+            ))}
         </div>
       </section>
 

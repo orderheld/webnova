@@ -14,6 +14,7 @@ export type RouteKind =
   | "guides"
   | "guide"
   | "about"
+  | "references"
   | "contact"
   | "request"
   | "thanks"
@@ -45,6 +46,7 @@ function buildRoutes(): RouteEntry[] {
     page("home", "", ""),
     page("services", "leistungen", "services"),
     page("regions", "standorte", "regions"),
+    page("references", "referenzen", "references"),
     page("guides", "ratgeber", "conseils"),
     page("about", "ueber-uns", "a-propos"),
     page("contact", "kontakt", "contact"),

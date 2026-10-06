@@ -7,7 +7,7 @@ import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import type { RouteEntry } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { AboutPage, ContactPage, LegalPage, RequestPage, ThanksPage } from "./pages";
+import { AboutPage, ContactPage, LegalPage, ReferencesPage, RequestPage, ThanksPage } from "./pages";
 import { CityPage, RegionsPage } from "./city";
 import { GuidePage, GuidesPage } from "./guide";
 import { LandingPage, lpMeta } from "./landing";
@@ -33,6 +33,8 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
       return m(guides.find((g) => g.key === entry.key)!.content[locale].meta);
     case "about":
       return m({ title: d.aboutMetaTitle, description: d.aboutMetaDesc });
+    case "references":
+      return m({ title: d.referencesMetaTitle, description: d.referencesMetaDesc });
     case "contact":
       return m({ title: d.contactMetaTitle, description: d.contactMetaDesc });
     case "request":
@@ -68,6 +70,8 @@ export function renderPage(locale: Locale, entry: RouteEntry) {
       return <GuidePage locale={locale} guideKey={entry.key} />;
     case "about":
       return <AboutPage locale={locale} />;
+    case "references":
+      return <ReferencesPage locale={locale} />;
     case "contact":
       return <ContactPage locale={locale} />;
     case "request":

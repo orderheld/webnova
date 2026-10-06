@@ -53,6 +53,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </FooterCol>
         <FooterCol title={d.footer.company} className="md:col-span-2">
           <FooterLink href={href(locale, "about")}>{d.nav.about}</FooterLink>
+          <FooterLink href={href(locale, "references")}>{d.nav.references}</FooterLink>
           <FooterLink href={href(locale, "guides")}>{d.nav.guides}</FooterLink>
           <FooterLink href={href(locale, "contact")}>{d.nav.contact}</FooterLink>
           <FooterLink href={href(locale, "request")}>{d.nav.cta}</FooterLink>

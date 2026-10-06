@@ -2,6 +2,8 @@ import { ButtonLink } from "@/components/button";
 import { CtaBand, PageHero, Prose } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
+import { ReferenceCard } from "@/components/reference-card";
+import { references } from "@/content/references";
 import { legal } from "@/content/legal";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
@@ -39,6 +41,30 @@ export function AboutPage({ locale }: { locale: Locale }) {
             </ButtonLink>
           </div>
         </aside>
+      </section>
+      <CtaBand locale={locale} />
+    </>
+  );
+}
+
+export function ReferencesPage({ locale }: { locale: Locale }) {
+  const d = getDict(locale);
+  return (
+    <>
+      <PageHero
+        eyebrow={d.nav.references}
+        title={d.pages.referencesH1}
+        lead={d.pages.referencesLead}
+        crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references }]}
+      >
+        <div className="mt-10 flex flex-wrap gap-3">
+          <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
+        </div>
+      </PageHero>
+      <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
+        {references.map((r) => (
+          <ReferenceCard key={r.key} r={r} locale={locale} large />
+        ))}
       </section>
       <CtaBand locale={locale} />
     </>
