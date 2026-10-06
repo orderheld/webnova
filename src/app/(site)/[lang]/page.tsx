@@ -121,8 +121,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* CROSSING TICKERS */}
-      <div className="relative -mt-14 overflow-hidden pb-6 pt-2" aria-hidden="true">
-        <div className="relative z-10 -mx-4 -rotate-[2.5deg] bg-accent py-4 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]">
+      <div className="relative overflow-hidden" aria-hidden="true">
+        <div className="relative z-10 bg-accent py-4">
           <div className="flex w-max animate-marquee gap-8 whitespace-nowrap font-display text-[clamp(1.3rem,2.4vw,2rem)] font-bold tracking-tight text-night">
             {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
               <span key={i} className="flex items-center gap-8">
@@ -132,7 +132,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             ))}
           </div>
         </div>
-        <div className="-mx-4 -mt-3 rotate-[1.5deg] bg-night py-4">
+        <div className="border-t border-white/10 bg-night py-4">
           <div className="flex w-max animate-marquee-rev gap-8 whitespace-nowrap font-display text-[clamp(1.1rem,2vw,1.6rem)] font-semibold tracking-tight text-white/80">
             {[...cities, ...cities].map((c, i) => (
               <span key={i} className="flex items-center gap-8">
@@ -294,7 +294,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <section className="container-x py-24 md:py-32">
         <div className="reveal relative isolate overflow-hidden rounded-[36px] bg-accent p-8 text-night sm:p-12 md:p-16">
           <div aria-hidden="true" className="bg-dots absolute inset-0 -z-10 opacity-60" />
-          <div aria-hidden="true" className="absolute -right-10 -top-10 -z-10 h-64 w-64 animate-spin-slow rounded-full border-[28px] border-dashed border-night/10" />
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow mb-4 !text-night/60">{d.home.posEyebrow}</p>
