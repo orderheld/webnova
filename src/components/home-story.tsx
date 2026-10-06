@@ -41,8 +41,22 @@ const t = {
         retail: { label: "Detailhandel", line: "Laden, Onlineshop und Kasse aus einem Guss." },
         service: { label: "Praxis & Dienstleister", line: "Vertrauen auf den ersten Blick, Termine mit einem Klick." },
       },
-      booking: { title: "Termin buchen", slots: ["Di 09:00", "Di 14:30", "Mi 10:00"] },
-      pos: { total: "Total", pay: "Bezahlen" },
+      mock: {
+        booking: "Termin buchen",
+        slots: ["Di 09:00", "Di 14:30", "Mi 10:00"],
+        request: "Offertanfrage",
+        requestJob: "Badezimmer sanieren",
+        requestPlace: "2540 Grenchen",
+        send: "Anfrage senden",
+        items: [["Espresso-Bohnen", "18.90"], ["Tasse Keramik", "24.00"]] as [string, string][],
+        total: "Total",
+        pay: "Bezahlen",
+        practice: "Praxis am Markt",
+        open: "Heute geöffnet",
+        call: "Anrufen",
+        route: "Route",
+        web: "Website",
+      },
     },
     wall: {
       title1: "Sie haben Ihr Geschäft mit Herzblut aufgebaut.",
@@ -86,8 +100,22 @@ const t = {
         retail: { label: "Commerce de détail", line: "Magasin, boutique en ligne et caisse d'un seul tenant." },
         service: { label: "Cabinets & prestataires", line: "La confiance au premier regard, les rendez-vous en un clic." },
       },
-      booking: { title: "Prendre rendez-vous", slots: ["Ma 09:00", "Ma 14:30", "Me 10:00"] },
-      pos: { total: "Total", pay: "Payer" },
+      mock: {
+        booking: "Prendre rendez-vous",
+        slots: ["Ma 09:00", "Ma 14:30", "Me 10:00"],
+        request: "Demande de devis",
+        requestJob: "Rénover la salle de bain",
+        requestPlace: "2502 Bienne",
+        send: "Envoyer la demande",
+        items: [["Grains d'espresso", "18.90"], ["Tasse en céramique", "24.00"]] as [string, string][],
+        total: "Total",
+        pay: "Payer",
+        practice: "Cabinet du Marché",
+        open: "Ouvert aujourd'hui",
+        call: "Appeler",
+        route: "Itinéraire",
+        web: "Site web",
+      },
     },
     wall: {
       title1: "Vous avez bâti votre entreprise avec passion.",
@@ -170,73 +198,98 @@ export function HeroShowcase({ locale }: { locale: Locale }) {
   );
 }
 
+/** Shared frame for the small illustrations: same size, background and grid everywhere. */
+function VisualFrame({ children, dark = false, photo }: { children?: React.ReactNode; dark?: boolean; photo?: string }) {
+  if (photo) {
+    return (
+      <div className="relative h-[220px] overflow-hidden" aria-hidden="true">
+        <Image src={photo} alt="" fill sizes="(min-width: 1024px) 400px, 100vw" className="object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night-2/70 to-transparent" />
+      </div>
+    );
+  }
+  return (
+    <div
+      className={`relative grid h-[220px] place-items-center overflow-hidden px-6 ${dark ? "bg-night-2" : "bg-bg"}`}
+      aria-hidden="true"
+    >
+      <div
+        className={`absolute inset-0 [background-size:24px_24px] ${
+          dark
+            ? "[background-image:radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)]"
+            : "[background-image:radial-gradient(rgb(11_12_10/0.08)_1px,transparent_1px)]"
+        }`}
+      />
+      <div className="relative w-full max-w-[260px]">{children}</div>
+    </div>
+  );
+}
+
+/** White mini-UI card used in every illustration. */
+function MiniCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <div className={`rounded-2xl border border-line bg-white p-4 text-night shadow-[0_20px_40px_-24px_rgba(0,0,0,0.35)] ${className}`}>{children}</div>;
+}
+
+const bar = (w: string, cls = "bg-line") => <span className={`block h-2 rounded-full ${cls}`} style={{ width: w }} />;
+
 /** "Kennen Sie das?": three everyday frustrations of small businesses, each with a small illustration. */
 export function PainPoints({ locale }: { locale: Locale }) {
   const p = t[locale].pain;
   const visuals = [
-    // An outdated website
-    <div key="old" className="relative h-full -rotate-2 overflow-hidden rounded-xl border-2 border-[#b9b4a6] bg-[#efece2] p-3 font-serif text-[#2b2b2b] shadow-sm">
-      <div className="mb-2 flex gap-1">
-        <span className="h-2 w-2 bg-[#b9b4a6]" />
-        <span className="h-2 w-2 bg-[#b9b4a6]" />
+    // An outdated website: grey, dense, nothing to click
+    <MiniCard key="old" className="-rotate-2">
+      <p className="font-serif text-[14px] italic text-muted underline">{p.old.welcome}</p>
+      <div className="mt-3 grid grid-cols-3 gap-1.5">
+        <span className="h-8 rounded bg-line" />
+        <span className="h-8 rounded bg-line" />
+        <span className="h-8 rounded bg-line" />
       </div>
-      <p className="text-[15px] font-bold italic text-[#1a3fbf] underline">{p.old.welcome}</p>
-      <div className="mt-2 grid grid-cols-3 gap-1.5">
-        <span className="h-9 bg-[#cfcabb]" />
-        <span className="h-9 bg-[#cfcabb]" />
-        <span className="h-9 bg-[#cfcabb]" />
+      <div className="mt-3 space-y-1.5">
+        {bar("100%")}
+        {bar("85%")}
+        {bar("92%")}
       </div>
-      <div className="mt-2 h-3 bg-[repeating-linear-gradient(45deg,#f5c400_0_8px,#1a1a1a_8px_16px)]" />
-      <div className="mt-2 flex items-center justify-between text-[11px]">
-        <span className="text-[#7a7466]">{p.old.updated}</span>
-        <span className="bg-black px-1.5 font-mono text-[10px] text-[#39ff14]">
-          {p.old.visitors}: 000412
-        </span>
-      </div>
-    </div>,
+      <p className="mt-3 text-[11px] text-muted">{p.old.updated}</p>
+    </MiniCard>,
     // A silent phone
-    <div key="phone" className="relative mx-auto h-full w-[150px] rounded-[26px] border-[5px] border-night bg-gradient-to-b from-[#2a2d33] to-[#14161a] p-3 text-center text-white shadow-lg">
-      <span className="mx-auto block h-2.5 w-12 rounded-full bg-night" />
-      <p className="mt-4 font-display text-[34px] font-light leading-none">18:42</p>
-      <p className="mt-1 text-[10px] text-white/50">{locale === "de" ? "Freitag, 6. März" : "Vendredi 6 mars"}</p>
-      <div className="mt-5 flex items-center justify-center gap-1.5 rounded-xl bg-white/10 px-2 py-2 text-[10px] text-white/55">
+    <MiniCard key="phone" className="mx-auto w-[170px] text-center">
+      <p className="font-display text-[30px] font-light leading-none text-night/80">18:42</p>
+      <p className="mt-1 text-[11px] text-muted">{locale === "de" ? "Freitag" : "Vendredi"}</p>
+      <div className="mt-4 flex items-center justify-center gap-1.5 rounded-xl bg-bg px-2 py-2 text-[11px] text-muted">
         <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2}>
           <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0M3 3l18 18" />
         </svg>
         {p.phone.none}
       </div>
-    </div>,
+    </MiniCard>,
     // Competitors ahead on Google
-    <div key="google" className="h-full rounded-xl border border-line bg-white p-3 shadow-sm">
+    <MiniCard key="google">
       <div className="flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-[12px] text-ink-soft">
         <Icon name="search" className="h-3.5 w-3.5 text-muted" />
         {p.google.query}
       </div>
-      <div className="mt-3 space-y-2">
-        {[1, 2, 3].map((n) => (
+      <div className="mt-3 space-y-2.5">
+        {["78%", "64%", "70%"].map((w, n) => (
           <div key={n} className="flex items-center gap-2">
-            <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#e8f0fe] text-[10px] font-bold text-[#1a56db]">{n}</span>
-            <span className="h-2 flex-1 rounded-full bg-[#1a56db]/25" style={{ maxWidth: `${90 - n * 12}%` }} />
+            <span className="w-3 text-[10px] font-semibold text-muted">{n + 1}</span>
+            {bar(w)}
           </div>
         ))}
-        <div className="flex items-center gap-2 border-t border-dashed border-line pt-2 opacity-50">
-          <span className="rounded bg-bg px-1.5 text-[10px] text-muted">{p.google.page2}</span>
-          <span className="text-[12px] font-medium text-muted line-through decoration-danger/60">{p.google.you}</span>
+        <div className="flex items-center gap-2 border-t border-dashed border-line pt-2">
+          <span className="text-[10px] text-muted">{p.google.page2}</span>
+          <span className="text-[12px] font-medium text-muted">{p.google.you}</span>
         </div>
       </div>
-    </div>,
+    </MiniCard>,
   ];
 
   return (
     <section className="container-x pb-8 pt-24 md:pt-32">
-      <div className="reveal max-w-3xl">
-        <p className="eyebrow mb-4">{p.eyebrow}</p>
-        <h2 className="h-section">{p.title}</h2>
-      </div>
-      <div className="mt-14 grid gap-4 md:grid-cols-3">
+      <SectionHead eyebrow={p.eyebrow} title={p.title} />
+      <div className="grid gap-4 md:grid-cols-3">
         {p.items.map((it, i) => (
           <div key={i} className="reveal flex flex-col overflow-hidden rounded-[28px] border border-line bg-surface">
-            <div className="h-[240px] bg-bg/70 p-6 grayscale-[30%]">{visuals[i]}</div>
+            <VisualFrame>{visuals[i]}</VisualFrame>
             <div className="p-7">
               <h3 className="font-display text-[21px] font-bold leading-tight tracking-[-0.02em]">{it.title}</h3>
               <p className="mt-3 text-[15.5px] leading-relaxed text-muted">{it.text}</p>
@@ -245,7 +298,7 @@ export function PainPoints({ locale }: { locale: Locale }) {
         ))}
       </div>
       <div className="reveal relative isolate mt-4 flex flex-col gap-6 overflow-hidden rounded-[28px] bg-night p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
-        <div aria-hidden="true" className="absolute -right-16 -top-24 -z-10 h-72 w-72 rounded-full bg-accent/25 blur-[90px]" />
+        <div aria-hidden="true" className="absolute -right-16 -top-24 -z-10 h-72 w-72 rounded-full bg-accent/20 blur-[90px]" />
         <div className="max-w-2xl">
           <p className="font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-tight tracking-[-0.03em] text-accent">{p.resolve}</p>
           <p className="mt-2 text-[17px] leading-relaxed text-white/70">{p.resolveText}</p>
@@ -262,119 +315,136 @@ export function PainPoints({ locale }: { locale: Locale }) {
   );
 }
 
-function IndustryText({ label, line, dark = true }: { label: string; line: string; dark?: boolean }) {
+/** Section header used by the home sections: eyebrow + title left, optional lead right. */
+export function SectionHead({ eyebrow, title, lead, dark = false }: { eyebrow: string; title: string; lead?: string; dark?: boolean }) {
   return (
-    <div className="relative">
-      <p className={`text-[12px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-accent" : "text-night/60"}`}>{label}</p>
-      <p className="mt-2 flex items-end justify-between gap-4 font-display text-[clamp(1.2rem,1.5vw,1.4rem)] font-bold leading-[1.18] tracking-[-0.025em]">
-        <span>{line}</span>
-        <Icon name="arrowUpRight" className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:rotate-45" />
-      </p>
+    <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
+      <div className="md:col-span-7">
+        <p className={`eyebrow mb-4 ${dark ? "!text-white/50" : ""}`}>{eyebrow}</p>
+        <h2 className="h-section">{title}</h2>
+      </div>
+      {lead && <p className={`text-[18px] leading-relaxed md:col-span-5 ${dark ? "text-white/65" : "text-ink-soft"}`}>{lead}</p>}
     </div>
   );
 }
 
-const tile = "reveal group relative isolate flex flex-col justify-end overflow-hidden rounded-[28px] p-7 transition-transform duration-500 hover:-translate-y-1";
-
-/** Industry bento: real photos where we have real projects, illustrated cards elsewhere. */
+/** Industry grid: six equal dark tiles, each with a photo or a mini-UI in the same style. */
 export function IndustryGallery({ locale }: { locale: Locale }) {
   const s = t[locale].industries;
   const i = s.items;
-  return (
-    <section className="container-x pb-24 md:pb-32">
-      <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p className="eyebrow mb-4">{s.eyebrow}</p>
-          <h2 className="h-section">{s.title}</h2>
-        </div>
-        <p className="text-[18px] leading-relaxed text-ink-soft md:col-span-5">{s.lead}</p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[300px_300px]">
-        {/* Gastronomy: food photo with the ordering app on top */}
-        <Link href={href(locale, "service:kassensystem-gastro")} className={`${tile} min-h-[440px] text-white lg:row-span-2`}>
-          <Image src="/visuals/food-pizza.jpg" alt="" fill sizes="(min-width: 1024px) 300px, 100vw" className="-z-20 scale-110 object-cover blur-[2px] transition-transform duration-[1.4s] group-hover:scale-[1.15]" />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-night via-night/60 to-night/10" />
-          <div className="absolute right-6 top-6 w-[42%] max-w-[170px] rotate-[4deg] rounded-[24px] border border-white/20 bg-night-2 p-1 shadow-2xl transition-transform duration-700 group-hover:rotate-0">
-            <div className="relative aspect-[390/700] overflow-hidden rounded-[19px] bg-white">
-              <Image src="/visuals/orderheld-mobile.jpg" alt="" fill sizes="170px" className="object-cover object-top" />
-            </div>
-          </div>
-          <IndustryText {...i.gastro} />
-        </Link>
-
-        {/* Catering: real AVA buffet */}
-        <Link href={href(locale, "service:webdesign")} className={`${tile} min-h-[300px] text-white lg:col-span-2`}>
-          <Image src="/visuals/ava-buffet.jpg" alt="" fill sizes="(min-width: 1024px) 600px, 100vw" className="-z-20 object-cover transition-transform duration-[1.4s] group-hover:scale-105" />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-night via-night/50 to-transparent" />
-          <IndustryText {...i.catering} />
-        </Link>
-
-        {/* Beauty: elegant typographic panel */}
-        <Link href={href(locale, "service:webdesign")} className={`${tile} min-h-[300px] bg-[#151515] text-[#f3eee6]`}>
-          <div aria-hidden="true" className="absolute -right-10 -top-10 -z-10 h-56 w-56 rounded-full bg-[#c9a46a]/30 blur-[70px]" />
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="absolute right-7 top-7 h-12 w-12 text-[#c9a46a]" fill="none" stroke="currentColor" strokeWidth={1.3}>
-            <circle cx="6" cy="6" r="3" />
-            <circle cx="6" cy="18" r="3" />
-            <path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12" />
-          </svg>
-          <p aria-hidden="true" className="absolute left-7 top-7 font-serif text-[15px] italic text-[#c9a46a]">
-            Salon
+  const m = s.mock;
+  const tiles: { key: keyof typeof i; href: string; photo?: string; visual?: React.ReactNode }[] = [
+    {
+      key: "gastro",
+      href: href(locale, "service:kassensystem-gastro"),
+      photo: "/visuals/food-pide.jpg",
+    },
+    {
+      key: "catering",
+      href: href(locale, "service:webdesign"),
+      photo: "/visuals/ava-buffet.jpg",
+    },
+    {
+      key: "beauty",
+      href: href(locale, "service:webdesign"),
+      visual: (
+        <MiniCard>
+          <p className="flex items-center gap-1.5 text-[12px] font-bold">
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+            {m.booking}
           </p>
-          <IndustryText {...i.beauty} />
-        </Link>
-
-        {/* Craft: blueprint grid */}
-        <Link href={href(locale, "service:seo")} className={`${tile} min-h-[300px] bg-[#13233d] text-white`}>
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:22px_22px]"
-          />
-          <svg aria-hidden="true" viewBox="0 0 120 70" className="absolute right-6 top-6 w-32 text-accent" fill="none" stroke="currentColor" strokeWidth={1.4}>
-            <path d="M10 60V30l30-20 30 20v30Z" />
-            <path d="M30 60V42h20v18M70 60h40M90 60V25M80 25h20" strokeDasharray="3 3" />
-          </svg>
-          <IndustryText {...i.craft} />
-        </Link>
-
-        {/* Retail: lime card with a mini POS */}
-        <Link href={href(locale, "service:kassensystem-retail")} className={`${tile} min-h-[300px] bg-accent text-night`}>
-          <div className="absolute right-5 top-5 w-36 origin-top-right rotate-[-3deg] scale-90 rounded-2xl bg-night p-3 text-white shadow-xl transition-transform duration-500 group-hover:rotate-0">
-            {[
-              ["Espresso-Bohnen", "18.90"],
-              ["Tasse Keramik", "24.00"],
-            ].map(([n, pr]) => (
-              <div key={n} className="flex justify-between border-b border-white/10 py-1.5 text-[10px] text-white/70">
-                <span>{n}</span>
-                <span>{pr}</span>
-              </div>
+          <div className="mt-3 grid grid-cols-3 gap-1.5">
+            {m.slots.map((slot, n) => (
+              <span key={slot} className={`rounded-lg py-1.5 text-center text-[11px] font-medium ${n === 1 ? "bg-night text-accent" : "bg-bg text-ink-soft"}`}>
+                {slot}
+              </span>
             ))}
-            <div className="mt-2 flex justify-between text-[11px] font-bold">
-              <span>{s.pos.total}</span>
-              <span>CHF 42.90</span>
-            </div>
-            <span className="mt-2 block rounded-lg bg-accent py-1 text-center text-[10px] font-bold text-night">{s.pos.pay}</span>
           </div>
-          <IndustryText {...i.retail} dark={false} />
-        </Link>
+        </MiniCard>
+      ),
+    },
+    {
+      key: "craft",
+      href: href(locale, "service:seo"),
+      visual: (
+        <MiniCard>
+          <p className="text-[12px] font-bold">{m.request}</p>
+          <div className="mt-3 space-y-2">
+            <span className="block rounded-lg bg-bg px-3 py-1.5 text-[11px] text-ink-soft">{m.requestJob}</span>
+            <span className="block rounded-lg bg-bg px-3 py-1.5 text-[11px] text-ink-soft">{m.requestPlace}</span>
+          </div>
+          <span className="mt-3 block rounded-lg bg-night py-1.5 text-center text-[11px] font-bold text-accent">{m.send}</span>
+        </MiniCard>
+      ),
+    },
+    {
+      key: "retail",
+      href: href(locale, "service:kassensystem-retail"),
+      visual: (
+        <MiniCard>
+          {m.items.map(([n, pr]) => (
+            <div key={n} className="flex justify-between border-b border-line py-1.5 text-[11px] text-ink-soft">
+              <span>{n}</span>
+              <span>{pr}</span>
+            </div>
+          ))}
+          <div className="mt-2 flex justify-between text-[12px] font-bold">
+            <span>{m.total}</span>
+            <span>CHF 42.90</span>
+          </div>
+          <span className="mt-2 block rounded-lg bg-night py-1.5 text-center text-[11px] font-bold text-accent">{m.pay}</span>
+        </MiniCard>
+      ),
+    },
+    {
+      key: "service",
+      href: href(locale, "service:webdesign"),
+      visual: (
+        <MiniCard>
+          <p className="text-[13px] font-bold">{m.practice}</p>
+          <p className="mt-0.5 text-[11px] text-success">{m.open}</p>
+          <div className="mt-3 grid grid-cols-3 gap-1.5">
+            {[
+              ["phone", m.call],
+              ["pin", m.route],
+              ["globe", m.web],
+            ].map(([icon, label]) => (
+              <span key={label} className="flex flex-col items-center gap-1 rounded-lg bg-bg py-2 text-[10px] text-ink-soft">
+                <Icon name={icon} className="h-3.5 w-3.5 text-night" />
+                {label}
+              </span>
+            ))}
+          </div>
+        </MiniCard>
+      ),
+    },
+  ];
 
-        {/* Services & practices: booking widget */}
-        <Link href={href(locale, "service:webdesign")} className={`${tile} min-h-[300px] border border-line bg-surface text-night`}>
-          <div className="absolute right-5 top-5 w-40 origin-top-right scale-90 rounded-2xl border border-line bg-bg p-3 shadow-lg">
-            <p className="flex items-center gap-1.5 text-[11px] font-bold">
-              <span className="h-1.5 w-1.5 rounded-full bg-success" />
-              {s.booking.title}
-            </p>
-            <div className="mt-2 grid gap-1.5">
-              {s.booking.slots.map((slot, n) => (
-                <span key={slot} className={`rounded-lg px-2 py-1 text-[10px] font-medium ${n === 1 ? "bg-night text-accent" : "bg-white text-ink-soft"}`}>
-                  {slot}
-                </span>
-              ))}
-            </div>
-          </div>
-          <IndustryText {...i.service} dark={false} />
-        </Link>
+  return (
+    <section className="relative isolate bg-night py-24 text-white md:py-32">
+      <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
+      <div className="container-x">
+        <SectionHead eyebrow={s.eyebrow} title={s.title} lead={s.lead} dark />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {tiles.map((tile) => (
+            <Link
+              key={tile.key}
+              href={tile.href}
+              className="reveal group flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-night-2 transition-colors duration-300 hover:border-accent/50"
+            >
+              <VisualFrame dark photo={tile.photo}>
+                {tile.visual}
+              </VisualFrame>
+              <div className="flex flex-1 items-end justify-between gap-4 p-7">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-accent">{i[tile.key].label}</p>
+                  <p className="mt-2 font-display text-[20px] font-bold leading-snug tracking-[-0.02em]">{i[tile.key].line}</p>
+                </div>
+                <Icon name="arrowUpRight" className="h-5 w-5 shrink-0 text-white/40 transition-all duration-300 group-hover:rotate-45 group-hover:text-accent" />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
