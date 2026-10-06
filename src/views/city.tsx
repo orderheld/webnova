@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { testimonials } from "@/content/testimonials";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
@@ -143,6 +144,7 @@ export function CityPage({
       : service
         ? [service.key, ...service.related, "webdesign"].filter((k, i, a) => a.indexOf(k) === i).slice(0, 4)
         : ["webdesign", "website-redesign", "onlineshop", "seo"];
+  const quotes = testimonials.filter((t) => t.city === city.key && t.locale === locale);
   const shown = serviceKeys.map((k) => services.find((s) => s.key === k)!).filter(Boolean);
 
   return (
@@ -209,6 +211,23 @@ export function CityPage({
           </div>
         </aside>
       </section>
+
+      {quotes.length > 0 && (
+        <section className="container-x py-16">
+          <p className="eyebrow mb-8">{d.pages.testimonialsEyebrow}</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {quotes.map((q) => (
+              <figure key={q.name} className="rounded-[24px] border border-line bg-surface p-8">
+                <blockquote className="text-[17px] leading-relaxed">{locale === "fr" ? `«\u00a0${q.quote}\u00a0»` : `«${q.quote}»`}</blockquote>
+                <figcaption className="mt-6 text-[14px] text-muted">
+                  <span className="font-semibold text-ink">{q.name}</span>
+                  {q.company && `, ${q.company}`}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="container-x py-16">
         <h2 className="h-section mb-10">{d.common.related}</h2>

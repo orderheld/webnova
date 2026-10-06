@@ -22,7 +22,16 @@ const nextConfig: NextConfig = {
       ["/impressum", "/de/impressum"],
       ["/datenschutzerklaerung", "/de/datenschutz"],
     ];
-    return map.map(([source, destination]) => ({ source, destination, permanent: true }));
+    return [
+      // One canonical host: www.webnova.ch -> https://webnova.ch (301)
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.webnova.ch" }],
+        destination: "https://webnova.ch/:path*",
+        statusCode: 301 as const,
+      },
+      ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
+    ];
   },
   async headers() {
     return [

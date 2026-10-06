@@ -63,7 +63,16 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
     areaServed: areaServed.map((name) => ({ "@type": "City", name })),
     knowsLanguage: ["de", "fr"],
-    sameAs: Object.values(site.social),
+    ...(site.google.maps && { hasMap: site.google.maps }),
+    ...(site.openingHours.length > 0 && {
+      openingHoursSpecification: site.openingHours.map((h) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
+        opens: h.opens,
+        closes: h.closes,
+      })),
+    }),
+    sameAs: [...Object.values(site.social), site.google.maps, ...site.directories].filter(Boolean),
   };
 }
 

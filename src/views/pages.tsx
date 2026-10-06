@@ -10,7 +10,7 @@ import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { site, type Weekday } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -181,8 +181,21 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
   );
 }
 
+const dayShort: Record<Locale, Record<Weekday, string>> = {
+  de: { Monday: "Mo", Tuesday: "Di", Wednesday: "Mi", Thursday: "Do", Friday: "Fr", Saturday: "Sa", Sunday: "So" },
+  fr: { Monday: "lu", Tuesday: "ma", Wednesday: "me", Thursday: "je", Friday: "ve", Saturday: "sa", Sunday: "di" },
+};
+
+function dayRange(locale: Locale, days: Weekday[]) {
+  const t = dayShort[locale];
+  return days.length > 2 ? `${t[days[0]]}–${t[days[days.length - 1]]}` : days.map((x) => t[x]).join(", ");
+}
+
 export function ContactPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
+  const mapsHref =
+    site.google.maps ||
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Webnova ${site.address.street} ${site.address.zip} ${site.address.city}`)}`;
   const channels = [
     { icon: "phone", label: d.common.callUs, value: site.phone, href: site.phoneHref },
     { icon: "mail", label: d.common.writeUs, value: site.email, href: `mailto:${site.email}` },
@@ -223,13 +236,33 @@ export function ContactPage({ locale }: { locale: Locale }) {
               {site.address.zip} {locale === "fr" ? "Granges (SO)" : `${site.address.city} SO`}
             </p>
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Webnova ${site.address.street} ${site.address.zip} ${site.address.city}`)}`}
+              href={mapsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 text-[14px] text-ink underline-offset-4 hover:underline"
             >
-              Google Maps <Icon name="arrowUpRight" className="h-4 w-4" />
+              {d.pages.openInMaps} <Icon name="arrowUpRight" className="h-4 w-4" />
             </a>
+            {site.openingHours.length > 0 && (
+              <div className="mt-6 border-t border-line pt-5">
+                <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.hours}</p>
+                <dl className="mt-3 space-y-1 text-[15px]">
+                  {site.openingHours.map((h) => (
+                    <div key={h.days.join()} className="flex justify-between gap-4">
+                      <dt className="text-ink-soft">{dayRange(locale, h.days)}</dt>
+                      <dd>
+                        {h.opens}–{h.closes}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+            {site.google.review && (
+              <ButtonLink href={site.google.review} variant="ghost" arrow={false} className="mt-6 w-full">
+                {d.pages.reviewOnGoogle}
+              </ButtonLink>
+            )}
           </div>
         </div>
         <div className="lg:col-span-7">
