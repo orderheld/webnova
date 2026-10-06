@@ -60,7 +60,7 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references }]}
       >
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
+          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
         </div>
       </PageHero>
       <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">

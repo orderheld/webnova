@@ -8,17 +8,17 @@ import { Icon } from "./icons";
 
 export function Breadcrumbs({ items }: { items: { name: string; url?: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-8 text-[13px] text-muted">
+    <nav aria-label="Breadcrumb" className="mb-8 text-[13px] text-white/45">
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((it, i) => (
           <li key={i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden="true">/</span>}
             {it.url ? (
-              <Link href={it.url} className="transition-colors hover:text-ink">
+              <Link href={it.url} className="transition-colors hover:text-white">
                 {it.name}
               </Link>
             ) : (
-              <span className="text-ink-soft">{it.name}</span>
+              <span className="text-white/75">{it.name}</span>
             )}
           </li>
         ))}
@@ -33,22 +33,35 @@ export function PageHero({
   lead,
   children,
   crumbs,
+  aside,
 }: {
   eyebrow?: string;
   title: string;
   lead?: string;
   children?: React.ReactNode;
   crumbs?: { name: string; url?: string }[];
+  /** Optional visual on the right (desktop) or below (mobile). */
+  aside?: React.ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-line bg-surface">
-      <div aria-hidden="true" className="hero-glow absolute inset-0 -z-10" />
-      <div className="container-x pb-16 pt-8 md:pb-24 md:pt-12">
+    <section className="relative isolate overflow-hidden bg-night text-white">
+      <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="bg-noise absolute inset-0 -z-10 opacity-50" />
+      <div className="container-x pb-20 pt-8 md:pb-28 md:pt-12">
         {crumbs && <Breadcrumbs items={crumbs} />}
-        {eyebrow && <p className="eyebrow mb-6 animate-rise">{eyebrow}</p>}
-        <h1 className="display max-w-4xl animate-rise text-[clamp(2.4rem,6vw,4.6rem)] [animation-delay:80ms]">{title}</h1>
-        {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[20px]">{lead}</p>}
-        {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
+        <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
+          <div className={aside ? "lg:col-span-7" : ""}>
+            {eyebrow && <p className="eyebrow mb-6 animate-rise !text-white/55">{eyebrow}</p>}
+            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.6rem,5.6vw,4.8rem)]" : "text-[clamp(2.6rem,6.6vw,5.4rem)]"}`}>{title}</h1>
+            {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:160ms] md:text-[20px]">{lead}</p>}
+            {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
+          </div>
+          {aside && (
+            <div className="animate-rise [animation-delay:300ms] lg:col-span-5">
+              <div className="mx-auto h-64 max-w-[460px] sm:h-72">{aside}</div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -109,7 +122,7 @@ export function CtaBand({ locale }: { locale: Locale }) {
   return (
     <section className="container-x pb-20 md:pb-28">
       <div className="reveal relative isolate overflow-hidden rounded-[32px] bg-night px-6 py-14 text-white sm:px-12 md:px-16 md:py-20">
-        <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[420px] w-[420px] rounded-full bg-accent/10 blur-[120px]" />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[420px] w-[420px] rounded-full bg-accent/20 blur-[120px]" />
         <div className="relative grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="eyebrow mb-5 !text-white/50">{d.cta.badge}</p>
@@ -117,7 +130,7 @@ export function CtaBand({ locale }: { locale: Locale }) {
             <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-white/65">{d.cta.text}</p>
           </div>
           <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
-            <ButtonLink href={href(locale, "request")} variant="light">
+            <ButtonLink href={href(locale, "request")} variant="accent">
               {d.cta.button}
             </ButtonLink>
             <a href={site.phoneHref} className="inline-flex items-center gap-2 px-2 py-2 text-[15px] text-white/65 hover:text-white">
@@ -162,19 +175,19 @@ export function CardLink({
   return (
     <Link
       href={href}
-      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-[20px] border border-line bg-surface p-7 transition-all duration-300 hover:border-ink/25 hover:shadow-soft"
+      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-[20px] border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-night hover:bg-night hover:text-white hover:shadow-soft"
     >
       <div>
         {icon && (
-          <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
+          <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors duration-300 group-hover:bg-accent group-hover:text-night">
             <Icon name={icon} className="h-[22px] w-[22px]" />
           </span>
         )}
-        {meta && <p className="mb-3 text-[13px] text-muted">{meta}</p>}
+        {meta && <p className="mb-3 text-[13px] text-muted transition-colors group-hover:text-white/55">{meta}</p>}
         <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.02em]">{title}</h3>
-        {text && <p className="mt-3 text-[15px] leading-relaxed text-muted">{text}</p>}
+        {text && <p className="mt-3 text-[15px] leading-relaxed text-muted transition-colors group-hover:text-white/65">{text}</p>}
       </div>
-      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-ink">
+      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-ink transition-colors group-hover:text-accent">
         <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
     </Link>

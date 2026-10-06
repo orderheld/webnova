@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { ServiceArt } from "@/components/service-art";
 import { cities } from "@/content/cities";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
@@ -102,10 +103,16 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       />
       <JsonLd data={faqLd(c.faq)} />
 
-      <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}>
+      <PageHero
+        eyebrow={c.eyebrow}
+        title={c.h1}
+        lead={c.lead}
+        crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
+        aside={<ServiceArt k={s.key} locale={locale} />}
+      >
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
