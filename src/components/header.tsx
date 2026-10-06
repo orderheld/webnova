@@ -24,7 +24,9 @@ export interface NavData {
 
 export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  // The menu stays open only for the path it was opened on, so navigating closes it.
+  const [openFor, setOpenFor] = useState<string | null>(null);
+  const open = openFor === pathname;
   const [scrolled, setScrolled] = useState(false);
   const other: Locale = nav.locale === "de" ? "fr" : "de";
   const switchHref = nav.switchMap[pathname] ?? `/${other}`;
@@ -37,10 +39,6 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -126,7 +124,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
           </Link>
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpenFor(open ? null : pathname)}
             className={`${minimal ? "hidden" : "grid lg:hidden"} h-11 w-11 place-items-center rounded-full border border-line`}
             aria-expanded={open}
             aria-label={open ? nav.closeLabel : nav.menuLabel}

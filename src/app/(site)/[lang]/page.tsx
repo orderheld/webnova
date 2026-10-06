@@ -51,7 +51,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
-  const mainServices = services.filter((s) => s.group !== "pos");
+  const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
   const core = cities.filter((c) => c.priority === "A");
   const rest = cities.filter((c) => c.priority !== "A");
 
@@ -111,7 +111,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </div>
           <p className="text-[18px] leading-relaxed text-ink-soft md:col-span-5">{d.home.servicesLead}</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {mainServices.map((s) => (
             <CardLink
               key={s.key}

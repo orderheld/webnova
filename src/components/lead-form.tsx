@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import type { Locale } from "@/content/types";
 import type { Dict } from "@/i18n/dict";
 import { submitLead } from "@/lib/leads/actions";
@@ -51,7 +51,10 @@ export function LeadForm({
   dark?: boolean;
 }) {
   const router = useRouter();
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
   const [step, setStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState(false);
