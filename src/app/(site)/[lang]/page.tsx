@@ -116,64 +116,85 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <JsonLd data={faqLd(homeFaq[lang])} />
 
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-surface">
-        <div aria-hidden="true" className="hero-glow absolute inset-0 -z-10" />
-        <div className="container-x grid items-center gap-14 pb-20 pt-10 md:pt-16 lg:grid-cols-12 lg:pb-28">
-          <div className="lg:col-span-6">
-            <p className="eyebrow mb-7 animate-rise">{d.hero.eyebrow}</p>
-            <h1 className="display animate-rise text-[clamp(2.6rem,5.4vw,4.7rem)] [animation-delay:100ms]">
+      <section className="relative isolate overflow-hidden bg-night text-white">
+        <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
+        <div aria-hidden="true" className="absolute -right-40 top-10 -z-10 h-[520px] w-[520px] animate-drift rounded-full bg-accent/10 blur-[140px]" />
+        <div className="container-x grid items-center gap-16 pb-24 pt-16 md:pt-28 lg:grid-cols-12 lg:pb-32">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-8 animate-rise !text-white/55">{d.hero.eyebrow}</p>
+            <h1 className="display animate-rise text-[clamp(3rem,7.2vw,6.4rem)] [animation-delay:100ms]">
               {d.hero.title1} {titleRest}{" "}
-              <span className="relative inline-block whitespace-nowrap">
+              <span className="relative inline-block whitespace-nowrap text-accent">
                 {titleLast}
-                <svg aria-hidden="true" viewBox="0 0 300 14" preserveAspectRatio="none" className="absolute -bottom-1 left-0 h-[0.22em] w-full">
-                  <path d="M2 9 C 80 3, 200 3, 298 8" fill="none" stroke="#d2ff28" strokeWidth="7" strokeLinecap="round" pathLength={1} strokeDasharray="1" className="animate-draw [animation-delay:700ms]" />
+                <svg aria-hidden="true" viewBox="0 0 300 14" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-[0.16em] w-full">
+                  <path d="M2 9 C 80 3, 200 3, 298 8" fill="none" stroke="#d2ff28" strokeWidth="6" strokeLinecap="round" pathLength={1} strokeDasharray="1" className="animate-draw [animation-delay:700ms]" />
                 </svg>
               </span>
             </h1>
-            <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:250ms] md:text-[20px]">{d.hero.lead}</p>
+            <p className="mt-9 max-w-xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:250ms] md:text-[20px]">{d.hero.lead}</p>
             <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:350ms]">
-              <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
-              <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
+              <ButtonLink href={href(lang, "request")} variant="accent">
+                {d.hero.primary}
+              </ButtonLink>
+              <ButtonLink href={href(lang, "services")} variant="ghostLight" arrow={false}>
                 {d.hero.secondary}
               </ButtonLink>
             </div>
-            <ul className="mt-10 flex animate-rise flex-wrap gap-x-6 gap-y-3 text-[14px] text-muted [animation-delay:450ms]">
+            <ul className="mt-10 flex animate-rise flex-wrap gap-x-6 gap-y-3 text-[14px] text-white/60 [animation-delay:450ms]">
               {d.hero.points.map((p) => (
                 <li key={p} className="flex items-center gap-2">
-                  <Icon name="check" className="h-4 w-4 text-ink" strokeWidth={2.5} />
+                  <Icon name="check" className="h-4 w-4 text-accent" strokeWidth={2.5} />
                   {p}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-5">
             <HeroVisual locale={lang} photo={photo("hero", lang)} />
           </div>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="border-y border-line bg-bg py-24 md:py-32">
-        <div className="container-x grid gap-14 lg:grid-cols-12 lg:items-stretch">
-          <MoodImage img={photo("intro", lang)} quote={i.quote} by={i.quoteBy} className="min-h-[380px] lg:col-span-5" />
-          <div className="lg:col-span-7 lg:pl-6">
-            <p className="eyebrow mb-4 reveal">{i.eyebrow}</p>
-            <h2 className="h-section reveal">{i.title}</h2>
-            <ol className="mt-10 divide-y divide-line border-y border-line">
+      {/* SERVICE MARQUEE: large outline type, the motion between hero and content */}
+      <div className="overflow-hidden border-b border-line bg-surface py-8" aria-hidden="true">
+        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap font-display text-[clamp(2.6rem,6vw,5rem)] font-bold leading-none tracking-[-0.04em]">
+          {[...mainServices, ...mainServices].map((sv, n) => (
+            <span key={n} className="flex items-center gap-12">
+              <span className={n % 2 ? "text-ink" : "text-outline"}>{sv.content[lang].navLabel}</span>
+              <span className="h-3 w-3 rounded-full bg-accent" />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* INTRO: big statement that reveals word by word on scroll */}
+      <section className="py-24 md:py-36">
+        <div className="container-x">
+          <p className="eyebrow mb-8">{i.eyebrow}</p>
+          <h2 className="max-w-5xl font-display text-[clamp(2.2rem,5.4vw,4.6rem)] font-bold leading-[1.05] tracking-[-0.04em]">
+            {i.title.split(" ").map((w, n) => (
+              <span key={n} className="word-reveal">
+                {w}{" "}
+              </span>
+            ))}
+          </h2>
+          <div className={`mt-16 grid gap-4 ${photo("intro", lang) ? "lg:grid-cols-12" : ""}`}>
+            {photo("intro", lang) && <MoodImage img={photo("intro", lang)} quote="" by="" className="min-h-[360px] lg:col-span-5" />}
+            <ol className={`grid gap-4 md:grid-cols-3 ${photo("intro", lang) ? "lg:col-span-7 lg:grid-cols-1" : ""}`}>
               {i.items.map((it, n) => (
-                <li key={n} className="reveal grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+                <li key={n} className="reveal rounded-[20px] border border-line bg-surface p-7">
                   <span className="font-display text-[15px] font-semibold text-muted">0{n + 1}</span>
-                  <div>
-                    <h3 className="text-[19px] font-semibold tracking-tight">{it.title}</h3>
-                    <p className="mt-1.5 text-[16px] leading-relaxed text-muted">{it.text}</p>
-                  </div>
+                  <h3 className="mt-6 text-[20px] font-semibold tracking-tight">{it.title}</h3>
+                  <p className="mt-2 text-[15.5px] leading-relaxed text-muted">{it.text}</p>
                 </li>
               ))}
             </ol>
-            <p className="reveal mt-8 max-w-xl text-[17px] leading-relaxed text-ink-soft">{i.resolve}</p>
-            <div className="reveal mt-8">
-              <ButtonLink href={href(lang, "request")}>{i.cta}</ButtonLink>
-            </div>
+          </div>
+          <div className="reveal mt-12 flex flex-col gap-6 rounded-[24px] bg-bg p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+            <p className="max-w-2xl font-display text-[clamp(1.3rem,2.2vw,1.7rem)] font-semibold leading-snug tracking-[-0.02em]">{i.resolve}</p>
+            <ButtonLink href={href(lang, "request")} className="shrink-0">
+              {i.cta}
+            </ButtonLink>
           </div>
         </div>
       </section>
@@ -195,21 +216,22 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* WHY */}
-      <section className="border-y border-line bg-bg py-24 md:py-32">
+      <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
+        <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
         <div className="container-x grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <p className="eyebrow mb-4">{d.home.whyEyebrow}</p>
+              <p className="eyebrow mb-4 !text-white/55">{d.home.whyEyebrow}</p>
               <h2 className="h-section">{d.home.whyTitle}</h2>
               {photo("approach", lang) && <MoodImage img={photo("approach", lang)} quote="" by="" className="mt-10 aspect-[4/3]" />}
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {d.home.why.map((w, n) => (
-              <div key={n} className="reveal rounded-[20px] border border-line bg-surface p-7">
-                <p className="mb-8 font-display text-[15px] font-semibold text-muted">0{n + 1}</p>
+              <div key={n} className="reveal group rounded-[20px] border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 hover:border-accent/50">
+                <p className="mb-10 font-display text-[44px] font-bold leading-none tracking-tighter text-white/15 transition-colors group-hover:text-accent">0{n + 1}</p>
                 <h3 className="text-[20px] font-semibold tracking-tight">{w.title}</h3>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-muted">{w.text}</p>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-white/60">{w.text}</p>
               </div>
             ))}
           </div>
@@ -238,19 +260,20 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* PROCESS */}
-      <section className="border-y border-line bg-surface py-24 md:py-32">
+      <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
+        <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
         <div className="container-x">
           <div className="reveal">
-            <p className="eyebrow mb-4">{d.home.processEyebrow}</p>
+            <p className="eyebrow mb-4 !text-white/55">{d.home.processEyebrow}</p>
             <h2 className="h-section max-w-3xl">{d.home.processTitle}</h2>
           </div>
-          <ol className="relative mt-16 grid gap-8 md:grid-cols-5 md:gap-6">
-            <span aria-hidden="true" className="absolute left-0 right-0 top-[15px] hidden h-px bg-line md:block" />
+          <ol className="relative mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
+            <span aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-gradient-to-r from-accent via-accent/40 to-white/10 md:block" />
             {d.home.process.map((p, n) => (
               <li key={n} className="reveal relative">
-                <span className="relative grid h-[30px] w-[30px] place-items-center rounded-full border border-ink/15 bg-surface font-display text-[13px] font-semibold">{n + 1}</span>
-                <h3 className="mt-6 text-[18px] font-semibold tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.text}</p>
+                <span className="relative grid h-10 w-10 place-items-center rounded-full bg-accent font-display text-[15px] font-bold text-night ring-8 ring-night">{n + 1}</span>
+                <h3 className="mt-7 text-[19px] font-semibold tracking-tight">{p.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-white/60">{p.text}</p>
               </li>
             ))}
           </ol>

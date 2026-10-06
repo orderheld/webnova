@@ -104,8 +104,8 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
 
       <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}>
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>

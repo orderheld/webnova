@@ -173,8 +173,8 @@ export function CityPage({
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>

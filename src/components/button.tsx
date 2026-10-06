@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Icon } from "./icons";
 
-type Variant = "primary" | "dark" | "ghost" | "ghostLight" | "light";
+type Variant = "primary" | "accent" | "dark" | "ghost" | "ghostLight" | "light";
 
 const styles: Record<Variant, string> = {
   primary: "bg-night text-white hover:bg-ink-soft",
+  /** Lime, only on dark backgrounds: the one strong accent per dark section. */
+  accent: "bg-accent text-night hover:bg-white",
   dark: "bg-night text-white hover:bg-ink-soft",
   ghost: "border border-ink/15 bg-white text-ink hover:border-ink",
   ghostLight: "border border-white/25 text-white hover:border-white hover:bg-white/10",
