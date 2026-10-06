@@ -11,7 +11,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Kontaktadresse",
           paragraphs: [
-            "webnova solutions (Einzelunternehmen)",
+            "webnova solutions F. Demir (Einzelunternehmen)",
             "Bettlachstrasse 45",
             "2540 Grenchen",
             "Schweiz",
@@ -58,7 +58,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Adresse de contact",
           paragraphs: [
-            "webnova solutions (entreprise individuelle)",
+            "webnova solutions F. Demir (entreprise individuelle)",
             "Bettlachstrasse 45",
             "2540 Granges (Grenchen)",
             "Suisse",
@@ -114,7 +114,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Verantwortliche Stelle",
           paragraphs: [
-            "Verantwortlich für die Bearbeitung von Personendaten auf dieser Webseite ist: webnova solutions, Ferhat Demir, Bettlachstrasse 45, 2540 Grenchen, Schweiz, Telefon +41 32 543 80 96, E-Mail kontakt@webnova.ch.",
+            "Verantwortlich für die Bearbeitung von Personendaten auf dieser Webseite ist: webnova solutions F. Demir, Bettlachstrasse 45, 2540 Grenchen, Schweiz, Telefon +41 32 543 80 96, E-Mail kontakt@webnova.ch.",
             "Für Fragen zum Datenschutz und zur Ausübung Ihrer Rechte erreichen Sie uns unter derselben Adresse oder per E-Mail an kontakt@webnova.ch.",
           ],
         },
@@ -209,7 +209,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         {
           h2: "Responsable du traitement",
           paragraphs: [
-            "Le responsable du traitement des données personnelles sur ce site est : webnova solutions, Ferhat Demir, Bettlachstrasse 45, 2540 Granges (Grenchen), Suisse, téléphone +41 32 543 80 96, e-mail kontakt@webnova.ch.",
+            "Le responsable du traitement des données personnelles sur ce site est : webnova solutions F. Demir, Bettlachstrasse 45, 2540 Granges (Grenchen), Suisse, téléphone +41 32 543 80 96, e-mail kontakt@webnova.ch.",
             "Pour toute question relative à la protection des données ou pour exercer vos droits, vous pouvez nous joindre à la même adresse ou par e-mail à kontakt@webnova.ch.",
           ],
         },

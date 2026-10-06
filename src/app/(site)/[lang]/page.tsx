@@ -14,6 +14,7 @@ import { getDict } from "@/i18n/dict";
 import { getRoute, href, isLocale } from "@/lib/routes";
 import { photo } from "@/lib/photos";
 import { JsonLd, faqLd, organizationLd, pageMetadata } from "@/lib/seo";
+import { showReferences } from "@/lib/site";
 
 const homeMeta = {
   de: {
@@ -222,16 +223,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <HeroVisual locale={lang} photo={photo("hero", lang)} />
           </div>
         </div>
-        <div className="border-t border-white/10">
-          <div className="container-x flex flex-wrap items-center gap-x-10 gap-y-3 py-7">
-            <span className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-white/40">{lang === "de" ? "Projekte für" : "Projets pour"}</span>
-            {showcase.map((r) => (
-              <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="font-display text-[20px] font-bold tracking-[-0.03em] text-white/55 transition-colors hover:text-white">
-                {r.name}
-              </Link>
-            ))}
+        {showReferences && (
+          <div className="border-t border-white/10">
+            <div className="container-x flex flex-wrap items-center gap-x-10 gap-y-3 py-7">
+              <span className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-white/40">{lang === "de" ? "Projekte für" : "Projets pour"}</span>
+              {showcase.map((r) => (
+                <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="font-display text-[20px] font-bold tracking-[-0.03em] text-white/55 transition-colors hover:text-white">
+                  {r.name}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* SERVICE MARQUEE: large outline type, the motion between hero and content */}
@@ -328,61 +331,86 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* REFERENCES: dark showcase with real project visuals */}
+      {showReferences && (
+        <>
+          {/* REFERENCES: dark showcase with real project visuals */}
+          <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
+            <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
+            <div className="container-x">
+              <div className="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
+                <div className="max-w-2xl">
+                  <p className="eyebrow mb-4 !text-white/55">{d.home.referencesEyebrow}</p>
+                  <h2 className="h-section">{d.home.referencesTitle}</h2>
+                  <p className="mt-5 text-[18px] leading-relaxed text-white/65">{d.home.referencesLead}</p>
+                </div>
+                <ButtonLink href={href(lang, "references")} variant="ghostLight">
+                  {d.home.referencesAll}
+                </ButtonLink>
+              </div>
+              <div className="grid gap-4 lg:grid-cols-12">
+                {showcase.map((r, n) => (
+                  <Link
+                    key={r.key}
+                    href={href(lang, `reference:${r.key}`)}
+                    className={`reveal group relative flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] transition-colors hover:border-accent/60 ${
+                      n === 0 ? "lg:col-span-7 lg:row-span-2" : "lg:col-span-5"
+                    }`}
+                  >
+                    <div className={`relative overflow-hidden ${n === 0 ? "aspect-[16/11]" : "aspect-[16/8]"}`} style={{ background: r.colors.bg }}>
+                      {r.image ? (
+                        <Image
+                          src={r.image}
+                          alt={`${r.name}, ${r.content[lang].industry}`}
+                          fill
+                          sizes="(min-width: 1024px) 680px, 100vw"
+                          className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
+                        />
+                      ) : (
+                        <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center transition-transform duration-[1.2s] group-hover:scale-[1.04]" style={{ color: r.colors.fg }}>
+                          <span className="h-1 w-10 rounded-full" style={{ background: r.colors.accent }} />
+                          <span className="font-display text-[clamp(1.8rem,3.4vw,2.6rem)] font-extrabold leading-none tracking-[-0.04em]">{r.name}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-1 items-end justify-between gap-6 p-7">
+                      <div>
+                        <p className="flex items-center gap-2 text-[13px] text-white/50">
+                          <span className="h-2 w-2 rounded-full" style={{ background: r.colors.accent }} />
+                          {r.content[lang].industry}
+                        </p>
+                        <h3 className="mt-2 font-display text-[clamp(1.4rem,2.2vw,1.9rem)] font-bold tracking-[-0.03em]">{r.name}</h3>
+                        {n === 0 && <p className="mt-3 max-w-md text-[15.5px] leading-relaxed text-white/60">{r.content[lang].summary}</p>}
+                      </div>
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 transition-colors group-hover:bg-accent group-hover:text-night">
+                        <Icon name="arrowUpRight" className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* PROCESS (dark, follows the light services while references are hidden) */}
       <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
         <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
         <div className="container-x">
-          <div className="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-4 !text-white/55">{d.home.referencesEyebrow}</p>
-              <h2 className="h-section">{d.home.referencesTitle}</h2>
-              <p className="mt-5 text-[18px] leading-relaxed text-white/65">{d.home.referencesLead}</p>
-            </div>
-            <ButtonLink href={href(lang, "references")} variant="ghostLight">
-              {d.home.referencesAll}
-            </ButtonLink>
+          <div className="reveal">
+            <p className="eyebrow mb-4 !text-white/55">{d.home.processEyebrow}</p>
+            <h2 className="h-section max-w-3xl">{d.home.processTitle}</h2>
           </div>
-          <div className="grid gap-4 lg:grid-cols-12">
-            {showcase.map((r, n) => (
-              <Link
-                key={r.key}
-                href={href(lang, `reference:${r.key}`)}
-                className={`reveal group relative flex flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] transition-colors hover:border-accent/60 ${
-                  n === 0 ? "lg:col-span-7 lg:row-span-2" : "lg:col-span-5"
-                }`}
-              >
-                <div className={`relative overflow-hidden ${n === 0 ? "aspect-[16/11]" : "aspect-[16/8]"}`} style={{ background: r.colors.bg }}>
-                  {r.image ? (
-                    <Image
-                      src={r.image}
-                      alt={`${r.name}, ${r.content[lang].industry}`}
-                      fill
-                      sizes="(min-width: 1024px) 680px, 100vw"
-                      className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center transition-transform duration-[1.2s] group-hover:scale-[1.04]" style={{ color: r.colors.fg }}>
-                      <span className="h-1 w-10 rounded-full" style={{ background: r.colors.accent }} />
-                      <span className="font-display text-[clamp(1.8rem,3.4vw,2.6rem)] font-extrabold leading-none tracking-[-0.04em]">{r.name}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-1 items-end justify-between gap-6 p-7">
-                  <div>
-                    <p className="flex items-center gap-2 text-[13px] text-white/50">
-                      <span className="h-2 w-2 rounded-full" style={{ background: r.colors.accent }} />
-                      {r.content[lang].industry}
-                    </p>
-                    <h3 className="mt-2 font-display text-[clamp(1.4rem,2.2vw,1.9rem)] font-bold tracking-[-0.03em]">{r.name}</h3>
-                    {n === 0 && <p className="mt-3 max-w-md text-[15.5px] leading-relaxed text-white/60">{r.content[lang].summary}</p>}
-                  </div>
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 transition-colors group-hover:bg-accent group-hover:text-night">
-                    <Icon name="arrowUpRight" className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
+          <ol className="relative mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
+            <span aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-gradient-to-r from-accent via-accent/40 to-white/10 md:block" />
+            {d.home.process.map((p, n) => (
+              <li key={n} className="reveal relative">
+                <span className="relative grid h-10 w-10 place-items-center rounded-full bg-accent font-display text-[15px] font-bold text-night ring-8 ring-night">{n + 1}</span>
+                <h3 className="mt-7 text-[19px] font-semibold tracking-tight">{p.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-white/60">{p.text}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -411,27 +439,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
-        <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
-        <div className="container-x">
-          <div className="reveal">
-            <p className="eyebrow mb-4 !text-white/55">{d.home.processEyebrow}</p>
-            <h2 className="h-section max-w-3xl">{d.home.processTitle}</h2>
-          </div>
-          <ol className="relative mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
-            <span aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-gradient-to-r from-accent via-accent/40 to-white/10 md:block" />
-            {d.home.process.map((p, n) => (
-              <li key={n} className="reveal relative">
-                <span className="relative grid h-10 w-10 place-items-center rounded-full bg-accent font-display text-[15px] font-bold text-night ring-8 ring-night">{n + 1}</span>
-                <h3 className="mt-7 text-[19px] font-semibold tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-white/60">{p.text}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 

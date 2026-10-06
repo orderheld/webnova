@@ -47,6 +47,7 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     "@type": "ProfessionalService",
     "@id": orgId,
     name: site.name,
+    legalName: site.legalName,
     url: `${site.url}/${locale}`,
     logo: `${site.url}/icon.png`,
     image: `${site.url}/opengraph-image`,
