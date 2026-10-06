@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { legal } from "@/content/legal";
+import { localServices } from "@/content/local";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
@@ -27,6 +28,8 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
       return m(cities.find((c) => c.key === entry.key)!.content[locale].meta);
     case "citySeo":
       return m(cities.find((c) => c.key === entry.key)!.seo![locale].meta);
+    case "localService":
+      return m(localServices.find((l) => `${l.service}:${l.city}` === entry.key)!.content[locale].meta);
     case "guides":
       return m({ title: d.guidesMetaTitle, description: d.guidesMetaDesc });
     case "guide":
@@ -64,6 +67,10 @@ export function renderPage(locale: Locale, entry: RouteEntry) {
       return <CityPage locale={locale} cityKey={entry.key} variant="webdesign" />;
     case "citySeo":
       return <CityPage locale={locale} cityKey={entry.key} variant="seo" />;
+    case "localService": {
+      const [serviceKey, cityKey] = entry.key.split(":");
+      return <CityPage locale={locale} cityKey={cityKey} variant="local" serviceKey={serviceKey} />;
+    }
     case "guides":
       return <GuidesPage locale={locale} />;
     case "guide":

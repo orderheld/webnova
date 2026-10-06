@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, FaqList, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
+import { localServices } from "@/content/local";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
-import { href } from "@/lib/routes";
+import { hasRoute, href, localId } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, faqLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -55,17 +56,20 @@ export function RegionsPage({ locale }: { locale: Locale }) {
           <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
           {d.pages.seoPages}
         </h2>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {cities
-            .filter((c) => c.seo)
+            .filter((c) => c.priority === "A")
             .map((c) => (
-              <Link
-                key={c.key}
-                href={href(locale, `citySeo:${c.key}`)}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
-              >
-                {locale === "de" ? "SEO" : "Référencement"} {c.content[locale].name}
-              </Link>
+              <div key={c.key} className="rounded-[24px] border border-line bg-surface p-6">
+                <h3 className="mb-4 font-display text-[20px] font-bold tracking-tight">{c.content[locale].name}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {cityServiceLinks(locale, c.key).map((l) => (
+                    <Link key={l.id} href={l.href} className={chip}>
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
         </div>
       </section>
@@ -74,22 +78,75 @@ export function RegionsPage({ locale }: { locale: Locale }) {
   );
 }
 
-export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey: string; variant: "webdesign" | "seo" }) {
+const chip =
+  "rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white";
+const chipDark =
+  "rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night";
+
+/** Every service page that exists for a city: webdesign, SEO and the service × city pages. */
+export function cityServiceLinks(locale: Locale, cityKey: string) {
+  const city = cities.find((c) => c.key === cityKey)!;
+  const name = city.content[locale].name;
+  const links = [{ id: `city:${cityKey}`, label: cityLabel(locale, name) }];
+  if (city.seo) links.push({ id: `citySeo:${cityKey}`, label: `${locale === "de" ? "SEO" : "Référencement"} ${name}` });
+  for (const ls of localServices.filter((l) => l.city === cityKey)) {
+    const s = services.find((x) => x.key === ls.service)!;
+    links.push({ id: localId(ls.service, cityKey), label: `${s.content[locale].navLabel} ${name}` });
+  }
+  return links.map((l) => ({ ...l, href: href(locale, l.id) }));
+}
+
+export function CityPage({
+  locale,
+  cityKey,
+  variant,
+  serviceKey,
+}: {
+  locale: Locale;
+  cityKey: string;
+  variant: "webdesign" | "seo" | "local";
+  serviceKey?: string;
+}) {
   const d = getDict(locale);
   const city = cities.find((c) => c.key === cityKey)!;
-  const c = variant === "seo" ? city.seo![locale] : city.content[locale];
-  const id = variant === "seo" ? `citySeo:${city.key}` : `city:${city.key}`;
+  const service = serviceKey ? services.find((s) => s.key === serviceKey)! : undefined;
+  const c =
+    variant === "seo"
+      ? city.seo![locale]
+      : variant === "local"
+        ? localServices.find((l) => l.service === serviceKey && l.city === cityKey)!.content[locale]
+        : city.content[locale];
+  const id = variant === "seo" ? `citySeo:${city.key}` : variant === "local" ? localId(serviceKey!, city.key) : `city:${city.key}`;
   const url = href(locale, id);
-  const crumbs = [
-    { name: d.common.home, url: href(locale, "home") },
-    { name: d.nav.regions, url: href(locale, "regions") },
-    { name: c.h1, url },
-  ];
+  const cityName = city.content[locale].name;
+  const crumbs = service
+    ? [
+        { name: d.common.home, url: href(locale, "home") },
+        { name: service.content[locale].navLabel, url: href(locale, `service:${service.key}`) },
+        { name: c.h1, url },
+      ]
+    : [
+        { name: d.common.home, url: href(locale, "home") },
+        { name: d.nav.regions, url: href(locale, "regions") },
+        { name: c.h1, url },
+      ];
   const nearby = city.nearby.map((k) => cities.find((x) => x.key === k)).filter((x) => x !== undefined);
+  // Same service in nearby cities where that page exists, otherwise their webdesign page.
+  const nearbyLinks = nearby.map((n) => {
+    const local = service && hasRoute(localId(service.key, n.key));
+    return {
+      key: n.key,
+      href: href(locale, local ? localId(service!.key, n.key) : `city:${n.key}`),
+      label: local ? `${service!.content[locale].navLabel} ${n.content[locale].name}` : cityLabel(locale, n.content[locale].name),
+    };
+  });
+  const sameCity = cityServiceLinks(locale, city.key).filter((l) => l.id !== id);
   const serviceKeys =
     variant === "seo"
       ? ["seo", "online-marketing", "webdesign", "website-redesign"]
-      : ["webdesign", "website-redesign", "onlineshop", "seo"];
+      : service
+        ? [service.key, ...service.related, "webdesign"].filter((k, i, a) => a.indexOf(k) === i).slice(0, 4)
+        : ["webdesign", "website-redesign", "onlineshop", "seo"];
   const shown = serviceKeys.map((k) => services.find((s) => s.key === k)!).filter(Boolean);
 
   return (
@@ -101,10 +158,11 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
           "@type": "Service",
           name: c.h1,
           description: c.meta.description,
+          ...(service && { serviceType: service.content[locale].navLabel }),
           provider: { "@id": orgId },
           areaServed: {
             "@type": "City",
-            name: city.content[locale].name,
+            name: cityName,
             geo: { "@type": "GeoCoordinates", latitude: city.geo.lat, longitude: city.geo.lng },
           },
           url: `${site.url}${url}`,
@@ -113,10 +171,10 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
       <JsonLd data={faqLd(c.faq)} />
 
       <PageHero
-        eyebrow={`${city.content[locale].name} · ${city.canton}`}
+        eyebrow={service ? `${service.content[locale].navLabel} · ${cityName} ${city.canton}` : `${cityName} · ${city.canton}`}
         title={c.h1}
         lead={c.lead}
-        crumbs={[crumbs[0], crumbs[1], { name: city.content[locale].name }]}
+        crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
@@ -130,6 +188,12 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
           )}
         </div>
       </PageHero>
+
+      {service && (
+        <section className="container-x relative z-10 -mt-10">
+          <FeatureGrid items={service.content[locale].features.slice(0, 3)} />
+        </section>
+      )}
 
       <section className="container-x grid gap-12 pb-12 pt-16 md:pt-24 lg:grid-cols-12">
         <div className="lg:col-span-8">
@@ -166,32 +230,22 @@ export function CityPage({ locale, cityKey, variant }: { locale: Locale; cityKey
 
       <FaqList locale={locale} faq={c.faq} />
 
+      <section className="container-x pb-10">
+        <p className="eyebrow mb-4">{locale === "de" ? `Mehr für ${cityName}` : `Plus pour ${cityName}`}</p>
+        <div className="flex flex-wrap gap-2">
+          {sameCity.map((l) => (
+            <Link key={l.id} href={l.href} className={chipDark}>
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      </section>
       <section className="container-x pb-20">
         <p className="eyebrow mb-4">{d.common.nearby}</p>
         <div className="flex flex-wrap gap-2">
-          {variant === "seo" && (
-            <Link
-              href={href(locale, `city:${city.key}`)}
-              className="rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night"
-            >
-              {cityLabel(locale, city.content[locale].name)}
-            </Link>
-          )}
-          {variant === "webdesign" && city.seo && (
-            <Link
-              href={href(locale, `citySeo:${city.key}`)}
-              className="rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night"
-            >
-              {locale === "de" ? "SEO" : "Référencement"} {city.content[locale].name}
-            </Link>
-          )}
-          {nearby.map((n) => (
-            <Link
-              key={n.key}
-              href={href(locale, `city:${n.key}`)}
-              className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
-            >
-              {cityLabel(locale, n.content[locale].name)}
+          {nearbyLinks.map((n) => (
+            <Link key={n.key} href={n.href} className={chip}>
+              {n.label}
             </Link>
           ))}
         </div>
