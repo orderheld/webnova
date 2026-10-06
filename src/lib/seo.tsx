@@ -25,6 +25,13 @@ export function pageMetadata(
       description: meta.description,
       siteName: site.name,
       locale: locale === "de" ? "de_CH" : "fr_CH",
+      images: [{ url: `/og/${locale}.png`, width: 1200, height: 630, alt: site.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: [`/og/${locale}.png`],
     },
     robots: entry.noindex ? { index: false, follow: true } : undefined,
   };
@@ -47,9 +54,10 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     "@type": "ProfessionalService",
     "@id": orgId,
     name: site.name,
+    legalName: site.legalName,
     url: `${site.url}/${locale}`,
     logo: `${site.url}/icon.png`,
-    image: `${site.url}/opengraph-image`,
+    image: `${site.url}/og/de.png`,
     email: site.email,
     telephone: site.phone,
     address: {
@@ -73,6 +81,18 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
       })),
     }),
     sameAs: [...Object.values(site.social), site.google.maps, ...site.directories].filter(Boolean),
+  };
+}
+
+export function websiteLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    name: site.name,
+    url: `${site.url}/${locale}`,
+    inLanguage: locale === "de" ? "de-CH" : "fr-CH",
+    publisher: { "@id": orgId },
   };
 }
 

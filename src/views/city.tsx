@@ -14,6 +14,11 @@ import { site } from "@/lib/site";
 
 const cityLabel = (locale: Locale, name: string) => `${locale === "de" ? "Webdesign" : "Site internet"} ${name}`;
 
+const regionsIntro = {
+  de: "Unser Büro steht in Grenchen, unsere Kundinnen und Kunden sind in der ganzen Region zuhause: in Biel/Bienne, Solothurn, Bern und weit darüber hinaus. Für jede Stadt haben wir eine eigene Seite mit lokalen Besonderheiten, typischen Branchen und den Leistungen, die dort am meisten gefragt sind, von der neuen Webseite über SEO bis zum Kassensystem. In der Kernregion kommen wir für Gespräche gerne vorbei. Projekte in der übrigen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort. Zweisprachige Webseiten auf Deutsch und Französisch gehören für uns zum Alltag.",
+  fr: "Notre bureau se trouve à Granges, nos clients sont dans toute la région : à Bienne, Soleure, Berne et bien au-delà. Pour chaque ville, nous avons une page dédiée avec ses particularités locales, les branches typiques et les prestations les plus demandées, du nouveau site au référencement jusqu'au système de caisse. Dans notre région principale, nous passons volontiers vous voir. Les projets dans le reste de la Suisse sont suivis tout aussi personnellement, par visioconférence et sur place si nécessaire. Les sites bilingues en français et en allemand font partie de notre quotidien.",
+};
+
 export function RegionsPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const groups = [
@@ -34,8 +39,11 @@ export function RegionsPage({ locale }: { locale: Locale }) {
         lead={d.pages.regionsLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.regions }]}
       />
+      <section className="container-x grid gap-8 pt-16 md:pt-24 lg:grid-cols-12">
+        <p className="text-[18px] leading-relaxed text-ink-soft lg:col-span-8">{regionsIntro[locale]}</p>
+      </section>
       {groups.map((g, gi) => (
-        <section key={g.label} className={`container-x pb-16 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
+        <section key={g.label} className={`container-x pb-16 ${gi === 0 ? "pt-12" : ""}`}>
           <h2 className="eyebrow mb-6">
             {g.label}
           </h2>

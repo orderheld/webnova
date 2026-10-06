@@ -1,6 +1,6 @@
 export const site = {
   name: "Webnova",
-  legalName: "webnova solutions",
+  legalName: "webnova solutions F. Demir",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webnova.ch",
   email: "kontakt@webnova.ch",
   phone: "+41 32 543 80 96",
@@ -32,3 +32,6 @@ export const site = {
 };
 
 export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+
+// References are hidden for now (Ferhat, 2026-10-06). Set to true to bring back the pages, links and home showcase.
+export const showReferences: boolean = false;
