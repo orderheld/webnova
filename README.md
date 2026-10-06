@@ -32,10 +32,8 @@ Rechner-Checkliste anpassen: `src/lib/admin/calculator.ts`.
 2. Neon-Datenbank anlegen (Vercel → Storage → Neon), `DATABASE_URL` wird gesetzt.
 3. Resend: Domain `webnova.ch` verifizieren (DNS-Einträge), API-Key erstellen.
 4. Umgebungsvariablen aus `.env.example` in Vercel eintragen.
-5. Datenbank-Tabellen anlegen (einmalig, lokal mit der Neon-URL):
-   ```bash
-   DATABASE_URL="postgres://…" npm run db:migrate
-   ```
+5. Die Datenbank-Tabellen werden bei jedem Deploy automatisch angelegt bzw. aktualisiert
+   (`scripts/migrate.mjs` läuft vor `next build`, sobald `DATABASE_URL` gesetzt ist).
 6. Logo: die aktuelle Logo-Datei als `public/logo.png` ablegen (wird automatisch statt der Wortmarke verwendet).
 7. In `/admin/einstellungen` IBAN, MWST-Status und Texte prüfen.
 
