@@ -10,7 +10,15 @@ function resend() {
   return _resend;
 }
 
-export const fromAddress = () => process.env.RESEND_FROM ?? `Webnova <${site.email}>`;
+/** Sender as "Name <mail>". Tolerates env values like "Webnova kontakt@webnova.ch" (missing angle brackets). */
+export function fromAddress() {
+  const raw = process.env.RESEND_FROM?.trim().replace(/^["']|["']$/g, "");
+  if (!raw) return `Webnova <${site.email}>`;
+  if (raw.includes("<")) return raw;
+  const m = raw.match(/^(.*?)\s*([^\s]+@[^\s]+)$/);
+  if (!m) return `Webnova <${site.email}>`;
+  return m[1] ? `${m[1]} <${m[2]}>` : m[2];
+}
 export const adminInbox = () => process.env.LEAD_INBOX ?? site.email;
 
 export function escapeHtml(s: string) {

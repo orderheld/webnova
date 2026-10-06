@@ -15,14 +15,13 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
   const c = r.content[locale];
   return (
     <Link href={href(locale, `reference:${r.key}`)} className="reveal group flex h-full flex-col overflow-hidden rounded-[30px] border border-line bg-surface transition-all duration-500 hover:-translate-y-1 hover:border-night hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.35)]">
-      <div className="relative overflow-hidden bg-night p-3 pb-0 sm:p-5 sm:pb-0">
-        <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-70" />
-        <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-white/10 bg-night-2 transition-transform duration-700 group-hover:-translate-y-1">
+      <div className="relative overflow-hidden bg-bg p-3 pb-0 sm:p-5 sm:pb-0">
+        <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface transition-transform duration-700 group-hover:-translate-y-1">
           <div className="flex items-center gap-1.5 px-3.5 py-2.5">
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="ml-2 truncate rounded-full bg-white/5 px-3 py-0.5 font-mono text-[11px] text-white/45">{r.domain}</span>
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="ml-2 truncate rounded-full bg-bg px-3 py-0.5 font-mono text-[11px] text-muted">{r.domain}</span>
           </div>
           <div className={`relative ${large ? "aspect-[16/9.5]" : "aspect-[16/10]"} overflow-hidden`}>
             {r.image ? (

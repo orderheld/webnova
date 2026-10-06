@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #f4f5f0;
+  --color-bg: #f6f6f3;
   --color-surface: #ffffff;
   --color-ink: #0b0c0a;
   --color-ink-soft: #2c2f28;
   --color-muted: #686c63;
-  --color-line: #e2e4dc;
+  --color-line: #e6e6e0;
   /* Brand lime from the Webnova logo. Use as a fill; on light surfaces use accent-ink for text. */
   --color-accent: #d2ff28;
   --color-accent-soft: #f0fcc8;
@@ -99,15 +99,35 @@
 }
 
 @utility display {
-  @apply font-display font-extrabold tracking-[-0.045em] leading-[0.98];
+  @apply font-display font-bold tracking-[-0.04em] leading-[1.02];
 }
 
 @utility h-section {
-  @apply font-display text-[clamp(2.1rem,4.8vw,3.9rem)] font-bold tracking-[-0.04em] leading-[1.03];
+  @apply font-display text-[clamp(2rem,4.2vw,3.3rem)] font-bold tracking-[-0.035em] leading-[1.06];
 }
 
+/* Section label: small caps with the lime brand dot, the one recurring accent across the site. */
 @utility eyebrow {
-  @apply inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-muted;
+  @apply inline-flex items-center gap-2.5 text-[12.5px] font-semibold uppercase tracking-[0.16em] text-muted;
+  &::before { content: ""; @apply h-1.5 w-1.5 shrink-0 rounded-full bg-accent ring-[3px] ring-accent/25; }
+}
+
+/* Calm page-hero backdrop: a faint lime-to-grey wash in the top right corner. */
+@utility hero-glow {
+  background:
+    radial-gradient(60% 70% at 100% 0%, rgb(210 255 40 / 0.16), transparent 60%),
+    radial-gradient(50% 60% at 85% 20%, rgb(11 12 10 / 0.035), transparent 70%);
+}
+
+/* Hero mock-up: elements build in one after another; set the delay per element with [--d:…]. */
+@utility build {
+  animation: pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Soft card shadow used for floating UI elements and photos. */
+@utility shadow-soft {
+  box-shadow: 0 1px 2px rgb(11 12 10 / 0.04), 0 24px 48px -24px rgb(11 12 10 / 0.18);
 }
 
 /* Lime marker highlight for words on light backgrounds. */
@@ -147,7 +167,7 @@
   & p { @apply my-4; }
   & ul { @apply my-5 space-y-2.5; }
   & li { @apply relative pl-7; }
-  & li::before { content: ""; @apply absolute left-0 top-[0.5em] h-3 w-3 rounded-full border-[3px] border-accent bg-night; }
+  & li::before { content: ""; @apply absolute left-1 top-[0.62em] h-1.5 w-1.5 rounded-full bg-ink; }
 }
 
 @utility input {

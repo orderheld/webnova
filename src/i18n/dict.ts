@@ -43,7 +43,7 @@ const de = {
     servicesTitle: "Alles, was Ihr Unternehmen online braucht.",
     servicesLead: "Von der ersten Skizze bis zur Kampagne, die Anfragen bringt. Ein Ansprechpartner, ein Team, ein Ziel.",
     whyEyebrow: "Warum Webnova",
-    whyTitle: "Weniger Agentur-Blabla. Mehr Wirkung.",
+    whyTitle: "Klar, persönlich und auf Wirkung ausgerichtet.",
     why: [
       { title: "Gebaut für Anfragen", text: "Jede Seite hat ein Ziel: dass Interessenten Sie kontaktieren. Klare Struktur, starke Botschaften, sichtbare Kontaktwege." },
       { title: "Schnell & modern", text: "Moderne Technologie statt überladener Baukästen. Ihre Webseite lädt in einem Wimpernschlag, auf jedem Gerät." },
@@ -235,7 +235,7 @@ const fr: Dict = {
     servicesTitle: "Tout ce dont votre entreprise a besoin en ligne.",
     servicesLead: "Du premier croquis à la campagne qui apporte des demandes. Un interlocuteur, une équipe, un objectif.",
     whyEyebrow: "Pourquoi Webnova",
-    whyTitle: "Moins de blabla. Plus de résultats.",
+    whyTitle: "Clair, personnel et orienté résultats.",
     why: [
       { title: "Pensé pour convertir", text: "Chaque page a un but : que vos prospects vous contactent. Structure claire, messages forts, contact visible." },
       { title: "Rapide et moderne", text: "Une technologie moderne plutôt que des constructeurs surchargés. Votre site se charge en un clin d'œil, sur tous les écrans." },
