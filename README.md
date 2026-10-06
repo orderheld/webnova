@@ -34,7 +34,7 @@ Rechner-Checkliste anpassen: `src/lib/admin/calculator.ts`.
 4. Umgebungsvariablen aus `.env.example` in Vercel eintragen.
 5. Die Datenbank-Tabellen werden bei jedem Deploy automatisch angelegt bzw. aktualisiert
    (`scripts/migrate.mjs` läuft vor `next build`, sobald `DATABASE_URL` gesetzt ist).
-6. Logo: die aktuelle Logo-Datei als `public/logo.png` ablegen (wird automatisch statt der Wortmarke verwendet).
+6. Logo: liegt als Vektor in `public/logo-light.svg` (helle Schrift, für dunkle Flächen) und `public/logo-dark.svg`. Für PDFs/E-Mails gibt es PNG-Versionen (`src/lib/admin/logo-print.png`, `public/logo-email.png`).
 7. In `/admin/einstellungen` IBAN, MWST-Status und Texte prüfen.
 
 ## Entwicklung
