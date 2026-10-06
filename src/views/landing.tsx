@@ -126,29 +126,26 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
   const c = content[lpKey][locale];
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-night text-white">
-        <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
-        <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-0 -z-10 h-[520px] w-[520px] animate-drift rounded-full bg-accent/25 blur-[140px]" />
+      <section className="relative isolate overflow-hidden border-b border-line bg-surface">
         <div className="container-x relative grid gap-12 py-16 md:py-24 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5 lg:pt-6">
-            <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[13px] text-white/75">
-              <span className="h-2 w-2 rounded-full bg-accent" />
+            <p className="eyebrow mb-6">
               {c.eyebrow}
             </p>
             <h1 className="display text-[clamp(2.4rem,5.4vw,4.4rem)]">{c.h1}</h1>
-            <p className="mt-6 text-[18px] leading-relaxed text-white/70">{c.lead}</p>
+            <p className="mt-6 text-[18px] leading-relaxed text-ink-soft">{c.lead}</p>
             <ul className="mt-8 space-y-3">
               {c.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-[16px]">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-night">
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-night text-white">
                     <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2.6} />
                   </span>
                   {b}
                 </li>
               ))}
             </ul>
-            <a href={site.phoneHref} className="mt-10 inline-flex items-center gap-3 text-[17px] text-white/80 hover:text-accent">
-              <Icon name="phone" className="h-5 w-5 text-accent" /> {site.phone}
+            <a href={site.phoneHref} className="mt-10 inline-flex items-center gap-3 text-[17px] text-ink-soft hover:text-ink">
+              <Icon name="phone" className="h-5 w-5 text-ink" /> {site.phone}
             </a>
           </div>
           <div id="formular" className="lg:col-span-7">
@@ -165,7 +162,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         </div>
       </section>
 
-      <section className="bg-accent">
+      <section className="border-y border-line bg-bg">
         <div className="container-x flex flex-wrap justify-center gap-x-10 gap-y-3 py-5 text-[15px] font-semibold text-night">
           {d.lp.trust.map((t) => (
             <span key={t} className="flex items-center gap-2">
@@ -180,7 +177,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.benefits.map((b) => (
             <div key={b.title} className="reveal group rounded-[24px] border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-night">
-              <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-night text-accent transition-transform duration-300 group-hover:rotate-[-8deg] group-hover:scale-110">
+              <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
                 <Icon name={b.icon} />
               </span>
               <h3 className="text-[20px] font-bold tracking-tight">{b.title}</h3>
@@ -195,7 +192,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       <section className="container-x pb-24 text-center">
         <a
           href="#formular"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[16px] font-semibold text-night transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(75,102,0,0.6)]"
+          className="inline-flex items-center gap-2 rounded-full bg-night px-8 py-4 text-[16px] font-semibold text-white transition-colors hover:bg-ink-soft"
         >
           {d.nav.cta} <Icon name="arrow" className="h-4 w-4" />
         </a>

@@ -34,8 +34,7 @@ export function RegionsPage({ locale }: { locale: Locale }) {
       />
       {groups.map((g, gi) => (
         <section key={g.label} className={`container-x pb-16 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
-          <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+          <h2 className="eyebrow mb-6">
             {g.label}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,8 +49,7 @@ export function RegionsPage({ locale }: { locale: Locale }) {
         </section>
       ))}
       <section className="container-x pb-20">
-        <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-          <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+        <h2 className="eyebrow mb-6">
           {d.pages.seoPages}
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
@@ -77,9 +75,9 @@ export function RegionsPage({ locale }: { locale: Locale }) {
 }
 
 const chip =
-  "rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white";
+  "rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink";
 const chipDark =
-  "rounded-full border border-night bg-night px-4 py-2 text-[14px] text-white transition-colors hover:bg-accent hover:text-night";
+  "rounded-full border border-line bg-bg px-4 py-2 text-[14px] text-ink transition-colors hover:border-ink/30";
 
 /** Every service page that exists for a city: webdesign, SEO and the service × city pages. */
 export function cityServiceLinks(locale: Locale, cityKey: string) {
@@ -176,7 +174,7 @@ export function CityPage({
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
+          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
@@ -194,8 +192,8 @@ export function CityPage({
         </div>
         <aside className="space-y-4 lg:col-span-4">
           <div className="sticky top-28 space-y-4">
-            <div className="rounded-[28px] bg-night p-8 text-white shadow-[inset_0_0_0_1px_rgba(210,255,40,0.15)]">
-              <p className="text-[13px] uppercase tracking-[0.12em] text-white/50">{d.pages.office}</p>
+            <div className="rounded-[24px] border border-line bg-surface p-8 ">
+              <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
               <p className="mt-3 text-[18px] leading-snug">
                 Webnova
                 <br />
@@ -206,7 +204,7 @@ export function CityPage({
               <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
                 {d.nav.cta}
               </ButtonLink>
-              <p className="mt-4 text-center text-[13px] text-white/50">{d.common.free}</p>
+              <p className="mt-4 text-center text-[13px] text-muted">{d.common.free}</p>
             </div>
           </div>
         </aside>

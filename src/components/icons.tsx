@@ -12,6 +12,7 @@ const paths: Record<string, React.ReactNode> = {
   utensils: (<><path d="M4 3v7a3 3 0 0 0 3 3v8M10 3v7M7 3v4" /><path d="M17 21V3c-2 1-3 3.5-3 7v3h3" /></>),
   bag: (<><path d="M5 8h14l-1 13H6Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></>),
   arrow: (<><path d="M5 12h14M13 6l6 6-6 6" /></>),
+  lock: (<><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></>),
   arrowUpRight: (<><path d="M7 17 17 7M8 7h9v9" /></>),
   check: (<><path d="m5 12 5 5L20 7" /></>),
   phone: (<><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></>),

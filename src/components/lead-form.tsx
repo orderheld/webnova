@@ -126,7 +126,7 @@ export function LeadForm({
         </p>
         <div className="flex gap-1.5" aria-hidden="true">
           {Array.from({ length: steps }).map((_, i) => (
-            <span key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i <= step ? "w-10 bg-night" : "w-6 bg-line"} ${i === step ? "!bg-accent ring-1 ring-night/20" : ""}`} />
+            <span key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i <= step ? "w-10 bg-night" : "w-6 bg-line"}`} />
           ))}
         </div>
       </div>
@@ -151,11 +151,11 @@ export function LeadForm({
                   aria-pressed={on}
                   onClick={() => set("services", on ? s.services.filter((x) => x !== o) : [...s.services, o])}
                   className={`flex min-h-[64px] items-center justify-between gap-2 rounded-2xl border px-4 py-3 text-left text-[15px] transition-all ${
-                    on ? "border-night bg-accent font-medium text-night" : "border-line hover:-translate-y-0.5 hover:border-night/40"
+                    on ? "border-night bg-bg font-medium text-ink" : "border-line hover:border-ink/30/40"
                   }`}
                 >
                   {t.options.services[o]}
-                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${on ? "border-night bg-night text-accent" : "border-line"}`}>
+                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${on ? "border-night bg-night text-white" : "border-line"}`}>
                     {on && <Icon name="check" className="h-3 w-3" />}
                   </span>
                 </button>
@@ -262,7 +262,7 @@ export function LeadForm({
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-2 rounded-full bg-night px-7 py-4 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-accent hover:text-night disabled:opacity-60"
+          className="group inline-flex items-center gap-2 rounded-full bg-night px-7 py-4 text-[15px] font-semibold text-white transition-all hover:bg-ink-soft disabled:opacity-60"
         >
           {step < steps - 1 ? t.next : pending ? t.sending : t.submit}
           <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -313,7 +313,7 @@ function Choice<T extends string | boolean>({
             aria-pressed={on}
             onClick={() => onChange(o.v)}
             className={`rounded-full border px-5 py-3 text-[15px] transition-all ${
-              on ? "border-night bg-accent font-medium text-night" : "border-line hover:-translate-y-0.5 hover:border-night/40"
+              on ? "border-night bg-bg font-medium text-ink" : "border-line hover:border-ink/30/40"
             }`}
           >
             {o.l}

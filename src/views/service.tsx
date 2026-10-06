@@ -33,8 +33,7 @@ export function ServicesPage({ locale }: { locale: Locale }) {
       />
       {groups.map((g, gi) => (
         <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
-          <h2 className="mb-6 flex items-center gap-3 font-sans text-[14px] font-semibold uppercase tracking-[0.14em] text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent ring-4 ring-accent/25" />
+          <h2 className="eyebrow mb-6">
             {g.label}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -76,7 +75,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           .filter((x) => x.seo)
           .map((x) => ({ href: href(locale, `citySeo:${x.key}`), label: `${c.navLabel} ${x.content[locale].name}` }))
       : isWeb
-        ? cities.map((x) => ({
+        ? cities.filter((x) => x.priority === "A").map((x) => ({
             href: href(locale, `city:${x.key}`),
             label: `${locale === "de" ? "Webdesign" : "Site internet"} ${x.content[locale].name}`,
           }))
@@ -106,7 +105,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}>
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink href={href(locale, "request")}>{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
+          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
@@ -121,13 +120,13 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           <Prose sections={c.sections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 overflow-hidden rounded-[28px] bg-night p-8 text-white shadow-[inset_0_0_0_1px_rgba(210,255,40,0.15)]">
+          <div className="sticky top-28 overflow-hidden rounded-[24px] border border-line bg-surface p-8 ">
             <h2 className="text-[26px] font-bold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/70">{c.ctaText}</p>
+            <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{c.ctaText}</p>
             <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
               {d.nav.cta}
             </ButtonLink>
-            <p className="mt-4 text-center text-[13px] text-white/50">{d.common.free}</p>
+            <p className="mt-4 text-center text-[13px] text-muted">{d.common.free}</p>
           </div>
         </aside>
       </section>
@@ -140,7 +139,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
+                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
               >
                 {l.label}
               </Link>

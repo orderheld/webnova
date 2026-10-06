@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList } from "@/components/blocks";
 import { HeroVisual } from "@/components/hero-visual";
-import { IndustryGallery, PainPoints, WorkWall } from "@/components/home-story";
 import { references } from "@/content/references";
 import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
@@ -11,6 +11,7 @@ import { guides } from "@/content/guides";
 import { services } from "@/content/services";
 import { getDict } from "@/i18n/dict";
 import { getRoute, href, isLocale } from "@/lib/routes";
+import { photo } from "@/lib/photos";
 import { JsonLd, faqLd, organizationLd, pageMetadata } from "@/lib/seo";
 
 const homeMeta = {
@@ -49,15 +50,65 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
   return pageMetadata(lang, getRoute("home"), homeMeta[lang], { absoluteTitle: true });
 }
 
+const intro = {
+  de: {
+    eyebrow: "Kennen Sie das?",
+    title: "Sie sind richtig gut in dem, was Sie tun. Online merkt das nur kaum jemand.",
+    items: [
+      { title: "Die Website ist in die Jahre gekommen.", text: "Ihr Betrieb hat sich weiterentwickelt, Ihr Auftritt aber nicht. Er zeigt nicht mehr, wer Sie heute sind." },
+      { title: "Das Telefon bleibt still.", text: "Die Website ist zwar da, aber es kommen kaum Anfragen. Neue Kunden finden Sie nur über Empfehlungen." },
+      { title: "Bei Google steht die Konkurrenz vorne.", text: "Wer in Ihrer Region sucht, landet beim Mitbewerber, obwohl Sie das bessere Angebot haben." },
+    ],
+    resolve: "Das muss nicht so bleiben. Wir bauen Ihnen einen Auftritt, auf den Sie stolz sind und der für Sie arbeitet, auch nach Feierabend.",
+    cta: "Erstgespräch vereinbaren",
+    quote: "Wir nehmen uns Zeit, Ihren Betrieb zu verstehen, bevor wir eine Zeile Code schreiben.",
+    quoteBy: "Webnova, Grenchen",
+  },
+  fr: {
+    eyebrow: "Ça vous parle ?",
+    title: "Vous excellez dans votre métier. Mais en ligne, presque personne ne le remarque.",
+    items: [
+      { title: "Votre site a pris de l'âge.", text: "Votre entreprise a évolué, votre site pas encore. Il ne montre plus qui vous êtes aujourd'hui." },
+      { title: "Le téléphone reste muet.", text: "Le site existe, mais les demandes n'arrivent pas. Les nouveaux clients viennent seulement du bouche-à-oreille." },
+      { title: "Sur Google, la concurrence passe devant.", text: "Ceux qui cherchent dans votre région tombent sur un concurrent, alors que votre offre est meilleure." },
+    ],
+    resolve: "Ça peut changer. Nous créons une présence dont vous êtes fier et qui travaille pour vous, même après la fermeture.",
+    cta: "Fixer un premier entretien",
+    quote: "Nous prenons le temps de comprendre votre entreprise avant d'écrire la moindre ligne de code.",
+    quoteBy: "Webnova, Granges",
+  },
+};
+
+/** A photo slot, or a calm night panel with a statement when no photo is set yet. */
+function MoodImage({ img, quote, by, className = "" }: { img?: { src: string; alt: string }; quote: string; by: string; className?: string }) {
+  if (img) {
+    return (
+      <div className={`reveal relative overflow-hidden rounded-[28px] ${className}`}>
+        <Image src={img.src} alt={img.alt} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+      </div>
+    );
+  }
+  return (
+    <div className={`reveal relative isolate flex flex-col justify-end overflow-hidden rounded-[28px] bg-night p-8 text-white sm:p-10 ${className}`}>
+      <div aria-hidden="true" className="absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-accent/15 blur-[90px]" />
+      <span aria-hidden="true" className="mb-auto h-2 w-2 rounded-full bg-accent ring-4 ring-accent/20" />
+      <p className="mt-16 font-display text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-[1.2] tracking-[-0.025em]">«{quote}»</p>
+      <p className="mt-6 text-[14px] text-white/55">{by}</p>
+    </div>
+  );
+}
+
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
+  const i = intro[lang];
   const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
   const core = cities.filter((c) => c.priority === "A");
-  const rotating =
-    lang === "de" ? ["Anfragen", "Sichtbarkeit", "Umsatz", "Zeit"] : ["de demandes", "de visibilité", "de clients", "de temps"];
-  const ticker = mainServices.map((s) => s.content[lang].navLabel);
+  // The last word of the headline gets the hand-drawn lime underline.
+  const titleWords = d.hero.title2.split(" ");
+  const titleLast = titleWords.pop()!;
+  const titleRest = titleWords.join(" ");
 
   return (
     <>
@@ -65,77 +116,69 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <JsonLd data={faqLd(homeFaq[lang])} />
 
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-night text-white">
-        <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
-        <div aria-hidden="true" className="absolute -left-40 top-10 -z-10 h-[520px] w-[520px] animate-drift rounded-full bg-accent/20 blur-[140px]" />
-        <div aria-hidden="true" className="absolute -right-20 bottom-0 -z-10 h-[420px] w-[420px] animate-drift rounded-full bg-[#5b7cff]/15 blur-[140px] [animation-delay:-6s]" />
-        <div className="container-x grid items-center gap-16 pb-28 pt-10 md:pt-16 lg:grid-cols-12 lg:pb-36">
-          <div className="lg:col-span-7">
-            <p className="mb-8 inline-flex animate-rise items-center gap-2.5 rounded-full border border-white/10 bg-white/5 py-1.5 pl-2 pr-4 text-[13px] text-white/75 backdrop-blur">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+      <section className="relative isolate overflow-hidden bg-surface">
+        <div aria-hidden="true" className="hero-glow absolute inset-0 -z-10" />
+        <div className="container-x grid items-center gap-14 pb-20 pt-10 md:pt-16 lg:grid-cols-12 lg:pb-28">
+          <div className="lg:col-span-6">
+            <p className="eyebrow mb-7 animate-rise">{d.hero.eyebrow}</p>
+            <h1 className="display animate-rise text-[clamp(2.6rem,5.4vw,4.7rem)] [animation-delay:100ms]">
+              {d.hero.title1} {titleRest}{" "}
+              <span className="relative inline-block whitespace-nowrap">
+                {titleLast}
+                <svg aria-hidden="true" viewBox="0 0 300 14" preserveAspectRatio="none" className="absolute -bottom-1 left-0 h-[0.22em] w-full">
+                  <path d="M2 9 C 80 3, 200 3, 298 8" fill="none" stroke="#d2ff28" strokeWidth="7" strokeLinecap="round" pathLength={1} strokeDasharray="1" className="animate-draw [animation-delay:700ms]" />
+                </svg>
               </span>
-              {d.hero.eyebrow}
-            </p>
-            <h1 className="display animate-rise text-[clamp(3rem,7.8vw,6.8rem)] [animation-delay:100ms]">
-              {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
             </h1>
-            <p className="mt-6 flex animate-rise items-baseline gap-3 font-display text-[clamp(1.3rem,2.4vw,1.9rem)] font-semibold tracking-tight text-white/55 [animation-delay:200ms]">
-              {lang === "de" ? "Mehr" : "Plus"}
-              <span className="relative inline-block h-[1.15em] overflow-hidden align-bottom text-white" aria-hidden="true">
-                <span className="block animate-words">
-                  {[...rotating, rotating[0]].map((n, i) => (
-                    <span key={i} className="block h-[1.15em] leading-[1.15em]">
-                      {n}
-                      <span className="text-accent">.</span>
-                    </span>
-                  ))}
-                </span>
-              </span>
-              <span className="sr-only">{rotating.join(", ")}</span>
-            </p>
-            <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:300ms] md:text-[20px]">{d.hero.lead}</p>
-            <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:400ms]">
+            <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:250ms] md:text-[20px]">{d.hero.lead}</p>
+            <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:350ms]">
               <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
-              <ButtonLink href={href(lang, "services")} variant="ghostLight" arrow={false}>
+              <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
                 {d.hero.secondary}
               </ButtonLink>
             </div>
-            <ul className="mt-10 flex animate-rise flex-wrap gap-x-6 gap-y-3 text-[14px] text-white/70 [animation-delay:500ms]">
+            <ul className="mt-10 flex animate-rise flex-wrap gap-x-6 gap-y-3 text-[14px] text-muted [animation-delay:450ms]">
               {d.hero.points.map((p) => (
                 <li key={p} className="flex items-center gap-2">
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-accent/15 text-accent">
-                    <Icon name="check" className="h-3 w-3" strokeWidth={3} />
-                  </span>
+                  <Icon name="check" className="h-4 w-4 text-ink" strokeWidth={2.5} />
                   {p}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-5">
-            <HeroVisual locale={lang} />
+          <div className="lg:col-span-6">
+            <HeroVisual locale={lang} photo={photo("hero", lang)} />
           </div>
         </div>
       </section>
 
-      {/* TICKER */}
-      <div className="relative overflow-hidden" aria-hidden="true">
-        <div className="relative z-10 bg-accent py-4">
-          <div className="flex w-max animate-marquee gap-8 whitespace-nowrap font-display text-[clamp(1.3rem,2.4vw,2rem)] font-bold tracking-tight text-night">
-            {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
-              <span key={i} className="flex items-center gap-8">
-                {t}
-                <Icon name="spark" className="h-6 w-6" strokeWidth={2.4} />
-              </span>
-            ))}
+      {/* INTRO */}
+      <section className="border-y border-line bg-bg py-24 md:py-32">
+        <div className="container-x grid gap-14 lg:grid-cols-12 lg:items-stretch">
+          <MoodImage img={photo("intro", lang)} quote={i.quote} by={i.quoteBy} className="min-h-[380px] lg:col-span-5" />
+          <div className="lg:col-span-7 lg:pl-6">
+            <p className="eyebrow mb-4 reveal">{i.eyebrow}</p>
+            <h2 className="h-section reveal">{i.title}</h2>
+            <ol className="mt-10 divide-y divide-line border-y border-line">
+              {i.items.map((it, n) => (
+                <li key={n} className="reveal grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+                  <span className="font-display text-[15px] font-semibold text-muted">0{n + 1}</span>
+                  <div>
+                    <h3 className="text-[19px] font-semibold tracking-tight">{it.title}</h3>
+                    <p className="mt-1.5 text-[16px] leading-relaxed text-muted">{it.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="reveal mt-8 max-w-xl text-[17px] leading-relaxed text-ink-soft">{i.resolve}</p>
+            <div className="reveal mt-8">
+              <ButtonLink href={href(lang, "request")}>{i.cta}</ButtonLink>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <PainPoints locale={lang} />
-
-      {/* SERVICES (bento) */}
+      {/* SERVICES */}
       <section className="container-x py-24 md:py-32">
         <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
@@ -144,73 +187,37 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </div>
           <p className="text-[18px] leading-relaxed text-ink-soft md:col-span-5">{d.home.servicesLead}</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-4">
-          {mainServices.map((s, i) => {
-            const c = s.content[lang];
-            if (i === 0) {
-              return (
-                <Link
-                  key={s.key}
-                  href={href(lang, `service:${s.key}`)}
-                  className="reveal group relative isolate flex flex-col justify-between overflow-hidden rounded-[28px] bg-night p-8 text-white sm:col-span-2 lg:row-span-2"
-                >
-                  <div aria-hidden="true" className="absolute -bottom-24 -right-24 -z-10 h-80 w-80 rounded-full bg-accent/30 blur-[90px] transition-transform duration-700 group-hover:scale-125" />
-                  <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-60" />
-                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent text-night">
-                    <Icon name={s.icon} className="h-7 w-7" />
-                  </span>
-                  <div className="mt-16">
-                    <h3 className="font-display text-[clamp(2rem,3.6vw,3rem)] font-bold leading-[1.02] tracking-[-0.04em]">{c.navLabel}</h3>
-                    <p className="mt-4 max-w-md text-[16px] leading-relaxed text-white/65">{c.lead}</p>
-                    <span className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-[14px] font-semibold text-night transition-colors group-hover:bg-accent">
-                      {d.common.learnMore} <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              );
-            }
-            return (
-              <Link
-                key={s.key}
-                href={href(lang, `service:${s.key}`)}
-                className="reveal group relative isolate flex flex-col justify-between gap-8 overflow-hidden rounded-[28px] border border-line bg-surface p-7 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent"
-              >
-                <span aria-hidden="true" className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-accent transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.2,1)] group-hover:scale-y-100" />
-                <div className="flex items-start justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-night text-accent">
-                    <Icon name={s.icon} className="h-[22px] w-[22px]" />
-                  </span>
-                  <Icon name="arrowUpRight" className="h-5 w-5 text-muted transition-all duration-300 group-hover:rotate-45 group-hover:text-night" />
-                </div>
-                <div>
-                  <h3 className="font-display text-[21px] font-bold leading-tight tracking-[-0.02em]">{c.navLabel}</h3>
-                  <p className="mt-2 line-clamp-3 text-[14.5px] leading-relaxed text-muted transition-colors group-hover:text-night/75">{c.lead}</p>
-                </div>
-              </Link>
-            );
-          })}
-          <Link
-            href={href(lang, "request")}
-            className="reveal group relative isolate flex flex-col justify-between gap-8 overflow-hidden rounded-[28px] bg-accent p-7 text-night transition-transform duration-300 hover:-translate-y-1"
-          >
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-night text-accent">
-              <Icon name="chat" className="h-[22px] w-[22px]" />
-            </span>
-            <div>
-              <h3 className="font-display text-[21px] font-bold leading-tight tracking-[-0.02em]">{d.hero.primary}</h3>
-              <p className="mt-2 flex items-center gap-2 text-[14.5px] font-medium text-night/70">
-                {lang === "de" ? "Unverbindlich, persönlich, in Ihrer Sprache." : "Sans engagement, personnel, dans votre langue."}
-                <Icon name="arrow" className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-              </p>
-            </div>
-          </Link>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {mainServices.map((s) => (
+            <CardLink key={s.key} href={href(lang, `service:${s.key}`)} icon={s.icon} title={s.content[lang].navLabel} text={s.content[lang].lead} />
+          ))}
         </div>
       </section>
 
-      <IndustryGallery locale={lang} />
+      {/* WHY */}
+      <section className="border-y border-line bg-bg py-24 md:py-32">
+        <div className="container-x grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <p className="eyebrow mb-4">{d.home.whyEyebrow}</p>
+              <h2 className="h-section">{d.home.whyTitle}</h2>
+              {photo("approach", lang) && <MoodImage img={photo("approach", lang)} quote="" by="" className="mt-10 aspect-[4/3]" />}
+            </div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+            {d.home.why.map((w, n) => (
+              <div key={n} className="reveal rounded-[20px] border border-line bg-surface p-7">
+                <p className="mb-8 font-display text-[15px] font-semibold text-muted">0{n + 1}</p>
+                <h3 className="text-[20px] font-semibold tracking-tight">{w.title}</h3>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-muted">{w.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* REFERENCES */}
-      <section className="container-x pb-24 md:pb-32">
+      <section className="container-x py-24 md:py-32">
         <div className="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="eyebrow mb-4">{d.home.referencesEyebrow}</p>
@@ -222,60 +229,28 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </ButtonLink>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {references.filter((r) => r.key !== "ava-catering").map((r) => (
-            <CardLink
-              key={r.key}
-              href={href(lang, `reference:${r.key}`)}
-              meta={r.content[lang].industry}
-              title={r.name}
-              text={r.content[lang].summary}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* WHY */}
-      <section className="relative overflow-hidden bg-surface py-24 md:py-32">
-        <div aria-hidden="true" className="bg-dots absolute inset-y-0 right-0 w-1/2 [mask-image:linear-gradient(to_left,#000,transparent)]" />
-        <div className="container-x relative grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-28">
-              <p className="eyebrow mb-4">{d.home.whyEyebrow}</p>
-              <h2 className="h-section">{d.home.whyTitle}</h2>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-            {d.home.why.map((w, i) => (
-              <div key={i} className="reveal group rounded-[24px] border border-line bg-bg/60 p-7 transition-colors duration-300 hover:border-night hover:bg-night hover:text-white">
-                <p className="mb-10 font-display text-[44px] font-extrabold leading-none tracking-tighter text-night/15 transition-colors group-hover:text-accent">
-                  0{i + 1}
-                </p>
-                <h3 className="text-[22px] font-bold tracking-tight">{w.title}</h3>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-muted transition-colors group-hover:text-white/65">{w.text}</p>
-              </div>
+          {references
+            .filter((r) => r.key !== "ava-catering")
+            .map((r) => (
+              <CardLink key={r.key} href={href(lang, `reference:${r.key}`)} meta={r.content[lang].industry} title={r.name} text={r.content[lang].summary} />
             ))}
-          </div>
         </div>
       </section>
 
       {/* PROCESS */}
-      <section className="relative isolate overflow-hidden bg-night py-24 text-white md:py-32">
-        <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
-        <div aria-hidden="true" className="absolute left-1/2 top-0 -z-10 h-[360px] w-[760px] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
+      <section className="border-y border-line bg-surface py-24 md:py-32">
         <div className="container-x">
           <div className="reveal">
-            <p className="eyebrow mb-4 !text-white/50">{d.home.processEyebrow}</p>
+            <p className="eyebrow mb-4">{d.home.processEyebrow}</p>
             <h2 className="h-section max-w-3xl">{d.home.processTitle}</h2>
           </div>
-          <ol className="relative mt-16 grid gap-4 md:grid-cols-5">
-            <span aria-hidden="true" className="absolute left-0 right-0 top-[38px] hidden h-px bg-gradient-to-r from-accent via-accent/40 to-transparent md:block" />
-            {d.home.process.map((p, i) => (
-              <li key={i} className="reveal group relative rounded-[24px] border border-white/10 bg-night-2/80 p-6 backdrop-blur transition-colors hover:border-accent/60">
-                <span className="relative mb-8 grid h-[30px] w-[30px] place-items-center rounded-full bg-accent font-display text-[14px] font-bold text-night shadow-[0_0_0_6px_rgba(210,255,40,0.15)]">
-                  {i + 1}
-                </span>
-                <h3 className="text-[19px] font-bold tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/60">{p.text}</p>
+          <ol className="relative mt-16 grid gap-8 md:grid-cols-5 md:gap-6">
+            <span aria-hidden="true" className="absolute left-0 right-0 top-[15px] hidden h-px bg-line md:block" />
+            {d.home.process.map((p, n) => (
+              <li key={n} className="reveal relative">
+                <span className="relative grid h-[30px] w-[30px] place-items-center rounded-full border border-ink/15 bg-surface font-display text-[13px] font-semibold">{n + 1}</span>
+                <h3 className="mt-6 text-[18px] font-semibold tracking-tight">{p.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.text}</p>
               </li>
             ))}
           </ol>
@@ -284,48 +259,39 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
       {/* POS */}
       <section className="container-x py-24 md:py-32">
-        <div className="reveal relative isolate overflow-hidden rounded-[36px] bg-accent p-8 text-night sm:p-12 md:p-16">
-          <div aria-hidden="true" className="bg-dots absolute inset-0 -z-10 opacity-60" />
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="eyebrow mb-4 !text-night/60">{d.home.posEyebrow}</p>
-              <h2 className="h-section">{d.home.posTitle}</h2>
-              <p className="mt-6 max-w-lg text-[18px] leading-relaxed text-night/75">{d.home.posLead}</p>
-              <div className="mt-10">
-                <ButtonLink href={href(lang, "service:kassensystem")} variant="dark">
-                  {d.common.learnMore}
-                </ButtonLink>
-              </div>
+        <div className="reveal grid gap-10 rounded-[28px] border border-line bg-surface p-8 sm:p-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="eyebrow mb-4">{d.home.posEyebrow}</p>
+            <h2 className="h-section">{d.home.posTitle}</h2>
+            <p className="mt-6 max-w-lg text-[18px] leading-relaxed text-ink-soft">{d.home.posLead}</p>
+            <div className="mt-10">
+              <ButtonLink href={href(lang, "service:kassensystem")}>{d.common.learnMore}</ButtonLink>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, i) => (
-                <Link
-                  key={k}
-                  href={href(lang, `service:${k}`)}
-                  className={`group flex min-h-[240px] flex-col justify-between rounded-[26px] bg-night p-7 text-white transition-transform duration-300 hover:-translate-y-1.5 hover:rotate-[-1deg] ${i === 1 ? "sm:translate-y-8 sm:hover:translate-y-6" : ""}`}
-                >
-                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent text-night">
-                    <Icon name={i === 0 ? "utensils" : "bag"} className="h-7 w-7" />
+          </div>
+          <div className="grid gap-3">
+            {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, n) => (
+              <Link
+                key={k}
+                href={href(lang, `service:${k}`)}
+                className="group flex items-center justify-between gap-4 rounded-[20px] border border-line bg-bg p-6 transition-colors hover:border-ink/25"
+              >
+                <span className="flex items-center gap-4">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-surface text-ink">
+                    <Icon name={n === 0 ? "utensils" : "bag"} className="h-[22px] w-[22px]" />
                   </span>
-                  <div className="flex items-end justify-between gap-4">
-                    <span className="font-display text-[24px] font-bold leading-tight tracking-tight">{i === 0 ? d.home.posGastro : d.home.posRetail}</span>
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-night">
-                      <Icon name="arrowUpRight" className="h-4 w-4" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  <span className="font-display text-[20px] font-semibold tracking-tight">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>
+                </span>
+                <Icon name="arrow" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <WorkWall locale={lang} />
-
       {/* REGIONS */}
-      <section className="py-24 md:py-32">
+      <section className="border-t border-line bg-bg py-24 md:py-28">
         <div className="container-x">
-          <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
+          <div className="reveal mb-12 grid gap-6 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
               <p className="eyebrow mb-4">{d.home.regionsEyebrow}</p>
               <h2 className="h-section">{d.home.regionsTitle}</h2>
@@ -346,7 +312,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* GUIDES */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="py-24 md:py-32">
         <div className="container-x">
           <div className="reveal mb-12 flex flex-wrap items-end justify-between gap-6">
             <div>
