@@ -13,7 +13,7 @@ import { services } from "@/content/services";
 import { getDict } from "@/i18n/dict";
 import { getRoute, href, isLocale } from "@/lib/routes";
 import { photo } from "@/lib/photos";
-import { JsonLd, faqLd, organizationLd, pageMetadata } from "@/lib/seo";
+import { JsonLd, faqLd, pageMetadata } from "@/lib/seo";
 import { showReferences } from "@/lib/site";
 
 const homeMeta = {
@@ -181,7 +181,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      <JsonLd data={organizationLd(lang, cities.map((c) => c.content[lang].name))} />
       <JsonLd data={faqLd(homeFaq[lang])} />
 
       {/* HERO */}
