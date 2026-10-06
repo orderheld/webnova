@@ -18,7 +18,7 @@ export const solothurn: City = {
       },
       h1: "Webdesign Solothurn: Webseiten für die Barockstadt",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Solothurn. Unser Büro in Grenchen liegt rund 20 Minuten entfernt, persönliche Treffen in der Altstadt sind für uns selbstverständlich.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Solothurn. Unser Büro ist in Grenchen, persönliche Treffen in der Altstadt sind für uns selbstverständlich.",
       sections: [
         {
           h2: "Eine Webagentur für Solothurn aus der Nachbarschaft",
@@ -51,7 +51,7 @@ export const solothurn: City = {
       faq: [
         {
           q: "Treffen Sie Kunden direkt in Solothurn?",
-          a: "Ja, gerne. Unser Büro in Grenchen liegt rund 20 Minuten von Solothurn entfernt. Für Erstgespräche, Workshops oder Fotos kommen wir zu Ihnen.",
+          a: "Ja, gerne. Für Erstgespräche, Workshops oder Fotos kommen wir zu Ihnen.",
         },
         {
           q: "Erstellen Sie auch Webseiten für Restaurants in der Solothurner Altstadt?",
@@ -73,12 +73,12 @@ export const solothurn: City = {
       },
       h1: "Création de site internet à Soleure, la ville baroque",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Soleure. Notre bureau de Granges est à une vingtaine de minutes, et nous nous déplaçons volontiers dans la vieille ville.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Soleure. Notre bureau est à Granges et nous nous déplaçons volontiers dans la vieille ville.",
       sections: [
         {
           h2: "Une agence web voisine de Soleure",
           paragraphs: [
-            "Soleure et Granges font partie du même canton et de la même région au pied du Jura. Nous connaissons la ville, son artisanat et les attentes de sa clientèle. Si vous souhaitez faire créer votre site internet à Soleure, nous vous rencontrons volontiers dans votre commerce, votre bureau ou autour d'un café au bord de l'Aar. Des trajets courts et des échanges directs.",
+            "Soleure et Granges font partie du même canton et de la même région au pied du Jura. Nous connaissons la ville, son artisanat et les attentes de sa clientèle. Si vous souhaitez faire créer votre site internet à Soleure, nous vous rencontrons volontiers dans votre commerce, votre bureau ou autour d'un café au bord de l'Aar. Des échanges simples et directs.",
             "Notre agence web accompagne à Soleure des projets de toutes tailles : site vitrine pour un magasin spécialisé, site d'entreprise multilingue ou boutique en ligne. Nous partons toujours de vos objectifs et de votre clientèle. La structure, les textes et le design viennent ensuite. Le résultat : un site qui présente votre entreprise de façon authentique et génère des demandes.",
           ],
         },
@@ -106,7 +106,7 @@ export const solothurn: City = {
       faq: [
         {
           q: "Rencontrez-vous vos clients à Soleure ?",
-          a: "Oui, volontiers. Notre bureau de Granges se trouve à une vingtaine de minutes de Soleure. Nous venons chez vous pour le premier entretien, un atelier ou une séance photo.",
+          a: "Oui, volontiers. Nous venons chez vous pour le premier entretien, un atelier ou une séance photo.",
         },
         {
           q: "Un site bilingue est-il utile pour un commerce soleurois ?",

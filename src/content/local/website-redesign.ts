@@ -12,7 +12,7 @@ export const redesignLocal: LocalService[] = [
         meta: {
           title: "Website Redesign Grenchen: Relaunch vom Nachbarn",
           description:
-            "Website Redesign in Grenchen: Wir modernisieren Ihre Homepage, sichern Ihre Google-Rankings und sind in Minuten bei Ihnen. Kostenlose Erstberatung.",
+            "Website Redesign in Grenchen: Wir modernisieren Ihre Homepage, sichern Ihre Google-Rankings und beraten Sie persönlich. Kostenlose Erstberatung.",
         },
         h1: "Website Redesign Grenchen: Ihr Auftritt modern, schnell und auffindbar",
         lead:
@@ -41,7 +41,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Kurze Wege von der Bettlachstrasse bis zum Launch",
             paragraphs: [
-              "Weil unser Büro in Grenchen liegt, findet das Erstgespräch meist dort statt, wo Ihr Unternehmen arbeitet: in der Produktionshalle, im Laden oder in der Praxis. So sehen wir Ihre Produkte und Abläufe mit eigenen Augen, was die neue Webseite spürbar authentischer macht. Auch für Betriebe in Bettlach, Lengnau oder Selzach sind wir in wenigen Minuten vor Ort. Zwischenstände besprechen wir je nach Wunsch persönlich, telefonisch oder per Video.",
+              "Weil unser Büro in Grenchen liegt, findet das Erstgespräch meist dort statt, wo Ihr Unternehmen arbeitet: in der Produktionshalle, im Laden oder in der Praxis. So sehen wir Ihre Produkte und Abläufe mit eigenen Augen, was die neue Webseite spürbar authentischer macht. Zwischenstände besprechen wir je nach Wunsch persönlich, telefonisch oder per Video.",
               "Der Ablauf ist klar gegliedert: Analyse, Konzept, Design, Umsetzung, Tests auf allen gängigen Geräten und Launch. Sie geben jeden wichtigen Schritt frei und wissen jederzeit, woran wir arbeiten. Nach dem Relaunch bleiben wir in der Nähe. Wir übernehmen auf Wunsch Wartung, Sicherheitsupdates und Hosting, und wenn neue Produktbilder oder eine Schulung im Content-Management anstehen, kommen wir kurzfristig vorbei, statt Sie auf ein Ticket warten zu lassen.",
             ],
           },
@@ -49,7 +49,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Können wir das Redesign in unserem Betrieb in Grenchen besprechen?",
-            a: "Ja, gerne. Unser Büro an der Bettlachstrasse 45 ist nur wenige Minuten entfernt. Wir kommen für das Erstgespräch, für Fotoaufnahmen oder Schulungen zu Ihnen, oder Sie besuchen uns im Büro.",
+            a: "Ja, gerne. Für Besprechungen kommen wir gerne bei Ihnen vorbei. Wir kommen für das Erstgespräch, für Fotoaufnahmen oder Schulungen zu Ihnen, oder Sie besuchen uns im Büro.",
           },
           {
             q: "Unsere Webseite enthält technische Produktkataloge. Können diese übernommen werden?",
@@ -61,7 +61,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign?",
-            a: "Jedes Redesign ist anders. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine individuelle, verbindliche Offerte, in der genau beschrieben ist, was enthalten ist.",
+            a: "Jedes Redesign ist anders. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine individuelle, klare Offerte, in der genau beschrieben ist, was enthalten ist.",
           },
         ],
       },
@@ -100,7 +100,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "De la Bettlachstrasse à la mise en ligne",
             paragraphs: [
-              "Comme notre bureau est à Granges, le premier entretien a souvent lieu là où vous travaillez: dans l'atelier, au magasin ou au cabinet. Nous voyons ainsi vos produits et votre quotidien de nos propres yeux, ce qui rend le nouveau site plus authentique. Les entreprises de Bettlach, Longeau ou Selzach sont elles aussi à quelques minutes. Pour les étapes intermédiaires, nous nous adaptons: rencontre, téléphone ou visioconférence, selon ce qui vous convient.",
+              "Comme notre bureau est à Granges, le premier entretien a souvent lieu là où vous travaillez: dans l'atelier, au magasin ou au cabinet. Nous voyons ainsi vos produits et votre quotidien de nos propres yeux, ce qui rend le nouveau site plus authentique. Pour les étapes intermédiaires, nous nous adaptons: rencontre, téléphone ou visioconférence, selon ce qui vous convient.",
               "Le déroulement est simple: analyse, concept, design, réalisation, tests sur tous les appareils courants, puis mise en ligne. Vous validez chaque étape importante et savez toujours où en est le projet. Après le lancement, nous restons à proximité: maintenance, mises à jour de sécurité et hébergement sur demande. Et s'il faut de nouvelles photos de produits ou une formation à la gestion du contenu, nous passons rapidement chez vous plutôt que de vous faire attendre.",
             ],
           },
@@ -108,7 +108,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Pouvons-nous discuter de la refonte directement dans notre entreprise à Granges?",
-            a: "Bien sûr. Notre bureau à la Bettlachstrasse 45 est à quelques minutes. Nous venons chez vous pour le premier entretien, des photos ou une formation, ou vous nous rendez visite.",
+            a: "Bien sûr. Pour les rendez-vous, nous passons volontiers chez vous. Nous venons chez vous pour le premier entretien, des photos ou une formation, ou vous nous rendez visite.",
           },
           {
             q: "Notre site contient des catalogues techniques en PDF. Seront-ils repris?",
@@ -120,7 +120,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet?",
-            a: "Chaque refonte est différente. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre individuelle et ferme, qui détaille précisément ce qui est inclus.",
+            a: "Chaque refonte est différente. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre individuelle et claire, qui détaille précisément ce qui est inclus.",
           },
         ],
       },
@@ -142,7 +142,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Website Redesign Biel: ein Relaunch, der in beiden Sprachen überzeugt",
         lead:
-          "Viele Bieler Webseiten sind auf Deutsch gepflegt und auf Französisch vernachlässigt. Von unserem Büro in Grenchen, rund 20 Minuten von Biel entfernt, bringen wir beim Redesign beide Sprachversionen auf denselben Stand.",
+          "Viele Bieler Webseiten sind auf Deutsch gepflegt und auf Französisch vernachlässigt. Von unserem Büro in Grenchen aus bringen wir beim Redesign beide Sprachversionen auf denselben Stand.",
         sections: [
           {
             h2: "Der Relaunch als Chance für echte Zweisprachigkeit",
@@ -167,7 +167,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit zwischen Grenchen und Biel",
             paragraphs: [
-              "Biel erreichen wir von Grenchen aus in rund 20 Minuten, mit dem Auto oder dem Zug. Den Workshop zu Beginn des Redesigns führen wir gerne bei Ihnen durch, ob in Madretsch, im Bözingenfeld, in der Innenstadt oder in Nidau und Brügg. Gemeinsam gehen wir Ihre bestehende Seite Punkt für Punkt durch und entscheiden, was bleibt. Die Besprechungen führen wir auf Deutsch oder Französisch, ganz wie es für Ihr Team einfacher ist.",
+              "Den Workshop zu Beginn des Redesigns führen wir gerne bei Ihnen in Biel durch, ob in der Innenstadt oder im Bözingenfeld. Gemeinsam gehen wir Ihre bestehende Seite Punkt für Punkt durch und entscheiden, was bleibt. Die Besprechungen führen wir auf Deutsch oder Französisch, ganz wie es für Ihr Team einfacher ist.",
               "Während der Umsetzung sehen Sie die neue Webseite in einer Testumgebung, in beiden Sprachen nebeneinander. So lassen sich Texte und Darstellung direkt vergleichen, bevor etwas live geht. Nach dem Launch kontrollieren wir die Sichtbarkeit beider Sprachversionen bei Google und korrigieren, wo nötig. Wenn Sie später neue Angebote oder Stellen veröffentlichen, unterstützen wir Sie dabei, dass diese wieder gleichzeitig auf Deutsch und Französisch erscheinen.",
             ],
           },
@@ -187,7 +187,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein zweisprachiges Website-Redesign in Biel?",
-            a: "Der Aufwand hängt vom Umfang beider Sprachversionen und vom Zustand der heutigen Inhalte ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, verbindliche Offerte.",
+            a: "Der Aufwand hängt vom Umfang beider Sprachversionen und vom Zustand der heutigen Inhalte ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
           },
         ],
       },
@@ -201,7 +201,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Refonte de site internet à Bienne: enfin un site vraiment bilingue",
         lead:
-          "À Bienne, bien des sites soignent l'allemand et oublient un peu le français. Depuis notre bureau de Granges, à une vingtaine de minutes, nous profitons de la refonte pour remettre les deux langues sur un pied d'égalité.",
+          "À Bienne, bien des sites soignent l'allemand et oublient un peu le français. Depuis notre bureau de Granges, nous profitons de la refonte pour remettre les deux langues sur un pied d'égalité.",
         sections: [
           {
             h2: "Une refonte, l'occasion de soigner les deux langues",
@@ -226,7 +226,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Travailler ensemble entre Granges et Bienne",
             paragraphs: [
-              "Bienne est à une vingtaine de minutes de notre bureau de Granges, en voiture comme en train. L'atelier de lancement de la refonte peut se tenir chez vous, à Madretsch, aux Champs-de-Boujean, au centre-ville ou à Nidau. Ensemble, nous passons votre site actuel en revue, page après page, et décidons de ce qui reste. Les échanges se font en français ou en allemand, selon ce qui est le plus simple pour votre équipe.",
+              "L'atelier de lancement de la refonte peut se tenir chez vous à Bienne, au centre-ville ou aux Champs-de-Boujean. Ensemble, nous passons votre site actuel en revue, page après page, et décidons de ce qui reste. Les échanges se font en français ou en allemand, selon ce qui est le plus simple pour votre équipe.",
               "Pendant la réalisation, vous consultez le nouveau site dans un environnement de test, avec les deux langues côte à côte. Vous comparez ainsi les textes et l'affichage avant toute mise en ligne. Après le lancement, nous suivons la visibilité de chaque version sur Google et corrigeons ce qui doit l'être. Et quand vous publierez plus tard une nouvelle offre ou un poste, nous vous aidons à le faire paraître en même temps en français et en allemand.",
             ],
           },
@@ -246,7 +246,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte bilingue à Bienne?",
-            a: "Tout dépend de l'ampleur des deux versions et de l'état des contenus actuels. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme.",
+            a: "Tout dépend de l'ampleur des deux versions et de l'état des contenus actuels. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
       },
@@ -268,7 +268,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Website Redesign Solothurn: ein frischer Auftritt mit Charakter",
         lead:
-          "Ihre Webseite wird der Atmosphäre Ihres Betriebs in Solothurn nicht mehr gerecht? Wir arbeiten in Grenchen, rund 20 Minuten entfernt im selben Kanton, und modernisieren Webseiten mit viel Gespür für die Stadt.",
+          "Ihre Webseite wird der Atmosphäre Ihres Betriebs in Solothurn nicht mehr gerecht? Wir arbeiten in Grenchen, im selben Kanton, und modernisieren Webseiten mit viel Gespür für die Stadt.",
         sections: [
           {
             h2: "Warum ein Redesign in Solothurn oft mehr ist als Kosmetik",
@@ -294,7 +294,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Ihr Redesign in Solothurn: persönlich begleitet",
             paragraphs: [
-              "Ein Redesign beginnt bei uns mit einem Rundgang, und zwar nicht nur durch die Webseite. Wir besuchen Sie in Ihrem Geschäft in der Altstadt, in Ihrem Büro in der Weststadt oder in Ihrem Betrieb in Zuchwil, Bellach oder Langendorf. Dabei sehen wir, was Ihr Unternehmen ausmacht, und können Fotos und Inhalte gezielt planen. Von Grenchen aus sind wir in rund 20 Minuten bei Ihnen, Zwischenbesprechungen gehen auch per Video.",
+              "Ein Redesign beginnt bei uns mit einem Rundgang, und zwar nicht nur durch die Webseite. Wir besuchen Sie in Ihrem Geschäft in der Altstadt, in Ihrem Büro in der Weststadt oder in Ihrem Betrieb in der Umgebung. Dabei sehen wir, was Ihr Unternehmen ausmacht, und können Fotos und Inhalte gezielt planen. Für Besprechungen kommen wir gerne zu Ihnen, Zwischenbesprechungen gehen auch per Video.",
               "Danach arbeiten wir in klaren Etappen: Analyse, Konzept, Design, Umsetzung und Tests. Ihre bisherige Webseite bleibt bis zum Launch unverändert online. Nach dem Relaunch kontrollieren wir die Sichtbarkeit bei Google und bleiben Ihre Ansprechperson für Wartung, Updates und neue Inhalte. Gerade saisonale Betriebe schätzen es, wenn Sommerkarte, Weihnachtsangebote oder neue Veranstaltungen ohne langen Vorlauf auf der Webseite erscheinen, sei es durch uns oder durch Sie selbst.",
             ],
           },
@@ -302,7 +302,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Besuchen Sie uns für das Redesign in Solothurn vor Ort?",
-            a: "Ja. Solothurn liegt rund 20 Minuten von unserem Büro in Grenchen entfernt. Für die Analyse, den Konzept-Workshop oder Fotoaufnahmen kommen wir gerne zu Ihnen.",
+            a: "Ja. Für die Analyse, den Konzept-Workshop oder Fotoaufnahmen kommen wir gerne zu Ihnen.",
           },
           {
             q: "Können wir die Menükarte nach dem Relaunch selbst ändern?",
@@ -314,7 +314,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Redesign für einen Betrieb in Solothurn?",
-            a: "Das hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, verbindliche Offerte.",
+            a: "Das hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
           },
         ],
       },
@@ -328,7 +328,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Refonte de site internet à Soleure: une nouvelle image en ligne, fidèle à votre maison",
         lead:
-          "Votre site ne rend plus justice à l'ambiance de votre établissement soleurois? Basés à Granges, dans le même canton et à une vingtaine de minutes, nous modernisons votre site avec une vraie connaissance de la ville.",
+          "Votre site ne rend plus justice à l'ambiance de votre établissement soleurois? Basés à Granges, dans le même canton, nous modernisons votre site avec une vraie connaissance de la ville.",
         sections: [
           {
             h2: "À Soleure, une refonte va souvent au-delà de l'esthétique",
@@ -354,7 +354,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Votre refonte à Soleure, suivie de près",
             paragraphs: [
-              "Chez nous, une refonte commence par une visite, et pas seulement de votre site. Nous venons dans votre commerce de la vieille ville, dans vos bureaux de l'ouest de la ville ou dans votre entreprise à Zuchwil, Bellach ou Langendorf. Nous voyons ainsi ce qui fait votre singularité et pouvons planifier photos et contenus de manière ciblée. Depuis Granges, il nous faut une vingtaine de minutes pour venir, et les points intermédiaires peuvent aussi se faire en visioconférence.",
+              "Chez nous, une refonte commence par une visite, et pas seulement de votre site. Nous venons dans votre commerce de la vieille ville, dans vos bureaux de l'ouest de la ville ou dans votre entreprise des environs. Nous voyons ainsi ce qui fait votre singularité et pouvons planifier photos et contenus de manière ciblée. Nous venons volontiers chez vous, et les points intermédiaires peuvent aussi se faire en visioconférence.",
               "Ensuite, nous avançons par étapes claires: analyse, concept, design, réalisation et tests. Votre site actuel reste en ligne sans changement jusqu'au lancement. Après la mise en ligne, nous contrôlons la visibilité sur Google et restons votre interlocuteur pour la maintenance, les mises à jour et les nouveaux contenus. Les établissements saisonniers apprécient de pouvoir publier rapidement la carte d'été, les offres de fin d'année ou un nouvel événement, par nos soins ou par eux-mêmes.",
             ],
           },
@@ -362,7 +362,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Venez-vous à Soleure pour préparer la refonte?",
-            a: "Oui. Soleure est à une vingtaine de minutes de notre bureau de Granges. Pour l'analyse, l'atelier de concept ou les photos, nous nous déplaçons volontiers chez vous.",
+            a: "Oui. Pour l'analyse, l'atelier de concept ou les photos, nous nous déplaçons volontiers chez vous.",
           },
           {
             q: "Pourrons-nous modifier nous-mêmes notre carte après la refonte?",
@@ -374,7 +374,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte pour une entreprise soleuroise?",
-            a: "Cela dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre individuelle et ferme.",
+            a: "Cela dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
       },
@@ -396,7 +396,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Website Redesign Bern: gewachsene Webseiten klar neu ordnen",
         lead:
-          "Über Jahre gewachsene Webseiten mit unzähligen Unterseiten sind in Bern keine Seltenheit. Von Grenchen aus, rund 35 Minuten entfernt, helfen wir Berner KMU und Organisationen, ihren Auftritt beim Redesign zu entrümpeln und neu aufzustellen.",
+          "Über Jahre gewachsene Webseiten mit unzähligen Unterseiten sind in Bern keine Seltenheit. Von Grenchen aus helfen wir Berner KMU und Organisationen, ihren Auftritt beim Redesign zu entrümpeln und neu aufzustellen.",
         sections: [
           {
             h2: "Warum Berner Webseiten beim Redesign oft schlanker werden",
@@ -422,7 +422,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "So begleiten wir Ihr Redesign in Bern",
             paragraphs: [
-              "Über die A5 und die A1 sind wir in rund 35 Minuten in Bern. Den Kick-off-Workshop, in dem wir gemeinsam mit Ihrem Team die neue Struktur festlegen, führen wir gerne bei Ihnen durch, ob in der Länggasse, im Breitenrain, in Bümpliz oder in Köniz und Ostermundigen. Zwischenschritte besprechen wir meist per Videocall. So bleibt der Aufwand für alle Beteiligten klein, und Sie haben trotzdem eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
+              "Den Kick-off-Workshop, in dem wir gemeinsam mit Ihrem Team die neue Struktur festlegen, führen wir gerne bei Ihnen durch, ob in der Stadt Bern oder in der Agglomeration. Zwischenschritte besprechen wir meist per Videocall. So bleibt der Aufwand für alle Beteiligten klein, und Sie haben trotzdem eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
               "Bei Organisationen mit mehreren Entscheidungsträgern planen wir Freigaben bewusst ein: Konzept, Design und Inhalte werden je einzeln abgenommen, damit am Ende niemand überrascht wird. Ihre bestehende Seite bleibt bis zum Launch online. Danach überwachen wir Rankings und Weiterleitungen und schulen Ihre Mitarbeitenden im Content-Management, damit die Webseite nicht wieder unkontrolliert wächst. Auf Wunsch übernehmen wir anschliessend auch Wartung, Hosting und Sicherheitsupdates.",
             ],
           },
@@ -430,7 +430,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Lohnt sich eine Agentur aus Grenchen für ein Redesign in Bern?",
-            a: "Wir sind in rund 35 Minuten in Bern, kommen für Workshops vor Ort und erledigen den Rest effizient per Videocall. Sie arbeiten direkt mit den Personen, die Ihr Redesign umsetzen.",
+            a: "Wir kommen für Workshops nach Bern und erledigen den Rest effizient per Videocall. Sie arbeiten direkt mit den Personen, die Ihr Redesign umsetzen.",
           },
           {
             q: "Unsere Webseite hat sehr viele Unterseiten. Wie gehen Sie damit um?",
@@ -442,7 +442,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign in Bern?",
-            a: "Der Aufwand hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, verbindliche Offerte.",
+            a: "Der Aufwand hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
           },
         ],
       },
@@ -456,7 +456,7 @@ export const redesignLocal: LocalService[] = [
         },
         h1: "Refonte de site internet à Berne: remettre de l'ordre dans un site qui a trop grandi",
         lead:
-          "À Berne, de nombreux sites ont accumulé pages et documents au fil des ans. Depuis Granges, à environ 35 minutes, nous aidons PME et organisations bernoises à alléger et à repenser leur présence en ligne.",
+          "À Berne, de nombreux sites ont accumulé pages et documents au fil des ans. Depuis Granges, nous aidons PME et organisations bernoises à alléger et à repenser leur présence en ligne.",
         sections: [
           {
             h2: "Pourquoi une refonte à Berne passe souvent par un grand tri",
@@ -482,7 +482,7 @@ export const redesignLocal: LocalService[] = [
           {
             h2: "Comment nous accompagnons votre refonte à Berne",
             paragraphs: [
-              "Par l'A5 et l'A1, nous rejoignons Berne en 35 minutes environ. L'atelier de lancement, où nous définissons la nouvelle structure avec votre équipe, peut se tenir dans vos locaux, que vous soyez à la Länggasse, au Breitenrain, à Bümpliz, à Köniz ou à Ostermundigen. Les étapes suivantes se règlent le plus souvent en visioconférence. Chacun économise ainsi du temps, et vous gardez une personne de contact fixe qui réalise elle-même votre projet.",
+              "L'atelier de lancement, où nous définissons la nouvelle structure avec votre équipe, peut se tenir dans vos locaux, en ville de Berne comme dans l'agglomération. Les étapes suivantes se règlent le plus souvent en visioconférence. Chacun économise ainsi du temps, et vous gardez une personne de contact fixe qui réalise elle-même votre projet.",
               "Dans les organisations où plusieurs personnes décident, nous prévoyons des validations par étape: concept, design et contenus sont approuvés séparément, pour éviter les mauvaises surprises à la fin. Votre site actuel reste en ligne jusqu'au lancement. Ensuite, nous surveillons positionnement et redirections, et formons vos collaborateurs à la gestion du contenu pour que le site ne se remette pas à grossir sans contrôle. Maintenance, hébergement et mises à jour de sécurité sont possibles sur demande.",
             ],
           },
@@ -490,7 +490,7 @@ export const redesignLocal: LocalService[] = [
         faq: [
           {
             q: "Pourquoi confier la refonte d'un site bernois à une agence de Granges?",
-            a: "Nous sommes à Berne en 35 minutes environ, venons sur place pour les ateliers et réglons le reste efficacement en visioconférence. Vous travaillez directement avec les personnes qui réalisent votre refonte.",
+            a: "Nous venons à Berne pour les ateliers et réglons le reste efficacement en visioconférence. Vous travaillez directement avec les personnes qui réalisent votre refonte.",
           },
           {
             q: "Notre site compte énormément de pages. Comment procédez-vous?",
@@ -502,7 +502,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet à Berne?",
-            a: "Cela dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme.",
+            a: "Cela dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
       },

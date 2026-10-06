@@ -42,15 +42,15 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit in Grenchen: kurze Wege vom Konzept bis zum Launch",
             paragraphs: [
-              "Wir starten mit einer kostenlosen Erstberatung bei Ihnen oder bei uns an der Bettlachstrasse. Dabei schauen wir uns Sortiment, Abläufe und vorhandene Produktdaten an, etwa Excel-Listen oder Exporte aus Ihrer Warenwirtschaft. Danach erhalten Sie eine verbindliche Offerte und einen Zeitplan. Produktfotos können wir direkt bei Ihnen machen, ob in der Werkstatt in der Industriezone oder im Verkaufsraum in Lengnau oder Pieterlen.",
-              "Vor dem Launch testen wir Bestellungen, Zahlungen und E-Mails gemeinsam mit Ihnen. Danach schulen wir Ihr Team vor Ort, damit Produkte, Bestände und Aktionen selbst gepflegt werden können. Auch nach dem Start sind wir in wenigen Minuten bei Ihnen, wenn eine neue Zahlungsart, ein Gutscheinsystem oder eine Anbindung dazukommen soll. Wartung und Updates übernehmen wir auf Wunsch laufend, damit Ihr Shop sicher bleibt.",
+              "Wir starten mit einer kostenlosen Erstberatung bei Ihnen oder bei uns an der Bettlachstrasse. Dabei schauen wir uns Sortiment, Abläufe und vorhandene Produktdaten an, etwa Excel-Listen oder Exporte aus Ihrer Warenwirtschaft. Danach erhalten Sie eine klare Offerte und einen Zeitplan. Produktfotos können wir direkt bei Ihnen machen, ob in der Werkstatt in der Industriezone oder im Verkaufsraum in Lengnau oder Pieterlen.",
+              "Vor dem Launch testen wir Bestellungen, Zahlungen und E-Mails gemeinsam mit Ihnen. Danach schulen wir Ihr Team vor Ort, damit Produkte, Bestände und Aktionen selbst gepflegt werden können. Auch nach dem Start sind wir persönlich für Sie da, wenn eine neue Zahlungsart, ein Gutscheinsystem oder eine Anbindung dazukommen soll. Wartung und Updates übernehmen wir auf Wunsch laufend, damit Ihr Shop sicher bleibt.",
             ],
           },
         ],
         faq: [
           {
             q: "Kommen Sie für die Planung des Onlineshops in unseren Betrieb in Grenchen?",
-            a: "Ja, gerne. Unser Büro liegt in Grenchen, wir sind meist in wenigen Minuten bei Ihnen. Vor Ort sehen wir Ihre Produkte und Abläufe und können auch gleich Fotos planen.",
+            a: "Ja, gerne. Unser Büro liegt in Grenchen, für Besprechungen kommen wir gerne zu Ihnen. Vor Ort sehen wir Ihre Produkte und Abläufe und können auch gleich Fotos planen.",
           },
           {
             q: "Eignet sich ein Onlineshop auch für Geschäftskunden aus der Industrie?",
@@ -62,7 +62,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Onlineshop?",
-            a: "Das hängt von Sortiment, Funktionen und Anbindungen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, verbindliche Offerte.",
+            a: "Das hängt von Sortiment, Funktionen und Anbindungen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
           },
         ],
       },
@@ -76,7 +76,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Granges : vendez directement à vos clients",
         lead:
-          "Pièces de précision, pièces de rechange ou articles de votre magasin : nous créons votre e-shop au cœur de Granges, où se trouve notre bureau. Nous venons volontiers vous rencontrer dans votre entreprise, à quelques minutes de la Bettlachstrasse.",
+          "Pièces de précision, pièces de rechange ou articles de votre magasin : nous créons votre e-shop au cœur de Granges, où se trouve notre bureau. Nous venons volontiers vous rencontrer dans votre entreprise.",
         sections: [
           {
             h2: "Pourquoi une boutique en ligne a du sens à Granges",
@@ -102,15 +102,15 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Travailler ensemble à Granges, du concept à la mise en ligne",
             paragraphs: [
-              "Tout commence par un premier conseil gratuit, chez vous ou dans notre bureau de la Bettlachstrasse. Nous examinons votre assortiment, vos processus et les données produits existantes, par exemple des listes Excel ou des exports de votre gestion de stock. Vous recevez ensuite une offre ferme et un calendrier. Les photos de produits peuvent être prises sur place, dans votre atelier ou votre point de vente à Lengnau ou Granges.",
-              "Avant la mise en ligne, nous testons avec vous commandes, paiements et e-mails de confirmation. Nous formons ensuite votre équipe sur place pour qu'elle gère produits, stocks et promotions en autonomie. Après le lancement, nous restons à quelques minutes de chez vous si vous souhaitez ajouter un moyen de paiement, des bons cadeaux ou une nouvelle interface. Maintenance et mises à jour sont possibles sur demande.",
+              "Tout commence par un premier conseil gratuit, chez vous ou dans notre bureau de la Bettlachstrasse. Nous examinons votre assortiment, vos processus et les données produits existantes, par exemple des listes Excel ou des exports de votre gestion de stock. Vous recevez ensuite une offre claire et un calendrier. Les photos de produits peuvent être prises sur place, dans votre atelier ou votre point de vente à Lengnau ou Granges.",
+              "Avant la mise en ligne, nous testons avec vous commandes, paiements et e-mails de confirmation. Nous formons ensuite votre équipe sur place pour qu'elle gère produits, stocks et promotions en autonomie. Après le lancement, nous restons à vos côtés si vous souhaitez ajouter un moyen de paiement, des bons cadeaux ou une nouvelle interface. Maintenance et mises à jour sont possibles sur demande.",
             ],
           },
         ],
         faq: [
           {
             q: "Pouvez-vous venir dans notre entreprise à Granges pour planifier la boutique ?",
-            a: "Oui, avec plaisir. Notre bureau est à Granges, nous sommes généralement chez vous en quelques minutes. Sur place, nous voyons vos produits et vos processus, et nous pouvons déjà prévoir les photos.",
+            a: "Oui, avec plaisir. Notre bureau est à Granges, et nous venons volontiers chez vous pour les rendez-vous. Sur place, nous voyons vos produits et vos processus, et nous pouvons déjà prévoir les photos.",
           },
           {
             q: "La boutique peut-elle être en allemand et en français ?",
@@ -118,11 +118,11 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Une boutique en ligne convient-elle aussi aux clients industriels ?",
-            a: "Oui. Nous pouvons prévoir un espace protégé pour vos clients professionnels, avec leurs conditions, la commande sur facture et la recommande rapide. Nous définissons ensemble les fonctions utiles lors du premier entretien.",
+            a: "Oui. Nous pouvons prévoir un espace protégé pour vos clients professionnels, avec leurs conditions, la commande sur facture et la commande répétée en un clic. Nous définissons ensemble les fonctions utiles lors du premier entretien.",
           },
           {
             q: "Combien coûte une boutique en ligne ?",
-            a: "Cela dépend de l'assortiment, des fonctions et des interfaces. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme.",
+            a: "Cela dépend de l'assortiment, des fonctions et des interfaces. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
       },
@@ -144,7 +144,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Onlineshop erstellen in Biel: ein Webshop, der in beiden Sprachen verkauft",
         lead:
-          "In Biel kauft ein Teil Ihrer Kundschaft lieber auf Französisch ein, ein anderer auf Deutsch. Von unserem Büro in Grenchen sind wir in rund 20 Minuten bei Ihnen und bauen einen Shop, der beide Seiten gleich gut bedient.",
+          "In Biel kauft ein Teil Ihrer Kundschaft lieber auf Französisch ein, ein anderer auf Deutsch. Für Besprechungen kommen wir gerne zu Ihnen und bauen einen Shop, der beide Seiten gleich gut bedient.",
         sections: [
           {
             h2: "Biel kauft zweisprachig ein",
@@ -169,7 +169,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "So begleiten wir Ihr Shop-Projekt in Biel",
             paragraphs: [
-              "Wir treffen Sie für das Erstgespräch in Biel, ob im Geschäft in der Altstadt, im Büro im Bözingenfeld oder bei einem Produzenten in Nidau oder Twann. Dort klären wir Sortiment, Zielgruppen und die Frage, wer die französischen und deutschen Texte liefert oder ob wir sie mit Ihnen erarbeiten. Danach erhalten Sie eine verbindliche Offerte mit Zeitplan, in der auch die Arbeit an beiden Sprachversionen klar beschrieben ist.",
+              "Wir treffen Sie für das Erstgespräch in Biel, ob im Geschäft in der Altstadt oder bei einem Produzenten am See. Dort klären wir Sortiment, Zielgruppen und die Frage, wer die französischen und deutschen Texte liefert oder ob wir sie mit Ihnen erarbeiten. Danach erhalten Sie eine klare Offerte mit Zeitplan, in der auch die Arbeit an beiden Sprachversionen klar beschrieben ist.",
               "Während der Umsetzung sehen Sie den Shop früh auf einer Testumgebung und prüfen beide Sprachversionen. Kurz vor dem Start testen wir Bestellungen in beiden Sprachen und mit allen Zahlungsarten, inklusive TWINT. Nach dem Launch bleiben wir Ihre Ansprechperson für Wartung, saisonale Aktionen und Kampagnen auf Google oder Social Media, auf Wunsch zweisprachig und auf beide Zielgruppen abgestimmt. Neue Produkte erfassen Sie jederzeit selbst.",
             ],
           },
@@ -189,7 +189,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Wie lange dauert ein Onlineshop für einen Bieler Betrieb?",
-            a: "Das hängt vor allem vom Sortiment und davon ab, wie schnell Texte und Bilder in beiden Sprachen vorliegen. Einen realistischen Zeitplan erhalten Sie zusammen mit der individuellen, verbindlichen Offerte nach dem kostenlosen Erstgespräch.",
+            a: "Das hängt vor allem vom Sortiment und davon ab, wie schnell Texte und Bilder in beiden Sprachen vorliegen. Einen realistischen Zeitplan erhalten Sie zusammen mit der individuellen, klaren Offerte nach dem kostenlosen Erstgespräch.",
           },
         ],
       },
@@ -203,13 +203,13 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Bienne : un e-shop qui vend dans les deux langues",
         lead:
-          "À Bienne, une partie de vos clients achète en français, l'autre en allemand, et tous attendent la même qualité. Notre bureau de Granges se trouve à une vingtaine de minutes : nous créons pour vous une boutique qui parle naturellement aux deux publics.",
+          "À Bienne, une partie de vos clients achète en français, l'autre en allemand, et tous attendent la même qualité. Depuis notre bureau de Granges, nous créons pour vous une boutique qui parle naturellement aux deux publics.",
         sections: [
           {
             h2: "À Bienne, on achète dans sa langue",
             paragraphs: [
               "Dans un magasin du centre de Bienne, personne ne s'étonne d'être servi en français ou en allemand. En ligne, c'est souvent moins réussi : fiches produits dans une seule langue, confirmation de commande en allemand, conditions générales absentes en français. Pour un client francophone, c'est une raison suffisante d'abandonner son panier. Une boutique biennoise doit donc fonctionner dans les deux langues, du catalogue jusqu'à l'e-mail d'expédition.",
-              "Bienne est aussi bien plus qu'un marché local. Métropole horlogère et terre d'entreprises du design et de la technologie, la ville abrite des marques qui vendent dans toute la Suisse et à l'étranger. S'y ajoutent les producteurs du Seeland et des rives du lac de Bienne : vins, légumes, spécialités que les visiteurs aiment recommander après leur passage. Pour eux, une boutique propre est un canal de vente direct.",
+              "Bienne est aussi bien plus qu'un marché local. Métropole horlogère et terre d'entreprises du design et de la technologie, la ville abrite des marques qui vendent dans toute la Suisse et à l'étranger. S'y ajoutent les producteurs du Seeland et des rives du lac de Bienne : vins, légumes, spécialités que les visiteurs aiment commander à nouveau après leur passage. Pour eux, leur propre boutique est un canal de vente direct.",
             ],
           },
           {
@@ -228,7 +228,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Comment nous menons votre projet à Bienne",
             paragraphs: [
-              "Nous vous rencontrons à Bienne pour le premier entretien, que vous soyez dans la vieille ville, aux Champs-de-Boujean ou chez un producteur à Nidau ou Douanne. Nous parlons de votre assortiment, de vos clients et de la rédaction des textes dans les deux langues : les fournissez-vous ou les élaborons-nous ensemble ? Vous recevez ensuite une offre ferme et un calendrier clair.",
+              "Nous vous rencontrons à Bienne pour le premier entretien, que vous soyez dans la vieille ville ou chez un producteur au bord du lac. Nous parlons de votre assortiment, de vos clients et de la rédaction des textes dans les deux langues : les fournissez-vous ou les élaborons-nous ensemble ? Vous recevez ensuite une offre claire et un calendrier clair.",
               "Pendant la réalisation, vous découvrez rapidement la boutique sur un environnement de test et vérifiez chaque version linguistique. Avant le lancement, nous passons des commandes tests en français et en allemand, avec tous les moyens de paiement, TWINT compris. Ensuite, nous restons votre interlocuteur pour la maintenance, les promotions saisonnières et les campagnes Google ou réseaux sociaux, adaptées à chaque public.",
             ],
           },
@@ -248,7 +248,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Quel budget prévoir pour une boutique en ligne ?",
-            a: "Nous ne travaillons pas avec des forfaits standard. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme, adaptée à votre assortiment et aux deux langues.",
+            a: "Nous ne travaillons pas avec des forfaits standard. Après un premier entretien gratuit, vous recevez une offre individuelle et claire, adaptée à votre assortiment et aux deux langues.",
           },
         ],
       },
@@ -270,7 +270,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Onlineshop erstellen in Solothurn: die Altstadt-Boutique, auch nach Ladenschluss",
         lead:
-          "Viele Gäste entdecken Ihr Geschäft bei einem Spaziergang durch die Solothurner Altstadt und möchten später nachbestellen. Wir bauen Ihnen den passenden Onlineshop, von unserem Büro in Grenchen aus, rund 20 Minuten entfernt.",
+          "Viele Gäste entdecken Ihr Geschäft bei einem Spaziergang durch die Solothurner Altstadt und möchten später nachbestellen. Wir bauen Ihnen den passenden Onlineshop, von unserem Büro in Grenchen aus.",
         sections: [
           {
             h2: "Warum Solothurner Geschäfte online verkaufen sollten",
@@ -295,7 +295,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Ihr Shop-Projekt in Solothurn: persönlich und Schritt für Schritt",
             paragraphs: [
-              "Im kostenlosen Erstgespräch kommen wir zu Ihnen in die Altstadt oder treffen Sie in Zuchwil, Bellach, Langendorf oder Biberist. Wir sehen uns Ihr Sortiment an, besprechen Abholung, Versand und Zahlungsarten und klären, welche Produkte zum Start online gehen. Anschliessend erhalten Sie eine verbindliche Offerte. Viele Shops starten bewusst mit einer Auswahl der beliebtesten Produkte und wachsen danach Schritt für Schritt, wenn sich zeigt, was online gut ankommt.",
+              "Im kostenlosen Erstgespräch kommen wir zu Ihnen in die Altstadt oder treffen Sie in Ihrem Betrieb in der Umgebung. Wir sehen uns Ihr Sortiment an, besprechen Abholung, Versand und Zahlungsarten und klären, welche Produkte zum Start online gehen. Anschliessend erhalten Sie eine klare Offerte. Viele Shops starten bewusst mit einer Auswahl der beliebtesten Produkte und wachsen danach Schritt für Schritt, wenn sich zeigt, was online gut ankommt.",
               "Für die Produktfotos kommen wir auf Wunsch in Ihr Geschäft, denn echte Bilder aus Ihrem Laden wirken glaubwürdiger als Katalogfotos. Nach den Tests und einer Schulung geht der Shop live. Vor Weihnachten, zu Ostern oder rund um grosse Anlässe in der Stadt unterstützen wir Sie mit Aktionen, Gutscheincodes und Kampagnen. Wartung und Sicherheitsupdates übernehmen wir auf Wunsch laufend, damit Sie sich auf Ihr Geschäft konzentrieren können.",
             ],
           },
@@ -315,7 +315,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Mit welchen Kosten muss ich für einen Webshop rechnen?",
-            a: "Das hängt von Sortiment und Funktionen ab, etwa Gutscheine, Kassenanbindung oder Versand. Sie erhalten nach dem kostenlosen Erstgespräch eine individuelle, verbindliche Offerte.",
+            a: "Das hängt von Sortiment und Funktionen ab, etwa Gutscheine, Kassenanbindung oder Versand. Sie erhalten nach dem kostenlosen Erstgespräch eine individuelle, klare Offerte.",
           },
         ],
       },
@@ -329,7 +329,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Soleure : votre commerce ouvert même le dimanche",
         lead:
-          "Nombre de visiteurs découvrent votre magasin en flânant dans la vieille ville de Soleure, puis aimeraient recommander une fois rentrés. Nous créons la boutique en ligne qui leur permet de le faire, depuis notre bureau de Granges, à une vingtaine de minutes.",
+          "Nombre de visiteurs découvrent votre magasin en flânant dans la vieille ville de Soleure, puis aimeraient commander à nouveau une fois rentrés. Nous créons la boutique en ligne qui leur permet de le faire, depuis notre bureau de Granges.",
         sections: [
           {
             h2: "Pourquoi les commerces soleurois ont intérêt à vendre en ligne",
@@ -354,7 +354,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Votre projet à Soleure, étape par étape",
             paragraphs: [
-              "Pour le premier conseil gratuit, nous venons vous voir dans la vieille ville ou vous rencontrons à Zuchwil, Bellach ou Langendorf. Nous regardons votre assortiment, discutons du retrait, de la livraison et des moyens de paiement, et choisissons les produits à mettre en ligne au départ. Vous recevez ensuite une offre ferme. Beaucoup de commerces commencent volontairement par une sélection, puis élargissent.",
+              "Pour le premier conseil gratuit, nous venons vous voir dans la vieille ville ou vous rencontrons dans votre entreprise des environs. Nous regardons votre assortiment, discutons du retrait, de la livraison et des moyens de paiement, et choisissons les produits à mettre en ligne au départ. Vous recevez ensuite une offre claire. Beaucoup de commerces commencent volontairement par une sélection, puis élargissent.",
               "Sur demande, nous réalisons les photos de produits dans votre magasin, car des images authentiques inspirent davantage confiance que des visuels de catalogue. Après les tests et une formation, la boutique est mise en ligne. Avant Noël, à Pâques ou lors des grands événements soleurois, nous vous aidons avec des actions, des codes promo et des campagnes. Maintenance et mises à jour peuvent être assurées en continu.",
             ],
           },
@@ -374,7 +374,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Combien coûte la création d'une boutique en ligne ?",
-            a: "Le prix dépend de l'assortiment et des fonctions, comme les bons cadeaux, la liaison avec la caisse ou la livraison. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme.",
+            a: "Le prix dépend de l'assortiment et des fonctions, comme les bons cadeaux, la liaison avec la caisse ou la livraison. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
       },
@@ -396,7 +396,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Onlineshop erstellen in Bern: mit klarem Profil im grossen Wettbewerb",
         lead:
-          "In Bern kämpfen viele Shops um dieselbe Kundschaft, deshalb braucht Ihr Webshop ein klares Profil. Webnova arbeitet von Grenchen aus, rund 35 Minuten von Bern, und begleitet Sie persönlich von der Idee bis zur ersten Bestellung.",
+          "In Bern kämpfen viele Shops um dieselbe Kundschaft, deshalb braucht Ihr Webshop ein klares Profil. Webnova arbeitet von Grenchen aus und begleitet Sie persönlich von der Idee bis zur ersten Bestellung.",
         sections: [
           {
             h2: "Onlinehandel in Bern: Nischen schlagen Masse",
@@ -422,7 +422,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit mit Webnova in Bern",
             paragraphs: [
-              "Für das kostenlose Erstgespräch kommen wir nach Bern, ob in Ihr Geschäft in der Altstadt, Ihr Büro in Bümpliz oder Ihren Betrieb in Köniz, Ostermundigen oder Muri. Wir analysieren Ihr Sortiment, Ihre Mitbewerber online und Ihre heutigen Abläufe. Danach erhalten Sie eine verbindliche Offerte. Zwischentermine führen wir effizient per Videocall, wichtige Meilensteine wie Designfreigabe und Launch besprechen wir gerne bei Ihnen vor Ort.",
+              "Für das kostenlose Erstgespräch kommen wir nach Bern, ob in Ihr Geschäft in der Altstadt oder in Ihren Betrieb in der Agglomeration. Wir analysieren Ihr Sortiment, Ihre Mitbewerber online und Ihre heutigen Abläufe. Danach erhalten Sie eine klare Offerte. Zwischentermine führen wir effizient per Videocall, wichtige Meilensteine wie Designfreigabe und Launch besprechen wir gerne bei Ihnen vor Ort.",
               "Wenn Sie bereits einen Shop oder einen Marktplatz-Auftritt haben, prüfen wir, welche Produkte, Kundendaten und Bestellungen sich übernehmen lassen, und sichern bestehende Google-Rankings mit sauberen Weiterleitungen ab. Nach dem Launch begleiten wir Sie mit Wartung, Suchmaschinenoptimierung und Kampagnen auf Google oder Meta. Sie haben dabei immer dieselbe Ansprechperson, die Ihren Shop, Ihr Sortiment und Ihre Ziele kennt und auch kurzfristig erreichbar ist.",
             ],
           },
@@ -434,7 +434,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Kommen Sie für Besprechungen zu uns nach Bern?",
-            a: "Ja. Bern liegt rund 35 Minuten von unserem Büro in Grenchen. Für Erstgespräch, Workshops und Fotos kommen wir zu Ihnen, Zwischenabsprachen erledigen wir per Videocall.",
+            a: "Ja. Für Erstgespräch, Workshops und Fotos kommen wir zu Ihnen, Zwischenabsprachen erledigen wir per Videocall.",
           },
           {
             q: "Können Sie unseren bestehenden Shop übernehmen und modernisieren?",
@@ -442,7 +442,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Wie wird der Preis für einen Berner Webshop festgelegt?",
-            a: "Wir arbeiten nicht mit Pauschalpaketen. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, verbindliche Offerte, die genau beschreibt, was enthalten ist.",
+            a: "Wir arbeiten nicht mit Pauschalpaketen. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte, die genau beschreibt, was enthalten ist.",
           },
         ],
       },
@@ -456,7 +456,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Berne : se démarquer dans la ville fédérale",
         lead:
-          "Sur le marché bernois, une boutique en ligne doit avoir un profil net pour se faire remarquer. Webnova travaille depuis Granges, à environ 35 minutes de Berne, et vous accompagne personnellement jusqu'à la première commande.",
+          "Sur le marché bernois, une boutique en ligne doit avoir un profil net pour se faire remarquer. Webnova travaille depuis Granges et vous accompagne personnellement jusqu'à la première commande.",
         sections: [
           {
             h2: "Vendre en ligne à Berne : la spécialisation fait la différence",
@@ -481,7 +481,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Travailler avec Webnova à Berne",
             paragraphs: [
-              "Pour le premier conseil gratuit, nous venons à Berne : dans votre magasin de la vieille ville, vos bureaux du Breitenrain ou votre entreprise à Köniz ou Ostermundigen. Nous étudions votre assortiment, vos concurrents en ligne et vos processus actuels, puis vous remettons une offre ferme. Les points intermédiaires se règlent en visioconférence, et les étapes importantes se discutent volontiers sur place.",
+              "Pour le premier conseil gratuit, nous venons à Berne : dans votre magasin de la vieille ville ou dans votre entreprise de l'agglomération. Nous étudions votre assortiment, vos concurrents en ligne et vos processus actuels, puis vous remettons une offre claire. Les points intermédiaires se règlent en visioconférence, et les étapes importantes se discutent volontiers sur place.",
               "Si vous avez déjà une boutique ou une présence sur une place de marché, nous vérifions quels produits, clients et commandes peuvent être repris, et nous protégeons votre visibilité sur Google grâce à des redirections propres. Après le lancement, nous restons à vos côtés pour la maintenance, le référencement et les campagnes Google ou Meta, avec un interlocuteur qui parle français et connaît votre boutique.",
             ],
           },
@@ -493,7 +493,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Vous déplacez-vous à Berne pour les rendez-vous ?",
-            a: "Oui. Berne est à environ 35 minutes de notre bureau de Granges. Nous venons chez vous pour le premier entretien, les ateliers et les photos, le reste se fait par visioconférence.",
+            a: "Oui. Nous venons chez vous pour le premier entretien, les ateliers et les photos, le reste se fait par visioconférence.",
           },
           {
             q: "Réalisez-vous des boutiques pour des associations ?",
@@ -501,7 +501,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Comment le prix d'une boutique en ligne est-il fixé ?",
-            a: "Nous ne proposons pas de forfaits. Après un premier entretien gratuit, vous recevez une offre individuelle et ferme qui décrit précisément ce qui est inclus.",
+            a: "Nous ne proposons pas de forfaits. Après un premier entretien gratuit, vous recevez une offre individuelle et claire qui décrit précisément ce qui est inclus.",
           },
         ],
       },

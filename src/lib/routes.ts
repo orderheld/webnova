@@ -2,6 +2,7 @@ import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { legal } from "@/content/legal";
 import { localServices } from "@/content/local";
+import { references } from "@/content/references";
 import { services } from "@/content/services";
 import { locales, type Locale, type Localized } from "@/content/types";
 
@@ -17,6 +18,7 @@ export type RouteKind =
   | "guide"
   | "about"
   | "references"
+  | "reference"
   | "contact"
   | "request"
   | "thanks"
@@ -63,6 +65,9 @@ function buildRoutes(): RouteEntry[] {
     if (c.seo) {
       r.push({ id: `citySeo:${c.key}`, kind: "citySeo", key: c.key, paths: { de: c.seo.de.slug, fr: c.seo.fr.slug } });
     }
+  }
+  for (const ref of references) {
+    r.push({ id: `reference:${ref.key}`, kind: "reference", key: ref.key, paths: { de: `referenzen/${ref.key}`, fr: `references/${ref.key}` } });
   }
   for (const ls of localServices) {
     r.push({

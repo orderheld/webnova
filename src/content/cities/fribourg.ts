@@ -43,7 +43,7 @@ export const fribourg: City = {
         {
           h2: "Ehrlich und effizient: unsere Arbeitsweise in Freiburg",
           paragraphs: [
-            "Unser Büro liegt in Grenchen, rund 50 Minuten von Freiburg entfernt. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, auf Deutsch oder Französisch. Sie profitieren von einer festen Ansprechperson und kurzen Entscheidungswegen ohne den Overhead einer grossen Agentur.",
+            "Unser Büro liegt in Grenchen. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, auf Deutsch oder Französisch. Sie profitieren von einer festen Ansprechperson und kurzen Entscheidungswegen ohne den Overhead einer grossen Agentur.",
             "Wir starten jedes Projekt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte, die Umfang und Zeitplan festhält. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Hosting, Suchmaschinenoptimierung und Kampagnen auf Google und Meta, selbstverständlich in beiden Sprachen und mit verständlichen Berichten.",
           ],
         },
@@ -98,7 +98,7 @@ export const fribourg: City = {
         {
           h2: "Notre façon de travailler avec vous à Fribourg",
           paragraphs: [
-            "Notre bureau se trouve à Granges, à une cinquantaine de minutes de Fribourg. Pour le lancement du projet, un atelier ou une séance photo, nous venons chez vous. Le suivi courant se fait par visioconférence, téléphone et e-mail, en français ou en allemand. Vous avez un interlocuteur fixe et des décisions rapides, sans la lourdeur d'une grande agence.",
+            "Notre bureau se trouve à Granges. Pour le lancement du projet, un atelier ou une séance photo, nous venons chez vous. Le suivi courant se fait par visioconférence, téléphone et e-mail, en français ou en allemand. Vous avez un interlocuteur fixe et des décisions rapides, sans la lourdeur d'une grande agence.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement qui précise le périmètre et le calendrier. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta, dans les deux langues.",
           ],
         },

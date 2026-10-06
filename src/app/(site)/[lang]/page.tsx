@@ -2,9 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList } from "@/components/blocks";
-import { HeroShowcase, IndustryGallery, PainPoints, WorkWall } from "@/components/home-story";
-import { ReferenceCard } from "@/components/reference-card";
-import { RegionMap } from "@/components/region-map";
+import { HeroVisual } from "@/components/hero-visual";
+import { IndustryGallery, PainPoints, WorkWall } from "@/components/home-story";
 import { references } from "@/content/references";
 import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
@@ -16,27 +15,27 @@ import { JsonLd, faqLd, organizationLd, pageMetadata } from "@/lib/seo";
 
 const homeMeta = {
   de: {
-    title: "Webdesign Agentur Grenchen, Biel, Solothurn & Bern | Webnova",
+    title: "Webdesign-Agentur Grenchen, Biel, Solothurn & Bern | Webnova",
     description:
-      "Webnova gestaltet moderne Webseiten, Onlineshops und SEO für KMU in Grenchen, Biel, Solothurn und Bern. Persönlich, schnell, auf Anfragen optimiert. Jetzt Erstberatung sichern.",
+      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in Grenchen, Biel, Solothurn und Bern. Persönlich, schnell, auf Anfragen optimiert.",
   },
   fr: {
     title: "Agence web Bienne, Granges, Soleure & Berne | Webnova",
     description:
-      "Webnova crée des sites internet modernes, boutiques en ligne et SEO pour PME à Bienne, Granges, Soleure et Berne. Personnel, rapide, orienté résultats. Premier conseil gratuit.",
+      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de Bienne, Granges, Soleure et Berne. Personnel et rapide.",
   },
 };
 
 const homeFaq = {
   de: [
-    { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente, verbindliche Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
+    { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
     { q: "Wie lange dauert es, bis meine Webseite online ist?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Der genaue Zeitplan hängt vom Umfang und davon ab, wie schnell Inhalte wie Texte und Bilder bereitstehen. Den Fahrplan legen wir im Konzept gemeinsam fest." },
     { q: "Arbeiten Sie nur in der Region Grenchen, Biel, Solothurn und Bern?", a: "Unser Schwerpunkt ist die Region rund um Grenchen, Biel, Solothurn und Bern, wo wir Sie gerne vor Ort besuchen. Projekte in der ganzen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort." },
     { q: "Kann ich meine Webseite später selbst bearbeiten?", a: "Ja. Auf Wunsch erhalten Sie ein einfaches Redaktionssystem und eine kurze Einführung. Alternativ übernehmen wir Anpassungen im Rahmen eines Wartungsvertrags für Sie." },
     { q: "Bieten Sie Webseiten auch zweisprachig an?", a: "Ja, Deutsch und Französisch sind bei uns Alltag. Gerade in Biel/Bienne und der Westschweiz ist eine zweisprachige Webseite oft der Schlüssel zu mehr Kundschaft." },
   ],
   fr: [
-    { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. Après un premier entretien gratuit, vous recevez un devis transparent et ferme, adapté à l'envergure, aux fonctions et à votre budget." },
+    { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. Après un premier entretien gratuit, vous recevez un devis clair et transparent, adapté à l'envergure, aux fonctions et à votre budget." },
     { q: "En combien de temps mon site est-il en ligne ?", a: "Un site typique de PME est en ligne en quelques semaines. Le calendrier dépend de l'envergure et de la disponibilité des contenus comme les textes et les images. Nous le fixons ensemble lors du concept." },
     { q: "Travaillez-vous uniquement dans la région de Bienne, Granges, Soleure et Berne ?", a: "Notre région principale est autour de Granges, Bienne, Soleure et Berne, où nous vous rendons volontiers visite. Nous accompagnons tout aussi personnellement des projets dans toute la Suisse, par visioconférence et sur place si nécessaire." },
     { q: "Pourrai-je modifier mon site moi-même ?", a: "Oui. Sur demande, vous recevez un système de gestion de contenu simple et une courte formation. Nous pouvons aussi effectuer les modifications pour vous dans le cadre d'un contrat de maintenance." },
@@ -56,8 +55,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const d = getDict(lang);
   const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
   const core = cities.filter((c) => c.priority === "A");
-  const rest = cities.filter((c) => c.priority !== "A");
-  const rotating = core.map((c) => c.content[lang].name);
+  const rotating =
+    lang === "de" ? ["Anfragen", "Sichtbarkeit", "Umsatz", "Zeit"] : ["de demandes", "de visibilité", "de clients", "de temps"];
   const ticker = mainServices.map((s) => s.content[lang].navLabel);
 
   return (
@@ -83,7 +82,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
             </h1>
             <p className="mt-6 flex animate-rise items-baseline gap-3 font-display text-[clamp(1.3rem,2.4vw,1.9rem)] font-semibold tracking-tight text-white/55 [animation-delay:200ms]">
-              {lang === "de" ? "Für KMU in" : "Pour les PME à"}
+              {lang === "de" ? "Mehr" : "Plus"}
               <span className="relative inline-block h-[1.15em] overflow-hidden align-bottom text-white" aria-hidden="true">
                 <span className="block animate-words">
                   {[...rotating, rotating[0]].map((n, i) => (
@@ -115,12 +114,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </ul>
           </div>
           <div className="lg:col-span-5">
-            <HeroShowcase locale={lang} />
+            <HeroVisual locale={lang} />
           </div>
         </div>
       </section>
 
-      {/* CROSSING TICKERS */}
+      {/* TICKER */}
       <div className="relative overflow-hidden" aria-hidden="true">
         <div className="relative z-10 bg-accent py-4">
           <div className="flex w-max animate-marquee gap-8 whitespace-nowrap font-display text-[clamp(1.3rem,2.4vw,2rem)] font-bold tracking-tight text-night">
@@ -128,16 +127,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <span key={i} className="flex items-center gap-8">
                 {t}
                 <Icon name="spark" className="h-6 w-6" strokeWidth={2.4} />
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="border-t border-white/10 bg-night py-4">
-          <div className="flex w-max animate-marquee-rev gap-8 whitespace-nowrap font-display text-[clamp(1.1rem,2vw,1.6rem)] font-semibold tracking-tight text-white/80">
-            {[...cities, ...cities].map((c, i) => (
-              <span key={i} className="flex items-center gap-8">
-                {lang === "de" ? "Webdesign" : "Site internet"} {c.content[lang].name}
-                <span className="text-accent">✦</span>
               </span>
             ))}
           </div>
@@ -232,13 +221,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             {d.home.referencesAll}
           </ButtonLink>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {references
-            .filter((r) => r.image)
-            .slice(0, 2)
-            .map((r) => (
-              <ReferenceCard key={r.key} r={r} locale={lang} large />
-            ))}
+        <div className="grid gap-4 md:grid-cols-3">
+          {references.filter((r) => r.key !== "ava-catering").map((r) => (
+            <CardLink
+              key={r.key}
+              href={href(lang, `reference:${r.key}`)}
+              meta={r.content[lang].industry}
+              title={r.name}
+              text={r.content[lang].summary}
+            />
+          ))}
         </div>
       </section>
 
@@ -340,41 +332,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </div>
             <p className="text-[18px] leading-relaxed text-ink-soft md:col-span-5">{d.home.regionsLead}</p>
           </div>
-          <div className="grid gap-4 lg:grid-cols-12">
-            <div className="reveal relative isolate overflow-hidden rounded-[32px] bg-night p-4 sm:p-8 lg:col-span-7">
-              <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
-              <RegionMap locale={lang} />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
-              {core.map((c) => (
-                <Link
-                  key={c.key}
-                  href={href(lang, `city:${c.key}`)}
-                  className="reveal group flex items-center justify-between gap-4 rounded-[22px] border border-line bg-surface px-6 py-5 transition-all duration-300 hover:border-night hover:bg-night hover:text-white"
-                >
-                  <div>
-                    <p className="text-[13px] text-muted transition-colors group-hover:text-accent">
-                      {c.minutesFromOffice === 0 ? (lang === "de" ? "Unser Standort" : "Notre siège") : `~${c.minutesFromOffice} ${d.common.minutesFromOffice}`}
-                    </p>
-                    <h3 className="mt-1 font-display text-[19px] font-bold leading-tight tracking-tight">{c.content[lang].h1}</h3>
-                  </div>
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-bg text-night transition-colors group-hover:bg-accent">
-                    <Icon name="arrowUpRight" className="h-4 w-4" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {rest.map((c) => (
-              <Link
-                key={c.key}
-                href={href(lang, `city:${c.key}`)}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-night hover:bg-night hover:text-white"
-              >
-                {lang === "de" ? "Webdesign" : "Site internet"} {c.content[lang].name}
-              </Link>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {core.map((c) => (
+              <CardLink key={c.key} href={href(lang, `city:${c.key}`)} title={c.content[lang].h1} />
             ))}
+          </div>
+          <div className="mt-8">
+            <ButtonLink href={href(lang, "regions")} variant="ghost">
+              {d.nav.regions}
+            </ButtonLink>
           </div>
         </div>
       </section>

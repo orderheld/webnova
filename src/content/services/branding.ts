@@ -65,7 +65,7 @@ export const branding: Service = {
           h2: "Vom Branding bis zur Webseite",
           paragraphs: [
             "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social Media Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
-            "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in Grenchen, Biel, Solothurn, Bern und der ganzen Schweiz. Gespräche führen wir gerne persönlich in unserem Büro in Grenchen oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
+            "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in der Region Grenchen und in der ganzen Schweiz. Gespräche führen wir gerne persönlich in unserem Büro in Grenchen oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
           ],
         },
       ],
@@ -154,7 +154,7 @@ export const branding: Service = {
           h2: "Du branding au site internet",
           paragraphs: [
             "Confier le branding et le site internet à la même agence a un grand avantage: tout s'accorde. Votre nouvelle identité visuelle s'intègre directement à votre site, à vos réseaux sociaux et à vos publicités, sans coordination fastidieuse entre plusieurs prestataires. Vous gagnez du temps et obtenez une image d'ensemble harmonieuse.",
-            "Création d'entreprise, changement d'image ou modernisation d'un logo existant: nous accompagnons des entreprises à Bienne, Neuchâtel, Fribourg et dans toute la Suisse. Les rendez-vous ont lieu dans notre bureau de Granges ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
+            "Création d'entreprise, changement d'image ou modernisation d'un logo existant: nous accompagnons des entreprises de la région bilingue et de toute la Suisse. Les rendez-vous ont lieu dans notre bureau de Granges ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
           ],
         },
       ],

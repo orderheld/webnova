@@ -108,7 +108,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Hinweis",
           paragraphs: [
             "Stand: Oktober 2026.",
-            "Vorlage – vor der Veröffentlichung rechtlich prüfen lassen. Diese Datenschutzerklärung wurde nach bestem Wissen erstellt, ersetzt aber keine Rechtsberatung. Sie ist zu prüfen und anzupassen, sobald sich eingesetzte Dienste oder Datenbearbeitungen ändern.",
+            "Diese Datenschutzerklärung wurde nach bestem Wissen erstellt, ersetzt aber keine Rechtsberatung. Sie ist zu prüfen und anzupassen, sobald sich eingesetzte Dienste oder Datenbearbeitungen ändern.",
           ],
         },
         {
@@ -203,7 +203,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Remarque",
           paragraphs: [
             "État : octobre 2026.",
-            "Modèle – à faire vérifier juridiquement avant publication. Cette déclaration a été rédigée au mieux de nos connaissances, mais ne remplace pas un conseil juridique. Elle doit être vérifiée et adaptée dès que les services utilisés ou les traitements de données changent.",
+            "Cette déclaration a été rédigée au mieux de nos connaissances, mais ne remplace pas un conseil juridique. Elle doit être vérifiée et adaptée dès que les services utilisés ou les traitements de données changent.",
           ],
         },
         {

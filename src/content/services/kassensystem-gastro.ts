@@ -70,7 +70,7 @@ export const kassensystemGastro: Service = {
           h2: "Einrichtung und Schulung vor Ort",
           paragraphs: [
             "Wir richten Ihr Kassensystem nicht aus der Ferne ein und verschwinden dann. Gemeinsam erfassen wir Ihre Speisekarte, Preise und Tische. Danach installieren wir Kasse, Drucker und Terminal bei Ihnen vor Ort und schulen Ihr Team, idealerweise vor einem ruhigen Service.",
-            "In der Region Grenchen, Biel, Solothurn und Bern sind wir rasch bei Ihnen, und auch nach dem Start erreichen Sie uns direkt. Wenn Sie zusätzlich eine neue Webseite für Ihr Restaurant brauchen, gestalten wir diese gerne passend dazu. So entsteht ein stimmiger Auftritt vom Tisch bis ins Internet.",
+            "Für Installation und Schulung kommen wir zu Ihnen, und auch nach dem Start erreichen Sie uns direkt. Wenn Sie zusätzlich eine neue Webseite für Ihr Restaurant brauchen, gestalten wir diese gerne passend dazu. So entsteht ein stimmiger Auftritt vom Tisch bis ins Internet.",
           ],
         },
       ],

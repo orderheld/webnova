@@ -16,7 +16,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Grafikdesign Grenchen: ein Auftritt so präzise wie Ihre Arbeit",
         lead:
-          "Unser Büro liegt an der Bettlachstrasse 45, mitten in Grenchen. Für Logo, Corporate Design und Drucksachen sind wir in wenigen Minuten bei Ihnen in der Werkstatt, im Laden oder im Büro.",
+          "Unser Büro liegt an der Bettlachstrasse 45, mitten in Grenchen. Für Logo, Corporate Design und Drucksachen kommen wir gerne zu Ihnen in die Werkstatt, in den Laden oder ins Büro.",
         sections: [
           {
             h2: "Warum Grenchner Unternehmen ein klares Erscheinungsbild brauchen",
@@ -42,7 +42,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit in Grenchen: kurze Wege, persönliche Gespräche",
             paragraphs: [
-              "Weil wir selbst in Grenchen arbeiten, beginnt ein Branding-Projekt gerne dort, wo Ihr Unternehmen lebt. Wir schauen uns Ihre Werkhalle, Ihren Laden oder Ihre Fahrzeuge an und sehen so, wo das neue Erscheinungsbild später überall auftauchen muss. Das gilt ebenso für Betriebe in Bettlach, Lengnau, Selzach oder Pieterlen. Entwürfe besprechen wir am liebsten am Tisch, ausgedruckt und in Originalgrösse, weil Farben und Proportionen auf Papier anders wirken als am Bildschirm.",
+              "Weil wir selbst in Grenchen arbeiten, beginnt ein Branding-Projekt gerne dort, wo Ihr Unternehmen lebt. Wir schauen uns Ihre Werkhalle, Ihren Laden oder Ihre Fahrzeuge an und sehen so, wo das neue Erscheinungsbild später überall auftauchen muss. Das gilt ebenso für Betriebe in den umliegenden Gemeinden. Entwürfe besprechen wir am liebsten am Tisch, ausgedruckt und in Originalgrösse, weil Farben und Proportionen auf Papier anders wirken als am Bildschirm.",
               "Nach dem Briefing entwickeln wir erste Logo-Ideen, verfeinern die gewählte Richtung und bauen darauf Farben, Schriften und Anwendungen auf. Am Schluss erhalten Sie alle Dateien sauber geordnet für Druck und Web. Auch danach bleiben wir erreichbar: wenn eine neue Broschüre ansteht, die Beschriftung eines zusätzlichen Fahrzeugs oder ein Inserat im Lokalblatt. Sie haben eine feste Ansprechperson, die Ihr Erscheinungsbild kennt und es über die Jahre konsequent weiterführt.",
             ],
           },
@@ -50,7 +50,7 @@ export const brandingLocal: LocalService[] = [
         faq: [
           {
             q: "Kommen Sie für das Briefing zu uns in den Betrieb in Grenchen?",
-            a: "Ja, gerne. Unser Büro liegt an der Bettlachstrasse 45, wir sind also in wenigen Minuten bei Ihnen. Vor Ort sehen wir am besten, wo Ihr Logo später eingesetzt wird.",
+            a: "Ja, gerne. Unser Büro liegt an der Bettlachstrasse 45, wir kommen also gerne bei Ihnen vorbei. Vor Ort sehen wir am besten, wo Ihr Logo später eingesetzt wird.",
           },
           {
             q: "Funktioniert das Logo auch auf gravierten oder gelaserten Produkten?",
@@ -62,7 +62,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein neues Logo oder Corporate Design?",
-            a: "Wir veröffentlichen keine Pauschalpreise, weil jedes Projekt anders ist. Sie erhalten eine individuelle, verbindliche Offerte nach kostenlosem Erstgespräch.",
+            a: "Wir veröffentlichen keine Pauschalpreise, weil jedes Projekt anders ist. Sie erhalten eine individuelle, klare Offerte nach kostenlosem Erstgespräch.",
           },
         ],
       },
@@ -76,7 +76,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Granges: une image aussi précise que votre travail",
         lead:
-          "Notre bureau se trouve à la Bettlachstrasse 45, au cœur de Granges. Pour votre logo, votre identité visuelle ou vos imprimés, nous sommes chez vous en quelques minutes, à l'atelier, au magasin ou au bureau.",
+          "Notre bureau se trouve à la Bettlachstrasse 45, au cœur de Granges. Pour votre logo, votre identité visuelle ou vos imprimés, nous venons volontiers chez vous, à l'atelier, au magasin ou au bureau.",
         sections: [
           {
             h2: "Pourquoi une identité visuelle soignée compte à Granges",
@@ -101,7 +101,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Travailler ensemble à Granges et dans les environs",
             paragraphs: [
-              "Comme nous travaillons nous-mêmes à Granges, nous aimons démarrer un projet de branding sur place. Nous visitons votre atelier, votre magasin ou votre parc de véhicules pour voir où la nouvelle identité devra apparaître. C'est valable aussi pour les entreprises de Bettlach, Longeau, Selzach ou Perles. Nous présentons les propositions de préférence sur papier, en taille réelle, car couleurs et proportions ne rendent pas de la même manière qu'à l'écran.",
+              "Comme nous travaillons nous-mêmes à Granges, nous aimons démarrer un projet de branding sur place. Nous visitons votre atelier, votre magasin ou votre parc de véhicules pour voir où la nouvelle identité devra apparaître. C'est valable aussi pour les entreprises des communes voisines. Nous présentons les propositions de préférence sur papier, en taille réelle, car couleurs et proportions ne rendent pas de la même manière qu'à l'écran.",
               "Après le briefing, nous esquissons plusieurs pistes de logo, affinons celle que vous retenez et construisons autour couleurs, typographies et applications. Vous recevez enfin tous les fichiers bien classés pour l'impression et le web. Nous restons ensuite disponibles pour une nouvelle brochure, le marquage d'un véhicule supplémentaire ou une annonce dans la presse locale. Vous gardez un interlocuteur unique qui connaît votre image et la fait évoluer avec cohérence au fil des années.",
             ],
           },
@@ -109,7 +109,7 @@ export const brandingLocal: LocalService[] = [
         faq: [
           {
             q: "Venez-vous dans notre entreprise à Granges pour le briefing?",
-            a: "Oui, volontiers. Notre bureau est à la Bettlachstrasse 45, nous sommes donc chez vous en quelques minutes. Sur place, nous voyons au mieux où votre logo sera utilisé.",
+            a: "Oui, volontiers. Notre bureau est à la Bettlachstrasse 45, nous venons donc volontiers chez vous. Sur place, nous voyons au mieux où votre logo sera utilisé.",
           },
           {
             q: "Le logo fonctionne-t-il sur des pièces gravées ou marquées au laser?",
@@ -121,7 +121,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Combien coûte un logo ou une identité visuelle?",
-            a: "Nous ne publions pas de tarifs forfaitaires, car chaque projet est différent. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Nous ne publions pas de tarifs forfaitaires, car chaque projet est différent. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -143,13 +143,13 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Grafikdesign Biel: eine Marke, die in beiden Sprachen wirkt",
         lead:
-          "In Biel muss ein Erscheinungsbild Deutsch und Französisch gleichermassen tragen. Von unserem Büro in Grenchen sind wir in rund 20 Minuten bei Ihnen und begleiten Bieler Unternehmen vom ersten Logo-Entwurf bis zur fertigen Drucksache.",
+          "In Biel muss ein Erscheinungsbild Deutsch und Französisch gleichermassen tragen. Für Besprechungen kommen wir gerne zu Ihnen und begleiten Bieler Unternehmen vom ersten Logo-Entwurf bis zur fertigen Drucksache.",
         sections: [
           {
             h2: "Branding in der zweisprachigen Stadt Biel/Bienne",
             paragraphs: [
               "In Biel entscheidet sich schon beim Firmennamen, ob eine Marke funktioniert. Ein Name, der auf Deutsch gut klingt, kann auf Französisch holprig oder sogar missverständlich wirken. Dasselbe gilt für Slogans, Produktbezeichnungen und die Beschriftung im Schaufenster. Wer in Biel ein Logo erstellen lässt, sollte deshalb von Anfang an beide Sprachgruppen mitdenken. Bildmarken, Farben und Formen sind hier besonders wertvoll, weil sie ohne Übersetzung verstanden werden und Ihr Unternehmen auf beiden Seiten der Sprachgrenze erkennbar machen.",
-              "Gleichzeitig ist Biel eine Stadt mit hohem Anspruch an Gestaltung. Die Uhrenindustrie hat das Auge vieler Einwohnerinnen und Einwohner für Details geschult, und rund um den Switzerland Innovation Park und die Berner Fachhochschule entstehen laufend junge Firmen mit eigenem Stil. In diesem Umfeld fällt ein lieblos gestalteter Auftritt schneller auf als anderswo. Ein eigenständiges Corporate Design hilft Ihnen, sich von Mitbewerbern abzuheben, die oft nur wenige Strassen entfernt arbeiten.",
+              "Gleichzeitig ist Biel eine Stadt mit hohem Anspruch an Gestaltung. Die Uhrenindustrie hat das Auge vieler Einwohnerinnen und Einwohner für Details geschult, und rund um den Switzerland Innovation Park und die Berner Fachhochschule entstehen laufend junge Firmen mit eigenem Stil. In diesem Umfeld fällt ein lieblos gestalteter Auftritt schneller auf als anderswo. Ein eigenständiges Corporate Design hilft Ihnen, sich von Mitbewerbern abzuheben, die oft gleich um die Ecke arbeiten.",
             ],
           },
           {
@@ -168,7 +168,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "So arbeiten wir mit Ihnen in Biel und im Seeland",
             paragraphs: [
-              "Das erste Gespräch führen wir gerne bei Ihnen, ob in der Altstadt, im Bözingenfeld, in Nidau oder in Brügg. Dort bekommen wir ein Gefühl für Ihre Räume, Ihre Kundschaft und die Sprache, in der Ihr Alltag stattfindet. Die Besprechungen halten wir auf Deutsch oder Französisch ab, ganz wie es für Ihr Team passt. Zwischenschritte erledigen wir effizient per Videocall, und für die Präsentation der Entwürfe kommen wir wieder persönlich nach Biel.",
+              "Das erste Gespräch führen wir gerne bei Ihnen, ob in der Altstadt oder im Bözingenfeld. Dort bekommen wir ein Gefühl für Ihre Räume, Ihre Kundschaft und die Sprache, in der Ihr Alltag stattfindet. Die Besprechungen halten wir auf Deutsch oder Französisch ab, ganz wie es für Ihr Team passt. Zwischenschritte erledigen wir effizient per Videocall, und für die Präsentation der Entwürfe kommen wir wieder persönlich nach Biel.",
               "Der Ablauf ist klar gegliedert: Briefing, erste Entwürfe, Verfeinerung, Ausarbeitung von Farben, Schriften und Anwendungen, danach die Übergabe aller Dateien und des Styleguides. Wenn später ein neuer Flyer, eine Messewand oder eine Kampagne für den Bielersee-Sommer ansteht, greifen wir auf dieselben Grundlagen zurück. So bleibt Ihr Auftritt auch nach Jahren stimmig, egal ob die Kundin Sie auf Deutsch oder auf Französisch kennenlernt.",
             ],
           },
@@ -184,11 +184,11 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Können die Besprechungen in Biel auf Französisch stattfinden?",
-            a: "Ja. Wir treffen Sie vor Ort in Biel, rund 20 Minuten von Grenchen entfernt, oder per Videocall und führen die Gespräche auf Deutsch oder Französisch.",
+            a: "Ja. Wir treffen Sie vor Ort in Biel oder per Videocall und führen die Gespräche auf Deutsch oder Französisch.",
           },
           {
             q: "Was kostet ein zweisprachiges Corporate Design?",
-            a: "Der Aufwand hängt vom Umfang und von den benötigten Anwendungen ab. Sie erhalten eine individuelle, verbindliche Offerte nach kostenlosem Erstgespräch.",
+            a: "Der Aufwand hängt vom Umfang und von den benötigten Anwendungen ab. Sie erhalten eine individuelle, klare Offerte nach kostenlosem Erstgespräch.",
           },
         ],
       },
@@ -202,7 +202,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Bienne: une identité qui parle aux deux communautés",
         lead:
-          "À Bienne, une marque doit être aussi à l'aise en français qu'en allemand. Depuis notre bureau de Granges, à une vingtaine de minutes, nous accompagnons les entreprises biennoises du premier croquis de logo jusqu'aux imprimés finaux.",
+          "À Bienne, une marque doit être aussi à l'aise en français qu'en allemand. Depuis notre bureau de Granges, nous accompagnons les entreprises biennoises du premier croquis de logo jusqu'aux imprimés finaux.",
         sections: [
           {
             h2: "Créer une marque dans la ville bilingue",
@@ -227,7 +227,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Notre collaboration à Bienne et dans le Seeland",
             paragraphs: [
-              "Nous menons volontiers le premier entretien chez vous, dans la vieille ville, aux Champs-de-Boujean, à Nidau ou à Brügg. Cela nous permet de sentir vos locaux, votre clientèle et la langue de votre quotidien. Les réunions se tiennent en français ou en allemand, comme cela convient à votre équipe. Les étapes intermédiaires se règlent par visioconférence, et nous revenons à Bienne pour vous présenter les propositions de vive voix.",
+              "Nous menons volontiers le premier entretien chez vous, dans la vieille ville ou aux Champs-de-Boujean. Cela nous permet de sentir vos locaux, votre clientèle et la langue de votre quotidien. Les réunions se tiennent en français ou en allemand, comme cela convient à votre équipe. Les étapes intermédiaires se règlent par visioconférence, et nous revenons à Bienne pour vous présenter les propositions de vive voix.",
               "Le déroulement est simple: briefing, premières pistes, affinage, définition des couleurs, typographies et applications, puis remise de tous les fichiers et de la charte. Lorsqu'un nouveau flyer, un stand ou une campagne estivale au bord du lac se profile, nous repartons des mêmes bases. Votre image reste ainsi cohérente au fil des ans, que vos clients vous découvrent en français ou en allemand.",
             ],
           },
@@ -243,11 +243,11 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Les réunions peuvent-elles avoir lieu en français à Bienne?",
-            a: "Bien sûr. Nous vous rencontrons à Bienne, à une vingtaine de minutes de Granges, ou en visioconférence, en français comme en allemand.",
+            a: "Bien sûr. Nous vous rencontrons à Bienne ou en visioconférence, en français comme en allemand.",
           },
           {
             q: "Quel est le coût d'une identité visuelle bilingue?",
-            a: "Il dépend de l'ampleur du projet et des supports nécessaires. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Il dépend de l'ampleur du projet et des supports nécessaires. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -269,7 +269,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Grafikdesign Solothurn: Tradition zeigen, zeitgemäss auftreten",
         lead:
-          "Viele Solothurner Betriebe haben eine lange Geschichte und ein Erscheinungsbild, das in die Jahre gekommen ist. Von Grenchen aus sind wir in rund 20 Minuten in der Altstadt und helfen, Bewährtes mit einem frischen Auftritt zu verbinden.",
+          "Viele Solothurner Betriebe haben eine lange Geschichte und ein Erscheinungsbild, das in die Jahre gekommen ist. Wir kommen gerne zu Ihnen in die Altstadt und helfen, Bewährtes mit einem frischen Auftritt zu verbinden.",
         sections: [
           {
             h2: "Warum Gestaltung in der Barockstadt besonders zählt",
@@ -294,7 +294,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Vom Treffen an der Aare bis zur fertigen Drucksache",
             paragraphs: [
-              "Wir besuchen Sie gerne in Ihrem Geschäft in der Altstadt oder in Ihrem Büro in Zuchwil, Bellach, Langendorf oder Biberist. Dort sehen wir, wie Ihr Auftritt heute wirkt: am Eingang, an der Theke, auf Verpackungen und Fahrzeugen. Bei einem Rebranding bringen Sie am besten alte Drucksachen und Fotos mit, denn sie zeigen, was Ihre Marke über die Jahre ausgemacht hat. Entwürfe präsentieren wir persönlich, damit Sie Farben und Materialien in der Hand halten können.",
+              "Wir besuchen Sie gerne in Ihrem Geschäft in der Altstadt oder in Ihrem Büro in der Umgebung. Dort sehen wir, wie Ihr Auftritt heute wirkt: am Eingang, an der Theke, auf Verpackungen und Fahrzeugen. Bei einem Rebranding bringen Sie am besten alte Drucksachen und Fotos mit, denn sie zeigen, was Ihre Marke über die Jahre ausgemacht hat. Entwürfe präsentieren wir persönlich, damit Sie Farben und Materialien in der Hand halten können.",
               "Nach dem Briefing entstehen erste Entwürfe, die wir gemeinsam verfeinern. Danach legen wir Farben, Schriften und Anwendungen fest und bereiten alle Dateien druckfertig auf. Auf Wunsch stimmen wir uns direkt mit Ihrer Druckerei oder Ihrem Schildermacher ab. Auch nach der Einführung bleiben wir Ihre Ansprechperson: für die neue Saisonkarte, das Plakat zum nächsten Anlass oder die Anpassung Ihrer Webseite an das neue Erscheinungsbild.",
             ],
           },
@@ -314,7 +314,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Wie wird der Preis für ein Rebranding festgelegt?",
-            a: "Er richtet sich danach, wie viel überarbeitet werden soll und welche Drucksachen dazugehören. Sie erhalten eine individuelle, verbindliche Offerte nach kostenlosem Erstgespräch.",
+            a: "Er richtet sich danach, wie viel überarbeitet werden soll und welche Drucksachen dazugehören. Sie erhalten eine individuelle, klare Offerte nach kostenlosem Erstgespräch.",
           },
         ],
       },
@@ -328,7 +328,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Soleure: honorer votre histoire, soigner votre image",
         lead:
-          "De nombreuses entreprises soleuroises ont une longue histoire et une image qui a pris de l'âge. Depuis Granges, nous sommes dans la vieille ville en une vingtaine de minutes pour vous aider à concilier tradition et présentation actuelle.",
+          "De nombreuses entreprises soleuroises ont une longue histoire et une image qui a pris de l'âge. Nous venons volontiers vous voir dans la vieille ville pour vous aider à concilier tradition et présentation actuelle.",
         sections: [
           {
             h2: "À Soleure, l'esthétique fait partie du décor",
@@ -353,7 +353,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "D'un rendez-vous au bord de l'Aar aux imprimés finaux",
             paragraphs: [
-              "Nous vous rendons visite dans votre commerce de la vieille ville ou dans vos bureaux à Zuchwil, Bellach, Langendorf ou Biberist. Nous voyons ainsi comment votre image se présente aujourd'hui: à l'entrée, au comptoir, sur les emballages ou les véhicules. Pour une refonte, apportez vos anciens imprimés et photos, ils racontent ce qui a fait votre marque. Nous présentons les propositions en personne, afin que vous puissiez juger couleurs et papiers en main.",
+              "Nous vous rendons visite dans votre commerce de la vieille ville ou dans vos bureaux des environs. Nous voyons ainsi comment votre image se présente aujourd'hui: à l'entrée, au comptoir, sur les emballages ou les véhicules. Pour une refonte, apportez vos anciens imprimés et photos, ils racontent ce qui a fait votre marque. Nous présentons les propositions en personne, afin que vous puissiez juger couleurs et papiers en main.",
               "Après le briefing, nous élaborons de premières pistes que nous affinons ensemble. Nous fixons ensuite couleurs, typographies et applications, puis préparons tous les fichiers prêts à imprimer. Sur demande, nous coordonnons directement avec votre imprimeur ou votre fabricant d'enseignes. Après le lancement, nous restons votre interlocuteur pour la nouvelle carte de saison, l'affiche du prochain événement ou l'adaptation de votre site internet à votre nouvelle identité.",
             ],
           },
@@ -373,7 +373,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Comment le prix d'une refonte d'image est-il fixé?",
-            a: "Il dépend de l'ampleur de la refonte et des imprimés concernés. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Il dépend de l'ampleur de la refonte et des imprimés concernés. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -395,7 +395,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Grafikdesign Bern: ein Corporate Design, das im Alltag funktioniert",
         lead:
-          "In Bern zählt ein Auftritt, der seriös wirkt und von allen im Team richtig angewendet wird. Unser Büro in Grenchen liegt rund 35 Minuten von Bern entfernt, und wir begleiten Berner KMU persönlich vom Briefing bis zum fertigen Styleguide.",
+          "In Bern zählt ein Auftritt, der seriös wirkt und von allen im Team richtig angewendet wird. Von unserem Büro in Grenchen aus begleiten wir Berner KMU persönlich vom Briefing bis zum fertigen Styleguide.",
         sections: [
           {
             h2: "Bern: viele Organisationen, hohe Ansprüche an Klarheit",
@@ -420,7 +420,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Persönliche Zusammenarbeit zwischen Grenchen und Bern",
             paragraphs: [
-              "Über die A5 und die A1 sind wir in gut einer halben Stunde bei Ihnen, ob in der Innenstadt, in der Länggasse, im Breitenrain oder in Köniz, Ostermundigen und Ittigen. Für das Briefing und die Präsentation der Entwürfe treffen wir uns gerne persönlich, gern auch mit den Personen, die später täglich mit den Vorlagen arbeiten. Kleinere Abstimmungen erledigen wir per Videocall, damit das Projekt zügig vorankommt und Ihre Agenda geschont wird.",
+              "Wir besuchen Sie gerne vor Ort, ob in der Innenstadt oder in Köniz. Für das Briefing und die Präsentation der Entwürfe treffen wir uns gerne persönlich, gern auch mit den Personen, die später täglich mit den Vorlagen arbeiten. Kleinere Abstimmungen erledigen wir per Videocall, damit das Projekt zügig vorankommt und Ihre Agenda geschont wird.",
               "Nach dem Briefing entwickeln wir Logo-Entwürfe, verfeinern die gewählte Richtung und bauen darauf Farben, Schriften und Vorlagen auf. Bei der Übergabe zeigen wir Ihrem Team in einer kurzen Einführung, wie die Vorlagen funktionieren. Wenn später neue Dokumente oder ein Jahresbericht dazukommen, erweitern wir das System, statt jedes Mal neu anzufangen. Sie haben eine feste Ansprechperson, die das Projekt selbst umsetzt, ohne Umwege über mehrere Abteilungen.",
             ],
           },
@@ -436,11 +436,11 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Lohnt sich eine Grafikagentur aus Grenchen für ein Projekt in Bern?",
-            a: "Wir sind in rund 35 Minuten in Bern und kommen für die wichtigen Termine persönlich vorbei. Sie arbeiten direkt mit der Person, die Ihr Erscheinungsbild gestaltet.",
+            a: "Für die wichtigen Termine kommen wir persönlich nach Bern. Sie arbeiten direkt mit der Person, die Ihr Erscheinungsbild gestaltet.",
           },
           {
             q: "Wie erhalten wir eine Kostenschätzung?",
-            a: "Im kostenlosen Erstgespräch klären wir Umfang und benötigte Vorlagen. Danach erhalten Sie eine individuelle, verbindliche Offerte, die genau beschreibt, was enthalten ist.",
+            a: "Im kostenlosen Erstgespräch klären wir Umfang und benötigte Vorlagen. Danach erhalten Sie eine individuelle, klare Offerte, die genau beschreibt, was enthalten ist.",
           },
         ],
       },
@@ -454,7 +454,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Berne: une identité visuelle utile au quotidien",
         lead:
-          "À Berne, une image sérieuse, appliquée correctement par toute l'équipe, fait la différence. Notre bureau de Granges est à environ 35 minutes de la ville fédérale, et nous accompagnons personnellement les PME bernoises du briefing à la charte finale.",
+          "À Berne, une image sérieuse, appliquée correctement par toute l'équipe, fait la différence. Depuis notre bureau de Granges, nous accompagnons personnellement les PME bernoises du briefing à la charte finale.",
         sections: [
           {
             h2: "Berne, ville d'institutions et d'exigence",
@@ -479,7 +479,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Une collaboration directe entre Granges et Berne",
             paragraphs: [
-              "Par l'A5 et l'A1, nous sommes chez vous en un peu plus d'une demi-heure, au centre-ville, à la Länggasse, au Breitenrain ou à Köniz, Ostermundigen et Ittigen. Pour le briefing et la présentation des propositions, nous préférons nous voir en personne, idéalement avec les collaborateurs qui utiliseront ensuite les modèles au quotidien. Les ajustements plus modestes se règlent en visioconférence, en français ou en allemand, pour avancer vite sans surcharger votre agenda.",
+              "Nous venons volontiers chez vous, au centre-ville comme à Köniz. Pour le briefing et la présentation des propositions, nous préférons nous voir en personne, idéalement avec les collaborateurs qui utiliseront ensuite les modèles au quotidien. Les ajustements plus modestes se règlent en visioconférence, en français ou en allemand, pour avancer vite sans surcharger votre agenda.",
               "Après le briefing, nous esquissons des pistes de logo, affinons celle que vous choisissez et construisons couleurs, typographies et modèles. Lors de la remise, une courte introduction montre à votre équipe comment utiliser les modèles. Si de nouveaux documents ou un rapport annuel s'ajoutent plus tard, nous complétons le système au lieu de repartir de zéro. Vous traitez avec un interlocuteur unique qui réalise lui-même le projet, sans intermédiaires.",
             ],
           },
@@ -495,11 +495,11 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Pourquoi choisir un graphiste de Granges pour un projet à Berne?",
-            a: "Nous sommes à Berne en environ 35 minutes et venons en personne pour les rendez-vous importants. Vous travaillez directement avec la personne qui crée votre image.",
+            a: "Pour les rendez-vous importants, nous venons en personne à Berne. Vous travaillez directement avec la personne qui crée votre image.",
           },
           {
             q: "Comment obtenir une estimation des coûts?",
-            a: "Lors d'un premier entretien gratuit, nous définissons l'ampleur du projet et les modèles nécessaires. Vous recevez ensuite une offre individuelle et ferme.",
+            a: "Lors d'un premier entretien gratuit, nous définissons l'ampleur du projet et les modèles nécessaires. Vous recevez ensuite une offre individuelle et claire.",
           },
         ],
       },

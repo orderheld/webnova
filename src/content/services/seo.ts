@@ -10,12 +10,12 @@ export const seo: Service = {
       slug: "seo-agentur",
       navLabel: "SEO",
       meta: {
-        title: "SEO Agentur – Suchmaschinenoptimierung",
+        title: "SEO-Agentur – Suchmaschinenoptimierung",
         description:
           "Besser gefunden werden bei Google: Suchmaschinenoptimierung und lokales SEO für Schweizer KMU. Jetzt kostenlose Erstberatung bei Webnova anfragen.",
       },
       eyebrow: "Suchmaschinenoptimierung",
-      h1: "SEO Agentur für Schweizer KMU",
+      h1: "SEO-Agentur für Schweizer KMU",
       lead:
         "Wir sorgen dafür, dass Ihre Webseite bei Google dort erscheint, wo Ihre Kunden suchen. Mit sauberer Technik, guten Inhalten und lokalem SEO.",
       features: [
@@ -56,7 +56,7 @@ export const seo: Service = {
           h2: "Lokales SEO: In Ihrer Region gefunden werden",
           paragraphs: [
             "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie „Elektriker Solothurn“ oder „Coiffeur Biel“ zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
-            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Agentur aus Grenchen kennen wir die Region zwischen Biel, Solothurn und Bern und die Zweisprachigkeit des Marktes.",
+            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Agentur aus Grenchen kennen wir die Region und die Zweisprachigkeit des Marktes.",
           ],
           bullets: [
             "Google Unternehmensprofil einrichten und optimieren",

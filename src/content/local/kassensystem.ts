@@ -16,7 +16,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Kassensystem Grenchen: eingerichtet und betreut von Ihrem Nachbarn",
         lead:
-          "Webnova sitzt an der Bettlachstrasse 45 in Grenchen und richtet Kassensysteme für Gastronomie und Detailhandel direkt in Ihrem Betrieb ein. Weil wir in derselben Stadt arbeiten, sind wir für Installation, Schulung und Fragen meist in wenigen Minuten bei Ihnen.",
+          "Webnova sitzt an der Bettlachstrasse 45 in Grenchen und richtet Kassensysteme für Gastronomie und Detailhandel direkt in Ihrem Betrieb ein. Weil wir in derselben Stadt arbeiten, sind wir für Installation, Schulung und Fragen persönlich bei Ihnen.",
         sections: [
           {
             h2: "Warum Grenchner Betriebe ihre Kasse modernisieren",
@@ -42,7 +42,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Von der Bettlachstrasse direkt in Ihren Betrieb",
             paragraphs: [
-              "Am Anfang steht eine kostenlose Erstberatung bei Ihnen vor Ort. Wir schauen uns an, wie heute bestellt, kassiert und abgerechnet wird, wo es hakt und welche Geräte bereits vorhanden sind. Danach erhalten Sie eine individuelle, verbindliche Offerte. Den Umstieg planen wir so, dass er Ihren Betrieb möglichst wenig stört, zum Beispiel an einem Ruhetag oder vor der Öffnung. Artikel, Preise und Warengruppen erfassen wir gemeinsam mit Ihnen.",
+              "Am Anfang steht eine kostenlose Erstberatung bei Ihnen vor Ort. Wir schauen uns an, wie heute bestellt, kassiert und abgerechnet wird, wo es hakt und welche Geräte bereits vorhanden sind. Danach erhalten Sie eine individuelle, klare Offerte. Den Umstieg planen wir so, dass er Ihren Betrieb möglichst wenig stört, zum Beispiel an einem Ruhetag oder vor der Öffnung. Artikel, Preise und Warengruppen erfassen wir gemeinsam mit Ihnen.",
               "Am Starttag sind wir dabei, installieren Drucker und Geräte und begleiten die ersten Kassiervorgänge. Ihr Team schulen wir direkt am System, bis die Abläufe sitzen. Weil wir in Grenchen arbeiten, kommen wir auch später schnell vorbei, ob ins Zentrum, in die Industriezone oder nach Bettlach und Selzach. Neue Artikel, ein zusätzlicher Drucker oder ein zweiter Standort lassen sich jederzeit ergänzen. Sie haben immer dieselbe Ansprechperson.",
             ],
           },
@@ -50,7 +50,7 @@ export const kassensystemLocal: LocalService[] = [
         faq: [
           {
             q: "Wie schnell sind Sie in Grenchen vor Ort, wenn wir Hilfe brauchen?",
-            a: "Unser Büro liegt an der Bettlachstrasse 45, die meisten Betriebe in Grenchen erreichen wir in wenigen Minuten. Viele Fragen lassen sich zudem direkt am Telefon klären. Wie die Betreuung nach dem Start aussieht, halten wir in der Offerte fest.",
+            a: "Unser Büro liegt an der Bettlachstrasse 45, für Installation und Schulung kommen wir zu Ihnen in den Betrieb. Viele Fragen lassen sich zudem direkt am Telefon klären. Wie die Betreuung nach dem Start aussieht, halten wir in der Offerte fest.",
           },
           {
             q: "Können wir die Kasse während des laufenden Betriebs umstellen?",
@@ -62,7 +62,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Kassensystem in Grenchen?",
-            a: "Das hängt von Ihren Abläufen, der Anzahl Geräte und Standorte und den gewünschten Funktionen ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch.",
+            a: "Das hängt von Ihren Abläufen, der Anzahl Geräte und Standorte und den gewünschten Funktionen ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
           },
         ],
       },
@@ -76,7 +76,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Système de caisse à Granges : installé et suivi par une équipe de la ville",
         lead:
-          "Webnova est installée à la Bettlachstrasse 45, à Granges, et met en place des systèmes de caisse pour la restauration et le commerce directement dans votre établissement. Comme nous travaillons dans la même ville, nous sommes généralement chez vous en quelques minutes.",
+          "Webnova est installée à la Bettlachstrasse 45, à Granges, et met en place des systèmes de caisse pour la restauration et le commerce directement dans votre établissement. Comme nous travaillons dans la même ville, nous venons volontiers en personne chez vous.",
         sections: [
           {
             h2: "Pourquoi moderniser sa caisse à Granges",
@@ -101,7 +101,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "De notre bureau à votre comptoir",
             paragraphs: [
-              "Tout commence par un premier conseil gratuit dans votre établissement. Nous observons comment vous prenez les commandes, encaissez et bouclez la journée, et nous faisons l'inventaire du matériel existant. Vous recevez ensuite une offre individuelle et ferme. Le changement de caisse est planifié pour perturber le moins possible votre activité, par exemple un jour de fermeture ou avant l'ouverture. Nous saisissons avec vous articles, prix et catégories.",
+              "Tout commence par un premier conseil gratuit dans votre établissement. Nous observons comment vous prenez les commandes, encaissez et bouclez la journée, et nous faisons l'inventaire du matériel existant. Vous recevez ensuite une offre individuelle et claire. Le changement de caisse est planifié pour perturber le moins possible votre activité, par exemple un jour de fermeture ou avant l'ouverture. Nous saisissons avec vous articles, prix et catégories.",
               "Le jour du lancement, nous sommes présents pour installer les appareils et accompagner les premiers encaissements. Nous formons votre équipe directement sur le système, en allemand ou en français. Par la suite, nous passons rapidement chez vous, que vous soyez au centre de Granges, dans la zone industrielle ou à Bettlach. Un nouvel article, une imprimante de plus ou un deuxième point de vente s'ajoutent sans difficulté.",
             ],
           },
@@ -113,7 +113,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "En combien de temps êtes-vous sur place en cas de question ?",
-            a: "Notre bureau se trouve à Granges même, la plupart des établissements de la ville sont à quelques minutes. Beaucoup de questions se règlent aussi par téléphone. Les modalités du suivi figurent dans l'offre.",
+            a: "Notre bureau se trouve à Granges même, pour l'installation et la formation, nous venons dans votre établissement. Beaucoup de questions se règlent aussi par téléphone. Les modalités du suivi figurent dans l'offre.",
           },
           {
             q: "Puis-je garder mes imprimantes et ma tablette actuelles ?",
@@ -121,7 +121,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Combien coûte un système de caisse ?",
-            a: "Cela dépend de vos besoins, du nombre d'appareils et de points de vente. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Cela dépend de vos besoins, du nombre d'appareils et de points de vente. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -143,7 +143,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Kassensystem Biel: eine Kasse, die beide Sprachen Ihres Teams spricht",
         lead:
-          "In Biel arbeiten Teams und Gäste auf Deutsch und Französisch, Ihre Kasse sollte das nicht verkomplizieren. Von unserem Büro in Grenchen sind wir in rund 20 Minuten in Biel und richten Ihr Kassensystem direkt im Betrieb ein.",
+          "In Biel arbeiten Teams und Gäste auf Deutsch und Französisch, Ihre Kasse sollte das nicht verkomplizieren. Wir kommen zu Ihnen nach Biel und richten Ihr Kassensystem direkt im Betrieb ein.",
         sections: [
           {
             h2: "Was ein Kassensystem in Biel leisten muss",
@@ -169,8 +169,8 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "So begleiten wir Sie in Biel",
             paragraphs: [
-              "Wir beginnen mit einer kostenlosen Erstberatung in Ihrem Betrieb, ob in der Altstadt, am Seeufer, in Mett oder in Nidau. Dabei sehen wir, wie viel Platz an der Theke ist, wo Drucker stehen sollen und wie Bestellungen heute laufen. Sie können das Gespräch auf Deutsch oder Französisch führen. Anschliessend erhalten Sie eine individuelle, verbindliche Offerte und einen Plan für die Einführung, bei Saisonbetrieben idealerweise vor dem Start der Terrassensaison.",
-              "Vor der Inbetriebnahme erfassen wir Artikel und Preise gemeinsam und richten Geräte ein. Am ersten Betriebstag sind wir vor Ort und schulen das Team, bei Bedarf in beiden Sprachen, damit niemand aussen vor bleibt. Danach erreichen Sie uns direkt, Grenchen liegt nur rund 20 Minuten entfernt. Neue Saisonkarten, zusätzliche Tablets für den Sommer oder eine Anbindung an Ihren Onlineshop richten wir ein, wenn Sie sie brauchen.",
+              "Wir beginnen mit einer kostenlosen Erstberatung in Ihrem Betrieb, ob in der Altstadt oder am Seeufer. Dabei sehen wir, wie viel Platz an der Theke ist, wo Drucker stehen sollen und wie Bestellungen heute laufen. Sie können das Gespräch auf Deutsch oder Französisch führen. Anschliessend erhalten Sie eine individuelle, klare Offerte und einen Plan für die Einführung, bei Saisonbetrieben idealerweise vor dem Start der Terrassensaison.",
+              "Vor der Inbetriebnahme erfassen wir Artikel und Preise gemeinsam und richten Geräte ein. Am ersten Betriebstag sind wir vor Ort und schulen das Team, bei Bedarf in beiden Sprachen, damit niemand aussen vor bleibt. Danach erreichen Sie uns direkt, ohne Hotline und Warteschlaufe. Neue Saisonkarten, zusätzliche Tablets für den Sommer oder eine Anbindung an Ihren Onlineshop richten wir ein, wenn Sie sie brauchen.",
             ],
           },
         ],
@@ -189,7 +189,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Kassensystem in Biel?",
-            a: "Es gibt keinen Pauschalpreis, weil jeder Betrieb andere Geräte und Funktionen braucht. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch.",
+            a: "Es gibt keinen Pauschalpreis, weil jeder Betrieb andere Geräte und Funktionen braucht. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
           },
         ],
       },
@@ -203,7 +203,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Système de caisse à Bienne : simple pour toute votre équipe, dans les deux langues",
         lead:
-          "À Bienne, on sert les clients en français comme en allemand, et la caisse doit suivre sans compliquer les choses. Depuis notre bureau de Granges, nous sommes à Bienne en une vingtaine de minutes pour installer votre caisse sur place.",
+          "À Bienne, on sert les clients en français comme en allemand, et la caisse doit suivre sans compliquer les choses. Nous venons à Bienne pour installer votre caisse sur place.",
         sections: [
           {
             h2: "Les attentes d'un établissement biennois",
@@ -228,8 +228,8 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Notre accompagnement à Bienne",
             paragraphs: [
-              "Nous commençons par un premier conseil gratuit chez vous, dans la vieille ville, au bord du lac, à Mâche ou à Nidau. Sur place, nous voyons l'espace disponible au comptoir, l'emplacement des imprimantes et votre façon de travailler. L'entretien se déroule en français ou en allemand, comme vous préférez. Vous recevez ensuite une offre individuelle et ferme, avec un calendrier de mise en service, idéalement avant l'ouverture de la saison des terrasses.",
-              "Avant le démarrage, nous saisissons ensemble les articles et les prix et configurons les appareils. Le premier jour, nous sommes présents et formons votre équipe, si besoin dans les deux langues. Ensuite, vous nous joignez directement : Granges n'est qu'à une vingtaine de minutes. Nouvelle carte de saison, tablettes supplémentaires pour l'été ou liaison avec votre boutique en ligne, nous adaptons le système au fil de vos besoins.",
+              "Nous commençons par un premier conseil gratuit chez vous, dans la vieille ville ou au bord du lac. Sur place, nous voyons l'espace disponible au comptoir, l'emplacement des imprimantes et votre façon de travailler. L'entretien se déroule en français ou en allemand, comme vous préférez. Vous recevez ensuite une offre individuelle et claire, avec un calendrier de mise en service, idéalement avant l'ouverture de la saison des terrasses.",
+              "Avant le démarrage, nous saisissons ensemble les articles et les prix et configurons les appareils. Le premier jour, nous sommes présents et formons votre équipe, si besoin dans les deux langues. Ensuite, vous nous joignez directement, sans hotline ni attente. Nouvelle carte de saison, tablettes supplémentaires pour l'été ou liaison avec votre boutique en ligne, nous adaptons le système au fil de vos besoins.",
             ],
           },
         ],
@@ -248,7 +248,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Quel est le prix d'un système de caisse à Bienne ?",
-            a: "Il n'existe pas de prix forfaitaire, car chaque établissement a besoin d'autres appareils et fonctions. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Il n'existe pas de prix forfaitaire, car chaque établissement a besoin d'autres appareils et fonctions. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -270,7 +270,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Kassensystem Solothurn: kompakt für die Altstadt, schnell an Festtagen",
         lead:
-          "Ob Bar am Landhausquai, Café in der Hauptgasse oder Fachgeschäft in der Vorstadt: Wir richten Ihr Kassensystem so ein, dass es in Ihr Lokal und zu Ihren Spitzentagen passt. Unser Büro in Grenchen liegt rund 20 Minuten von Solothurn entfernt, im selben Kanton.",
+          "Ob Bar am Landhausquai, Café in der Hauptgasse oder Fachgeschäft in der Vorstadt: Wir richten Ihr Kassensystem so ein, dass es in Ihr Lokal und zu Ihren Spitzentagen passt. Unser Büro in Grenchen liegt im selben Kanton, und wir kommen gerne zu Ihnen.",
         sections: [
           {
             h2: "Besondere Anforderungen in der Barockstadt",
@@ -283,7 +283,7 @@ export const kassensystemLocal: LocalService[] = [
             h2: "Was wir für Solothurner Betriebe umsetzen",
             paragraphs: [
               "Für Bars und Restaurants an der Aare richten wir Tischplan, Küchen- und Barbons und auf Wunsch die mobile Bestellaufnahme ein, damit der Service auch auf der Terrasse direkt am Tisch kassieren kann. Für Cafés und Bäckereien in der Altstadt steht der schnelle Thekenverkauf im Vordergrund, mit übersichtlichen Tasten für die meistverkauften Artikel. So bleibt die Schlange auch am Samstagmorgen kurz, wenn Märet ist und viele Leute in der Stadt unterwegs sind.",
-              "Buchhandlungen, Modegeschäfte, Delikatessenläden und Geschenkboutiquen profitieren von Barcode, Varianten und einer laufend aktualisierten Lagerübersicht. Wer neben dem Laden in der Altstadt einen zweiten Standort betreibt, etwa in Zuchwil, Bellach oder Biberist, verwaltet beide in einem System. Und für Betriebe, die auch online verkaufen, verbinden wir Kasse und Onlineshop, damit Sortiment und Bestände übereinstimmen. Die Umsatzzahlen lassen sich jederzeit für die Buchhaltung exportieren.",
+              "Buchhandlungen, Modegeschäfte, Delikatessenläden und Geschenkboutiquen profitieren von Barcode, Varianten und einer laufend aktualisierten Lagerübersicht. Wer neben dem Laden in der Altstadt einen zweiten Standort betreibt, etwa in Zuchwil, verwaltet beide in einem System. Und für Betriebe, die auch online verkaufen, verbinden wir Kasse und Onlineshop, damit Sortiment und Bestände übereinstimmen. Die Umsatzzahlen lassen sich jederzeit für die Buchhaltung exportieren.",
             ],
             bullets: [
               "Platzsparende Kasse auf Tablet oder kompaktem Terminal",
@@ -295,7 +295,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit in Solothurn und Umgebung",
             paragraphs: [
-              "Die kostenlose Erstberatung findet bei Ihnen statt, damit wir Theke, Küche und Laufwege mit eigenen Augen sehen. Wir besprechen, welche Funktionen Sie wirklich brauchen, und prüfen, ob vorhandene Geräte weiterverwendet werden können. Danach erhalten Sie eine individuelle, verbindliche Offerte. Den Starttermin legen wir bewusst nicht in eine Woche mit grossem Anlass in der Stadt, sondern so, dass Ihr Team in Ruhe ankommen kann.",
+              "Die kostenlose Erstberatung findet bei Ihnen statt, damit wir Theke, Küche und Laufwege mit eigenen Augen sehen. Wir besprechen, welche Funktionen Sie wirklich brauchen, und prüfen, ob vorhandene Geräte weiterverwendet werden können. Danach erhalten Sie eine individuelle, klare Offerte. Den Starttermin legen wir bewusst nicht in eine Woche mit grossem Anlass in der Stadt, sondern so, dass Ihr Team in Ruhe ankommen kann.",
               "Vor dem Start erfassen wir Artikel, Preise und Warengruppen mit Ihnen, installieren die Geräte und schulen das Team direkt im Lokal. Auch danach sind wir erreichbar und kommen bei Bedarf vorbei, ob in die Altstadt, die Weststadt oder nach Langendorf. Vor einem grossen Anlass prüfen wir auf Wunsch gemeinsam die Einstellungen, ergänzen eine Festkarte oder ein zusätzliches Tablet. So ist Ihre Kasse bereit, wenn die Stadt voll ist.",
             ],
           },
@@ -315,7 +315,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Mit welchen Kosten muss ich in Solothurn rechnen?",
-            a: "Das hängt von Geräten, Funktionen und Standorten ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch bei Ihnen vor Ort.",
+            a: "Das hängt von Geräten, Funktionen und Standorten ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch bei Ihnen vor Ort.",
           },
         ],
       },
@@ -329,7 +329,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Système de caisse à Soleure : compact pour la vieille ville, rapide les jours d'affluence",
         lead:
-          "Bar au bord de l'Aar, café de la vieille ville ou commerce spécialisé : nous adaptons votre système de caisse à vos locaux et à vos pics d'activité. Notre bureau de Granges, dans le même canton, se trouve à une vingtaine de minutes de Soleure.",
+          "Bar au bord de l'Aar, café de la vieille ville ou commerce spécialisé : nous adaptons votre système de caisse à vos locaux et à vos pics d'activité. Notre bureau de Granges se trouve dans le même canton, et nous nous déplaçons volontiers chez vous.",
         sections: [
           {
             h2: "Les particularités de la ville baroque",
@@ -354,7 +354,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Travailler ensemble à Soleure",
             paragraphs: [
-              "Le premier conseil gratuit a lieu chez vous, pour que nous voyions de nos propres yeux le comptoir, la cuisine et les déplacements du personnel. Nous définissons les fonctions réellement utiles et vérifions si votre matériel actuel peut être conservé. Vous recevez ensuite une offre individuelle et ferme. Nous évitons de fixer le démarrage pendant une semaine de grand événement en ville, afin que votre équipe puisse prendre ses marques sereinement.",
+              "Le premier conseil gratuit a lieu chez vous, pour que nous voyions de nos propres yeux le comptoir, la cuisine et les déplacements du personnel. Nous définissons les fonctions réellement utiles et vérifions si votre matériel actuel peut être conservé. Vous recevez ensuite une offre individuelle et claire. Nous évitons de fixer le démarrage pendant une semaine de grand événement en ville, afin que votre équipe puisse prendre ses marques sereinement.",
               "Avant la mise en service, nous saisissons avec vous articles, prix et catégories, installons les appareils et formons l'équipe sur place, en allemand ou en français. Ensuite, nous restons joignables et passons si nécessaire, dans la vieille ville comme à Langendorf. Avant un grand rendez-vous, nous pouvons vérifier les réglages avec vous, ajouter une carte spéciale ou une tablette supplémentaire. Votre caisse est prête quand la ville se remplit.",
             ],
           },
@@ -374,7 +374,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Combien coûte un système de caisse à Soleure ?",
-            a: "Le prix dépend du matériel, des fonctions et du nombre de points de vente. Vous recevez une offre individuelle et ferme après un premier entretien gratuit chez vous.",
+            a: "Le prix dépend du matériel, des fonctions et du nombre de points de vente. Vous recevez une offre individuelle et claire après un premier entretien gratuit chez vous.",
           },
         ],
       },
@@ -396,13 +396,13 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Kassensystem Bern: persönlich eingeführt, auch für mehrere Standorte",
         lead:
-          "Für Berner Gastronomie- und Handelsbetriebe richten wir Kassensysteme ein, die zum Tempo der Bundesstadt passen. Von unserem Büro in Grenchen sind wir in rund 35 Minuten in Bern und begleiten die Einführung persönlich vor Ort.",
+          "Für Berner Gastronomie- und Handelsbetriebe richten wir Kassensysteme ein, die zum Tempo der Bundesstadt passen. Wir kommen zu Ihnen nach Bern und begleiten die Einführung persönlich vor Ort.",
         sections: [
           {
             h2: "Der Berner Alltag stellt eigene Anforderungen an die Kasse",
             paragraphs: [
               "In Bern arbeiten viele Menschen in der Bundesverwaltung, in Verbänden, Organisationen und Beratungsfirmen. Das prägt die Gastronomie: Über Mittag drängen sich Berufstätige in Take-aways, Mittagsrestaurants und Cafés rund um den Bahnhof, den Bundesplatz oder in der Länggasse. In diesen kurzen Zeitfenstern zählt jede Sekunde an der Kasse. Ein System mit Schnelltasten, direkter Karten- und TWINT-Zahlung und Bons für die Küche hält die Schlange in Bewegung.",
-              "Daneben gibt es die Läden unter den Lauben der Altstadt, Quartiercafés im Breitenrain oder in der Lorraine und viele Betriebe in der Agglomeration, von Köniz über Ostermundigen bis Muri. Nicht wenige Berner Unternehmen führen mehrere Standorte. Für sie ist entscheidend, dass Artikel und Preise zentral gepflegt werden und Umsätze pro Filiale vergleichbar sind. Genau hier spielt ein modernes Kassensystem seine Stärken aus.",
+              "Daneben gibt es die Läden unter den Lauben der Altstadt, Quartiercafés im Breitenrain und viele Betriebe in der Agglomeration. Nicht wenige Berner Unternehmen führen mehrere Standorte. Für sie ist entscheidend, dass Artikel und Preise zentral gepflegt werden und Umsätze pro Filiale vergleichbar sind. Genau hier spielt ein modernes Kassensystem seine Stärken aus.",
             ],
           },
           {
@@ -422,7 +422,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "So arbeiten wir mit Berner Betrieben",
             paragraphs: [
-              "Die kostenlose Erstberatung führen wir bei Ihnen in Bern durch, ob in der Altstadt, in Bümpliz oder in einer Gemeinde im Bern-Mittelland. Wir sehen uns Abläufe, Platzverhältnisse und vorhandene Geräte an und klären, welche Funktionen nötig sind. Weitere Abstimmungen erledigen wir effizient per Telefon oder Videocall. Sie erhalten eine individuelle, verbindliche Offerte, die genau beschreibt, was eingerichtet wird und wie die Einführung abläuft.",
+              "Die kostenlose Erstberatung führen wir bei Ihnen in Bern durch, ob in der Altstadt, in Bümpliz oder in einer Gemeinde im Bern-Mittelland. Wir sehen uns Abläufe, Platzverhältnisse und vorhandene Geräte an und klären, welche Funktionen nötig sind. Weitere Abstimmungen erledigen wir effizient per Telefon oder Videocall. Sie erhalten eine individuelle, klare Offerte, die genau beschreibt, was eingerichtet wird und wie die Einführung abläuft.",
               "Die Artikel erfassen wir vorab gemeinsam mit Ihnen, damit am Starttag nur noch installiert und geschult werden muss. Zur Inbetriebnahme kommen wir nach Bern, richten Geräte und Drucker ein und begleiten die ersten Stunden im Betrieb. Bei mehreren Standorten planen wir die Umstellung Filiale für Filiale. Danach erreichen Sie direkt Ihre feste Ansprechperson, ohne Hotline-Warteschlange, und für Erweiterungen kommen wir wieder vorbei.",
             ],
           },
@@ -430,7 +430,7 @@ export const kassensystemLocal: LocalService[] = [
         faq: [
           {
             q: "Betreuen Sie Kassensysteme in Bern, obwohl Ihr Büro in Grenchen liegt?",
-            a: "Ja. Bern liegt rund 35 Minuten von Grenchen entfernt. Erstgespräch, Installation und Schulung machen wir vor Ort in Bern, viele Fragen im Alltag lassen sich zudem rasch telefonisch klären.",
+            a: "Ja. Erstgespräch, Installation und Schulung machen wir vor Ort in Bern, viele Fragen im Alltag lassen sich zudem rasch telefonisch klären.",
           },
           {
             q: "Wir haben mehrere Filialen in Bern und der Agglomeration. Geht das in einem System?",
@@ -442,7 +442,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Kassensystem für einen Berner Betrieb?",
-            a: "Das hängt von Anzahl Geräten, Standorten und Funktionen ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch.",
+            a: "Das hängt von Anzahl Geräten, Standorten und Funktionen ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
           },
         ],
       },
@@ -456,20 +456,20 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Système de caisse à Berne : une mise en service personnelle, même sur plusieurs sites",
         lead:
-          "Nous installons pour les restaurants et commerces bernois des systèmes de caisse adaptés au rythme de la ville fédérale. Depuis notre bureau de Granges, nous sommes à Berne en environ 35 minutes et accompagnons la mise en service sur place.",
+          "Nous installons pour les restaurants et commerces bernois des systèmes de caisse adaptés au rythme de la ville fédérale. Nous venons à Berne et accompagnons la mise en service sur place.",
         sections: [
           {
             h2: "Le quotidien bernois et ses exigences",
             paragraphs: [
               "À Berne, une grande partie de la population active travaille dans l'administration fédérale, des associations, des organisations ou des bureaux de conseil. La restauration en vit au rythme de la pause de midi : take-aways, restaurants et cafés autour de la gare, de la place Fédérale ou de la Länggasse se remplissent en quelques minutes. À ce moment-là, chaque seconde compte. Une caisse avec touches rapides, paiement par carte ou TWINT et bons directs en cuisine fait avancer la file.",
-              "Berne compte aussi de nombreux francophones, liés notamment à l'administration fédérale, et beaucoup d'entre eux travaillent en salle ou derrière un comptoir. Une formation en français est donc souvent bienvenue. À cela s'ajoutent les commerces sous les arcades de la vieille ville, les cafés de quartier du Breitenrain ou de la Lorraine et les entreprises de l'agglomération, de Köniz à Ostermundigen, dont plusieurs exploitent plus d'un point de vente.",
+              "Berne compte aussi de nombreux francophones, liés notamment à l'administration fédérale, et beaucoup d'entre eux travaillent en salle ou derrière un comptoir. Une formation en français est donc souvent bienvenue. À cela s'ajoutent les commerces sous les arcades de la vieille ville, les cafés de quartier du Breitenrain et les entreprises de l'agglomération, dont plusieurs exploitent plus d'un point de vente.",
             ],
           },
           {
             h2: "Nos solutions de caisse pour Berne",
             paragraphs: [
               "Pour un restaurant de midi ou un take-away, nous concevons un écran où les menus les plus vendus se saisissent d'une seule touche et où la commande arrive immédiatement en cuisine. Les restaurants avec service à table disposent du plan de salle, de l'addition partagée et, sur demande, de la prise de commande sur tablette. Le soir, la clôture présente le chiffre d'affaires par moyen de paiement et par collaborateur, prêt à être exporté pour la comptabilité.",
-              "Pour les boutiques et commerces spécialisés sous les arcades, nous configurons codes-barres, variantes et gestion du stock, afin que vous sachiez ce qui se vend et ce qu'il faut recommander. Les entreprises avec plusieurs succursales en ville et dans l'agglomération les gèrent toutes dans un seul système. Si vous vendez aussi en ligne, la caisse peut être reliée à votre boutique. Nous vérifions d'abord votre matériel existant pour ne remplacer que le nécessaire.",
+              "Pour les boutiques et commerces spécialisés sous les arcades, nous configurons codes-barres, variantes et gestion du stock, afin que vous sachiez ce qui se vend et ce qu'il faut réapprovisionner. Les entreprises avec plusieurs succursales en ville et dans l'agglomération les gèrent toutes dans un seul système. Si vous vendez aussi en ligne, la caisse peut être reliée à votre boutique. Nous vérifions d'abord votre matériel existant pour ne remplacer que le nécessaire.",
             ],
             bullets: [
               "Touches rapides pour le service de midi et le take-away",
@@ -482,7 +482,7 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Notre façon de travailler avec les établissements bernois",
             paragraphs: [
-              "Le premier conseil gratuit a lieu chez vous à Berne, que vous soyez dans la vieille ville, à Bümpliz ou dans une commune de la région. Nous examinons vos processus, l'espace disponible et le matériel en place, puis définissons les fonctions nécessaires. Les échanges suivants se font efficacement par téléphone ou en visioconférence. Vous recevez une offre individuelle et ferme qui décrit précisément l'installation et le déroulement de la mise en service.",
+              "Le premier conseil gratuit a lieu chez vous à Berne, que vous soyez dans la vieille ville, à Bümpliz ou dans une commune de la région. Nous examinons vos processus, l'espace disponible et le matériel en place, puis définissons les fonctions nécessaires. Les échanges suivants se font efficacement par téléphone ou en visioconférence. Vous recevez une offre individuelle et claire qui décrit précisément l'installation et le déroulement de la mise en service.",
               "Nous saisissons les articles avec vous à l'avance, de sorte que le jour du démarrage soit consacré à l'installation et à la formation. Pour la mise en service, nous venons à Berne, installons appareils et imprimantes et accompagnons les premières heures d'exploitation. En cas de plusieurs sites, nous procédons succursale par succursale. Ensuite, vous joignez directement votre interlocuteur attitré, sans file d'attente téléphonique.",
             ],
           },
@@ -490,7 +490,7 @@ export const kassensystemLocal: LocalService[] = [
         faq: [
           {
             q: "Assurez-vous le suivi de caisses à Berne alors que votre bureau est à Granges ?",
-            a: "Oui. Berne est à environ 35 minutes de Granges. Premier entretien, installation et formation se font sur place à Berne, et beaucoup de questions du quotidien se règlent rapidement par téléphone.",
+            a: "Oui. Premier entretien, installation et formation se font sur place à Berne, et beaucoup de questions du quotidien se règlent rapidement par téléphone.",
           },
           {
             q: "Notre personnel francophone peut-il être formé en français ?",
@@ -502,7 +502,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Combien coûte un système de caisse pour un établissement bernois ?",
-            a: "Cela dépend du nombre d'appareils, de points de vente et des fonctions souhaitées. Vous recevez une offre individuelle et ferme après un premier entretien gratuit.",
+            a: "Cela dépend du nombre d'appareils, de points de vente et des fonctions souhaitées. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },

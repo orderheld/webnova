@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/button";
-import { CtaBand, PageHero, Prose } from "@/components/blocks";
+import Image from "next/image";
+import { CtaBand, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
@@ -8,6 +9,7 @@ import { legal } from "@/content/legal";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
+import { JsonLd, breadcrumbLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
@@ -65,6 +67,114 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
         {references.map((r) => (
           <ReferenceCard key={r.key} r={r} locale={locale} large />
         ))}
+      </section>
+      <CtaBand locale={locale} />
+    </>
+  );
+}
+
+const refText = {
+  de: { challenge: "Ausgangslage", solution: "Unsere Lösung", highlights: "Was das Projekt ausmacht", scope: "Leistungen", more: "Weitere Projekte", all: "Alle Referenzen" },
+  fr: { challenge: "Point de départ", solution: "Notre solution", highlights: "Ce qui fait ce projet", scope: "Prestations", more: "Autres projets", all: "Toutes les références" },
+};
+
+export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: string }) {
+  const d = getDict(locale);
+  const t = refText[locale];
+  const r = references.find((x) => x.key === refKey)!;
+  const c = r.content[locale];
+  const url = href(locale, `reference:${r.key}`);
+  const crumbs = [
+    { name: d.common.home, url: href(locale, "home") },
+    { name: d.nav.references, url: href(locale, "references") },
+    { name: r.name, url },
+  ];
+  const others = references.filter((x) => x.key !== r.key);
+  return (
+    <>
+      <JsonLd data={breadcrumbLd(crumbs)} />
+      <PageHero
+        eyebrow={[c.industry, c.place].filter(Boolean).join(" · ")}
+        title={r.name}
+        lead={c.summary}
+        crumbs={[crumbs[0], crumbs[1], { name: r.name }]}
+      />
+      <section className="container-x relative z-10 -mt-10">
+        <div className="overflow-hidden rounded-[28px] border border-line bg-night p-3 pb-0 sm:p-5 sm:pb-0">
+          <div className="overflow-hidden rounded-t-[16px] border border-b-0 border-white/10 bg-night-2">
+            <div className="flex items-center gap-1.5 px-3.5 py-2.5">
+              <span className="h-2 w-2 rounded-full bg-white/20" />
+              <span className="h-2 w-2 rounded-full bg-white/20" />
+              <span className="h-2 w-2 rounded-full bg-white/20" />
+              <span className="ml-2 truncate rounded-full bg-white/5 px-3 py-0.5 font-mono text-[11px] text-white/45">{r.domain}</span>
+            </div>
+            <div className="relative aspect-[16/8]">
+              {r.image ? (
+                <Image src={r.image} alt={`${r.name}: ${c.industry}`} fill priority sizes="(min-width: 1240px) 1180px, 100vw" className="object-cover object-top" />
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center" style={{ background: r.colors.bg, color: r.colors.fg }}>
+                  <span className="h-1 w-12 rounded-full" style={{ background: r.colors.accent }} />
+                  <span className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-none tracking-[-0.04em]">{r.name}</span>
+                  <span className="text-[13px] uppercase tracking-[0.25em] opacity-60">{c.industry}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-x grid gap-12 py-16 md:py-24 lg:grid-cols-12">
+        <div className="space-y-12 lg:col-span-8">
+          <div>
+            <p className="eyebrow mb-4">{t.challenge}</p>
+            <p className="font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold leading-snug tracking-[-0.02em]">{c.challenge}</p>
+          </div>
+          <div>
+            <p className="eyebrow mb-4">{t.solution}</p>
+            <div className="space-y-5 text-[17px] leading-[1.75] text-ink-soft">
+              {c.solution.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+        <aside className="lg:col-span-4">
+          <div className="sticky top-28 rounded-[28px] bg-night p-8 text-white">
+            <p className="text-[13px] uppercase tracking-[0.12em] text-white/50">{t.scope}</p>
+            <ul className="mt-4 space-y-3">
+              {c.scope.map((s) => (
+                <li key={s} className="flex items-start gap-3 text-[15px]">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-night">
+                    <Icon name="check" className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                  {s}
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
+              {d.nav.cta}
+            </ButtonLink>
+          </div>
+        </aside>
+      </section>
+
+      <section className="container-x pb-20">
+        <h2 className="h-section mb-10">{t.highlights}</h2>
+        <FeatureGrid items={c.highlights} />
+      </section>
+
+      <section className="container-x pb-24">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-section">{t.more}</h2>
+          <ButtonLink href={href(locale, "references")} variant="ghost">
+            {t.all}
+          </ButtonLink>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {others.map((o) => (
+            <ReferenceCard key={o.key} r={o} locale={locale} />
+          ))}
+        </div>
       </section>
       <CtaBand locale={locale} />
     </>

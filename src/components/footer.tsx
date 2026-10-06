@@ -45,11 +45,14 @@ export function Footer({ locale }: { locale: Locale }) {
           ))}
         </FooterCol>
         <FooterCol title={d.footer.regions} className="md:col-span-3">
-          {cities.map((c) => (
-            <FooterLink key={c.key} href={href(locale, `city:${c.key}`)}>
-              {locale === "de" ? "Webdesign" : "Site internet"} {c.content[locale].name}
-            </FooterLink>
-          ))}
+          {cities
+            .filter((c) => c.priority === "A")
+            .map((c) => (
+              <FooterLink key={c.key} href={href(locale, `city:${c.key}`)}>
+                {c.content[locale].name}
+              </FooterLink>
+            ))}
+          <FooterLink href={href(locale, "regions")}>{locale === "de" ? "Alle Standorte" : "Toutes les régions"}</FooterLink>
         </FooterCol>
         <FooterCol title={d.footer.company} className="md:col-span-2">
           <FooterLink href={href(locale, "about")}>{d.nav.about}</FooterLink>
@@ -57,7 +60,6 @@ export function Footer({ locale }: { locale: Locale }) {
           <FooterLink href={href(locale, "guides")}>{d.nav.guides}</FooterLink>
           <FooterLink href={href(locale, "contact")}>{d.nav.contact}</FooterLink>
           <FooterLink href={href(locale, "request")}>{d.nav.cta}</FooterLink>
-          <FooterLink href={href(locale, "regions")}>{d.nav.regions}</FooterLink>
           {Object.keys(legal).map((k) => (
             <FooterLink key={k} href={href(locale, `legal:${k}`)}>
               {legal[k as keyof typeof legal][locale].title}

@@ -1,18 +1,20 @@
 import Image from "next/image";
+import Link from "next/link";
+import { href } from "@/lib/routes";
 import type { Reference } from "@/content/references";
 import type { Locale } from "@/content/types";
 import { Icon } from "./icons";
 
 const t = {
-  de: { visit: "Website ansehen" },
-  fr: { visit: "Voir le site" },
+  de: { visit: "Projekt ansehen" },
+  fr: { visit: "Voir le projet" },
 };
 
 /** Showcase card for a client project: browser mock-up with screenshot (or brand panel) plus facts. */
 export function ReferenceCard({ r, locale, large = false }: { r: Reference; locale: Locale; large?: boolean }) {
   const c = r.content[locale];
   return (
-    <article className="reveal group flex h-full flex-col overflow-hidden rounded-[30px] border border-line bg-surface transition-all duration-500 hover:-translate-y-1 hover:border-night hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.35)]">
+    <Link href={href(locale, `reference:${r.key}`)} className="reveal group flex h-full flex-col overflow-hidden rounded-[30px] border border-line bg-surface transition-all duration-500 hover:-translate-y-1 hover:border-night hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.35)]">
       <div className="relative overflow-hidden bg-night p-3 pb-0 sm:p-5 sm:pb-0">
         <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-70" />
         <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-white/10 bg-night-2 transition-transform duration-700 group-hover:-translate-y-1">
@@ -48,7 +50,7 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
             {c.industry}
             {c.place && <> · {c.place}</>}
           </p>
-          <h3 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-bold leading-tight tracking-[-0.03em]">{r.name}</h3>
+          <h2 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-bold leading-tight tracking-[-0.03em]">{r.name}</h2>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">{c.summary}</p>
         </div>
         <ul className="flex flex-wrap gap-2">
@@ -58,17 +60,10 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
             </li>
           ))}
         </ul>
-        {r.url && (
-          <a
-            href={r.url}
-            target="_blank"
-            rel="noopener"
-            className="mt-auto inline-flex items-center gap-2 self-start rounded-full border border-line px-4 py-2 text-[14px] font-semibold transition-colors hover:border-night hover:bg-night hover:text-white"
-          >
-            {t[locale].visit} <Icon name="arrowUpRight" className="h-4 w-4" />
-          </a>
-        )}
+        <span className="mt-auto inline-flex items-center gap-2 self-start rounded-full border border-line px-4 py-2 text-[14px] font-semibold transition-colors group-hover:border-night group-hover:bg-night group-hover:text-white">
+          {t[locale].visit} <Icon name="arrow" className="h-4 w-4" />
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }

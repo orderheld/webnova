@@ -21,7 +21,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Warum sich gezielte Online-Werbung in Grenchen lohnt",
             paragraphs: [
-              "Grenchen ist eine überschaubare Stadt mit einem klar umrissenen Einzugsgebiet. Genau das spielt Ihnen bei bezahlter Werbung in die Hände: Statt Streuverlust in der halben Schweiz lässt sich eine Kampagne auf Grenchen und die umliegenden Gemeinden wie Bettlach, Selzach, Lengnau oder Pieterlen eingrenzen. So erreicht ein Malerbetrieb, eine Garage oder ein Coiffeursalon die Menschen, die tatsächlich als Kundschaft in Frage kommen, und das Werbebudget bleibt in der Region.",
+              "Grenchen ist eine überschaubare Stadt mit einem klar umrissenen Einzugsgebiet. Genau das spielt Ihnen bei bezahlter Werbung in die Hände: Statt Streuverlust in der halben Schweiz lässt sich eine Kampagne auf Grenchen und die umliegenden Gemeinden eingrenzen. So erreicht ein Malerbetrieb, eine Garage oder ein Coiffeursalon die Menschen, die tatsächlich als Kundschaft in Frage kommen, und das Werbebudget bleibt in der Region.",
               "Gleichzeitig ist Grenchen ein Industriestandort. Uhrenhersteller, Präzisionsbetriebe, Medizinaltechnik und Zulieferer suchen laufend Fachkräfte, die selten ein klassisches Stelleninserat lesen. Mit Anzeigen auf Facebook, Instagram oder LinkedIn sprechen Sie Polymechanikerinnen, Konstrukteure oder Lernende direkt dort an, wo sie ihre Freizeit am Smartphone verbringen. Online-Marketing in Grenchen heisst darum oft beides: neue Aufträge gewinnen und neue Mitarbeitende finden. Beides lässt sich mit denselben Werkzeugen sauber steuern.",
             ],
           },
@@ -42,7 +42,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit direkt vor Ort in Grenchen",
             paragraphs: [
-              "Weil unser Büro in Grenchen liegt, findet das kostenlose Erstgespräch auf Wunsch gleich in Ihrem Betrieb statt, sei es im Zentrum, in der Gewerbezone oder in Bettlach. Wir schauen uns Ihr Angebot, Ihre Webseite und bisherige Werbemassnahmen an und besprechen, welche Ziele realistisch sind. Danach erhalten Sie eine individuelle, verbindliche Offerte. Für Fotos Ihrer Werkstatt oder Ihres Teams, die wir in Anzeigen einsetzen, kommen wir ebenfalls vorbei.",
+              "Weil unser Büro in Grenchen liegt, findet das kostenlose Erstgespräch auf Wunsch gleich in Ihrem Betrieb statt, sei es im Zentrum, in der Gewerbezone oder in Bettlach. Wir schauen uns Ihr Angebot, Ihre Webseite und bisherige Werbemassnahmen an und besprechen, welche Ziele realistisch sind. Danach erhalten Sie eine individuelle, klare Offerte. Für Fotos Ihrer Werkstatt oder Ihres Teams, die wir in Anzeigen einsetzen, kommen wir ebenfalls vorbei.",
               "Läuft die Kampagne, prüfen wir regelmässig Suchbegriffe, Anzeigen und Zielgruppen und passen sie an. Die Auswertung besprechen wir gerne persönlich bei Ihnen oder bei uns an der Bettlachstrasse, verständlich und ohne Fachjargon. Ändert sich etwas in Ihrem Betrieb, etwa eine offene Stelle, ein neues Produkt oder Betriebsferien, reagieren wir kurzfristig. Kurze Wege machen Online-Marketing in Grenchen unkompliziert, auch wenn es einmal schnell gehen muss.",
             ],
           },
@@ -62,7 +62,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Was kostet die Betreuung unserer Kampagnen?",
-            a: "Das hängt von Kanälen, Anzahl Kampagnen und Betreuungsumfang ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget selbst legen Sie fest und behalten es jederzeit unter Kontrolle.",
+            a: "Das hängt von Kanälen, Anzahl Kampagnen und Betreuungsumfang ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget selbst legen Sie fest und behalten es jederzeit unter Kontrolle.",
           },
         ],
       },
@@ -70,7 +70,7 @@ export const marketingLocal: LocalService[] = [
         name: "Granges",
         slug: "marketing-digital-granges",
         meta: {
-          title: "Marketing digital Granges : Google Ads et réseaux sociaux",
+          title: "Marketing digital Granges : Google Ads & réseaux sociaux",
           description:
             "Marketing digital à Granges : Google Ads, publicité sur les réseaux sociaux et recrutement en ligne pour PME et industrie. Premier conseil gratuit.",
         },
@@ -81,7 +81,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Pourquoi la publicité en ligne fonctionne bien à Granges",
             paragraphs: [
-              "Granges est une ville à taille humaine, avec une zone de chalandise bien définie. Pour la publicité payante, c'est un atout : au lieu de diffuser vos annonces dans toute la Suisse, nous les limitons à Granges et aux communes voisines comme Bettlach, Selzach, Longeau ou Perles. Un garage, un salon de coiffure ou une entreprise de peinture touche ainsi les personnes qui peuvent réellement devenir clientes, sans gaspiller de budget.",
+              "Granges est une ville à taille humaine, avec une zone de chalandise bien définie. Pour la publicité payante, c'est un atout : au lieu de diffuser vos annonces dans toute la Suisse, nous les limitons à Granges et aux communes voisines. Un garage, un salon de coiffure ou une entreprise de peinture touche ainsi les personnes qui peuvent réellement devenir clientes, sans gaspiller de budget.",
               "Granges est aussi un site industriel. Horlogerie, mécanique de précision, technique médicale et sous-traitance recherchent sans cesse du personnel qualifié, qui ne lit plus forcément les annonces d'emploi classiques. Avec des campagnes sur Facebook, Instagram ou LinkedIn, vous touchez polymécaniciens, constructeurs ou apprentis là où ils passent du temps. À Granges, le marketing digital sert donc souvent deux buts : gagner des clients et recruter.",
             ],
           },
@@ -101,7 +101,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Un accompagnement de proximité à Granges",
             paragraphs: [
-              "Notre bureau étant à Granges, le premier entretien gratuit peut avoir lieu directement dans votre entreprise, au centre, dans la zone industrielle ou à Bettlach. Nous examinons votre offre, votre site et vos actions publicitaires passées, puis définissons des objectifs réalistes. Vous recevez ensuite une offre individuelle et ferme. Nous passons aussi volontiers chez vous pour photographier votre atelier ou votre équipe, des images qui rendent les annonces bien plus crédibles.",
+              "Notre bureau étant à Granges, le premier entretien gratuit peut avoir lieu directement dans votre entreprise, au centre, dans la zone industrielle ou à Bettlach. Nous examinons votre offre, votre site et vos actions publicitaires passées, puis définissons des objectifs réalistes. Vous recevez ensuite une offre individuelle et claire. Nous passons aussi volontiers chez vous pour photographier votre atelier ou votre équipe, des images qui rendent les annonces bien plus crédibles.",
               "Une fois la campagne lancée, nous contrôlons régulièrement les mots-clés, les annonces et les audiences, et nous les ajustons. Les résultats, nous pouvons les commenter ensemble chez vous ou à la Bettlachstrasse, en termes simples et en français si vous le souhaitez. Un poste à repourvoir, un nouveau produit ou des vacances d'entreprise ? Nous adaptons vos annonces rapidement. La proximité simplifie vraiment le travail.",
             ],
           },
@@ -121,7 +121,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Combien coûte la gestion de nos campagnes ?",
-            a: "Cela dépend des canaux, du nombre de campagnes et du suivi souhaité. Vous recevez une offre individuelle et ferme après le premier entretien gratuit. Le budget publicitaire, c'est vous qui le fixez et le contrôlez.",
+            a: "Cela dépend des canaux, du nombre de campagnes et du suivi souhaité. Vous recevez une offre individuelle et claire après le premier entretien gratuit. Le budget publicitaire, c'est vous qui le fixez et le contrôlez.",
           },
         ],
       },
@@ -143,7 +143,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Biel: Kampagnen für beide Sprachgruppen",
         lead:
-          "In Biel erreichen Sie mit Werbung in nur einer Sprache bloss einen Teil Ihrer Kundschaft. Webnova plant zweisprachige Kampagnen aus Grenchen, rund 20 Minuten von Biel entfernt, und ist für Besprechungen schnell bei Ihnen.",
+          "In Biel erreichen Sie mit Werbung in nur einer Sprache bloss einen Teil Ihrer Kundschaft. Webnova plant zweisprachige Kampagnen aus Grenchen und kommt für Besprechungen gerne zu Ihnen.",
         sections: [
           {
             h2: "Werbung in einer zweisprachigen Stadt",
@@ -168,7 +168,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "So betreuen wir Ihr Online-Marketing in Biel",
             paragraphs: [
-              "Das kostenlose Erstgespräch führen wir gerne bei Ihnen, ob in der Altstadt, im Bözingenfeld, in Nidau oder in Brügg. Wir analysieren Ihre bisherige Werbung, Ihre Webseite in beiden Sprachen und Ihre Zielgruppen. Anschliessend erhalten Sie eine individuelle, verbindliche Offerte. Die Anzeigentexte schreiben wir in beiden Sprachen selbst, statt sie maschinell übersetzen zu lassen, und legen sie Ihnen vor dem Start zur Freigabe vor.",
+              "Das kostenlose Erstgespräch führen wir gerne bei Ihnen, ob in der Altstadt oder im Bözingenfeld. Wir analysieren Ihre bisherige Werbung, Ihre Webseite in beiden Sprachen und Ihre Zielgruppen. Anschliessend erhalten Sie eine individuelle, klare Offerte. Die Anzeigentexte schreiben wir in beiden Sprachen selbst, statt sie maschinell übersetzen zu lassen, und legen sie Ihnen vor dem Start zur Freigabe vor.",
               "Während die Kampagnen laufen, vergleichen wir die Ergebnisse der deutschen und französischen Anzeigen und verschieben das Budget dorthin, wo es mehr Anfragen bringt. Die Auswertungen erhalten Sie in Ihrer bevorzugten Sprache. Für Zwischenbesprechungen reicht oft ein Videocall, für Fotoaufnahmen oder einen Strategieworkshop kommen wir nach Biel. Sie haben eine feste Ansprechperson, die Deutsch und Französisch versteht und die Eigenheiten beider Sprachgruppen kennt.",
             ],
           },
@@ -184,11 +184,11 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Kommen Sie für Besprechungen nach Biel oder Nidau?",
-            a: "Gerne. Von unserem Büro in Grenchen sind wir in rund 20 Minuten in Biel. Kick-off, Workshops und Fotos machen wir vor Ort, laufende Abstimmungen auch per Videocall.",
+            a: "Gerne. Kick-off, Workshops und Fotos machen wir vor Ort, laufende Abstimmungen auch per Videocall.",
           },
           {
             q: "Wie wird der Aufwand für zwei Sprachen berechnet?",
-            a: "Der Umfang hängt von Kanälen, Sprachen und Anzahl Kampagnen ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch, in der alle Leistungen klar beschrieben sind.",
+            a: "Der Umfang hängt von Kanälen, Sprachen und Anzahl Kampagnen ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch, in der alle Leistungen klar beschrieben sind.",
           },
         ],
       },
@@ -202,7 +202,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Bienne : des campagnes qui parlent aux deux communautés",
         lead:
-          "À Bienne, une publicité dans une seule langue ne touche qu'une partie de votre clientèle. Webnova conçoit des campagnes bilingues depuis Granges, à une vingtaine de minutes, et se déplace volontiers pour vous rencontrer.",
+          "À Bienne, une publicité dans une seule langue ne touche qu'une partie de votre clientèle. Webnova conçoit des campagnes bilingues depuis Granges et se déplace volontiers pour vous rencontrer.",
         sections: [
           {
             h2: "Faire de la publicité dans une ville bilingue",
@@ -227,7 +227,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Votre marketing digital à Bienne, au quotidien",
             paragraphs: [
-              "Le premier entretien gratuit peut se dérouler chez vous, dans la vieille ville, aux Champs-de-Boujean, à Nidau ou à Brügg. Nous analysons vos publicités actuelles, votre site dans les deux langues et vos publics cibles, puis vous remettons une offre individuelle et ferme. Les textes des annonces sont rédigés par nos soins dans chaque langue, jamais traduits automatiquement, et vous les validez avant toute mise en ligne.",
+              "Le premier entretien gratuit peut se dérouler chez vous, dans la vieille ville ou aux Champs-de-Boujean. Nous analysons vos publicités actuelles, votre site dans les deux langues et vos publics cibles, puis vous remettons une offre individuelle et claire. Les textes des annonces sont rédigés par nos soins dans chaque langue, jamais traduits automatiquement, et vous les validez avant toute mise en ligne.",
               "Pendant la diffusion, nous comparons les résultats des annonces francophones et germanophones et réorientons le budget là où il génère le plus de demandes. Vous recevez les rapports dans la langue de votre choix. Une visioconférence suffit souvent pour les points intermédiaires, mais pour une séance photo ou un atelier de stratégie, nous venons à Bienne. Votre interlocuteur reste le même et comprend les deux langues.",
             ],
           },
@@ -243,11 +243,11 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Pouvez-vous nous rencontrer à Bienne ou à Nidau ?",
-            a: "Volontiers. Depuis notre bureau de Granges, nous sommes à Bienne en une vingtaine de minutes. Lancement, ateliers et photos se font sur place, le suivi courant aussi par visioconférence.",
+            a: "Volontiers. Lancement, ateliers et photos se font sur place, le suivi courant aussi par visioconférence.",
           },
           {
             q: "Comment est calculé le travail pour deux langues ?",
-            a: "L'ampleur dépend des canaux, des langues et du nombre de campagnes. Vous recevez une offre individuelle et ferme après le premier entretien gratuit, avec toutes les prestations clairement décrites.",
+            a: "L'ampleur dépend des canaux, des langues et du nombre de campagnes. Vous recevez une offre individuelle et claire après le premier entretien gratuit, avec toutes les prestations clairement décrites.",
           },
         ],
       },
@@ -269,7 +269,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Solothurn: Gäste und Kundschaft zur richtigen Zeit erreichen",
         lead:
-          "Solothurn lebt von seiner Altstadt, seinen Anlässen und einem starken Dienstleistungssektor. Von unserem Büro in Grenchen, rund 20 Minuten entfernt, planen wir Kampagnen, die genau auf diesen Rhythmus abgestimmt sind.",
+          "Solothurn lebt von seiner Altstadt, seinen Anlässen und einem starken Dienstleistungssektor. Von unserem Büro in Grenchen aus planen wir Kampagnen, die genau auf diesen Rhythmus abgestimmt sind.",
         sections: [
           {
             h2: "Warum Online-Marketing in Solothurn eine Frage des Timings ist",
@@ -294,7 +294,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit mit Solothurner Betrieben",
             paragraphs: [
-              "Wir treffen Sie zum kostenlosen Erstgespräch in Ihrem Betrieb in der Altstadt, in der Weststadt oder in den Nachbargemeinden wie Zuchwil, Bellach, Biberist oder Langendorf. Gemeinsam gehen wir Ihr Jahr durch: Wann ist Hochsaison, wann wird es ruhig, welche Anlässe sind wichtig? Daraus entsteht ein Plan, wann welche Kampagne läuft. Danach erhalten Sie eine individuelle, verbindliche Offerte mit allen Leistungen.",
+              "Wir treffen Sie zum kostenlosen Erstgespräch in Ihrem Betrieb in der Altstadt, in der Weststadt oder in den Nachbargemeinden. Gemeinsam gehen wir Ihr Jahr durch: Wann ist Hochsaison, wann wird es ruhig, welche Anlässe sind wichtig? Daraus entsteht ein Plan, wann welche Kampagne läuft. Danach erhalten Sie eine individuelle, klare Offerte mit allen Leistungen.",
               "Saisonale Kampagnen bereiten wir mit genügend Vorlauf vor, damit Texte, Bilder und Zielseiten rechtzeitig bereit sind. Für stimmungsvolle Aufnahmen Ihrer Terrasse, Ihres Ladens oder Ihrer Zimmer kommen wir nach Solothurn. Nach jeder Saison werten wir aus, was funktioniert hat, und nutzen die Erkenntnisse für das nächste Jahr. Bei Dienstleistern prüfen wir die laufenden Kampagnen regelmässig, passen Suchbegriffe an und berichten verständlich über die Ergebnisse.",
             ],
           },
@@ -314,7 +314,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Was kostet eine saisonale Kampagne?",
-            a: "Das hängt von Dauer, Kanälen und Umfang der Werbemittel ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget bestimmen Sie selbst.",
+            a: "Das hängt von Dauer, Kanälen und Umfang der Werbemittel ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget bestimmen Sie selbst.",
           },
         ],
       },
@@ -322,13 +322,13 @@ export const marketingLocal: LocalService[] = [
         name: "Soleure",
         slug: "marketing-digital-soleure",
         meta: {
-          title: "Marketing digital Soleure : Google Ads et réseaux sociaux",
+          title: "Marketing digital Soleure : Google Ads & réseaux sociaux",
           description:
             "Marketing digital à Soleure : campagnes pour hôtels, restaurants, commerces et prestataires, au rythme des saisons. Premier conseil gratuit.",
         },
         h1: "Marketing digital à Soleure : toucher vos clients au bon moment",
         lead:
-          "Soleure vit au rythme de sa vieille ville, de ses grands événements et d'un secteur tertiaire solide. Depuis notre bureau de Granges, à une vingtaine de minutes, nous concevons des campagnes adaptées à ce calendrier.",
+          "Soleure vit au rythme de sa vieille ville, de ses grands événements et d'un secteur tertiaire solide. Depuis notre bureau de Granges, nous concevons des campagnes adaptées à ce calendrier.",
         sections: [
           {
             h2: "À Soleure, la publicité en ligne est une affaire de calendrier",
@@ -353,7 +353,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Travailler ensemble à Soleure",
             paragraphs: [
-              "Nous vous rencontrons pour le premier entretien gratuit dans votre établissement, dans la vieille ville, dans le quartier ouest ou dans les communes voisines comme Zuchwil, Bellach, Biberist ou Langendorf. Ensemble, nous passons votre année en revue : haute saison, périodes calmes, événements importants. Il en ressort un plan indiquant quelle campagne tourne à quel moment. Vous recevez ensuite une offre individuelle et ferme.",
+              "Nous vous rencontrons pour le premier entretien gratuit dans votre établissement, dans la vieille ville, dans le quartier ouest ou dans les communes voisines. Ensemble, nous passons votre année en revue : haute saison, périodes calmes, événements importants. Il en ressort un plan indiquant quelle campagne tourne à quel moment. Vous recevez ensuite une offre individuelle et claire.",
               "Les campagnes saisonnières sont préparées suffisamment tôt pour que textes, images et pages d'arrivée soient prêts à temps. Pour photographier votre terrasse, votre boutique ou vos chambres, nous venons à Soleure. Après chaque saison, nous analysons ce qui a fonctionné et en tirons des enseignements pour l'année suivante. Pour les prestataires, nous suivons les campagnes en continu et vous livrons des rapports clairs.",
             ],
           },
@@ -373,7 +373,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une campagne saisonnière ?",
-            a: "Cela dépend de la durée, des canaux et des visuels nécessaires. Vous recevez une offre individuelle et ferme après le premier entretien gratuit. Le budget publicitaire reste fixé par vous.",
+            a: "Cela dépend de la durée, des canaux et des visuels nécessaires. Vous recevez une offre individuelle et claire après le premier entretien gratuit. Le budget publicitaire reste fixé par vous.",
           },
         ],
       },
@@ -395,7 +395,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Bern: präzise Kampagnen statt teurer Streuverluste",
         lead:
-          "Im Raum Bern konkurrieren viele Anbieter um dieselben Suchanfragen. Webnova betreut Ihre Kampagnen von Grenchen aus, rund 35 Minuten von Bern entfernt, und setzt auf Genauigkeit statt auf grosses Budget.",
+          "Im Raum Bern konkurrieren viele Anbieter um dieselben Suchanfragen. Webnova betreut Ihre Kampagnen von Grenchen aus und setzt auf Genauigkeit statt auf grosses Budget.",
         sections: [
           {
             h2: "Warum Online-Werbung in Bern Präzision braucht",
@@ -407,7 +407,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Was wir für Unternehmen im Raum Bern umsetzen",
             paragraphs: [
-              "Für Gewerbe und Praxen grenzen wir Google-Ads-Kampagnen auf die Quartiere und Gemeinden ein, in denen Sie tatsächlich arbeiten, etwa Länggasse, Breitenrain, Bümpliz oder Köniz, Ostermundigen und Muri. Wir setzen auf spezifische Suchbegriffe mit klarer Kaufabsicht, die weniger umkämpft sind als allgemeine Begriffe. So erhält auch ein kleineres Budget eine faire Chance gegen grosse Mitbewerber mit eigenen Marketingabteilungen. Unpassende Suchen schliessen wir laufend aus.",
+              "Für Gewerbe und Praxen grenzen wir Google-Ads-Kampagnen auf die Quartiere und Gemeinden ein, in denen Sie tatsächlich arbeiten, etwa ein einzelnes Quartier wie die Länggasse oder eine Gemeinde wie Köniz. Wir setzen auf spezifische Suchbegriffe mit klarer Kaufabsicht, die weniger umkämpft sind als allgemeine Begriffe. So erhält auch ein kleineres Budget eine faire Chance gegen grosse Mitbewerber mit eigenen Marketingabteilungen. Unpassende Suchen schliessen wir laufend aus.",
               "Beratungsunternehmen, Verbände und B2B-Dienstleister begleiten wir mit LinkedIn-Kampagnen, die nach Branche, Funktion und Unternehmensgrösse ausgerichtet sind, zum Beispiel für Fachveranstaltungen, Whitepaper oder Stellen. Weil der Kanton Bern zweisprachig ist und viele Partner aus der Romandie kommen, können wir Anzeigen auch auf Französisch umsetzen. Alle Kampagnen messen wir mit sauberem Conversion-Tracking, damit klar ist, welcher Kanal und welche Anzeige tatsächlich Anfragen bringt.",
             ],
             bullets: [
@@ -421,7 +421,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Zusammenarbeit zwischen Grenchen und Bern",
             paragraphs: [
-              "Über die A5 und A1 sind wir in gut einer halben Stunde in Bern. Das kostenlose Erstgespräch und den Kick-off führen wir gerne bei Ihnen durch, ob in der Innenstadt, im Wankdorf oder in einer Gemeinde der Agglomeration. Wir prüfen bestehende Kampagnen, Konkurrenz und Webseite und zeigen auf, wo Budget verloren geht. Danach erhalten Sie eine individuelle, verbindliche Offerte, die genau beschreibt, was wir übernehmen.",
+              "Das kostenlose Erstgespräch und den Kick-off führen wir gerne bei Ihnen durch, ob in der Innenstadt, im Wankdorf oder in einer Gemeinde der Agglomeration. Wir prüfen bestehende Kampagnen, Konkurrenz und Webseite und zeigen auf, wo Budget verloren geht. Danach erhalten Sie eine individuelle, klare Offerte, die genau beschreibt, was wir übernehmen.",
               "Die laufende Optimierung erledigen wir effizient aus unserem Büro, Besprechungen finden meist per Videocall statt. Sie sprechen dabei immer mit der Person, die Ihre Kampagnen selbst betreut, nicht mit einem wechselnden Account-Team. Für Strategie-Workshops, Fotoaufnahmen oder den Jahresrückblick kommen wir nach Bern. Bei Bedarf verbinden wir die Werbung mit Suchmaschinenoptimierung, damit Sie langfristig weniger von bezahlten Klicks abhängig sind und Ihre Sichtbarkeit in Bern auf zwei Beinen steht.",
             ],
           },
@@ -433,7 +433,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Warum eine Agentur aus Grenchen für Kampagnen in Bern?",
-            a: "Sie haben eine feste Ansprechperson, die Ihre Kampagnen selbst betreut, ohne Grossagentur-Overhead. Nach Bern sind es rund 35 Minuten, für wichtige Termine kommen wir vor Ort.",
+            a: "Sie haben eine feste Ansprechperson, die Ihre Kampagnen selbst betreut, ohne Grossagentur-Overhead. Für wichtige Termine kommen wir zu Ihnen nach Bern.",
           },
           {
             q: "Setzen Sie auch LinkedIn-Werbung für B2B-Firmen um?",
@@ -441,7 +441,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Was kostet Online-Marketing für ein Berner KMU?",
-            a: "Das hängt von Kanälen, Zielgruppen und Betreuungsumfang ab. Sie erhalten eine individuelle, verbindliche Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget legen Sie selbst fest.",
+            a: "Das hängt von Kanälen, Zielgruppen und Betreuungsumfang ab. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch. Das Werbebudget legen Sie selbst fest.",
           },
         ],
       },
@@ -455,7 +455,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Berne : des campagnes ciblées plutôt que coûteuses",
         lead:
-          "Dans la région de Berne, de nombreuses entreprises se disputent les mêmes recherches. Webnova gère vos campagnes depuis Granges, à environ 35 minutes de Berne, en misant sur la précision plutôt que sur le volume.",
+          "Dans la région de Berne, de nombreuses entreprises se disputent les mêmes recherches. Webnova gère vos campagnes depuis Granges en misant sur la précision plutôt que sur le volume.",
         sections: [
           {
             h2: "Pourquoi la publicité en ligne à Berne exige de la précision",
@@ -467,7 +467,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Ce que nous réalisons pour les entreprises bernoises",
             paragraphs: [
-              "Pour l'artisanat et les cabinets, nous limitons les campagnes Google Ads aux quartiers et communes où vous travaillez réellement, comme la Länggasse, le Breitenrain, Bümpliz, Köniz, Ostermundigen ou Muri. Nous privilégions des mots-clés précis, avec une intention d'achat claire et moins de concurrence que les termes génériques. Ainsi, un budget modeste a lui aussi ses chances face à de grands concurrents dotés de leur propre service marketing.",
+              "Pour l'artisanat et les cabinets, nous limitons les campagnes Google Ads aux quartiers et communes où vous travaillez réellement, par exemple un quartier comme la Länggasse ou une commune comme Köniz. Nous privilégions des mots-clés précis, avec une intention d'achat claire et moins de concurrence que les termes génériques. Ainsi, un budget modeste a lui aussi ses chances face à de grands concurrents dotés de leur propre service marketing.",
               "Pour les bureaux de conseil, les associations et les prestataires B2B, nous menons des campagnes LinkedIn ciblées par secteur, fonction et taille d'entreprise, par exemple pour un événement spécialisé, un livre blanc ou un recrutement. Le canton de Berne étant bilingue et de nombreux partenaires venant de Suisse romande, nous rédigeons volontiers vos annonces en français. Chaque campagne est mesurée grâce à un suivi des conversions fiable.",
             ],
             bullets: [
@@ -480,7 +480,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Entre Granges et Berne : notre façon de travailler",
             paragraphs: [
-              "Par l'A5 et l'A1, nous rejoignons Berne en une bonne demi-heure. Le premier entretien gratuit et le lancement peuvent se faire chez vous, au centre-ville, au Wankdorf ou dans une commune de l'agglomération. Nous examinons vos campagnes actuelles, la concurrence et votre site, et vous montrons où le budget se perd. Vous recevez ensuite une offre individuelle et ferme, qui décrit précisément nos prestations.",
+              "Le premier entretien gratuit et le lancement peuvent se faire chez vous, au centre-ville, au Wankdorf ou dans une commune de l'agglomération. Nous examinons vos campagnes actuelles, la concurrence et votre site, et vous montrons où le budget se perd. Vous recevez ensuite une offre individuelle et claire, qui décrit précisément nos prestations.",
               "L'optimisation courante se fait efficacement depuis notre bureau, et les points réguliers ont souvent lieu en visioconférence. Vous parlez toujours avec la personne qui gère elle-même vos campagnes, pas avec une équipe qui change sans cesse. Pour un atelier de stratégie, une séance photo ou le bilan annuel, nous venons à Berne. Si besoin, nous associons la publicité au référencement naturel pour réduire votre dépendance aux clics payants.",
             ],
           },
@@ -500,7 +500,7 @@ export const marketingLocal: LocalService[] = [
           },
           {
             q: "Combien coûte le marketing digital pour une PME bernoise ?",
-            a: "Cela dépend des canaux, des publics visés et du niveau de suivi. Vous recevez une offre individuelle et ferme après le premier entretien gratuit. Le budget publicitaire, c'est vous qui le fixez.",
+            a: "Cela dépend des canaux, des publics visés et du niveau de suivi. Vous recevez une offre individuelle et claire après le premier entretien gratuit. Le budget publicitaire, c'est vous qui le fixez.",
           },
         ],
       },

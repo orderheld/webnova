@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
-import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
 import { localServices } from "@/content/local";
 import { services } from "@/content/services";
@@ -44,7 +43,6 @@ export function RegionsPage({ locale }: { locale: Locale }) {
               <CardLink
                 key={c.key}
                 href={href(locale, `city:${c.key}`)}
-                meta={c.minutesFromOffice > 0 ? `~${c.minutesFromOffice} ${d.common.minutesFromOffice}` : undefined}
                 title={cityLabel(locale, c.content[locale].name)}
               />
             ))}
@@ -181,11 +179,6 @@ export function CityPage({
           <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
             {site.phone}
           </ButtonLink>
-          {city.minutesFromOffice > 0 && (
-            <span className="ml-1 inline-flex items-center gap-2 text-[14px] text-white/55">
-              <Icon name="pin" className="h-4 w-4 text-accent" /> ~{city.minutesFromOffice} {d.common.minutesFromOffice}
-            </span>
-          )}
         </div>
       </PageHero>
 

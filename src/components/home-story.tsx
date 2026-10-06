@@ -6,14 +6,6 @@ import { Icon } from "./icons";
 
 const t = {
   de: {
-    showcase: {
-      caption: "Echte Projekte von Webnova",
-      notif: "Neue Anfrage",
-      notifSub: "Buffet für 80 Personen",
-      order: "Bestellung eingegangen",
-      orderSub: "CHF 48.50 · Lieferung",
-      now: "gerade eben",
-    },
     pain: {
       eyebrow: "Kennen Sie das?",
       title: "Sie sind richtig gut in dem, was Sie tun. Online merkt das nur kaum jemand.",
@@ -35,23 +27,28 @@ const t = {
       lead: "Ob Restaurant, Salon oder Werkstatt: Jede Branche hat andere Kunden und andere Fragen. Ihre Website beantwortet sie, bevor das Telefon klingelt.",
       items: {
         gastro: { label: "Gastronomie", line: "Bestellungen und Reservationen, auch wenn das Telefon besetzt ist." },
-        catering: { label: "Catering & Events", line: "Anfragen für das nächste Fest, schon mit allen Details." },
+        b2b: { label: "Industrie & B2B", line: "Produkte, Datenblätter und Anfragen, sauber für Einkäufer aufbereitet." },
         beauty: { label: "Coiffeur & Beauty", line: "Ein Auftritt, so gepflegt wie Ihr Salon." },
         craft: { label: "Handwerk & Bau", line: "Aufträge aus der Region, statt Preiskampf auf Plattformen." },
         retail: { label: "Detailhandel", line: "Laden, Onlineshop und Kasse aus einem Guss." },
         service: { label: "Praxis & Dienstleister", line: "Vertrauen auf den ersten Blick, Termine mit einem Klick." },
       },
       mock: {
+        reserve: "Tisch reservieren",
+        reserveInfo: ["4 Personen", "Fr 19:30"],
+        reserveCta: "Reservieren",
+        product: "Präzisionsteil A-120",
+        datasheet: "Datenblatt (PDF)",
+        quote: "Offerte anfragen",
         booking: "Termin buchen",
         slots: ["Di 09:00", "Di 14:30", "Mi 10:00"],
         request: "Offertanfrage",
         requestJob: "Badezimmer sanieren",
         requestPlace: "2540 Grenchen",
         send: "Anfrage senden",
-        items: [["Espresso-Bohnen", "18.90"], ["Tasse Keramik", "24.00"]] as [string, string][],
-        total: "Total",
+        items: [["Notizbuch Leinen", "1×"], ["Thermosflasche", "2×"]] as [string, string][],
         pay: "Bezahlen",
-        practice: "Praxis am Markt",
+        practice: "Ihre Praxis",
         open: "Heute geöffnet",
         call: "Anrufen",
         route: "Route",
@@ -65,14 +62,6 @@ const t = {
     },
   },
   fr: {
-    showcase: {
-      caption: "Vrais projets de Webnova",
-      notif: "Nouvelle demande",
-      notifSub: "Buffet pour 80 personnes",
-      order: "Commande reçue",
-      orderSub: "CHF 48.50 · Livraison",
-      now: "à l'instant",
-    },
     pain: {
       eyebrow: "Ça vous parle ?",
       title: "Vous excellez dans votre métier. Mais en ligne, presque personne ne le remarque.",
@@ -94,23 +83,28 @@ const t = {
       lead: "Restaurant, salon ou atelier : chaque branche a ses clients et ses questions. Votre site y répond avant même que le téléphone sonne.",
       items: {
         gastro: { label: "Restauration", line: "Commandes et réservations, même quand la ligne est occupée." },
-        catering: { label: "Traiteur & événements", line: "Des demandes pour la prochaine fête, avec tous les détails." },
+        b2b: { label: "Industrie & B2B", line: "Produits, fiches techniques et demandes, clairement présentés pour les acheteurs." },
         beauty: { label: "Coiffure & beauté", line: "Une présence aussi soignée que votre salon." },
         craft: { label: "Artisanat & construction", line: "Des mandats de la région, plutôt que la guerre des prix sur les plateformes." },
         retail: { label: "Commerce de détail", line: "Magasin, boutique en ligne et caisse d'un seul tenant." },
         service: { label: "Cabinets & prestataires", line: "La confiance au premier regard, les rendez-vous en un clic." },
       },
       mock: {
+        reserve: "Réserver une table",
+        reserveInfo: ["4 personnes", "Ve 19:30"],
+        reserveCta: "Réserver",
+        product: "Pièce de précision A-120",
+        datasheet: "Fiche technique (PDF)",
+        quote: "Demander une offre",
         booking: "Prendre rendez-vous",
         slots: ["Ma 09:00", "Ma 14:30", "Me 10:00"],
         request: "Demande de devis",
         requestJob: "Rénover la salle de bain",
         requestPlace: "2502 Bienne",
         send: "Envoyer la demande",
-        items: [["Grains d'espresso", "18.90"], ["Tasse en céramique", "24.00"]] as [string, string][],
-        total: "Total",
+        items: [["Carnet en lin", "1×"], ["Gourde isotherme", "2×"]] as [string, string][],
         pay: "Payer",
-        practice: "Cabinet du Marché",
+        practice: "Votre cabinet",
         open: "Ouvert aujourd'hui",
         call: "Appeler",
         route: "Itinéraire",
@@ -124,79 +118,6 @@ const t = {
     },
   },
 };
-
-function BrowserBar({ domain }: { domain: string }) {
-  return (
-    <div className="flex items-center gap-1.5 border-b border-white/10 bg-night-2 px-3.5 py-2.5">
-      <span className="h-2 w-2 rounded-full bg-white/20" />
-      <span className="h-2 w-2 rounded-full bg-white/20" />
-      <span className="h-2 w-2 rounded-full bg-white/20" />
-      <span className="ml-2 flex items-center gap-1.5 truncate rounded-full bg-white/5 px-3 py-0.5 font-mono text-[11px] text-white/45">
-        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-        {domain}
-      </span>
-    </div>
-  );
-}
-
-/** Hero composition built from real client work: a desktop site, a phone app and live-looking notifications. */
-export function HeroShowcase({ locale }: { locale: Locale }) {
-  const s = t[locale].showcase;
-  return (
-    <div className="relative mx-auto w-full max-w-[580px] pb-16 pt-10" aria-hidden="true">
-      <div className="animate-rise ml-auto w-[92%] overflow-hidden rounded-[22px] border border-white/10 shadow-[0_60px_120px_-40px_rgba(0,0,0,0.9)] [animation-delay:150ms]">
-        <BrowserBar domain="avacatering.ch" />
-        <div className="relative aspect-[1200/630]">
-          <Image src="/referenzen/ava-catering.jpg" alt="" fill priority sizes="(min-width: 1024px) 540px, 92vw" className="object-cover" />
-        </div>
-      </div>
-
-      <div className="animate-rise absolute bottom-0 left-0 w-[34%] min-w-[130px] [animation-delay:350ms]">
-        <div className="animate-float-slow rounded-[30px] border border-white/15 bg-night-2 p-1.5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.9)]">
-          <div className="relative aspect-[390/780] overflow-hidden rounded-[24px] bg-white">
-            <Image src="/visuals/orderheld-mobile.jpg" alt="" fill sizes="200px" className="object-cover object-top" />
-            <span className="absolute left-1/2 top-1.5 h-3 w-14 -translate-x-1/2 rounded-full bg-night" />
-          </div>
-        </div>
-      </div>
-
-      <div className="animate-pop absolute -left-2 top-0 rounded-2xl bg-white p-3 pr-5 text-night shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] [animation-delay:700ms] sm:-left-8">
-        <div className="animate-float flex items-center gap-3">
-          <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-accent">
-            <Icon name="inbox" className="h-5 w-5" />
-            <span className="absolute -right-1 -top-1 flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
-              <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-white bg-success" />
-            </span>
-          </span>
-          <span>
-            <span className="block text-[13px] font-bold">{s.notif}</span>
-            <span className="block text-[12px] text-muted">
-              {s.notifSub} · {s.now}
-            </span>
-          </span>
-        </div>
-      </div>
-
-      <div className="animate-pop absolute bottom-8 right-0 rounded-2xl border border-white/10 bg-night-2/95 p-3 pr-5 text-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur [animation-delay:1000ms] sm:-right-4">
-        <div className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-success/20 text-[#4ade80]">
-            <Icon name="check" className="h-5 w-5" strokeWidth={2.6} />
-          </span>
-          <span>
-            <span className="block text-[13px] font-bold">{s.order}</span>
-            <span className="block text-[12px] text-white/55">{s.orderSub}</span>
-          </span>
-        </div>
-      </div>
-
-      <p className="absolute bottom-[-6px] right-0 flex items-center gap-2 text-[12px] text-white/45 sm:right-2">
-        <span className="h-px w-6 bg-white/30" />
-        {s.caption}
-      </p>
-    </div>
-  );
-}
 
 /** Shared frame for the small illustrations: same size, background and grid everywhere. */
 function VisualFrame({ children, dark = false, photo }: { children?: React.ReactNode; dark?: boolean; photo?: string }) {
@@ -337,12 +258,38 @@ export function IndustryGallery({ locale }: { locale: Locale }) {
     {
       key: "gastro",
       href: href(locale, "service:kassensystem-gastro"),
-      photo: "/visuals/food-pide.jpg",
+      visual: (
+        <MiniCard>
+          <p className="text-[12px] font-bold">{m.reserve}</p>
+          <div className="mt-3 grid grid-cols-2 gap-1.5">
+            {m.reserveInfo.map((x) => (
+              <span key={x} className="rounded-lg bg-bg py-1.5 text-center text-[11px] text-ink-soft">
+                {x}
+              </span>
+            ))}
+          </div>
+          <span className="mt-3 block rounded-lg bg-night py-1.5 text-center text-[11px] font-bold text-accent">{m.reserveCta}</span>
+        </MiniCard>
+      ),
     },
     {
-      key: "catering",
+      key: "b2b",
       href: href(locale, "service:webdesign"),
-      photo: "/visuals/ava-buffet.jpg",
+      visual: (
+        <MiniCard>
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-bg">
+              <Icon name="settings" className="h-5 w-5 text-night" />
+            </span>
+            <p className="text-[12px] font-bold leading-tight">{m.product}</p>
+          </div>
+          <span className="mt-3 flex items-center gap-2 rounded-lg bg-bg px-3 py-1.5 text-[11px] text-ink-soft">
+            <Icon name="download" className="h-3.5 w-3.5" />
+            {m.datasheet}
+          </span>
+          <span className="mt-2 block rounded-lg bg-night py-1.5 text-center text-[11px] font-bold text-accent">{m.quote}</span>
+        </MiniCard>
+      ),
     },
     {
       key: "beauty",
@@ -388,10 +335,6 @@ export function IndustryGallery({ locale }: { locale: Locale }) {
               <span>{pr}</span>
             </div>
           ))}
-          <div className="mt-2 flex justify-between text-[12px] font-bold">
-            <span>{m.total}</span>
-            <span>CHF 42.90</span>
-          </div>
           <span className="mt-2 block rounded-lg bg-night py-1.5 text-center text-[11px] font-bold text-accent">{m.pay}</span>
         </MiniCard>
       ),
@@ -419,6 +362,9 @@ export function IndustryGallery({ locale }: { locale: Locale }) {
       ),
     },
   ];
+  // Trades and B2B first: the gallery should read as "every business", not as a food showcase.
+  const order = ["craft", "b2b", "service", "beauty", "retail", "gastro"];
+  tiles.sort((x, y) => order.indexOf(x.key) - order.indexOf(y.key));
 
   return (
     <section className="relative isolate bg-night py-24 text-white md:py-32">
@@ -450,26 +396,88 @@ export function IndustryGallery({ locale }: { locale: Locale }) {
   );
 }
 
-const wallA = ["/visuals/ava-tafel.jpg", "/referenzen/orderheld.jpg", "/visuals/ava-baklava.jpg", "/visuals/food-pide.jpg", "/visuals/ava-mezze.jpg"];
-const wallB = ["/visuals/orderheld-desktop.jpg", "/visuals/ava-lunch.jpg", "/referenzen/ava-catering.jpg", "/visuals/food-pizza.jpg", "/visuals/orderheld-mobile.jpg"];
+/** A small, generic website mock used as a tile in the moving wall. */
+function MockSite({ v }: { v: number }) {
+  const line = (w: string, cls = "bg-white/15") => <span className={`block h-1.5 rounded-full ${cls}`} style={{ width: w }} />;
+  return (
+    <div className="flex h-[180px] w-[260px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-night-2 md:h-[220px] md:w-[320px]">
+      <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+        <span className="ml-auto h-1.5 w-10 rounded-full bg-white/10" />
+      </div>
+      <div className="flex-1 p-4">
+        {v % 4 === 0 && (
+          <div className="grid h-full grid-cols-5 gap-3">
+            <div className="col-span-3 space-y-2">
+              {line("90%", "bg-white/60")}
+              {line("70%", "bg-white/60")}
+              {line("50%", "bg-accent")}
+              {line("85%")}
+              {line("60%")}
+              <span className="mt-2 block h-5 w-16 rounded-full bg-accent" />
+            </div>
+            <div className="col-span-2 rounded-xl bg-[radial-gradient(circle_at_30%_25%,#d2ff28_0%,#56700c_40%,#1a1d14_80%)] opacity-80" />
+          </div>
+        )}
+        {v % 4 === 1 && (
+          <div className="grid h-full grid-cols-3 gap-2">
+            {[0, 1, 2, 3, 4, 5].map((k) => (
+              <div key={k} className="space-y-1.5 rounded-lg bg-white/5 p-2">
+                <span className={`block h-8 rounded-md ${k === 1 ? "bg-accent/70" : "bg-white/10"}`} />
+                {line("80%")}
+              </div>
+            ))}
+          </div>
+        )}
+        {v % 4 === 2 && (
+          <div className="flex h-full flex-col justify-between">
+            <div className="flex gap-2">
+              {["40%", "25%", "35%"].map((w, k) => (
+                <span key={k} className="h-8 rounded-lg bg-white/5" style={{ width: w }} />
+              ))}
+            </div>
+            <svg viewBox="0 0 200 60" className="h-20 w-full">
+              <path d="M0 52 C30 50 40 40 60 38 S100 30 120 22 S160 14 200 4" fill="none" stroke="#d2ff28" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+          </div>
+        )}
+        {v % 4 === 3 && (
+          <div className="grid h-full grid-cols-2 gap-3">
+            <div className="space-y-2">
+              {line("80%", "bg-white/60")}
+              {line("95%")}
+              {line("75%")}
+              {line("88%")}
+            </div>
+            <div className="space-y-1.5 rounded-xl bg-white/5 p-2">
+              {[0, 1, 2].map((k) => (
+                <span key={k} className={`block h-5 rounded-md ${k === 1 ? "bg-accent/80" : "bg-white/10"}`} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
-/** Emotional statement over a slowly moving wall of real project images. */
+/** Emotional statement over a slowly moving wall of website mock-ups. */
 export function WorkWall({ locale }: { locale: Locale }) {
   const w = t[locale].wall;
-  const row = (imgs: string[], cls: string) => (
+  const row = (offset: number, cls: string) => (
     <div className={`flex w-max gap-4 ${cls}`}>
-      {[...imgs, ...imgs].map((src, n) => (
-        <div key={n} className="relative h-[180px] w-[260px] shrink-0 overflow-hidden rounded-2xl md:h-[230px] md:w-[340px]">
-          <Image src={src} alt="" fill sizes="340px" className="object-cover object-top" />
-        </div>
+      {Array.from({ length: 12 }, (_, n) => (
+        <MockSite key={n} v={n + offset} />
       ))}
     </div>
   );
   return (
     <section className="relative isolate overflow-hidden bg-night py-28 text-white md:py-40">
-      <div aria-hidden="true" className="absolute inset-0 -z-20 flex -rotate-[4deg] scale-110 flex-col justify-center gap-4 opacity-45">
-        {row(wallA, "animate-marquee")}
-        {row(wallB, "animate-marquee-rev")}
+      <div aria-hidden="true" className="absolute inset-0 -z-20 flex -rotate-[4deg] scale-110 flex-col justify-center gap-4 opacity-60">
+        {row(0, "animate-marquee")}
+        {row(2, "animate-marquee-rev")}
       </div>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(11,12,10,0.94)_30%,rgba(11,12,10,0.55)_100%)]" />
       <div className="container-x reveal text-center">

@@ -31,7 +31,7 @@ export const thun: City = {
           h2: "Tourismus, Gastronomie und Gewerbe online stärken",
           paragraphs: [
             "Für Tourismus- und Gastronomiebetriebe in Thun zählen starke Bilder, eine klare Darstellung des Angebots, einfache Reservationen und Präsenz in Google Maps. Viele Gäste planen ihren Ausflug ins Berner Oberland spontan auf dem Smartphone. Eine schnelle, mobilfreundliche Webseite und ein gepflegtes Google Unternehmensprofil entscheiden dann, ob sie bei Ihnen einkehren oder weiterfahren.",
-            "Für Gewerbe, Detailhandel und Dienstleister rund um Thun, etwa in Steffisburg, Spiez oder Heimberg, sind gut strukturierte Leistungsseiten und lokale Suchmaschinenoptimierung entscheidend. Wer Produkte verkauft, kann mit einem Onlineshop zusätzliche Kundschaft erreichen. Für Restaurants, Cafés und Läden richten wir zudem moderne Kassensysteme ein, die den Alltag spürbar vereinfachen und mit Ihrem Onlineshop zusammenspielen.",
+            "Für Gewerbe, Detailhandel und Dienstleister in Thun und Umgebung sind gut strukturierte Leistungsseiten und lokale Suchmaschinenoptimierung entscheidend. Wer Produkte verkauft, kann mit einem Onlineshop zusätzliche Kundschaft erreichen. Für Restaurants, Cafés und Läden richten wir zudem moderne Kassensysteme ein, die den Alltag spürbar vereinfachen und mit Ihrem Onlineshop zusammenspielen.",
           ],
           bullets: [
             "Webseiten für Hotellerie und Gastronomie",
@@ -43,7 +43,7 @@ export const thun: City = {
         {
           h2: "Ehrlich: so arbeiten wir mit Kunden in Thun",
           paragraphs: [
-            "Unser Büro liegt in Grenchen, knapp eine Stunde von Thun entfernt. Den grössten Teil der Zusammenarbeit erledigen wir effizient per Videocall, Telefon und E-Mail. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Thun. Dafür erhalten Sie eine feste Ansprechperson, direkte Kommunikation und eine Agentur, die sich auf Schweizer KMU konzentriert.",
+            "Unser Büro liegt in Grenchen. Den grössten Teil der Zusammenarbeit erledigen wir effizient per Videocall, Telefon und E-Mail. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Thun. Dafür erhalten Sie eine feste Ansprechperson, direkte Kommunikation und eine Agentur, die sich auf Schweizer KMU konzentriert.",
             "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entwickeln wir Ihre Webseite in klaren Schritten und zeigen Ihnen Entwürfe früh. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO und Werbekampagnen, etwa saisonale Google- oder Meta-Kampagnen für die Sommersaison am See oder für besondere Anlässe in der Region.",
           ],
         },
@@ -98,7 +98,7 @@ export const thun: City = {
         {
           h2: "En toute transparence : notre façon de travailler",
           paragraphs: [
-            "Notre bureau se trouve à Granges, à un peu moins d'une heure de Thoune. L'essentiel de la collaboration se fait efficacement par visioconférence, téléphone et e-mail. Pour le lancement, un atelier ou des photos, nous venons volontiers à Thoune. Vous bénéficiez d'un interlocuteur fixe, d'une communication directe et d'une agence centrée sur les PME suisses.",
+            "Notre bureau se trouve à Granges. L'essentiel de la collaboration se fait efficacement par visioconférence, téléphone et e-mail. Pour le lancement, un atelier ou des photos, nous venons volontiers à Thoune. Vous bénéficiez d'un interlocuteur fixe, d'une communication directe et d'une agence centrée sur les PME suisses.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Nous développons ensuite votre site par étapes et vous montrons les maquettes rapidement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et des campagnes saisonnières sur Google ou Meta pour la haute saison au bord du lac.",
           ],
         },

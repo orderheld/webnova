@@ -18,12 +18,12 @@ export const lyss: City = {
       },
       h1: "Webdesign Lyss: Webseiten für Seeländer Unternehmen",
       lead:
-        "Webnova erstellt Webseiten für Gewerbe, Handel und Dienstleister in Lyss und im Seeland. Von unserem Büro in Grenchen sind wir in rund 25 Minuten bei Ihnen.",
+        "Webnova erstellt Webseiten für Gewerbe, Handel und Dienstleister in Lyss und im Seeland. Für Besprechungen kommen wir gerne zu Ihnen.",
       sections: [
         {
           h2: "Lyss: Zentrum im Seeland zwischen Biel und Bern",
           paragraphs: [
-            "Lyss liegt zentral im Seeland, gut erreichbar zwischen Biel und Bern. Hier sind viele Gewerbe- und Industriebetriebe ansässig, dazu Handel, Dienstleister und Unternehmen aus dem Umfeld der Landwirtschaft. Ihre Kundschaft kommt aus Lyss selbst, aus Aarberg, Busswil, Schüpfen und den Dörfern ringsum. Eine gute Webseite muss diese Region ansprechen und zeigen, dass Sie in der Nähe sind.",
+            "Lyss liegt zentral im Seeland, gut erreichbar zwischen Biel und Bern. Hier sind viele Gewerbe- und Industriebetriebe ansässig, dazu Handel, Dienstleister und Unternehmen aus dem Umfeld der Landwirtschaft. Ihre Kundschaft kommt aus Lyss selbst, aus Aarberg und den Dörfern ringsum. Eine gute Webseite muss diese Region ansprechen und zeigen, dass Sie in der Nähe sind.",
             "Viele Seeländer Betriebe haben eine Webseite, die vor Jahren erstellt wurde und heute auf dem Smartphone kaum lesbar ist. Andere werden bei Google schlicht nicht gefunden. Wenn Sie in Lyss eine Webseite erstellen lassen oder Ihren bestehenden Auftritt modernisieren möchten, schauen wir zuerst gemeinsam, was Ihre Kunden suchen und welche Informationen ihnen heute fehlen.",
           ],
         },
@@ -31,7 +31,7 @@ export const lyss: City = {
           h2: "Was Gewerbe und Handel in Lyss online brauchen",
           paragraphs: [
             "Für Handwerker, Garagen, Bauunternehmen und technische Betriebe in Lyss zählen klare Leistungsseiten, gute Referenzbilder, ein einfaches Kontaktformular und Stelleninserate, die Fachkräfte ansprechen. Für Läden und Hofläden im Seeland sind Öffnungszeiten, saisonale Angebote und vielleicht ein kleiner Onlineshop wichtig. Gemüse und regionale Produkte aus dem Seeland lassen sich online sehr gut präsentieren.",
-            "Ebenso wichtig ist die lokale Sichtbarkeit. Wer „Schreiner Lyss“ oder „Coiffeur Seeland“ sucht, sieht zuerst die Google-Karte. Darum optimieren wir neben der Webseite auch Ihr Google Unternehmensprofil. Und weil das Seeland an der Sprachgrenze liegt, kann eine französische Version zusätzlich helfen, Kundschaft aus Richtung Neuenburg, Murten oder Biel zu erreichen.",
+            "Ebenso wichtig ist die lokale Sichtbarkeit. Wer „Schreiner Lyss“ oder „Coiffeur Seeland“ sucht, sieht zuerst die Google-Karte. Darum optimieren wir neben der Webseite auch Ihr Google Unternehmensprofil. Und weil das Seeland an der Sprachgrenze liegt, kann eine französische Version zusätzlich helfen, französischsprachige Kundschaft in der Region zu erreichen.",
           ],
           bullets: [
             "Webseiten für Gewerbe und Handwerk",
@@ -51,7 +51,7 @@ export const lyss: City = {
       faq: [
         {
           q: "Kommen Sie für Besprechungen nach Lyss?",
-          a: "Ja. Lyss liegt rund 25 Minuten von unserem Büro in Grenchen entfernt. Wir besprechen Ihr Projekt gerne bei Ihnen vor Ort.",
+          a: "Ja. Wir besprechen Ihr Projekt gerne bei Ihnen vor Ort.",
         },
         {
           q: "Können Sie meine alte Webseite modernisieren?",
@@ -73,7 +73,7 @@ export const lyss: City = {
       },
       h1: "Création de site internet à Lyss et dans le Seeland",
       lead:
-        "Webnova crée des sites internet pour les artisans, commerces et prestataires de Lyss et du Seeland. Notre bureau de Granges se trouve à environ 25 minutes.",
+        "Webnova crée des sites internet pour les artisans, commerces et prestataires de Lyss et du Seeland. Nous nous déplaçons volontiers chez vous.",
       sections: [
         {
           h2: "Lyss, au cœur du Seeland",
@@ -106,7 +106,7 @@ export const lyss: City = {
       faq: [
         {
           q: "Vous déplacez-vous à Lyss ?",
-          a: "Oui. Lyss se trouve à environ 25 minutes de notre bureau de Granges. Nous discutons volontiers de votre projet chez vous.",
+          a: "Oui. Nous discutons volontiers de votre projet chez vous.",
         },
         {
           q: "Pouvez-vous moderniser mon site existant ?",
