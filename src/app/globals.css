@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #f6f6f3;
+  --color-bg: #efeee8;
   --color-surface: #ffffff;
   --color-ink: #0b0c0a;
   --color-ink-soft: #2c2f28;
@@ -136,6 +136,17 @@
 @utility text-outline {
   color: transparent;
   -webkit-text-stroke: 1.5px rgb(11 12 10 / 0.22);
+}
+
+/* Outline text on the lime marquee band. */
+@utility text-outline-dark {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(11 12 10 / 0.55);
+}
+
+/* Fine film grain for dark sections, gives depth without colour. */
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Calm page-hero backdrop: a faint lime-to-grey wash in the top right corner. */
