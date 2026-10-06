@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList } from "@/components/blocks";
-import { HeroVisual } from "@/components/hero-visual";
+import { HeroShowcase, IndustryGallery, PainPoints, WorkWall } from "@/components/home-story";
 import { ReferenceCard } from "@/components/reference-card";
 import { RegionMap } from "@/components/region-map";
 import { references } from "@/content/references";
@@ -115,7 +115,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </ul>
           </div>
           <div className="lg:col-span-5">
-            <HeroVisual locale={lang} />
+            <HeroShowcase locale={lang} />
           </div>
         </div>
       </section>
@@ -143,6 +143,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </div>
         </div>
       </div>
+
+      <PainPoints locale={lang} />
 
       {/* SERVICES (bento) */}
       <section className="container-x py-24 md:py-32">
@@ -198,8 +200,25 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </Link>
             );
           })}
+          <Link
+            href={href(lang, "request")}
+            className="reveal group relative isolate flex flex-col justify-between gap-8 overflow-hidden rounded-[28px] bg-accent p-7 text-night transition-transform duration-300 hover:-translate-y-1"
+          >
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-night text-accent">
+              <Icon name="chat" className="h-[22px] w-[22px]" />
+            </span>
+            <div>
+              <h3 className="font-display text-[21px] font-bold leading-tight tracking-[-0.02em]">{d.hero.primary}</h3>
+              <p className="mt-2 flex items-center gap-2 text-[14.5px] font-medium text-night/70">
+                {lang === "de" ? "Unverbindlich, persönlich, in Ihrer Sprache." : "Sans engagement, personnel, dans votre langue."}
+                <Icon name="arrow" className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+              </p>
+            </div>
+          </Link>
         </div>
       </section>
+
+      <IndustryGallery locale={lang} />
 
       {/* REFERENCES */}
       <section className="container-x pb-24 md:pb-32">
@@ -310,8 +329,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
+      <WorkWall locale={lang} />
+
       {/* REGIONS */}
-      <section className="pb-24 md:pb-32">
+      <section className="py-24 md:py-32">
         <div className="container-x">
           <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
