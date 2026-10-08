@@ -16,6 +16,11 @@ import { Icon } from "./icons";
 
 type Service = (typeof serviceOptions)[number];
 
+const reassure = {
+  de: { time: "ca. 2 Minuten", note: "Kostenlos & unverbindlich · Antwort innert 1 Arbeitstag", secure: "Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten." },
+  fr: { time: "env. 2 minutes", note: "Gratuit et sans engagement · Réponse en 1 jour ouvrable", secure: "Nous utilisons vos informations uniquement pour répondre à votre demande." },
+};
+
 interface State {
   services: Service[];
   hasWebsite: boolean | null;
@@ -40,6 +45,7 @@ export function LeadForm({
   privacyHref,
   source = "anfrage",
   preset = [],
+  presetIndustry = "",
   dark = false,
 }: {
   locale: Locale;
@@ -48,6 +54,8 @@ export function LeadForm({
   privacyHref: string;
   source?: string;
   preset?: Service[];
+  /** Prefills the industry field, e.g. on industry pages. */
+  presetIndustry?: string;
   dark?: boolean;
 }) {
   const router = useRouter();
@@ -64,7 +72,7 @@ export function LeadForm({
     hasWebsite: null,
     websiteUrl: "",
     companySize: null,
-    industry: "",
+    industry: presetIndustry,
     budget: null,
     timeline: null,
     name: "",
@@ -117,17 +125,26 @@ export function LeadForm({
   }
 
   const card = dark ? "bg-white text-ink" : "bg-surface";
+  const r = reassure[locale];
 
   return (
-    <form onSubmit={submit} className={`rounded-2xl border border-line p-6 shadow-[0_40px_80px_-50px_rgba(0,0,0,0.35)] sm:p-10 ${card}`} noValidate>
-      <div className="mb-8 flex items-center justify-between gap-4">
-        <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted">
-          {t.step} {step + 1} {t.of} {steps}
-        </p>
-        <div className="flex gap-1.5" aria-hidden="true">
-          {Array.from({ length: steps }).map((_, i) => (
-            <span key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i <= step ? "w-10 bg-accent" : "w-6 bg-line"}`} />
-          ))}
+    <form onSubmit={submit} className={`relative rounded-2xl border border-line p-5 shadow-lift sm:p-10 ${card}`} noValidate>
+      <div className="mb-8">
+        <div className="flex items-center justify-between gap-4 text-[13px]">
+          <p className="font-semibold uppercase tracking-[0.1em] text-bright" aria-live="polite">
+            {t.step} {step + 1} {t.of} {steps}
+          </p>
+          <p className="text-muted">{r.time}</p>
+        </div>
+        <div
+          className="mt-3 h-1.5 overflow-hidden rounded-full bg-bright-soft"
+          role="progressbar"
+          aria-valuemin={1}
+          aria-valuemax={steps}
+          aria-valuenow={step + 1}
+          aria-label={`${t.step} ${step + 1} ${t.of} ${steps}`}
+        >
+          <div className="h-full rounded-full bg-bright transition-[width] duration-500 ease-out" style={{ width: `${((step + 1) / steps) * 100}%` }} />
         </div>
       </div>
 
@@ -141,7 +158,7 @@ export function LeadForm({
 
       {step === 0 && (
         <Fieldset legend={t.q.services} hint={t.q.servicesHint} error={touched && !valid[0] ? t.required : undefined}>
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5">
             {serviceOptions.map((o) => {
               const on = s.services.includes(o);
               return (
@@ -150,12 +167,12 @@ export function LeadForm({
                   key={o}
                   aria-pressed={on}
                   onClick={() => set("services", on ? s.services.filter((x) => x !== o) : [...s.services, o])}
-                  className={`flex min-h-[64px] items-center justify-between gap-2 rounded-2xl border px-4 py-3 text-left text-[15px] transition-all ${
-                    on ? "border-accent bg-accent-soft font-medium text-ink" : "border-line hover:border-accent/40"
+                  className={`flex min-h-[64px] items-center justify-between gap-2 rounded-xl border px-4 py-3 text-left text-[15px] leading-snug transition-colors ${
+                    on ? "border-bright bg-bright-soft font-medium text-accent" : "border-line bg-white hover:border-bright/50 hover:bg-bg-2"
                   }`}
                 >
                   {t.options.services[o]}
-                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${on ? "border-accent bg-accent text-white" : "border-line"}`}>
+                  <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border transition-colors ${on ? "border-bright bg-bright text-white" : "border-ink/20"}`}>
                     {on && <Icon name="check" className="h-3 w-3" />}
                   </span>
                 </button>
@@ -213,13 +230,13 @@ export function LeadForm({
       {step === 3 && (
         <Fieldset legend={t.q.contact}>
           <div className="grid gap-3 sm:grid-cols-2">
-            <Field label={t.q.name} error={touched && s.name.trim().length < 2 ? t.required : undefined}>
+            <Field label={t.q.name} required error={touched && s.name.trim().length < 2 ? t.required : undefined}>
               <input className="input" autoComplete="name" value={s.name} onChange={(e) => set("name", e.target.value)} required />
             </Field>
             <Field label={t.q.company}>
               <input className="input" autoComplete="organization" value={s.company} onChange={(e) => set("company", e.target.value)} />
             </Field>
-            <Field label={t.q.email} error={touched && !emailOk ? t.invalidEmail : undefined}>
+            <Field label={t.q.email} required error={touched && !emailOk ? t.invalidEmail : undefined}>
               <input className="input" type="email" autoComplete="email" value={s.email} onChange={(e) => set("email", e.target.value)} required />
             </Field>
             <Field label={t.q.phone}>
@@ -227,7 +244,7 @@ export function LeadForm({
             </Field>
           </div>
           <div className="mt-6">
-            <p className="mb-3 text-[14px] text-muted">{t.q.preferredContact}</p>
+            <p className="mb-3 text-[14px] font-medium text-ink-soft">{t.q.preferredContact}</p>
             <Choice
               options={contactOptions.map((o) => ({ v: o, l: t.options.preferredContact[o] }))}
               value={s.preferredContact}
@@ -238,7 +255,7 @@ export function LeadForm({
             <textarea className="input min-h-[110px] resize-y" value={s.message} onChange={(e) => set("message", e.target.value)} />
           </Field>
           <p className="mt-4 text-[13px] text-muted">
-            <a href={privacyHref} className="underline underline-offset-2 hover:text-ink">
+            <a href={privacyHref} className="underline decoration-ink/20 underline-offset-2 hover:text-accent hover:decoration-accent">
               {t.privacy}
             </a>
           </p>
@@ -251,10 +268,15 @@ export function LeadForm({
         </p>
       )}
 
-      <div className="mt-10 flex items-center justify-between gap-4">
+      <div className="mt-10 flex items-center justify-between gap-4 border-t border-line pt-6">
         {step > 0 ? (
-          <button type="button" onClick={() => setStep(step - 1)} className="rounded-full px-4 py-3 text-[15px] text-muted hover:text-ink">
-            ← {t.back}
+          <button
+            type="button"
+            onClick={() => setStep(step - 1)}
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-full px-3 text-[15px] text-muted transition-colors hover:text-accent"
+          >
+            <Icon name="arrow" className="h-4 w-4 rotate-180" />
+            {t.back}
           </button>
         ) : (
           <span />
@@ -262,12 +284,16 @@ export function LeadForm({
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-[15px] font-medium text-white transition-all hover:bg-night disabled:opacity-60"
+          className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-[15px] font-medium text-white shadow-xs transition-colors hover:bg-night disabled:opacity-60"
         >
           {step < steps - 1 ? t.next : pending ? t.sending : t.submit}
           <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </button>
       </div>
+      <p className="mt-4 flex items-start justify-end gap-2 text-right text-[13px] leading-snug text-muted">
+        <Icon name={step === steps - 1 ? "lock" : "check"} className="mt-px h-3.5 w-3.5 shrink-0 text-bright" strokeWidth={2.2} />
+        {step === steps - 1 ? r.secure : r.note}
+      </p>
     </form>
   );
 }
@@ -275,7 +301,7 @@ export function LeadForm({
 function Fieldset({ legend, hint, error, children }: { legend: string; hint?: string; error?: string; children: React.ReactNode }) {
   return (
     <fieldset>
-      <legend className="mb-1 font-display text-[22px] font-semibold leading-tight tracking-[-0.03em] sm:text-[27px]">{legend}</legend>
+      <legend className="mb-1 font-display text-[22px] font-semibold leading-tight tracking-[-0.02em] sm:text-[26px]">{legend}</legend>
       {hint ? <p className="mb-5 text-[14px] text-muted">{hint}</p> : <div className="mb-5" />}
       {children}
       {error && <p className="mt-3 text-[13px] text-danger">{error}</p>}
@@ -283,10 +309,25 @@ function Fieldset({ legend, hint, error, children }: { legend: string; hint?: st
   );
 }
 
-function Field({ label, error, className = "", children }: { label: string; error?: string; className?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  required = false,
+  className = "",
+  children,
+}: {
+  label: string;
+  error?: string;
+  required?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-1.5 block text-[14px] text-muted">{label}</span>
+      <span className="mb-1.5 block text-[14px] font-medium text-ink-soft">
+        {label}
+        {required && <span className="text-bright"> *</span>}
+      </span>
       {children}
       {error && <span className="mt-1.5 block text-[13px] text-danger">{error}</span>}
     </label>
@@ -312,8 +353,8 @@ function Choice<T extends string | boolean>({
             type="button"
             aria-pressed={on}
             onClick={() => onChange(o.v)}
-            className={`rounded-full border px-5 py-3 text-[15px] transition-all ${
-              on ? "border-accent bg-accent-soft font-medium text-ink" : "border-line hover:border-accent/40"
+            className={`min-h-12 rounded-full border px-5 py-2.5 text-[15px] transition-colors ${
+              on ? "border-bright bg-bright-soft font-medium text-accent" : "border-line bg-white hover:border-bright/50 hover:bg-bg-2"
             }`}
           >
             {o.l}

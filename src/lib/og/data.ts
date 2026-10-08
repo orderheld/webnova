@@ -1,5 +1,7 @@
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
+import { industries } from "@/content/industries";
+import { problems } from "@/content/problems";
 import { localServices } from "@/content/local";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -7,7 +9,7 @@ import { getDict } from "@/i18n/dict";
 import { routes, type RouteEntry, type RouteKind } from "@/lib/routes";
 
 /** Route kinds that get their own social preview image. Everything else uses the generic one. */
-const ownImage: RouteKind[] = ["service", "city", "citySeo", "localService", "guide"];
+const ownImage: RouteKind[] = ["service", "city", "citySeo", "localService", "guide", "industry", "problem"];
 
 export interface OgData {
   eyebrow: string;
@@ -51,6 +53,14 @@ export function ogData(locale: Locale, file: string): OgData | undefined {
     case "guide": {
       const g = guides.find((x) => x.key === entry.key)!;
       return { eyebrow: `${d.nav.guides} · ${g.readingMinutes} ${d.common.minutes}`, title: g.content[locale].h1 };
+    }
+    case "industry": {
+      const c = industries.find((x) => x.key === entry.key)!.content[locale];
+      return { eyebrow: `${locale === "de" ? "Branche" : "Secteur"} · ${c.navLabel}`, title: c.h1 };
+    }
+    case "problem": {
+      const c = problems.find((x) => x.key === entry.key)!.content[locale];
+      return { eyebrow: c.eyebrow, title: c.h1 };
     }
     default:
       return undefined;

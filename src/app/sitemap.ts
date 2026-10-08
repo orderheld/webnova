@@ -22,6 +22,10 @@ const prio: Record<string, number> = {
   references: 0.5,
   reference: 0.5,
   legal: 0.2,
+  industries: 0.8,
+  industry: 0.8,
+  problems: 0.7,
+  problem: 0.7,
 };
 
 function lastModified(r: RouteEntry): string {

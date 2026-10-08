@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
+import { industries } from "@/content/industries";
+import { industryUi } from "@/content/industries/ui";
+import { problems } from "@/content/problems";
 import { legal } from "@/content/legal";
 import { localServices } from "@/content/local";
 import { references } from "@/content/references";
@@ -13,6 +16,7 @@ import { pageMetadata } from "@/lib/seo";
 import { AboutPage, ContactPage, LegalPage, ReferencePage, ReferencesPage, RequestPage, ThanksPage } from "./pages";
 import { CityPage, RegionsPage } from "./city";
 import { GuidePage, GuidesPage } from "./guide";
+import { IndustriesPage, IndustryPage, ProblemPage } from "./industry";
 import { LandingPage, lpMeta } from "./landing";
 import { ServicePage, ServicesPage } from "./service";
 
@@ -36,6 +40,14 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
       return m({ title: d.guidesMetaTitle, description: d.guidesMetaDesc });
     case "guide":
       return m(guides.find((g) => g.key === entry.key)!.content[locale].meta);
+    case "industries":
+      return m({ title: industryUi[locale].hubMetaTitle, description: industryUi[locale].hubMetaDesc });
+    case "problems":
+      return m({ title: industryUi[locale].problemsMetaTitle, description: industryUi[locale].problemsMetaDesc });
+    case "industry":
+      return m(industries.find((i) => i.key === entry.key)!.content[locale].meta);
+    case "problem":
+      return m(problems.find((p) => p.key === entry.key)!.content[locale].meta);
     case "about":
       return m({ title: d.aboutMetaTitle, description: d.aboutMetaDesc });
     case "references":
@@ -90,6 +102,14 @@ export function renderPage(locale: Locale, entry: RouteEntry) {
       return <GuidesPage locale={locale} />;
     case "guide":
       return <GuidePage locale={locale} guideKey={entry.key} />;
+    case "industries":
+      return <IndustriesPage locale={locale} focus="industries" />;
+    case "problems":
+      return <IndustriesPage locale={locale} focus="problems" />;
+    case "industry":
+      return <IndustryPage locale={locale} industryKey={entry.key} />;
+    case "problem":
+      return <ProblemPage locale={locale} problemKey={entry.key} />;
     case "about":
       return <AboutPage locale={locale} />;
     case "references":

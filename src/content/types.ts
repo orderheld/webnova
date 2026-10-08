@@ -97,3 +97,74 @@ export interface LocalService {
   city: string; // key of a City
   content: Localized<CityContent>;
 }
+
+/** Values of the request form's service step, used to preselect it on industry and problem pages. */
+export type LeadService = "webdesign" | "redesign" | "shop" | "seo" | "ads" | "branding" | "pos" | "other";
+
+export interface Point {
+  title: string;
+  text: string;
+}
+
+export interface IndustryContent {
+  slug: string; // below "branchen/" (DE) or "secteurs/" (FR)
+  navLabel: string; // short label, e.g. "Gastronomie"
+  /** Value prefilled in the request form's industry field. */
+  formLabel: string;
+  meta: PageMeta;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  /** 3 to 4 short promises for the hero card. */
+  promises: string[];
+  painTitle: string;
+  pains: Point[]; // 4, the typical problems of the industry
+  needsTitle: string;
+  needsLead: string;
+  needs: Point[]; // 6, what the website must do
+  sections: Section[]; // 1 to 2 long-form sections
+  faq: Faq[]; // 4 to 6
+  ctaTitle: string;
+  ctaText: string;
+}
+
+export interface Industry {
+  key: string;
+  icon: string;
+  services: string[]; // service keys
+  guides: string[]; // guide keys, missing ones are skipped
+  /** Key of a real reference project shown as proof. */
+  reference?: string;
+  preset: LeadService[];
+  content: Localized<IndustryContent>;
+}
+
+export interface ProblemContent {
+  slug: string; // below "loesungen/" (DE) or "solutions/" (FR)
+  navLabel: string;
+  meta: PageMeta;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  symptomsTitle: string;
+  symptoms: string[]; // 5, "you recognise it by ..."
+  causesTitle: string;
+  causes: Point[]; // 4
+  solutionTitle: string;
+  solutionLead: string;
+  steps: Point[]; // 4, how Webnova solves it
+  sections: Section[]; // 1
+  faq: Faq[]; // 4 to 6
+  ctaTitle: string;
+  ctaText: string;
+}
+
+export interface Problem {
+  key: string;
+  icon: string;
+  services: string[];
+  guides: string[];
+  industries: string[]; // industry keys where this problem is common
+  preset: LeadService[];
+  content: Localized<ProblemContent>;
+}

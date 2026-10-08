@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { cities } from "@/content/cities";
+import { industries } from "@/content/industries";
+import { industryUi } from "@/content/industries/ui";
 import { legal } from "@/content/legal";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -13,20 +15,20 @@ export function Footer({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const year = new Date().getFullYear();
   return (
-    <footer className="relative isolate overflow-hidden bg-night text-white">
-      <div className="container-x grid gap-12 py-20 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <Logo className="h-9" />
-          <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">{d.footer.tagline}</p>
+    <footer className="surface-night relative isolate overflow-hidden text-white">
+      <div className="container-x grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="sm:col-span-2 lg:col-span-4">
+          <Logo className="h-8" />
+          <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/70">{d.footer.tagline}</p>
           <div className="mt-8 space-y-3 text-[15px]">
             <a href={site.phoneHref} className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
-              <Icon name="phone" className="h-4 w-4 text-white/45" /> {site.phone}
+              <Icon name="phone" className="h-4 w-4 text-accent-light" /> {site.phone}
             </a>
             <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
-              <Icon name="mail" className="h-4 w-4 text-white/45" /> {site.email}
+              <Icon name="mail" className="h-4 w-4 text-accent-light" /> {site.email}
             </a>
             <p className="flex items-start gap-3 text-white/80">
-              <Icon name="pin" className="mt-0.5 h-4 w-4 text-white/45" />
+              <Icon name="pin" className="mt-0.5 h-4 w-4 text-accent-light" />
               <span>
                 {site.address.street}
                 <br />
@@ -34,15 +36,30 @@ export function Footer({ locale }: { locale: Locale }) {
               </span>
             </p>
           </div>
+          <Link
+            href={href(locale, "request")}
+            className="group mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[14px] font-medium text-accent transition-colors hover:bg-bright-soft"
+          >
+            {d.nav.cta}
+            <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </Link>
         </div>
-        <FooterCol title={d.footer.services} className="md:col-span-3">
+        <FooterCol title={d.footer.services} className="lg:col-span-2">
           {services.map((s) => (
             <FooterLink key={s.key} href={href(locale, `service:${s.key}`)}>
               {s.content[locale].navLabel}
             </FooterLink>
           ))}
         </FooterCol>
-        <FooterCol title={d.footer.regions} className="md:col-span-3">
+        <FooterCol title={industryUi[locale].industries} className="lg:col-span-2">
+          {industries.map((i) => (
+            <FooterLink key={i.key} href={href(locale, `industry:${i.key}`)}>
+              {i.content[locale].navLabel}
+            </FooterLink>
+          ))}
+          <FooterLink href={href(locale, "problems")}>{industryUi[locale].allProblems}</FooterLink>
+        </FooterCol>
+        <FooterCol title={d.footer.regions} className="lg:col-span-2">
           {cities
             .filter((c) => c.priority === "A")
             .map((c) => (
@@ -52,7 +69,7 @@ export function Footer({ locale }: { locale: Locale }) {
             ))}
           <FooterLink href={href(locale, "regions")}>{locale === "de" ? "Alle Standorte" : "Toutes les régions"}</FooterLink>
         </FooterCol>
-        <FooterCol title={d.footer.company} className="md:col-span-2">
+        <FooterCol title={d.footer.company} className="lg:col-span-2">
           <FooterLink href={href(locale, "about")}>{d.nav.about}</FooterLink>
           {showReferences && <FooterLink href={href(locale, "references")}>{d.nav.references}</FooterLink>}
           <FooterLink href={href(locale, "guides")}>{d.nav.guides}</FooterLink>
@@ -66,7 +83,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </FooterCol>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-start justify-between gap-4 py-6 text-[13px] text-white/50 sm:flex-row sm:items-center">
+        <div className="container-x flex flex-col items-start justify-between gap-4 py-6 pb-24 text-[13px] text-white/60 sm:flex-row lg:pb-6 sm:items-center">
           <p>
             © {year} {site.legalName}. {d.footer.rights}
           </p>
@@ -87,7 +104,7 @@ export function Footer({ locale }: { locale: Locale }) {
 function FooterCol({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
     <div className={className}>
-      <p className="mb-5 text-[13px] font-medium uppercase tracking-[0.12em] text-white/60">{title}</p>
+      <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white/60">{title}</p>
       <ul className="space-y-2.5">{children}</ul>
     </div>
   );
@@ -96,7 +113,7 @@ function FooterCol({ title, children, className = "" }: { title: string; childre
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link href={href} className="text-[15px] text-white/65 transition-colors hover:text-white">
+      <Link href={href} className="text-[15px] text-white/75 transition-colors hover:text-white">
         {children}
       </Link>
     </li>

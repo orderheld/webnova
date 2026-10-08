@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CardLink, CtaBand, FaqList, PageHero, Prose, anchorId } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FaqList, PageHero, Prose, anchorId } from "@/components/blocks";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { services } from "@/content/services";
@@ -90,21 +90,7 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
         ]}
       />
       <div className="container-x grid gap-12 pb-12 pt-14 md:pt-20 lg:grid-cols-12">
-        <nav aria-label={locale === "de" ? "Inhalt" : "Sommaire"} className="lg:order-2 lg:col-span-4">
-          <div className="rounded-2xl border border-line bg-bg-2 p-6 lg:sticky lg:top-28">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{locale === "de" ? "Inhalt" : "Sommaire"}</p>
-            <ol className="mt-4 space-y-1 text-[15px] leading-snug">
-              {c.sections.map((s) => (
-                <li key={s.h2}>
-                  <a href={`#${anchorId(s.h2)}`} className="block py-1.5 text-ink-soft transition-colors hover:text-bright">
-                    {s.h2}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </nav>
-        <article className="max-w-[42rem] lg:order-1 lg:col-span-8">
+        <article className="max-w-[42rem] lg:col-span-8">
           <Prose sections={c.sections} locale={locale} anchors />
           {guideCities.length > 0 && (
             <div className="mt-14 rounded-2xl border border-line bg-bg-2 p-7">
@@ -123,6 +109,29 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
             </div>
           )}
         </article>
+        <aside className="lg:col-span-4">
+          <nav aria-label={locale === "de" ? "Inhalt" : "Sommaire"} className="mb-4 hidden lg:block">
+            <div className="rounded-2xl border border-line bg-bg-2 p-6">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{locale === "de" ? "Inhalt" : "Sommaire"}</p>
+              <ol className="mt-4 space-y-1 text-[15px] leading-snug">
+                {c.sections.map((s) => (
+                  <li key={s.h2}>
+                    <a href={`#${anchorId(s.h2)}`} className="block py-1.5 text-ink-soft transition-colors hover:text-bright">
+                      {s.h2}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </nav>
+          <div className="sticky top-28">
+            <CtaCard
+              locale={locale}
+              title={locale === "de" ? "Lieber direkt mit uns umsetzen?" : "Vous préférez le réaliser avec nous ?"}
+              text={locale === "de" ? "Wir schauen uns Ihre Situation an und sagen Ihnen, was sich lohnt." : "Nous examinons votre situation et vous disons ce qui en vaut la peine."}
+            />
+          </div>
+        </aside>
       </div>
       <FaqList locale={locale} faq={c.faq} />
       {related.length > 0 && (
