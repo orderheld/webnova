@@ -54,7 +54,7 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
   const deleteMessage = [
     `${label} ${i.number} (Status: ${statusText}) endgültig löschen?`,
     payments.length || reminders.length
-      ? `Dazu werden ${[payments.length && `${payments.length} Zahlung${payments.length === 1 ? "" : "en"}`, reminders.length && `${reminders.length} Mahnung${reminders.length === 1 ? "" : "en"}`].filter(Boolean).join(" und ")} gelöscht.`
+      ? `Ebenfalls gelöscht: ${[payments.length && `${payments.length} Zahlung${payments.length === 1 ? "" : "en"}`, reminders.length && `${reminders.length} Mahnung${reminders.length === 1 ? "" : "en"}`].filter(Boolean).join(", ")}.`
       : "",
     timeCount.length ? `${timeCount.length} verrechnete Zeiteinträge werden wieder offen.` : "",
     i.status !== "entwurf" ? "Versendete Rechnungen sollten in der Regel storniert statt gelöscht werden." : "",
