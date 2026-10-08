@@ -5,7 +5,6 @@ export const coiffeurBeauty: Industry = {
   icon: "scissors",
   services: ["webdesign", "seo", "branding", "online-marketing"],
   guides: ["google-unternehmensprofil", "lokales-seo-kmu", "webseite-kosten"],
-  reference: "gyan-hair-salon",
   preset: ["webdesign"],
   content: {
     de: {

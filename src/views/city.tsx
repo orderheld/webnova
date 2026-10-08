@@ -9,7 +9,6 @@ import {
   NextSteps,
   ProblemsSection,
   ProcessSection,
-  ReferencesSection,
   ServicesGrid,
 } from "@/components/sections";
 import { problems } from "@/content/problems";
@@ -296,7 +295,6 @@ export function CityPage({
         title={locale === "de" ? `Leistungen für KMU in ${cityName}` : `Nos services pour les PME à ${cityName}`}
       />
 
-      {!pos && <ReferencesSection locale={locale} />}
 
       {!pos && <ProcessSection locale={locale} />}
 
