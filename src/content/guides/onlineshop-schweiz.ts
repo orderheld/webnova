@@ -5,6 +5,7 @@ export const onlineshopSchweiz: Guide = {
   date: "2026-10-07",
   readingMinutes: 9,
   related: ["onlineshop", "kassensystem-retail", "seo"],
+  relatedGuides: ["barrierefreie-website", "zweisprachige-webseite", "webseite-kosten"],
   cities: ["biel", "solothurn", "bern", "grenchen"],
   content: {
     de: {
@@ -16,6 +17,13 @@ export const onlineshopSchweiz: Guide = {
       },
       h1: "Onlineshop in der Schweiz: TWINT, Mehrwertsteuer und Recht im Überblick",
       lead: "Ein Onlineshop für die Schweiz funktioniert anders als einer für Deutschland. Kundinnen und Kunden erwarten TWINT, Preise in Franken inklusive MWST und eine Lieferung mit der Post. Dazu kommen Schweizer Regeln zu Preisangaben, Informationspflichten und Datenschutz.",
+      keyTakeaways: [
+        "TWINT gehört in der Schweiz zu den wichtigsten Zahlungsarten, ergänzt durch Karten, Apple Pay, Google Pay und Rechnung.",
+        "Preise gegenüber Konsumentinnen und Konsumenten sind in Franken inklusive MWST anzugeben, Versandkosten vor dem Bestellabschluss.",
+        "Das UWG verlangt Angaben zu Identität und Kontakt, die Erklärung der Bestellschritte, eine Korrekturmöglichkeit und eine sofortige Bestätigung.",
+        "Ein gesetzliches Widerrufsrecht wie in der EU gibt es in der Schweiz nicht. Klare AGB und eine Datenschutzerklärung sind trotzdem nötig.",
+        "Eigene Produkttexte, gute Fotos und strukturierte Daten helfen, bei Google gefunden zu werden.",
+      ],
       sections: [
         {
           h2: "Zahlungsarten: TWINT gehört dazu",
@@ -107,6 +115,13 @@ export const onlineshopSchweiz: Guide = {
       },
       h1: "Boutique en ligne en Suisse : TWINT, TVA et cadre juridique",
       lead: "Une boutique en ligne pour la Suisse ne fonctionne pas comme une boutique pour la France. Les clients attendent TWINT, des prix en francs TVA comprise et une livraison par la Poste. S'y ajoutent des règles suisses sur l'indication des prix, l'information et la protection des données.",
+      keyTakeaways: [
+        "En Suisse, TWINT fait partie des moyens de paiement essentiels, complété par les cartes, Apple Pay, Google Pay et la facture.",
+        "Les prix destinés aux consommateurs s'indiquent en francs TVA comprise, les frais de port avant la conclusion de la commande.",
+        "La LCD exige identité et contact, l'explication des étapes de commande, une possibilité de correction et une confirmation immédiate.",
+        "Il n'existe pas en Suisse de droit de rétractation légal comme dans l'UE. Des CG claires et une déclaration de confidentialité restent nécessaires.",
+        "Des textes produits propres, de bonnes photos et des données structurées aident à être trouvé sur Google.",
+      ],
       sections: [
         {
           h2: "Moyens de paiement : TWINT est incontournable",

@@ -5,6 +5,7 @@ export const kmuWebseiteCheckliste: Guide = {
   date: "2026-10-07",
   readingMinutes: 8,
   related: ["webdesign", "seo", "wartung"],
+  relatedGuides: ["webagentur-unterschied", "barrierefreie-website", "lokales-seo-kmu"],
   cities: ["grenchen", "solothurn", "biel", "bern"],
   content: {
     de: {
@@ -16,6 +17,13 @@ export const kmuWebseiteCheckliste: Guide = {
       },
       h1: "Was eine Webseite für KMU und Handwerksbetriebe wirklich braucht",
       lead: "Eine gute KMU-Webseite muss nicht gross sein. Sie muss in wenigen Sekunden zeigen, was Sie anbieten, wo Sie arbeiten und wie man Sie erreicht. Diese Checkliste fasst zusammen, worauf es für mehr Anfragen ankommt.",
+      keyTakeaways: [
+        "Die Startseite beantwortet sofort: was Sie machen, für wen und in welcher Region.",
+        "Jede wichtige Leistung verdient eine eigene Seite mit Ablauf, Fotos und häufigen Fragen.",
+        "Telefon, E-Mail und WhatsApp sollten auf jeder Seite mit einem Klick erreichbar sein, das Formular kurz.",
+        "Echte Personen, Fotos, Bewertungen und ein aktuelles Impressum schaffen Vertrauen.",
+        "Datenschutzerklärung, HTTPS, schnelle Ladezeiten und regelmässige Updates gehören zur Pflicht.",
+      ],
       sections: [
         {
           h2: "Klare Botschaft auf der Startseite",
@@ -107,6 +115,13 @@ export const kmuWebseiteCheckliste: Guide = {
       },
       h1: "Ce dont un site internet de PME ou d'artisan a vraiment besoin",
       lead: "Un bon site de PME n'a pas besoin d'être grand. Il doit montrer en quelques secondes ce que vous proposez, où vous travaillez et comment vous joindre. Cette checklist résume l'essentiel pour recevoir plus de demandes.",
+      keyTakeaways: [
+        "La page d'accueil répond immédiatement : ce que vous faites, pour qui et dans quelle région.",
+        "Chaque prestation importante mérite sa propre page avec déroulement, photos et questions fréquentes.",
+        "Téléphone, e-mail et WhatsApp doivent être accessibles en un clic sur chaque page, et le formulaire rester court.",
+        "De vraies personnes, des photos, des avis et des mentions légales à jour inspirent confiance.",
+        "Déclaration de confidentialité, HTTPS, chargement rapide et mises à jour régulières sont indispensables.",
+      ],
       sections: [
         {
           h2: "Un message clair sur la page d'accueil",

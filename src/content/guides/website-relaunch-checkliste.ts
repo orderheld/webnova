@@ -6,6 +6,7 @@ export const websiteRelaunchCheckliste: Guide = {
   updated: "2026-10-08",
   readingMinutes: 8,
   related: ["website-redesign", "seo", "wartung"],
+  relatedGuides: ["core-web-vitals", "zweisprachige-webseite", "webagentur-waehlen"],
   cities: ["biel", "solothurn", "bern", "grenchen"],
   content: {
     de: {
@@ -17,6 +18,16 @@ export const websiteRelaunchCheckliste: Guide = {
       },
       h1: "Website-Relaunch: Die Checkliste in 10 Schritten",
       lead: "Ein Relaunch ist die Chance, Ihre Webseite moderner, schneller und wirkungsvoller zu machen. Ohne saubere Planung riskieren Sie jedoch, über Jahre aufgebaute Google-Rankings zu verlieren. Diese Checkliste führt Sie Schritt für Schritt durch das Projekt.",
+      keyTakeaways: [
+        "Legen Sie vor dem Relaunch zwei bis drei messbare Ziele fest und analysieren Sie, welche Seiten heute Besucher bringen.",
+        "Eine vollständige Liste aller bestehenden URLs ist das wichtigste Dokument des Projekts.",
+        "Jede alte URL braucht eine 301-Weiterleitung auf die inhaltlich passendste neue Seite, nicht pauschal auf die Startseite.",
+        "Gut rankende Inhalte werden verbessert, nicht gekürzt oder gelöscht.",
+        "Nach dem Go-live prüfen Sie Weiterleitungen, Indexierung und Rankings über mehrere Wochen.",
+      ],
+      sources: [
+        { label: "Google Search Central: Websiteumzüge mit URL-Änderungen", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+      ],
       sections: [
         {
           h2: "Schritt 1 und 2: Ziele festlegen und Ist-Zustand analysieren",
@@ -132,6 +143,16 @@ export const websiteRelaunchCheckliste: Guide = {
       },
       h1: "Refonte de site internet : la checklist en 10 étapes",
       lead: "Une refonte est l'occasion de rendre votre site plus moderne, plus rapide et plus efficace. Sans planification rigoureuse, vous risquez toutefois de perdre des positions Google acquises au fil des années. Cette checklist vous guide pas à pas.",
+      keyTakeaways: [
+        "Avant la refonte, fixez deux ou trois objectifs mesurables et analysez quelles pages amènent aujourd'hui des visiteurs.",
+        "Une liste complète de toutes les URL existantes est le document le plus important du projet.",
+        "Chaque ancienne URL a besoin d'une redirection 301 vers la nouvelle page la plus proche, pas vers l'accueil par défaut.",
+        "Les contenus bien classés sont améliorés, pas raccourcis ni supprimés.",
+        "Après la mise en ligne, contrôlez redirections, indexation et positions pendant plusieurs semaines.",
+      ],
+      sources: [
+        { label: "Google Search Central : déplacement de site avec changement d'URL", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+      ],
       sections: [
         {
           h2: "Étapes 1 et 2 : fixer les objectifs et analyser l'existant",

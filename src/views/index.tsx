@@ -19,6 +19,8 @@ import { GuidePage, GuidesPage } from "./guide";
 import { IndustriesPage, IndustryPage, ProblemPage } from "./industry";
 import { LandingPage, lpMeta } from "./landing";
 import { ServicePage, ServicesPage } from "./service";
+import { StandalonePageView } from "./standalone";
+import { standalonePages } from "@/content/pages";
 
 export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
   const d = getDict(locale).pages;
@@ -75,6 +77,8 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
             : `${l.title} de ${site.legalName}, agence web : éditeur, contact et informations légales du site.`,
       });
     }
+    case "page":
+      return m(standalonePages.find((p) => p.key === entry.key)!.content[locale].meta);
     case "lp":
       return m(lpMeta(locale, entry.key));
     default:
@@ -124,6 +128,8 @@ export function renderPage(locale: Locale, entry: RouteEntry) {
       return <ThanksPage locale={locale} />;
     case "legal":
       return <LegalPage locale={locale} legalKey={entry.key as keyof typeof legal} />;
+    case "page":
+      return <StandalonePageView locale={locale} pageKey={entry.key} />;
     case "lp":
       return <LandingPage locale={locale} lpKey={entry.key} />;
     default:

@@ -5,6 +5,7 @@ export const coreWebVitals: Guide = {
   date: "2026-10-06",
   readingMinutes: 8,
   related: ["seo", "website-redesign", "wartung"],
+  relatedGuides: ["barrierefreie-website", "website-relaunch-checkliste", "kmu-webseite-checkliste"],
   content: {
     de: {
       slug: "core-web-vitals-erklaert",
@@ -15,6 +16,16 @@ export const coreWebVitals: Guide = {
       },
       h1: "Core Web Vitals verständlich erklärt: so wird Ihre Webseite schneller",
       lead: "Google misst, wie schnell und stabil sich Webseiten für echte Besucherinnen und Besucher anfühlen. Diese Messwerte heissen Core Web Vitals. Sie beeinflussen das Ranking und vor allem, ob Interessierte bleiben oder zur Konkurrenz wechseln.",
+      keyTakeaways: [
+        "Die Core Web Vitals messen Ladezeit (LCP), Reaktionsfähigkeit (INP) und visuelle Stabilität (CLS) bei echten Besuchen.",
+        "Gute Werte sind höchstens 2,5 Sekunden für LCP, 200 Millisekunden für INP und 0,1 für CLS.",
+        "Grosse Bilder, viele Skripte und schwere Page-Builder sind die häufigsten Bremsen.",
+        "PageSpeed Insights und die Google Search Console zeigen, wo Ihre Seiten stehen, vor allem auf dem Smartphone.",
+        "Plugins lindern Symptome. Bei überladenen Systemen ist ein schlanker Neuaufbau oft nachhaltiger.",
+      ],
+      sources: [
+        { label: "web.dev: Web Vitals", url: "https://web.dev/articles/vitals" },
+      ],
       sections: [
         {
           h2: "Was die Core Web Vitals sind",
@@ -98,6 +109,16 @@ export const coreWebVitals: Guide = {
       },
       h1: "Core Web Vitals expliqués simplement : rendre votre site plus rapide",
       lead: "Google mesure la rapidité et la stabilité perçues par les vrais visiteurs d'un site. Ces mesures s'appellent les Core Web Vitals. Elles influencent le classement et surtout la décision des internautes de rester ou de partir chez un concurrent.",
+      keyTakeaways: [
+        "Les Core Web Vitals mesurent la vitesse d'affichage (LCP), la réactivité (INP) et la stabilité visuelle (CLS) lors de vraies visites.",
+        "Les bonnes valeurs sont au maximum 2,5 secondes pour le LCP, 200 millisecondes pour l'INP et 0,1 pour le CLS.",
+        "Grandes images, nombreux scripts et constructeurs de pages lourds sont les freins les plus fréquents.",
+        "PageSpeed Insights et Google Search Console montrent où en sont vos pages, surtout sur smartphone.",
+        "Les plugins atténuent les symptômes. Pour un système surchargé, une reconstruction légère est souvent plus durable.",
+      ],
+      sources: [
+        { label: "web.dev : Web Vitals", url: "https://web.dev/articles/vitals" },
+      ],
       sections: [
         {
           h2: "Que sont les Core Web Vitals ?",

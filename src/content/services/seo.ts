@@ -4,7 +4,7 @@ export const seo: Service = {
   key: "seo",
   group: "marketing",
   icon: "search",
-  related: ["webdesign", "online-marketing", "website-redesign"],
+  related: ["local-seo", "ki-sichtbarkeit", "webdesign"],
   content: {
     de: {
       slug: "seo-agentur",
@@ -56,7 +56,7 @@ export const seo: Service = {
           h2: "Lokales SEO: In Ihrer Region gefunden werden",
           paragraphs: [
             "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie „Elektriker Solothurn“ oder „Coiffeur Biel“ zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
-            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Schweizer Agentur kennen wir den Markt und die Zweisprachigkeit des Marktes.",
+            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Schweizer Agentur kennen wir den Markt und die Zweisprachigkeit des Marktes. Alle Details zu Profil, Verzeichnissen und Bewertungen finden Sie auf unserer Seite [Local SEO](service:local-seo).",
           ],
           bullets: [
             "Google Unternehmensprofil einrichten und optimieren",
@@ -69,7 +69,7 @@ export const seo: Service = {
           h2: "Wie wir bei der SEO-Betreuung vorgehen",
           paragraphs: [
             "Wir starten mit einem Erstgespräch und einer Analyse Ihrer Website und Ihres Marktes. Daraus leiten wir die wichtigsten Massnahmen ab und priorisieren sie nach Aufwand und Wirkung. Zuerst beheben wir technische Hürden, dann stärken wir Inhalte und lokale Signale. Sie wissen dabei immer, woran wir gerade arbeiten und warum.",
-            "Suchmaschinenoptimierung braucht Geduld. Erste Verbesserungen sind oft nach einigen Wochen sichtbar, nachhaltige Ergebnisse entstehen über Monate. Wir berichten regelmässig, was wir umgesetzt haben und wie sich Ihre Sichtbarkeit entwickelt. Seriöse SEO-Arbeit verspricht keine Platz-1-Garantie, sondern setzt auf saubere, nachvollziehbare Arbeit.",
+            "Suchmaschinenoptimierung braucht Geduld. Erste Verbesserungen sind oft nach einigen Wochen sichtbar, nachhaltige Ergebnisse entstehen über Monate. Wir berichten regelmässig, was wir umgesetzt haben und wie sich Ihre Sichtbarkeit entwickelt. Seriöse SEO-Arbeit verspricht keine Platz-1-Garantie, sondern setzt auf saubere, nachvollziehbare Arbeit. Wie Sie zusätzlich in ChatGPT und den Google AI Overviews sichtbar werden, erklären wir unter [KI-Sichtbarkeit](service:ki-sichtbarkeit).",
           ],
         },
       ],
@@ -149,7 +149,7 @@ export const seo: Service = {
           h2: "SEO local: être visible dans votre région",
           paragraphs: [
             "Pour la plupart des PME, c'est la clientèle de proximité qui compte. Une recherche comme « électricien Neuchâtel » ou « coiffeur Bienne » affiche souvent une carte avec des entreprises locales. Y figurer apporte de nombreux appels et demandes. L'outil clé, c'est une fiche Google Business Profile bien tenue.",
-            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Ancrés dans la région de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
+            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Tous les détails sur notre page [Référencement local](service:local-seo). Ancrés dans la région de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
           ],
           bullets: [
             "Création et optimisation de votre fiche Google",
@@ -162,7 +162,7 @@ export const seo: Service = {
           h2: "Notre méthode de travail",
           paragraphs: [
             "Nous commençons par un premier entretien et une analyse de votre site et de votre marché. Nous en déduisons les actions prioritaires, classées selon l'effort et l'impact. On corrige d'abord les freins techniques, puis on renforce les contenus et les signaux locaux.",
-            "Le référencement demande de la patience. Les premières améliorations se voient souvent après quelques semaines, les résultats durables se construisent sur plusieurs mois. Nous vous informons régulièrement de ce qui a été fait et de l'évolution de votre visibilité. Pas de promesse de première place, mais un travail sérieux et transparent.",
+            "Le référencement demande de la patience. Les premières améliorations se voient souvent après quelques semaines, les résultats durables se construisent sur plusieurs mois. Nous vous informons régulièrement de ce qui a été fait et de l'évolution de votre visibilité. Pas de promesse de première place, mais un travail sérieux et transparent. Pour apparaître aussi dans les réponses de ChatGPT ou des aperçus IA de Google, voyez notre page [Visibilité IA](service:ki-sichtbarkeit).",
           ],
         },
       ],

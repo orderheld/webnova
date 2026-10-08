@@ -32,6 +32,13 @@ export interface ServiceContent {
   features: { title: string; text: string }[];
   sections: Section[]; // 2–4 long-form SEO sections
   faq: Faq[]; // 4–6 questions
+  /** Optional beyondweb-style blocks, rendered by views/service.tsx when present. */
+  problemsTitle?: string;
+  problems?: Point[];
+  benefitsTitle?: string;
+  benefits?: Point[];
+  process?: Point[];
+  fit?: { yes: string[]; no: string[] };
   ctaTitle: string;
   ctaText: string;
 }
@@ -77,6 +84,10 @@ export interface GuideContent {
   lead: string;
   sections: Section[];
   faq: Faq[];
+  /** "Das Wichtigste in Kürze": 3 to 5 short sentences shown in a box above the article. */
+  keyTakeaways?: string[];
+  /** Optional sources, shown as a list at the end of the article. Only real, verifiable URLs. */
+  sources?: { label: string; url: string }[];
 }
 
 export interface Guide {
@@ -88,6 +99,8 @@ export interface Guide {
   related: string[]; // service keys
   /** City keys this guide links to (and that link back to it). */
   cities?: string[];
+  /** Guide keys shown first under "Weitere Ratgeber". */
+  relatedGuides?: string[];
   content: Localized<GuideContent>;
 }
 
@@ -167,4 +180,30 @@ export interface Problem {
   industries: string[]; // industry keys where this problem is common
   preset: LeadService[];
   content: Localized<ProblemContent>;
+}
+
+/** Standalone pages with their own route kind "page", e.g. the free website check or the Impressum generator. */
+export interface StandalonePageContent {
+  slug: string;
+  navLabel: string;
+  meta: PageMeta;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  pointsTitle: string;
+  points: Point[];
+  stepsTitle: string;
+  steps: Point[];
+  sections: Section[];
+  faq: Faq[];
+  ctaTitle: string;
+  ctaText: string;
+}
+
+export interface StandalonePage {
+  key: string;
+  icon: string;
+  services: string[]; // related service keys
+  guides: string[]; // related guide keys
+  content: Localized<StandalonePageContent>;
 }

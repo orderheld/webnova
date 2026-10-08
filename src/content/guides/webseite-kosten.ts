@@ -6,6 +6,7 @@ export const webseiteKosten: Guide = {
   updated: "2026-10-08",
   readingMinutes: 8,
   related: ["webdesign", "website-redesign", "onlineshop"],
+  relatedGuides: ["webagentur-waehlen", "webagentur-unterschied", "kmu-webseite-checkliste"],
   cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
@@ -17,6 +18,13 @@ export const webseiteKosten: Guide = {
       },
       h1: "Was kostet eine Webseite? Die 7 Faktoren, die den Preis bestimmen",
       lead: "Auf die Frage nach den Kosten einer Webseite gibt es keine seriöse Pauschalantwort. Wer versteht, welche Faktoren den Aufwand bestimmen, kann Offerten besser vergleichen und sein Budget gezielt einsetzen.",
+      keyTakeaways: [
+        "Den Aufwand bestimmen vor allem Umfang, Design, Inhalte, Funktionen, SEO, das Redaktionssystem und die laufende Wartung.",
+        "Inhalte wie Texte und Fotos werden bei der Planung am häufigsten unterschätzt.",
+        "Mehrsprachigkeit braucht neben Übersetzungen auch eine saubere technische Umsetzung mit eigenen URLs.",
+        "Vergleichen Sie Offerten Punkt für Punkt und achten Sie auf laufende Kosten nach dem Launch.",
+        "Eine verlässliche Offerte entsteht erst, wenn Ziele, Funktionen und vorhandene Inhalte klar sind.",
+      ],
       sections: [
         {
           h2: "Faktor 1: Umfang und Anzahl Seiten",
@@ -124,6 +132,13 @@ export const webseiteKosten: Guide = {
       },
       h1: "Combien coûte un site internet ? Les 7 facteurs qui déterminent le prix",
       lead: "Il n'existe pas de réponse forfaitaire sérieuse à la question du prix d'un site internet. En comprenant les facteurs qui influencent le travail, vous comparez mieux les offres et investissez votre budget là où il compte.",
+      keyTakeaways: [
+        "L'effort dépend surtout de l'ampleur, du design, des contenus, des fonctions, du SEO, du système de gestion et de la maintenance.",
+        "Les contenus comme les textes et les photos sont le plus souvent sous-estimés lors de la planification.",
+        "Le multilinguisme demande, en plus des traductions, une réalisation technique propre avec des URL distinctes.",
+        "Comparez les devis point par point et tenez compte des coûts courants après la mise en ligne.",
+        "Un devis fiable n'est possible que lorsque objectifs, fonctions et contenus disponibles sont clairs.",
+      ],
       sections: [
         {
           h2: "Facteur 1 : l'ampleur et le nombre de pages",
