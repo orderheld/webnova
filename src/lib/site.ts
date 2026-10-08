@@ -36,4 +36,4 @@ export const site = {
 export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 
 // References are hidden for now (Ferhat, 2026-10-06). Set to true to bring back the pages, links and home showcase.
-export const showReferences: boolean = true;
+export const showReferences: boolean = false;
