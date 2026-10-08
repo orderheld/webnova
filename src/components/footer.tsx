@@ -7,6 +7,7 @@ import { href } from "@/lib/routes";
 import { showReferences, site } from "@/lib/site";
 import { FooterIndex } from "./footer-index";
 import { Icon } from "./icons";
+import { LangSwitchLink } from "./lang-switch-link";
 import { Logo } from "./logo";
 
 const ft = {
@@ -27,7 +28,7 @@ const ft = {
 };
 
 /** Footer: closing line, three main columns, the full link index (SEO) and a faint Webnova mark. */
-export function Footer({ locale }: { locale: Locale }) {
+export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Record<string, string> }) {
   const d = getDict(locale);
   const t = ft[locale];
   const year = new Date().getFullYear();
@@ -152,9 +153,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </li>
             ))}
             <li>
-              <Link href={locale === "de" ? "/fr" : "/de"} hrefLang={locale === "de" ? "fr" : "de"} className="uppercase hover:text-white">
-                {locale === "de" ? "FR" : "DE"}
-              </Link>
+              <LangSwitchLink locale={locale} switchMap={switchMap} className="uppercase hover:text-white" />
             </li>
             <li>
               <a href="#top" className="inline-flex items-center gap-1.5 hover:text-white">

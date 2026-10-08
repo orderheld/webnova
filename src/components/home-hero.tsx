@@ -91,7 +91,7 @@ function HeroStage({ locale }: { locale: Locale }) {
         alt=""
         width={1200}
         height={1200}
-        priority
+        preload
         sizes="(min-width: 1024px) 360px, 30vw"
         className="float-slow pointer-events-none absolute -right-[9%] -top-[24%] hidden w-[36%] max-w-none select-none drop-shadow-[0_30px_40px_rgb(27_45_62/0.25)] md:block"
       />

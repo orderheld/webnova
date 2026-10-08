@@ -78,16 +78,17 @@ export function BrowserFrame({
   dark?: boolean;
 }) {
   return (
-    <div className={`overflow-hidden rounded-xl shadow-[0_40px_80px_-30px_rgb(10_22_34/0.55),0_0_0_1px_rgb(27_45_62/0.08)] ${dark ? "bg-night-2" : "bg-white"} ${className}`}>
+    // Container query: small frames (e.g. the before/after scene) drop the balancing spacer, so the address fits.
+    <div className={`@container overflow-hidden rounded-xl shadow-[0_40px_80px_-30px_rgb(10_22_34/0.55),0_0_0_1px_rgb(27_45_62/0.08)] ${dark ? "bg-night-2" : "bg-white"} ${className}`}>
       <div className={`flex h-7 items-center gap-1.5 px-3 sm:h-8 ${dark ? "bg-night-2" : "bg-[#eef2f6]"}`}>
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className={`mx-auto truncate rounded-md px-3 py-0.5 text-[10px] sm:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{sampleUrl(sample, locale)}</span>
-        <span className="w-6" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className={`mx-auto truncate rounded-md px-2 py-0.5 text-[10px] @xs:px-3 @xs:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{sampleUrl(sample, locale)}</span>
+        <span className="hidden w-6 shrink-0 @xs:block" />
       </div>
       <div className="relative aspect-[16/10]">
-        <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+        <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
       </div>
     </div>
   );
@@ -104,7 +105,7 @@ export function PhoneFrame({ sample, locale, className = "", sizes = "220px", pr
       <span aria-hidden="true" className="absolute -right-[1.6%] top-[28%] h-[13%] w-[1.8%] rounded-r-sm bg-[#2a3540]" />
       <div className="relative rounded-[17%/8%] bg-[linear-gradient(145deg,#3a4652,#11181f_45%,#2a3540)] p-[3.2%] shadow-[0_40px_70px_-25px_rgb(10_22_34/0.6),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
         <div className="relative aspect-[9/19.5] overflow-hidden rounded-[14%/6.6%] bg-black">
-          <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+          <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
           <span aria-hidden="true" className="absolute left-1/2 top-[1.6%] h-[3.4%] w-[31%] -translate-x-1/2 rounded-full bg-black" />
         </div>
       </div>

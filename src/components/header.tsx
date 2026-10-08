@@ -23,7 +23,7 @@ export interface NavGroup {
 export interface NavData {
   locale: Locale;
   home: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; bar?: "lg" | "xl" }[];
   serviceGroups: NavGroup[];
   servicesLabel: string;
   servicesHref: string;
@@ -235,15 +235,15 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
             </Dropdown>
 
             {/* Only as many plain links as fit next to the three menus (1240px container): one from lg,
-                three from xl. The rest (Kontakt) stays one click away in the "Ratgeber" menu, the
-                fullscreen menu and the footer. */}
-            {nav.links.map((l, n) => (
+                three from xl (see `bar` in buildNav). The others stay one click away in the "Ratgeber"
+                menu, the fullscreen menu and the footer. */}
+            {nav.links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 aria-current={pathname === l.href ? "page" : undefined}
                 className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
-                  n === 0 ? "" : n < 3 ? "hidden xl:block" : "hidden"
+                  l.bar === "lg" ? "" : l.bar === "xl" ? "hidden xl:block" : "hidden"
                 } ${
                   pathname === l.href
                     ? dk

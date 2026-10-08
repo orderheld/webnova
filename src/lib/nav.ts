@@ -102,6 +102,8 @@ function resourceGroups(locale: Locale): NavGroup[] {
   const agency: NavItem[] = [
     { label: d.nav.about, href: href(locale, "about"), icon: "users" },
     ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references"), icon: "layout" }] : []),
+    // Not in the desktop bar (no room next to Kontakt), so the regions hub is reachable here.
+    { label: d.nav.regions, href: href(locale, "regions"), icon: "pin" },
     { label: industryUi[locale].allProblems, href: href(locale, "problems"), icon: "spark" },
     { label: d.nav.contact, href: href(locale, "contact"), icon: "mail" },
   ];
@@ -137,11 +139,13 @@ export function buildNav(locale: Locale): NavData {
     resourcesLabel: resourceText[locale].label,
     resourcesHref: href(locale, "guides"),
     resourceGroups: resourceGroups(locale),
+    // `bar`: from which width a link also sits in the desktop bar next to the three menus (1176px of
+    // room): References from lg, About and Contact from xl. Regions stays in menus and the footer.
     links: [
       { label: d.nav.regions, href: href(locale, "regions") },
-      ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references") }] : []),
-      { label: d.nav.about, href: href(locale, "about") },
-      { label: d.nav.contact, href: href(locale, "contact") },
+      ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references"), bar: "lg" as const }] : []),
+      { label: d.nav.about, href: href(locale, "about"), bar: "xl" as const },
+      { label: d.nav.contact, href: href(locale, "contact"), bar: "xl" as const },
     ],
     cta: { label: d.nav.cta, href: href(locale, "request") },
     menuLabel: d.nav.menu,
