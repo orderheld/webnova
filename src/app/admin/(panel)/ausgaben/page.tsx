@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, eq, ilike, or, sql } from "drizzle-orm";
 import Link from "next/link";
 import { Modal } from "@/components/admin/action-form";
@@ -90,7 +91,7 @@ export default async function ExpensesPage({ searchParams }: { searchParams: Pro
               ))}
             </select>
             <input name="q" defaultValue={term} placeholder="Beschreibung, Lieferant …" className="input min-w-0 flex-1 sm:w-56 sm:flex-none" />
-            <button className={btn.ghost}>Filtern</button>
+            <PendingButton className={btn.ghost}>Filtern</PendingButton>
           </form>
           {rows.length === 0 ? (
             <Empty icon="wallet">Keine Ausgaben in diesem Zeitraum.</Empty>

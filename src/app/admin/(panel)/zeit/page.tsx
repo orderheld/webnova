@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, desc, eq, gte, isNotNull, isNull, lte } from "drizzle-orm";
 import Link from "next/link";
 import { ConfirmButton } from "@/components/admin/confirm-button";
@@ -81,7 +82,7 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
               </option>
             ))}
           </select>
-          <button className={btn.ghost}>Filtern</button>
+          <PendingButton className={btn.ghost}>Filtern</PendingButton>
         </form>
       </div>
       <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">

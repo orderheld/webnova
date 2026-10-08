@@ -22,7 +22,7 @@ const gt = {
     takeaways: "Das Wichtigste in Kürze",
     sources: "Quellen",
     author: "Über den Autor",
-    authorRole: "Inhaber von Webnova",
+    authorRole: "Ihr Ansprechpartner bei Webnova",
     authorText:
       "Ferhat Demir führt Webnova, eine Webdesign-Agentur für Schweizer KMU. Er begleitet Projekte persönlich von der ersten Idee bis nach dem Launch, auf Deutsch und Französisch, und verbindet Design, Technik und Suchmaschinenoptimierung.",
     authorLink: "Mehr über Webnova",
@@ -83,7 +83,7 @@ function AuthorBox({ locale }: { locale: Locale }) {
       <h2 id="author-heading" className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{t.author}</h2>
       <div className="mt-5 flex items-start gap-5">
         <span className="relative h-20 w-16 shrink-0 overflow-hidden rounded-2xl bg-bg-2">
-          <Image src="/photos/ferhat-avatar.webp" alt={locale === "de" ? "Ferhat Demir, Inhaber von Webnova" : "Ferhat Demir, fondateur de Webnova"} fill sizes="64px" className="object-cover" />
+          <Image src="/photos/ferhat-avatar.webp" alt={locale === "de" ? "Ferhat Demir, Ihr Ansprechpartner bei Webnova" : "Ferhat Demir, votre interlocuteur chez Webnova"} fill sizes="64px" className="object-cover" />
         </span>
         <div>
           <p className="font-display text-[19px] font-semibold tracking-[-0.01em] text-ink">Ferhat Demir</p>

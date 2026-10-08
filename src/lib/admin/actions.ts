@@ -1,7 +1,8 @@
 "use server";
 
+import { flashDone } from "./flash";
+
 import { eq, inArray } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { isIBANValid } from "swissqrbill/utils";
 import { z } from "zod";
@@ -81,11 +82,11 @@ export async function saveCustomerAction(id: number | null, _: unknown, fd: Form
     return { error: "Bitte eine gültige E-Mail-Adresse angeben." };
   if (id) {
     await db().update(schema.customers).set(v).where(eq(schema.customers.id, id));
-    revalidatePath("/admin", "layout");
+    await flashDone("Gespeichert");
     return { ok: true };
   }
   const [c] = await db().insert(schema.customers).values(v).returning({ id: schema.customers.id });
-  revalidatePath("/admin", "layout");
+  await flashDone("Gespeichert");
   redirect(`/admin/kunden/${c.id}`);
 }
 
@@ -96,14 +97,14 @@ export async function deleteCustomerAction(id: number) {
   } catch {
     redirect(`/admin/kunden/${id}?fehler=dokumente`);
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Gelöscht");
   redirect("/admin/kunden");
 }
 
 export async function archiveCustomerAction(id: number, archived: boolean) {
   await requireAdmin();
   await db().update(schema.customers).set({ archived }).where(eq(schema.customers.id, id));
-  revalidatePath("/admin", "layout");
+  await flashDone("Aktualisiert");
 }
 
 /* ───────────────────────── Quotes & invoices ───────────────────────── */
@@ -188,7 +189,7 @@ export async function saveQuoteAction(id: number | null, payload: DocPayload & {
       await logActivity(`Offerte ${number} erstellt`, { leadId });
     }
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Gespeichert");
   return { id };
 }
 
@@ -228,7 +229,7 @@ export async function saveInvoiceAction(id: number | null, payload: DocPayload &
       .returning({ id: schema.invoices.id });
     id = inv.id;
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Gespeichert");
   return { id };
 }
 
@@ -243,7 +244,7 @@ export async function setQuoteStatusAction(id: number, status: QuoteStatus) {
         .set({ status: status === "angenommen" ? "gewonnen" : "verloren", updatedAt: new Date() })
         .where(eq(schema.leads.id, q.leadId));
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Aktualisiert");
 }
 
 /** Status changes that are not payments (cancel / reopen). Paying goes through payments. */
@@ -265,7 +266,7 @@ export async function setInvoiceStatusAction(id: number, status: InvoiceStatus, 
   } else {
     await db().update(schema.invoices).set({ status }).where(eq(schema.invoices.id, id));
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Aktualisiert");
 }
 
 export async function deleteQuoteAction(id: number) {
@@ -273,7 +274,7 @@ export async function deleteQuoteAction(id: number) {
   // invoices, projects and subscriptions keep existing; their link to the quote is cleared by the foreign keys
   const [q] = await db().delete(schema.quotes).where(eq(schema.quotes.id, id)).returning();
   if (q) await logActivity(`Offerte ${q.number} gelöscht`, { customerId: q.customerId, leadId: q.leadId, projectId: q.projectId });
-  revalidatePath("/admin", "layout");
+  await flashDone("Gelöscht");
   redirect("/admin/offerten");
 }
 
@@ -309,7 +310,7 @@ export async function deleteInvoiceAction(id: number) {
     const label = inv.kind === "gutschrift" ? "Gutschrift" : "Rechnung";
     await logActivity(`${label} ${inv.number} gelöscht (Status ${invoiceStatusLabels[inv.status] ?? inv.status})`, { customerId: inv.customerId, projectId: inv.projectId });
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Gelöscht");
   redirect(inv?.kind === "gutschrift" ? "/admin/rechnungen?art=gutschrift" : "/admin/rechnungen");
 }
 
@@ -346,7 +347,7 @@ export async function quoteToInvoiceAction(quoteId: number) {
     customerId: q.customerId,
     projectId: q.projectId,
   });
-  revalidatePath("/admin", "layout");
+  await flashDone("Gespeichert");
   redirect(`/admin/rechnungen/${inv.id}`);
 }
 
@@ -404,7 +405,7 @@ export async function sendDocumentAction(kind: PdfKind, id: number, fd: FormData
       if (inv) await logActivity(`${r.level}. Mahnung zu ${inv.number} an ${to} gesendet`, { customerId: inv.customerId, projectId: inv.projectId }, "email");
     }
   }
-  revalidatePath("/admin", "layout");
+  await flashDone("Gesendet");
   return { ok: true };
 }
 
@@ -464,6 +465,6 @@ export async function saveSettingsAction(_: unknown, fd: FormData): Promise<{ ok
     next[k] = next[k].replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 6) || cur[k];
   }
   await saveSettings(next);
-  revalidatePath("/admin", "layout");
+  await flashDone("Gespeichert");
   return { ok: true };
 }

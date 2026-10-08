@@ -141,7 +141,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
         }`}
       >
         <div className="container-x relative flex h-[72px] items-center justify-between gap-6">
-          <Link href={nav.home} aria-label="Webnova" className="shrink-0">
+          <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
             {dk ? (logoLight ?? logo) : logo}
           </Link>
 
@@ -294,9 +294,13 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
           aria-modal="true"
           aria-label={nav.menuLabel}
           className="stage-night fixed inset-0 z-[60] flex flex-col overflow-hidden text-white lg:hidden"
+          onClick={(e) => {
+            // any link in the menu closes it, also when it points to the page that is already open
+            if ((e.target as HTMLElement).closest("a")) setOpenFor(null);
+          }}
         >
           <div className="container-x flex h-[72px] shrink-0 items-center justify-between border-b border-white/10">
-            <Link href={nav.home} aria-label="Webnova" className="shrink-0">
+            <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
               {logoLight ?? logo}
             </Link>
             <button

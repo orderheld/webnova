@@ -1,7 +1,8 @@
 "use server";
 
+import { flashDone } from "./flash";
+
 import { asc, eq, inArray } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -14,7 +15,6 @@ import { addDaysIso, computeTotals, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { getSettings } from "./settings";
 
-const done = () => revalidatePath("/admin", "layout");
 
 /* ───────────── Leads ───────────── */
 
@@ -54,19 +54,19 @@ export async function saveLeadAction(id: number | null, _: FormState, fd: FormDa
     const [old] = await db().select({ status: schema.leads.status }).from(schema.leads).where(eq(schema.leads.id, id));
     await db().update(schema.leads).set(values).where(eq(schema.leads.id, id));
     if (old && old.status !== values.status) await logActivity(`Phase: ${leadStageLabels[old.status]} → ${leadStageLabels[values.status]}`, { leadId: id });
-    done();
+    await flashDone("Gespeichert");
     return { ok: true, message: "Gespeichert." };
   }
   const [lead] = await db().insert(schema.leads).values(values).returning({ id: schema.leads.id });
   await logActivity("Lead erfasst", { leadId: lead.id });
-  done();
+  await flashDone("Gespeichert");
   redirect(`/admin/anfragen/${lead.id}`);
 }
 
 export async function deleteLeadAction(id: number) {
   await requireAdmin();
   await db().delete(schema.leads).where(eq(schema.leads.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/anfragen");
 }
 
@@ -77,21 +77,21 @@ export async function setLeadStageAction(id: number, stage: LeadStatus) {
   if (!old || old.status === stage) return;
   await db().update(schema.leads).set({ status: stage, updatedAt: new Date() }).where(eq(schema.leads.id, id));
   await logActivity(`Phase: ${leadStageLabels[old.status]} → ${leadStageLabels[stage]}`, { leadId: id });
-  done();
+  await flashDone("Aktualisiert");
 }
 
 export async function setLeadFollowUpAction(id: number, date: string | null) {
   await requireAdmin();
   const d = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : null;
   await db().update(schema.leads).set({ followUpAt: d, updatedAt: new Date() }).where(eq(schema.leads.id, id));
-  done();
+  await flashDone("Gespeichert");
 }
 
 /** Postpones a follow-up by n days from today (quick buttons on the dashboard). */
 export async function snoozeFollowUpAction(id: number, days: number) {
   await requireAdmin();
   await db().update(schema.leads).set({ followUpAt: addDaysIso(todayIso(), days), updatedAt: new Date() }).where(eq(schema.leads.id, id));
-  done();
+  await flashDone("Aktualisiert");
 }
 
 async function customerFromLead(leadId: number) {
@@ -128,7 +128,7 @@ export async function leadToCustomerAction(id: number) {
   const r = await customerFromLead(id);
   if (!r) redirect("/admin/anfragen");
   if (r.lead.status === "neu") await db().update(schema.leads).set({ status: "kontaktiert" }).where(eq(schema.leads.id, id));
-  done();
+  await flashDone("Gespeichert");
   redirect(`/admin/kunden/${r.customerId}`);
 }
 
@@ -215,7 +215,7 @@ export async function convertLeadAction(id: number, _: FormState, fd: FormData):
     .update(schema.leads)
     .set({ status: quoteId ? "offerte" : projectId ? "gewonnen" : lead.status === "neu" ? "kontaktiert" : lead.status, updatedAt: new Date() })
     .where(eq(schema.leads.id, id));
-  done();
+  await flashDone("Erstellt");
   redirect(quoteId ? `/admin/offerten/${quoteId}` : projectId ? `/admin/projekte/${projectId}` : `/admin/kunden/${customerId}`);
 }
 
@@ -257,14 +257,14 @@ export async function addActivityAction(
     if (l?.s === "neu" && v.type !== "notiz") patch.status = "kontaktiert";
     await db().update(schema.leads).set(patch).where(eq(schema.leads.id, ref.leadId));
   }
-  done();
+  await flashDone("Erstellt");
   return { ok: true };
 }
 
 export async function deleteActivityAction(id: number) {
   await requireAdmin();
   await db().delete(schema.activities).where(eq(schema.activities.id, id));
-  done();
+  await flashDone("Gelöscht");
 }
 
 /* ───────────── Contacts ───────────── */
@@ -287,14 +287,14 @@ export async function saveContactAction(customerId: number, contactId: number | 
   if (r.data.isPrimary) await db().update(schema.contacts).set({ isPrimary: false }).where(eq(schema.contacts.customerId, customerId));
   if (contactId) await db().update(schema.contacts).set(r.data).where(eq(schema.contacts.id, contactId));
   else await db().insert(schema.contacts).values({ ...r.data, customerId });
-  done();
+  await flashDone("Gespeichert");
   return { ok: true };
 }
 
 export async function deleteContactAction(id: number) {
   await requireAdmin();
   await db().delete(schema.contacts).where(eq(schema.contacts.id, id));
-  done();
+  await flashDone("Gelöscht");
 }
 
 /* ───────────── Quick helpers used by several pages ───────────── */
@@ -303,6 +303,6 @@ export async function createQuoteForLeadAction(leadId: number) {
   await requireAdmin();
   const r = await customerFromLead(zId.parse(leadId));
   if (!r) redirect("/admin/anfragen");
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/offerten/neu?kunde=${r.customerId}&lead=${leadId}`);
 }

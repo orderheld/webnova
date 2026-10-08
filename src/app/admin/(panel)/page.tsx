@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, asc, desc, eq, gt, inArray, isNotNull, isNull, lte, notInArray, or, sql } from "drizzle-orm";
 import Link from "next/link";
 import { ColumnChart } from "@/components/admin/charts";
@@ -247,7 +248,7 @@ export default async function Dashboard() {
             <span className="font-semibold">{due.rows.length} Abo{due.rows.length === 1 ? "" : "s"}</span> bis {fmtDate(due.horizon)} fällig, total CHF {chf(due.rows.reduce((a, s) => a + s.amount, 0))} exkl. MWST.
           </p>
           <form action={billDueSubscriptionsAction}>
-            <button className={btn.dark}>Fällige Abos verrechnen</button>
+            <PendingButton className={btn.dark}>Fällige Abos verrechnen</PendingButton>
           </form>
         </div>
       )}
@@ -388,7 +389,7 @@ export default async function Dashboard() {
                     <div className="mt-2 flex gap-1.5">
                       {[1, 3, 7].map((n) => (
                         <form key={n} action={snoozeFollowUpAction.bind(null, l.id, n)}>
-                          <button className={btnSm.ghost}>+{n} T.</button>
+                          <PendingButton className={btnSm.ghost}>+{n} T.</PendingButton>
                         </form>
                       ))}
                     </div>

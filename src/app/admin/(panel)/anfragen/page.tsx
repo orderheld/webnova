@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, desc, eq, ilike, lte, notInArray, or, sql, type SQL } from "drizzle-orm";
 import Link from "next/link";
 import { Badge, Empty, FilterChips, LinkButton, PageHeader, Stars, Table, qs, td, tdNum, btn } from "@/components/admin/ui";
@@ -76,7 +77,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
             <input type="checkbox" name="faellig" value="1" defaultChecked={!!sp.faellig} className="h-4 w-4" /> Follow-up fällig
           </label>
           {filter && <input type="hidden" name="status" value={filter} />}
-          <button className={btn.ghost}>Filtern</button>
+          <PendingButton className={btn.ghost}>Filtern</PendingButton>
         </form>
       </div>
       {rows.length === 0 ? (

@@ -1,5 +1,7 @@
 "use client";
 
+import { Spinner } from "./feedback";
+
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { sendDocumentAction } from "@/lib/admin/actions";
@@ -78,7 +80,8 @@ export function SendDialog({
               <button type="button" onClick={() => setOpen(false)} className={btn.ghost}>
                 Abbrechen
               </button>
-              <button disabled={pending} className={btn.accent}>
+              <button disabled={pending} aria-busy={pending || undefined} className={btn.accent}>
+                {pending && <Spinner className="h-3.5 w-3.5" />}
                 {pending ? "Wird gesendet …" : "Jetzt senden"}
               </button>
             </div>

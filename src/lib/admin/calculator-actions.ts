@@ -1,7 +1,8 @@
 "use server";
 
+import { flashDone } from "./flash";
+
 import { eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -14,7 +15,6 @@ import { addDaysIso, computeTotals, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { getCalculatorConfig, getSettings, saveCalculatorConfig } from "./settings";
 
-const done = () => revalidatePath("/admin", "layout");
 
 const num = z.coerce.number().finite();
 const lineSchema = z.object({
@@ -68,14 +68,14 @@ export async function saveEstimateAction(id: number | null, payload: EstimatePay
   };
   if (id) await db().update(schema.estimates).set(values).where(eq(schema.estimates.id, id));
   else id = (await db().insert(schema.estimates).values(values).returning({ id: schema.estimates.id }))[0].id;
-  done();
+  await flashDone("Gespeichert");
   return { id };
 }
 
 export async function deleteEstimateAction(id: number) {
   await requireAdmin();
   await db().delete(schema.estimates).where(eq(schema.estimates.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/rechner");
 }
 
@@ -130,7 +130,7 @@ export async function estimateToQuoteAction(id: number, opts: { withSubscription
     subs = await subscriptionsFromQuote(q, start);
   }
   await logActivity(`Offerte ${number} aus Rechner erstellt${subs ? `, ${subs} Abo${subs === 1 ? "" : "s"} angelegt` : ""}`, { customerId: e.customerId, leadId: e.leadId });
-  done();
+  await flashDone("Gespeichert");
   redirect(`/admin/offerten/${q.id}`);
 }
 
@@ -174,6 +174,6 @@ export async function saveCalculatorConfigAction(cfg: CalculatorConfig): Promise
   const p = cfgSchema.safeParse(cfg);
   if (!p.success) return { error: "Bitte bei jeder Zeile eine Bezeichnung und gültige Beträge angeben." };
   await saveCalculatorConfig(p.data);
-  done();
+  await flashDone("Gespeichert");
   return { ok: true };
 }

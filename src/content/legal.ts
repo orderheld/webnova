@@ -21,7 +21,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Vertretungsberechtigte Person",
-          paragraphs: ["Ferhat Demir, Inhaber"],
+          paragraphs: ["Ferhat Demir"],
         },
         {
           h2: "Unternehmensidentifikation",
@@ -68,7 +68,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Personne habilitée à représenter l'entreprise",
-          paragraphs: ["Ferhat Demir, propriétaire"],
+          paragraphs: ["Ferhat Demir"],
         },
         {
           h2: "Identification de l'entreprise",

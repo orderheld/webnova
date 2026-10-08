@@ -19,7 +19,7 @@ export interface Photo {
 export const photos: Partial<Record<"cover" | "founder" | "office" | "hero" | "intro" | "approach" | "pos", Photo>> = {
   founder: {
     src: "/photos/ferhat-demir.webp",
-    alt: { de: "Ferhat Demir, Inhaber von Webnova", fr: "Ferhat Demir, fondateur de Webnova" },
+    alt: { de: "Ferhat Demir, Ihr Ansprechpartner bei Webnova", fr: "Ferhat Demir, votre interlocuteur chez Webnova" },
   },
 };
 

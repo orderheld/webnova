@@ -193,8 +193,8 @@ export function FaqList({ locale, faq, id }: { locale: Locale; faq: Faq[]; id?: 
 }
 
 const contactPerson = {
-  de: { role: "Inhaber, Ihr Ansprechpartner", whatsapp: "WhatsApp schreiben" },
-  fr: { role: "Propriétaire, votre interlocuteur", whatsapp: "Écrire sur WhatsApp" },
+  de: { role: "Ihr Ansprechpartner", whatsapp: "WhatsApp schreiben" },
+  fr: { role: "Votre interlocuteur", whatsapp: "Écrire sur WhatsApp" },
 };
 
 const founder = photos.founder!;

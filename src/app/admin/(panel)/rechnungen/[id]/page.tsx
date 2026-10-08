@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { asc, eq } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -84,9 +85,9 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
               <Icon name="download" className="h-4 w-4" /> PDF
             </a>
             <form action={duplicateInvoiceAction.bind(null, i.id)}>
-              <button className={btn.ghost}>
+              <PendingButton className={btn.ghost}>
                 <Icon name="copy" className="h-4 w-4" /> Duplizieren
-              </button>
+              </PendingButton>
             </form>
             {draft && i.status !== "storniert" && <SendDialog kind="invoice" id={i.id} draft={draft} sentAt={i.sentAt?.toISOString() ?? null} />}
           </>
@@ -166,9 +167,9 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
             >
               <span className="text-[13px] text-muted">Restbetrag vollständig erhalten am</span>
               <input type="date" name="paidAt" defaultValue={today} className="input w-auto py-1.5" />
-              <button className={btnSm.dark}>
+              <PendingButton className={btnSm.dark}>
                 <Icon name="check" className="h-3.5 w-3.5" /> Als bezahlt markieren
-              </button>
+              </PendingButton>
             </form>
           )}
         </Card>
@@ -177,7 +178,7 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
           <div className="flex flex-col gap-2">
             {i.status === "entwurf" && (
               <form action={markInvoicesSentAction.bind(null, [i.id])}>
-                <button className={`${btnSm.ghost} w-full`}>Als versendet markieren (Post)</button>
+                <PendingButton className={`${btnSm.ghost} w-full`}>Als versendet markieren (Post)</PendingButton>
               </form>
             )}
             {!credit && i.status !== "entwurf" && (

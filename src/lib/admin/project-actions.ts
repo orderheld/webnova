@@ -1,7 +1,8 @@
 "use server";
 
+import { flashDone } from "./flash";
+
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -14,7 +15,6 @@ import { addDaysIso, computeTotals, fmtDate, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { getSettings } from "./settings";
 
-const done = () => revalidatePath("/admin", "layout");
 
 /* ───────────── Projects ───────────── */
 
@@ -45,7 +45,7 @@ export async function saveProjectAction(id: number | null, _: FormState, fd: For
       .set({ ...v, liveDate: v.liveDate ?? (v.status === "live" && old?.status !== "live" ? todayIso() : v.liveDate), updatedAt: new Date() })
       .where(eq(schema.projects.id, id));
     if (old && old.status !== v.status) await logActivity(`Projektstatus: ${projectStatusLabels[old.status]} → ${projectStatusLabels[v.status]}`, { projectId: id, customerId: v.customerId });
-    done();
+    await flashDone("Gespeichert");
     return { ok: true, message: "Gespeichert." };
   }
   const s = await getSettings();
@@ -64,7 +64,7 @@ export async function saveProjectAction(id: number | null, _: FormState, fd: For
   }
   if (v.quoteId) await db().update(schema.quotes).set({ projectId: p.id }).where(eq(schema.quotes.id, v.quoteId));
   await logActivity("Projekt angelegt", { projectId: p.id, customerId: v.customerId });
-  done();
+  await flashDone("Gespeichert");
   redirect(`/admin/projekte/${p.id}`);
 }
 
@@ -77,13 +77,13 @@ export async function setProjectStatusAction(id: number, status: ProjectStatus) 
     .set({ status, updatedAt: new Date(), ...(status === "live" && !old.liveDate ? { liveDate: todayIso() } : {}) })
     .where(eq(schema.projects.id, id));
   await logActivity(`Projektstatus: ${projectStatusLabels[old.status]} → ${projectStatusLabels[status]}`, { projectId: id, customerId: old.customerId });
-  done();
+  await flashDone("Aktualisiert");
 }
 
 export async function deleteProjectAction(id: number) {
   await requireAdmin();
   await db().delete(schema.projects).where(eq(schema.projects.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/projekte");
 }
 
@@ -111,7 +111,7 @@ export async function duplicateProjectAction(id: number) {
     await db()
       .insert(schema.projectTasks)
       .values(tasks.map((t) => ({ projectId: n.id, title: t.title, notes: t.notes, milestone: t.milestone, sortOrder: t.sortOrder, dueDate: shift(t.dueDate) })));
-  done();
+  await flashDone("Dupliziert");
   redirect(`/admin/projekte/${n.id}`);
 }
 
@@ -136,7 +136,7 @@ export async function projectFromQuoteAction(quoteId: number, fd: FormData) {
   await db().update(schema.invoices).set({ projectId: p.id }).where(and(eq(schema.invoices.quoteId, q.id), isNull(schema.invoices.projectId)));
   await db().update(schema.subscriptions).set({ projectId: p.id }).where(and(eq(schema.subscriptions.quoteId, q.id), isNull(schema.subscriptions.projectId)));
   await logActivity(`Projekt aus Offerte ${q.number} angelegt`, { projectId: p.id, customerId: q.customerId });
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/projekte/${p.id}`);
 }
 
@@ -159,7 +159,7 @@ export async function addTaskAction(projectId: number, _: FormState, fd: FormDat
     .where(eq(schema.projectTasks.projectId, projectId));
   await db().insert(schema.projectTasks).values({ ...r.data, projectId, sortOrder: max + 10 });
   await touch(projectId);
-  done();
+  await flashDone("Erstellt");
   return { ok: true };
 }
 
@@ -168,7 +168,7 @@ export async function updateTaskAction(taskId: number, _: FormState, fd: FormDat
   const r = parseForm(taskSchema, fd);
   if (!r.data) return { error: "Bitte einen Titel eingeben." };
   await db().update(schema.projectTasks).set(r.data).where(eq(schema.projectTasks.id, taskId));
-  done();
+  await flashDone("Gespeichert");
   return { ok: true };
 }
 
@@ -182,13 +182,13 @@ export async function toggleTaskAction(taskId: number) {
     .where(eq(schema.projectTasks.id, taskId));
   if (!t.done && t.milestone) await logActivity(`Meilenstein erreicht: ${t.title}`, { projectId: t.projectId });
   await touch(t.projectId);
-  done();
+  await flashDone("Aktualisiert");
 }
 
 export async function deleteTaskAction(taskId: number) {
   await requireAdmin();
   await db().delete(schema.projectTasks).where(eq(schema.projectTasks.id, taskId));
-  done();
+  await flashDone("Gelöscht");
 }
 
 export async function moveTaskAction(taskId: number, dir: -1 | 1) {
@@ -203,7 +203,7 @@ export async function moveTaskAction(taskId: number, dir: -1 | 1) {
   for (let k = 0; k < list.length; k++) {
     if (list[k].sortOrder !== (k + 1) * 10) await db().update(schema.projectTasks).set({ sortOrder: (k + 1) * 10 }).where(eq(schema.projectTasks.id, list[k].id));
   }
-  done();
+  await flashDone("Aktualisiert");
 }
 
 async function touch(projectId: number) {
@@ -224,7 +224,7 @@ export async function addLinkAction(projectId: number, _: FormState, fd: FormDat
     .update(schema.projects)
     .set({ links: [...p.links, { label: r.data.label, url: r.data.url }], updatedAt: new Date() })
     .where(eq(schema.projects.id, projectId));
-  done();
+  await flashDone("Erstellt");
   return { ok: true };
 }
 
@@ -236,7 +236,7 @@ export async function deleteLinkAction(projectId: number, index: number) {
     .update(schema.projects)
     .set({ links: p.links.filter((_, i) => i !== index) })
     .where(eq(schema.projects.id, projectId));
-  done();
+  await flashDone("Gelöscht");
 }
 
 /* ───────────── Time tracking ───────────── */
@@ -266,14 +266,14 @@ export async function saveTimeAction(projectId: number | null, entryId: number |
     await db().update(schema.timeEntries).set(values).where(eq(schema.timeEntries.id, entryId));
   } else await db().insert(schema.timeEntries).values(values);
   await touch(pid);
-  done();
+  await flashDone("Gespeichert");
   return { ok: true };
 }
 
 export async function deleteTimeAction(id: number) {
   await requireAdmin();
   await db().delete(schema.timeEntries).where(and(eq(schema.timeEntries.id, id), isNull(schema.timeEntries.invoiceId)));
-  done();
+  await flashDone("Gelöscht");
 }
 
 /** Bills all open, billable time entries of a project as a draft invoice (one line per rate). */
@@ -322,7 +322,7 @@ export async function billTimeAction(projectId: number) {
     .set({ invoiceId: inv.id })
     .where(inArray(schema.timeEntries.id, entries.map((e) => e.id)));
   await logActivity(`Rechnung ${number} aus ${entries.length} Zeiteinträgen erstellt`, { projectId, customerId: p.customerId });
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/rechnungen/${inv.id}`);
 }
 
@@ -343,13 +343,13 @@ export async function saveTemplateAction(id: number | null, payload: TemplatePay
   const v = { ...r.data, description: r.data.description || null };
   if (id) await db().update(schema.projectTemplates).set(v).where(eq(schema.projectTemplates.id, id));
   else id = (await db().insert(schema.projectTemplates).values(v).returning({ id: schema.projectTemplates.id }))[0].id;
-  done();
+  await flashDone("Gespeichert");
   return { id };
 }
 
 export async function deleteTemplateAction(id: number) {
   await requireAdmin();
   await db().delete(schema.projectTemplates).where(eq(schema.projectTemplates.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/vorlagen");
 }

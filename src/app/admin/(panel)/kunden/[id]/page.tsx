@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { desc, eq, inArray, or } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -230,7 +231,7 @@ export default async function CustomerDetail({ params, searchParams }: { params:
           <Card title="Verwaltung">
             <div className="flex flex-wrap gap-2">
               <form action={archiveCustomerAction.bind(null, c.id, !c.archived)}>
-                <button className={btn.ghost}>{c.archived ? "Wiederherstellen" : "Archivieren"}</button>
+                <PendingButton className={btn.ghost}>{c.archived ? "Wiederherstellen" : "Archivieren"}</PendingButton>
               </form>
               <form action={deleteCustomerAction.bind(null, c.id)}>
                 <ConfirmButton message="Kunde endgültig löschen? Kontakte und Aktivitäten werden mitgelöscht." className={btn.danger}>

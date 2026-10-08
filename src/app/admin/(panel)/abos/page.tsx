@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, eq, ilike, or, sql } from "drizzle-orm";
 import Link from "next/link";
 import { Badge, Empty, FilterChips, LinkButton, PageHeader, Stat, Table, btn, qs, td, tdNum } from "@/components/admin/ui";
@@ -68,7 +69,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
           <>
             {due.length > 0 && (
               <form action={billDueSubscriptionsAction}>
-                <button className={btn.dark}>Fällige Abos verrechnen ({due.length})</button>
+                <PendingButton className={btn.dark}>Fällige Abos verrechnen ({due.length})</PendingButton>
               </form>
             )}
             <LinkButton href="/admin/abos/neu" variant={due.length ? "ghost" : "dark"} icon="plus">
@@ -100,7 +101,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
             ))}
           </select>
           <input name="q" defaultValue={term} placeholder="Abo oder Kunde …" className="input min-w-0 flex-1 sm:w-48 sm:flex-none" />
-          <button className={btn.ghost}>Filtern</button>
+          <PendingButton className={btn.ghost}>Filtern</PendingButton>
         </form>
       </div>
       {customerId && rows[0] && (

@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Logo } from "@/components/logo";
 import { logoutAction } from "@/lib/admin/actions";
+import { LinkPending, PendingButton } from "./feedback";
 import { Icon } from "./icons";
 
 export interface SidebarCounts {
@@ -103,6 +104,7 @@ export function Sidebar({ counts, user }: { counts: SidebarCounts; user: string 
                   {on && <span className="absolute inset-y-2 left-0 w-[3px] rounded-full bg-accent-light" aria-hidden="true" />}
                   <Icon name={it.icon} className={`h-[17px] w-[17px] shrink-0 ${on ? "text-accent-light" : "text-white/55 group-hover:text-accent-light"}`} />
                   <span className="flex-1 truncate">{it.label}</span>
+                  <LinkPending className="text-accent-light" />
                   {n > 0 && (
                     <span
                       className={`min-w-[20px] rounded-full px-1.5 py-px text-center text-[11px] font-semibold tabular-nums ${
@@ -146,9 +148,9 @@ export function Sidebar({ counts, user }: { counts: SidebarCounts; user: string 
           <Icon name="globe" className="h-4 w-4" />
         </a>
         <form action={logoutAction}>
-          <button className="grid h-8 w-8 place-items-center rounded-full text-white/60 transition-colors hover:bg-white/[0.08] hover:text-white" aria-label="Abmelden" title="Abmelden">
+          <PendingButton className="grid h-8 w-8 place-items-center rounded-full text-white/60 transition-colors hover:bg-white/[0.08] hover:text-white" aria-label="Abmelden" title="Abmelden">
             <Icon name="logout" className="h-4 w-4" />
-          </button>
+          </PendingButton>
         </form>
       </div>
     </div>
