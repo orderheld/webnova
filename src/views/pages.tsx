@@ -227,7 +227,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
             </a>
           ))}
           <div className="rounded-md border border-line bg-surface p-6 ">
-            <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
+            <p className="text-[14px] font-medium text-ink">{d.pages.office}</p>
             <p className="mt-3 text-[18px] leading-snug">
               Webnova
               <br />
@@ -245,7 +245,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
             </a>
             {site.openingHours.length > 0 && (
               <div className="mt-6 border-t border-line pt-5">
-                <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.hours}</p>
+                <p className="text-[14px] font-medium text-ink">{d.pages.hours}</p>
                 <dl className="mt-3 space-y-1 text-[15px]">
                   {site.openingHours.map((h) => (
                     <div key={h.days.join()} className="flex justify-between gap-4">

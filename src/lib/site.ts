@@ -26,9 +26,11 @@ export const site = {
     review: "", // review short link from the profile (g.page/r/.../review)
   },
   directories: [] as string[], // local.ch entry, Apple Maps link, ...
-  // Same office hours as in the Google profile, e.g.
-  // { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "17:00" }
-  openingHours: [] as { days: Weekday[]; opens: string; closes: string }[],
+  // Office hours as in the Google Business Profile (Ferhat, 2026-10-08). Sunday closed.
+  openingHours: [
+    { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
+    { days: ["Saturday"], opens: "10:00", closes: "16:00" },
+  ] as { days: Weekday[]; opens: string; closes: string }[],
 };
 
 export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
