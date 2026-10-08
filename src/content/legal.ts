@@ -147,9 +147,18 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           ],
         },
         {
+          h2: "Besucherstatistik ohne Cookies",
+          paragraphs: [
+            "Um zu sehen, welche Inhalte gefragt sind, und die Webseite zu verbessern, führen wir eine eigene, anonyme Besucherstatistik. Dafür setzen wir keine Cookies, speichern nichts auf Ihrem Gerät und nutzen keine Analysedienste von Dritten wie Google Analytics.",
+            "Bei jedem Seitenaufruf speichern wir die aufgerufene Seite, Datum und Uhrzeit, die Art des Geräts (Smartphone, Tablet oder Computer), das ungefähre Land und die Region (in der Schweiz den Kanton), die aus der IP-Adresse abgeleitet werden, sowie beim ersten Aufruf die Webseite, über die Sie zu uns gekommen sind, zum Beispiel eine Suchmaschine. Ihre IP-Adresse speichern wir nicht.",
+            "Damit wir Besuche zählen können, ohne Sie wiederzuerkennen, bilden wir aus IP-Adresse und Browserkennung zusammen mit einem zufälligen Schlüssel eine anonyme Kennung. Der Schlüssel wird jeden Tag neu erzeugt und der vorherige gelöscht. Die Kennung lässt sich deshalb weder auf Sie zurückführen noch über mehrere Tage oder andere Webseiten hinweg verfolgen.",
+            "Die Statistikdaten werden in unserer Datenbank bei Neon mit Hosting-Region in der EU gespeichert, sind nur für uns zugänglich und werden nach 13 Monaten gelöscht. Soweit die DSGVO anwendbar ist, stützen wir diese Auswertung auf unser berechtigtes Interesse an einer bedarfsgerechten Gestaltung der Webseite (Art. 6 Abs. 1 lit. f DSGVO).",
+          ],
+        },
+        {
           h2: "Cookies",
           paragraphs: [
-            "Diese Webseite verwendet standardmässig keine Tracking- oder Marketing-Cookies und keine Analysedienste, die Ihr Verhalten über verschiedene Webseiten hinweg verfolgen.",
+            "Diese Webseite verwendet keine Tracking- oder Marketing-Cookies und keine Analysedienste von Dritten, die Ihr Verhalten über verschiedene Webseiten hinweg verfolgen. Unsere eigene Besucherstatistik kommt ohne Cookies aus.",
             "Gesetzt wird einzig ein technisch notwendiges Cookie für den geschützten Administrationsbereich. Es wird nur beim Login durch berechtigte Personen verwendet, um die Sitzung aufrechtzuerhalten, und betrifft normale Besucherinnen und Besucher nicht. Sollten wir künftig weitere Cookies oder Analysewerkzeuge einsetzen, passen wir diese Datenschutzerklärung an und holen, wo erforderlich, Ihre Einwilligung ein.",
           ],
         },
@@ -170,7 +179,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Aufbewahrungsdauer",
           paragraphs: [
             "Wir speichern Personendaten nur so lange, wie es für die genannten Zwecke erforderlich ist. Anfragen, aus denen kein Auftrag entsteht, löschen wir spätestens nach 24 Monaten.",
-            "Führt eine Anfrage zu einem Auftrag, bewahren wir die geschäftsrelevanten Unterlagen gemäss den gesetzlichen Aufbewahrungspflichten auf, in der Schweiz in der Regel während zehn Jahren. Server-Logfiles werden nur kurzfristig gespeichert und anschliessend automatisch gelöscht.",
+            "Führt eine Anfrage zu einem Auftrag, bewahren wir die geschäftsrelevanten Unterlagen gemäss den gesetzlichen Aufbewahrungspflichten auf, in der Schweiz in der Regel während zehn Jahren. Server-Logfiles werden nur kurzfristig gespeichert und anschliessend automatisch gelöscht. Die anonyme Besucherstatistik löschen wir nach 13 Monaten.",
           ],
         },
         {
@@ -242,9 +251,18 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           ],
         },
         {
+          h2: "Statistiques de visite sans cookies",
+          paragraphs: [
+            "Afin de savoir quels contenus intéressent nos visiteurs et d'améliorer le site, nous tenons nos propres statistiques de visite, anonymes. Nous n'utilisons pour cela aucun cookie, n'enregistrons rien sur votre appareil et ne faisons appel à aucun service d'analyse tiers comme Google Analytics.",
+            "Pour chaque page consultée, nous enregistrons la page, la date et l'heure, le type d'appareil (smartphone, tablette ou ordinateur), le pays et la région approximatifs (en Suisse, le canton) déduits de l'adresse IP ainsi que, lors de la première page consultée, le site par lequel vous êtes arrivé chez nous, par exemple un moteur de recherche. Nous n'enregistrons pas votre adresse IP.",
+            "Pour pouvoir compter les visites sans vous reconnaître, nous formons un identifiant anonyme à partir de l'adresse IP et de l'identification du navigateur, combinées à une clé aléatoire. Cette clé est renouvelée chaque jour et la précédente est supprimée. L'identifiant ne permet donc ni de remonter jusqu'à vous, ni de vous suivre sur plusieurs jours ou sur d'autres sites.",
+            "Ces statistiques sont enregistrées dans notre base de données chez Neon, hébergée dans une région de l'UE, ne sont accessibles qu'à nous et sont supprimées après 13 mois. Lorsque le RGPD s'applique, cette analyse repose sur notre intérêt légitime à concevoir le site en fonction des besoins (art. 6, par. 1, let. f RGPD).",
+          ],
+        },
+        {
           h2: "Cookies",
           paragraphs: [
-            "Par défaut, ce site n'utilise ni cookies de suivi ou de marketing, ni services d'analyse qui suivent votre comportement d'un site à l'autre.",
+            "Ce site n'utilise ni cookies de suivi ou de marketing, ni services d'analyse de tiers qui suivent votre comportement d'un site à l'autre. Nos propres statistiques de visite fonctionnent sans cookies.",
             "Seul un cookie techniquement nécessaire est utilisé pour l'espace d'administration protégé. Il sert uniquement à maintenir la session lors de la connexion de personnes autorisées et ne concerne pas les visiteurs ordinaires. Si nous devions à l'avenir utiliser d'autres cookies ou outils d'analyse, nous adapterions cette déclaration et recueillerions votre consentement lorsque cela est nécessaire.",
           ],
         },
@@ -265,7 +283,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Durée de conservation",
           paragraphs: [
             "Nous ne conservons les données personnelles que le temps nécessaire aux finalités indiquées. Les demandes qui n'aboutissent pas à un mandat sont supprimées au plus tard après 24 mois.",
-            "Lorsqu'une demande débouche sur un mandat, nous conservons les documents commerciaux conformément aux obligations légales, en Suisse en règle générale pendant dix ans. Les fichiers journaux du serveur ne sont conservés que brièvement, puis supprimés automatiquement.",
+            "Lorsqu'une demande débouche sur un mandat, nous conservons les documents commerciaux conformément aux obligations légales, en Suisse en règle générale pendant dix ans. Les fichiers journaux du serveur ne sont conservés que brièvement, puis supprimés automatiquement. Les statistiques de visite anonymes sont supprimées après 13 mois.",
           ],
         },
         {

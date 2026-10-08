@@ -8,6 +8,8 @@ export interface BarDatum {
   title: string;
   value: number;
   highlight?: boolean;
+  /** tooltip text instead of the formatted value, e.g. "12 Besucher · 30 Aufrufe" */
+  detail?: string;
 }
 
 /**
@@ -15,10 +17,28 @@ export interface BarDatum {
  * tops, a recessive grid, a direct label on the highlighted column only and a tooltip on hover or
  * keyboard focus. Server component, no client JS.
  */
-export function ColumnChart({ data, unit = "CHF", height = 180, label }: { data: BarDatum[]; unit?: string; height?: number; label: string }) {
+export function ColumnChart({
+  data,
+  unit = "CHF",
+  height = 180,
+  label,
+  format,
+  integer = false,
+}: {
+  data: BarDatum[];
+  unit?: string;
+  height?: number;
+  label: string;
+  /** text of a value for tooltips and screen readers, default "CHF 1’200" */
+  format?: (v: number) => string;
+  /** counts: whole steps on the axis */
+  integer?: boolean;
+}) {
+  const fmt = format ?? ((v: number) => `${unit} ${chf0(v)}`);
   const max = Math.max(1, ...data.map((d) => d.value));
-  const step = niceStep(max);
-  const top = Math.ceil(max / step) * step;
+  const step = integer ? Math.max(1, Math.ceil(niceStep(max))) : niceStep(max);
+  let top = Math.ceil(max / step) * step;
+  if (integer) top = Math.max(2, top % 2 ? top + step : top);
   const ticks = [top, top / 2, 0];
   return (
     <figure aria-label={label} className="min-w-0">
@@ -44,7 +64,7 @@ export function ColumnChart({ data, unit = "CHF", height = 180, label }: { data:
             {data.map((d) => {
               const h = d.value > 0 ? Math.max(2, (d.value / top) * 100) : 0;
               return (
-                <li key={d.key} className="group relative flex h-full flex-1 items-end justify-center outline-none" tabIndex={0} aria-label={`${d.title}: ${unit} ${chf0(d.value)}`}>
+                <li key={d.key} className="group relative flex h-full flex-1 items-end justify-center outline-none" tabIndex={0} aria-label={`${d.title}: ${d.detail ?? fmt(d.value)}`}>
                   <span className="absolute inset-x-0 bottom-0 top-0 rounded-md transition-colors group-hover:bg-bright-soft/70 group-focus-visible:bg-bright-soft/70" />
                   <span
                     className={`relative w-full max-w-[28px] rounded-t-[4px] transition-colors ${d.highlight ? "bg-accent" : "bg-[#8fa6bb] group-hover:bg-bright"}`}
@@ -57,17 +77,16 @@ export function ColumnChart({ data, unit = "CHF", height = 180, label }: { data:
                   )}
                   <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-line bg-surface px-3 py-2 text-[12px] shadow-card group-hover:block group-focus-visible:block">
                     <span className="block font-semibold text-ink">{d.title}</span>
-                    <span className="block tabular-nums text-ink-soft">
-                      {unit} {chf0(d.value)}
-                    </span>
+                    <span className="block tabular-nums text-ink-soft">{d.detail ?? fmt(d.value)}</span>
                   </span>
                 </li>
               );
             })}
           </ol>
+          {/* sparse labels (every few columns) may be wider than their column: centred, they overflow into the empty neighbours */}
           <div className="mt-2 flex gap-[2px] sm:gap-1.5" aria-hidden="true">
             {data.map((d) => (
-              <span key={d.key} className={`min-w-0 flex-1 overflow-hidden text-center text-[9.5px] sm:text-[11px] ${d.highlight ? "font-semibold text-ink" : "text-muted"}`}>
+              <span key={d.key} className={`flex min-w-0 flex-1 justify-center whitespace-nowrap text-[9.5px] sm:text-[11px] ${d.highlight ? "font-semibold text-ink" : "text-muted"}`}>
                 {d.label}
               </span>
             ))}

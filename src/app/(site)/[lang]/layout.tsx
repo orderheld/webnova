@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Logo } from "@/components/logo";
+import { PageViewBeacon } from "@/components/page-view-beacon";
 import { locales } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { buildNav } from "@/lib/nav";
@@ -69,6 +70,7 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
           {children}
         </main>
         <Footer locale={lang} switchMap={nav.switchMap} />
+        <PageViewBeacon />
       </body>
     </html>
   );

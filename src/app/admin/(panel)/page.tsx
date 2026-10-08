@@ -11,10 +11,11 @@ import { dueSubscriptions, openAmount } from "@/lib/admin/billing";
 import { snoozeFollowUpAction } from "@/lib/admin/crm-actions";
 import { billDueSubscriptionsAction } from "@/lib/admin/finance-actions";
 import { activityTypeLabels, intervalUnit, leadStageBar, leadStageLabels, quoteStatusLabels } from "@/lib/admin/labels";
-import { addDaysIso, addMonthsIso, chf, chf0, fmtDate, fmtDateTime, fmtHours, monthNames, todayIso } from "@/lib/admin/money";
+import { addDaysIso, addMonthsIso, chf, chf0, fmtDate, fmtDateTime, fmtHours, monthNames, todayIso, zurichHour } from "@/lib/admin/money";
 import { customerName } from "@/lib/admin/queries";
 import { dashboardFigures, monthlyRevenue, salesFigures } from "@/lib/admin/reports";
 import { getSettings } from "@/lib/admin/settings";
+import { visitorPulse } from "@/lib/admin/visitors";
 
 export const metadata = { title: "Übersicht" };
 
@@ -22,7 +23,7 @@ const typeIcon: Record<string, string> = { anruf: "phone", email: "mail", meetin
 
 /** Greeting by the hour in Zurich, independent of the server time zone. */
 function greeting() {
-  const h = Number(new Intl.DateTimeFormat("de-CH", { hour: "numeric", hourCycle: "h23", timeZone: "Europe/Zurich" }).format(new Date()));
+  const h = zurichHour();
   return h < 11 ? "Guten Morgen" : h < 18 ? "Guten Tag" : "Guten Abend";
 }
 
@@ -45,7 +46,7 @@ export default async function Dashboard() {
   const in7 = addDaysIso(today, 7);
   const chartStart = `${addMonthsIso(monthStart, -11).slice(0, 7)}-01`;
 
-  const [stages, followUps, activeProjects, nextTasks, taskCounts, openInvoices, renewals, due, unbilled, recent, figures, sales, revenueByMonth, openQuotes, settings] = await Promise.all([
+  const [stages, followUps, activeProjects, nextTasks, taskCounts, openInvoices, renewals, due, unbilled, recent, figures, sales, revenueByMonth, openQuotes, settings, pulse] = await Promise.all([
     d
       .select({ status: schema.leads.status, n: sql<number>`count(*)::int`, value: sql<number>`coalesce(sum(${schema.leads.value}),0)::float` })
       .from(schema.leads)
@@ -128,6 +129,7 @@ export default async function Dashboard() {
       .orderBy(sql`${schema.quotes.validUntil} asc nulls last`)
       .limit(6),
     getSettings(),
+    visitorPulse(),
   ]);
   const { monthRev, yearRev, monthIn, yearIn, yearExp } = figures;
 
@@ -160,6 +162,20 @@ export default async function Dashboard() {
       <PageHeader
         eyebrow={new Date().toLocaleDateString("de-CH", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Zurich" })}
         title={firstName ? `${greeting()}, ${firstName}` : "Übersicht"}
+        badge={
+          <Link
+            href="/admin/besucher"
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-[12.5px] font-medium text-ink-soft shadow-xs transition-colors hover:border-accent/30 hover:text-accent"
+          >
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              {pulse.live > 0 && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/50" />}
+              <span className={`relative inline-flex h-2 w-2 rounded-full ${pulse.live > 0 ? "bg-success" : "bg-[#b8c2cc]"}`} />
+            </span>
+            <span className="tabular-nums">
+              {pulse.live} live · {pulse.today} Besucher heute
+            </span>
+          </Link>
+        }
         sub="Was heute ansteht, wie die Zahlen stehen und was als Nächstes kommt."
         actions={
           <>

@@ -8,6 +8,7 @@ import { addDaysIso, todayIso } from "@/lib/admin/money";
 import { FLASH_COOKIE } from "@/lib/admin/flash";
 import { getSettings } from "@/lib/admin/settings";
 import { ADMIN_MANIFEST } from "@/lib/admin/app";
+import { LIVE_MINUTES } from "@/lib/admin/visitors";
 import { requireAdmin } from "@/lib/auth";
 
 export const metadata: Metadata = { manifest: ADMIN_MANIFEST };
@@ -29,7 +30,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   const today = todayIso();
   const [s, jar] = await Promise.all([getSettings(), cookies()]);
   const horizon = addDaysIso(today, s.subscriptionLeadDays);
-  const res = await db().execute<{ new_leads: number; follow_ups: number; open_tasks: number; overdue: number; due_subs: number }>(sql`
+  const res = await db().execute<{ new_leads: number; follow_ups: number; open_tasks: number; overdue: number; due_subs: number; live: number }>(sql`
     select
       (select count(*)::int from leads where status = 'neu') as new_leads,
       (select count(*)::int from leads where follow_up_at <= ${today} and status not in ('gewonnen','verloren')) as follow_ups,
@@ -37,14 +38,22 @@ export default async function PanelLayout({ children }: { children: React.ReactN
          where not t.done and t.due_date <= ${today} and p.status <> 'abgeschlossen') as open_tasks,
       (select count(*)::int from invoices where kind = 'rechnung' and status in ('gesendet','teilbezahlt') and due_date < ${today}) as overdue,
       (select count(*)::int from subscriptions where status = 'aktiv' and next_billing_date <= ${horizon}
-         and (end_date is null or next_billing_date <= end_date)) as due_subs
+         and (end_date is null or next_billing_date <= end_date)) as due_subs,
+      (select count(distinct visitor)::int from page_views where created_at > now() - make_interval(mins => ${LIVE_MINUTES})) as live
   `);
   const r = res.rows[0];
   return (
     <div className="lg:flex">
       <Sidebar
         user={user}
-        counts={{ newLeads: r.new_leads, followUps: r.follow_ups, openTasks: r.open_tasks, overdueInvoices: r.overdue, dueSubscriptions: r.due_subs }}
+        counts={{
+          newLeads: r.new_leads,
+          followUps: r.follow_ups,
+          openTasks: r.open_tasks,
+          overdueInvoices: r.overdue,
+          dueSubscriptions: r.due_subs,
+          liveVisitors: r.live,
+        }}
       />
       <main className="min-w-0 flex-1 px-4 pb-12 pt-6 sm:px-6 lg:px-10 lg:pt-9">
         <div className="mx-auto max-w-[1280px]">{children}</div>
