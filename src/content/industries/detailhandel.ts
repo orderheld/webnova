@@ -80,7 +80,7 @@ export const detailhandel: Industry = {
           h2: "Klein starten, sauber wachsen",
           paragraphs: [
             "Ein Onlineshop muss nicht mit tausend Artikeln starten. Für viele Läden ist der beste Einstieg eine Auswahl der Produkte, die sich gut verschicken lassen oder die man vor dem Besuch reservieren möchte. Wenn das funktioniert, wächst das Sortiment Schritt für Schritt.",
-            "Für Dersut Kaffee Schweiz haben wir einen Shop mit Vorauskasse und Swiss QR-Rechnung umgesetzt, ganz ohne Kartenanbieter. Bestellungen, Versand mit Sendungsnummer und Lager pflegt das Team im eigenen Admin. Solche Lösungen zeigen: Ein Shop kann schlank sein und trotzdem professionell wirken.",
+            "Ein Shop kann auch mit Vorauskasse und Swiss QR-Rechnung funktionieren, ganz ohne Kartenanbieter. Bestellungen, Versand mit Sendungsnummer und Lager pflegen Sie im eigenen Admin. Solche Lösungen zeigen: Ein Shop kann schlank sein und trotzdem professionell wirken.",
           ],
         },
       ],
@@ -181,7 +181,7 @@ export const detailhandel: Industry = {
           h2: "Commencer petit, grandir proprement",
           paragraphs: [
             "Une boutique en ligne n'a pas besoin de démarrer avec mille articles. Pour beaucoup de magasins, le meilleur départ est une sélection de produits faciles à expédier ou que l'on veut réserver avant la visite. Quand cela fonctionne, l'assortiment grandit pas à pas.",
-            "Pour Dersut Kaffee Schweiz, nous avons réalisé une boutique avec paiement anticipé et QR-facture, sans prestataire de cartes. Commandes, envois avec numéro de suivi et stock sont gérés par l'équipe dans son propre admin. Une boutique peut être légère et paraître pourtant professionnelle.",
+            "Une boutique peut aussi fonctionner avec paiement anticipé et QR-facture, sans prestataire de cartes. Commandes, envois avec numéro de suivi et stock se gèrent dans votre propre admin. Une boutique peut être légère et paraître pourtant professionnelle.",
           ],
         },
       ],

@@ -80,7 +80,7 @@ export const coiffeurBeauty: Industry = {
           h2: "Online-Buchung: eigene Lösung oder bestehendes Tool?",
           paragraphs: [
             "Viele Salons nutzen bereits ein Buchungstool. Dann binden wir es so ein, dass es sich wie ein Teil Ihrer Webseite anfühlt und auf dem Handy reibungslos funktioniert. Wer mehr Kontrolle will, erhält eine eigene Buchung direkt auf der Webseite: freie Zeiten aus Öffnungszeiten und Terminen, Puffer zwischen Behandlungen, Storno-Fristen und E-Mails in der Sprache der Kundschaft.",
-            "Für den GYAN Hair Salon haben wir genau so eine eigene Buchung umgesetzt, dreisprachig und mit automatischen Bestätigungs-, Erinnerungs- und Feedback-Mails. Im Admin pflegt der Salon Termine, Leistungen und Buchungsregeln selbst.",
+            "Genau so eine eigene Buchung setzen wir um, auf Wunsch mehrsprachig und mit automatischen Bestätigungs-, Erinnerungs- und Feedback-Mails. Im Admin pflegt Ihr Salon Termine, Leistungen und Buchungsregeln selbst.",
           ],
         },
       ],
@@ -181,7 +181,7 @@ export const coiffeurBeauty: Industry = {
           h2: "Réservation en ligne : solution sur mesure ou outil existant ?",
           paragraphs: [
             "Beaucoup de salons utilisent déjà un outil de réservation. Nous l'intégrons alors pour qu'il fasse partie de votre site et fonctionne parfaitement sur mobile. Si vous voulez plus de contrôle, vous recevez votre propre réservation directement sur le site : créneaux libres calculés à partir des horaires et rendez-vous, temps tampon entre les soins, délais d'annulation et e-mails dans la langue du client.",
-            "Pour le GYAN Hair Salon, nous avons réalisé exactement ce type de réservation, en trois langues et avec e-mails automatiques de confirmation, de rappel et de feedback. Dans l'admin, le salon gère lui-même rendez-vous, prestations et règles de réservation.",
+            "Nous réalisons exactement ce type de réservation, en plusieurs langues si souhaité, et avec e-mails automatiques de confirmation, de rappel et de feedback. Dans l'admin, votre salon gère lui-même rendez-vous, prestations et règles de réservation.",
           ],
         },
       ],
