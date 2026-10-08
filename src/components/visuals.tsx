@@ -6,9 +6,10 @@ import type { Locale } from "@/content/types";
  * (rendered from our own HTML, never client work), and small UI cards. Server components, CSS only.
  */
 
-export type SampleKey = "coiffeur" | "restaurant" | "schreinerei" | "treuhand";
+export type SampleKey = "hero" | "coiffeur" | "restaurant" | "schreinerei" | "treuhand";
 
-export const samples: Record<SampleKey, { name: string; url: string; industry: Record<Locale, string> }> = {
+export const samples: Record<SampleKey, { name: string; url: string | Record<Locale, string>; industry: Record<Locale, string> }> = {
+  hero: { name: "Ihre Firma", url: { de: "ihre-webseite.ch", fr: "votre-site.ch" }, industry: { de: "Unternehmen", fr: "Entreprise" } },
   coiffeur: { name: "Salon Mirelle", url: "salon-mirelle.ch", industry: { de: "Coiffeur", fr: "Coiffeur" } },
   restaurant: { name: "Trattoria Velluto", url: "trattoria-velluto.ch", industry: { de: "Restaurant", fr: "Restaurant" } },
   schreinerei: { name: "Kernholz", url: "kernholz-schreinerei.ch", industry: { de: "Schreinerei", fr: "Menuiserie" } },
@@ -16,6 +17,17 @@ export const samples: Record<SampleKey, { name: string; url: string; industry: R
 };
 
 const exampleLabel: Record<Locale, string> = { de: "Beispiel-Design", fr: "Exemple de design" };
+
+/** Address shown in the browser bar, per language. */
+export function sampleUrl(key: SampleKey, locale: Locale) {
+  const u = samples[key].url;
+  return typeof u === "string" ? u : u[locale];
+}
+
+/** Image path of a sample design; French pages get the French rendering. */
+export function sampleSrc(key: SampleKey, locale: Locale, mobile = false) {
+  return `/visuals/site-${key}${mobile ? "-mobile" : ""}${locale === "fr" ? "-fr" : ""}.webp`;
+}
 
 export function sampleAlt(key: SampleKey, locale: Locale) {
   return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${samples[key].name}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
@@ -43,23 +55,30 @@ export function BrowserFrame({
         <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
         <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
         <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className={`mx-auto truncate rounded-md px-3 py-0.5 text-[10px] sm:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{samples[sample].url}</span>
+        <span className={`mx-auto truncate rounded-md px-3 py-0.5 text-[10px] sm:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{sampleUrl(sample, locale)}</span>
         <span className="w-6" />
       </div>
       <div className="relative aspect-[16/10]">
-        <Image src={`/visuals/site-${sample}.webp`} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+        <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
       </div>
     </div>
   );
 }
 
-/** Phone with the mobile version of a sample design. */
+/** Phone with the mobile version of a sample design: a modern smartphone with thin bezels, side keys and an island. */
 export function PhoneFrame({ sample, locale, className = "", sizes = "220px", priority = false }: { sample: SampleKey; locale: Locale; className?: string; sizes?: string; priority?: boolean }) {
   return (
-    <div className={`rounded-[2rem] bg-[#0f1b27] p-[5px] shadow-[0_40px_70px_-25px_rgb(10_22_34/0.6),inset_0_0_0_1px_rgb(255_255_255/0.08)] ${className}`}>
-      <div className="relative aspect-[9/19] overflow-hidden rounded-[1.7rem] bg-white">
-        <Image src={`/visuals/site-${sample}-mobile.webp`} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
-        <span className="absolute left-1/2 top-1.5 h-[14px] w-[34%] -translate-x-1/2 rounded-full bg-[#0f1b27]" />
+    <div className={`relative ${className}`}>
+      {/* side keys */}
+      <span aria-hidden="true" className="absolute -left-[1.6%] top-[17%] h-[5%] w-[1.8%] rounded-l-sm bg-[#2a3540]" />
+      <span aria-hidden="true" className="absolute -left-[1.6%] top-[25%] h-[9%] w-[1.8%] rounded-l-sm bg-[#2a3540]" />
+      <span aria-hidden="true" className="absolute -left-[1.6%] top-[36%] h-[9%] w-[1.8%] rounded-l-sm bg-[#2a3540]" />
+      <span aria-hidden="true" className="absolute -right-[1.6%] top-[28%] h-[13%] w-[1.8%] rounded-r-sm bg-[#2a3540]" />
+      <div className="relative rounded-[17%/8%] bg-[linear-gradient(145deg,#3a4652,#11181f_45%,#2a3540)] p-[3.2%] shadow-[0_40px_70px_-25px_rgb(10_22_34/0.6),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
+        <div className="relative aspect-[9/19.5] overflow-hidden rounded-[14%/6.6%] bg-black">
+          <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+          <span aria-hidden="true" className="absolute left-1/2 top-[1.6%] h-[3.4%] w-[31%] -translate-x-1/2 rounded-full bg-black" />
+        </div>
       </div>
     </div>
   );

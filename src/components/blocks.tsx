@@ -204,7 +204,7 @@ export function ContactPerson({ locale, dark = false, role }: { locale: Locale; 
   return (
     <div className="flex items-center gap-3">
       <span className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-bg-2 ${dark ? "ring-2 ring-white/25" : "ring-2 ring-white shadow-card"}`}>
-        <Image src={founder.src} alt={founder.alt[locale]} fill sizes="48px" className="object-cover object-[50%_18%] scale-[1.35] origin-[50%_22%]" />
+        <Image src="/photos/ferhat-avatar.webp" alt={founder.alt[locale]} fill sizes="48px" className="object-cover" />
       </span>
       <span className="leading-tight">
         <span className={`block text-[15px] font-semibold ${dark ? "text-white" : "text-ink"}`}>Ferhat Demir</span>

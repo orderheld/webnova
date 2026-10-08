@@ -10,10 +10,10 @@ import { BrowserFrame, PhoneFrame, type SampleKey } from "./visuals";
 export type ArtKind = "website" | "redesign" | "shop" | "seo" | "local" | "ai" | "ads" | "brand" | "care" | "pos";
 
 export const serviceArt: Record<string, { kind: ArtKind; sample?: SampleKey; variant?: "gastro" | "retail" }> = {
-  webdesign: { kind: "website", sample: "schreinerei" },
-  "website-kmu": { kind: "website", sample: "treuhand" },
+  webdesign: { kind: "website", sample: "hero" },
+  "website-kmu": { kind: "website", sample: "hero" },
   firmenwebsite: { kind: "website", sample: "coiffeur" },
-  "website-redesign": { kind: "redesign", sample: "restaurant" },
+  "website-redesign": { kind: "redesign", sample: "hero" },
   onlineshop: { kind: "shop" },
   seo: { kind: "seo" },
   "local-seo": { kind: "local" },
@@ -361,10 +361,10 @@ export function Art({
       {kind === "pos" && (
         <div className="absolute inset-[11%_6%] rounded-[1.4rem] bg-[#0f1b27] p-[6px] shadow-2xl">
           <div className="grid h-full grid-cols-[1.5fr_1fr] gap-2 overflow-hidden rounded-[1.1rem] bg-[#f3f6f9] p-2.5 text-ink">
-            <div className="grid grid-cols-3 grid-rows-2 gap-2">
+            <div className="grid grid-cols-2 grid-rows-3 gap-2">
               {(variant === "retail" ? t.retail : t.gastro).map((it, i) => (
-                <div key={it} className={`flex flex-col justify-end rounded-lg p-2 text-[10.5px] font-semibold ${i === 0 ? "bg-accent text-white" : i % 3 === 1 ? "bg-white" : "bg-accent-light/60"}`}>
-                  {it}
+                <div key={it} className={`flex min-w-0 flex-col justify-end overflow-hidden rounded-lg p-2 text-[10.5px] font-semibold leading-tight ${i === 0 ? "bg-accent text-white" : i % 3 === 1 ? "bg-white" : "bg-accent-light/60"}`}>
+                  <span className="truncate">{it}</span>
                 </div>
               ))}
             </div>

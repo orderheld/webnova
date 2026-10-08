@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand } from "@/components/blocks";
@@ -7,7 +8,7 @@ import { HomeHero } from "@/components/home-hero";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ServiceArt } from "@/components/service-art";
-import { BrowserFrame, PhoneFrame, samples } from "@/components/visuals";
+import { BrowserFrame } from "@/components/visuals";
 import { guides } from "@/content/guides";
 import { problems } from "@/content/problems";
 import { services } from "@/content/services";
@@ -18,7 +19,6 @@ import { pageMetadata } from "@/lib/seo";
 import {
   FaqSection,
   FitSection,
-  IndustryIndex,
   Kicker,
   LocationsSection,
   ProcessSection,
@@ -113,8 +113,12 @@ const copy = {
     ],
     seeService: "Zur Leistung",
     formulaTitle: "Eine Webseite, die zu Ihrem Betrieb passt.",
-    formula: ["Ihr Angebot", "Ihre Kundschaft", "Ihre Ziele"],
-    formulaResult: "Ihre Webseite",
+    formula: [
+      { icon: "briefcase", t: "Ihr Angebot", x: "Was Sie leisten, klar und verständlich erklärt." },
+      { icon: "users", t: "Ihre Kundschaft", x: "Wer Sie sucht und was diese Menschen überzeugt." },
+      { icon: "activity", t: "Ihre Ziele", x: "Mehr Anfragen, Buchungen oder Bewerbungen." },
+    ],
+    formulaResult: { t: "Ihre Webseite", x: "Gestaltet und gebaut, damit aus Besuchern Kunden werden." },
     blocksTitle: "Webseiten für Unternehmen. Von der Idee bis zum Betrieb.",
     focusLabel: "Schwerpunkte",
     moreLabel: "Dazu gehört auch",
@@ -129,9 +133,6 @@ const copy = {
       { title: "Relaunch bestehender Webseiten", main: "website-redesign", more: [] },
       { title: "Hosting, Wartung & Betreuung", main: "wartung", more: [] },
     ],
-    focusSectionLabel: "Branchen",
-    focusTitle: "Webseiten, die Ihre Branche verstehen.",
-    focusLead: "Ein Restaurant braucht Reservationen, ein Handwerksbetrieb gute Offertanfragen, eine Praxis Vertrauen. Für jede Branche gibt es eine eigene Seite mit dem, was dort zählt.",
     aboutLabel: "Über uns",
     aboutTitle: "Persönlich, direkt und ohne Umwege über Projektteams.",
     aboutCaption: "Ferhat Demir · Inhaber und Ihr Ansprechpartner",
@@ -148,8 +149,8 @@ const copy = {
     guidesAll: "Alle Ratgeber",
     showLabel: "Beispiel-Designs",
     showTitle: "So kann Ihre Webseite aussehen.",
-    showLead: "Vier Beispiel-Designs für erfundene Betriebe: jede Branche bekommt ihren eigenen Look, gebaut auf Anfragen, Buchungen und Reservationen.",
-    showNote: "Beispiel-Design · fiktive Marke",
+    showLead: "Jede Webseite bekommt ihren eigenen Look, abgestimmt auf Ihr Unternehmen, Ihre Kundschaft und Ihr Ziel.",
+    industriesLink: "Webseiten nach Branche",
     blocksLead: "Konzept, Design, Texte, Entwicklung und Betreuung aus einer Hand. Ferhat Demir begleitet Ihr Projekt persönlich, ohne Weiterreichen.",
   },
   fr: {
@@ -186,8 +187,12 @@ const copy = {
     ],
     seeService: "Voir le service",
     formulaTitle: "Un site qui correspond à votre entreprise.",
-    formula: ["Votre offre", "Votre clientèle", "Vos objectifs"],
-    formulaResult: "Votre site",
+    formula: [
+      { icon: "briefcase", t: "Votre offre", x: "Ce que vous faites, expliqué clairement." },
+      { icon: "users", t: "Votre clientèle", x: "Qui vous cherche et ce qui la convainc." },
+      { icon: "activity", t: "Vos objectifs", x: "Plus de demandes, de réservations ou de candidatures." },
+    ],
+    formulaResult: { t: "Votre site", x: "Conçu et construit pour transformer les visiteurs en clients." },
     blocksTitle: "Des sites pour entreprises. De l'idée à l'exploitation.",
     focusLabel: "Points forts",
     moreLabel: "Également",
@@ -202,9 +207,6 @@ const copy = {
       { title: "Refonte de sites existants", main: "website-redesign", more: [] },
       { title: "Hébergement, maintenance & suivi", main: "wartung", more: [] },
     ],
-    focusSectionLabel: "Secteurs",
-    focusTitle: "Des sites qui comprennent votre secteur.",
-    focusLead: "Un restaurant a besoin de réservations, un artisan de bonnes demandes de devis, un cabinet de confiance. Chaque secteur a sa propre page avec ce qui compte.",
     aboutLabel: "À propos",
     aboutTitle: "Personnel, direct et sans détour par des équipes de projet.",
     aboutCaption: "Ferhat Demir · propriétaire et votre interlocuteur",
@@ -221,8 +223,8 @@ const copy = {
     guidesAll: "Tous les conseils",
     showLabel: "Exemples de design",
     showTitle: "Voici à quoi votre site peut ressembler.",
-    showLead: "Quatre exemples de design pour des entreprises inventées : chaque secteur a son propre style, pensé pour les demandes, les réservations et les rendez-vous.",
-    showNote: "Exemple de design · marque fictive",
+    showLead: "Chaque site a son propre style, adapté à votre entreprise, à votre clientèle et à votre objectif.",
+    industriesLink: "Sites par secteur",
     blocksLead: "Concept, design, textes, développement et suivi par un seul interlocuteur. Ferhat Demir suit votre projet personnellement, sans intermédiaires.",
   },
 };
@@ -271,18 +273,30 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </ol>
 
           {/* The formula: what a fitting website is made of. */}
-          <div className="stage-accent mt-14 rounded-3xl px-6 py-9 text-white sm:px-10 md:mt-16">
-            <p className="kicker-light mb-5">{c.formulaTitle}</p>
-            <p className="flex flex-wrap items-center gap-x-3 gap-y-3 font-display text-[clamp(1.1rem,2.2vw,1.75rem)] font-semibold">
+          <div className="stage-accent mt-14 rounded-3xl p-5 text-white sm:p-8 md:mt-16 lg:p-10">
+            <p className="kicker-light mb-6 lg:mb-8">{c.formulaTitle}</p>
+            <ol className="grid items-stretch gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1.15fr] lg:gap-4">
               {c.formula.map((f, i) => (
-                <span key={f} className="inline-flex items-center gap-x-3">
-                  {i > 0 && <span aria-hidden="true" className="text-accent-light">+</span>}
-                  <span className="rounded-full bg-white/10 px-4 py-1.5 ring-1 ring-inset ring-white/15">{f}</span>
-                </span>
+                <Fragment key={f.t}>
+                  {i > 0 && <Operator sign="+" />}
+                  <li className="rounded-2xl bg-white/[0.08] p-5 ring-1 ring-inset ring-white/15">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-accent-light">
+                      <Icon name={f.icon} className="h-5 w-5" />
+                    </span>
+                    <p className="mt-4 font-display text-[19px] font-semibold">{f.t}</p>
+                    <p className="mt-1.5 text-[14.5px] leading-relaxed text-white/70">{f.x}</p>
+                  </li>
+                </Fragment>
               ))}
-              <span aria-hidden="true" className="text-accent-light">=</span>
-              <span className="rounded-full bg-white px-4 py-1.5 text-accent">{c.formulaResult}</span>
-            </p>
+              <Operator sign="=" />
+              <li className="rounded-2xl bg-white p-5 text-ink shadow-[0_24px_48px_-24px_rgb(10_22_34/0.6)]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-white">
+                  <Icon name="layout" className="h-5 w-5" />
+                </span>
+                <p className="mt-4 font-display text-[19px] font-semibold text-accent">{c.formulaResult.t}</p>
+                <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">{c.formulaResult.x}</p>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
@@ -386,43 +400,27 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* BEISPIEL-DESIGNS: fictional sample sites, clearly labelled, never presented as clients. */}
+      {/* BEISPIEL-DESIGNS: sample sites without captions (alt texts say they are fictional). */}
       <section className="section-y overflow-hidden">
         <div className="container-x">
-          <SectionHead eyebrow={c.showLabel} title={c.showTitle} lead={c.showLead} />
+          <SectionHead
+            eyebrow={c.showLabel}
+            title={c.showTitle}
+            lead={c.showLead}
+            action={
+              <Link href={href(lang, "industries")} className="link-arrow">
+                {c.industriesLink}
+                <Icon name="arrow" className="h-4 w-4" />
+              </Link>
+            }
+          />
           <div className="grid gap-5 md:grid-cols-2">
             {(["coiffeur", "restaurant", "schreinerei", "treuhand"] as const).map((k, i) => (
-              <figure key={k} className={`reveal rounded-3xl p-4 sm:p-6 ${i === 0 || i === 3 ? "stage-accent" : "bg-bg-2 ring-1 ring-line"}`}>
+              <div key={k} className={`reveal rounded-3xl p-4 sm:p-6 ${i === 0 || i === 3 ? "stage-accent" : "bg-bg-2 ring-1 ring-line"}`}>
                 <BrowserFrame sample={k} locale={lang} sizes="(min-width: 768px) 560px, 92vw" />
-                <figcaption className={`mt-4 flex items-center justify-between gap-3 text-[13.5px] ${i === 0 || i === 3 ? "text-white/75" : "text-muted"}`}>
-                  <span className={`font-semibold ${i === 0 || i === 3 ? "text-white" : "text-ink"}`}>{samples[k].industry[lang]}</span>
-                  {c.showNote}
-                </figcaption>
-              </figure>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* BRANCHEN: industry index next to three phones with sample designs. */}
-      <section id={id.focus} className="section-y scroll-mt-20 bg-bg-2">
-        <div className="container-x grid items-center gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Kicker className="mb-5">{c.focusSectionLabel}</Kicker>
-            <h2 className="h-section">{c.focusTitle}</h2>
-            <p className="lead mt-6 max-w-2xl">{c.focusLead}</p>
-            <div className="mt-10">
-              <IndustryIndex locale={lang} cols={2} />
-            </div>
-          </div>
-          <figure className="lg:col-span-5">
-            <div aria-hidden="true" className="stage-accent relative mx-auto aspect-[4/5] max-w-[460px] overflow-hidden rounded-[2rem]">
-              <PhoneFrame sample="restaurant" locale={lang} className="absolute left-[6%] top-[14%] w-[36%] -rotate-6" />
-              <PhoneFrame sample="schreinerei" locale={lang} className="absolute right-[6%] top-[10%] w-[36%] rotate-6" />
-              <PhoneFrame sample="coiffeur" locale={lang} className="float absolute left-1/2 top-[22%] w-[40%] -translate-x-1/2" />
-            </div>
-            <figcaption className="mt-3 text-center text-[13px] text-muted">{c.showNote}</figcaption>
-          </figure>
         </div>
       </section>
 
@@ -531,5 +529,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <CtaBand locale={lang} />
       </div>
     </>
+  );
+}
+
+function Operator({ sign }: { sign: "+" | "=" }) {
+  return (
+    <li aria-hidden="true" className="grid place-items-center">
+      <span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 font-display text-[20px] font-semibold text-accent-light ring-1 ring-inset ring-white/20">{sign}</span>
+    </li>
   );
 }
