@@ -29,7 +29,7 @@ export function ButtonLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-2 rounded-[4px] px-6 py-3.5 text-[15px] font-medium transition-colors duration-200 ${styles[variant]} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-200 ${styles[variant]} ${className}`}
     >
       {children}
       {arrow && <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />}
