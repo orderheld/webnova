@@ -74,7 +74,7 @@ const toast = {
 export function EnquiryToast({ locale, className = "" }: { locale: Locale; className?: string }) {
   const t = toast[locale];
   return (
-    <div aria-hidden="true" className={`flex items-center gap-3 rounded-2xl bg-white/95 py-3 pl-3 pr-5 text-ink shadow-[0_24px_48px_-20px_rgb(10_22_34/0.55)] ring-1 ring-black/5 backdrop-blur ${className}`}>
+    <div aria-hidden="true" className={`flex items-center gap-3 rounded-2xl bg-white/95 py-3 pl-3 pr-5 text-ink shadow-[0_24px_48px_-20px_rgb(10_22_34/0.55)] ring-1 ring-black/5 ${className}`}>
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent text-white">
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 6h16v12H4z" />

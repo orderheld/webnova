@@ -10,8 +10,8 @@ import { BrowserFrame, PhoneFrame, type SampleKey } from "./visuals";
 export type ArtKind = "website" | "redesign" | "shop" | "seo" | "local" | "ai" | "ads" | "brand" | "care" | "pos";
 
 export const serviceArt: Record<string, { kind: ArtKind; sample?: SampleKey; variant?: "gastro" | "retail" }> = {
-  webdesign: { kind: "website", sample: "treuhand" },
-  "website-kmu": { kind: "website", sample: "schreinerei" },
+  webdesign: { kind: "website", sample: "schreinerei" },
+  "website-kmu": { kind: "website", sample: "treuhand" },
   firmenwebsite: { kind: "website", sample: "coiffeur" },
   "website-redesign": { kind: "redesign", sample: "restaurant" },
   onlineshop: { kind: "shop" },

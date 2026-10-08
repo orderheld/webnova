@@ -148,7 +148,7 @@ export function PortraitCard({ locale, className = "", sizes = "(min-width: 1024
         )}
       </div>
       {plate && (
-        <figcaption className="absolute bottom-4 left-4 right-10 rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur sm:bottom-5 sm:left-5">
+        <figcaption className="absolute bottom-4 left-4 right-10 rounded-2xl bg-white/95 px-4 py-3 shadow-card sm:bottom-5 sm:left-5">
           <span className="block font-display text-[17px] font-semibold text-ink">Ferhat Demir</span>
           <span className="block text-[13px] leading-snug text-muted">{t.role}</span>
         </figcaption>

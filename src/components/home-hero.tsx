@@ -74,11 +74,11 @@ function MarkStage({ locale }: { locale: Locale }) {
         width={1200}
         height={1200}
         priority
-        sizes="(min-width: 1024px) 560px, 80vw"
+        sizes="(min-width: 1024px) 560px, 90vw"
         className="mask-soft absolute -right-[4%] -top-[16%] w-[92%] max-w-none select-none"
       />
       <div className="float-slow absolute bottom-[3%] left-0 w-[60%]">
-        <BrowserFrame sample="treuhand" locale={locale} priority sizes="(min-width: 1024px) 500px, 78vw" />
+        <BrowserFrame sample="treuhand" locale={locale} sizes="(min-width: 1024px) 400px, 60vw" />
       </div>
       <div className="float absolute bottom-0 right-[6%] w-[22%] [animation-delay:-2s]">
         <PhoneFrame sample="coiffeur" locale={locale} sizes="160px" />

@@ -7,9 +7,9 @@ export function TrustFacts({ locale, className = "" }: { locale: Locale; classNa
   const s = structure[locale];
   return (
     <section aria-label={s.trustLabel} className={`bg-bg-2 ${className}`}>
-      <dl className="container-x grid gap-3 py-8 sm:grid-cols-2 md:py-10 lg:grid-cols-5">
+      <dl className="container-x flex snap-x snap-mandatory gap-3 overflow-x-auto py-8 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:overflow-visible md:py-10 lg:grid-cols-5">
         {s.trust.map((f) => (
-          <div key={f.title} className="card-soft flex gap-3.5 p-4">
+          <div key={f.title} className="card-soft flex w-[78%] shrink-0 snap-start gap-3.5 p-4 sm:w-auto">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-bright-soft text-accent">
               <Icon name={f.icon} className="h-5 w-5" />
             </span>

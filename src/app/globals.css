@@ -224,10 +224,14 @@
 
 /* Gentle float for hero mockups; switched off with reduced motion (global rule below). */
 @utility float {
-  animation: float 7s ease-in-out infinite;
+  @media (min-width: 64rem) {
+    animation: float 7s ease-in-out infinite;
+  }
 }
 @utility float-slow {
-  animation: float 10s ease-in-out infinite;
+  @media (min-width: 64rem) {
+    animation: float 10s ease-in-out infinite;
+  }
 }
 
 /* Micro label: small spaced caps, the editorial signpost above headings and lists. */
@@ -276,7 +280,7 @@
 
 /* Glass card on dark sections. */
 @utility card-glass {
-  @apply rounded-2xl bg-white/[0.06] ring-1 ring-inset ring-white/10 backdrop-blur-sm;
+  @apply rounded-2xl bg-white/[0.06] ring-1 ring-inset ring-white/10;
 }
 
 /* Number tile for steps and features. */
