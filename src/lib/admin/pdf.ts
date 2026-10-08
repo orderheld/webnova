@@ -15,7 +15,7 @@ import { getSettings, type CompanySettings } from "./settings";
  * Document layout modelled on the Bexio standard template (A4, Swiss left window envelope):
  * logo top left, sender line and recipient in the address window, document info on the right,
  * bold title, positions table, totals, closing text, company details in a footer on every page
- * and the QR-bill at the bottom of the last page of invoices.
+ * and the QR-bill on its own last page of invoices.
  */
 
 const MM = 72 / 25.4;
@@ -198,7 +198,8 @@ const fmtQty = (n: number) => {
   return x.toLocaleString("de-CH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 };
 const fmtIban = (iban: string) => iban.replace(/\s+/g, "").replace(/(.{4})/g, "$1 ").trim();
-export const customerNumber = (id: number) => String(id).padStart(5, "0");
+/** Customer numbers start at 10001 (id 1), so they never read like a first customer. */
+export const customerNumber = (id: number) => String(10000 + id);
 
 type Pdf = PDFKit.PDFDocument;
 
@@ -395,7 +396,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       y = pdf.y;
     }
 
-    /* ── QR-bill on the last page of invoices and reminders ── */
+    /* ── QR-bill on a separate last page of invoices and reminders ── */
     let qrPage = -1;
     if ((d.kind === "invoice" || d.kind === "reminder") && s.iban && qrAmount > 0) {
       const cr = splitStreet(s.street);
@@ -424,7 +425,8 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
         },
         { language: "DE", scissors: true, separate: false },
       );
-      if (y > QR_CONTENT_BOTTOM) newPage();
+      // the QR-bill always gets its own page, so it can be printed and torn off separately
+      newPage();
       qrPage = pdf.bufferedPageRange().start + pdf.bufferedPageRange().count - 1;
       pdf.page.margins.bottom = 0;
       pdf.y = QR_TOP;
