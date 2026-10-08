@@ -5,6 +5,7 @@ import { Modal } from "@/components/admin/action-form";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import { ConfirmButton } from "@/components/admin/confirm-button";
 import { Icon } from "@/components/admin/icons";
+import { LeadDetailsCard } from "@/components/admin/lead-details";
 import { ConvertLeadForm, LeadForm } from "@/components/admin/lead-forms";
 import { Badge, Card, KeyValues, LinkButton, PageHeader, Stars, btn, btnSm } from "@/components/admin/ui";
 import { db, schema } from "@/db";
@@ -117,6 +118,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
               </div>
             )}
           </Card>
+          <LeadDetailsCard details={l.details} />
           <ActivityFeed activities={activities} target={{ leadId: l.id }} followUp />
         </div>
 

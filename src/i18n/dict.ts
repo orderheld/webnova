@@ -118,7 +118,12 @@ const de = {
       phone: "Telefon",
       message: "Was ist Ihnen besonders wichtig? (optional)",
       preferredContact: "Bevorzugter Kontakt",
+      companyStep: "Zu Ihrem Unternehmen",
+      budgetStep: "Budget und Zeitplan",
+      industryPlaceholder: "z.B. Gastronomie, Coiffeur, Handwerk",
+      optional: "optional",
     },
+    reassure: ["Kostenlos und unverbindlich", "Antwort innert eines Arbeitstages", "Persönlich und direkt"],
     options: {
       services: {
         webdesign: "Neue Webseite",
@@ -128,6 +133,7 @@ const de = {
         ads: "Google & Social Ads",
         branding: "Logo & Branding",
         pos: "Kassensystem",
+        maintenance: "Wartung & Hosting",
         other: "Etwas anderes",
       },
       yesNo: { yes: "Ja", no: "Nein" },
@@ -314,7 +320,12 @@ const fr: Dict = {
       phone: "Téléphone",
       message: "Qu'est-ce qui est particulièrement important pour vous ? (facultatif)",
       preferredContact: "Contact préféré",
+      companyStep: "Votre entreprise",
+      budgetStep: "Budget et calendrier",
+      industryPlaceholder: "p. ex. restauration, coiffure, artisanat",
+      optional: "facultatif",
     },
+    reassure: ["Gratuit et sans engagement", "Réponse dans un délai d'un jour ouvrable", "Personnel et direct"],
     options: {
       services: {
         webdesign: "Nouveau site",
@@ -324,6 +335,7 @@ const fr: Dict = {
         ads: "Google & Social Ads",
         branding: "Logo & branding",
         pos: "Système de caisse",
+        maintenance: "Maintenance & hébergement",
         other: "Autre chose",
       },
       yesNo: { yes: "Oui", no: "Non" },
