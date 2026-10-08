@@ -266,7 +266,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+          <div className={`grid gap-x-8 gap-y-12 md:grid-cols-2 ${shown.length % 3 === 0 ? "lg:grid-cols-3" : ""}`}>
             {shown.map((r) => (
               <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="reveal group flex flex-col">
                 <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-line shadow-xs transition-shadow duration-500 group-hover:shadow-lift" style={{ background: r.colors.bg }}>
