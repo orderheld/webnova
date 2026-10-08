@@ -49,7 +49,7 @@ export const webdesign: Service = {
           h2: "Webseite erstellen lassen: Ihr digitales Aushängeschild",
           paragraphs: [
             "Ihre Webseite ist oft der erste Kontakt mit neuen Kunden. In wenigen Sekunden entscheidet sich, ob jemand bleibt oder zurück zu Google geht. Darum verbinden wir ein klares, modernes Design mit verständlichen Texten und einer Navigation, die ohne Umwege zum Ziel führt: zur Anfrage, zum Anruf oder zum Kauf.",
-            "Als Webdesign-Agentur mit Sitz in Grenchen arbeiten wir für Unternehmen in der Region und in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann.",
+            "Als Webdesign-Agentur arbeiten wir für Unternehmen in der Region und in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann.",
           ],
         },
         {
@@ -89,8 +89,8 @@ export const webdesign: Service = {
           a: "Ja. Wir richten Ihre Webseite so ein, dass Sie Texte, Bilder und Neuigkeiten selbst anpassen können. Bei der Übergabe zeigen wir Ihnen, wie das geht.",
         },
         {
-          q: "Arbeiten Sie nur in der Region Grenchen?",
-          a: "Unser Büro ist in Grenchen, zwischen Biel und Solothurn. Wir arbeiten aber für Unternehmen in der ganzen Schweiz. Besprechungen sind vor Ort oder per Video möglich.",
+          q: "Arbeiten Sie in der ganzen Schweiz?",
+          a: "Ja, wir arbeiten für Unternehmen in der ganzen Schweiz. Besprechungen sind vor Ort oder per Video möglich.",
         },
         {
           q: "Muss ich die Texte selbst liefern?",
@@ -144,7 +144,7 @@ export const webdesign: Service = {
           h2: "Votre site internet, votre meilleure vitrine",
           paragraphs: [
             "Pour beaucoup de clients, votre site est le premier contact avec votre entreprise. Quelques secondes suffisent pour convaincre ou pour perdre un visiteur. C'est pourquoi nous associons un design moderne à des textes clairs et à une navigation simple, qui mène directement à l'essentiel: une demande, un appel ou un achat.",
-            "Basée à Granges, notre agence accompagne des entreprises de toute la région bilingue et partout en Suisse. Artisans, cabinets, prestataires de services ou associations: nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
+            "Notre agence accompagne des entreprises de toute la région bilingue et partout en Suisse. Artisans, cabinets, prestataires de services ou associations: nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
           ],
         },
         {
@@ -185,7 +185,7 @@ export const webdesign: Service = {
         },
         {
           q: "Travaillez-vous aussi en Suisse romande?",
-          a: "Oui. Notre bureau se trouve à Granges, tout près de Bienne, et nous accompagnons volontiers des clients à Neuchâtel, Fribourg et dans toute la Suisse. Les rendez-vous se font sur place ou en visioconférence.",
+          a: "Oui, nous accompagnons des clients dans toute la Suisse. Les rendez-vous se font sur place ou en visioconférence.",
         },
         {
           q: "Dois-je fournir les textes?",

@@ -15,10 +15,17 @@ import { cities } from "@/content/cities";
 import { JsonLd, organizationLd, websiteLd } from "@/lib/seo";
 import "../../globals.css";
 
-const jakarta = localFont({
-  src: "../../fonts/plus-jakarta-sans.woff2",
-  weight: "200 800",
-  variable: "--font-jakarta",
+const inter = localFont({
+  src: "../../fonts/inter.woff2",
+  weight: "300 700",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const interTight = localFont({
+  src: "../../fonts/inter-tight.woff2",
+  weight: "300 700",
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -48,7 +55,7 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
   return (
-    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable} ${jakarta.variable}`}>
+    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${interTight.variable}`}>
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd(lang, cities.map((c) => c.content[lang].name))} />
         <JsonLd data={websiteLd(lang)} />

@@ -57,8 +57,8 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
         title: l.title,
         description:
           locale === "de"
-            ? `${l.title} von ${site.legalName}, Webdesign-Agentur in Grenchen: Anbieter, Kontakt und rechtliche Angaben zur Webseite.`
-            : `${l.title} de ${site.legalName}, agence web à Granges : éditeur, contact et informations légales du site.`,
+            ? `${l.title} von ${site.legalName}, Webdesign-Agentur: Anbieter, Kontakt und rechtliche Angaben zur Webseite.`
+            : `${l.title} de ${site.legalName}, agence web : éditeur, contact et informations légales du site.`,
       });
     }
     case "lp":

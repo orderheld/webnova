@@ -28,7 +28,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Webdesign für KMU in der Schweiz",
       h1: "Ihre neue Webseite. Modern, schnell und gemacht für Anfragen.",
       lead: "Schluss mit veralteten Webseiten, die niemand findet. Wir bauen Ihnen einen Auftritt, der überzeugt und Kunden bringt.",
-      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung aus Grenchen"],
+      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung aus der Region"],
       benefitsTitle: "Was Sie bekommen",
       benefits: [
         { icon: "layout", title: "Design mit Wirkung", text: "Ein klarer, moderner Auftritt, der Vertrauen schafft und Ihre Stärken auf den Punkt bringt." },
@@ -51,7 +51,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Création de sites pour PME en Suisse",
       h1: "Votre nouveau site. Moderne, rapide et pensé pour les demandes.",
       lead: "Fini les sites dépassés que personne ne trouve. Nous créons une présence en ligne qui convainc et vous apporte des clients.",
-      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel depuis Granges"],
+      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel dans la région"],
       benefitsTitle: "Ce que vous obtenez",
       benefits: [
         { icon: "layout", title: "Un design qui marque", text: "Une présence claire et moderne qui inspire confiance et met vos forces en valeur." },
@@ -176,8 +176,8 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         <h2 className="h-section reveal mb-12">{c.benefitsTitle}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.benefits.map((b) => (
-            <div key={b.title} className="reveal group rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
-              <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
+            <div key={b.title} className="reveal group rounded-md border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
+              <span className="mb-8 grid h-12 w-12 place-items-center rounded-md bg-bg text-ink">
                 <Icon name={b.icon} />
               </span>
               <h3 className="text-[20px] font-semibold tracking-tight">{b.title}</h3>
@@ -192,7 +192,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       <section className="container-x pb-24 text-center">
         <a
           href="#formular"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
+          className="inline-flex items-center gap-2 rounded-[4px] bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
         >
           {d.nav.cta} <Icon name="arrow" className="h-4 w-4" />
         </a>

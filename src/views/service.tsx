@@ -116,7 +116,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         </div>
       </PageHero>
 
-      <section className="container-x relative z-10 -mt-10 pb-20 md:pb-28">
+      <section className="container-x relative z-10 pt-16 pb-20 md:pb-28">
         <FeatureGrid items={c.features} />
       </section>
 
@@ -125,7 +125,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           <Prose sections={c.sections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 overflow-hidden rounded-2xl border border-line bg-surface p-8 ">
+          <div className="sticky top-28 overflow-hidden rounded-md border border-line bg-surface p-8 ">
             <h2 className="text-[26px] font-semibold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{c.ctaText}</p>
             <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
@@ -144,7 +144,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
+                className="rounded-[4px] border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
               >
                 {l.label}
               </Link>
