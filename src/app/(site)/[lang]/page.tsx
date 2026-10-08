@@ -51,8 +51,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
 
 const intro = {
   de: {
-    projectsEyebrow: "Aktuelle Projekte",
-    projectsTitle: "Arbeiten, die für unsere Kunden Tag für Tag laufen.",
+    projectsEyebrow: "Ausgewählte Projekte",
+    projectsTitle: "Ein Einblick in unsere Arbeit.",
+    heroServices: "Unsere Leistungen",
     toProject: "Zum Projekt",
     servicesEyebrow: "Wie können wir helfen?",
     servicesTitle: "Sagen Sie uns, wo der Schuh drückt. Wir kümmern uns um den Rest.",
@@ -62,8 +63,9 @@ const intro = {
       "Bei uns haben Sie vom ersten Gespräch bis zum Launch und darüber hinaus eine feste Ansprechperson. Wir planen klar, gestalten ruhig und bauen Webseiten, die schnell laden, gefunden werden und Anfragen bringen.",
   },
   fr: {
-    projectsEyebrow: "Projets récents",
-    projectsTitle: "Des réalisations qui travaillent chaque jour pour nos clients.",
+    projectsEyebrow: "Projets choisis",
+    projectsTitle: "Un aperçu de notre travail.",
+    heroServices: "Nos services",
     toProject: "Voir le projet",
     servicesEyebrow: "Comment pouvons-nous aider ?",
     servicesTitle: "Dites-nous ce qui coince. Nous nous occupons du reste.",
@@ -94,7 +96,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
   const core = cities.filter((c) => c.priority === "A");
   const shown = showReferences ? references : [];
-  const [heroBack, heroFront] = [shown.find((r) => r.key === "orderheld"), shown.find((r) => r.key === "gyan-hair-salon")];
 
   return (
     <>
@@ -103,7 +104,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* HERO: calm statement on Kalk, real project work on the right */}
       <section className="relative overflow-hidden border-b border-line bg-bg">
         <div className="container-x grid items-center gap-14 pb-20 pt-14 md:pt-20 lg:grid-cols-12 lg:pb-28">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-7">
             <p className="eyebrow mb-7 animate-rise">{d.hero.eyebrow}</p>
             <h1 className="display animate-rise text-[clamp(2.7rem,5.6vw,4.9rem)] [animation-delay:80ms]">
               {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
@@ -111,15 +112,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[19px]">{d.hero.lead}</p>
             <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
               <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
-              {shown.length > 0 ? (
-                <ButtonLink href={href(lang, "references")} variant="ghost" arrow={false}>
-                  {d.home.referencesAll}
-                </ButtonLink>
-              ) : (
-                <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
-                  {d.hero.secondary}
-                </ButtonLink>
-              )}
+              <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
+                {d.hero.secondary}
+              </ButtonLink>
             </div>
             <ul className="mt-12 flex animate-rise flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6 text-[14.5px] text-ink-soft [animation-delay:320ms]">
               {d.hero.points.map((p) => (
@@ -130,62 +125,26 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               ))}
             </ul>
           </div>
-          {heroBack && (
-            <div className="relative animate-rise [animation-delay:200ms] lg:col-span-6">
-              <div className="relative ml-auto w-[92%] overflow-hidden rounded-2xl border border-line bg-surface shadow-soft">
-                <Image src={heroBack.image!} alt={`${heroBack.name}, ${heroBack.content[lang].industry}`} width={1440} height={900} priority sizes="(min-width: 1024px) 560px, 92vw" className="h-auto w-full" />
-              </div>
-              {heroFront && (
-                <div className="relative -mt-[22%] w-[62%] overflow-hidden rounded-2xl border-4 border-bg shadow-soft">
-                  <Image src={heroFront.image!} alt={`${heroFront.name}, ${heroFront.content[lang].industry}`} width={1200} height={630} priority sizes="(min-width: 1024px) 380px, 62vw" className="h-auto w-full" />
-                </div>
-              )}
+          <div className="animate-rise [animation-delay:200ms] lg:col-span-5 lg:col-start-8">
+            <div className="rounded-3xl bg-night p-3 text-white shadow-soft">
+              <p className="px-5 pb-3 pt-4 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-light">{i.heroServices}</p>
+              <ul className="divide-y divide-white/10 rounded-2xl bg-night-2">
+                {mainServices.map((sv) => (
+                  <li key={sv.key}>
+                    <Link href={href(lang, `service:${sv.key}`)} className="group flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-white/[0.04]">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/10 text-accent-light">
+                        <Icon name={sv.icon} className="h-[18px] w-[18px]" />
+                      </span>
+                      <span className="flex-1 text-[16px] font-medium">{sv.content[lang].navLabel}</span>
+                      <Icon name="arrow" className="h-4 w-4 text-white/40 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
         </div>
       </section>
-
-      {/* PROJECTS: the latest work, each linking to its own project page */}
-      {shown.length > 0 && (
-        <section className="container-x py-24 md:py-32">
-          <div className="reveal mb-14 flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-4">{i.projectsEyebrow}</p>
-              <h2 className="h-section">{i.projectsTitle}</h2>
-            </div>
-            <ButtonLink href={href(lang, "references")} variant="ghost">
-              {d.home.referencesAll}
-            </ButtonLink>
-          </div>
-          <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {shown.map((r) => (
-              <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="reveal group flex flex-col">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line" style={{ background: r.colors.bg }}>
-                  {r.image && (
-                    <Image
-                      src={r.image}
-                      alt={`${r.name}, ${r.content[lang].industry}`}
-                      fill
-                      sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
-                  )}
-                </div>
-                <p className="mt-6 text-[13.5px] text-muted">
-                  {r.content[lang].industry}
-                  {r.content[lang].place && <> · {r.content[lang].place}</>}
-                </p>
-                <h3 className="mt-1.5 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
-                <p className="mt-3 line-clamp-3 text-[15.5px] leading-relaxed text-ink-soft">{r.content[lang].summary}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-accent">
-                  {i.toProject}
-                  <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* SERVICES as the questions clients ask, on deep Schieferblau */}
       <section className="bg-night py-24 text-white md:py-32">
@@ -256,6 +215,49 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </ol>
         </div>
       </section>
+
+      {/* PROJECTS: a quiet look at selected work, after the services */}
+      {shown.length > 0 && (
+        <section className="container-x py-24 md:py-28">
+          <div className="reveal mb-14 flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <p className="eyebrow mb-4">{i.projectsEyebrow}</p>
+              <h2 className="h-section">{i.projectsTitle}</h2>
+            </div>
+            <Link href={href(lang, "references")} className="inline-flex items-center gap-2 text-[15px] font-medium text-accent">
+              {d.home.referencesAll}
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+            {shown.map((r) => (
+              <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="reveal group flex flex-col">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-line" style={{ background: r.colors.bg }}>
+                  {r.image && (
+                    <Image
+                      src={r.image}
+                      alt={`${r.name}, ${r.content[lang].industry}`}
+                      fill
+                      sizes="(min-width: 768px) 580px, 100vw"
+                      className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  )}
+                </div>
+                <p className="mt-6 text-[13.5px] text-muted">
+                  {r.content[lang].industry}
+                  {r.content[lang].place && <> · {r.content[lang].place}</>}
+                </p>
+                <h3 className="mt-1.5 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
+                <p className="mt-3 line-clamp-3 text-[15.5px] leading-relaxed text-ink-soft">{r.content[lang].summary}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-accent">
+                  {i.toProject}
+                  <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* POS */}
       <section className="container-x py-24 md:py-32">
