@@ -233,15 +233,27 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link
-              href={switchHref}
-              hrefLang={other}
-              lang={other}
-              aria-label={other === "fr" ? "Français" : "Deutsch"}
-              className={`hidden px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] transition-colors sm:block ${dk ? "text-white/60 hover:text-white" : "text-muted hover:text-accent"}`}
-            >
-              {other}
-            </Link>
+            {/* Language switch: both languages always visible, the current one highlighted. */}
+            <div className="flex items-center rounded-full bg-bg-2 p-1 text-[12.5px] font-semibold ring-1 ring-inset ring-line">
+              {(["de", "fr"] as const).map((l) =>
+                l === nav.locale ? (
+                  <span key={l} aria-current="true" className="rounded-full bg-accent px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-white">
+                    {l}
+                  </span>
+                ) : (
+                  <Link
+                    key={l}
+                    href={switchHref}
+                    hrefLang={l}
+                    lang={l}
+                    aria-label={l === "fr" ? "Français" : "Deutsch"}
+                    className="rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-ink-soft transition-colors hover:text-accent"
+                  >
+                    {l}
+                  </Link>
+                ),
+              )}
+            </div>
             <a
               href={nav.phone.href}
               className={`${minimal ? "hidden sm:flex" : "hidden 2xl:flex"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
@@ -260,11 +272,11 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
               ref={menuButtonRef}
               type="button"
               onClick={() => setOpenFor(open ? null : pathname)}
-              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border pl-4 pr-3.5 text-[14px] font-medium transition-colors ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
+              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border pl-4 pr-3.5 text-[14px] font-medium transition-colors max-[399px]:px-3.5 ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
               aria-expanded={open}
               aria-controls="mobile-menu"
             >
-              {nav.menuLabel}
+              <span className="max-[399px]:sr-only">{nav.menuLabel}</span>
               <span aria-hidden="true" className="flex w-4 flex-col gap-[5px]">
                 <span className="h-[1.5px] w-full bg-current" />
                 <span className="h-[1.5px] w-2/3 self-end bg-current" />

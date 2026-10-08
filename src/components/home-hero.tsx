@@ -14,7 +14,6 @@ const t = {
     h1b: "Webseiten",
     points: ["Individuelles Webdesign", "Für Handy und Google gebaut", "Persönlich betreut"],
     call: "Anrufen",
-    sample: "Beispiel-Designs, fiktive Marken",
   },
   fr: {
     eyebrow: "Agence web en Suisse",
@@ -22,12 +21,11 @@ const t = {
     h1b: "sites internet professionnels",
     points: ["Webdesign sur mesure", "Pensé pour mobile et Google", "Suivi personnel"],
     call: "Appeler",
-    sample: "Exemples de design, marques fictives",
   },
 };
 
 /**
- * Home hero: light and centred. Big headline, one CTA carrying the owner's face, then a wide
+ * Home hero: light and centred. Big headline, one clear CTA, then a wide
  * Schieferblau stage with fictional sample designs and the 3D Webnova mark (decorative).
  * The H1 is the LCP text and renders visible immediately.
  */
@@ -49,9 +47,8 @@ export function HomeHero({ locale }: { locale: Locale }) {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={href(locale, "request")}
-            className="group inline-flex items-center gap-3 rounded-full bg-accent py-1.5 pl-1.5 pr-6 text-[16px] font-semibold text-white shadow-[0_16px_32px_-14px_rgb(36_64_90/0.7)] transition-colors hover:bg-night"
+            className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-[15px] text-[16px] font-semibold text-white shadow-[0_16px_32px_-14px_rgb(36_64_90/0.7)] transition-colors hover:bg-night"
           >
-            <Image src="/photos/ferhat-avatar.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full ring-2 ring-white/30" />
             {d.nav.cta}
             <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
@@ -76,7 +73,6 @@ export function HomeHero({ locale }: { locale: Locale }) {
         </ul>
 
         <HeroStage locale={locale} />
-        <p className="mt-4 text-[12px] text-muted">{c.sample}</p>
       </div>
     </section>
   );
@@ -88,7 +84,7 @@ function HeroStage({ locale }: { locale: Locale }) {
       {/* Schieferblau panel that the devices stand on. */}
       <div aria-hidden="true" className="stage-accent absolute inset-x-0 bottom-0 top-[22%] rounded-[2rem] md:rounded-[2.5rem]" />
       <div className="relative px-[4%] pb-[5%] md:px-[11%]">
-        <BrowserFrame sample="treuhand" locale={locale} priority sizes="(min-width: 1024px) 860px, 92vw" />
+        <BrowserFrame sample="hero" locale={locale} priority sizes="(min-width: 1024px) 860px, 92vw" />
       </div>
       <Image
         src="/visuals/webnova-mark-3d.webp"
@@ -99,11 +95,8 @@ function HeroStage({ locale }: { locale: Locale }) {
         sizes="(min-width: 1024px) 360px, 30vw"
         className="float-slow pointer-events-none absolute -right-[9%] -top-[24%] hidden w-[36%] max-w-none select-none drop-shadow-[0_30px_40px_rgb(27_45_62/0.25)] md:block"
       />
-      <div className="float absolute bottom-[-3%] left-[2%] hidden w-[15%] md:block [animation-delay:-2s]">
-        <PhoneFrame sample="coiffeur" locale={locale} sizes="170px" />
-      </div>
-      <div className="float-slow absolute bottom-[-5%] right-[3%] w-[24%] md:w-[15%]">
-        <PhoneFrame sample="restaurant" locale={locale} sizes="170px" />
+      <div className="float-slow absolute bottom-[-6%] right-[3%] w-[25%] md:w-[16%]">
+        <PhoneFrame sample="hero" locale={locale} sizes="190px" />
       </div>
       <EnquiryToast locale={locale} className="float absolute left-[1%] top-[16%] hidden text-left lg:flex [animation-delay:-4s]" />
     </div>

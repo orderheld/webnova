@@ -30,7 +30,8 @@ const leadSchema = z.object({
   timeline: z.enum(timelineOptions).nullable(),
   name: z.string().trim().min(2).max(120),
   company: z.string().trim().max(160).optional().default(""),
-  email: z.email().max(200),
+  // E-mail or phone: at least one of them (checked below), so a lead never needs both.
+  email: z.union([z.literal(""), z.email().max(200)]).optional().default(""),
   phone: z.string().trim().max(40).optional().default(""),
   preferredContact: z.enum(contactOptions).nullable(),
   message: z.string().max(4000).optional().default(""),
@@ -38,7 +39,7 @@ const leadSchema = z.object({
   // spam protection
   website2: z.string().max(0).optional().default(""), // honeypot, must stay empty
   startedAt: z.number(),
-});
+}).refine((v) => v.email !== "" || v.phone.replace(/\D/g, "").length >= 6, { path: ["email"] });
 
 export type LeadInput = z.input<typeof leadSchema>;
 
@@ -82,7 +83,7 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     locale: v.locale,
     name: v.name,
     company: v.company || null,
-    email: v.email,
+    email: v.email || null,
     phone: v.phone || null,
     preferredContact: v.preferredContact,
     services,
@@ -112,7 +113,7 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   const rows: [string, string][] = [
     ["Name", v.name],
     ["Firma", v.company || "–"],
-    ["E-Mail", v.email],
+    ["E-Mail", v.email || "–"],
     ["Telefon", v.phone || "–"],
     ["Bevorzugter Kontakt", label("preferredContact", v.preferredContact)],
     ["Leistungen", v.services.map((s) => label("services", s)).join(", ")],
@@ -144,7 +145,7 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
 
   const notify = await safeSend({
     to: adminInbox(),
-    replyTo: v.email,
+    replyTo: v.email || undefined,
     subject: `Neue Anfrage: ${v.company || v.name} (${v.services.map((s) => label("services", s)).join(", ")})`,
     html: mailLayout(
       `<h2 style="margin:0 0 16px;font-size:22px;color:${mailColors.ink}">Neue Anfrage über webnova.ch</h2><table cellpadding="0" cellspacing="0" style="font-size:14px">${table}</table>${detailHtml}${
@@ -156,7 +157,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
 
   const fr = v.locale === "fr";
   const firstName = v.name.split(" ")[0];
-  await safeSend({
+  // Phone-only leads get no confirmation mail; Ferhat calls back instead.
+  if (v.email) await safeSend({
     to: v.email,
     replyTo: site.email,
     subject: fr ? "Votre demande chez Webnova" : "Ihre Anfrage bei Webnova",
