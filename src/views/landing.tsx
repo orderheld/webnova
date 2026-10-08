@@ -1,4 +1,4 @@
-import { FaqList } from "@/components/blocks";
+import { ContactPerson, FaqList } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import type { Faq, Locale } from "@/content/types";
@@ -28,7 +28,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Webdesign für KMU in der Schweiz",
       h1: "Ihre neue Webseite. Modern, schnell und gemacht für Anfragen.",
       lead: "Schluss mit veralteten Webseiten, die niemand findet. Wir bauen Ihnen einen Auftritt, der überzeugt und Kunden bringt.",
-      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung aus der Region"],
+      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung, schweizweit"],
       benefitsTitle: "Was Sie bekommen",
       benefits: [
         { icon: "layout", title: "Design mit Wirkung", text: "Ein klarer, moderner Auftritt, der Vertrauen schafft und Ihre Stärken auf den Punkt bringt." },
@@ -51,7 +51,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Création de sites pour PME en Suisse",
       h1: "Votre nouveau site. Moderne, rapide et pensé pour les demandes.",
       lead: "Fini les sites dépassés que personne ne trouve. Nous créons une présence en ligne qui convainc et vous apporte des clients.",
-      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel dans la région"],
+      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel dans toute la Suisse"],
       benefitsTitle: "Ce que vous obtenez",
       benefits: [
         { icon: "layout", title: "Un design qui marque", text: "Une présence claire et moderne qui inspire confiance et met vos forces en valeur." },
@@ -126,8 +126,8 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
   const c = content[lpKey][locale];
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-line bg-surface">
-        <div className="container-x relative grid gap-12 py-16 md:py-24 lg:grid-cols-12 lg:items-start">
+      <section className="surface-tint relative isolate overflow-hidden border-b border-line">
+        <div className="container-x relative grid gap-12 py-14 md:py-20 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5 lg:pt-6">
             <p className="eyebrow mb-6">
               {c.eyebrow}
@@ -137,16 +137,19 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
             <ul className="mt-8 space-y-3">
               {c.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-[16px]">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-white">
-                    <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2.6} />
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-bright-soft text-bright">
+                    <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2.8} />
                   </span>
                   {b}
                 </li>
               ))}
             </ul>
-            <a href={site.phoneHref} className="mt-10 inline-flex items-center gap-3 text-[17px] text-ink-soft hover:text-ink">
-              <Icon name="phone" className="h-5 w-5 text-ink" /> {site.phone}
-            </a>
+            <div className="mt-10 border-t border-line pt-8">
+              <ContactPerson locale={locale} />
+              <a href={site.phoneHref} className="mt-5 inline-flex items-center gap-3 text-[17px] font-medium text-accent transition-colors hover:text-bright">
+                <Icon name="phone" className="h-5 w-5 text-bright" /> {site.phone}
+              </a>
+            </div>
           </div>
           <div id="formular" className="lg:col-span-7">
             <LeadForm
@@ -162,26 +165,26 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         </div>
       </section>
 
-      <section className="border-y border-line bg-bg">
-        <div className="container-x flex flex-wrap justify-center gap-x-10 gap-y-3 py-5 text-[15px] font-semibold text-accent">
+      <section className="surface-night text-white">
+        <div className="container-x flex flex-wrap justify-center gap-x-10 gap-y-3 py-5 text-[15px] font-medium">
           {d.lp.trust.map((t) => (
             <span key={t} className="flex items-center gap-2">
-              <Icon name="check" className="h-4 w-4" strokeWidth={2.6} /> {t}
+              <Icon name="check" className="h-4 w-4 text-accent-light" strokeWidth={2.6} /> {t}
             </span>
           ))}
         </div>
       </section>
 
-      <section className="container-x py-24">
+      <section className="container-x section-y">
         <h2 className="h-section reveal mb-12">{c.benefitsTitle}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.benefits.map((b) => (
-            <div key={b.title} className="reveal group rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
-              <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
+            <div key={b.title} className="card reveal p-7">
+              <span className="icon-tile mb-7">
                 <Icon name={b.icon} />
               </span>
-              <h3 className="text-[20px] font-semibold tracking-tight">{b.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted">{b.text}</p>
+              <h3 className="font-display text-[20px] font-semibold tracking-[-0.01em]">{b.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{b.text}</p>
             </div>
           ))}
         </div>
@@ -189,13 +192,19 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
 
       <FaqList locale={locale} faq={c.faq} />
 
-      <section className="container-x pb-24 text-center">
-        <a
-          href="#formular"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
-        >
-          {d.nav.cta} <Icon name="arrow" className="h-4 w-4" />
-        </a>
+      <section className="container-x pb-20 md:pb-28">
+        <div className="surface-night flex flex-col items-start gap-6 rounded-3xl p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold leading-tight tracking-[-0.02em]">{d.cta.title}</h2>
+            <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-white/75">{d.cta.text}</p>
+          </div>
+          <a
+            href="#formular"
+            className="group inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-accent transition-colors hover:bg-bright-soft"
+          >
+            {d.nav.cta} <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
       </section>
     </>
   );

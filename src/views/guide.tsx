@@ -1,4 +1,4 @@
-import { CardLink, CtaBand, FaqList, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FaqList, PageHero, Prose } from "@/components/blocks";
 import { guides } from "@/content/guides";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -77,11 +77,20 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
           { name: d.nav.guides, url: href(locale, "guides") },
         ]}
       />
-      <article className="container-x pb-12 pt-14 md:pt-20">
-        <div className="max-w-3xl">
+      <div className="container-x grid gap-12 pb-12 pt-14 md:pt-20 lg:grid-cols-12">
+        <article className="max-w-3xl lg:col-span-8">
           <Prose sections={c.sections} />
-        </div>
-      </article>
+        </article>
+        <aside className="lg:col-span-4">
+          <div className="sticky top-28">
+            <CtaCard
+              locale={locale}
+              title={locale === "de" ? "Lieber direkt mit uns umsetzen?" : "Vous préférez le réaliser avec nous ?"}
+              text={locale === "de" ? "Wir schauen uns Ihre Situation an und sagen Ihnen, was sich lohnt." : "Nous examinons votre situation et vous disons ce qui en vaut la peine."}
+            />
+          </div>
+        </aside>
+      </div>
       <FaqList locale={locale} faq={c.faq} />
       {related.length > 0 && (
         <section className="container-x pb-20">

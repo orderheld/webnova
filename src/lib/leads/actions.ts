@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
-import { adminInbox, escapeHtml, mailLayout, sendMail } from "@/lib/email";
+import { adminInbox, escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/email";
 import { site } from "@/lib/site";
 import {
   budgetOptions,
@@ -110,7 +110,7 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   const table = rows
     .map(
       ([k, val]) =>
-        `<tr><td style="padding:6px 12px 6px 0;color:#66666d;vertical-align:top;white-space:nowrap">${k}</td><td style="padding:6px 0">${escapeHtml(val).replace(/\n/g, "<br>")}</td></tr>`,
+        `<tr><td style="padding:6px 12px 6px 0;color:${mailColors.muted};vertical-align:top;white-space:nowrap">${k}</td><td style="padding:6px 0;color:${mailColors.ink}">${escapeHtml(val).replace(/\n/g, "<br>")}</td></tr>`,
     )
     .join("");
   const adminUrl = leadId ? `${site.url}/admin/anfragen/${leadId}` : `${site.url}/admin/anfragen`;
@@ -120,8 +120,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     replyTo: v.email,
     subject: `Neue Anfrage: ${v.company || v.name} (${v.services.map((s) => label("services", s)).join(", ")})`,
     html: mailLayout(
-      `<h2 style="margin:0 0 16px;font-size:22px">Neue Anfrage über webnova.ch</h2><table cellpadding="0" cellspacing="0" style="font-size:14px">${table}</table>${
-        stored ? `<p style="margin-top:24px"><a href="${adminUrl}" style="background:#0e0e10;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none">Im Admin öffnen</a></p>` : `<p style="color:#c2261d">Achtung: Anfrage konnte nicht in der Datenbank gespeichert werden.</p>`
+      `<h2 style="margin:0 0 16px;font-size:22px;color:${mailColors.ink}">Neue Anfrage über webnova.ch</h2><table cellpadding="0" cellspacing="0" style="font-size:14px">${table}</table>${
+        stored ? `<p style="margin-top:24px"><a href="${adminUrl}" style="background:${mailColors.accent};color:#ffffff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;display:inline-block">Im Admin öffnen</a></p>` : `<p style="color:${mailColors.danger}">Achtung: Anfrage konnte nicht in der Datenbank gespeichert werden.</p>`
       }`,
       false,
     ),
@@ -135,8 +135,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     subject: fr ? "Votre demande chez Webnova" : "Ihre Anfrage bei Webnova",
     html: mailLayout(
       fr
-        ? `<p>Bonjour ${escapeHtml(firstName)},</p><p>Merci pour votre demande. Nous avons bien reçu vos informations et vous contactons personnellement dans un délai d'un jour ouvrable.</p><p>Pour toute question urgente, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br>Webnova</p>`
-        : `<p>Guten Tag ${escapeHtml(firstName)}</p><p>Vielen Dank für Ihre Anfrage. Wir haben Ihre Angaben erhalten und melden uns innert eines Arbeitstages persönlich bei Ihnen.</p><p>Bei dringenden Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br>Webnova</p>`,
+        ? `<p>Bonjour ${escapeHtml(firstName)},</p><p>Merci pour votre demande. Nous avons bien reçu vos informations et vous contactons personnellement dans un délai d'un jour ouvrable.</p><p>Pour toute question urgente, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`
+        : `<p>Guten Tag ${escapeHtml(firstName)}</p><p>Vielen Dank für Ihre Anfrage. Wir haben Ihre Angaben erhalten und melden uns innert eines Arbeitstages persönlich bei Ihnen.</p><p>Bei dringenden Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`,
     ),
   });
 

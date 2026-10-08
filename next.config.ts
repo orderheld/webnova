@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png"],
   },
   poweredByHeader: false,
+  // Branded 404 for unmatched URLs (src/app/global-not-found.tsx); the app has several root layouts.
+  experimental: { globalNotFound: true },
   async redirects() {
     // Old WordPress URLs -> new structure (keeps existing Google rankings)
     const map: [string, string][] = [
