@@ -27,7 +27,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <Prose sections={d.pages.aboutSections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 rounded-lg border border-line bg-surface p-8">
+          <div className="sticky top-28 rounded-2xl border border-line bg-surface p-8">
             <ul className="space-y-5 text-[16px]">
               {d.home.why.map((w) => (
                 <li key={w.title} className="flex gap-3">
@@ -63,7 +63,7 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
           <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
         </div>
       </PageHero>
-      <section className="container-x relative z-10 pt-16 grid gap-5 pb-24 md:grid-cols-2">
+      <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
         {references.map((r) => (
           <ReferenceCard key={r.key} r={r} locale={locale} large />
         ))}
@@ -99,14 +99,14 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
         lead={c.summary}
         crumbs={[crumbs[0], crumbs[1], { name: r.name }]}
       />
-      <section className="container-x relative z-10 pt-16">
-        <div className="overflow-hidden rounded-lg border border-line bg-bg p-3 pb-0 sm:p-5 sm:pb-0">
+      <section className="container-x relative z-10 -mt-10">
+        <div className="overflow-hidden rounded-2xl border border-line bg-bg p-3 pb-0 sm:p-5 sm:pb-0">
           <div className="overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface">
             <div className="flex items-center gap-1.5 px-3.5 py-2.5">
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
-              <span className="ml-2 truncate rounded-[4px] bg-bg px-3 py-0.5 text-[11px] text-muted">{r.domain}</span>
+              <span className="ml-2 truncate rounded-full bg-bg px-3 py-0.5 text-[11px] text-muted">{r.domain}</span>
             </div>
             <div className="relative aspect-[16/8]">
               {r.image ? (
@@ -139,7 +139,7 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
           </div>
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 rounded-md border border-line bg-surface p-8">
+          <div className="sticky top-28 rounded-2xl border border-line bg-surface p-8">
             <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{t.scope}</p>
             <ul className="mt-4 space-y-3">
               {c.scope.map((s) => (
@@ -209,15 +209,15 @@ export function ContactPage({ locale }: { locale: Locale }) {
         lead={d.pages.contactLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.contact }]}
       />
-      <section className="container-x relative z-10 pt-16 grid gap-10 pb-24 lg:grid-cols-12">
+      <section className="container-x relative z-10 -mt-10 grid gap-10 pb-24 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-5">
           {channels.map((c) => (
             <a
               key={c.label}
               href={c.href}
-              className="group flex items-center gap-5 rounded-md border border-line bg-surface p-6 transition-all hover:border-ink/30"
+              className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-6 transition-all hover:border-ink/30"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-md bg-bg text-ink transition-colors group-hover:bg-accent group-hover:text-white">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors group-hover:bg-accent group-hover:text-white">
                 <Icon name={c.icon} />
               </span>
               <span>
@@ -226,8 +226,8 @@ export function ContactPage({ locale }: { locale: Locale }) {
               </span>
             </a>
           ))}
-          <div className="rounded-md border border-line bg-surface p-6 ">
-            <p className="text-[14px] font-medium text-ink">{d.pages.office}</p>
+          <div className="rounded-2xl border border-line bg-surface p-6 ">
+            <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
             <p className="mt-3 text-[18px] leading-snug">
               Webnova
               <br />
@@ -245,7 +245,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
             </a>
             {site.openingHours.length > 0 && (
               <div className="mt-6 border-t border-line pt-5">
-                <p className="text-[14px] font-medium text-ink">{d.pages.hours}</p>
+                <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.hours}</p>
                 <dl className="mt-3 space-y-1 text-[15px]">
                   {site.openingHours.map((h) => (
                     <div key={h.days.join()} className="flex justify-between gap-4">

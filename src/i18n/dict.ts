@@ -36,7 +36,7 @@ const de = {
     lead: "Wir gestalten und entwickeln moderne Webseiten, Onlineshops und Kampagnen für Schweizer KMU. Schnell, klar, auf Google sichtbar und auf Ihr Ziel ausgerichtet: mehr Kundinnen und Kunden.",
     primary: "Kostenlose Erstberatung",
     secondary: "Leistungen ansehen",
-    points: ["Persönlich vor Ort in der Region", "Deutsch & Französisch", "Alles aus einer Hand"],
+    points: ["Schweizweit für KMU", "Deutsch & Französisch", "Alles aus einer Hand"],
   },
   home: {
     servicesEyebrow: "Leistungen",
@@ -190,7 +190,7 @@ const de = {
     notFoundText: "Diese Seite gibt es nicht (mehr). Hier geht es weiter:",
   },
   lp: {
-    trust: ["Kostenlose Erstberatung", "Antwort innert 1 Arbeitstag", "Persönlich in der Region"],
+    trust: ["Kostenlose Erstberatung", "Antwort innert 1 Arbeitstag", "Persönlich und direkt"],
   },
 };
 
@@ -232,7 +232,7 @@ const fr: Dict = {
     lead: "Nous concevons et développons des sites internet, boutiques en ligne et campagnes modernes pour les PME suisses. Rapides, clairs, visibles sur Google et pensés pour un objectif : plus de clients.",
     primary: "Premier conseil gratuit",
     secondary: "Voir nos services",
-    points: ["Sur place dans la région", "Français & allemand", "Tout d'un seul interlocuteur"],
+    points: ["Pour les PME de toute la Suisse", "Français & allemand", "Tout d'un seul interlocuteur"],
   },
   home: {
     servicesEyebrow: "Services",
@@ -386,7 +386,7 @@ const fr: Dict = {
     notFoundText: "Cette page n'existe pas (ou plus). Voici la suite :",
   },
   lp: {
-    trust: ["Premier conseil gratuit", "Réponse en 1 jour ouvrable", "Sur place dans la région"],
+    trust: ["Premier conseil gratuit", "Réponse en 1 jour ouvrable", "Personnel et direct"],
   },
 };
 
