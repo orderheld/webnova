@@ -26,7 +26,7 @@ const STEPS = 2;
 
 /**
  * Short project request: step 1 picks the service with one tap, step 2 asks for
- * name and e-mail or phone (one of them is enough) plus an optional message.
+ * name, optional company, e-mail (required), optional phone and message.
  * Industry pages pass a preset service and start directly on step 2.
  */
 export function LeadForm({
@@ -60,6 +60,7 @@ export function LeadForm({
   const [services, setServices] = useState<Service[]>(preset);
   const [step, setStep] = useState(preset.length > 0 ? 1 : 0);
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -72,10 +73,7 @@ export function LeadForm({
   const nameOk = name.trim().length >= 2;
   const emailFilled = email.trim() !== "";
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
-  const phoneOk = phone.replace(/\D/g, "").length >= 6;
-  // at least one way to reach the person; a typed e-mail must also be valid
-  const reachOk = (emailOk || phoneOk) && (!emailFilled || emailOk);
-  const reachError = emailFilled && !emailOk ? t.invalidEmail : t.reachRequired;
+  const emailError = emailFilled ? t.invalidEmail : t.required;
 
   // Move focus to the step header after navigating, so keyboard and screen reader users land on the new step.
   useEffect(() => {
@@ -106,7 +104,7 @@ export function LeadForm({
       return;
     }
     setTouched(true);
-    if (!nameOk || !reachOk) return;
+    if (!nameOk || !emailOk) return;
     setError(null);
     startTransition(async () => {
       try {
@@ -120,9 +118,10 @@ export function LeadForm({
           budget: null,
           timeline: null,
           name: name.trim(),
-          email: emailOk ? email.trim() : "",
+          company: company.trim(),
+          email: email.trim(),
           phone: phone.trim(),
-          preferredContact: emailOk && !phoneOk ? "email" : phoneOk && !emailOk ? "phone" : null,
+          preferredContact: null,
           message,
           website2,
           pageUrl: window.location.pathname,
@@ -227,7 +226,7 @@ export function LeadForm({
             </button>
           </div>
 
-          <Fieldset legend={t.q.contact} hint={t.q.contactHint}>
+          <Fieldset legend={t.q.contact}>
             <div className="space-y-3">
               <Field id={`${uid}-name`} label={t.q.name} required error={touched && !nameOk ? t.required : undefined}>
                 <input
@@ -241,8 +240,11 @@ export function LeadForm({
                   aria-invalid={touched && !nameOk}
                 />
               </Field>
+              <Field id={`${uid}-company`} label={t.q.company} optional={t.q.optional}>
+                <input id={`${uid}-company`} className="input" autoComplete="organization" value={company} onChange={(e) => setCompany(e.target.value)} />
+              </Field>
               <div className="grid gap-3 sm:grid-cols-2">
-                <Field id={`${uid}-email`} label={t.q.email}>
+                <Field id={`${uid}-email`} label={t.q.email} required error={touched && !emailOk ? emailError : undefined}>
                   <input
                     id={`${uid}-email`}
                     className="input"
@@ -251,11 +253,12 @@ export function LeadForm({
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    aria-invalid={touched && !reachOk}
-                    aria-describedby={touched && !reachOk ? `${uid}-reach` : undefined}
+                    required
+                    aria-required="true"
+                    aria-invalid={touched && !emailOk}
                   />
                 </Field>
-                <Field id={`${uid}-phone`} label={t.q.phone}>
+                <Field id={`${uid}-phone`} label={t.q.phone} optional={t.q.optional}>
                   <input
                     id={`${uid}-phone`}
                     className="input"
@@ -264,16 +267,9 @@ export function LeadForm({
                     autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    aria-invalid={touched && !reachOk}
-                    aria-describedby={touched && !reachOk ? `${uid}-reach` : undefined}
                   />
                 </Field>
               </div>
-              {touched && !reachOk && (
-                <p id={`${uid}-reach`} role="alert" className="text-[13px] text-danger">
-                  {reachError}
-                </p>
-              )}
               <Field id={`${uid}-message`} label={t.q.message} optional={t.q.optional}>
                 <textarea
                   id={`${uid}-message`}

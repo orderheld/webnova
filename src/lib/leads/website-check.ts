@@ -21,6 +21,7 @@ const checkSchema = z.object({
     .regex(/^(https?:\/\/)?[^\s/]+\.[^\s]{2,}/i),
   name: z.string().trim().min(2).max(120),
   email: z.email().max(200),
+  company: z.string().trim().max(160).optional().default(""),
   phone: z.string().trim().max(40).optional().default(""),
   note: z.string().trim().max(300).optional().default(""),
   pageUrl: z.string().max(300).optional().default(""),
@@ -74,6 +75,7 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
           source: "website-check",
           locale: v.locale,
           name: v.name,
+          company: v.company || null,
           email: v.email,
           phone: v.phone || null,
           preferredContact: v.phone ? "phone" : "email",
@@ -95,6 +97,7 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
   const rows: [string, string][] = [
     ["Website", url],
     ["Name", v.name],
+    ["Firma", v.company || "–"],
     ["E-Mail", v.email],
     ["Telefon", v.phone || "–"],
     ["Notiz", v.note || "–"],

@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, asc, eq, ne, sql } from "drizzle-orm";
 import Link from "next/link";
 import { Icon } from "@/components/admin/icons";
@@ -49,9 +50,9 @@ export default async function TasksPage({ searchParams }: { searchParams: Promis
                   {list.map(({ t, p, c }) => (
                     <li key={t.id} className="flex items-center gap-3 py-2">
                       <form action={toggleTaskAction.bind(null, t.id)}>
-                        <button className="grid h-6 w-6 place-items-center rounded-md border border-line hover:border-accent" aria-label="Erledigt">
+                        <PendingButton className="grid h-6 w-6 place-items-center rounded-md border border-line hover:border-accent" aria-label="Erledigt">
                           <span className="sr-only">Erledigt</span>
-                        </button>
+                        </PendingButton>
                       </form>
                       <div className="min-w-0 flex-1">
                         <p className={`text-[14px] ${t.milestone ? "font-semibold" : ""}`}>

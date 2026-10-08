@@ -22,7 +22,7 @@ export function db() {
     globalThis.__wnPool ??
     new Pool({
       connectionString: url,
-      max: 5,
+      max: 10,
       ssl: /localhost|127\.0\.0\.1/.test(url) ? false : { rejectUnauthorized: true },
     });
   if (process.env.NODE_ENV !== "production") globalThis.__wnPool = pool;

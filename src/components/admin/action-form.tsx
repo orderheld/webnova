@@ -2,6 +2,7 @@
 
 import { createContext, startTransition, useActionState, useContext, useEffect, useRef, useState } from "react";
 import type { FormState } from "@/lib/admin/form";
+import { Spinner, toast } from "./feedback";
 import { Icon } from "./icons";
 import { btn, btnSm } from "./ui";
 
@@ -30,6 +31,7 @@ export function ActionForm({
   const ref = useRef<HTMLFormElement>(null);
   const close = useContext(ModalCtx);
   useEffect(() => {
+    if (state.error) toast(state.error, "error");
     if (!state.ok) return;
     if (reset) ref.current?.reset();
     close?.();
@@ -57,7 +59,8 @@ export function ActionForm({
 export function Submit({ children, size = "md", variant = "dark", className = "" }: { children: React.ReactNode; size?: "sm" | "md"; variant?: "dark" | "ghost"; className?: string }) {
   const pending = useContext(PendingCtx);
   return (
-    <button disabled={pending} className={`${size === "sm" ? btnSm[variant] : btn[variant]} ${className}`}>
+    <button disabled={pending} aria-busy={pending || undefined} className={`${size === "sm" ? btnSm[variant] : btn[variant]} ${className}`}>
+      {pending && <Spinner className="h-3.5 w-3.5" />}
       {pending ? "Speichern …" : children}
     </button>
   );
@@ -103,7 +106,7 @@ export function Modal({
             aria-modal="true"
             aria-label={title}
             onClick={(e) => e.stopPropagation()}
-            className={`max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-surface p-5 shadow-lift sm:rounded-2xl ${wide ? "sm:max-w-3xl" : "sm:max-w-lg"}`}
+            className={`dialog-in max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-surface p-5 shadow-lift sm:rounded-2xl ${wide ? "sm:max-w-3xl" : "sm:max-w-lg"}`}
           >
             <div className="mb-4 flex items-center justify-between gap-3">
               <h2 className="text-[18px] font-semibold">{title}</h2>

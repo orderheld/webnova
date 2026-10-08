@@ -126,8 +126,8 @@ export function ContactList({ locale, hours = false, dark = false, className = "
 
 
 const pc = {
-  de: { role: "Inhaber und Ihr Ansprechpartner", line: "Persönlich vom ersten Gespräch bis nach dem Launch" },
-  fr: { role: "Fondateur et votre interlocuteur", line: "Personnellement, du premier entretien jusqu'après la mise en ligne" },
+  de: { role: "Ihr Ansprechpartner", line: "Persönlich vom ersten Gespräch bis nach dem Launch" },
+  fr: { role: "Votre interlocuteur", line: "Personnellement, du premier entretien jusqu'après la mise en ligne" },
 };
 
 /**

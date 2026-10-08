@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { asc, desc, eq, or } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -89,9 +90,9 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
               <SubscriptionForm customers={customers} projects={projectOpts} products={products} defaults={{ customerId: c.id, projectId: p.id }} />
             </Modal>
             <form action={duplicateProjectAction.bind(null, p.id)}>
-              <button className={btn.ghost}>
+              <PendingButton className={btn.ghost}>
                 <Icon name="copy" className="h-4 w-4" /> Duplizieren
-              </button>
+              </PendingButton>
             </form>
             <Modal label="Bearbeiten" title="Projekt bearbeiten" icon="edit" variant="dark" wide>
               <ProjectForm project={p} customers={customers} quotes={quoteOpts.map((q) => ({ id: q.id, name: `${q.number} · ${q.title}` }))} />
@@ -107,14 +108,14 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
           return (
             <form key={s} action={setProjectStatusAction.bind(null, p.id, s)} className="flex items-center">
               {i > 0 && <span className={`mx-0.5 h-px w-3 ${i <= idx ? "bg-accent" : "bg-line"}`} />}
-              <button
+              <PendingButton
                 className={`rounded-full px-3 py-1.5 text-[13px] transition-colors ${
                   s === p.status ? "bg-accent text-white" : i < idx ? "text-accent hover:bg-accent-soft" : "text-muted hover:bg-bg"
                 }`}
               >
                 {i < idx && <Icon name="check" className="mr-1 inline h-3 w-3" />}
                 {projectStatusLabels[s]}
-              </button>
+              </PendingButton>
             </form>
           );
         })}
@@ -142,9 +143,9 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
                   return (
                     <li key={t.id} className={`group flex items-center gap-2 px-2 py-2 ${t.milestone ? "bg-accent-soft/40" : ""}`}>
                       <form action={toggleTaskAction.bind(null, t.id)}>
-                        <button className={`grid h-6 w-6 place-items-center rounded-md border ${t.done ? "border-accent bg-accent text-white" : "border-line bg-surface hover:border-accent"}`} aria-label={t.done ? "Als offen markieren" : "Erledigt"}>
+                        <PendingButton className={`grid h-6 w-6 place-items-center rounded-md border ${t.done ? "border-accent bg-accent text-white" : "border-line bg-surface hover:border-accent"}`} aria-label={t.done ? "Als offen markieren" : "Erledigt"}>
                           {t.done && <Icon name="check" className="h-3.5 w-3.5" />}
-                        </button>
+                        </PendingButton>
                       </form>
                       <div className="min-w-0 flex-1">
                         <p className={`text-[14px] ${t.done ? "text-muted line-through" : ""} ${t.milestone ? "font-semibold" : ""}`}>
@@ -156,14 +157,14 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
                       <span className={`shrink-0 text-[12.5px] tabular-nums ${late ? "font-medium text-danger" : "text-muted"}`}>{t.dueDate ? fmtDate(t.dueDate) : ""}</span>
                       <div className="flex shrink-0 items-center sm:opacity-0 sm:group-hover:opacity-100 sm:focus-within:opacity-100">
                         <form action={moveTaskAction.bind(null, t.id, -1)}>
-                          <button className={iconBtn} aria-label="Nach oben">
+                          <PendingButton className={iconBtn} aria-label="Nach oben">
                             <Icon name="up" className="h-3.5 w-3.5" />
-                          </button>
+                          </PendingButton>
                         </form>
                         <form action={moveTaskAction.bind(null, t.id, 1)}>
-                          <button className={iconBtn} aria-label="Nach unten">
+                          <PendingButton className={iconBtn} aria-label="Nach unten">
                             <Icon name="down" className="h-3.5 w-3.5" />
-                          </button>
+                          </PendingButton>
                         </form>
                         <Modal label={<Icon name="edit" className="h-3.5 w-3.5" />} title="Aufgabe bearbeiten" triggerClassName={iconBtn}>
                           <TaskForm projectId={p.id} task={t} />

@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { eq } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -65,9 +66,9 @@ export default async function QuoteDetail({ params }: { params: Promise<{ id: st
               <Icon name="download" className="h-4 w-4" /> PDF
             </a>
             <form action={duplicateQuoteAction.bind(null, q.id)}>
-              <button className={btn.ghost}>
+              <PendingButton className={btn.ghost}>
                 <Icon name="copy" className="h-4 w-4" /> Duplizieren
-              </button>
+              </PendingButton>
             </form>
             {draft && <SendDialog kind="quote" id={q.id} draft={draft} sentAt={q.sentAt?.toISOString() ?? null} />}
           </>
@@ -77,7 +78,7 @@ export default async function QuoteDetail({ params }: { params: Promise<{ id: st
         <span className="px-1 text-[12.5px] text-muted">Status</span>
         {quoteStatuses.map((s) => (
           <form key={s} action={setQuoteStatusAction.bind(null, q.id, s)}>
-            <button className={`rounded-full px-3 py-1.5 text-[13px] ${q.status === s ? "bg-accent text-white" : "hover:bg-bg"}`}>{quoteStatusLabels[s]}</button>
+            <PendingButton className={`rounded-full px-3 py-1.5 text-[13px] ${q.status === s ? "bg-accent text-white" : "hover:bg-bg"}`}>{quoteStatusLabels[s]}</PendingButton>
           </form>
         ))}
         <span className="flex-1" />
@@ -100,17 +101,17 @@ export default async function QuoteDetail({ params }: { params: Promise<{ id: st
                 </option>
               ))}
             </select>
-            <button className={btnSm.ghost}>
+            <PendingButton className={btnSm.ghost}>
               <Icon name="folder" className="h-3.5 w-3.5" /> Projekt anlegen
-            </button>
+            </PendingButton>
           </form>
         )}
         {hasRecurring && subs.length === 0 && (
           <form action={subscriptionsFromQuoteAction.bind(null, q.id)} className="flex items-center gap-1.5">
             <input type="date" name="startDate" defaultValue={todayIso()} className="input w-auto py-1.5 text-[13px]" aria-label="Leistungsbeginn" />
-            <button className={btnSm.ghost}>
+            <PendingButton className={btnSm.ghost}>
               <Icon name="repeat" className="h-3.5 w-3.5" /> Abos anlegen
-            </button>
+            </PendingButton>
           </form>
         )}
         {subs.length > 0 && (

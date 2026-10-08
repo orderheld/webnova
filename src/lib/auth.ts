@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -30,9 +31,9 @@ export async function destroySession() {
   (await cookies()).delete(SESSION_COOKIE);
 }
 
-export async function currentAdmin() {
+export const currentAdmin = cache(async () => {
   return verifySessionToken((await cookies()).get(SESSION_COOKIE)?.value);
-}
+});
 
 /** Call at the top of every admin page and server action. */
 export async function requireAdmin() {

@@ -1,5 +1,6 @@
 import "server-only";
 import { eq } from "drizzle-orm";
+import { cache } from "react";
 import { db, schema } from "@/db";
 import { site } from "@/lib/site";
 import { defaultCalculatorConfig, type CalculatorConfig } from "./calculator";
@@ -94,10 +95,11 @@ export const defaultSettings: CompanySettings = {
   subscriptionIntro: "Gerne stellen wir Ihnen die wiederkehrenden Leistungen für die folgende Periode in Rechnung:",
 };
 
-export async function getSettings(): Promise<CompanySettings> {
+/** Company settings; cached per request, so layout and page share one query. */
+export const getSettings = cache(async (): Promise<CompanySettings> => {
   const [row] = await db().select().from(schema.settings).where(eq(schema.settings.key, "company"));
   return { ...defaultSettings, ...((row?.value as Partial<CompanySettings>) ?? {}) };
-}
+});
 
 export async function saveSettings(value: CompanySettings) {
   await db()

@@ -1,7 +1,8 @@
 "use server";
 
+import { flashDone } from "./flash";
+
 import { and, desc, eq, inArray } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -14,7 +15,6 @@ import { addDaysIso, chf, round2, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { getSettings } from "./settings";
 
-const done = () => revalidatePath("/admin", "layout");
 
 /* ───────────── Payments ───────────── */
 
@@ -35,7 +35,7 @@ export async function addPaymentAction(invoiceId: number, _: FormState, fd: Form
   await db().insert(schema.payments).values({ ...r.data, amount: round2(r.data.amount), invoiceId });
   await syncInvoicePayments(invoiceId);
   await logActivity(`Zahlung CHF ${chf(r.data.amount)} zu ${inv.number} erfasst`, { customerId: inv.customerId, projectId: inv.projectId });
-  done();
+  await flashDone("Erstellt");
   return { ok: true };
 }
 
@@ -43,7 +43,7 @@ export async function deletePaymentAction(paymentId: number) {
   await requireAdmin();
   const [p] = await db().delete(schema.payments).where(eq(schema.payments.id, paymentId)).returning();
   if (p) await syncInvoicePayments(p.invoiceId);
-  done();
+  await flashDone("Gelöscht");
 }
 
 /* ───────────── Reminders (Mahnungen) ───────────── */
@@ -61,7 +61,7 @@ export async function createReminderAction(invoiceId: number) {
     .returning();
   await db().update(schema.invoices).set({ reminderLevel: level }).where(eq(schema.invoices.id, invoiceId));
   await logActivity(`${level}. Mahnung zu ${inv.number} erstellt`, { customerId: inv.customerId, projectId: inv.projectId });
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/rechnungen/${invoiceId}?mahnung=${r.id}`);
 }
 
@@ -77,7 +77,7 @@ export async function deleteReminderAction(reminderId: number) {
       .limit(1);
     await db().update(schema.invoices).set({ reminderLevel: last?.level ?? 0 }).where(eq(schema.invoices.id, r.invoiceId));
   }
-  done();
+  await flashDone("Gelöscht");
 }
 
 /* ───────────── Duplicate, credit notes ───────────── */
@@ -106,7 +106,7 @@ export async function duplicateQuoteAction(id: number) {
       validUntil: addDaysIso(today, s.quoteValidityDays),
     })
     .returning({ id: schema.quotes.id });
-  done();
+  await flashDone("Dupliziert");
   redirect(`/admin/offerten/${n.id}`);
 }
 
@@ -137,7 +137,7 @@ export async function duplicateInvoiceAction(id: number) {
       dueDate: addDaysIso(today, s.paymentTermDays),
     })
     .returning({ id: schema.invoices.id });
-  done();
+  await flashDone("Dupliziert");
   redirect(`/admin/rechnungen/${n.id}`);
 }
 
@@ -168,7 +168,7 @@ export async function creditNoteAction(invoiceId: number) {
     })
     .returning({ id: schema.invoices.id });
   await logActivity(`Gutschrift ${number} zu ${inv.number} erstellt`, { customerId: inv.customerId, projectId: inv.projectId });
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/rechnungen/${n.id}`);
 }
 
@@ -207,7 +207,7 @@ export async function saveSubscriptionAction(id: number | null, _: FormState, fd
       .update(schema.subscriptions)
       .set({ ...v, nextBillingDate: next })
       .where(eq(schema.subscriptions.id, id));
-    done();
+    await flashDone("Gespeichert");
     return { ok: true, message: "Gespeichert." };
   }
   next ??= firstBillingDate(v.startDate, v.firstYearIncluded);
@@ -216,7 +216,7 @@ export async function saveSubscriptionAction(id: number | null, _: FormState, fd
     .values({ ...v, nextBillingDate: next })
     .returning({ id: schema.subscriptions.id });
   await logActivity(`Abo «${v.title}» angelegt, erste Verrechnung ${next.split("-").reverse().join(".")}`, { customerId: v.customerId, projectId: v.projectId });
-  done();
+  await flashDone("Gespeichert");
   redirect(`/admin/abos/${sub.id}`);
 }
 
@@ -240,13 +240,13 @@ export async function setSubscriptionStatusAction(id: number, status: Subscripti
   if (status === "aktiv" && sub.status === "gekuendigt") patch.endDate = null;
   await db().update(schema.subscriptions).set(patch).where(eq(schema.subscriptions.id, id));
   await logActivity(`Abo «${sub.title}»: ${subscriptionStatusLabels[status]}`, { customerId: sub.customerId, projectId: sub.projectId });
-  done();
+  await flashDone("Aktualisiert");
 }
 
 export async function deleteSubscriptionAction(id: number) {
   await requireAdmin();
   await db().delete(schema.subscriptions).where(eq(schema.subscriptions.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/abos");
 }
 
@@ -254,7 +254,7 @@ export async function deleteSubscriptionAction(id: number) {
 export async function billDueSubscriptionsAction() {
   await requireAdmin();
   const ids = await billSubscriptions();
-  done();
+  await flashDone("Erstellt");
   if (ids.length === 1) redirect(`/admin/rechnungen/${ids[0]}`);
   redirect(`/admin/rechnungen?status=entwurf&abos=${ids.length}`);
 }
@@ -265,7 +265,7 @@ export async function billSubscriptionNowAction(id: number) {
   const [sub] = await db().select().from(schema.subscriptions).where(eq(schema.subscriptions.id, id));
   if (!sub || sub.status !== "aktiv") redirect(`/admin/abos/${id}`);
   const ids = await billSubscriptions({ ids: [id], horizon: sub.nextBillingDate });
-  done();
+  await flashDone("Erstellt");
   redirect(ids[0] ? `/admin/rechnungen/${ids[0]}` : `/admin/abos/${id}?fehler=ende`);
 }
 
@@ -276,7 +276,7 @@ export async function subscriptionsFromQuoteAction(quoteId: number, fd: FormData
   const start = String(fd.get("startDate") || todayIso());
   const n = await subscriptionsFromQuote(q, /^\d{4}-\d{2}-\d{2}$/.test(start) ? start : todayIso());
   if (n) await logActivity(`${n} Abo${n === 1 ? "" : "s"} aus Offerte ${q.number} angelegt`, { customerId: q.customerId, projectId: q.projectId });
-  done();
+  await flashDone("Erstellt");
   redirect(`/admin/abos?kunde=${q.customerId}`);
 }
 
@@ -306,18 +306,18 @@ export async function saveExpenseAction(id: number | null, _: FormState, fd: For
   }
   if (id) {
     await db().update(schema.expenses).set(v).where(eq(schema.expenses.id, id));
-    done();
+    await flashDone("Gespeichert");
     return { ok: true, message: "Gespeichert." };
   }
   await db().insert(schema.expenses).values(v);
-  done();
+  await flashDone("Gespeichert");
   return { ok: true, message: "Ausgabe erfasst." };
 }
 
 export async function deleteExpenseAction(id: number) {
   await requireAdmin();
   await db().delete(schema.expenses).where(eq(schema.expenses.id, id));
-  done();
+  await flashDone("Gelöscht");
   redirect("/admin/ausgaben");
 }
 
@@ -329,7 +329,7 @@ export async function duplicateExpenseAction(id: number) {
   void _id;
   void _c;
   const [n] = await db().insert(schema.expenses).values({ ...rest, date: todayIso() }).returning({ id: schema.expenses.id });
-  done();
+  await flashDone("Dupliziert");
   redirect(`/admin/ausgaben/${n.id}`);
 }
 
@@ -353,7 +353,7 @@ export async function saveProductAction(id: number | null, _: FormState, fd: For
   const v = { ...r.data, sortOrder: Math.round(r.data.sortOrder ?? 0) };
   if (id) await db().update(schema.products).set(v).where(eq(schema.products.id, id));
   else await db().insert(schema.products).values(v);
-  done();
+  await flashDone("Gespeichert");
   return { ok: true, message: id ? "Gespeichert." : "Leistung angelegt." };
 }
 
@@ -364,7 +364,7 @@ export async function deleteProductAction(id: number) {
   const tpls = await db().select().from(schema.projectTemplates);
   for (const t of tpls.filter((x) => x.productIds.includes(id)))
     await db().update(schema.projectTemplates).set({ productIds: t.productIds.filter((p) => p !== id) }).where(eq(schema.projectTemplates.id, t.id));
-  done();
+  await flashDone("Gelöscht");
 }
 
 export async function duplicateProductAction(id: number) {
@@ -376,7 +376,7 @@ export async function duplicateProductAction(id: number) {
     void _c;
     await db().insert(schema.products).values({ ...rest, name: `${p.name} (Kopie)` });
   }
-  done();
+  await flashDone("Dupliziert");
 }
 
 /* ───────────── Bulk helpers ───────────── */
@@ -389,5 +389,5 @@ export async function markInvoicesSentAction(ids: number[]) {
     .update(schema.invoices)
     .set({ status: "gesendet", sentAt: new Date() })
     .where(and(inArray(schema.invoices.id, ids), eq(schema.invoices.status, "entwurf")));
-  done();
+  await flashDone("Aktualisiert");
 }

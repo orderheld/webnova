@@ -79,7 +79,7 @@ export const websiteCheck: StandalonePage = {
             "Er ersetzt kein vollständiges SEO-Audit, keine rechtliche Prüfung und keinen Sicherheitstest. Wenn wir dabei auf grössere Baustellen stossen, etwa bei Datenschutz, Sicherheit oder Indexierung, sagen wir Ihnen das offen und erklären, welche vertiefte Prüfung sinnvoll wäre.",
           ],
           bullets: [
-            "Persönlich von Ferhat Demir, Inhaber von Webnova",
+            "Persönlich von Ferhat Demir, Ihrem Ansprechpartner",
             "Fokus auf die wichtigsten Hebel statt langer Fehlerlisten",
             "Auf Deutsch oder Französisch",
             "Kostenlos, unverbindlich und ohne Verkaufsdruck",
@@ -100,7 +100,7 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "Wer sieht sich meine Website an?",
-          a: "Ferhat Demir, Inhaber von Webnova, sieht sich Ihre Website persönlich an. Es gibt keinen automatisch erzeugten Bericht und keine Weitergabe an Dritte.",
+          a: "Ferhat Demir, Ihr Ansprechpartner bei Webnova, sieht sich Ihre Website persönlich an. Es gibt keinen automatisch erzeugten Bericht und keine Weitergabe an Dritte.",
         },
         {
           q: "Wie erhalte ich die Rückmeldung?",
@@ -203,7 +203,7 @@ export const websiteCheck: StandalonePage = {
             "Elle ne remplace ni un audit SEO complet, ni un examen juridique, ni un test de sécurité. Si nous découvrons des chantiers importants, par exemple en matière de protection des données, de sécurité ou d'indexation, nous vous le disons franchement et expliquons quel examen approfondi serait utile.",
           ],
           bullets: [
-            "Personnellement par Ferhat Demir, propriétaire de Webnova",
+            "Personnellement par Ferhat Demir, votre interlocuteur",
             "Les leviers essentiels plutôt que de longues listes d'erreurs",
             "En français ou en allemand",
             "Gratuit, sans engagement et sans pression commerciale",
@@ -224,7 +224,7 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "Qui examine mon site ?",
-          a: "Ferhat Demir, propriétaire de Webnova, examine votre site personnellement. Pas de rapport automatique, pas de transmission à des tiers.",
+          a: "Ferhat Demir, votre interlocuteur chez Webnova, examine votre site personnellement. Pas de rapport automatique, pas de transmission à des tiers.",
         },
         {
           q: "Comment est-ce que je reçois le retour ?",
