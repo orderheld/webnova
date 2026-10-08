@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #efeee8;
+  /* Kalk: warm off-white page background, white surfaces on top. */
+  --color-bg: #f4f1ec;
+  --color-bg-2: #ebe6de;
   --color-surface: #ffffff;
-  --color-ink: #0b0c0a;
-  --color-ink-soft: #2c2f28;
-  --color-muted: #686c63;
-  --color-line: #e6e6e0;
-  /* Brand lime from the Webnova logo. Use as a fill; on light surfaces use accent-ink for text. */
-  --color-accent: #d2ff28;
-  --color-accent-soft: #f0fcc8;
-  --color-accent-ink: #4b6600;
-  --color-night: #0b0c0a;
-  --color-night-2: #151713;
-  --color-success: #138a4b;
-  --color-warn: #b45309;
-  --color-danger: #c2261d;
+  --color-ink: #1c232b;
+  --color-ink-soft: #3a434d;
+  --color-muted: #646b73;
+  --color-line: #e2ddd4;
+  /* Brand Schieferblau. Fill with white text, or text on light backgrounds. */
+  --color-accent: #24405a;
+  --color-accent-soft: #e4e9ee;
+  --color-accent-ink: #24405a;
+  /* Light blue for accents on dark (night) sections. */
+  --color-accent-light: #b4c6d6;
+  /* Deep slate blue for the few dark sections; never black. */
+  --color-night: #1b2d3e;
+  --color-night-2: #22384c;
+  --color-success: #2f6b45;
+  --color-warn: #9a6a12;
+  --color-danger: #a12a2a;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -84,7 +89,7 @@
     @apply font-display;
   }
   ::selection {
-    @apply bg-accent text-night;
+    @apply bg-accent text-white;
   }
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-accent-ink;
@@ -103,24 +108,23 @@
 }
 
 @utility display {
-  @apply font-display font-bold tracking-[-0.04em] leading-[1.02];
+  @apply font-display font-semibold tracking-[-0.025em] leading-[1.06];
 }
 
 @utility h-section {
-  @apply font-display text-[clamp(2.2rem,4.8vw,3.9rem)] font-bold tracking-[-0.04em] leading-[1.03];
+  @apply font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold tracking-[-0.02em] leading-[1.12];
 }
 
-/* Section label: small caps with the lime brand dot, the one recurring accent across the site. */
+/* Section label: small caps after a short Schieferblau rule, the one recurring accent across the site. */
 @utility eyebrow {
-  @apply inline-flex items-center gap-2.5 text-[12.5px] font-semibold uppercase tracking-[0.16em] text-muted;
-  &::before { content: ""; @apply h-1.5 w-1.5 shrink-0 rounded-full bg-accent ring-[3px] ring-accent/25; }
+  @apply inline-flex items-center gap-3 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent;
+  &::before { content: ""; @apply h-px w-7 shrink-0 bg-current; }
 }
 
-/* Dark hero backdrop: one slow lime glow and a faint second light, no grids. */
+/* Dark section backdrop: one faint light from the top right. */
 @utility hero-dark-glow {
   background:
-    radial-gradient(45% 60% at 85% 10%, rgb(210 255 40 / 0.16), transparent 65%),
-    radial-gradient(40% 50% at 0% 100%, rgb(255 255 255 / 0.05), transparent 70%);
+    radial-gradient(60% 70% at 100% 0%, rgb(255 255 255 / 0.06), transparent 70%);
 }
 
 /* Scroll-linked word reveal for big statements: words go from faint to full as they scroll into view. */
@@ -149,11 +153,10 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Calm page-hero backdrop: a faint lime-to-grey wash in the top right corner. */
+/* Calm page-hero backdrop: a faint blue wash in the top right corner. */
 @utility hero-glow {
   background:
-    radial-gradient(60% 70% at 100% 0%, rgb(210 255 40 / 0.16), transparent 60%),
-    radial-gradient(50% 60% at 85% 20%, rgb(11 12 10 / 0.035), transparent 70%);
+    radial-gradient(60% 70% at 100% 0%, rgb(36 64 90 / 0.06), transparent 60%);
 }
 
 /* Hero mock-up: elements build in one after another; set the delay per element with [--d:…]. */
@@ -164,7 +167,7 @@
 
 /* Soft card shadow used for floating UI elements and photos. */
 @utility shadow-soft {
-  box-shadow: 0 1px 2px rgb(11 12 10 / 0.04), 0 24px 48px -24px rgb(11 12 10 / 0.18);
+  box-shadow: 0 1px 2px rgb(27 45 62 / 0.05), 0 24px 48px -24px rgb(27 45 62 / 0.22);
 }
 
 /* Lime marker highlight for words on light backgrounds. */
@@ -200,15 +203,15 @@
 
 @utility prose-wn {
   @apply text-[17px] leading-[1.75] text-ink-soft;
-  & h2 { @apply mt-14 mb-4 font-display text-[clamp(1.6rem,2.8vw,2.2rem)] font-bold tracking-[-0.03em] leading-tight text-ink; }
+  & h2 { @apply mt-14 mb-4 font-display text-[clamp(1.6rem,2.8vw,2.1rem)] font-semibold tracking-[-0.02em] leading-tight text-ink; }
   & p { @apply my-4; }
   & ul { @apply my-5 space-y-2.5; }
   & li { @apply relative pl-7; }
-  & li::before { content: ""; @apply absolute left-1 top-[0.62em] h-1.5 w-1.5 rounded-full bg-ink; }
+  & li::before { content: ""; @apply absolute left-1 top-[0.62em] h-1.5 w-1.5 rounded-full bg-accent; }
 }
 
 @utility input {
-  @apply w-full rounded-2xl border border-line bg-bg/60 px-4 py-3.5 text-[16px] text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-ink focus:bg-white;
+  @apply w-full rounded-2xl border border-line bg-bg/60 px-4 py-3.5 text-[16px] text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-accent focus:bg-white;
 }
 
 @media (prefers-reduced-motion: reduce) {

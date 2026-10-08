@@ -22,10 +22,12 @@ export interface Reference {
   image?: string;
   /** Brand colours for the typographic card and accents. */
   colors: { bg: string; fg: string; accent: string };
+  /** Hidden projects keep their content but appear nowhere on the site. */
+  hidden?: boolean;
   content: Localized<ReferenceContent>;
 }
 
-export const references: Reference[] = [
+const allReferences: Reference[] = [
   {
     key: "orderheld",
     name: "orderheld",
@@ -76,6 +78,7 @@ export const references: Reference[] = [
   {
     key: "ava-catering",
     name: "AVA Catering",
+    hidden: true,
     domain: "avacatering.ch",
     image: "/referenzen/ava-catering.jpg",
     colors: { bg: "#fbf7f0", fg: "#4a5822", accent: "#e8650a" },
@@ -124,36 +127,92 @@ export const references: Reference[] = [
     key: "gyan-hair-salon",
     name: "GYAN Hair Salon",
     domain: "gyanhairsalon.ch",
-    colors: { bg: "#151515", fg: "#f3eee6", accent: "#c9a46a" },
+    image: "/referenzen/gyan-hair-salon.jpg",
+    colors: { bg: "#f7f3ec", fg: "#2b2722", accent: "#8a6f4e" },
     content: {
       de: {
-        industry: "Coiffeursalon",
-        summary: "Moderner Webauftritt für einen Coiffeursalon: Leistungen, Stimmung und Kontakt auf einen Blick, optimiert fürs Smartphone.",
-        scope: ["Webdesign", "Mobile first", "Lokale Sichtbarkeit"],
+        industry: "Herren-Coiffeur & Barbier",
+        place: "Biel/Bienne",
+        summary:
+          "Dreisprachiger Webauftritt mit eigener Online-Terminbuchung für einen Herren-Coiffeur in Biel: freie Termine sind sofort bestätigt, Erinnerungen gehen automatisch raus.",
+        scope: ["Webdesign DE/FR/EN", "Online-Terminbuchung", "Admin & E-Mails", "Lokale SEO Biel und Umgebung"],
         challenge:
-          "Ein Coiffeursalon lebt von Atmosphäre und Vertrauen. Neue Kundinnen und Kunden wollen vor dem ersten Termin sehen, was sie erwartet, und den Salon schnell erreichen, meistens vom Smartphone aus.",
+          "Ein Salon lebt von Atmosphäre und vollen Terminbüchern. Termine kamen bisher per Telefon und Nachricht, oft während der Arbeit am Kunden. In Biel kommt dazu: Die Kundschaft spricht Deutsch, Französisch und Englisch.",
         solution: [
-          "Wir haben einen ruhigen, hochwertigen Auftritt gestaltet, der die Stimmung des Salons transportiert. Leistungen, Öffnungszeiten und Kontakt sind mit wenigen Klicks erreichbar, und die Seite ist für lokale Suchen vorbereitet.",
+          "Wir haben einen hellen, ruhigen Auftritt in Weiss und Beige gestaltet, mit echten Bildern aus dem Salon. Leistungen haben eigene Seiten, die Startseite zeigt live, ob der Salon offen ist und wann der nächste freie Termin ist.",
+          "Herzstück ist die eigene Online-Buchung: Kundinnen und Kunden wählen Leistung und Zeit, der Termin ist sofort bestätigt, Doppelbuchungen sind ausgeschlossen. Bestätigung mit Kalendereintrag, Erinnerung und Feedback-Mail laufen automatisch in der Sprache des Kunden. Im Admin pflegt der Salon Termine, Leistungen, Zeiten und Buchungsregeln selbst.",
         ],
         highlights: [
-          { title: "Stimmungsvolles Design", text: "Dunkle Töne und warme Akzente, passend zum Salon." },
-          { title: "Mobil optimiert", text: "Alles Wichtige auf einen Blick, Anrufen mit einem Tipp." },
-          { title: "Lokal auffindbar", text: "Saubere Struktur und Angaben für die Suche in der Region." },
+          { title: "Online-Buchung", text: "Freie Termine direkt aus Öffnungszeiten und Buchungen, sofort bestätigt, mit Puffer und Storno-Frist." },
+          { title: "Drei Sprachen", text: "Deutsch, Französisch und Englisch mit eigenen Adressen, Buchung und E-Mails inklusive." },
+          { title: "Automatische E-Mails", text: "Bestätigung, Erinnerung, Feedback mit Google-Bewertung und Absage, jeweils mit eigener Vorlage." },
+          { title: "Lokal gefunden", text: "Themenseiten und Ortsseiten für Biel und die Gemeinden rundherum, sauber untereinander verlinkt." },
         ],
       },
       fr: {
-        industry: "Salon de coiffure",
-        summary: "Site moderne pour un salon de coiffure : prestations, ambiance et contact en un coup d'œil, optimisé pour le smartphone.",
-        scope: ["Webdesign", "Mobile first", "Visibilité locale"],
+        industry: "Coiffeur hommes & barbier",
+        place: "Bienne",
+        summary:
+          "Site trilingue avec réservation en ligne pour un coiffeur hommes à Bienne : les créneaux libres sont confirmés immédiatement, les rappels partent automatiquement.",
+        scope: ["Webdesign DE/FR/EN", "Réservation en ligne", "Admin & e-mails", "SEO local Bienne et environs"],
         challenge:
-          "Un salon de coiffure vit de son ambiance et de la confiance. Avant un premier rendez-vous, les nouveaux clients veulent voir ce qui les attend et joindre le salon rapidement, le plus souvent depuis leur smartphone.",
+          "Un salon vit de son ambiance et d'un agenda bien rempli. Les rendez-vous arrivaient par téléphone et message, souvent pendant le travail sur un client. À Bienne s'ajoute la clientèle germanophone, francophone et anglophone.",
         solution: [
-          "Nous avons créé une présence calme et soignée qui transmet l'ambiance du salon. Prestations, horaires et contact sont accessibles en quelques clics, et le site est préparé pour les recherches locales.",
+          "Nous avons créé une présence claire et calme en blanc et beige, avec de vraies photos du salon. Chaque prestation a sa page, la page d'accueil indique en direct si le salon est ouvert et quel est le prochain créneau libre.",
+          "Au cœur du projet : la réservation en ligne. Les clients choisissent prestation et horaire, le rendez-vous est confirmé immédiatement et les doubles réservations sont exclues. Confirmation avec entrée d'agenda, rappel et e-mail de feedback partent automatiquement dans la langue du client. Dans l'admin, le salon gère lui-même rendez-vous, prestations, horaires et règles de réservation.",
         ],
         highlights: [
-          { title: "Design d'ambiance", text: "Tons sombres et touches chaudes, à l'image du salon." },
-          { title: "Optimisé mobile", text: "L'essentiel en un coup d'œil, appel en un geste." },
-          { title: "Visible localement", text: "Structure soignée et informations utiles pour la recherche dans la région." },
+          { title: "Réservation en ligne", text: "Créneaux libres calculés à partir des horaires et réservations, confirmés immédiatement." },
+          { title: "Trois langues", text: "Allemand, français et anglais avec leurs propres adresses, réservation et e-mails compris." },
+          { title: "E-mails automatiques", text: "Confirmation, rappel, feedback avec avis Google et annulation, chacun avec son modèle." },
+          { title: "Trouvé localement", text: "Pages thématiques et pages par commune pour Bienne et les environs, bien reliées entre elles." },
+        ],
+      },
+    },
+  },
+  {
+    key: "dersut-kaffee",
+    name: "Dersut Kaffee Schweiz",
+    domain: "dersutkaffee.ch",
+    image: "/referenzen/dersut-kaffee.jpg",
+    colors: { bg: "#002856", fg: "#ffffff", accent: "#82754f" },
+    content: {
+      de: {
+        industry: "Onlineshop für italienischen Espresso",
+        place: "Basel",
+        summary:
+          "Webseite und Onlineshop für den offiziellen Schweizer Vertrieb von Dersut Caffè: Espresso aus Conegliano bestellen, per Vorauskasse mit Swiss QR-Rechnung bezahlen, Versand in die ganze Schweiz.",
+        scope: ["Webdesign & Onlineshop", "Vorauskasse mit QR-Rechnung", "Admin für Bestellungen & Lager", "Gastro-Angebote & Regionalseiten"],
+        challenge:
+          "Die Dersut Kaffee GmbH hat den Schweizer Vertrieb einer traditionsreichen italienischen Rösterei übernommen. Gefragt war ein Auftritt, der die Marke seit 1947 würdig zeigt, und ein Shop, der ohne Kartenzahlung und ohne grossen Aufwand im Alltag funktioniert.",
+        solution: [
+          "Wir haben die Markenwelt von Dersut mit Blu Dersut, Gold und klassischer Typografie in einen ruhigen, hochwertigen Auftritt übersetzt: Geschichte, Qualität und Röstung, Zertifizierungen, Nachhaltigkeit und ein eigenes Angebot für Gastronomie, Hotellerie und Büros.",
+          "Der Shop rechnet in Franken inklusive MWST, bezahlt wird per Vorauskasse: Nach der Bestellung erhalten Kundinnen und Kunden Bestellnummer, IBAN und Swiss QR-Code auf der Bestätigungsseite und per E-Mail. Im Admin markiert Dersut Bestellungen als bezahlt oder versendet, erfasst die Post-Sendungsnummer, pflegt Produkte und Lager und exportiert alles als CSV.",
+        ],
+        highlights: [
+          { title: "Vorauskasse mit QR", text: "Bestellnummer, IBAN und Swiss QR-Code direkt nach dem Kauf, ganz ohne Kartenanbieter." },
+          { title: "Bestell-Admin", text: "Bezahlt, versendet mit Sendungsnummer oder storniert, mit automatischer Kunden-E-Mail." },
+          { title: "Produkte & Lager", text: "Sortiment, Bilder und Bestand selbst pflegen, Sammelaktionen und CSV-Export inklusive." },
+          { title: "Gastro & Regionen", text: "Eigene Seiten für Geschäftskunden und für Regionen in der ganzen Schweiz." },
+        ],
+      },
+      fr: {
+        industry: "Boutique en ligne d'espresso italien",
+        place: "Bâle",
+        summary:
+          "Site et boutique en ligne du distributeur officiel de Dersut Caffè en Suisse : commander l'espresso de Conegliano, payer d'avance avec la facture QR suisse, livraison dans toute la Suisse.",
+        scope: ["Webdesign & boutique", "Paiement anticipé avec QR", "Admin commandes & stock", "Offres gastro & pages régionales"],
+        challenge:
+          "Dersut Kaffee GmbH a repris la distribution suisse d'une torréfaction italienne de tradition. Il fallait une présence à la hauteur d'une marque fondée en 1947 et une boutique qui fonctionne au quotidien, sans paiement par carte ni charge administrative.",
+        solution: [
+          "Nous avons traduit l'univers Dersut, avec le Blu Dersut, l'or et une typographie classique, en une présence calme et haut de gamme : histoire, qualité et torréfaction, certifications, durabilité et une offre dédiée à la restauration, l'hôtellerie et aux bureaux.",
+          "La boutique calcule en francs TVA comprise, le paiement se fait d'avance : après la commande, le client reçoit numéro de commande, IBAN et code QR suisse sur la page de confirmation et par e-mail. Dans l'admin, Dersut marque les commandes comme payées ou expédiées, saisit le numéro de suivi, gère produits et stock et exporte le tout en CSV.",
+        ],
+        highlights: [
+          { title: "Paiement anticipé QR", text: "Numéro de commande, IBAN et code QR suisse juste après l'achat, sans prestataire de carte." },
+          { title: "Admin des commandes", text: "Payée, expédiée avec numéro de suivi ou annulée, avec e-mail automatique au client." },
+          { title: "Produits & stock", text: "Gérer assortiment, images et stock, actions groupées et export CSV compris." },
+          { title: "Gastro & régions", text: "Pages dédiées aux clients professionnels et aux régions de toute la Suisse." },
         ],
       },
     },
@@ -161,6 +220,7 @@ export const references: Reference[] = [
   {
     key: "ss-express",
     name: "SS Express",
+    hidden: true,
     domain: "ssexpress.ch",
     colors: { bg: "#0f2a4a", fg: "#ffffff", accent: "#ffb400" },
     content: {
@@ -197,3 +257,6 @@ export const references: Reference[] = [
     },
   },
 ];
+
+/** Projects shown on the site: orderheld, GYAN and Dersut. Hidden ones stay in the file for later. */
+export const references: Reference[] = allReferences.filter((r) => !r.hidden);

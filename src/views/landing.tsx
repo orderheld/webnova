@@ -137,7 +137,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
             <ul className="mt-8 space-y-3">
               {c.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-[16px]">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-night text-white">
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-white">
                     <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2.6} />
                   </span>
                   {b}
@@ -163,7 +163,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       </section>
 
       <section className="border-y border-line bg-bg">
-        <div className="container-x flex flex-wrap justify-center gap-x-10 gap-y-3 py-5 text-[15px] font-semibold text-night">
+        <div className="container-x flex flex-wrap justify-center gap-x-10 gap-y-3 py-5 text-[15px] font-semibold text-accent">
           {d.lp.trust.map((t) => (
             <span key={t} className="flex items-center gap-2">
               <Icon name="check" className="h-4 w-4" strokeWidth={2.6} /> {t}
@@ -176,11 +176,11 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         <h2 className="h-section reveal mb-12">{c.benefitsTitle}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.benefits.map((b) => (
-            <div key={b.title} className="reveal group rounded-[24px] border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-night">
+            <div key={b.title} className="reveal group rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
               <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
                 <Icon name={b.icon} />
               </span>
-              <h3 className="text-[20px] font-bold tracking-tight">{b.title}</h3>
+              <h3 className="text-[20px] font-semibold tracking-tight">{b.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-muted">{b.text}</p>
             </div>
           ))}
@@ -192,7 +192,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       <section className="container-x pb-24 text-center">
         <a
           href="#formular"
-          className="inline-flex items-center gap-2 rounded-full bg-night px-8 py-4 text-[16px] font-semibold text-white transition-colors hover:bg-ink-soft"
+          className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
         >
           {d.nav.cta} <Icon name="arrow" className="h-4 w-4" />
         </a>

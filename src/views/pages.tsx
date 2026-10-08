@@ -27,11 +27,11 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <Prose sections={d.pages.aboutSections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 rounded-[28px] border border-line bg-surface p-8">
+          <div className="sticky top-28 rounded-3xl border border-line bg-surface p-8">
             <ul className="space-y-5 text-[16px]">
               {d.home.why.map((w) => (
                 <li key={w.title} className="flex gap-3">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-night text-white">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-white">
                     <Icon name="check" className="h-3 w-3" strokeWidth={3} />
                   </span>
                   <span>{w.title}</span>
@@ -60,7 +60,7 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references }]}
       >
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
         </div>
       </PageHero>
       <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
@@ -100,13 +100,13 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
         crumbs={[crumbs[0], crumbs[1], { name: r.name }]}
       />
       <section className="container-x relative z-10 -mt-10">
-        <div className="overflow-hidden rounded-[28px] border border-line bg-bg p-3 pb-0 sm:p-5 sm:pb-0">
+        <div className="overflow-hidden rounded-3xl border border-line bg-bg p-3 pb-0 sm:p-5 sm:pb-0">
           <div className="overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface">
             <div className="flex items-center gap-1.5 px-3.5 py-2.5">
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
-              <span className="ml-2 truncate rounded-full bg-bg px-3 py-0.5 font-mono text-[11px] text-muted">{r.domain}</span>
+              <span className="ml-2 truncate rounded-full bg-bg px-3 py-0.5 text-[11px] text-muted">{r.domain}</span>
             </div>
             <div className="relative aspect-[16/8]">
               {r.image ? (
@@ -114,7 +114,7 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center" style={{ background: r.colors.bg, color: r.colors.fg }}>
                   <span className="h-1 w-12 rounded-full" style={{ background: r.colors.accent }} />
-                  <span className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-none tracking-[-0.04em]">{r.name}</span>
+                  <span className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-semibold leading-none tracking-[-0.04em]">{r.name}</span>
                   <span className="text-[13px] uppercase tracking-[0.25em] opacity-60">{c.industry}</span>
                 </div>
               )}
@@ -139,12 +139,12 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
           </div>
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 rounded-[24px] border border-line bg-surface p-8">
+          <div className="sticky top-28 rounded-2xl border border-line bg-surface p-8">
             <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{t.scope}</p>
             <ul className="mt-4 space-y-3">
               {c.scope.map((s) => (
                 <li key={s} className="flex items-start gap-3 text-[15px]">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-night text-white">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-white">
                     <Icon name="check" className="h-3 w-3" strokeWidth={3} />
                   </span>
                   {s}
@@ -215,18 +215,18 @@ export function ContactPage({ locale }: { locale: Locale }) {
             <a
               key={c.label}
               href={c.href}
-              className="group flex items-center gap-5 rounded-[24px] border border-line bg-surface p-6 transition-all hover:border-ink/30"
+              className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-6 transition-all hover:border-ink/30"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors group-hover:bg-night group-hover:text-white">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors group-hover:bg-accent group-hover:text-white">
                 <Icon name={c.icon} />
               </span>
               <span>
                 <span className="block text-[13px] text-muted">{c.label}</span>
-                <span className="block font-display text-[19px] font-bold tracking-tight">{c.value}</span>
+                <span className="block font-display text-[19px] font-semibold tracking-tight">{c.value}</span>
               </span>
             </a>
           ))}
-          <div className="rounded-[24px] border border-line bg-surface p-6 ">
+          <div className="rounded-2xl border border-line bg-surface p-6 ">
             <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
             <p className="mt-3 text-[18px] leading-snug">
               Webnova
@@ -293,7 +293,7 @@ export function RequestPage({ locale }: { locale: Locale }) {
           <ul className="mt-10 space-y-4 text-[15px] text-ink-soft">
             {d.lp.trust.map((t) => (
               <li key={t} className="flex items-center gap-3">
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-night text-white">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-white">
                   <Icon name="check" className="h-4 w-4" strokeWidth={2.6} />
                 </span>
                 {t}
@@ -322,7 +322,7 @@ export function ThanksPage({ locale }: { locale: Locale }) {
   return (
     <section className="relative isolate overflow-hidden border-b border-line bg-surface">
       <div className="container-x flex min-h-[70vh] flex-col items-start justify-center py-24">
-        <span className="relative mb-8 grid h-20 w-20 animate-pop place-items-center rounded-full bg-night text-white">
+        <span className="relative mb-8 grid h-20 w-20 animate-pop place-items-center rounded-full bg-accent text-white">
           <Icon name="check" className="relative h-9 w-9" strokeWidth={2.6} />
         </span>
         <h1 className="display max-w-3xl animate-rise text-[clamp(2.4rem,6vw,4.8rem)]">{d.thanks.title}</h1>
