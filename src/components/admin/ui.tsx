@@ -275,3 +275,37 @@ export function qs(base: string, params: Record<string, string | undefined | nul
   const s = u.toString();
   return s ? `${base}?${s}` : base;
 }
+
+export const PAGE_SIZE = 50;
+
+/** Page number from ?seite=, 1-based. */
+export const pageParam = (raw?: string) => Math.max(1, Math.min(10_000, Number.parseInt(raw ?? "1", 10) || 1));
+
+/** Previous / next links below long lists; renders nothing for a single page. */
+export function Pager({ page, total, href, size = PAGE_SIZE }: { page: number; total: number; href: (page: number) => string; size?: number }) {
+  const pages = Math.max(1, Math.ceil(total / size));
+  if (pages <= 1) return null;
+  const link = "rounded-full border border-line bg-surface px-3 py-1.5 text-[13px] hover:border-accent hover:text-accent";
+  return (
+    <nav className="mt-4 flex items-center justify-between gap-3 text-[13px] text-muted" aria-label="Seiten">
+      <span className="tabular-nums">
+        {(page - 1) * size + 1} bis {Math.min(total, page * size)} von {total}
+      </span>
+      <span className="flex gap-2">
+        {page > 1 ? (
+          <Link href={href(page - 1)} className={link}>
+            Zurück
+          </Link>
+        ) : null}
+        <span className="px-1 py-1.5 tabular-nums">
+          Seite {page} von {pages}
+        </span>
+        {page < pages ? (
+          <Link href={href(page + 1)} className={link}>
+            Weiter
+          </Link>
+        ) : null}
+      </span>
+    </nav>
+  );
+}

@@ -110,7 +110,7 @@ export function DocumentEditor({
     });
   }
 
-  const grid = "md:grid-cols-[1fr_76px_100px_104px_70px_100px_76px]";
+  const grid = "md:grid-cols-[1fr_68px_116px_100px_68px_96px_76px]";
 
   return (
     <div className="space-y-5">

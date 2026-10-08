@@ -15,24 +15,27 @@ export default async function PipelinePage({ searchParams }: { searchParams: Pro
   const today = todayIso();
   const since = addDaysIso(today, -90);
   // closed deals only from the last 90 days, unless "alle"
-  const rows = await db()
-    .select()
-    .from(l)
-    .where(alle ? undefined : or(notInArray(l.status, ["gewonnen", "verloren"]), gte(l.updatedAt, new Date(`${since}T00:00:00Z`))))
-    .orderBy(sql`${l.followUpAt} asc nulls last`, desc(l.createdAt))
-    .limit(600);
-  const due = await db()
-    .select()
-    .from(l)
-    .where(and(lte(l.followUpAt, today), notInArray(l.status, ["gewonnen", "verloren"])))
-    .orderBy(l.followUpAt)
-    .limit(20);
+  const [rows, due, [{ n: inOfferCount }]] = await Promise.all([
+    db()
+      .select()
+      .from(l)
+      .where(alle ? undefined : or(notInArray(l.status, ["gewonnen", "verloren"]), gte(l.updatedAt, new Date(`${since}T00:00:00Z`))))
+      .orderBy(sql`${l.followUpAt} asc nulls last`, desc(l.createdAt))
+      .limit(600),
+    db()
+      .select()
+      .from(l)
+      .where(and(lte(l.followUpAt, today), notInArray(l.status, ["gewonnen", "verloren"])))
+      .orderBy(l.followUpAt)
+      .limit(20),
+    db().select({ n: sql<number>`count(*)::int` }).from(l).where(inArray(l.status, ["offerte"])),
+  ]);
   const open = rows.filter((r) => !["gewonnen", "verloren"].includes(r.status));
   const pipelineValue = open.reduce((a, r) => a + (r.value ?? 0), 0);
   const won = rows.filter((r) => r.status === "gewonnen");
   const lost = rows.filter((r) => r.status === "verloren");
   const rate = won.length + lost.length > 0 ? Math.round((won.length / (won.length + lost.length)) * 100) : null;
-  const inOffer = await db().select({ n: sql<number>`count(*)::int` }).from(l).where(inArray(l.status, ["offerte"]));
+  const inOffer = [{ n: inOfferCount }];
 
   return (
     <>

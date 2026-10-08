@@ -51,7 +51,13 @@ export const leads = pgTable("leads", {
   value: numeric("value", { precision: 12, scale: 2, mode: "number" }),
   followUpAt: date("follow_up_at", { mode: "string" }),
   lostReason: text("lost_reason"),
-});
+},
+  (t) => [
+    index("leads_status_idx").on(t.status),
+    index("leads_customer_idx").on(t.customerId),
+    index("leads_follow_up_idx").on(t.followUpAt),
+  ],
+);
 
 export const customers = pgTable("customers", {
   id: serial("id").primaryKey(),
@@ -123,7 +129,14 @@ export const quotes = pgTable("quotes", {
   leadId: integer("lead_id").references(() => leads.id, { onDelete: "set null" }),
   projectId: integer("project_id").references((): AnyPgColumn => projects.id, { onDelete: "set null" }),
   notes: text("notes"),
-});
+},
+  (t) => [
+    index("quotes_customer_idx").on(t.customerId),
+    index("quotes_lead_idx").on(t.leadId),
+    index("quotes_project_idx").on(t.projectId),
+    index("quotes_issue_date_idx").on(t.issueDate),
+  ],
+);
 
 /** "gesendet" is shown as "Offen"; "überfällig" is derived from the due date. */
 export const invoiceStatuses = ["entwurf", "gesendet", "teilbezahlt", "bezahlt", "storniert"] as const;
@@ -158,7 +171,16 @@ export const invoices = pgTable("invoices", {
   paidAmount: numeric("paid_amount", { precision: 12, scale: 2, mode: "number" }).notNull().default(0),
   reminderLevel: integer("reminder_level").notNull().default(0),
   notes: text("notes"),
-});
+},
+  (t) => [
+    index("invoices_customer_idx").on(t.customerId),
+    index("invoices_quote_idx").on(t.quoteId),
+    index("invoices_project_idx").on(t.projectId),
+    index("invoices_credit_for_idx").on(t.creditForId),
+    index("invoices_status_due_idx").on(t.status, t.dueDate),
+    index("invoices_issue_date_idx").on(t.issueDate),
+  ],
+);
 
 export const payments = pgTable(
   "payments",
@@ -206,7 +228,12 @@ export const estimates = pgTable("estimates", {
   data: jsonb("data").$type<EstimateData>().notNull(),
   totalHours: numeric("total_hours", { precision: 8, scale: 2, mode: "number" }).notNull().default(0),
   total: numeric("total", { precision: 12, scale: 2, mode: "number" }).notNull().default(0),
-});
+},
+  (t) => [
+    index("estimates_customer_idx").on(t.customerId),
+    index("estimates_lead_idx").on(t.leadId),
+  ],
+);
 
 export const settings = pgTable("settings", {
   key: text("key").primaryKey(),
@@ -252,7 +279,7 @@ export const activities = pgTable(
   (t) => [
     index("activities_lead_idx").on(t.leadId),
     index("activities_customer_idx").on(t.customerId),
-    index("activities_project_idx").on(t.projectId),
+    index("activities_project_idx").on(t.projectId),index("activities_occurred_idx").on(t.occurredAt),
   ],
 );
 
@@ -302,7 +329,14 @@ export const projects = pgTable("projects", {
   description: text("description"),
   notes: text("notes"),
   links: jsonb("links").$type<ProjectLink[]>().notNull().default([]),
-});
+},
+  (t) => [
+    index("projects_customer_idx").on(t.customerId),
+    index("projects_status_idx").on(t.status),
+    index("projects_quote_idx").on(t.quoteId),
+    index("projects_lead_idx").on(t.leadId),
+  ],
+);
 
 export const projectTasks = pgTable(
   "project_tasks",
@@ -320,7 +354,7 @@ export const projectTasks = pgTable(
     doneAt: timestamp("done_at", { withTimezone: true }),
     sortOrder: integer("sort_order").notNull().default(0),
   },
-  (t) => [index("project_tasks_project_idx").on(t.projectId)],
+  (t) => [index("project_tasks_project_idx").on(t.projectId), index("project_tasks_open_idx").on(t.done, t.dueDate)],
 );
 
 export const timeEntries = pgTable(
@@ -338,7 +372,7 @@ export const timeEntries = pgTable(
     billable: boolean("billable").notNull().default(true),
     invoiceId: integer("invoice_id").references(() => invoices.id, { onDelete: "set null" }),
   },
-  (t) => [index("time_entries_project_idx").on(t.projectId)],
+  (t) => [index("time_entries_project_idx").on(t.projectId), index("time_entries_invoice_idx").on(t.invoiceId), index("time_entries_date_idx").on(t.date)],
 );
 
 export interface TemplateTask {
@@ -390,7 +424,7 @@ export const subscriptions = pgTable(
     lastInvoiceId: integer("last_invoice_id").references(() => invoices.id, { onDelete: "set null" }),
     notes: text("notes"),
   },
-  (t) => [index("subscriptions_customer_idx").on(t.customerId), index("subscriptions_next_idx").on(t.nextBillingDate)],
+  (t) => [index("subscriptions_customer_idx").on(t.customerId), index("subscriptions_next_idx").on(t.nextBillingDate), index("subscriptions_project_idx").on(t.projectId), index("subscriptions_quote_idx").on(t.quoteId), index("subscriptions_last_invoice_idx").on(t.lastInvoiceId)],
 );
 
 /* ───────────── Expenses (Ausgaben) ───────────── */
@@ -413,7 +447,7 @@ export const expenses = pgTable(
     receiptUrl: text("receipt_url"),
     notes: text("notes"),
   },
-  (t) => [index("expenses_date_idx").on(t.date)],
+  (t) => [index("expenses_date_idx").on(t.date), index("expenses_customer_idx").on(t.customerId), index("expenses_project_idx").on(t.projectId)],
 );
 
 export type Lead = typeof leads.$inferSelect;

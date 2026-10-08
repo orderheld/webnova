@@ -24,21 +24,23 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
   const next = new Date(Date.UTC(y, m, 1)).toISOString().slice(0, 7);
   const e = schema.timeEntries;
   const projectId = Number(sp.projekt) || null;
-  const rows = await db()
-    .select({ e, p: schema.projects, c: schema.customers })
-    .from(e)
-    .innerJoin(schema.projects, eq(schema.projects.id, e.projectId))
-    .innerJoin(schema.customers, eq(schema.customers.id, schema.projects.customerId))
-    .where(
-      and(
-        sp.status === "offen" ? undefined : and(gte(e.date, from), lte(e.date, to)),
-        sp.status === "offen" ? and(eq(e.billable, true), isNull(e.invoiceId)) : sp.status === "verrechnet" ? isNotNull(e.invoiceId) : undefined,
-        projectId ? eq(e.projectId, projectId) : undefined,
-      ),
-    )
-    .orderBy(desc(e.date), desc(e.id))
-    .limit(1000);
-  const projects = await projectOptions();
+  const [rows, projects] = await Promise.all([
+    db()
+      .select({ e, p: schema.projects, c: schema.customers })
+      .from(e)
+      .innerJoin(schema.projects, eq(schema.projects.id, e.projectId))
+      .innerJoin(schema.customers, eq(schema.customers.id, schema.projects.customerId))
+      .where(
+        and(
+          sp.status === "offen" ? undefined : and(gte(e.date, from), lte(e.date, to)),
+          sp.status === "offen" ? and(eq(e.billable, true), isNull(e.invoiceId)) : sp.status === "verrechnet" ? isNotNull(e.invoiceId) : undefined,
+          projectId ? eq(e.projectId, projectId) : undefined,
+        ),
+      )
+      .orderBy(desc(e.date), desc(e.id))
+      .limit(1000),
+    projectOptions(),
+  ]);
   const hours = rows.reduce((a, r) => a + r.e.hours, 0);
   const billable = rows.filter((r) => r.e.billable).reduce((a, r) => a + r.e.hours, 0);
   const value = rows.filter((r) => r.e.billable).reduce((a, r) => a + r.e.hours * r.e.rate, 0);

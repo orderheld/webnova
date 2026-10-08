@@ -32,19 +32,21 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
   };
   const sortKey = sp.sort && sortCols[sp.sort] ? sp.sort : "aktualisiert";
   const dir = sp.dir === "asc" ? "asc" : sp.dir === "desc" ? "desc" : sortKey === "aktualisiert" ? "desc" : "asc";
-  const rows = await db()
-    .select({ p, c, tasksTotal, tasksDone, nextTask, hours, unbilled })
-    .from(p)
-    .innerJoin(c, eq(c.id, p.customerId))
-    .where(
-      and(
-        status === "alle" ? undefined : status ? eq(p.status, status) : ne(p.status, "abgeschlossen"),
-        term ? or(ilike(p.name, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
-      ),
-    )
-    .orderBy(dir === "asc" ? sql`${sortCols[sortKey]} asc nulls last` : sql`${sortCols[sortKey]} desc nulls last`)
-    .limit(500);
-  const counts = await db().select({ s: p.status, n: sql<number>`count(*)::int` }).from(p).groupBy(p.status);
+  const [rows, counts] = await Promise.all([
+    db()
+      .select({ p, c, tasksTotal, tasksDone, nextTask, hours, unbilled })
+      .from(p)
+      .innerJoin(c, eq(c.id, p.customerId))
+      .where(
+        and(
+          status === "alle" ? undefined : status ? eq(p.status, status) : ne(p.status, "abgeschlossen"),
+          term ? or(ilike(p.name, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
+        ),
+      )
+      .orderBy(dir === "asc" ? sql`${sortCols[sortKey]} asc nulls last` : sql`${sortCols[sortKey]} desc nulls last`)
+      .limit(500),
+    db().select({ s: p.status, n: sql<number>`count(*)::int` }).from(p).groupBy(p.status),
+  ]);
   const n = (s: string) => counts.find((x) => x.s === s)?.n ?? 0;
   const today = todayIso();
   const base = "/admin/projekte";

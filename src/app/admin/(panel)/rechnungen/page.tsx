@@ -2,7 +2,7 @@ import { and, eq, ilike, inArray, lt, or, sql } from "drizzle-orm";
 import { DocTable } from "@/components/admin/doc-table";
 import { Icon } from "@/components/admin/icons";
 import { invoiceDisplayStatus } from "@/components/admin/lists";
-import { FilterChips, LinkButton, Notice, PageHeader, Stat, btn, qs } from "@/components/admin/ui";
+import { FilterChips, LinkButton, Notice, PAGE_SIZE, PageHeader, Pager, Stat, btn, pageParam, qs } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { invoiceStatuses } from "@/db/schema";
 import { dueSubscriptions, openAmount } from "@/lib/admin/billing";
@@ -12,7 +12,7 @@ import { chf, todayIso } from "@/lib/admin/money";
 
 export const metadata = { title: "Rechnungen" };
 
-type SP = { status?: string; q?: string; sort?: string; dir?: string; art?: string; jahr?: string; abos?: string };
+type SP = { status?: string; q?: string; sort?: string; dir?: string; art?: string; jahr?: string; abos?: string; seite?: string };
 
 export default async function InvoicesPage({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
@@ -40,28 +40,53 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
         : status
           ? eq(i.status, status as (typeof invoiceStatuses)[number])
           : undefined;
-  const [rows, all, due] = await Promise.all([
+  const page = pageParam(sp.seite);
+  const where = and(
+    eq(i.kind, kind),
+    statusCond,
+    year ? sql`extract(year from ${i.issueDate}) = ${Number(year)}` : undefined,
+    term ? or(ilike(i.number, `%${term}%`), ilike(i.title, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
+  );
+  const open = sql`${i.status} in ('gesendet', 'teilbezahlt')`;
+  const [rows, [{ n: total }], [agg], byStatus, due] = await Promise.all([
     db()
-      .select({ d: i, c })
+      .select({
+        d: {
+          id: i.id,
+          number: i.number,
+          title: i.title,
+          issueDate: i.issueDate,
+          dueDate: i.dueDate,
+          total: i.total,
+          paidAmount: i.paidAmount,
+          status: i.status,
+          kind: i.kind,
+          reminderLevel: i.reminderLevel,
+          fromSubscription: sql<boolean>`jsonb_path_exists(${i.items}, '$[*] ? (@.subscriptionId > 0)')`,
+        },
+        c: { id: c.id, company: c.company, firstName: c.firstName, lastName: c.lastName },
+      })
       .from(i)
       .innerJoin(c, eq(c.id, i.customerId))
-      .where(
-        and(
-          eq(i.kind, kind),
-          statusCond,
-          year ? sql`extract(year from ${i.issueDate}) = ${Number(year)}` : undefined,
-          term ? or(ilike(i.number, `%${term}%`), ilike(i.title, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
-        ),
-      )
+      .where(where)
       .orderBy(dir === "asc" ? sql`${sortCols[sortKey]} asc nulls last` : sql`${sortCols[sortKey]} desc nulls last`, sql`${i.id} desc`)
-      .limit(1000),
-    db().select({ status: i.status, dueDate: i.dueDate, total: i.total, paidAmount: i.paidAmount, kind: i.kind }).from(i).where(eq(i.kind, "rechnung")),
-    dueSubscriptions(),
+      .limit(PAGE_SIZE)
+      .offset((page - 1) * PAGE_SIZE),
+    db().select({ n: sql<number>`count(*)::int` }).from(i).innerJoin(c, eq(c.id, i.customerId)).where(where),
+    // key figures in one aggregate instead of loading every invoice
+    db()
+      .select({
+        openSum: sql<number>`coalesce(sum(greatest(${i.total} - ${i.paidAmount}, 0)) filter (where ${open}), 0)::float`,
+        overdueSum: sql<number>`coalesce(sum(greatest(${i.total} - ${i.paidAmount}, 0)) filter (where ${open} and ${i.dueDate} < ${today}), 0)::float`,
+        overdue: sql<number>`count(*) filter (where ${open} and ${i.dueDate} < ${today})::int`,
+      })
+      .from(i)
+      .where(eq(i.kind, "rechnung")),
+    db().select({ s: i.status, n: sql<number>`count(*)::int` }).from(i).where(eq(i.kind, kind)).groupBy(i.status),
+    kind === "rechnung" ? dueSubscriptions() : Promise.resolve({ rows: [], horizon: today }),
   ]);
-  const openSum = all.reduce((a, x) => a + openAmount(x), 0);
-  const overdue = all.filter((x) => invoiceDisplayStatus(x, today) === "ueberfaellig");
-  const drafts = all.filter((x) => x.status === "entwurf");
-  const count = (s: string) => all.filter((x) => (s === "ueberfaellig" ? invoiceDisplayStatus(x, today) === s : x.status === s)).length;
+  const statusCount = new Map(byStatus.map((x) => [x.s, x.n]));
+  const count = (s: string) => (s === "ueberfaellig" ? agg.overdue : (statusCount.get(s as (typeof invoiceStatuses)[number]) ?? 0));
   const base = "/admin/rechnungen";
   const params = { status, q: term, sort: sp.sort, dir: sp.dir, art: sp.art, jahr: year };
   const labels = kind === "gutschrift" ? creditStatusLabels : invoiceStatusLabels;
@@ -100,10 +125,10 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
       )}
       {kind === "rechnung" && (
         <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <Stat label="Offen total" value={`CHF ${chf(openSum)}`} href={qs(base, {}, { status: "offen" })} />
-          <Stat label="Überfällig" value={String(overdue.length)} tone={overdue.length ? "warn" : undefined} sub={`CHF ${chf(overdue.reduce((a, x) => a + openAmount(x), 0))}`} href={qs(base, {}, { status: "ueberfaellig" })} />
-          <Stat label="Entwürfe" value={String(drafts.length)} href={qs(base, {}, { status: "entwurf" })} />
-          <Stat label="Angezeigt" value={`CHF ${chf(rows.reduce((a, r) => a + r.d.total, 0))}`} sub={`${rows.length} Dokumente`} />
+          <Stat label="Offen total" value={`CHF ${chf(agg.openSum)}`} sub={`${count("gesendet") + count("teilbezahlt")} Rechnungen`} href={qs(base, {}, { status: "offen" })} />
+          <Stat label="Überfällig" value={`CHF ${chf(agg.overdueSum)}`} tone={agg.overdue ? "warn" : undefined} sub={`${agg.overdue} Rechnung${agg.overdue === 1 ? "" : "en"}`} href={qs(base, {}, { status: "ueberfaellig" })} />
+          <Stat label="Entwürfe" value={String(count("entwurf"))} sub="noch nicht versendet" href={qs(base, {}, { status: "entwurf" })} />
+          <Stat label="Gefunden" value={String(total)} sub="mit aktuellem Filter" />
         </div>
       )}
       <div className="mb-4 flex flex-col gap-3">
@@ -151,12 +176,13 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
             status: st,
             statusLabel: labels[st] ?? st,
             negative: d.kind === "gutschrift",
-            note: d.reminderLevel > 0 ? `${d.reminderLevel}. Mahnung` : d.items.some((x) => x.subscriptionId) ? "Abo" : undefined,
+            note: d.reminderLevel > 0 ? `${d.reminderLevel}. Mahnung` : d.fromSubscription ? "Abo" : undefined,
           };
         })}
         secondLabel={kind === "gutschrift" ? "Datum" : "Fällig"}
         empty="Keine Rechnungen gefunden."
       />
+      <Pager page={page} total={total} href={(n) => qs(base, params, { seite: n > 1 ? String(n) : undefined })} />
     </>
   );
 }

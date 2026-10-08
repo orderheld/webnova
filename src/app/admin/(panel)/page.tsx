@@ -11,7 +11,7 @@ import { billDueSubscriptionsAction } from "@/lib/admin/finance-actions";
 import { activityTypeLabels, intervalUnit, leadStageLabels } from "@/lib/admin/labels";
 import { addDaysIso, chf, chf0, fmtDate, fmtDateTime, fmtHours, todayIso } from "@/lib/admin/money";
 import { customerName } from "@/lib/admin/queries";
-import { expensesBetween, invoicedBetween, receivedBetween } from "@/lib/admin/reports";
+import { dashboardFigures } from "@/lib/admin/reports";
 
 export const metadata = { title: "Übersicht" };
 
@@ -32,7 +32,7 @@ export default async function Dashboard() {
   const in60 = addDaysIso(today, 60);
   const in30 = addDaysIso(today, 30);
 
-  const [stages, followUps, activeProjects, nextTasks, openInvoices, renewals, due, unbilled, recent, monthRev, yearRev, monthIn, yearIn, yearExp] = await Promise.all([
+  const [stages, followUps, activeProjects, nextTasks, taskCounts, openInvoices, renewals, due, unbilled, recent, figures] = await Promise.all([
     d
       .select({ status: schema.leads.status, n: sql<number>`count(*)::int`, value: sql<number>`coalesce(sum(${schema.leads.value}),0)::float` })
       .from(schema.leads)
@@ -49,13 +49,36 @@ export default async function Dashboard() {
       .innerJoin(schema.customers, eq(schema.customers.id, schema.projects.customerId))
       .where(notInArray(schema.projects.status, ["live", "abgeschlossen"]))
       .orderBy(sql`${schema.projects.dueDate} asc nulls last`),
+    // next open task per project (DISTINCT ON) instead of loading every open task
     d
-      .select()
+      .selectDistinctOn([schema.projectTasks.projectId], {
+        projectId: schema.projectTasks.projectId,
+        title: schema.projectTasks.title,
+        dueDate: schema.projectTasks.dueDate,
+        milestone: schema.projectTasks.milestone,
+      })
       .from(schema.projectTasks)
       .where(eq(schema.projectTasks.done, false))
-      .orderBy(sql`${schema.projectTasks.dueDate} asc nulls last`, asc(schema.projectTasks.sortOrder)),
+      .orderBy(schema.projectTasks.projectId, sql`${schema.projectTasks.dueDate} asc nulls last`, asc(schema.projectTasks.sortOrder)),
     d
-      .select({ i: schema.invoices, c: schema.customers })
+      .select({ projectId: schema.projectTasks.projectId, n: sql<number>`count(*)::int` })
+      .from(schema.projectTasks)
+      .where(eq(schema.projectTasks.done, false))
+      .groupBy(schema.projectTasks.projectId),
+    d
+      .select({
+        i: {
+          id: schema.invoices.id,
+          number: schema.invoices.number,
+          dueDate: schema.invoices.dueDate,
+          total: schema.invoices.total,
+          paidAmount: schema.invoices.paidAmount,
+          status: schema.invoices.status,
+          kind: schema.invoices.kind,
+          reminderLevel: schema.invoices.reminderLevel,
+        },
+        c: { company: schema.customers.company, firstName: schema.customers.firstName, lastName: schema.customers.lastName },
+      })
       .from(schema.invoices)
       .innerJoin(schema.customers, eq(schema.customers.id, schema.invoices.customerId))
       .where(and(eq(schema.invoices.kind, "rechnung"), inArray(schema.invoices.status, ["gesendet", "teilbezahlt"])))
@@ -81,12 +104,9 @@ export default async function Dashboard() {
       .from(schema.timeEntries)
       .where(and(eq(schema.timeEntries.billable, true), isNull(schema.timeEntries.invoiceId))),
     d.select().from(schema.activities).where(gt(schema.activities.occurredAt, sql`now() - interval '14 days'`)).orderBy(desc(schema.activities.occurredAt)).limit(8),
-    invoicedBetween(monthStart, today),
-    invoicedBetween(yearStart, today),
-    receivedBetween(monthStart, today),
-    receivedBetween(yearStart, today),
-    expensesBetween(yearStart, today),
+    dashboardFigures(monthStart, yearStart, today),
   ]);
+  const { monthRev, yearRev, monthIn, yearIn, yearExp } = figures;
 
   const stageMap = new Map(stages.map((s) => [s.status, s]));
   const pipelineMax = Math.max(1, ...stages.map((s) => s.n));
@@ -94,12 +114,8 @@ export default async function Dashboard() {
   const pipelineValue = openPipeline.reduce((a, s) => a + s.value, 0);
   const pipelineCount = openPipeline.reduce((a, s) => a + s.n, 0);
 
-  const taskByProject = new Map<number, (typeof nextTasks)[number]>();
-  const openTaskCount = new Map<number, number>();
-  for (const t of nextTasks) {
-    if (!taskByProject.has(t.projectId)) taskByProject.set(t.projectId, t);
-    openTaskCount.set(t.projectId, (openTaskCount.get(t.projectId) ?? 0) + 1);
-  }
+  const taskByProject = new Map(nextTasks.map((t) => [t.projectId, t]));
+  const openTaskCount = new Map(taskCounts.map((t) => [t.projectId, t.n]));
 
   const overdue = openInvoices.filter(({ i }) => invoiceDisplayStatus(i, today) === "ueberfaellig");
   const openSum = openInvoices.reduce((a, { i }) => a + openAmount(i), 0);

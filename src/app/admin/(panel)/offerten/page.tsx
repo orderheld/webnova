@@ -1,6 +1,6 @@
 import { and, eq, ilike, or, sql } from "drizzle-orm";
 import { DocTable } from "@/components/admin/doc-table";
-import { FilterChips, LinkButton, PageHeader, qs } from "@/components/admin/ui";
+import { FilterChips, LinkButton, PAGE_SIZE, PageHeader, Pager, pageParam, qs } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { quoteStatuses, type QuoteStatus } from "@/db/schema";
 import { quoteStatusLabels } from "@/lib/admin/labels";
@@ -8,7 +8,7 @@ import { chf } from "@/lib/admin/money";
 
 export const metadata = { title: "Offerten" };
 
-type SP = { status?: string; q?: string; sort?: string; dir?: string };
+type SP = { status?: string; q?: string; sort?: string; dir?: string; seite?: string };
 
 export default async function QuotesPage({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
@@ -25,27 +25,40 @@ export default async function QuotesPage({ searchParams }: { searchParams: Promi
   };
   const sortKey = sp.sort && sortCols[sp.sort] ? sp.sort : "nummer";
   const dir = sp.dir === "asc" ? "asc" : "desc";
-  const [rows, counts] = await Promise.all([
+  const page = pageParam(sp.seite);
+  const where = and(
+    filter ? eq(q.status, filter) : undefined,
+    term ? or(ilike(q.number, `%${term}%`), ilike(q.title, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
+  );
+  const [rows, [agg], counts] = await Promise.all([
     db()
-      .select({ d: q, c })
+      .select({
+        d: {
+          id: q.id,
+          number: q.number,
+          title: q.title,
+          issueDate: q.issueDate,
+          validUntil: q.validUntil,
+          total: q.total,
+          status: q.status,
+          recurring: sql<boolean>`jsonb_path_exists(${q.items}, '$[*] ? (exists(@.recurring) && @.recurring != null)')`,
+        },
+        c: { id: c.id, company: c.company, firstName: c.firstName, lastName: c.lastName },
+      })
       .from(q)
       .innerJoin(c, eq(c.id, q.customerId))
-      .where(
-        and(
-          filter ? eq(q.status, filter) : undefined,
-          term ? or(ilike(q.number, `%${term}%`), ilike(q.title, `%${term}%`), ilike(c.company, `%${term}%`), ilike(c.lastName, `%${term}%`)) : undefined,
-        ),
-      )
+      .where(where)
       .orderBy(dir === "asc" ? sql`${sortCols[sortKey]} asc nulls last` : sql`${sortCols[sortKey]} desc nulls last`, sql`${q.id} desc`)
-      .limit(1000),
+      .limit(PAGE_SIZE)
+      .offset((page - 1) * PAGE_SIZE),
+    db().select({ n: sql<number>`count(*)::int`, sum: sql<number>`coalesce(sum(${q.total}), 0)::float` }).from(q).innerJoin(c, eq(c.id, q.customerId)).where(where),
     db().select({ s: q.status, n: sql<number>`count(*)::int` }).from(q).groupBy(q.status),
   ]);
   const base = "/admin/offerten";
   const params = { status: filter, q: term, sort: sp.sort, dir: sp.dir };
-  const sum = rows.reduce((a, r) => a + r.d.total, 0);
   return (
     <>
-      <PageHeader title="Offerten" sub={`${rows.length} Offerten · CHF ${chf(sum)}`} actions={<LinkButton href="/admin/offerten/neu" icon="plus">Neue Offerte</LinkButton>} />
+      <PageHeader title="Offerten" sub={`${agg.n} Offerte${agg.n === 1 ? "" : "n"} · CHF ${chf(agg.sum)}`} actions={<LinkButton href="/admin/offerten/neu" icon="plus">Neue Offerte</LinkButton>} />
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <FilterChips
           active={filter}
@@ -71,11 +84,12 @@ export default async function QuotesPage({ searchParams }: { searchParams: Promi
           total: d.total,
           status: d.status,
           statusLabel: quoteStatusLabels[d.status],
-          note: d.items.some((it) => it.recurring) ? "inkl. wiederkehrend" : undefined,
+          note: d.recurring ? "inkl. wiederkehrend" : undefined,
         }))}
         secondLabel="Gültig bis"
         empty="Keine Offerten gefunden."
       />
+      <Pager page={page} total={agg.n} href={(n) => qs(base, params, { seite: n > 1 ? String(n) : undefined })} />
     </>
   );
 }

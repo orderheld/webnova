@@ -22,9 +22,8 @@ export default async function CustomerDetail({ params, searchParams }: { params:
   const id = routeId((await params).id);
   const { fehler } = await searchParams;
   if (!id) notFound();
-  const [c] = await db().select().from(schema.customers).where(eq(schema.customers.id, id));
-  if (!c) notFound();
-  const [contacts, quotes, invoices, estimates, projects, subs, leads, expenses, customers, templates, projectOpts, products, s] = await Promise.all([
+  const [[c], contacts, quotes, invoices, estimates, projects, subs, leads, expenses, customers, templates, projectOpts, products, s, activities] = await Promise.all([
+    db().select().from(schema.customers).where(eq(schema.customers.id, id)),
     db().select().from(schema.contacts).where(eq(schema.contacts.customerId, id)).orderBy(desc(schema.contacts.isPrimary), schema.contacts.id),
     db().select().from(schema.quotes).where(eq(schema.quotes.customerId, id)).orderBy(desc(schema.quotes.createdAt)),
     db().select().from(schema.invoices).where(eq(schema.invoices.customerId, id)).orderBy(desc(schema.invoices.createdAt)),
@@ -38,19 +37,21 @@ export default async function CustomerDetail({ params, searchParams }: { params:
     allProjectOptions(),
     productOptions(),
     getSettings(),
+    db()
+      .select()
+      .from(schema.activities)
+      .where(
+        or(
+          eq(schema.activities.customerId, id),
+          // one query with subselects instead of waiting for the project and lead lists
+          inArray(schema.activities.projectId, db().select({ id: schema.projects.id }).from(schema.projects).where(eq(schema.projects.customerId, id))),
+          inArray(schema.activities.leadId, db().select({ id: schema.leads.id }).from(schema.leads).where(eq(schema.leads.customerId, id))),
+        ),
+      )
+      .orderBy(desc(schema.activities.occurredAt))
+      .limit(60),
   ]);
-  const activities = await db()
-    .select()
-    .from(schema.activities)
-    .where(
-      or(
-        eq(schema.activities.customerId, id),
-        projects.length ? inArray(schema.activities.projectId, projects.map((p) => p.id)) : undefined,
-        leads.length ? inArray(schema.activities.leadId, leads.map((l) => l.id)) : undefined,
-      ),
-    )
-    .orderBy(desc(schema.activities.occurredAt))
-    .limit(60);
+  if (!c) notFound();
   const name = customerName(c);
   const real = invoices.filter((i) => i.kind === "rechnung");
   const open = real.reduce((a, i) => a + openAmount(i), 0);

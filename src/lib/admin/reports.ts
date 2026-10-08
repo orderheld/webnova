@@ -80,3 +80,34 @@ export async function expensesBetween(from: string, to: string) {
     .where(and(gte(schema.expenses.date, from), lte(schema.expenses.date, to)));
   return r.sum;
 }
+
+/**
+ * Dashboard key figures in three aggregate queries: invoiced net revenue (month and year),
+ * payments received (month and year) and expenses (year). Net revenue is derived from the
+ * stored total, which is exact up to the 5-Rappen rounding.
+ */
+export async function dashboardFigures(monthStart: string, yearStart: string, today: string) {
+  const i = schema.invoices;
+  const p = schema.payments;
+  const sign = sql`case when ${i.kind} = 'gutschrift' then -1 else 1 end`;
+  const net = sql`${sign} * ${i.total} / (1 + ${i.vatRate} / 100.0)`;
+  const [[rev], [inc], exp] = await Promise.all([
+    db()
+      .select({
+        month: sql<number>`coalesce(sum(${net}) filter (where ${i.issueDate} >= ${monthStart}), 0)::float`,
+        year: sql<number>`coalesce(sum(${net}), 0)::float`,
+      })
+      .from(i)
+      .where(and(gte(i.issueDate, yearStart), lte(i.issueDate, today), notInArray(i.status, ["entwurf", "storniert"]))),
+    db()
+      .select({
+        month: sql<number>`coalesce(sum(${sign} * ${p.amount}) filter (where ${p.date} >= ${monthStart}), 0)::float`,
+        year: sql<number>`coalesce(sum(${sign} * ${p.amount}), 0)::float`,
+      })
+      .from(p)
+      .innerJoin(i, eq(i.id, p.invoiceId))
+      .where(and(gte(p.date, yearStart), lte(p.date, today))),
+    expensesBetween(yearStart, today),
+  ]);
+  return { monthRev: round2(rev.month), yearRev: round2(rev.year), monthIn: round2(inc.month), yearIn: round2(inc.year), yearExp: exp };
+}

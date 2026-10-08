@@ -8,7 +8,7 @@ export interface DocRow {
   id: number;
   number: string;
   title: string;
-  customer: Customer;
+  customer: Pick<Customer, "id" | "company" | "firstName" | "lastName">;
   date: string;
   second: string | null;
   total: number;
