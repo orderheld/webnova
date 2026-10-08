@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
+import { industries } from "@/content/industries";
+import { industryUi } from "@/content/industries/ui";
+import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
 import type { Locale } from "@/content/types";
@@ -80,6 +83,12 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
             label: `${locale === "de" ? "Webdesign" : "Site internet"} ${x.content[locale].name}`,
           }))
         : [];
+  const industryLinks = industries
+    .filter((i) => i.services.some((k) => k === s.key || (s.key === "kassensystem" && k.startsWith("kassensystem-"))))
+    .map((i) => ({ href: href(locale, `industry:${i.key}`), label: i.content[locale].navLabel }));
+  const problemLinks = problems
+    .filter((p) => p.services.includes(s.key))
+    .map((p) => ({ href: href(locale, `problem:${p.key}`), label: p.content[locale].navLabel }));
   const crumbs = [
     { name: d.common.home, url: href(locale, "home") },
     { name: d.pages.servicesTitle, url: href(locale, "services") },
@@ -110,7 +119,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       >
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
+          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false} icon="phone">
             {site.phone}
           </ButtonLink>
         </div>
@@ -125,13 +134,8 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           <Prose sections={c.sections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 overflow-hidden rounded-2xl border border-line bg-surface p-8 ">
-            <h2 className="text-[26px] font-semibold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{c.ctaText}</p>
-            <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
-              {d.nav.cta}
-            </ButtonLink>
-            <p className="mt-4 text-center text-[13px] text-muted">{d.common.free}</p>
+          <div className="sticky top-28">
+            <CtaCard locale={locale} title={c.ctaTitle} text={c.ctaText} />
           </div>
         </aside>
       </section>
@@ -144,7 +148,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
+                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-accent/40 hover:bg-bright-soft hover:text-accent"
               >
                 {l.label}
               </Link>
@@ -152,6 +156,28 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           </div>
         </section>
       )}
+
+      {[
+        { label: industryUi[locale].forIndustry, links: industryLinks },
+        { label: industryUi[locale].problems, links: problemLinks },
+      ]
+        .filter((g) => g.links.length > 0)
+        .map((g) => (
+          <section key={g.label} className="container-x pt-8">
+            <p className="eyebrow mb-4">{g.label}</p>
+            <div className="flex flex-wrap gap-2">
+              {g.links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
 
       <FaqList locale={locale} faq={c.faq} />
 
