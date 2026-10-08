@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const onlineshopSchweiz: Guide = {
   key: "onlineshop-schweiz",
-  date: "2026-10-07",
+  date: "2026-10-08",
   readingMinutes: 9,
   related: ["onlineshop", "kassensystem-retail", "seo"],
   relatedGuides: ["barrierefreie-website", "zweisprachige-webseite", "webseite-kosten"],

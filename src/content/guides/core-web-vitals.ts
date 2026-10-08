@@ -2,10 +2,10 @@ import type { Guide } from "../types";
 
 export const coreWebVitals: Guide = {
   key: "core-web-vitals",
-  date: "2026-10-06",
+  date: "2026-10-08",
   readingMinutes: 8,
   related: ["seo", "website-redesign", "wartung"],
-  relatedGuides: ["barrierefreie-website", "website-relaunch-checkliste", "kmu-webseite-checkliste"],
+  relatedGuides: ["website-wartung-checkliste", "barrierefreie-website", "website-relaunch-checkliste"],
   content: {
     de: {
       slug: "core-web-vitals-erklaert",

@@ -4,7 +4,7 @@ export const keineZeit: Problem = {
   key: "keine-zeit",
   icon: "shield",
   services: ["wartung", "website-redesign", "seo"],
-  guides: ["webagentur-waehlen", "website-relaunch-checkliste"],
+  guides: ["website-wartung-checkliste", "webagentur-waehlen", "website-relaunch-checkliste"],
   industries: ["handwerk", "praxis", "gastronomie", "autogewerbe"],
   preset: ["maintenance"],
   content: {

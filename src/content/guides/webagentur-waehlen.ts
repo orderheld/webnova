@@ -5,7 +5,7 @@ export const webagenturWaehlen: Guide = {
   date: "2026-10-08",
   readingMinutes: 9,
   related: ["webdesign", "website-redesign", "wartung"],
-  relatedGuides: ["webagentur-unterschied", "webseite-kosten", "website-relaunch-checkliste"],
+  relatedGuides: ["webseite-erstellen-ablauf", "webagentur-unterschied", "webseite-kosten"],
   cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {

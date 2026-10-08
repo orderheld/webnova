@@ -1,6 +1,26 @@
 import type { NextConfig } from "next";
 import { referencesOnRequest, showReferences } from "./src/lib/site";
 
+/*
+ * Content Security Policy for the pages (site and admin): scripts, styles, images, fonts and requests
+ * only from webnova.ch itself, no plugins, no foreign forms, no framing by other sites.
+ * Static pages carry Next's inline RSC scripts, and nonces would make every page dynamic, so scripts
+ * keep 'unsafe-inline' (the approach the Next CSP guide gives for sites without nonces).
+ * React needs eval only in development.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join("; ");
+
 const nextConfig: NextConfig = {
   // pdfkit reads its font metrics from disk at runtime, so it must not be bundled. The PDFs also read the logo and the Inter font files from disk.
   serverExternalPackages: ["pdfkit", "swissqrbill"],
@@ -58,8 +78,14 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
         ],
       },
+      // Pages only: API responses (PDFs, CSV exports, the page-view beacon) are not documents that run scripts.
+      ...["/de/:path*", "/fr/:path*", "/admin/:path*"].map((source) => ({
+        source,
+        headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
+      })),
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];
   },

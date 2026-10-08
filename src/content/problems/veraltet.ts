@@ -4,7 +4,7 @@ export const veraltet: Problem = {
   key: "veraltet",
   icon: "refresh",
   services: ["website-redesign", "webdesign", "branding"],
-  guides: ["webagentur-waehlen", "website-relaunch-checkliste", "webseite-kosten"],
+  guides: ["webseite-erneuern", "website-relaunch-checkliste", "webseite-kosten"],
   industries: ["treuhand", "praxis", "handwerk", "immobilien"],
   preset: ["redesign"],
   content: {

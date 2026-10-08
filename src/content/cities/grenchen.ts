@@ -12,7 +12,7 @@ export const grenchen: City = {
       name: "Grenchen",
       slug: "webdesign-grenchen",
       meta: {
-        title: "Webdesign Agentur Grenchen: Webseite erstellen lassen",
+        title: "Webdesign Grenchen: Webseite erstellen lassen",
         description:
           "Webagentur mit Sitz in Grenchen: Webdesign, Homepage, Onlineshop und SEO für KMU aus der Uhrenstadt. Jetzt kostenlose Erstberatung vereinbaren.",
       },
