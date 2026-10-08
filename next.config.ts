@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { referencesOnRequest, showReferences } from "./src/lib/site";
 
 const nextConfig: NextConfig = {
   // pdfkit reads its font metrics from disk at runtime, so it must not be bundled. The PDFs also read the logo and the Inter font files from disk.
@@ -37,6 +38,14 @@ const nextConfig: NextConfig = {
         destination: "https://webnova.ch/:path*",
         statusCode: 301 as const,
       },
+      // References on request (src/lib/site.ts): the project pages lead to the overview for now (307).
+      // Listed before the old-URL map, so the old Dersut address does not take two hops.
+      ...(showReferences && referencesOnRequest
+        ? [
+            { source: "/de/referenzen/:key", destination: "/de/referenzen", permanent: false },
+            { source: "/fr/references/:key", destination: "/fr/references", permanent: false },
+          ]
+        : []),
       ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
     ];
   },

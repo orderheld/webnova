@@ -49,3 +49,8 @@ export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday"
 // References are shown again (Ferhat, 2026-10-08): GYAN, Dersut, AVA Catering and orderheld.
 // Set to false to hide the pages, links and home showcase in one go.
 export const showReferences: boolean = true;
+
+// References only on request for now (Ferhat, 2026-10-08: "wir zeigen gerne auf Anfrage Referenzen"):
+// the Referenzen page shows blurred previews without names or links, and the project pages are left out
+// of the routes and sitemap and redirect to it (next.config.ts). Set to false to show the projects again.
+export const referencesOnRequest: boolean = true;

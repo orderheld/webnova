@@ -4,14 +4,14 @@ import { ContactPerson, CtaBand, FeatureGrid, HeroCtas, PageHero, Prose, TrustLi
 import { Icon } from "@/components/icons";
 import { ContactList, PortraitCard } from "@/components/editorial";
 import { LeadForm } from "@/components/lead-form";
-import { ReferenceCard } from "@/components/reference-card";
+import { ReferenceCard, ReferenceTeaserCard } from "@/components/reference-card";
 import { references } from "@/content/references";
 import { legal } from "@/content/legal";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { referencesOnRequest, site } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -60,6 +60,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
 
 export function ReferencesPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
+  if (referencesOnRequest) return <ReferencesOnRequest locale={locale} />;
   return (
     <>
       <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references, url: href(locale, "references") }])} />
@@ -89,6 +90,37 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
       <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
         {references.map((r, i) => (
           <ReferenceCard key={r.key} r={r} locale={locale} large priority={i < 2} />
+        ))}
+      </section>
+      <CtaBand locale={locale} />
+    </>
+  );
+}
+
+/** References on request: blurred previews without names, and the way to ask for them. */
+function ReferencesOnRequest({ locale }: { locale: Locale }) {
+  const d = getDict(locale);
+  const p = d.pages;
+  return (
+    <>
+      <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references, url: href(locale, "references") }])} />
+      <PageHero
+        eyebrow={d.nav.references}
+        title={p.referencesRequestH1}
+        lead={p.referencesRequestLead}
+        crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references }]}
+      >
+        <div className="mt-10 flex flex-wrap gap-3">
+          <ButtonLink href={href(locale, "contact")} variant="accent">{p.referencesRequestCta}</ButtonLink>
+          <ButtonLink href={`${site.whatsappHref}?text=${encodeURIComponent(p.referencesRequestWhatsapp)}`} variant="ghostLight" arrow={false} icon="chat">
+            WhatsApp
+          </ButtonLink>
+        </div>
+      </PageHero>
+      <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
+        {/* Neutral React keys: keys end up in the page payload, client names must not. */}
+        {references.map((r, i) => (
+          <ReferenceTeaserCard key={r.teaserImage ?? i} r={r} locale={locale} badge={p.referencesRequestBadge} priority={i < 2} />
         ))}
       </section>
       <CtaBand locale={locale} />

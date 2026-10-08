@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { referencesOnRequest, site } from "@/lib/site";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
@@ -53,7 +53,7 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
     case "about":
       return m({ title: d.aboutMetaTitle, description: d.aboutMetaDesc });
     case "references":
-      return m({ title: d.referencesMetaTitle, description: d.referencesMetaDesc });
+      return m({ title: d.referencesMetaTitle, description: referencesOnRequest ? d.referencesRequestMetaDesc : d.referencesMetaDesc });
     case "reference": {
       const r = references.find((x) => x.key === entry.key)!;
       const c = r.content[locale];
