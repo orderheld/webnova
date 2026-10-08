@@ -60,7 +60,7 @@ export function ReferencesSection({ locale, eyebrow, title, lead, id }: { locale
                   )}
                 </div>
                 <p className="caption">{c.industry}{c.place && <> · {c.place}</>}</p>
-                <h3 className="mt-2 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
+                <h3 className="mt-2 font-display text-[24px] font-semibold tracking-[-0.01em] transition-colors group-hover:text-accent">{r.name}</h3>
                 <p className="mt-2 line-clamp-3 text-[15px] leading-relaxed text-ink-soft">{c.summary}</p>
                 <span className="link-arrow mt-4">
                   {tt.toProject}
@@ -73,7 +73,7 @@ export function ReferencesSection({ locale, eyebrow, title, lead, id }: { locale
         <li className="w-[70%] shrink-0 snap-start sm:w-[300px]">
           <Link href={href(locale, "references")} className="group flex aspect-[4/3] flex-col justify-between bg-night p-7 text-white">
             <span className="eyebrow-light">{d.nav.references}</span>
-            <span className="flex items-center gap-2 font-display text-[24px] font-semibold tracking-[-0.02em]">
+            <span className="flex items-center gap-2 font-display text-[24px] font-semibold tracking-[-0.01em]">
               {tt.all}
               <Icon name="arrow" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </span>

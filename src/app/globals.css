@@ -110,13 +110,11 @@
     @apply outline-2 outline-offset-2 outline-bright;
   }
   /* Dark sections: the focus ring switches to the light blue so it stays visible. */
-  /* Numbered section labels (utility "kicker") count up per page, so every page reads like an index. */
-  main {
-    counter-reset: sec;
-  }
   .bg-night :focus-visible,
   .bg-night-2 :focus-visible,
-  .bg-accent :focus-visible {
+  .bg-accent :focus-visible,
+  .stage-night :focus-visible,
+  .stage-accent :focus-visible {
     @apply outline-accent-light;
   }
 }
@@ -169,16 +167,71 @@
 }
 
 @utility display {
-  @apply font-display font-semibold tracking-[-0.025em] leading-[1.05];
+  @apply font-display font-semibold tracking-[-0.015em] leading-[1.12];
 }
 
 @utility h-section {
-  @apply font-display text-[clamp(2.1rem,4.4vw,3.5rem)] font-semibold tracking-[-0.03em] leading-[1.06] text-balance;
+  @apply font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold tracking-[-0.012em] leading-[1.16] text-balance;
 }
 
 /* Smaller editorial heading for blocks inside a section. */
 @utility h-block {
-  @apply font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold tracking-[-0.02em] leading-[1.15];
+  @apply font-display text-[clamp(1.45rem,2.3vw,1.9rem)] font-semibold tracking-[-0.01em] leading-[1.25];
+}
+
+/* Home and page hero stage: deep night into Schieferblau with one soft light from the top right. */
+@utility stage-night {
+  background:
+    radial-gradient(55% 65% at 85% 20%, rgb(59 99 133 / 0.55), transparent 70%),
+    radial-gradient(45% 55% at 0% 100%, rgb(36 64 90 / 0.7), transparent 70%),
+    linear-gradient(160deg, #1b2d3e 0%, #1f3449 55%, #24405a 100%);
+}
+
+/* Light stage: white into a pale Schieferblau wash. */
+@utility stage-light {
+  background:
+    radial-gradient(60% 70% at 90% 10%, rgb(180 198 214 / 0.45), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f3f6f9 100%);
+}
+
+/* Schieferblau section: the brand colour as a full panel. */
+@utility stage-accent {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgb(180 198 214 / 0.22), transparent 70%),
+    linear-gradient(150deg, #24405a 0%, #2c4d6b 60%, #3b6385 100%);
+}
+
+/* Schieferblau gradient text for the keyword in big headings. Padding keeps descenders inside the clip. */
+@utility text-gradient {
+  background: linear-gradient(100deg, #24405a 0%, #3b6385 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+@utility text-gradient-light {
+  background: linear-gradient(100deg, #ffffff 0%, #b4c6d6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+/* Soft round fade for rendered images that sit on a gradient stage. */
+@utility mask-soft {
+  mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+}
+
+/* Gentle float for hero mockups; switched off with reduced motion (global rule below). */
+@utility float {
+  @media (min-width: 64rem) {
+    animation: float 7s ease-in-out infinite;
+  }
+}
+@utility float-slow {
+  @media (min-width: 64rem) {
+    animation: float 10s ease-in-out infinite;
+  }
 }
 
 /* Micro label: small spaced caps, the editorial signpost above headings and lists. */
@@ -196,37 +249,43 @@
   @apply block text-[12px] font-semibold uppercase tracking-[0.14em] text-muted;
 }
 
-/*
- * Numbered section label, Webnova style: "01", a short Schieferblau rule, then the label in caps.
- * The number comes from a CSS counter on <main>, so sections number themselves in reading order.
- */
+/* Section label: small caps in Schieferblau with a short accent bar in front. */
 @utility kicker {
-  @apply flex items-center text-[12.5px] font-semibold uppercase tracking-[0.14em] text-muted;
+  @apply flex items-center gap-3 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-bright;
   &::before {
-    counter-increment: sec;
-    content: counter(sec, decimal-leading-zero);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.04em;
-    color: var(--color-accent);
-    padding-right: 2.75rem;
-    margin-right: 0.85rem;
-    background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat right center / 2rem 1.5px;
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-bright));
   }
 }
 
-/* The numbered label on dark sections. */
+/* The section label on dark sections. */
 @utility kicker-light {
-  @apply flex items-center text-[12.5px] font-semibold uppercase tracking-[0.14em] text-white/60;
+  @apply flex items-center gap-3 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-light;
   &::before {
-    counter-increment: sec;
-    content: counter(sec, decimal-leading-zero);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.04em;
-    color: var(--color-accent-light);
-    padding-right: 2.75rem;
-    margin-right: 0.85rem;
-    background: linear-gradient(var(--color-accent-light), var(--color-accent-light)) no-repeat right center / 2rem 1.5px;
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #ffffff, var(--color-accent-light));
   }
+}
+
+/* Soft Schieferblau-tinted card on light sections. */
+@utility card-soft {
+  @apply rounded-2xl bg-white ring-1 ring-line shadow-xs transition-[transform,box-shadow] duration-300 ease-out-soft;
+}
+
+/* Glass card on dark sections. */
+@utility card-glass {
+  @apply rounded-2xl bg-white/[0.06] ring-1 ring-inset ring-white/10;
+}
+
+/* Number tile for steps and features. */
+@utility num-tile {
+  @apply grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent font-display text-[14px] font-semibold tabular-nums text-white shadow-[0_8px_16px_-8px_rgb(36_64_90/0.6)];
 }
 
 /* Meta line: small muted text, parts separated with " · ". */
@@ -380,7 +439,7 @@
 
 @utility prose-wn {
   @apply text-[17px] leading-[1.75] text-ink-soft;
-  & h2 { @apply mt-14 mb-4 font-display text-[clamp(1.6rem,2.8vw,2.1rem)] font-semibold tracking-[-0.02em] leading-tight text-ink; }
+  & h2 { @apply mt-14 mb-4 font-display text-[clamp(1.6rem,2.8vw,2.1rem)] font-semibold tracking-[-0.01em] leading-[1.25] text-ink; }
   & p { @apply my-4; }
   & ul { @apply my-5 space-y-2.5; }
   & li { @apply relative pl-7; }
@@ -391,50 +450,6 @@
 
 @utility input {
   @apply w-full rounded-xl border border-line bg-bg-2/60 px-4 py-3.5 text-[16px] text-ink outline-none transition-[border-color,background-color,box-shadow] placeholder:text-muted focus:border-bright focus:bg-white focus:ring-4 focus:ring-bright-soft;
-}
-
-/* Home hero intro (components/hero-build.tsx). Each element waits for its --d delay, then plays once. */
-@layer components {
-  .wf * { transform-box: fill-box; }
-  .wf-v { transform-origin: 50% 0; animation: wf-v 0.9s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
-  .wf-h { transform-origin: 0 50%; animation: wf-grow 0.9s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
-  .wf-grow { transform-origin: 0 50%; animation: wf-grow 0.55s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
-  .wf-fade { animation: wf-fade 0.55s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
-  .wf-pop { transform-origin: 50% 50%; animation: wf-pop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
-  .wf-ripple { opacity: 0; transform-origin: 50% 50%; animation: wf-ripple 0.7s ease-out both; animation-delay: var(--d, 0ms); }
-  .wf-cursor { animation: wf-cursor 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: var(--d, 0ms); }
-  .wf-click { transform-origin: 0 0; animation: wf-click 0.3s ease both; animation-delay: var(--d, 0ms); }
-  .wf-toast { transform-origin: 50% 100%; animation: wf-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; animation-delay: var(--d, 0ms); filter: drop-shadow(0 10px 18px rgb(27 45 62 / 0.16)); }
-}
-@keyframes wf-v {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
-}
-@keyframes wf-grow {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-@keyframes wf-fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes wf-pop {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes wf-ripple {
-  0% { opacity: 0; transform: scale(1); }
-  15% { opacity: 0.8; }
-  100% { opacity: 0; transform: scale(2.4); }
-}
-@keyframes wf-cursor {
-  from { opacity: 0; transform: translate(150px, 70px); }
-  30% { opacity: 1; }
-  to { opacity: 1; transform: none; }
-}
-@keyframes wf-click {
-  0%, 100% { transform: none; }
-  50% { transform: scale(0.82); }
 }
 
 /* Home hero backdrop: faint layout columns, the designer's grid, fading out to the left and bottom. */
@@ -458,6 +473,4 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  /* Intro wireframe: jump straight to its end state. */
-  .wf, .wf * { animation-delay: 0s !important; }
 }

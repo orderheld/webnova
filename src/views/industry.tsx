@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, FaqList, FeatureGrid, HeroCtas, PageHero, Prose, callLabel } from "@/components/blocks";
+import { Art, ServiceArt } from "@/components/service-art";
+import type { SampleKey } from "@/components/visuals";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
@@ -42,7 +44,7 @@ export function IndustriesPage({ locale, focus }: { locale: Locale; focus: "indu
       ))}
       <div className="reveal flex flex-col justify-between gap-8 rounded-2xl bg-accent p-7 text-white sm:col-span-2">
         <div>
-          <h3 className="font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-semibold leading-tight tracking-[-0.03em]">{u.otherTitle}</h3>
+          <h3 className="font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-semibold leading-tight tracking-[-0.015em]">{u.otherTitle}</h3>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/75">{u.otherText}</p>
         </div>
         <div>
@@ -96,13 +98,9 @@ export function IndustriesPage({ locale, focus }: { locale: Locale; focus: "indu
         title={isProblems ? u.problemsH1 : u.hubH1}
         lead={isProblems ? u.problemsLead : u.hubLead}
         crumbs={[crumbs[0], { name: self }]}
+        aside={isProblems ? <Art kind="seo" locale={locale} dark /> : <Art kind="website" sample="restaurant" locale={locale} dark />}
       >
-        <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")}>{d.nav.cta}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
-            {site.phone}
-          </ButtonLink>
-        </div>
+        <HeroCtas locale={locale} />
       </PageHero>
       <section className="container-x py-20 md:py-28">{isProblems ? problemsBlock : industriesBlock}</section>
       <section className="bg-bg-2 py-20 md:py-28">
@@ -154,7 +152,7 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         title={c.h1}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
-        aside={<CheckCard title={u.promisesTitle} items={c.promises} locale={locale} />}
+        aside={industryArt(ind.key, locale)}
       >
         <HeroButtons locale={locale} />
       </PageHero>
@@ -162,9 +160,14 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
       <TrustFacts locale={locale} />
 
       <section className="container-x py-20 md:py-28">
-        <div className="reveal mb-12 max-w-3xl">
-          <p className="kicker mb-8">{u.painEyebrow}</p>
-          <h2 className="h-section">{c.painTitle}</h2>
+        <div className="mb-12 grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <p className="kicker mb-6">{u.painEyebrow}</p>
+            <h2 className="h-section">{c.painTitle}</h2>
+          </div>
+          <div className="lg:col-span-5">
+            <CheckCard title={u.promisesTitle} items={c.promises} locale={locale} />
+          </div>
         </div>
         <FeatureGrid items={c.pains} />
       </section>
@@ -268,21 +271,24 @@ export function ProblemPage({ locale, problemKey }: { locale: Locale; problemKey
         title={c.h1}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
-        aside={<CheckCard title={c.symptomsTitle} items={c.symptoms} locale={locale} numbered />}
+        aside={<ServiceArt service={p.services[0] ?? "webdesign"} locale={locale} dark />}
       >
         <HeroButtons locale={locale} />
       </PageHero>
 
       <section className="container-x py-20 md:py-28">
         <div className="grid gap-14 lg:grid-cols-12">
-          <div className="reveal lg:col-span-5">
-            <p className="eyebrow mb-4">{u.causesEyebrow}</p>
+          <div className="lg:col-span-5">
+            <p className="kicker mb-6">{u.causesEyebrow}</p>
             <h2 className="h-section">{c.causesTitle}</h2>
+            <div className="mt-10">
+              <CheckCard title={c.symptomsTitle} items={c.symptoms} locale={locale} numbered />
+            </div>
           </div>
           <ol className="lg:col-span-6 lg:col-start-7">
             {c.causes.map((w, n) => (
-              <li key={n} className="reveal grid grid-cols-[3rem_1fr] gap-4 border-t border-line py-8 last:border-b">
-                <span className="font-display text-[15px] font-semibold text-bright">{String(n + 1).padStart(2, "0")}</span>
+              <li key={n} className="card-soft reveal mb-3 grid grid-cols-[3rem_1fr] gap-4 p-6">
+                <span className="num-tile">{String(n + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="text-[20px] font-semibold tracking-tight">{w.title}</h3>
                   <p className="mt-2 text-[16px] leading-relaxed text-ink-soft">{w.text}</p>
@@ -317,7 +323,7 @@ function SectionHead({ eyebrow, title, lead, children }: { eyebrow: string; titl
   return (
     <>
       <div className="mb-12 md:mb-16">
-        <p className="kicker mb-6 md:mb-8">{eyebrow}</p>
+        <p className="kicker mb-5">{eyebrow}</p>
         <div className="grid gap-6 md:grid-cols-12 md:items-end">
           <h2 className="h-section md:col-span-8">{title}</h2>
           {lead && <p className="text-[16.5px] leading-relaxed text-ink-soft md:col-span-4">{lead}</p>}
@@ -331,19 +337,39 @@ function SectionHead({ eyebrow, title, lead, children }: { eyebrow: string; titl
 function HeroButtons({ locale }: { locale: Locale }) {
   const u = industryUi[locale];
   return (
-    <div className="mt-10 flex flex-wrap gap-3">
-      <ButtonLink href={`#${FORM_ID}`}>{u.heroCta}</ButtonLink>
-      <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
-        {site.phone}
+    <div className="mt-9 flex flex-wrap gap-3">
+      <ButtonLink href={`#${FORM_ID}`} variant="accent">
+        {u.heroCta}
+      </ButtonLink>
+      <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false} icon="phone">
+        {callLabel(locale)}
       </ButtonLink>
     </div>
   );
 }
 
+const industrySample: Record<string, SampleKey> = {
+  "coiffeur-beauty": "coiffeur",
+  fitness: "coiffeur",
+  gastronomie: "restaurant",
+  "cafe-baeckerei": "restaurant",
+  handwerk: "schreinerei",
+  autogewerbe: "schreinerei",
+  immobilien: "schreinerei",
+  treuhand: "treuhand",
+  praxis: "treuhand",
+};
+
+/** Hero visual for an industry page: a fictional sample design from a fitting branch, or the shop scene. */
+function industryArt(key: string, locale: Locale) {
+  if (key === "detailhandel") return <Art kind="shop" locale={locale} dark />;
+  return <Art kind="website" sample={industrySample[key] ?? "treuhand"} locale={locale} dark />;
+}
+
 function CheckCard({ title, items, locale, numbered = false }: { title: string; items: string[]; locale: Locale; numbered?: boolean }) {
   const d = getDict(locale);
   return (
-    <div className="border border-line border-t-[3px] border-t-accent bg-surface p-8">
+    <div className="rounded-3xl bg-surface p-7 text-ink shadow-lift ring-1 ring-line sm:p-8">
       <p className="label mb-6">{title}</p>
       <ul className="space-y-4 text-[16px] leading-snug text-ink-soft">
         {items.map((t, n) => (
@@ -371,19 +397,21 @@ function CheckCard({ title, items, locale, numbered = false }: { title: string; 
 
 function NightGrid({ eyebrow, title, lead, items, numbered = false }: { eyebrow: string; title: string; lead: string; items: Point[]; numbered?: boolean }) {
   return (
-    <section className="bg-night py-20 text-white md:py-28">
+    <section className="stage-night py-20 text-white md:py-28">
       <div className="container-x">
         <div className="mb-12 md:mb-16">
-          <p className="kicker-light mb-6 md:mb-8">{eyebrow}</p>
+          <p className="kicker-light mb-5">{eyebrow}</p>
           <div className="grid gap-6 md:grid-cols-12 md:items-end">
             <h2 className="h-section md:col-span-8">{title}</h2>
             <p className="text-[16.5px] leading-relaxed text-white/70 md:col-span-4">{lead}</p>
           </div>
         </div>
-        <div className={`grid gap-x-8 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {items.map((it, n) => (
-            <div key={it.title} className="flex flex-col border-t border-white/25 pb-10 pt-6">
-              <span className="font-display text-[14px] font-semibold tabular-nums text-accent-light">{numbered ? String(n + 1).padStart(2, "0") : "+"}</span>
+            <div key={it.title} className="card-glass reveal flex flex-col p-6">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white font-display text-[14px] font-semibold tabular-nums text-accent">
+                {numbered ? String(n + 1).padStart(2, "0") : <Icon name="check" className="h-4 w-4" strokeWidth={2.8} />}
+              </span>
               <h3 className="mt-5 font-display text-[20px] font-semibold leading-snug tracking-[-0.01em]">{it.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/65">{it.text}</p>
             </div>
@@ -402,8 +430,8 @@ function ProseWithAside({ locale, sections, ctaTitle, ctaText }: { locale: Local
         <Prose sections={sections} />
       </div>
       <aside className="lg:col-span-4 lg:pt-14">
-        <div className="sticky top-28 border border-line border-t-[3px] border-t-accent bg-surface p-8">
-          <h2 className="text-[26px] font-semibold leading-tight tracking-[-0.03em]">{ctaTitle}</h2>
+        <div className="sticky top-28 overflow-hidden rounded-3xl bg-surface p-8 shadow-card ring-1 ring-line">
+          <h2 className="font-display text-[24px] font-semibold leading-[1.25]">{ctaTitle}</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{ctaText}</p>
           <ButtonLink href={`#${FORM_ID}`} className="mt-8 w-full">
             {d.nav.cta}
@@ -497,11 +525,11 @@ function FormSection({
   const d = getDict(locale);
   const u = industryUi[locale];
   return (
-    <section id={FORM_ID} className="mt-10 scroll-mt-20 bg-night py-20 text-white md:py-28">
+    <section id={FORM_ID} className="stage-night mt-10 scroll-mt-20 py-20 text-white md:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-5 lg:pt-6">
           <p className="eyebrow mb-5 !text-accent-light">{u.formEyebrow}</p>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em]">{title}</h2>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.015em]">{title}</h2>
           <p className="mt-6 text-[18px] leading-relaxed text-white/75">{text}</p>
           <ul className="mt-10 space-y-4 text-[15px] text-white/80">
             {d.lp.trust.map((t) => (

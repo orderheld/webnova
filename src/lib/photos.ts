@@ -16,7 +16,12 @@ export interface Photo {
  * - office:   the office or a work situation (home "Über uns"; default: Grenchen skyline)
  * - hero, intro, approach, pos: older slots, kept for compatibility
  */
-export const photos: Partial<Record<"cover" | "founder" | "office" | "hero" | "intro" | "approach" | "pos", Photo>> = {};
+export const photos: Partial<Record<"cover" | "founder" | "office" | "hero" | "intro" | "approach" | "pos", Photo>> = {
+  founder: {
+    src: "/photos/ferhat-demir.webp",
+    alt: { de: "Ferhat Demir, Inhaber von Webnova", fr: "Ferhat Demir, fondateur de Webnova" },
+  },
+};
 
 export function photo(slot: keyof typeof photos, locale: Locale) {
   const p = photos[slot];

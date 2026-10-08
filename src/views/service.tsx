@@ -1,5 +1,5 @@
-import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FeatureGrid, HeroCtas, PageHero, Prose } from "@/components/blocks";
+import { ServiceArt } from "@/components/service-art";
 import {
   BenefitsSection,
   ContactSection,
@@ -46,7 +46,10 @@ export function ServicesPage({ locale }: { locale: Locale }) {
         title={d.pages.servicesH1}
         lead={d.pages.servicesLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.pages.servicesTitle }]}
-      />
+        aside={<ServiceArt service="webdesign" locale={locale} dark />}
+      >
+        <HeroCtas locale={locale} />
+      </PageHero>
       {groups.map((g, gi) => (
         <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
           <h2 className="eyebrow mb-6">{g.label}</h2>
@@ -128,13 +131,9 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         subline={serviceSublines[s.key]?.[locale]}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
+        aside={<ServiceArt service={s.key} locale={locale} dark />}
       >
-        <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false} icon="phone">
-            {site.phone}
-          </ButtonLink>
-        </div>
+        <HeroCtas locale={locale} note />
       </PageHero>
 
       <TrustFacts locale={locale} />

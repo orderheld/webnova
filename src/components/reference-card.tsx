@@ -35,7 +35,7 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
             ) : (
               <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center" style={{ background: r.colors.bg, color: r.colors.fg }}>
                 <span className="h-1 w-10 rounded-full" style={{ background: r.colors.accent }} />
-                <span className="font-display text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-none tracking-[-0.04em]">{r.name}</span>
+                <span className="font-display text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-none tracking-[-0.015em]">{r.name}</span>
                 <span className="text-[12px] uppercase tracking-[0.25em] opacity-60">{c.industry}</span>
               </div>
             )}
@@ -49,7 +49,7 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
             {c.industry}
             {c.place && <> · {c.place}</>}
           </p>
-          <h2 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-semibold leading-tight tracking-[-0.03em]">{r.name}</h2>
+          <h2 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,1.9rem)] font-semibold leading-tight tracking-[-0.015em]">{r.name}</h2>
           <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{c.summary}</p>
         </div>
         <ul className="flex flex-wrap gap-2">

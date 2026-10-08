@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FaqList, PageHero, Prose, anchorId } from "@/components/blocks";
+import { CardLink, ContactPerson, CtaBand, CtaCard, FaqList, PageHero, Prose, anchorId } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
@@ -81,8 +82,8 @@ function AuthorBox({ locale }: { locale: Locale }) {
     <section aria-labelledby="author-heading" className="mt-14 rounded-2xl border border-line bg-surface p-7 shadow-card sm:p-8">
       <h2 id="author-heading" className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{t.author}</h2>
       <div className="mt-5 flex items-start gap-5">
-        <span aria-hidden="true" className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-accent font-display text-[18px] font-semibold text-white">
-          FD
+        <span className="relative h-20 w-16 shrink-0 overflow-hidden rounded-2xl bg-bg-2">
+          <Image src="/photos/ferhat-demir.webp" alt={locale === "de" ? "Ferhat Demir, Inhaber von Webnova" : "Ferhat Demir, fondateur de Webnova"} fill sizes="64px" className="object-cover object-top" />
         </span>
         <div>
           <p className="font-display text-[19px] font-semibold tracking-[-0.01em] text-ink">Ferhat Demir</p>
@@ -178,15 +179,28 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
           { name: d.common.home, url: href(locale, "home") },
           { name: d.nav.guides, url: href(locale, "guides") },
         ]}
+        aside={
+          c.keyTakeaways && c.keyTakeaways.length > 0 ? (
+            <section aria-labelledby="takeaways-heading" className="rounded-3xl bg-white p-7 text-ink shadow-lift sm:p-8">
+              <h2 id="takeaways-heading" className="font-display text-[20px] font-semibold text-ink">
+                {t.takeaways}
+              </h2>
+              <ul className="mt-5 space-y-3.5 text-[15.5px] leading-relaxed text-ink-soft">
+                {c.keyTakeaways.map((k) => (
+                  <li key={k} className="flex gap-3">
+                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-white">
+                      <Icon name="check" className="h-3 w-3" strokeWidth={3} />
+                    </span>
+                    <span>{k}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : undefined
+        }
       >
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[14px] text-muted">
-          <span className="flex items-center gap-3">
-            <span aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-full bg-accent font-display text-[13px] font-semibold text-white">FD</span>
-            <span className="leading-tight">
-              <span className="block font-medium text-ink">Ferhat Demir</span>
-              <span className="block text-[13px]">{t.authorRole}</span>
-            </span>
-          </span>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[14px] text-white/60">
+          <ContactPerson locale={locale} dark role={t.authorRole} />
           <span>
             {t.published} <time dateTime={g.date}>{fmtDate(locale, g.date)}</time>
           </span>
@@ -199,23 +213,6 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
       </PageHero>
       <div className="container-x grid gap-12 pb-12 pt-14 md:pt-20 lg:grid-cols-12">
         <article className="max-w-[42rem] lg:col-span-8">
-          {c.keyTakeaways && c.keyTakeaways.length > 0 && (
-            <section aria-labelledby="takeaways-heading" className="mb-4 rounded-2xl border border-line bg-bg-2 p-7 sm:p-8">
-              <h2 id="takeaways-heading" className="font-display text-[20px] font-semibold tracking-[-0.01em] text-ink">
-                {t.takeaways}
-              </h2>
-              <ul className="mt-5 space-y-3 text-[16px] leading-relaxed text-ink-soft">
-                {c.keyTakeaways.map((k) => (
-                  <li key={k} className="flex gap-3">
-                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-bright-soft text-bright">
-                      <Icon name="check" className="h-3 w-3" strokeWidth={3} />
-                    </span>
-                    <span>{k}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
           <Prose sections={c.sections.slice(0, half)} locale={locale} anchors />
           {c.sections.length > 2 && <InlineCta locale={locale} title={t.midTitle} text={t.midText} check />}
           <Prose sections={c.sections.slice(half)} locale={locale} anchors />

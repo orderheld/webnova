@@ -44,32 +44,31 @@ export function ProblemsSection({
         }
       />
       {points?.length ? (
-        <ol className={`grid gap-x-8 sm:grid-cols-2 ${points.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
-          {points.map((p, i) => (
-            <li key={p.title} className="border-t border-ink pb-8 pt-6">
-              <span className="font-display text-[14px] font-semibold tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 font-display text-[20px] font-semibold leading-snug tracking-[-0.015em]">{p.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
+        <ol className={`grid gap-4 sm:grid-cols-2 ${points.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+          {points.map((p) => (
+            <li key={p.title} className="card-soft reveal p-6">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-bright-soft text-accent">
+                <Icon name="bolt" className="h-5 w-5" />
+              </span>
+              <h3 className="mt-5 font-display text-[19px] font-semibold leading-[1.3]">{p.title}</h3>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
             </li>
           ))}
         </ol>
       ) : (
-        <ul className="border-t border-ink">
-          {list.map((p, i) => (
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((p) => (
             <li key={p.key}>
-              <Link
-                href={href(locale, `problem:${p.key}`)}
-                className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 border-b border-line py-6 md:grid-cols-[3.5rem_5fr_6fr_auto] md:py-7"
-              >
-                <span className="font-display text-[14px] font-semibold tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-display text-[clamp(1.25rem,2vw,1.6rem)] font-semibold leading-snug tracking-[-0.02em] transition-colors group-hover:text-accent">
-                  {p.content[locale].navLabel}
-                </h3>
-                <p className="col-start-2 mt-2 text-[15px] leading-relaxed text-ink-soft md:col-start-3 md:mt-0">
-                  {p.content[locale].h1}
-                  <span className="mt-2 block text-[14px] font-medium text-bright">{p.content[locale].solutionTitle}</span>
-                </p>
-                <Icon name="arrow" className="col-start-3 row-start-1 h-5 w-5 self-center text-ink-soft transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent md:col-start-4" />
+              <Link href={href(locale, `problem:${p.key}`)} className="card-soft card-hover group flex h-full flex-col p-6">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-bright-soft text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+                  <Icon name={p.icon} className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 font-display text-[19px] font-semibold leading-[1.3] transition-colors group-hover:text-accent">{p.content[locale].navLabel}</h3>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-ink-soft">{p.content[locale].h1}</p>
+                <span className="mt-auto flex items-center gap-2 pt-5 text-[14px] font-semibold text-bright">
+                  {p.content[locale].solutionTitle}
+                  <Icon name="arrow" className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
             </li>
           ))}

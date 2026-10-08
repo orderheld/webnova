@@ -195,7 +195,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       <section className="container-x pb-20 md:pb-28">
         <div className="surface-night flex flex-col items-start gap-6 rounded-3xl p-8 text-white sm:p-12 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold leading-tight tracking-[-0.02em]">{d.cta.title}</h2>
+            <h2 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold leading-tight tracking-[-0.01em]">{d.cta.title}</h2>
             <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-white/75">{d.cta.text}</p>
           </div>
           <a

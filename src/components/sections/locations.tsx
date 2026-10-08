@@ -5,9 +5,10 @@ import { structure } from "@/content/structure";
 import type { Locale } from "@/content/types";
 import { href } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { Art } from "@/components/service-art";
 import { Kicker } from "./head";
 
-const chip = "inline-flex border-b border-line py-1 text-[15px] text-ink-soft transition-colors hover:border-accent hover:text-accent";
+const chip = "inline-flex rounded-full bg-white px-4 py-2 text-[14.5px] text-ink-soft ring-1 ring-line transition-colors hover:bg-accent hover:text-white hover:ring-accent";
 
 /**
  * Office plus every region page. On a city page, `current` marks that city and `groups` adds the
@@ -33,12 +34,12 @@ export function LocationsSection({
     <section id={id} className="section-y scroll-mt-20 border-t border-line bg-bg-2">
       <div className="container-x grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <Kicker className="mb-8">{s.locationsEyebrow}</Kicker>
+          <Kicker className="mb-5">{s.locationsEyebrow}</Kicker>
           <h2 className="h-section">{title ?? s.locationsTitle}</h2>
           <p className="lead mt-6">{s.locationsLead}</p>
-          <p className="meta mt-8 border-t border-line pt-4">
-            <span className="label mb-1">{s.officeLabel}</span>
-            {site.address.street} · {site.address.zip} {site.address.city}
+          <Art kind="local" locale={locale} city={current ? cities.find((c) => c.key === current)?.content[locale].name : undefined} className="mt-8 aspect-[5/4]" />
+          <p className="meta mt-5">
+            <span className="font-semibold text-ink-soft">{s.officeLabel}:</span> {site.address.street} · {site.address.zip} {site.address.city}
           </p>
         </div>
         <div className="space-y-12 lg:col-span-7 lg:col-start-6">
@@ -47,7 +48,7 @@ export function LocationsSection({
             .map((g) => (
               <div key={g.label}>
                 <h3 className="label mb-4">{g.label}</h3>
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <div className="flex flex-wrap gap-2">
                   {g.links.map((l) => (
                     <Link key={l.href} href={l.href} className={chip}>
                       {l.label}
@@ -58,7 +59,7 @@ export function LocationsSection({
             ))}
           <div>
             <h3 className="label mb-4">{s.allRegions}</h3>
-            <ul className="grid border-t border-ink sm:grid-cols-2 sm:gap-x-8">
+            <ul className="grid gap-x-8 rounded-3xl bg-white px-5 py-2 ring-1 ring-line sm:grid-cols-2">
               {sorted.map((c, i) => (
                 <li key={c.key}>
                   <Link

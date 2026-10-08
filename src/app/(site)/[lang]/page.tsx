@@ -2,20 +2,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand } from "@/components/blocks";
-import { ContactList, PhotoSlot, SwissPanorama } from "@/components/editorial";
-import { HeroBuild } from "@/components/hero-build";
+import { ContactList, PortraitCard } from "@/components/editorial";
+import { HomeHero } from "@/components/home-hero";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
-import { skylines } from "@/components/skylines";
+import { ServiceArt } from "@/components/service-art";
+import { BrowserFrame, PhoneFrame, samples } from "@/components/visuals";
 import { guides } from "@/content/guides";
 import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import { structure } from "@/content/structure";
 import { getDict } from "@/i18n/dict";
-import { photo } from "@/lib/photos";
 import { getRoute, hasRoute, href, isLocale } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
 import {
   FaqSection,
   FitSection,
@@ -25,6 +24,7 @@ import {
   ProcessSection,
   ReferencesSection,
   SectionHead,
+  TrustFacts,
   hasProjects,
 } from "@/components/sections";
 const homeMeta = {
@@ -148,6 +148,11 @@ const copy = {
     formLabel: "Projektanfrage",
     formTitle: "Ihr Vorhaben in zwei Minuten beschrieben.",
     guidesAll: "Alle Ratgeber",
+    showLabel: "Beispiel-Designs",
+    showTitle: "So kann Ihre Webseite aussehen.",
+    showLead: "Vier Beispiel-Designs für erfundene Betriebe: jede Branche bekommt ihren eigenen Look, gebaut auf Anfragen, Buchungen und Reservationen.",
+    showNote: "Beispiel-Design · fiktive Marke",
+    blocksLead: "Jeder Schwerpunkt mit klarem Ziel. Ferhat Demir begleitet Sie durch alle, ohne Projektteams und Weiterreichen.",
   },
   fr: {
     coverLine: "Webnova · Agence web Suisse",
@@ -217,6 +222,11 @@ const copy = {
     formLabel: "Demande de projet",
     formTitle: "Votre projet décrit en deux minutes.",
     guidesAll: "Tous les conseils",
+    showLabel: "Exemples de design",
+    showTitle: "Voici à quoi votre site peut ressembler.",
+    showLead: "Quatre exemples de design pour des entreprises inventées : chaque secteur a son propre style, pensé pour les demandes, les réservations et les rendez-vous.",
+    showNote: "Exemple de design · marque fictive",
+    blocksLead: "Chaque domaine avec un objectif clair. Ferhat Demir vous accompagne dans tous, sans équipes de projet ni intermédiaires.",
   },
 };
 
@@ -232,279 +242,169 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const svc = (key: string) => services.find((s) => s.key === key);
   const projects = hasProjects();
 
-  // The numbered index on the cover. Numbers match the section counter: sections appear in this order.
-  const index = [
-    ...(projects ? [{ id: id.projects, label: d.nav.references }] : []),
-    { id: id.services, label: c.angebotLabel },
-    { id: id.focus, label: c.focusSectionLabel },
-    { id: id.process, label: st.processEyebrow },
-    { id: id.about, label: c.aboutLabel },
-    { id: id.contact, label: c.contactLabel },
-  ];
-  const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
   const problemList = problems.filter((p) => hasRoute(`problem:${p.key}`));
 
   return (
     <>
-      {/* COVER: keyword H1 (LCP, visible on load), numbered index, contact lines, meta line and the panorama. */}
-      <section aria-labelledby="home-h1" className="bg-bg">
-        <div className="container-x pt-8 md:pt-12">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
-            <p className="label">{c.coverLine}</p>
-            <p className="label hidden sm:block">{c.coverLang}</p>
-          </div>
-          <div className="grid gap-12 pb-8 pt-8 md:pt-10 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-8">
-              <h1 id="home-h1" className="display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.045em]">
-                {c.h1a} <span className="text-accent">{c.h1b}</span>
-              </h1>
-              <p className="mt-6 max-w-2xl font-display text-[clamp(1.5rem,2.8vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-soft">
-                {c.tagA} <strong className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-[6px]">{c.tagEm}</strong>
-                {c.tagB === "." ? "." : ` ${c.tagB}`}
-              </p>
-              <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-                <li>
-                  <a href={`mailto:${site.email}`} className="font-medium text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent">
-                    {site.email}
-                  </a>
-                </li>
-                <li>
-                  <a href={site.phoneHref} className="text-ink-soft hover:text-accent">
-                    {site.phone}
-                  </a>
-                </li>
-                <li>
-                  <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-ink-soft hover:text-accent">
-                    Instagram <Icon name="arrow" className="h-3.5 w-3.5 -rotate-45" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <nav aria-label={c.indexLabel} className="lg:col-span-4 lg:pt-3">
-              <p className="label mb-3">{c.indexLabel}</p>
-              <ol className="border-t border-ink">
-                {index.map((it, i) => (
-                  <li key={it.id}>
-                    <a href={`#${it.id}`} className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline border-b border-line py-3.5 transition-colors hover:text-accent">
-                      <span className="text-[12.5px] font-semibold tabular-nums text-accent">{two(i + 1)}</span>
-                      <span className="font-display text-[20px] font-semibold tracking-[-0.015em]">{it.label}</span>
-                      <Icon name="arrow" className="h-4 w-4 rotate-90 self-center text-muted transition-transform group-hover:translate-y-0.5 group-hover:text-accent" />
-                    </a>
-                  </li>
-                ))}
-              </ol>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href={href(lang, "request")}>{d.nav.cta}</ButtonLink>
-              </div>
-            </nav>
-          </div>
-          <div className="flex items-center justify-between gap-4 border-t border-line py-4">
-            <p className="meta">{c.meta.join(" · ")}</p>
-            <a href={`#${id.services}`} className="meta hidden items-center gap-1.5 hover:text-accent sm:inline-flex">
-              {c.scroll}
-              <Icon name="arrow" className="h-3.5 w-3.5 rotate-90" />
-            </a>
-          </div>
-        </div>
-        <figure className="mt-2">
-          {photo("cover", lang) ? (
-            <PhotoSlot photo={photo("cover", lang)} fallback={null} ratio="aspect-[21/8]" sizes="100vw" priority />
-          ) : (
-            <SwissPanorama animate className="h-[150px] text-accent/55 sm:h-[200px] lg:h-[250px]" />
-          )}
-          <figcaption className="container-x">
-            <span className="caption mt-0">
-              <span className="font-semibold text-accent">{c.fig} 01</span>
-              {c.coverCaption}
-            </span>
-          </figcaption>
-        </figure>
-      </section>
+      <HomeHero locale={lang} variant="mark" />
 
-      {/* INTRO: sticky service index on the left, the benefit statement, facts, lead and the build animation. */}
-      <section className="container-x section-y">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <aside className="order-last lg:order-first lg:col-span-3">
-            <div className="lg:sticky lg:top-28">
-              <p className="label mb-3">{c.servicesIndex}</p>
-              <ul className="border-t border-ink">
-                {mainServices.map((sv, i) => (
-                  <li key={sv.key}>
-                    <Link href={href(lang, `service:${sv.key}`)} className="group grid grid-cols-[2rem_1fr] items-baseline border-b border-line py-2.5 text-[15px] transition-colors hover:text-accent">
-                      <span className="text-[12px] tabular-nums text-muted group-hover:text-accent">{two(i + 1)}</span>
-                      <span className="font-medium">{sv.content[lang].navLabel}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-          <div className="lg:col-span-8 lg:col-start-5">
-            <p className="eyebrow mb-6">{c.introEyebrow}</p>
-            <h2 className="h-section">{c.introTitle}</h2>
-            <dl className="mt-10 grid border-t border-ink sm:grid-cols-2">
-              {c.facts.map((f) => (
-                <div key={f.k} className="grid grid-cols-[7rem_1fr] items-baseline gap-3 border-b border-line py-3.5 sm:pr-6">
-                  <dt className="label">{f.k}</dt>
-                  <dd className="text-[15.5px] text-ink">{f.v}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="lead mt-10 max-w-2xl">{d.hero.lead}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
-              <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
-                {d.hero.secondary}
-              </ButtonLink>
-            </div>
-            <p className="meta mt-4">{c.heroNote}</p>
-            <figure className="mt-14 max-w-3xl">
-              <HeroBuild locale={lang} />
-              <figcaption className="caption">
-                <span className="font-semibold text-accent">{c.fig} 02</span>
-                {c.buildCaption}
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
+      <TrustFacts locale={lang} />
 
       {/* PROJECTS: horizontal row, only while references are switched on (showReferences). */}
-      {projects && (
-        <div className="rule-t">
-          <ReferencesSection locale={lang} id={id.projects} />
-        </div>
-      )}
+      {projects && <ReferencesSection locale={lang} id={id.projects} />}
 
-      {/* ANGEBOT: goal question, three goals, the formula, five numbered service blocks and the problem entry points. */}
-      <section id={id.services} className="section-y scroll-mt-20 border-t border-line">
+      {/* ANGEBOT: the goal question with three goals, each with its own scene. */}
+      <section id={id.services} className="section-y scroll-mt-20">
         <div className="container-x">
           <SectionHead eyebrow={c.angebotLabel} title={c.angebotTitle} lead={c.angebotLead} />
-          <ol className="grid gap-x-8 md:grid-cols-3">
-            {c.goals.map((g, i) => (
-              <li key={g.id} className="border-t border-ink">
-                <Link href={href(lang, g.id)} className="group flex h-full flex-col pb-10 pt-6">
-                  <span className="text-[12.5px] font-semibold tabular-nums text-accent">{String.fromCharCode(65 + i)}</span>
-                  <h3 className="mt-4 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold leading-tight tracking-[-0.025em] transition-colors group-hover:text-accent">{g.t}</h3>
-                  <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{g.x}</p>
-                  <span className="link-arrow mt-auto pt-6">
-                    {c.seeService}
-                    <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
+          <ol className="grid gap-5 md:grid-cols-3">
+            {c.goals.map((g) => (
+              <li key={g.id}>
+                <Link href={href(lang, g.id)} className="card-soft card-hover group flex h-full flex-col overflow-hidden p-3">
+                  <ServiceArt service={g.id.replace("service:", "")} locale={lang} className="aspect-[5/4]" />
+                  <div className="flex flex-1 flex-col px-3 pb-3 pt-5">
+                    <h3 className="font-display text-[clamp(1.35rem,2vw,1.6rem)] font-semibold leading-[1.25] transition-colors group-hover:text-accent">{g.t}</h3>
+                    <p className="mt-2.5 text-[15.5px] leading-relaxed text-ink-soft">{g.x}</p>
+                    <span className="link-arrow mt-auto pt-5">
+                      {c.seeService}
+                      <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
                 </Link>
               </li>
             ))}
           </ol>
 
           {/* The formula: what a fitting website is made of. */}
-          <div className="mt-16 bg-bg-2 px-6 py-10 sm:px-10 md:mt-20">
-            <p className="label mb-6">{c.formulaTitle}</p>
-            <p className="flex flex-wrap items-baseline gap-x-4 gap-y-3 font-display text-[clamp(1.25rem,2.6vw,2.1rem)] font-semibold tracking-[-0.02em]">
+          <div className="stage-accent mt-14 rounded-3xl px-6 py-9 text-white sm:px-10 md:mt-16">
+            <p className="kicker-light mb-5">{c.formulaTitle}</p>
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-3 font-display text-[clamp(1.1rem,2.2vw,1.75rem)] font-semibold">
               {c.formula.map((f, i) => (
-                <span key={f} className="inline-flex items-baseline gap-x-4">
-                  {i > 0 && <span aria-hidden="true" className="text-accent/50">+</span>}
-                  <span>{f}</span>
+                <span key={f} className="inline-flex items-center gap-x-3">
+                  {i > 0 && <span aria-hidden="true" className="text-accent-light">+</span>}
+                  <span className="rounded-full bg-white/10 px-4 py-1.5 ring-1 ring-inset ring-white/15">{f}</span>
                 </span>
               ))}
-              <span aria-hidden="true" className="text-accent/50">=</span>
-              <span className="text-accent underline decoration-2 underline-offset-[8px]">{c.formulaResult}</span>
+              <span aria-hidden="true" className="text-accent-light">=</span>
+              <span className="rounded-full bg-white px-4 py-1.5 text-accent">{c.formulaResult}</span>
             </p>
           </div>
+        </div>
+      </section>
 
-          <h3 className="h-block mt-20 md:mt-28">{c.blocksTitle}</h3>
-          <ol className="mt-8 border-t border-ink">
+      {/* SCHWERPUNKTE: five service blocks on the dark stage, each with its scene. */}
+      <section className="stage-night section-y text-white">
+        <div className="container-x">
+          <SectionHead dark eyebrow={c.focusLabel} title={c.blocksTitle} lead={c.blocksLead} />
+          <ol className="space-y-5">
             {c.blocks.map((b, i) => {
               const main = svc(b.main);
               if (!main) return null;
               const mc = main.content[lang];
               const more = b.more.map(svc).filter((x) => x !== undefined).filter((x) => hasRoute(`service:${x.key}`));
               return (
-                <li key={b.main} className="grid gap-6 border-b border-line py-10 md:grid-cols-12 md:gap-8 md:py-12">
-                  <span className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-semibold leading-none tracking-[-0.04em] text-accent tabular-nums md:col-span-2">{two(i + 1)}</span>
-                  <div className="md:col-span-5">
-                    <h4 className="font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold leading-tight tracking-[-0.025em]">
-                      <Link href={href(lang, `service:${main.key}`)} className="transition-colors hover:text-accent">
+                <li key={b.main} className="card-glass reveal grid items-center gap-8 p-4 sm:p-6 lg:grid-cols-12 lg:gap-10 lg:p-8">
+                  <ServiceArt service={main.key} locale={lang} dark className={`aspect-[5/4] lg:col-span-5 ${i % 2 ? "lg:order-last" : ""}`} />
+                  <div className="lg:col-span-7">
+                    <span className="font-display text-[14px] font-semibold tabular-nums text-accent-light">{two(i + 1)}</span>
+                    <h3 className="mt-3 font-display text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-[1.2]">
+                      <Link href={href(lang, `service:${main.key}`)} className="transition-colors hover:text-accent-light">
                         {b.title}
                       </Link>
-                    </h4>
-                    <p className="mt-4 text-[16px] leading-relaxed text-ink-soft">{mc.lead}</p>
-                    <Link href={href(lang, `service:${main.key}`)} className="link-arrow mt-5">
-                      {mc.navLabel}
-                      <Icon name="arrow" className="h-4 w-4" />
-                    </Link>
-                  </div>
-                  <div className="md:col-span-4 md:col-start-9">
-                    <p className="label mb-3">{c.focusLabel}</p>
-                    <ul className="space-y-2 text-[15px] text-ink">
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-white/75">{mc.lead}</p>
+                    <ul className="mt-6 grid gap-2.5 text-[15px] sm:grid-cols-2">
                       {mc.features.slice(0, 4).map((f) => (
-                        <li key={f.title} className="flex gap-3">
-                          <span aria-hidden="true" className="mt-[0.6em] h-px w-3 shrink-0 bg-accent" />
+                        <li key={f.title} className="flex gap-2.5">
+                          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/10 text-accent-light">
+                            <Icon name="check" className="h-3 w-3" strokeWidth={3} />
+                          </span>
                           {f.title}
                         </li>
                       ))}
                     </ul>
-                    {more.length > 0 && (
-                      <>
-                        <p className="label mb-2 mt-6">{c.moreLabel}</p>
-                        <p className="flex flex-wrap gap-x-4 gap-y-1 text-[14.5px]">
+                    <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <ButtonLink href={href(lang, `service:${main.key}`)} variant="accent">
+                        {mc.navLabel}
+                      </ButtonLink>
+                      {more.length > 0 && (
+                        <p className="flex flex-wrap gap-2 text-[14px]">
+                          <span className="sr-only">{c.moreLabel}</span>
                           {more.map((m) => (
-                            <Link key={m.key} href={href(lang, `service:${m.key}`)} className="font-medium text-bright underline decoration-bright/30 underline-offset-4 hover:decoration-bright">
+                            <Link key={m.key} href={href(lang, `service:${m.key}`)} className="rounded-full px-3.5 py-1.5 text-white/80 ring-1 ring-inset ring-white/20 transition-colors hover:bg-white hover:text-accent">
                               {m.content[lang].navLabel}
                             </Link>
                           ))}
                         </p>
-                      </>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </li>
               );
             })}
           </ol>
 
-          <div className="mt-16 grid gap-12 md:grid-cols-12">
+          <div className="mt-14 grid gap-5 md:grid-cols-12">
             {problemList.length > 0 && (
               <div className="md:col-span-7">
                 <h3 className="h-block">{c.problemTitle}</h3>
-                <ul className="mt-6 border-t border-ink">
+                <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {problemList.map((p) => (
                     <li key={p.key}>
-                      <Link href={href(lang, `problem:${p.key}`)} className="group flex items-center justify-between gap-4 border-b border-line py-3.5 text-[16px] transition-colors hover:text-accent">
-                        {p.content[lang].navLabel}
-                        <Icon name="arrow" className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+                      <Link href={href(lang, `problem:${p.key}`)} className="group flex items-center gap-3 rounded-2xl bg-white/[0.06] px-4 py-3.5 text-[15.5px] ring-1 ring-inset ring-white/10 transition-colors hover:bg-white hover:text-accent">
+                        <Icon name={p.icon} className="h-5 w-5 shrink-0 text-accent-light group-hover:text-accent" />
+                        <span className="flex-1">{p.content[lang].navLabel}</span>
+                        <Icon name="arrow" className="h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5" />
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
-            <div className="flex flex-col justify-between gap-8 self-start bg-night p-8 text-white md:col-span-5">
+            <div className="flex flex-col justify-between gap-8 self-start rounded-3xl bg-white p-8 text-ink md:col-span-5">
               <div>
-                <p className="font-display text-[24px] font-semibold leading-tight tracking-[-0.02em]">{c.notFoundTitle}</p>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-white/75">{c.notFoundText}</p>
+                <p className="font-display text-[24px] font-semibold leading-[1.25]">{c.notFoundTitle}</p>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{c.notFoundText}</p>
               </div>
               <div>
-                <ButtonLink href={href(lang, "request")} variant="accent">
-                  {st.stepsCta}
-                </ButtonLink>
+                <ButtonLink href={href(lang, "request")}>{d.nav.cta}</ButtonLink>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BRANCHEN: industry index, POS entry and two overlapping drawings for the two language regions. */}
-      <section id={id.focus} className="section-y scroll-mt-20 border-t border-line">
-        <div className="container-x grid gap-14 lg:grid-cols-12">
+      {/* BEISPIEL-DESIGNS: fictional sample sites, clearly labelled, never presented as clients. */}
+      <section className="section-y overflow-hidden">
+        <div className="container-x">
+          <SectionHead eyebrow={c.showLabel} title={c.showTitle} lead={c.showLead} />
+          <div className="grid gap-5 md:grid-cols-2">
+            {(["coiffeur", "restaurant", "schreinerei", "treuhand"] as const).map((k, i) => (
+              <figure key={k} className={`reveal rounded-3xl p-4 sm:p-6 ${i === 0 || i === 3 ? "stage-accent" : "bg-bg-2 ring-1 ring-line"}`}>
+                <BrowserFrame sample={k} locale={lang} sizes="(min-width: 768px) 560px, 92vw" />
+                <figcaption className={`mt-4 flex items-center justify-between gap-3 text-[13.5px] ${i === 0 || i === 3 ? "text-white/75" : "text-muted"}`}>
+                  <span className={`font-semibold ${i === 0 || i === 3 ? "text-white" : "text-ink"}`}>{samples[k].industry[lang]}</span>
+                  {c.showNote}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BRANCHEN: industry index next to three phones with sample designs. */}
+      <section id={id.focus} className="section-y scroll-mt-20 bg-bg-2">
+        <div className="container-x grid items-center gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <Kicker className="mb-8">{c.focusSectionLabel}</Kicker>
+            <Kicker className="mb-5">{c.focusSectionLabel}</Kicker>
             <h2 className="h-section">{c.focusTitle}</h2>
             <p className="lead mt-6 max-w-2xl">{c.focusLead}</p>
             <div className="mt-10">
               <IndustryIndex locale={lang} cols={2} />
             </div>
-            <div className="mt-10 grid gap-4 border-t border-line pt-6 sm:grid-cols-[1fr_auto] sm:items-center">
+            <div className="mt-8 grid gap-4 rounded-3xl bg-white p-6 ring-1 ring-line sm:grid-cols-[1fr_auto] sm:items-center">
               <div>
-                <p className="font-display text-[19px] font-semibold tracking-[-0.01em]">{c.posTitle}</p>
+                <p className="font-display text-[19px] font-semibold">{c.posTitle}</p>
                 <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">{d.home.posLead}</p>
               </div>
               <p className="flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
@@ -517,15 +417,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </p>
             </div>
           </div>
-          <figure className="lg:col-span-5 lg:pt-24">
-            <div className="relative pb-[18%] pr-[12%]">
-              <Drawing city="bern" className="relative aspect-[4/3]" />
-              <Drawing city="neuchatel" className="absolute bottom-0 right-0 aspect-[4/3] w-[62%] shadow-lift ring-8 ring-bg" />
+          <figure className="lg:col-span-5">
+            <div aria-hidden="true" className="stage-accent relative mx-auto aspect-[4/5] max-w-[460px] overflow-hidden rounded-[2rem]">
+              <PhoneFrame sample="restaurant" locale={lang} className="absolute left-[6%] top-[14%] w-[36%] -rotate-6" />
+              <PhoneFrame sample="schreinerei" locale={lang} className="absolute right-[6%] top-[10%] w-[36%] rotate-6" />
+              <PhoneFrame sample="coiffeur" locale={lang} className="float absolute left-1/2 top-[22%] w-[40%] -translate-x-1/2" />
             </div>
-            <figcaption className="caption">
-              <span className="font-semibold text-accent">{c.fig} 03</span>
-              {c.focusCaption}
-            </figcaption>
+            <figcaption className="mt-3 text-center text-[13px] text-muted">{c.showNote}</figcaption>
           </figure>
         </div>
       </section>
@@ -533,50 +431,37 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* ABLAUF */}
       <ProcessSection locale={lang} id={id.process} title={d.home.processTitle} />
 
-      {/* ÜBER UNS: owner portrait slot, two text columns and two true figures. */}
+      {/* ÜBER UNS: the owner's portrait, two text columns and two true figures. */}
       <section id={id.about} className="section-y scroll-mt-20">
-        <div className="container-x">
-          <SectionHead eyebrow={c.aboutLabel} title={c.aboutTitle} />
-          <div className="grid gap-12 lg:grid-cols-12">
-            <PhotoSlot
-              className="lg:col-span-5"
-              photo={photo("founder", lang)}
-              fallback="monogram"
-              ratio="aspect-[4/3]"
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              caption={
-                <>
-                  <span className="font-semibold text-accent">{c.fig} 04</span>
-                  {c.aboutCaption}
-                </>
-              }
-            />
-            <div className="lg:col-span-6 lg:col-start-7">
-              <div className="grid gap-8 text-[16px] leading-relaxed text-ink-soft md:grid-cols-2">
-                {d.pages.aboutSections.slice(0, 2).map((sec) => (
-                  <div key={sec.h2}>
-                    <h3 className="mb-3 font-display text-[19px] font-semibold tracking-[-0.01em] text-ink">{sec.h2}</h3>
-                    {sec.paragraphs.map((p) => (
-                      <p key={p} className="mb-4">
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <dl className="mt-8 grid gap-x-8 border-t border-ink sm:grid-cols-2">
-                {c.figures.map((f) => (
-                  <div key={f.n} className="border-b border-line py-6">
-                    <dt className="font-display text-[clamp(3rem,5vw,4.25rem)] font-semibold leading-none tracking-[-0.04em] text-accent">{f.n}</dt>
-                    <dd className="mt-3 text-[15px] leading-relaxed text-ink-soft">{f.t}</dd>
-                  </div>
-                ))}
-              </dl>
-              <Link href={href(lang, "about")} className="link-arrow mt-8">
-                {c.aboutMore}
-                <Icon name="arrow" className="h-4 w-4" />
-              </Link>
+        <div className="container-x grid items-center gap-14 lg:grid-cols-12">
+          <PortraitCard locale={lang} className="mx-auto w-full max-w-[420px] lg:col-span-5" />
+          <div className="lg:col-span-7">
+            <Kicker className="mb-5">{c.aboutLabel}</Kicker>
+            <h2 className="h-section">{c.aboutTitle}</h2>
+            <div className="mt-8 grid gap-8 text-[16px] leading-relaxed text-ink-soft md:grid-cols-2">
+              {d.pages.aboutSections.slice(0, 2).map((sec) => (
+                <div key={sec.h2}>
+                  <h3 className="mb-3 font-display text-[19px] font-semibold text-ink">{sec.h2}</h3>
+                  {sec.paragraphs.map((p) => (
+                    <p key={p} className="mb-4">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </div>
+            <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+              {c.figures.map((f) => (
+                <div key={f.n} className="rounded-2xl bg-bright-soft p-5">
+                  <dt className="font-display text-[clamp(2.5rem,4vw,3.25rem)] font-semibold leading-none text-accent">{f.n}</dt>
+                  <dd className="mt-3 text-[15px] leading-relaxed text-ink-soft">{f.t}</dd>
+                </div>
+              ))}
+            </dl>
+            <Link href={href(lang, "about")} className="link-arrow mt-8">
+              {c.aboutMore}
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -590,12 +475,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <p className="lead">{c.contactLead}</p>
               <ContactList locale={lang} hours className="mt-8" />
               <p className="label mb-3 mt-12">{st.stepsTitle}</p>
-              <ol className="border-t border-ink">
+              <ol className="space-y-3">
                 {st.steps.map((s, i) => (
-                  <li key={s.title} className="grid grid-cols-[2.5rem_1fr] border-b border-line py-4">
-                    <span className="text-[12.5px] font-semibold tabular-nums text-accent">{two(i + 1)}</span>
+                  <li key={s.title} className="flex gap-4 rounded-2xl bg-white p-4 ring-1 ring-line">
+                    <span className="num-tile">{i + 1}</span>
                     <span>
-                      <span className="block font-display text-[17px] font-semibold tracking-[-0.01em]">{s.title}</span>
+                      <span className="block font-display text-[17px] font-semibold">{s.title}</span>
                       <span className="mt-1 block text-[14.5px] leading-relaxed text-ink-soft">{s.text}</span>
                     </span>
                   </li>
@@ -603,15 +488,17 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </ol>
             </div>
             <div className="lg:col-span-7">
-              <p className="label mb-2">{c.formLabel}</p>
-              <h3 className="h-block mb-6">{c.formTitle}</h3>
-              <LeadForm locale={lang} t={d.form} thanksHref={href(lang, "thanks")} privacyHref={href(lang, "legal:datenschutz")} source="home" />
+              <div className="rounded-3xl bg-white p-5 shadow-card ring-1 ring-line sm:p-8">
+                <p className="label mb-2">{c.formLabel}</p>
+                <h3 className="h-block mb-6">{c.formTitle}</h3>
+                <LeadForm locale={lang} t={d.form} thanksHref={href(lang, "thanks")} privacyHref={href(lang, "legal:datenschutz")} source="home" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SEO appendix: fit, locations, guides and the FAQ, numbered on from the main sections. */}
+      {/* SEO appendix: fit, locations, guides and the FAQ. */}
       <FitSection locale={lang} />
 
       <LocationsSection locale={lang} />
@@ -627,11 +514,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </Link>
           }
         />
-        <div className="grid gap-x-8 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {guides.slice(0, 3).map((g) => (
             <CardLink
               key={g.key}
               href={href(lang, `guide:${g.key}`)}
+              icon="file"
               meta={`${g.readingMinutes} ${d.common.minutes}`}
               title={g.content[lang].h1}
               text={g.content[lang].lead}
@@ -640,21 +528,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      <div className="border-t border-line">
-        <FaqSection locale={lang} faq={homeFaq[lang]} id={id.faq} />
+      <FaqSection locale={lang} faq={homeFaq[lang]} id={id.faq} />
+      <div className="pt-20 md:pt-28">
+        <CtaBand locale={lang} />
       </div>
-      <CtaBand locale={lang} />
     </>
   );
 }
-
-/** Framed city line drawing used as a picture until real photos exist. */
-function Drawing({ city, className = "" }: { city: string; className?: string }) {
-  const Skyline = skylines[city];
-  return (
-    <div aria-hidden="true" className={`overflow-hidden bg-bg-2 text-accent/70 ${className}`}>
-      {Skyline && <Skyline preserveAspectRatio="xMidYMax slice" className="absolute inset-x-0 bottom-0 h-[85%] w-full" />}
-    </div>
-  );
-}
-

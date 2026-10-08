@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { testimonials } from "@/content/testimonials";
-import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FeatureGrid, HeroCtas, PageHero, Prose } from "@/components/blocks";
 import {
   ContactSection,
   FaqSection,
@@ -18,7 +17,7 @@ import { problems } from "@/content/problems";
 import { cityFaqTemplates, structure, topUpFaq } from "@/content/structure";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
-import { skylines } from "@/components/skylines";
+import { Art, serviceArt } from "@/components/service-art";
 import { localServices } from "@/content/local";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -53,7 +52,10 @@ export function RegionsPage({ locale }: { locale: Locale }) {
         title={d.pages.regionsH1}
         lead={d.pages.regionsLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.regions }]}
-      />
+        aside={<Art kind="local" locale={locale} dark />}
+      >
+        <HeroCtas locale={locale} />
+      </PageHero>
       <section className="container-x grid gap-8 pt-16 md:pt-24 lg:grid-cols-12">
         <p className="text-[18px] leading-relaxed text-ink-soft lg:col-span-8">{regionsIntro[locale]}</p>
       </section>
@@ -82,7 +84,6 @@ export function RegionsPage({ locale }: { locale: Locale }) {
             .filter((c) => c.priority === "A")
             .map((c) => (
               <div key={c.key} className="card p-6">
-                <CardSkyline cityKey={c.key} />
                 <h3 className="mb-4 font-display text-[20px] font-semibold tracking-tight">{c.content[locale].name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {cityServiceLinks(locale, c.key).map((l) => (
@@ -98,24 +99,6 @@ export function RegionsPage({ locale }: { locale: Locale }) {
       <CtaBand locale={locale} />
     </>
   );
-}
-
-/** City skyline drawn large behind the hero text, bottom-aligned and full-bleed. Decorative only. */
-function HeroSkyline({ cityKey }: { cityKey: string }) {
-  const Skyline = skylines[cityKey];
-  if (!Skyline) return null;
-  return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[clamp(150px,17vw,250px)] text-bright/25 [mask-image:linear-gradient(to_top,#000_55%,transparent)]">
-      <Skyline animate className="h-full w-full" />
-    </div>
-  );
-}
-
-/** Small skyline strip along the top of a city card on the regions hub. */
-function CardSkyline({ cityKey }: { cityKey: string }) {
-  const Skyline = skylines[cityKey];
-  if (!Skyline) return null;
-  return <Skyline preserveAspectRatio="xMidYMax meet" className="-mx-6 -mt-4 mb-4 block h-28 w-[calc(100%+3rem)] text-bright/60" />;
 }
 
 const chip =
@@ -249,14 +232,9 @@ export function CityPage({
         subline={heading.subline}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
-        backdrop={<HeroSkyline cityKey={city.key} />}
+        aside={<Art kind={service ? (serviceArt[service.key]?.kind ?? "local") : variant === "seo" ? "seo" : "local"} variant={serviceArt[service?.key ?? ""]?.variant} sample={serviceArt[service?.key ?? ""]?.sample} city={cityName} locale={locale} dark />}
       >
-        <div className="mt-10 flex flex-wrap items-center gap-3">
-          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false} icon="phone">
-            {site.phone}
-          </ButtonLink>
-        </div>
+        <HeroCtas locale={locale} note />
       </PageHero>
 
       <TrustFacts locale={locale} />

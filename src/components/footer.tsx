@@ -5,7 +5,6 @@ import { hoursLines } from "@/lib/hours";
 import { buildFooter } from "@/lib/nav";
 import { href } from "@/lib/routes";
 import { showReferences, site } from "@/lib/site";
-import { SwissPanorama } from "./editorial";
 import { Icon } from "./icons";
 import { Logo } from "./logo";
 
@@ -16,7 +15,6 @@ const ft = {
     office: "Büro",
     index: "Verzeichnis",
     top: "Nach oben",
-    caption: "Basel · Zürich · Bern · Luzern · Neuchâtel",
   },
   fr: {
     studio: "Agence web · Suisse",
@@ -24,11 +22,10 @@ const ft = {
     office: "Bureau",
     index: "Répertoire",
     top: "Haut de page",
-    caption: "Bâle · Zurich · Berne · Lucerne · Neuchâtel",
   },
 };
 
-/** Editorial footer: closing line, three main columns, the full link index (SEO) and a skyline drawing. */
+/** Footer: closing line, three main columns, the full link index (SEO) and a faint Webnova mark. */
 export function Footer({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const t = ft[locale];
@@ -49,7 +46,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const colTitle = "mb-5 text-[12px] font-semibold uppercase tracking-[0.14em] text-white/50";
   const link = "text-white/80 transition-colors hover:text-white";
   return (
-    <footer className="relative isolate overflow-hidden bg-night text-white">
+    <footer className="stage-night relative isolate overflow-hidden text-white">
       {/* Studio line and three main columns */}
       <div className="container-x grid gap-10 border-b border-white/10 pb-14 pt-20 md:grid-cols-12">
         <div className="md:col-span-4">
@@ -183,11 +180,9 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      {/* Footer drawing: the composed Swiss skyline in faint lines */}
-      <figure className="pb-24 lg:pb-6">
-        <SwissPanorama className="h-[110px] text-white/20 md:h-[150px]" />
-        <figcaption className="container-x pt-3 text-[11.5px] uppercase tracking-[0.14em] text-white/35">{t.caption}</figcaption>
-      </figure>
+      {/* Large faint wordmark mark as the closing graphic */}
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 -right-16 -z-10 h-[420px] w-[420px] opacity-[0.06] [background:url(/logo-mark.svg)_center/contain_no-repeat] [filter:brightness(0)_invert(1)]" />
+      <div className="pb-24 lg:pb-8" />
     </footer>
   );
 }
