@@ -11,7 +11,6 @@ import {
   ProcessSection,
   ReferencesSection,
   ServicesGrid,
-  TrustFacts,
 } from "@/components/sections";
 import { problems } from "@/content/problems";
 import { cityFaqTemplates, structure, topUpFaq } from "@/content/structure";
@@ -237,7 +236,6 @@ export function CityPage({
         <HeroCtas locale={locale} note />
       </PageHero>
 
-      <TrustFacts locale={locale} />
 
       {service && (
         <section className="container-x pt-20 md:pt-28">

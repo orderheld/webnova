@@ -30,13 +30,13 @@ const de = {
     whatsapp: "WhatsApp",
   },
   hero: {
-    eyebrow: "Webdesign-Agentur für Schweizer KMU",
+    eyebrow: "Webdesign-Agentur für Schweizer Unternehmen",
     title1: "Webseiten, die",
     title2: "Anfragen bringen.",
-    lead: "Wir gestalten und entwickeln moderne Webseiten, Onlineshops und Kampagnen für Schweizer KMU. Schnell, klar, auf Google sichtbar und auf Ihr Ziel ausgerichtet: mehr Kundinnen und Kunden.",
+    lead: "Wir gestalten und entwickeln Webseiten für Schweizer Unternehmen. Individuell, schnell, auf dem Handy und bei Google stark, und auf ein Ziel ausgerichtet: mehr Anfragen.",
     primary: "Kostenlose Erstberatung",
     secondary: "Leistungen ansehen",
-    points: ["Schweizweit für KMU", "Deutsch & Französisch", "Alles aus einer Hand"],
+    points: ["Individuelles Webdesign", "Für Handy und Google gebaut", "Persönlich betreut"],
   },
   home: {
     servicesEyebrow: "Leistungen",
@@ -232,13 +232,13 @@ const fr: Dict = {
     whatsapp: "WhatsApp",
   },
   hero: {
-    eyebrow: "Agence web pour les PME suisses",
+    eyebrow: "Agence web pour les entreprises suisses",
     title1: "Des sites web",
     title2: "qui génèrent des demandes.",
-    lead: "Nous concevons et développons des sites internet, boutiques en ligne et campagnes modernes pour les PME suisses. Rapides, clairs, visibles sur Google et pensés pour un objectif : plus de clients.",
+    lead: "Nous concevons et développons des sites internet pour les entreprises suisses. Sur mesure, rapides, performants sur mobile et sur Google, et pensés pour un objectif : plus de demandes.",
     primary: "Premier conseil gratuit",
     secondary: "Voir nos services",
-    points: ["Pour les PME de toute la Suisse", "Français & allemand", "Tout d'un seul interlocuteur"],
+    points: ["Webdesign sur mesure", "Pensé pour mobile et Google", "Suivi personnel"],
   },
   home: {
     servicesEyebrow: "Services",

@@ -19,7 +19,7 @@ import { showReferences, site } from "./site";
 export const serviceGroupIds: { key: string; label: Localized<string>; ids: string[] }[] = [
   {
     key: "website",
-    label: { de: "Website", fr: "Site internet" },
+    label: { de: "Webseiten", fr: "Sites internet" },
     ids: ["service:webdesign", "service:website-kmu", "service:firmenwebsite", "service:website-redesign", "service:wartung", "service:branding"],
   },
   {
