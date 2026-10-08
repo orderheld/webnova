@@ -96,11 +96,33 @@
   }
 }
 
-/* Admin keeps its calm blue accent, where white text sits on the accent. */
+/* Admin: calm, dense work surface in brand Schieferblau. Tokens are pinned here so the
+   public site can evolve without moving the admin. */
 .admin-theme {
-  --color-accent: #3b4cf5;
-  --color-accent-soft: #e9ebff;
-  --color-accent-ink: #3b4cf5;
+  --color-accent: #24405a;
+  --color-accent-soft: #e4e9ee;
+  --color-accent-ink: #24405a;
+  --color-bg: #f3f4f5;
+  --color-surface: #ffffff;
+  --color-ink: #1c232b;
+  --color-ink-soft: #3a434d;
+  --color-muted: #646b73;
+  --color-line: #e3e5e8;
+  --color-night: #1b2d3e;
+  --color-success: #2f6b45;
+  --color-danger: #a12a2a;
+
+  & h1, & h2, & h3 { font-family: var(--font-sans); }
+  & .input {
+    border-radius: 12px;
+    padding: 0.6rem 0.8rem;
+    background: #fff;
+  }
+  & .input:disabled { background: var(--color-bg); color: var(--color-muted); }
+  & select.input { padding-right: 2rem; }
+  @media (min-width: 768px) {
+    & .input { font-size: 14px; }
+  }
 }
 
 @utility container-x {

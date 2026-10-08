@@ -2,61 +2,79 @@ import Link from "next/link";
 import type { Customer } from "@/db/schema";
 import { chf, fmtDate } from "@/lib/admin/money";
 import { customerName } from "@/lib/admin/queries";
-import { Badge, Empty, Table } from "./ui";
+import { Badge, Empty, Table, td, tdNum, type SortSpec } from "./ui";
+
+export interface DocRow {
+  id: number;
+  number: string;
+  title: string;
+  customer: Customer;
+  date: string;
+  second: string | null;
+  total: number;
+  open?: number;
+  status: string;
+  statusLabel: string;
+  note?: string;
+  negative?: boolean;
+}
 
 export function DocTable({
   base,
-  statuses,
-  filter,
   rows,
   secondLabel,
+  sort,
+  href,
+  showOpen = false,
+  empty,
 }: {
   base: string;
-  statuses: readonly string[];
-  filter?: string;
-  rows: { id: number; number: string; title: string; customer: Customer; date: string; second: string | null; total: number; status: string }[];
+  rows: DocRow[];
   secondLabel: string;
+  sort?: SortSpec;
+  href?: (k: string, d: "asc" | "desc") => string;
+  showOpen?: boolean;
+  empty?: React.ReactNode;
 }) {
-  const sum = rows.reduce((s, r) => s + r.total, 0);
+  if (rows.length === 0) return <Empty>{empty ?? "Noch nichts vorhanden."}</Empty>;
+  const head = [
+    { label: "Nummer", key: "nummer" },
+    { label: "Kunde", key: "kunde" },
+    { label: "Titel" },
+    { label: "Datum", key: "datum" },
+    { label: secondLabel, key: "faellig" },
+    { label: "Total CHF", key: "total", align: "right" as const },
+    ...(showOpen ? [{ label: "Offen CHF", align: "right" as const }] : []),
+    { label: "Status" },
+  ];
   return (
-    <>
-      <div className="mb-5 flex flex-wrap items-center gap-2">
-        {[undefined, ...statuses].map((s) => (
-          <Link
-            key={s ?? "alle"}
-            href={s ? `${base}?status=${s}` : base}
-            className={`rounded-full border px-3.5 py-1.5 text-[13px] capitalize ${filter === s ? "border-ink bg-ink text-white" : "border-line bg-surface hover:border-ink"}`}
-          >
-            {s ?? "Alle"}
-          </Link>
-        ))}
-        <span className="ml-auto text-[13px] text-muted">
-          {rows.length} Dokumente · CHF {chf(sum)}
-        </span>
-      </div>
-      {rows.length === 0 ? (
-        <Empty>Noch nichts vorhanden.</Empty>
-      ) : (
-        <Table head={["Nummer", "Kunde", "Titel", "Datum", secondLabel, "Total CHF", "Status"]}>
-          {rows.map((r) => (
-            <tr key={r.id} className="hover:bg-bg/60">
-              <td className="whitespace-nowrap px-4 py-3 font-medium">
-                <Link href={`${base}/${r.id}`} className="hover:text-accent">
-                  {r.number}
-                </Link>
-              </td>
-              <td className="px-4 py-3">{customerName(r.customer)}</td>
-              <td className="max-w-[260px] truncate px-4 py-3 text-ink-soft">{r.title}</td>
-              <td className="whitespace-nowrap px-4 py-3 text-muted">{fmtDate(r.date)}</td>
-              <td className="whitespace-nowrap px-4 py-3 text-muted">{fmtDate(r.second)}</td>
-              <td className="px-4 py-3 text-right tabular-nums">{chf(r.total)}</td>
-              <td className="px-4 py-3">
-                <Badge status={r.status} />
-              </td>
-            </tr>
-          ))}
-        </Table>
-      )}
-    </>
+    <Table minWidth={860} head={head} sort={sort} href={href}>
+      {rows.map((r) => (
+        <tr key={r.id} className="hover:bg-bg/60">
+          <td className={`${td} whitespace-nowrap font-medium`}>
+            <Link href={`${base}/${r.id}`} className="hover:text-accent">
+              {r.number}
+            </Link>
+            {r.note && <p className="text-[11.5px] font-normal text-muted">{r.note}</p>}
+          </td>
+          <td className={td}>
+            <Link href={`/admin/kunden/${r.customer.id}`} className="hover:text-accent">
+              {customerName(r.customer)}
+            </Link>
+          </td>
+          <td className={`${td} max-w-[260px] truncate text-ink-soft`}>{r.title}</td>
+          <td className={`${td} whitespace-nowrap text-muted`}>{fmtDate(r.date)}</td>
+          <td className={`${td} whitespace-nowrap ${r.status === "ueberfaellig" ? "font-medium text-danger" : "text-muted"}`}>{fmtDate(r.second)}</td>
+          <td className={tdNum}>
+            {r.negative ? "– " : ""}
+            {chf(r.total)}
+          </td>
+          {showOpen && <td className={tdNum}>{r.open ? chf(r.open) : "–"}</td>}
+          <td className={td}>
+            <Badge status={r.status} label={r.statusLabel} />
+          </td>
+        </tr>
+      ))}
+    </Table>
   );
 }

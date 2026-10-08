@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
-import { Icon } from "@/components/icons";
+import { Icon } from "./icons";
 import { saveEstimateAction, type EstimatePayload } from "@/lib/admin/actions";
 import { calcCatalog, estimateTotals } from "@/lib/admin/calculator";
 import { chf } from "@/lib/admin/money";

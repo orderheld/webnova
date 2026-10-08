@@ -2,26 +2,39 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Icon } from "@/components/icons";
-import type { LineItem } from "@/db/schema";
+import type { BillingInterval, LineItem } from "@/db/schema";
 import { saveInvoiceAction, saveQuoteAction } from "@/lib/admin/actions";
-import { chf, computeTotals } from "@/lib/admin/money";
+import { intervalLabels, units } from "@/lib/admin/labels";
+import { chf, computeTotals, lineTotal } from "@/lib/admin/money";
+import { Icon } from "./icons";
 import { Field, btn } from "./ui";
 
 export interface DocInitial {
   customerId: number | null;
+  projectId?: number | null;
   title: string;
   intro: string;
   outro: string;
+  notes?: string;
   items: LineItem[];
   discountPercent: number;
   vatRate: number;
   issueDate: string;
   secondDate: string;
   quoteId?: number | null;
+  leadId?: number | null;
 }
 
-const units = ["Pauschal", "Std.", "Stk.", "Monat", "Jahr", "Seiten", "Tag"];
+export interface CatalogItem {
+  id: number;
+  name: string;
+  description: string | null;
+  unit: string;
+  price: number;
+  interval: BillingInterval | null;
+  category: string | null;
+}
+
 const emptyItem = (): LineItem => ({ title: "", description: "", quantity: 1, unit: "Pauschal", unitPrice: 0 });
 
 export function DocumentEditor({
@@ -29,13 +42,19 @@ export function DocumentEditor({
   id,
   initial,
   customers,
+  projects = [],
+  products = [],
   locked = false,
+  credit = false,
 }: {
   kind: "quote" | "invoice";
   id: number | null;
   initial: DocInitial;
   customers: { id: number; name: string }[];
+  projects?: { id: number; name: string; customerId: number }[];
+  products?: CatalogItem[];
   locked?: boolean;
+  credit?: boolean;
 }) {
   const router = useRouter();
   const [v, setV] = useState<DocInitial>({ ...initial, items: initial.items.length ? initial.items : [emptyItem()] });
@@ -50,7 +69,25 @@ export function DocumentEditor({
     [items[i], items[j]] = [items[j], items[i]];
     set("items", items);
   };
+  const addProduct = (pid: number) => {
+    const p = products.find((x) => x.id === pid);
+    if (!p) return;
+    const item: LineItem = {
+      title: p.name,
+      description: p.description ?? "",
+      quantity: 1,
+      unit: p.unit,
+      unitPrice: p.price,
+      productId: p.id,
+      ...(kind === "quote" && p.interval ? { recurring: p.interval, firstYearIncluded: p.interval === "jahr" } : {}),
+    };
+    // replace a single empty starter line
+    const items = v.items.filter((it) => it.title.trim() || it.unitPrice);
+    set("items", [...items, item]);
+  };
   const t = computeTotals(v.items, v.discountPercent, v.vatRate);
+  const recurring = kind === "quote" ? v.items.filter((it) => it.recurring && it.title.trim()) : [];
+  const customerProjects = projects.filter((p) => !v.customerId || p.customerId === v.customerId);
 
   function save() {
     setMsg(null);
@@ -58,9 +95,11 @@ export function DocumentEditor({
       const payload = {
         ...v,
         customerId: v.customerId ?? 0,
-        items: v.items.filter((it) => it.title.trim()),
+        projectId: v.projectId || null,
+        notes: v.notes ?? "",
+        items: v.items.filter((it) => it.title.trim()).map((it) => ({ ...it, productId: it.productId ?? null, recurring: it.recurring ?? null, subscriptionId: it.subscriptionId ?? null })),
       };
-      const res = kind === "quote" ? await saveQuoteAction(id, payload) : await saveInvoiceAction(id, payload);
+      const res = kind === "quote" ? await saveQuoteAction(id, { ...payload, leadId: v.leadId ?? null }) : await saveInvoiceAction(id, payload);
       if (res.error) return setMsg({ type: "err", text: res.error });
       setMsg({ type: "ok", text: "Gespeichert." });
       if (!id && res.id) router.push(`/admin/${kind === "quote" ? "offerten" : "rechnungen"}/${res.id}`);
@@ -68,16 +107,13 @@ export function DocumentEditor({
     });
   }
 
+  const grid = "md:grid-cols-[1fr_84px_104px_110px_100px_76px]";
+
   return (
-    <div className="space-y-6">
-      <div className="grid gap-4 rounded-[20px] border border-line bg-surface p-5 md:grid-cols-4">
+    <div className="space-y-5">
+      <div className="grid gap-3 rounded-2xl border border-line bg-surface p-4 sm:p-5 md:grid-cols-4">
         <Field label="Kunde" className="md:col-span-2">
-          <select
-            className="input"
-            value={v.customerId ?? ""}
-            disabled={locked}
-            onChange={(e) => set("customerId", e.target.value ? Number(e.target.value) : null)}
-          >
+          <select className="input" value={v.customerId ?? ""} disabled={locked} onChange={(e) => setV((p) => ({ ...p, customerId: e.target.value ? Number(e.target.value) : null, projectId: null }))}>
             <option value="">Kunde wählen …</option>
             {customers.map((c) => (
               <option key={c.id} value={c.id}>
@@ -89,19 +125,29 @@ export function DocumentEditor({
         <Field label="Datum">
           <input type="date" className="input" value={v.issueDate} disabled={locked} onChange={(e) => set("issueDate", e.target.value)} />
         </Field>
-        <Field label={kind === "quote" ? "Gültig bis" : "Zahlbar bis"}>
+        <Field label={kind === "quote" ? "Gültig bis" : credit ? "Datum Erstattung" : "Zahlbar bis"}>
           <input type="date" className="input" value={v.secondDate} disabled={locked} onChange={(e) => set("secondDate", e.target.value)} />
         </Field>
-        <Field label="Titel / Projekt" className="md:col-span-4">
+        <Field label="Titel / Projekt" className="md:col-span-3">
           <input className="input" value={v.title} disabled={locked} placeholder="z. B. Neue Webseite Muster AG" onChange={(e) => set("title", e.target.value)} />
+        </Field>
+        <Field label="Projekt verknüpfen">
+          <select className="input" value={v.projectId ?? ""} disabled={locked} onChange={(e) => set("projectId", e.target.value ? Number(e.target.value) : null)}>
+            <option value="">Keins</option>
+            {customerProjects.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))}
+          </select>
         </Field>
         <Field label="Einleitung" className="md:col-span-4">
           <textarea className="input" rows={2} value={v.intro} disabled={locked} onChange={(e) => set("intro", e.target.value)} />
         </Field>
       </div>
 
-      <div className="rounded-[20px] border border-line bg-surface">
-        <div className="hidden grid-cols-[1fr_90px_110px_120px_110px_72px] gap-3 border-b border-line px-5 py-3 text-[12px] uppercase tracking-wider text-muted md:grid">
+      <div className="rounded-2xl border border-line bg-surface">
+        <div className={`hidden gap-3 border-b border-line px-5 py-2.5 text-[11.5px] uppercase tracking-wider text-muted md:grid ${grid}`}>
           <span>Position</span>
           <span className="text-right">Menge</span>
           <span>Einheit</span>
@@ -111,49 +157,83 @@ export function DocumentEditor({
         </div>
         <div className="divide-y divide-line">
           {v.items.map((it, i) => (
-            <div key={i} className="grid gap-3 px-5 py-4 md:grid-cols-[1fr_90px_110px_120px_110px_72px] md:items-start">
+            <div key={i} className={`grid gap-2 px-4 py-3 sm:px-5 md:items-start md:gap-3 ${grid} ${it.recurring ? "bg-accent-soft/40" : ""}`}>
               <div className="space-y-2">
                 <input className="input font-medium" placeholder="Leistung" value={it.title} disabled={locked} onChange={(e) => setItem(i, { title: e.target.value })} />
                 <textarea
                   className="input text-[14px]"
-                  rows={1}
+                  rows={it.description && it.description.split("\n").length > 1 ? Math.min(6, it.description.split("\n").length) : 1}
                   placeholder="Beschreibung (optional)"
                   value={it.description ?? ""}
                   disabled={locked}
                   onChange={(e) => setItem(i, { description: e.target.value })}
                 />
+                {kind === "quote" && (
+                  <div className="flex flex-wrap items-center gap-3 text-[12.5px] text-muted">
+                    <label className="flex items-center gap-1.5">
+                      <Icon name="repeat" className="h-3.5 w-3.5" />
+                      <select
+                        className="rounded-md border border-line bg-surface px-1.5 py-0.5 text-[12.5px]"
+                        value={it.recurring ?? ""}
+                        disabled={locked}
+                        onChange={(e) => setItem(i, { recurring: (e.target.value || null) as BillingInterval | null, firstYearIncluded: e.target.value ? (it.firstYearIncluded ?? true) : undefined })}
+                        aria-label="Wiederkehrend"
+                      >
+                        <option value="">einmalig</option>
+                        {Object.entries(intervalLabels).map(([k, l]) => (
+                          <option key={k} value={k}>
+                            {l} wiederkehrend
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    {it.recurring && (
+                      <label className="flex items-center gap-1.5">
+                        <input type="checkbox" checked={!!it.firstYearIncluded} disabled={locked} onChange={(e) => setItem(i, { firstYearIncluded: e.target.checked })} />
+                        1. Jahr inbegriffen, Verrechnung ab Jahr 2
+                      </label>
+                    )}
+                  </div>
+                )}
+                {it.subscriptionId && <p className="text-[12px] text-accent">Aus Abo #{it.subscriptionId}</p>}
               </div>
-              <input
-                type="number"
-                step="0.25"
-                className="input text-right tabular-nums"
-                value={it.quantity}
-                disabled={locked}
-                onChange={(e) => setItem(i, { quantity: Number(e.target.value) })}
-                aria-label="Menge"
-              />
-              <select className="input" value={it.unit} disabled={locked} onChange={(e) => setItem(i, { unit: e.target.value })} aria-label="Einheit">
-                {[...new Set([it.unit, ...units])].map((u) => (
-                  <option key={u}>{u}</option>
-                ))}
-              </select>
-              <input
-                type="number"
-                step="0.05"
-                className="input text-right tabular-nums"
-                value={it.unitPrice}
-                disabled={locked}
-                onChange={(e) => setItem(i, { unitPrice: Number(e.target.value) })}
-                aria-label="Preis"
-              />
-              <p className="py-3.5 text-right text-[15px] font-medium tabular-nums">{chf((it.quantity || 0) * (it.unitPrice || 0))}</p>
+              <div className="grid grid-cols-3 gap-2 md:contents">
+                <input
+                  type="number"
+                  step="0.25"
+                  className="input text-right tabular-nums"
+                  value={it.quantity}
+                  disabled={locked}
+                  onChange={(e) => setItem(i, { quantity: Number(e.target.value) })}
+                  aria-label="Menge"
+                />
+                <select className="input" value={it.unit} disabled={locked} onChange={(e) => setItem(i, { unit: e.target.value })} aria-label="Einheit">
+                  {[...new Set([it.unit, ...units])].map((u) => (
+                    <option key={u}>{u}</option>
+                  ))}
+                </select>
+                <input
+                  type="number"
+                  step="0.05"
+                  className="input text-right tabular-nums"
+                  value={it.unitPrice}
+                  disabled={locked}
+                  onChange={(e) => setItem(i, { unitPrice: Number(e.target.value) })}
+                  aria-label="Preis"
+                />
+              </div>
+              <p className="flex items-center justify-between py-1 text-[15px] font-medium tabular-nums md:block md:py-2.5 md:text-right">
+                <span className="text-[12px] font-normal text-muted md:hidden">Total</span>
+                {chf(lineTotal(it))}
+                {it.recurring && <span className="block text-[11px] font-normal text-muted">{intervalLabels[it.recurring]}</span>}
+              </p>
               {!locked && (
-                <div className="flex items-center justify-end gap-1 py-2">
+                <div className="flex items-center justify-end gap-0.5 md:py-1.5">
                   <button type="button" onClick={() => move(i, -1)} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach oben">
-                    ↑
+                    <Icon name="up" className="h-3.5 w-3.5" />
                   </button>
                   <button type="button" onClick={() => move(i, 1)} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach unten">
-                    ↓
+                    <Icon name="down" className="h-3.5 w-3.5" />
                   </button>
                   <button
                     type="button"
@@ -169,20 +249,36 @@ export function DocumentEditor({
           ))}
         </div>
         {!locked && (
-          <div className="border-t border-line px-5 py-3">
+          <div className="flex flex-wrap items-center gap-3 border-t border-line px-4 py-3 sm:px-5">
             <button type="button" onClick={() => set("items", [...v.items, emptyItem()])} className="inline-flex items-center gap-2 text-[14px] font-medium text-accent">
-              <Icon name="plus" className="h-4 w-4" /> Position hinzufügen
+              <Icon name="plus" className="h-4 w-4" /> Freie Position
             </button>
+            {products.length > 0 && (
+              <select
+                className="input w-auto max-w-full"
+                value=""
+                onChange={(e) => addProduct(Number(e.target.value))}
+                aria-label="Leistung aus Katalog hinzufügen"
+              >
+                <option value="">+ Aus Leistungen hinzufügen …</option>
+                {products.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name} · CHF {chf(p.price)}
+                    {p.interval ? ` ${intervalLabels[p.interval]}` : ""}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
         )}
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="space-y-4 rounded-[20px] border border-line bg-surface p-5">
+      <div className="grid gap-5 md:grid-cols-2">
+        <div className="space-y-3 rounded-2xl border border-line bg-surface p-4 sm:p-5">
           <Field label="Schlusstext">
             <textarea className="input" rows={3} value={v.outro} disabled={locked} onChange={(e) => set("outro", e.target.value)} />
           </Field>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             <Field label="Rabatt %">
               <input type="number" step="0.5" min={0} className="input" value={v.discountPercent} disabled={locked} onChange={(e) => set("discountPercent", Number(e.target.value))} />
             </Field>
@@ -190,23 +286,42 @@ export function DocumentEditor({
               <input type="number" step="0.1" min={0} className="input" value={v.vatRate} disabled={locked} onChange={(e) => set("vatRate", Number(e.target.value))} />
             </Field>
           </div>
+          <Field label="Interne Notiz (nicht auf dem PDF)">
+            <textarea className="input" rows={2} value={v.notes ?? ""} disabled={locked} onChange={(e) => set("notes", e.target.value)} />
+          </Field>
         </div>
-        <div className="rounded-[20px] bg-night p-6 text-white">
+        <div className="rounded-2xl bg-night p-5 text-white sm:p-6">
           <dl className="space-y-2 text-[15px]">
             <Row k="Zwischentotal" v={chf(t.subtotal)} />
             {v.discountPercent > 0 && <Row k={`Rabatt ${v.discountPercent}%`} v={`– ${chf(t.discount)}`} />}
             {v.vatRate > 0 && <Row k={`MWST ${v.vatRate}%`} v={chf(t.vat)} />}
           </dl>
           <div className="mt-4 flex items-end justify-between border-t border-white/15 pt-4">
-            <span className="text-white/60">Total CHF</span>
-            <span className="text-[34px] font-medium tracking-tight tabular-nums">{chf(t.total)}</span>
+            <span className="text-white/60">{credit ? "Gutschrift CHF" : kind === "quote" ? "Einmalig CHF" : "Total CHF"}</span>
+            <span className="text-[30px] font-semibold tracking-tight tabular-nums">{chf(t.total)}</span>
           </div>
+          {recurring.length > 0 && (
+            <div className="mt-4 space-y-1 border-t border-white/15 pt-3 text-[13px]">
+              <p className="text-white/60">Wiederkehrend (nicht im Total)</p>
+              {recurring.map((it, i) => (
+                <div key={i} className="flex justify-between gap-3">
+                  <span className="truncate">
+                    {it.title}
+                    {it.firstYearIncluded ? " · ab Jahr 2" : ""}
+                  </span>
+                  <span className="shrink-0 tabular-nums">
+                    {chf(lineTotal(it))} {intervalLabels[it.recurring!]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
           {!locked && (
-            <button type="button" onClick={save} disabled={pending} className={`${btn.accent} mt-6 w-full`}>
-              {pending ? "Speichern …" : id ? "Änderungen speichern" : kind === "quote" ? "Offerte erstellen" : "Rechnung erstellen"}
+            <button type="button" onClick={save} disabled={pending} className={`${btn.ghost} mt-6 w-full border-white bg-white text-ink hover:bg-accent-soft hover:text-ink`}>
+              {pending ? "Speichern …" : id ? "Änderungen speichern" : kind === "quote" ? "Offerte erstellen" : credit ? "Gutschrift erstellen" : "Rechnung erstellen"}
             </button>
           )}
-          {locked && <p className="mt-6 text-[13px] text-white/60">Bezahlte oder stornierte Rechnungen können nicht mehr bearbeitet werden.</p>}
+          {locked && <p className="mt-6 text-[13px] text-white/60">Bezahlte oder stornierte Dokumente können nicht mehr bearbeitet werden. Duplizieren oder Gutschrift erstellen.</p>}
           {msg && <p className={`mt-3 text-[13px] ${msg.type === "ok" ? "text-emerald-300" : "text-red-300"}`}>{msg.text}</p>}
         </div>
       </div>
