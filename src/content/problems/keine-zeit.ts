@@ -6,7 +6,7 @@ export const keineZeit: Problem = {
   services: ["wartung", "website-redesign", "seo"],
   guides: ["webagentur-waehlen", "website-relaunch-checkliste"],
   industries: ["handwerk", "praxis", "gastronomie", "autogewerbe"],
-  preset: [],
+  preset: ["maintenance"],
   content: {
     de: {
       slug: "keine-zeit-fuer-die-webseite",

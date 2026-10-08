@@ -99,7 +99,7 @@ export interface LocalService {
 }
 
 /** Values of the request form's service step, used to preselect it on industry and problem pages. */
-export type LeadService = "webdesign" | "redesign" | "shop" | "seo" | "ads" | "branding" | "pos" | "other";
+export type LeadService = "webdesign" | "redesign" | "shop" | "seo" | "ads" | "branding" | "pos" | "maintenance" | "other";
 
 export interface Point {
   title: string;
