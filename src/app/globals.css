@@ -25,9 +25,9 @@
   --color-warn: #9a6a12;
   --color-danger: #a12a2a;
 
-  --font-sans: var(--font-inter), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter-tight), var(--font-inter), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-inter), var(--font-geist-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), var(--font-geist-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono, ui-monospace), ui-monospace, monospace;
 
   --animate-marquee: marquee 38s linear infinite;
   --animate-marquee-rev: marquee 46s linear infinite reverse;

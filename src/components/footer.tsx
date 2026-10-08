@@ -87,7 +87,7 @@ export function Footer({ locale }: { locale: Locale }) {
 function FooterCol({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
     <div className={className}>
-      <p className="mb-5 text-[13px] font-medium uppercase tracking-[0.12em] text-white/40">{title}</p>
+      <p className="mb-5 text-[13px] font-medium uppercase tracking-[0.12em] text-white/60">{title}</p>
       <ul className="space-y-2.5">{children}</ul>
     </div>
   );

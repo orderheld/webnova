@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Faq, Locale, Section } from "@/content/types";
 import { getDict } from "@/i18n/dict";
-import { href } from "@/lib/routes";
+import { hasRoute, href } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { ButtonLink } from "./button";
 import { Icon } from "./icons";
@@ -65,19 +65,51 @@ export function PageHero({
   );
 }
 
-export function Prose({ sections }: { sections: Section[] }) {
+/**
+ * Renders text with inline links written as [label](route-id), e.g. "[SEO](service:seo)" or
+ * "[Webdesign Biel](city:biel)". Route ids are resolved per locale, unknown ids render as plain text.
+ */
+export function RichText({ text, locale }: { text: string; locale?: Locale }) {
+  if (!locale || !text.includes("](")) return <>{text}</>;
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    parts.push(text.slice(last, m.index));
+    const [, label, id] = m;
+    parts.push(
+      hasRoute(id) ? (
+        <Link key={m.index} href={href(locale, id)} className="font-medium text-bright underline decoration-bright/30 underline-offset-[3px] hover:decoration-bright">
+          {label}
+        </Link>
+      ) : (
+        label
+      ),
+    );
+    last = m.index + m[0].length;
+  }
+  parts.push(text.slice(last));
+  return <>{parts}</>;
+}
+
+export function Prose({ sections, locale }: { sections: Section[]; locale?: Locale }) {
   return (
     <div className="prose-wn">
       {sections.map((s, i) => (
         <div key={i}>
           <h2>{s.h2}</h2>
           {s.paragraphs.map((p, j) => (
-            <p key={j}>{p}</p>
+            <p key={j}>
+              <RichText text={p} locale={locale} />
+            </p>
           ))}
           {s.bullets && s.bullets.length > 0 && (
             <ul>
               {s.bullets.map((b, j) => (
-                <li key={j}>{b}</li>
+                <li key={j}>
+                  <RichText text={b} locale={locale} />
+                </li>
               ))}
             </ul>
           )}

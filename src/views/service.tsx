@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
+import { guides } from "@/content/guides";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
 import type { Locale } from "@/content/types";
@@ -85,6 +86,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
     { name: d.pages.servicesTitle, url: href(locale, "services") },
     { name: c.navLabel, url },
   ];
+  const serviceGuides = guides.filter((g) => g.related.includes(s.key)).slice(0, 3);
   return (
     <>
       <JsonLd data={breadcrumbLd(crumbs)} />
@@ -96,7 +98,11 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           description: c.meta.description,
           serviceType: c.navLabel,
           provider: { "@id": orgId },
-          areaServed: { "@type": "Country", name: "Switzerland" },
+          areaServed: [
+            { "@type": "Country", name: locale === "de" ? "Schweiz" : "Suisse" },
+            ...cities.filter((x) => x.priority === "A").map((x) => ({ "@type": "City", name: x.content[locale].name })),
+          ],
+          availableLanguage: ["de", "fr"],
           url: `${site.url}${url}`,
         }}
       />
@@ -117,12 +123,13 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       </PageHero>
 
       <section className="container-x relative z-10 -mt-10 pb-20 md:pb-28">
+        <h2 className="sr-only">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
         <FeatureGrid items={c.features} />
       </section>
 
       <section className="container-x grid gap-12 pb-12 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <Prose sections={c.sections} />
+          <Prose sections={c.sections} locale={locale} />
         </div>
         <aside className="lg:col-span-4">
           <div className="sticky top-28 overflow-hidden rounded-2xl border border-line bg-surface p-8 ">
@@ -154,6 +161,17 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       )}
 
       <FaqList locale={locale} faq={c.faq} />
+
+      {serviceGuides.length > 0 && (
+        <section className="container-x pb-16">
+          <h2 className="h-section mb-10">{locale === "de" ? "Passende Ratgeber" : "Conseils utiles"}</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {serviceGuides.map((g) => (
+              <CardLink key={g.key} href={href(locale, `guide:${g.key}`)} meta={`${g.readingMinutes} ${d.common.minutes}`} title={g.content[locale].h1} text={g.content[locale].lead} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="container-x pb-20">

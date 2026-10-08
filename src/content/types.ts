@@ -52,7 +52,7 @@ export interface CityContent {
   meta: PageMeta;
   h1: string;
   lead: string;
-  /** Unique local text. Must NOT be generic: mention local economy, sectors, distance from Grenchen etc. */
+  /** Unique local text. Must NOT be generic: local economy, sectors, languages. No distances or travel times. */
   sections: Section[]; // 3 sections
   faq: Faq[]; // 3–4 questions, local
 }
@@ -82,8 +82,12 @@ export interface GuideContent {
 export interface Guide {
   key: string;
   date: string; // ISO date
+  /** ISO date of the last substantial update, if any. */
+  updated?: string;
   readingMinutes: number;
   related: string[]; // service keys
+  /** City keys this guide links to (and that link back to it). */
+  cities?: string[];
   content: Localized<GuideContent>;
 }
 

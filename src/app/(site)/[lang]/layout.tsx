@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
@@ -45,6 +43,9 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     metadataBase: new URL(site.url),
     title: { default: "Webnova", template: "%s | Webnova" },
     applicationName: "Webnova",
+    appleWebApp: { title: "Webnova", statusBarStyle: "default" },
+    authors: [{ name: site.legalName, url: site.url }],
+    publisher: site.legalName,
     formatDetection: { telephone: false },
     other: { "geo.region": "CH-SO", "geo.placename": lang === "fr" ? "Granges" : "Grenchen" },
   };
@@ -55,14 +56,14 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
   return (
-    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${interTight.variable}`}>
+    <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${inter.variable} ${interTight.variable}`}>
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd(lang, cities.map((c) => c.content[lang].name))} />
         <JsonLd data={websiteLd(lang)} />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-white focus:px-4 focus:py-2">
           {d.skip}
         </a>
-        <Header nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" />} />
+        <Header nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" priority />} />
         <main id="main" className="flex-1">
           {children}
         </main>

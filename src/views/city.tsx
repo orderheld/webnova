@@ -3,6 +3,7 @@ import { testimonials } from "@/content/testimonials";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
+import { guides } from "@/content/guides";
 import { localServices } from "@/content/local";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -154,6 +155,13 @@ export function CityPage({
         : ["webdesign", "website-redesign", "onlineshop", "seo"];
   const quotes = testimonials.filter((t) => t.city === city.key && t.locale === locale);
   const shown = serviceKeys.map((k) => services.find((s) => s.key === k)!).filter(Boolean);
+  // Guides for this city first, then guides about the services shown here.
+  const cityGuides = [
+    ...guides.filter((g) => g.cities?.includes(city.key)),
+    ...guides.filter((g) => g.related.some((k) => serviceKeys.includes(k))),
+  ]
+    .filter((g, i, a) => a.indexOf(g) === i)
+    .slice(0, 3);
 
   return (
     <>
@@ -164,13 +172,15 @@ export function CityPage({
           "@type": "Service",
           name: c.h1,
           description: c.meta.description,
-          ...(service && { serviceType: service.content[locale].navLabel }),
           provider: { "@id": orgId },
+          serviceType: service ? service.content[locale].navLabel : variant === "seo" ? (locale === "de" ? "Suchmaschinenoptimierung" : "Référencement naturel") : locale === "de" ? "Webdesign" : "Création de sites internet",
           areaServed: {
             "@type": "City",
             name: cityName,
             geo: { "@type": "GeoCoordinates", latitude: city.geo.lat, longitude: city.geo.lng },
+            containedInPlace: { "@type": "AdministrativeArea", name: `${locale === "de" ? "Kanton" : "Canton"} ${city.canton}` },
           },
+          availableLanguage: ["de", "fr"],
           url: `${site.url}${url}`,
         }}
       />
@@ -192,13 +202,14 @@ export function CityPage({
 
       {service && (
         <section className="container-x relative z-10 -mt-10">
+          <h2 className="sr-only">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
           <FeatureGrid items={service.content[locale].features.slice(0, 3)} />
         </section>
       )}
 
       <section className="container-x grid gap-12 pb-12 pt-16 md:pt-24 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <Prose sections={c.sections} />
+          <Prose sections={c.sections} locale={locale} />
         </div>
         <aside className="space-y-4 lg:col-span-4">
           <div className="sticky top-28 space-y-4">
@@ -247,6 +258,17 @@ export function CityPage({
       </section>
 
       <FaqList locale={locale} faq={c.faq} />
+
+      {cityGuides.length > 0 && (
+        <section className="container-x pb-16">
+          <h2 className="h-section mb-10">{locale === "de" ? "Ratgeber für KMU" : "Conseils pour PME"}</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {cityGuides.map((g) => (
+              <CardLink key={g.key} href={href(locale, `guide:${g.key}`)} meta={`${g.readingMinutes} ${d.common.minutes}`} title={g.content[locale].h1} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="container-x pb-10">
         <p className="eyebrow mb-4">{locale === "de" ? `Mehr für ${cityName}` : `Plus pour ${cityName}`}</p>

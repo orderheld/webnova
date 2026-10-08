@@ -16,6 +16,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   return (
     <>
+      <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.about, url: href(locale, "about") }])} />
       <PageHero
         eyebrow={d.pages.aboutEyebrow}
         title={d.pages.aboutH1}
@@ -53,6 +54,7 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   return (
     <>
+      <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references, url: href(locale, "references") }])} />
       <PageHero
         eyebrow={d.nav.references}
         title={d.pages.referencesH1}
@@ -203,6 +205,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
   ];
   return (
     <>
+      <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.contact, url: href(locale, "contact") }])} />
       <PageHero
         eyebrow={d.pages.contactEyebrow}
         title={d.pages.contactH1}
