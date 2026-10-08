@@ -73,3 +73,45 @@ export function ReferenceCard({ r, locale, large = false, priority = false }: { 
     </Link>
   );
 }
+
+/**
+ * Blurred preview while references are shown on request (referencesOnRequest in src/lib/site.ts): a
+ * pre-blurred screenshot (teaserImage), no name, address or link, only field and scope.
+ */
+export function ReferenceTeaserCard({ r, locale, badge, priority = false }: { r: Reference; locale: Locale; badge: string; priority?: boolean }) {
+  const c = r.content[locale];
+  return (
+    <div className="card flex h-full flex-col overflow-hidden">
+      <div className="relative overflow-hidden bg-bg-2 p-3 pb-0 sm:p-5 sm:pb-0">
+        <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface">
+          <div aria-hidden="true" className="flex items-center gap-1.5 px-3.5 py-2.5">
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="h-2 w-2 rounded-full bg-line" />
+            <span className="ml-2 h-[18px] w-28 rounded-full bg-bg-2" />
+          </div>
+          <div className="relative aspect-[16/9.5] overflow-hidden">
+            {r.teaserImage && (
+              <Image
+                src={r.teaserImage}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 600px, 100vw"
+                loading={priority ? "eager" : undefined}
+                fetchPriority={priority ? "high" : undefined}
+                className="object-cover object-top"
+              />
+            )}
+            <span className="absolute inset-0 grid place-items-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-[13.5px] font-semibold text-accent shadow-[0_8px_24px_-12px_rgb(10_22_34/0.45)]">
+                <Icon name="lock" className="h-4 w-4" />
+                {badge}
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <p className="px-6 py-5 text-[15px] font-medium sm:px-7">{c.teaser ?? c.industry}</p>
+    </div>
+  );
+}

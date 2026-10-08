@@ -1,5 +1,5 @@
 import { cities } from "@/content/cities";
-import { showReferences } from "./site";
+import { referencesOnRequest, showReferences } from "./site";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
 import { problems } from "@/content/problems";
@@ -83,7 +83,8 @@ function buildRoutes(): RouteEntry[] {
       r.push({ id: `citySeo:${c.key}`, kind: "citySeo", key: c.key, paths: { de: c.seo.de.slug, fr: c.seo.fr.slug } });
     }
   }
-  for (const ref of showReferences ? references : []) {
+  // Project pages only while references are public (not while they are shown on request).
+  for (const ref of showReferences && !referencesOnRequest ? references : []) {
     r.push({ id: `reference:${ref.key}`, kind: "reference", key: ref.key, paths: { de: `referenzen/${ref.key}`, fr: `references/${ref.key}` } });
   }
   for (const ls of localServices) {

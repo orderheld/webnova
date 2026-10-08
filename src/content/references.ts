@@ -2,6 +2,8 @@ import type { Localized } from "./types";
 
 export interface ReferenceContent {
   industry: string;
+  /** Field and scope without any name, for the blurred card while references are shown on request. */
+  teaser?: string;
   place?: string;
   /** One or two sentences for cards. */
   summary: string;
@@ -20,6 +22,8 @@ export interface Reference {
   domain: string;
   /** Screenshot or key visual in /public/referenzen. Without one, a typographic card is shown. */
   image?: string;
+  /** Pre-blurred screenshot for the on-request card. Neutral file name, so no client name shows up in the page. */
+  teaserImage?: string;
   /** Brand colours for the typographic card and accents. */
   colors: { bg: string; fg: string; accent: string };
   /** Hidden projects keep their content but appear nowhere on the site. */
@@ -33,10 +37,12 @@ const allReferences: Reference[] = [
     name: "orderheld",
     domain: "orderheld.ch",
     image: "/referenzen/orderheld.jpg",
+    teaserImage: "/referenzen/blur/gastronomie.webp",
     colors: { bg: "#f6f7f7", fg: "#111515", accent: "#00a651" },
     content: {
       de: {
         industry: "Bestellplattform für Restaurants",
+        teaser: "Gastronomie · Bestellplattform",
         place: "Schweiz",
         summary:
           "Eine eigene Bestellplattform für Schweizer Restaurants: Gäste bestellen online, die Bestellung landet direkt auf dem Gerät in der Küche und der Bon wird gedruckt.",
@@ -56,6 +62,7 @@ const allReferences: Reference[] = [
       },
       fr: {
         industry: "Plateforme de commande pour restaurants",
+        teaser: "Restauration · Plateforme de commande",
         place: "Suisse",
         summary:
           "Une plateforme de commande pour les restaurants suisses : les clients commandent en ligne, la commande arrive directement sur l'appareil en cuisine et le ticket s'imprime.",
@@ -80,10 +87,12 @@ const allReferences: Reference[] = [
     name: "AVA Catering",
     domain: "avacatering.ch",
     image: "/referenzen/ava-catering.jpg",
+    teaserImage: "/referenzen/blur/catering.webp",
     colors: { bg: "#fbf7f0", fg: "#4a5822", accent: "#e8650a" },
     content: {
       de: {
         industry: "Catering & Buffets",
+        teaser: "Catering · Webseite mit Anfrage-Assistent",
         place: "Pfaffnau LU",
         summary:
           "Webauftritt für ein Catering mit hausgemachten Buffets: Angebot in Kapiteln, Galerie und ein Anfrage-Assistent, der jedes Buffet direkt vorausgefüllt anfragen lässt.",
@@ -103,6 +112,7 @@ const allReferences: Reference[] = [
       },
       fr: {
         industry: "Traiteur & buffets",
+        teaser: "Traiteur · Site avec assistant de demande",
         place: "Pfaffnau LU",
         summary:
           "Site pour un traiteur aux buffets faits maison : offre en chapitres, galerie et un assistant de demande qui pré-remplit chaque buffet.",
@@ -127,10 +137,12 @@ const allReferences: Reference[] = [
     name: "GYAN Hair Salon",
     domain: "gyanhairsalon.ch",
     image: "/referenzen/gyan-hair-salon-live.jpg",
+    teaserImage: "/referenzen/blur/coiffeur.webp",
     colors: { bg: "#f7f3ec", fg: "#2b2722", accent: "#8a6f4e" },
     content: {
       de: {
         industry: "Herren-Coiffeur & Barbier",
+        teaser: "Coiffeur · Webseite mit Online-Buchung",
         place: "Biel/Bienne",
         summary:
           "Dreisprachiger Webauftritt mit eigener Online-Terminbuchung für einen Herren-Coiffeur in Biel: freie Termine sind sofort bestätigt, Erinnerungen gehen automatisch raus.",
@@ -150,6 +162,7 @@ const allReferences: Reference[] = [
       },
       fr: {
         industry: "Coiffeur hommes & barbier",
+        teaser: "Coiffure · Site avec réservation en ligne",
         place: "Bienne",
         summary:
           "Site trilingue avec réservation en ligne pour un coiffeur hommes à Bienne : les créneaux libres sont confirmés immédiatement, les rappels partent automatiquement.",
@@ -174,10 +187,12 @@ const allReferences: Reference[] = [
     name: "Dersut",
     domain: "dersut.ch",
     image: "/referenzen/dersut-kaffee-live.jpg",
+    teaserImage: "/referenzen/blur/kaffee.webp",
     colors: { bg: "#002856", fg: "#ffffff", accent: "#82754f" },
     content: {
       de: {
         industry: "Onlineshop für italienischen Espresso",
+        teaser: "Kaffee · Onlineshop",
         place: "Basel",
         summary:
           "Webseite und Onlineshop für den offiziellen Schweizer Vertrieb von Dersut Caffè: Espresso aus Conegliano bestellen, per Vorauskasse mit Swiss QR-Rechnung bezahlen, Versand in die ganze Schweiz.",
@@ -197,6 +212,7 @@ const allReferences: Reference[] = [
       },
       fr: {
         industry: "Boutique en ligne d'espresso italien",
+        teaser: "Café · Boutique en ligne",
         place: "Bâle",
         summary:
           "Site et boutique en ligne du distributeur officiel de Dersut Caffè en Suisse : commander l'espresso de Conegliano, payer d'avance avec la facture QR suisse, livraison dans toute la Suisse.",
