@@ -14,6 +14,12 @@ export interface NavData {
   servicesLabel: string;
   servicesHref: string;
   allServicesLabel: string;
+  industries: { label: string; href: string; icon: string }[];
+  industriesLabel: string;
+  industriesHref: string;
+  allIndustriesLabel: string;
+  problemsLabel: string;
+  problemsHref: string;
   cta: { label: string; href: string };
   menuLabel: string;
   closeLabel: string;
@@ -66,7 +72,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             <div className="group relative">
               <Link
                 href={nav.servicesHref}
-                className="flex items-center gap-1 rounded-full px-4 py-2 text-[15px] text-ink-soft transition-colors hover:text-accent"
+                className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-[15px] text-ink-soft transition-colors hover:text-accent xl:px-4"
               >
                 {nav.servicesLabel}
                 <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -97,11 +103,56 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 </div>
               </div>
             </div>
-            {nav.links.map((l) => (
+            <div className="group relative">
+              <Link
+                href={nav.industriesHref}
+                className={`flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-[15px] transition-colors hover:text-accent xl:px-4 ${
+                  pathname.startsWith(nav.industriesHref) ? "text-accent" : "text-ink-soft"
+                }`}
+              >
+                {nav.industriesLabel}
+                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </Link>
+              <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <div className="grid grid-cols-2 gap-1 rounded-2xl border border-line bg-surface p-3 shadow-soft">
+                  {nav.industries.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] text-ink-soft transition-colors hover:bg-bg hover:text-accent"
+                    >
+                      <span className="grid h-9 w-9 place-items-center rounded-lg bg-bright-soft text-bright transition-colors group-hover/item:bg-accent group-hover/item:text-white">
+                        <Icon name={s.icon} className="h-[18px] w-[18px]" />
+                      </span>
+                      {s.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href={nav.industriesHref}
+                    className="mt-1 flex items-center justify-between rounded-xl bg-bg px-4 py-3 text-[15px] font-medium text-accent hover:bg-accent-soft"
+                  >
+                    {nav.allIndustriesLabel}
+                    <Icon name="arrow" className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href={nav.problemsHref}
+                    className="mt-1 flex items-center justify-between rounded-xl bg-bg px-4 py-3 text-[15px] font-medium text-accent hover:bg-accent-soft"
+                  >
+                    {nav.problemsLabel}
+                    <Icon name="arrow" className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+            {nav.links.map((l, n) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`rounded-full px-4 py-2 text-[15px] transition-colors hover:text-accent ${
+                className={`whitespace-nowrap rounded-full px-3 py-2 text-[15px] transition-colors hover:text-accent xl:px-4 ${
+                  n >= nav.links.length - 2 ? "hidden xl:block" : ""
+                } ${
                   pathname === l.href ? "text-accent" : "text-ink-soft"
                 }`}
               >
@@ -127,7 +178,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             )}
             <Link
               href={minimal ? "#formular" : nav.cta.href}
-              className="hidden rounded-full bg-accent px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-night sm:inline-flex"
+              className="hidden whitespace-nowrap rounded-full bg-accent px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-night sm:inline-flex"
             >
               {nav.cta.label}
             </Link>
@@ -170,6 +221,27 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                       <Icon name={s.icon} className="h-[18px] w-[18px]" />
                     </span>
                     <span className="text-[15px] font-medium leading-tight text-white/90">{s.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-8 flex items-center justify-between">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">{nav.industriesLabel}</span>
+                <Link href={nav.industriesHref} className="flex items-center gap-1 text-[13px] font-medium text-accent-light">
+                  {nav.allIndustriesLabel}
+                  <Icon name="arrow" className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                {nav.industries.map((s, i) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    style={{ animationDelay: `${120 + i * 25}ms` }}
+                    className="animate-pop flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] p-3 transition-colors active:border-accent-light/60 active:bg-white/[0.08]"
+                  >
+                    <Icon name={s.icon} className="h-[18px] w-[18px] shrink-0 text-accent-light" />
+                    <span className="text-[14px] font-medium leading-tight text-white/90">{s.label}</span>
                   </Link>
                 ))}
               </div>

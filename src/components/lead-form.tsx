@@ -40,6 +40,7 @@ export function LeadForm({
   privacyHref,
   source = "anfrage",
   preset = [],
+  presetIndustry = "",
   dark = false,
 }: {
   locale: Locale;
@@ -48,6 +49,8 @@ export function LeadForm({
   privacyHref: string;
   source?: string;
   preset?: Service[];
+  /** Prefills the industry field, e.g. on industry pages. */
+  presetIndustry?: string;
   dark?: boolean;
 }) {
   const router = useRouter();
@@ -64,7 +67,7 @@ export function LeadForm({
     hasWebsite: null,
     websiteUrl: "",
     companySize: null,
-    industry: "",
+    industry: presetIndustry,
     budget: null,
     timeline: null,
     name: "",

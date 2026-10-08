@@ -36,6 +36,14 @@ const paths: Record<string, React.ReactNode> = {
   trash: (<><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></>),
   send: (<><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z" /></>),
   download: (<><path d="M12 3v12M7 10l5 5 5-5M5 21h14" /></>),
+  coffee: (<><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z" /><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3" /></>),
+  scissors: (<><circle cx="6" cy="6" r="2.5" /><circle cx="6" cy="18" r="2.5" /><path d="M8 7.5 20 18M8 16.5 20 6" /></>),
+  wrench: (<><path d="M14.5 6.5a4 4 0 0 0 5 5L21 10a5 5 0 0 1-6.6 6.2L7 21l-3-3 7.8-7.4A5 5 0 0 1 18 3.9Z" /></>),
+  heart: (<><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /><path d="M8.5 11h2l1-2 1.5 4 1-2h1.5" /></>),
+  briefcase: (<><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18" /></>),
+  activity: (<><path d="M3 12h4l3-7 4 14 3-7h4" /></>),
+  building: (<><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M2 21h20" /><path d="M8 8h3M8 12h3M8 16h3" /></>),
+  car: (<><path d="M5 16V11l2-5h10l2 5v5" /><path d="M3 16h18v3H3zM5 11h14" /><circle cx="7.5" cy="13.5" r=".5" /><circle cx="16.5" cy="13.5" r=".5" /></>),
 };
 
 export function Icon({ name, className = "h-5 w-5", ...props }: { name: string } & SVGProps<SVGSVGElement>) {

@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (l: "de" | "fr", p: string) => `${site.url}/${l}${p ? `/${p}` : ""}`;
-  const prio: Record<string, number> = { home: 1, service: 0.9, city: 0.8, citySeo: 0.7, localService: 0.7, services: 0.8, regions: 0.7, guide: 0.6 };
+  const prio: Record<string, number> = { home: 1, service: 0.9, city: 0.8, citySeo: 0.7, localService: 0.7, services: 0.8, regions: 0.7, guide: 0.6, industries: 0.8, industry: 0.8, problems: 0.7, problem: 0.7 };
   return routes
     .filter((r) => !r.noindex)
     .flatMap((r) =>
