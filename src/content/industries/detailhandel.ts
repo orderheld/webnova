@@ -79,7 +79,7 @@ export const detailhandel: Industry = {
           h2: "Klein starten, sauber wachsen",
           paragraphs: [
             "Ein Onlineshop muss nicht mit tausend Artikeln starten. Für viele Läden ist der beste Einstieg eine Auswahl der Produkte, die sich gut verschicken lassen oder die man vor dem Besuch reservieren möchte. Wenn das funktioniert, wächst das Sortiment Schritt für Schritt.",
-            "Für Dersut, den Schweizer Vertrieb von Dersut Caffè, haben wir einen Shop mit Vorauskasse und Swiss QR-Rechnung umgesetzt, ganz ohne Kartenanbieter. Bestellungen, Versand mit Sendungsnummer und Lager pflegt das Team im eigenen Admin. Solche Lösungen zeigen: Ein Shop kann schlank sein und trotzdem professionell wirken.",
+            "Ein schlanker Einstieg ist zum Beispiel ein Shop mit Vorauskasse und Swiss QR-Rechnung, ganz ohne Kartenanbieter. Bestellungen, Versand mit Sendungsnummer und Lager pflegt Ihr Team in einem eigenen Admin-Bereich. Ein Shop kann schlank sein und trotzdem professionell wirken.",
           ],
         },
       ],
@@ -135,7 +135,7 @@ export const detailhandel: Industry = {
         },
         {
           title: "Deux stocks, deux vérités",
-          text: "La boutique affiche un article disponible qui vient d'être vendu au magasin. Sans synchronisation entre caisse et boutique, place aux ennuis et au travail en plus.",
+          text: "La boutique affiche un article disponible qui vient d'être vendu au magasin. Sans synchronisation entre caisse et boutique, cela crée des ennuis et du travail en plus.",
         },
         {
           title: "Le site ne montre que l'adresse",
@@ -168,7 +168,7 @@ export const detailhandel: Industry = {
         },
         {
           title: "Trouvé localement et au-delà",
-          text: "Magasin dans le profil d'établissement Google, pages produits pour la recherche et données structurées pour prix et disponibilité.",
+          text: "Magasin dans la fiche d'établissement Google, pages produits pour la recherche et données structurées pour prix et disponibilité.",
         },
         {
           title: "Gestion simple",
@@ -180,7 +180,7 @@ export const detailhandel: Industry = {
           h2: "Commencer petit, grandir proprement",
           paragraphs: [
             "Une boutique en ligne n'a pas besoin de démarrer avec mille articles. Pour beaucoup de magasins, le meilleur départ est une sélection de produits faciles à expédier ou que l'on veut réserver avant la visite. Quand cela fonctionne, l'assortiment grandit pas à pas.",
-            "Pour Dersut, le distributeur suisse de Dersut Caffè, nous avons réalisé une boutique avec paiement anticipé et QR-facture, sans prestataire de cartes. Commandes, envois avec numéro de suivi et stock sont gérés par l'équipe dans son propre admin. Une boutique peut être légère et paraître pourtant professionnelle.",
+            "Un départ léger peut être, par exemple, une boutique avec paiement anticipé et QR-facture, sans prestataire de cartes. Votre équipe gère commandes, envois avec numéro de suivi et stock dans son propre espace d'administration. Une boutique peut être légère et paraître pourtant professionnelle.",
           ],
         },
       ],
@@ -203,10 +203,10 @@ export const detailhandel: Industry = {
         },
         {
           q: "Pouvons-nous gérer la boutique nous-mêmes ?",
-          a: "Oui. Produits, prix, stock et commandes se gèrent par vous. Nous vous formons lors de la remise et restons joignables.",
+          a: "Oui. Vous gérez vous-mêmes produits, prix, stock et commandes. Nous vous formons lors de la remise et restons joignables.",
         },
       ],
-      ctaTitle: "Magasin et en ligne d'un seul interlocuteur",
+      ctaTitle: "Magasin et vente en ligne, un seul interlocuteur",
       ctaText: "Parlez-nous de votre commerce et de votre assortiment. Nous vous proposons un point de départ adapté.",
     },
   },

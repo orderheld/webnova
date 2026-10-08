@@ -18,12 +18,12 @@ export const solothurn: City = {
       },
       h1: "Webdesign Solothurn: Webseiten für die Barockstadt",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Solothurn. Unser Büro ist in Grenchen, persönliche Treffen in der Altstadt sind für uns selbstverständlich.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Solothurn. Persönliche Treffen in der Altstadt sind für uns selbstverständlich.",
       sections: [
         {
-          h2: "Eine Webagentur für Solothurn aus der Nachbarschaft",
+          h2: "Eine Webagentur, die Solothurn kennt",
           paragraphs: [
-            "Solothurn und Grenchen gehören zum selben Kanton und zur selben Region am Jurasüdfuss. Wir kennen die Stadt, ihre Gewerbebetriebe und die Erwartungen der Solothurner Kundschaft. Wenn Sie in Solothurn eine Webseite erstellen lassen möchten, treffen wir Sie gerne in Ihrem Geschäft, in Ihrem Büro oder bei einem Kaffee an der Aare. Kurze Wege, klare Absprachen.",
+            "Wir kennen die Stadt, ihre Gewerbebetriebe und die Erwartungen der Solothurner Kundschaft. Wenn Sie in Solothurn eine Webseite erstellen lassen möchten, treffen wir Sie gerne in Ihrem Geschäft, in Ihrem Büro oder bei einem Kaffee an der Aare. Direkt und mit klaren Absprachen.",
             "Als Webagentur für Solothurn betreuen wir Projekte jeder Grösse: von der übersichtlichen Homepage für ein Fachgeschäft über die mehrsprachige Firmenwebseite bis zum Onlineshop. Wir beginnen immer mit Ihren Zielen und Ihrer Zielgruppe. Erst danach entstehen Struktur, Texte und Gestaltung. So bekommen Sie eine Webseite, die Ihr Unternehmen ehrlich zeigt und Anfragen bringt.",
           ],
         },
@@ -43,7 +43,7 @@ export const solothurn: City = {
         {
           h2: "So läuft Ihr Webprojekt in Solothurn ab",
           paragraphs: [
-            "Am Anfang steht eine kostenlose Erstberatung bei Ihnen in Solothurn oder bei uns in Grenchen. Wir schauen uns Ihren aktuellen Auftritt an, besprechen Wünsche und Zeitplan und erstellen eine unverbindliche Offerte. Danach erarbeiten wir die Webseite in klaren Etappen, Sie sehen früh erste Entwürfe und können jederzeit Feedback geben. Texte und Fotos organisieren wir auf Wunsch mit.",
+            "Am Anfang steht eine kostenlose Erstberatung bei Ihnen in Solothurn, bei uns im Büro oder per Video. Wir schauen uns Ihren aktuellen Auftritt an, besprechen Wünsche und Zeitplan und erstellen eine unverbindliche Offerte. Danach erarbeiten wir die Webseite in klaren Etappen, Sie sehen früh erste Entwürfe und können jederzeit Feedback geben. Texte und Fotos organisieren wir auf Wunsch mit.",
             "Nach dem Launch sind wir weiterhin für Sie da. Wir übernehmen Wartung, Sicherheitsupdates und Hosting, pflegen saisonale Inhalte wie Menükarten oder Veranstaltungen und betreuen auf Wunsch Google- und Meta-Kampagnen, etwa vor grossen Anlässen in der Stadt. Für Gastronomiebetriebe richten wir zusätzlich Kassensysteme ein. Alles aus einer Hand und mit einer festen Ansprechperson.",
           ],
         },
@@ -90,12 +90,12 @@ export const solothurn: City = {
       },
       h1: "Création de site internet à Soleure, la ville baroque",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Soleure. Notre bureau est à Granges et nous nous déplaçons volontiers dans la vieille ville.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Soleure. Nous nous déplaçons volontiers dans la vieille ville pour vous rencontrer.",
       sections: [
         {
-          h2: "Une agence web voisine de Soleure",
+          h2: "Une agence web qui connaît Soleure",
           paragraphs: [
-            "Soleure et Granges font partie du même canton et de la même région au pied du Jura. Nous connaissons la ville, son artisanat et les attentes de sa clientèle. Si vous souhaitez faire créer votre site internet à Soleure, nous vous rencontrons volontiers dans votre commerce, votre bureau ou autour d'un café au bord de l'Aar. Des échanges simples et directs.",
+            "Nous connaissons la ville, son artisanat et les attentes de sa clientèle. Si vous souhaitez faire créer votre site internet à Soleure, nous vous rencontrons volontiers dans votre commerce, votre bureau ou autour d'un café au bord de l'Aar. Des échanges simples et directs.",
             "Notre agence web accompagne à Soleure des projets de toutes tailles : site vitrine pour un magasin spécialisé, site d'entreprise multilingue ou boutique en ligne. Nous partons toujours de vos objectifs et de votre clientèle. La structure, les textes et le design viennent ensuite. Le résultat : un site qui présente votre entreprise de façon authentique et génère des demandes.",
           ],
         },
@@ -115,7 +115,7 @@ export const solothurn: City = {
         {
           h2: "Déroulement de votre projet à Soleure",
           paragraphs: [
-            "Tout commence par un premier conseil gratuit, chez vous à Soleure ou chez nous à Granges. Nous analysons votre présence actuelle, discutons de vos souhaits et du calendrier, puis vous remettons une offre sans engagement. Le site se construit ensuite par étapes claires : vous voyez rapidement les premières maquettes et donnez votre avis à tout moment.",
+            "Tout commence par un premier conseil gratuit, chez vous à Soleure, dans notre bureau ou en visioconférence. Nous analysons votre présence actuelle, discutons de vos souhaits et du calendrier, puis vous remettons une offre sans engagement. Le site se construit ensuite par étapes claires : vous voyez rapidement les premières maquettes et donnez votre avis à tout moment.",
             "Après la mise en ligne, nous restons disponibles pour la maintenance, les mises à jour de sécurité et l'hébergement. Nous pouvons aussi actualiser vos contenus saisonniers, comme les cartes ou les événements, et gérer des campagnes Google et Meta avant les grands rendez-vous de la ville. Pour les restaurants, nous installons également des systèmes de caisse.",
           ],
         },
@@ -187,9 +187,9 @@ export const solothurn: City = {
           ],
         },
         {
-          h2: "Ihre SEO-Agentur in der Nähe von Solothurn",
+          h2: "Ihre SEO-Agentur für Solothurn",
           paragraphs: [
-            "Von Grenchen aus sind wir rasch in Solothurn. Für Fotos Ihres Lokals, eine Schulung zur Pflege des Unternehmensprofils oder das Besprechen der Resultate kommen wir gerne vorbei. Die laufende Optimierung erledigen wir aus dem Büro und informieren Sie regelmässig mit einem kurzen Bericht, der zeigt, wie sich Rankings, Besuche und Anfragen entwickeln.",
+            "Für Fotos Ihres Lokals, eine Schulung zur Pflege des Unternehmensprofils oder das Besprechen der Resultate kommen wir gerne vorbei. Die laufende Optimierung erledigen wir aus dem Büro und informieren Sie regelmässig mit einem kurzen Bericht, der zeigt, wie sich Rankings, Besuche und Anfragen entwickeln.",
             "Wir starten mit einer kostenlosen Erstberatung und einer ehrlichen Einschätzung, was in Ihrer Branche in Solothurn realistisch ist. Danach erhalten Sie eine unverbindliche Offerte. Eine Rankinggarantie geben wir nicht, aber eine nachvollziehbare Arbeitsweise. Auf Wunsch ergänzen wir SEO mit Google Ads, zum Beispiel für saisonale Angebote oder besondere Anlässe in der Stadt.",
           ],
         },
@@ -253,9 +253,9 @@ export const solothurn: City = {
           ],
         },
         {
-          h2: "Une agence SEO toute proche",
+          h2: "Votre agence SEO pour Soleure",
           paragraphs: [
-            "Depuis Granges, nous sommes rapidement à Soleure. Pour photographier votre établissement, vous former à la gestion de votre profil ou vous présenter les résultats, nous passons volontiers chez vous. L'optimisation courante se fait depuis notre bureau, et vous recevez régulièrement un court rapport montrant l'évolution des positions, des visites et des demandes.",
+            "Pour photographier votre établissement, vous former à la gestion de votre profil ou vous présenter les résultats, nous passons volontiers chez vous. L'optimisation courante se fait depuis notre bureau, et vous recevez régulièrement un court rapport montrant l'évolution des positions, des visites et des demandes.",
             "Nous commençons par un premier conseil gratuit et une évaluation honnête de ce qui est réaliste dans votre secteur. Vous recevez ensuite une offre sans engagement. Pas de garantie de classement, mais une méthode transparente. Sur demande, nous complétons le référencement naturel par des annonces Google Ads, par exemple pour des offres saisonnières ou des événements.",
           ],
         },

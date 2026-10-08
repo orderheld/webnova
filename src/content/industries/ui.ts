@@ -57,7 +57,7 @@ export const industryUi: Localized<{
     hubIndustriesLead: "Wählen Sie Ihre Branche und sehen Sie, was eine Webseite für Ihren Betrieb leisten muss.",
     hubProblemsEyebrow: "Lösungen",
     hubProblemsTitle: "Oder starten Sie bei Ihrem Problem.",
-    hubProblemsLead: "Die häufigsten Gründe, warum Unternehmen zu uns kommen, und wie wir sie lösen.",
+    hubProblemsLead: "Die häufigsten Probleme von KMU-Webseiten und wie wir sie lösen.",
     problemsMetaTitle: "Webseiten-Probleme lösen für KMU",
     problemsMetaDesc:
       "Keine Anfragen, bei Google nicht gefunden, veraltet oder zu langsam? Wir lösen die häufigsten Webseiten-Probleme von Schweizer KMU. Jetzt anfragen.",
@@ -102,7 +102,7 @@ export const industryUi: Localized<{
     hubIndustriesLead: "Choisissez votre secteur et découvrez ce qu'un site doit faire pour votre entreprise.",
     hubProblemsEyebrow: "Solutions",
     hubProblemsTitle: "Ou partez de votre problème.",
-    hubProblemsLead: "Les raisons les plus fréquentes pour lesquelles les entreprises viennent nous voir, et comment nous les résolvons.",
+    hubProblemsLead: "Les problèmes les plus fréquents des sites de PME, et comment nous les résolvons.",
     problemsMetaTitle: "Résoudre les problèmes de site pour PME",
     problemsMetaDesc:
       "Pas de demandes, introuvable sur Google, dépassé ou trop lent ? Nous résolvons les problèmes de site les plus fréquents des PME suisses.",

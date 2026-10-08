@@ -176,7 +176,7 @@ export const barrierefreieWebsite: Guide = {
         {
           h2: "Dix points particulièrement rentables pour les PME",
           paragraphs: [
-            "L'accessibilité ne doit pas commencer par un grand projet. Beaucoup d'améliorations peuvent se faire lors de la prochaine refonte, voire en cours d'exploitation. Les points suivants couvrent une grande partie des problèmes les plus fréquents et améliorent en même temps l'ergonomie pour tous.",
+            "L'accessibilité n'a pas besoin de commencer par un grand projet. Beaucoup d'améliorations peuvent se faire lors de la prochaine refonte, voire en cours d'exploitation. Les points suivants couvrent une grande partie des problèmes les plus fréquents et améliorent en même temps l'ergonomie pour tous.",
           ],
           bullets: [
             "Contraste suffisant entre texte et fond, au moins 4,5 pour 1 pour un texte normal",
@@ -201,7 +201,7 @@ export const barrierefreieWebsite: Guide = {
         {
           h2: "Accessibilité, SEO et vitesse",
           paragraphs: [
-            "Beaucoup de mesures d'accessibilité aident aussi pour Google. Une structure de titres propre, des liens descriptifs, des textes alternatifs et un code sémantique rendent les contenus plus compréhensibles pour les moteurs de recherche. Des pages rapides et stables, sans contenu qui saute, sont plus agréables pour tous. Notre guide [Core Web Vitals](guide:core-web-vitals) explique les valeurs.",
+            "Beaucoup de mesures d'accessibilité sont aussi utiles pour Google. Une structure de titres propre, des liens descriptifs, des textes alternatifs et un code sémantique rendent les contenus plus compréhensibles pour les moteurs de recherche. Des pages rapides et stables, sans contenu qui saute, sont plus agréables pour tous. Notre guide [Core Web Vitals](guide:core-web-vitals) explique les valeurs.",
             "L'accessibilité est la plus simple quand elle est prévue dès le départ. Lors d'une [refonte de site](service:website-redesign) ou d'un nouveau [site pour PME](service:website-kmu), nous veillons aux contrastes, à la navigation au clavier, aux titres et aux formulaires étiquetés. Vous voulez savoir où en est votre site actuel ? Notre [analyse de site gratuite](page:website-check) vous donne une première appréciation.",
           ],
         },

@@ -71,7 +71,7 @@ export function ogData(locale: Locale, file: string): OgData | undefined {
     case "reference": {
       const r = references.find((x) => x.key === entry.key)!;
       const c = r.content[locale];
-      return { eyebrow: `${d.nav.references} · ${c.industry}`, title: `${r.name}: ${c.summary.split(":")[0]}` };
+      return { eyebrow: `${d.nav.references} · ${c.industry}`, title: `${r.name}${locale === "fr" ? " : " : ": "}${c.summary.split(":")[0].trim()}` };
     }
     default:
       return undefined;

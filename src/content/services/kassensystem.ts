@@ -17,7 +17,7 @@ export const kassensystem: Service = {
       eyebrow: "Kassensystem",
       h1: "Kassensystem für Gastronomie und Detailhandel",
       lead:
-        "Ein modernes POS-System, das sich einfach bedienen lässt und Ihren Alltag vereinfacht. Wir richten es bei Ihnen ein, schulen Ihr Team und bleiben erreichbar.",
+        "Ein modernes POS-System, das sich einfach bedienen lässt und Ihren Alltag erleichtert. Wir richten es bei Ihnen ein, schulen Ihr Team und bleiben erreichbar.",
       features: [
         {
           title: "Touch-Kasse",
@@ -69,7 +69,7 @@ export const kassensystem: Service = {
           ],
         },
         {
-          h2: "Persönlich eingerichtet, lokal betreut",
+          h2: "Persönlich eingerichtet und betreut",
           paragraphs: [
             "Ein neues Kassensystem einzuführen, bedeutet Umstellung. Darum lassen wir Sie damit nicht allein. Wir erfassen mit Ihnen Artikel und Preise, installieren Geräte und Drucker vor Ort und schulen Ihr Team, bis die Abläufe sitzen. Dafür kommen wir persönlich zu Ihnen in den Betrieb.",
             "Auch nach dem Start bleiben wir Ihr Ansprechpartner. Wenn Fragen auftauchen oder Sie Ihr System erweitern möchten, erreichen Sie uns direkt. Und wenn Sie auch online verkaufen, verbinden wir Kasse und Webseite oder Onlineshop zu einem stimmigen Ganzen. So arbeiten alle Teile Ihres Auftritts zusammen.",
@@ -108,7 +108,7 @@ export const kassensystem: Service = {
       meta: {
         title: "Système de caisse en Suisse",
         description:
-          "Système de caisse moderne pour la restauration et le commerce: carte, TWINT, rapports. Installation et support inclus. Demandez une offre sans engagement.",
+          "Système de caisse moderne pour la restauration et le commerce : carte, TWINT, rapports. Installation et support inclus. Demandez une offre sans engagement.",
       },
       eyebrow: "Système de caisse",
       h1: "Système de caisse pour restaurants et commerces",
@@ -144,7 +144,7 @@ export const kassensystem: Service = {
         {
           h2: "Une caisse qui vous simplifie la vie",
           paragraphs: [
-            "Une caisse doit avant tout fonctionner: rapidement, de manière fiable et assez simplement pour qu'un extra s'y retrouve après une courte formation. Mais un système de caisse moderne va bien au-delà d'une caisse enregistreuse classique. Il fournit des chiffres sur vos ventes et votre assortiment, aide à gérer le stock et fait gagner du temps à la clôture.",
+            "Une caisse doit avant tout fonctionner : rapidement, de manière fiable et assez simplement pour qu'un extra s'y retrouve après une courte formation. Mais un système de caisse moderne va bien au-delà d'une caisse enregistreuse classique. Il fournit des chiffres sur vos ventes et votre assortiment, aide à gérer le stock et fait gagner du temps à la clôture.",
             "Nous proposons un système de caisse adapté au marché suisse, aussi bien pour les restaurants, cafés et bars que pour les magasins et boutiques. Selon votre établissement, nous réunissons les fonctions et le matériel utiles, d'une simple tablette à une solution multi-sites.",
           ],
         },
@@ -152,7 +152,7 @@ export const kassensystem: Service = {
           h2: "Les fonctions en bref",
           paragraphs: [
             "Les fonctions nécessaires dépendent de votre activité. En restauration, le plan de salle et l'envoi des commandes en cuisine et au bar sont essentiels. Dans le commerce, ce sont plutôt la gestion des articles, le code-barres et le stock. Tous partagent le besoin d'une utilisation simple et d'une clôture de caisse fiable.",
-            "Lors du premier entretien, nous regardons comment se passe votre quotidien et où la caisse peut vous soulager. Nous composons ensuite une solution adaptée, sans options superflues. Et si votre établissement grandit, le système s'étend pas à pas: appareils, imprimantes ou points de vente supplémentaires.",
+            "Lors du premier entretien, nous regardons comment se passe votre quotidien et où la caisse peut vous soulager. Nous composons ensuite une solution adaptée, sans options superflues. Et si votre établissement grandit, le système s'étend pas à pas : appareils, imprimantes ou points de vente supplémentaires.",
           ],
           bullets: [
             "Utilisation tactile sur tablette ou terminal",
@@ -165,36 +165,36 @@ export const kassensystem: Service = {
           ],
         },
         {
-          h2: "Installation personnalisée, support de proximité",
+          h2: "Installation et suivi personnalisés",
           paragraphs: [
-            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Nous sommes rapidement chez vous à Bienne et dans la région.",
-            "Après le démarrage, nous restons votre interlocuteur. Une question, un besoin d'extension: vous nous joignez directement. Et si vous vendez aussi en ligne, nous relions caisse et site internet ou boutique en ligne pour un ensemble cohérent. Toute votre présence fonctionne ainsi d'un seul tenant.",
+            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Pour cela, nous venons en personne dans votre établissement.",
+            "Après le démarrage, nous restons votre interlocuteur. Une question, un besoin d'extension : vous nous joignez directement. Et si vous vendez aussi en ligne, nous relions caisse et site internet ou boutique en ligne pour un ensemble cohérent. Toute votre présence fonctionne ainsi d'un seul tenant.",
           ],
         },
       ],
       faq: [
         {
-          q: "Pour quels établissements ce système de caisse convient-il?",
+          q: "Pour quels établissements ce système de caisse convient-il ?",
           a: "Pour les restaurants, cafés, bars et take-aways, comme pour les magasins, boutiques et commerces spécialisés. Nous adaptons les fonctions à votre activité.",
         },
         {
-          q: "Puis-je accepter les cartes et TWINT?",
+          q: "Puis-je accepter les cartes et TWINT ?",
           a: "Oui. Les paiements par carte et TWINT peuvent être intégrés à l'encaissement. Nous définissons la solution adaptée lors du premier entretien.",
         },
         {
-          q: "Puis-je garder mon matériel actuel?",
+          q: "Puis-je garder mon matériel actuel ?",
           a: "Nous le vérifions volontiers. Selon les appareils, tablettes, imprimantes ou tiroirs-caisses peuvent être réutilisés. Sinon, nous vous conseillons dans le choix.",
         },
         {
-          q: "Comment se passe la mise en service?",
+          q: "Comment se passe la mise en service ?",
           a: "Nous saisissons ensemble articles et prix, installons le système chez vous et formons votre équipe. Votre activité redémarre avec un minimum d'interruption.",
         },
         {
-          q: "Combien coûte le système de caisse?",
+          q: "Combien coûte le système de caisse ?",
           a: "Cela dépend des fonctions, du nombre d'appareils et de points de vente. Après un conseil gratuit, vous recevez une offre sans engagement adaptée à votre établissement.",
         },
       ],
-      ctaTitle: "Prêt pour une caisse moderne?",
+      ctaTitle: "Prêt pour une caisse moderne ?",
       ctaText:
         "Parlez-nous de votre établissement. Nous vous conseillons gratuitement et vous remettons une offre sans engagement.",
     },

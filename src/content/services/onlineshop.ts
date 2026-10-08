@@ -134,18 +134,18 @@ export const onlineshop: Service = {
         {
           h2: "Une boutique en ligne taillée pour la Suisse",
           paragraphs: [
-            "Une boutique en ligne, ce n'est pas seulement un catalogue avec un panier. Elle doit inspirer confiance, répondre aux questions et rendre l'achat aussi simple que possible. Nous la concevons donc du point de vue de vos clients: comment trouvent-ils le bon produit, de quoi ont-ils besoin pour se décider, et comment arrivent-ils au paiement sans obstacle?",
-            "Nous créons des boutiques pour des commerçants, producteurs, artisans et prestataires dans toute la Suisse, de Bienne à Genève. Quelques produits phares ou un large assortiment: la solution s'adapte à votre activité, et non l'inverse. Nous vous conseillons franchement sur la solution qui convient à votre assortiment et à vos projets.",
+            "Une boutique en ligne, ce n'est pas seulement un catalogue avec un panier. Elle doit inspirer confiance, répondre aux questions et rendre l'achat aussi simple que possible. Nous la concevons donc du point de vue de vos clients : comment trouvent-ils le bon produit, de quoi ont-ils besoin pour se décider, et comment arrivent-ils au paiement sans obstacle ?",
+            "Nous créons des boutiques pour des commerçants, producteurs, artisans et prestataires dans toute la Suisse. Quelques produits phares ou un large assortiment : la solution s'adapte à votre activité, et non l'inverse. Nous vous conseillons franchement sur la solution qui convient à votre assortiment et à vos projets.",
           ],
         },
         {
           h2: "Des fonctions utiles au quotidien",
           paragraphs: [
             "Au quotidien, votre boutique doit surtout être fiable. Les commandes arrivent de façon claire, les stocks sont à jour, confirmations et factures partent automatiquement. Nous intégrons les moyens de paiement attendus en Suisse et configurons correctement livraison, retrait et TVA.",
-            "Si vous avez aussi un magasin, la boutique en ligne peut être reliée à un système de caisse. Vous gérez ainsi assortiment et stock au même endroit. Fini les doubles saisies et les ruptures de stock imprévues: vous gagnez un temps précieux au quotidien.",
+            "Si vous avez aussi un magasin, la boutique en ligne peut être reliée à un système de caisse. Vous gérez ainsi assortiment et stock au même endroit. Fini les doubles saisies et les ruptures de stock imprévues : vous gagnez un temps précieux au quotidien.",
           ],
           bullets: [
-            "Variantes de produits: taille, couleur, quantité",
+            "Variantes de produits : taille, couleur, quantité",
             "Bons cadeaux et actions promotionnelles",
             "Confirmations de commande et d'envoi automatiques",
             "Export des commandes pour la comptabilité",
@@ -155,30 +155,30 @@ export const onlineshop: Service = {
         {
           h2: "Être trouvé et se développer",
           paragraphs: [
-            "La plus belle boutique ne sert à rien si personne ne la trouve. Dès le développement, nous posons les bases du référencement: chargement rapide, fiches produits soignées, données structurées et adresses lisibles. Vos produits ont ainsi toutes les chances d'apparaître sur Google.",
+            "La plus belle boutique ne sert à rien si personne ne la trouve. Dès le développement, nous posons les bases du référencement : chargement rapide, fiches produits soignées, données structurées et adresses lisibles. Vos produits ont ainsi toutes les chances d'apparaître sur Google. Nous planifions aussi les pages de catégories et les filtres pour que les moteurs de recherche les comprennent bien.",
             "Pour gagner en visibilité, nous vous accompagnons aussi en référencement et en marketing digital, par exemple avec Google Ads ou des campagnes sur les réseaux sociaux. Après le lancement, nous restons à vos côtés pour la maintenance et les évolutions.",
           ],
         },
       ],
       faq: [
         {
-          q: "Combien coûte la création d'une boutique en ligne?",
+          q: "Combien coûte la création d'une boutique en ligne ?",
           a: "Cela dépend de l'assortiment, des fonctionnalités et des intégrations. Après un premier conseil gratuit, vous recevez une offre sans engagement adaptée à votre projet.",
         },
         {
-          q: "Puis-je proposer TWINT sur ma boutique?",
+          q: "Puis-je proposer TWINT sur ma boutique ?",
           a: "Oui, TWINT s'intègre en général via un prestataire de paiement, tout comme les cartes de crédit et de débit. Nous choisissons avec vous la solution la plus adaptée.",
         },
         {
-          q: "Puis-je ajouter et modifier mes produits moi-même?",
+          q: "Puis-je ajouter et modifier mes produits moi-même ?",
           a: "Oui. Vous gérez vous-même produits, prix, images et stocks. Nous vous présentons toutes les manipulations importantes lors de la remise.",
         },
         {
-          q: "La boutique peut-elle être reliée à ma caisse en magasin?",
+          q: "La boutique peut-elle être reliée à ma caisse en magasin ?",
           a: "C'est possible. Nous proposons aussi des systèmes de caisse pour le commerce et examinons volontiers comment relier magasin et boutique en ligne.",
         },
         {
-          q: "Pouvez-vous reprendre une boutique existante?",
+          q: "Pouvez-vous reprendre une boutique existante ?",
           a: "Souvent, oui. Selon le système, produits, clients et commandes peuvent être transférés. Nous analysons votre boutique actuelle et vous présentons les options.",
         },
       ],

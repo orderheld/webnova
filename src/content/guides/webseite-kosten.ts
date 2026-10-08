@@ -7,7 +7,7 @@ export const webseiteKosten: Guide = {
   readingMinutes: 8,
   related: ["webdesign", "website-redesign", "onlineshop"],
   relatedGuides: ["webagentur-waehlen", "webagentur-unterschied", "kmu-webseite-checkliste"],
-  cities: ["grenchen", "biel", "solothurn", "bern"],
+  cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {
       slug: "was-kostet-eine-webseite",
@@ -163,7 +163,7 @@ export const webseiteKosten: Guide = {
           h2: "Facteur 3 : les contenus, textes, photos et vidéos",
           paragraphs: [
             "Les contenus sont le poste le plus souvent sous-estimé. Si vous fournissez des textes finalisés et de bonnes images, le travail de l'agence diminue nettement. Si les textes doivent être rédigés de manière professionnelle et optimisés pour le référencement, il faut ajouter la conception et la rédaction. De bons textes ne sont pas un détail : ils décident si vos visiteurs comprennent votre offre et vous contactent.",
-            "Il en va de même pour les images. Les photos de banque d'images sont vite disponibles, mais rarement authentiques. Des photos de votre équipe, de vos locaux et de vos produits inspirent confiance, mais nécessitent une séance photo. Clarifiez donc tôt quels contenus existent déjà, lesquels doivent être retravaillés et lesquels sont à créer.",
+            "Il en va de même pour les images. Les photos de banque d'images sont vite disponibles, mais rarement authentiques. Des photos de votre équipe, de vos locaux et de vos produits inspirent confiance, mais nécessitent une séance photo. Clarifiez donc tôt quels contenus existent déjà, lesquels doivent être retravaillés et lesquels sont à créer. Un tel inventaire des contenus rend les offres plus comparables.",
           ],
           bullets: [
             "Textes fournis par vous ou rédigés par l'agence",
@@ -174,22 +174,22 @@ export const webseiteKosten: Guide = {
         {
           h2: "Facteur 4 : les fonctions, réservation, boutique et multilinguisme",
           paragraphs: [
-            "Chaque fonction qui va au-delà de simples pages d'information influence le travail. Un formulaire de contact s'intègre rapidement. Un système de réservation en ligne, un espace client, une connexion à votre logiciel ou une boutique en ligne avec paiement demandent en revanche bien plus de planification, de développement et de tests. Pour une boutique s'ajoutent les fiches produits, les règles d'expédition et des moyens de paiement comme TWINT.",
-            "En Suisse, le multilinguisme est un autre facteur important. Un site en français et en allemand ne se résume pas à une traduction : il faut une mise en œuvre technique propre, avec des URL distinctes par langue, pour que Google classe correctement chaque version. Dans une région bilingue comme Bienne, cet investissement est particulièrement payant.",
+            "Chaque fonction qui va au-delà de simples pages d'information influence le travail. Un formulaire de contact s'intègre rapidement. Un système de réservation en ligne, un espace client, une connexion à votre logiciel ou une [boutique en ligne](service:onlineshop) avec paiement demandent en revanche bien plus de planification, de développement et de tests. Pour une boutique s'ajoutent les fiches produits, les règles d'expédition et des moyens de paiement comme TWINT.",
+            "En Suisse, le multilinguisme est un autre facteur important. Un site en français et en allemand ne se résume pas à une traduction : il faut une mise en œuvre technique propre, avec des URL distinctes par langue, pour que Google classe correctement chaque version. Dans une région bilingue comme Bienne, cet investissement est particulièrement payant, car vous vous adressez directement aux deux communautés linguistiques. L'article [Site internet bilingue](guide:zweisprachige-webseite) explique les points essentiels.",
           ],
         },
         {
           h2: "Facteur 5 : le référencement naturel (SEO)",
           paragraphs: [
             "Un site que personne ne trouve génère peu de demandes. Les bases du référencement technique font donc partie de tout site professionnel : temps de chargement rapides, structure claire, titres et descriptions pertinents, optimisation mobile et indexation correcte. Ces fondations se posent idéalement dès la création, car les corrections ultérieures sont généralement plus coûteuses en temps.",
-            "D'autres mesures vont plus loin : recherche de mots-clés, pages dédiées à vos régions ou prestations, optimisation de votre fiche d'établissement Google ou publication régulière de guides. Leur pertinence dépend de votre concurrence et de vos objectifs. Un artisan local n'a pas besoin de la même stratégie qu'une entreprise qui cherche des clients dans toute la Suisse.",
+            "D'autres mesures vont plus loin : recherche de mots-clés, pages dédiées à vos régions ou prestations, optimisation de votre [fiche d'établissement Google](guide:google-unternehmensprofil) ou publication régulière de guides. Leur pertinence dépend de votre concurrence et de vos objectifs. Un artisan local n'a pas besoin de la même stratégie qu'une entreprise qui cherche des clients dans toute la Suisse. Nous ne recommandons que les mesures qui servent vos objectifs.",
           ],
         },
         {
           h2: "Facteurs 6 et 7 : le CMS et la maintenance",
           paragraphs: [
-            "Si vous souhaitez modifier vous-même vos contenus, votre site a besoin d'un système de gestion de contenu (CMS). Le confort d'édition souhaité influence le travail : quelques champs de texte modifiables sont plus simples à mettre en place qu'un système flexible permettant de créer de nouvelles pages, des articles ou des fiches d'équipe. Une courte prise en main fait idéalement partie du projet.",
-            "Le travail ne s'arrête pas à la mise en ligne. Hébergement, nom de domaine, mises à jour de sécurité, sauvegardes et petites adaptations entraînent des coûts récurrents. Prévoyez-les dès le départ plutôt que de considérer uniquement la création. Un site bien entretenu reste sûr, rapide et à jour, et protège votre investissement sur la durée.",
+            "Si vous souhaitez modifier vous-même vos contenus, votre site a besoin d'un système de gestion de contenu (CMS). Le confort d'édition souhaité influence le travail : quelques champs de texte modifiables sont plus simples à mettre en place qu'un système flexible permettant de créer de nouvelles pages, des articles ou des fiches d'équipe. Une courte prise en main fait idéalement partie du projet, pour que vous puissiez ensuite modifier votre site en toute confiance.",
+            "Le travail ne s'arrête pas à la mise en ligne. Hébergement, nom de domaine, mises à jour de sécurité, sauvegardes et petites adaptations entraînent des coûts récurrents. Prévoyez-les dès le départ plutôt que de considérer uniquement la création. Un site bien entretenu reste sûr, rapide et à jour, et protège votre investissement sur la durée. Un [contrat de maintenance](service:wartung) pose ici un cadre clair.",
           ],
           bullets: [
             "Hébergement et nom de domaine",

@@ -39,7 +39,7 @@ const gt = {
     takeaways: "L'essentiel en bref",
     sources: "Sources",
     author: "À propos de l'auteur",
-    authorRole: "Propriétaire de Webnova",
+    authorRole: "Votre interlocuteur chez Webnova",
     authorText:
       "Ferhat Demir dirige Webnova, une agence web pour les PME suisses. Il accompagne personnellement les projets de la première idée jusqu'après la mise en ligne, en français et en allemand, en alliant design, technique et référencement.",
     authorLink: "En savoir plus sur Webnova",
@@ -47,7 +47,7 @@ const gt = {
     midText: "Nous examinons votre situation et vous disons franchement ce qui vaut la peine. Le premier entretien est gratuit.",
     midCheck: "Analyse de site gratuite",
     endTitle: "Et pour vous, quelle suite ?",
-    endText: "Décrivez-nous brièvement votre projet. Ferhat Demir vous répond personnellement en un jour ouvrable.",
+    endText: "Décrivez-nous brièvement votre projet. Ferhat Demir vous répond personnellement sous un jour ouvrable.",
     toc: "Sommaire",
   },
 };

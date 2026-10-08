@@ -115,7 +115,7 @@ export const keineAnfragen: Problem = {
         "Les nouveaux clients viennent presque tous par recommandation",
         "Le formulaire de contact reste vide pendant des semaines",
         "Les demandes ne correspondent pas ou manquent d'informations",
-        "Vous ne savez pas combien de visiteurs a le site",
+        "Vous ne savez pas combien de visiteurs compte votre site",
         "Le site n'a guère évolué depuis son lancement",
       ],
       causesTitle: "Les causes les plus fréquentes",

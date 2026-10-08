@@ -18,7 +18,7 @@ export const luzern: City = {
       },
       h1: "Webdesign Luzern: Webseiten für Tourismus, Gastronomie und KMU",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Luzern und der Zentralschweiz. Wir arbeiten von Grenchen aus, effizient remote und für wichtige Termine gerne vor Ort.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Luzern und der Zentralschweiz. Wir arbeiten effizient remote und sind für wichtige Termine gerne vor Ort.",
       sections: [
         {
           h2: "Luzern: Tourismusstadt und Wirtschaftszentrum der Zentralschweiz",
@@ -43,7 +43,7 @@ export const luzern: City = {
         {
           h2: "Offen gesagt: Zusammenarbeit aus der Distanz",
           paragraphs: [
-            "Webnova hat ihr Büro in Grenchen. Den grössten Teil der Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail. Das spart Zeit auf beiden Seiten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Luzern. Sie haben jederzeit eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
+            "Den grössten Teil der Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail. Das spart Zeit auf beiden Seiten. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Luzern. Sie haben jederzeit eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
             "Dafür erhalten Sie direkte Kommunikation, einen klaren KMU-Fokus und keinen Agentur-Overhead. Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO und saisonale Kampagnen auf Google und Meta, etwa für die Hauptsaison, Festtage oder besondere Anlässe in der Stadt.",
           ],
         },
@@ -73,7 +73,7 @@ export const luzern: City = {
       },
       h1: "Création de site internet à Lucerne pour le tourisme et les PME",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Lucerne et de Suisse centrale. Nous travaillons depuis Granges, efficacement à distance, et venons sur place pour les rendez-vous importants.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises de Lucerne et de Suisse centrale. Nous travaillons efficacement à distance et venons sur place pour les rendez-vous importants.",
       sections: [
         {
           h2: "Lucerne, ville touristique et centre de la Suisse centrale",
@@ -98,8 +98,8 @@ export const luzern: City = {
         {
           h2: "En toute franchise : travailler à distance",
           paragraphs: [
-            "Webnova a son bureau à Granges. L'essentiel de la collaboration se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps à tout le monde. Pour le lancement, un atelier ou des photos, nous venons volontiers à Lucerne. Vous gardez le même interlocuteur, qui réalise lui-même votre projet.",
-            "Vous bénéficiez d'une communication directe, d'une agence centrée sur les PME suisses et d'aucuns frais de structure superflus. Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et des campagnes saisonnières sur Google et Meta.",
+            "L'essentiel de la collaboration se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps à tout le monde. Pour le lancement, un atelier ou des photos, nous venons volontiers à Lucerne. Vous gardez le même interlocuteur, qui réalise lui-même votre projet.",
+            "Vous bénéficiez d'une communication directe et d'une agence centrée sur les PME suisses, sans frais de structure superflus. Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et des campagnes saisonnières sur Google et Meta.",
           ],
         },
       ],

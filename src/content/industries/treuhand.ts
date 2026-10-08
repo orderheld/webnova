@@ -136,7 +136,7 @@ export const treuhand: Industry = {
         },
         {
           title: "Pas de visage, pas de confiance",
-          text: "Des photos d'archives de poignées de main au lieu de vraies personnes. En matière de finances, les clients veulent savoir qui voit leurs documents.",
+          text: "Des photos de banque d'images avec des poignées de main au lieu de vraies personnes. En matière de finances, les clients veulent savoir qui voit leurs documents.",
         },
         {
           title: "Des demandes qui ne conviennent pas",
@@ -144,7 +144,7 @@ export const treuhand: Industry = {
         },
         {
           title: "Des documents par e-mail",
-          text: "Certificats de salaire et justificatifs arrivent en pièces jointes non chiffrées. Pas une bonne sensation, ni pour vous ni pour vos clients.",
+          text: "Certificats de salaire et justificatifs arrivent en pièces jointes non chiffrées. Ce n'est rassurant ni pour vous ni pour vos clients.",
         },
       ],
       needsTitle: "Ce que doit faire le site d'une fiduciaire",
@@ -169,7 +169,7 @@ export const treuhand: Industry = {
         },
         {
           title: "Montrer votre expertise",
-          text: "De courts articles sur les délais, les changements fiscaux ou la création d'entreprise. Cela prouve la compétence et se trouve sur Google.",
+          text: "De courts articles sur les délais, les changements fiscaux ou la création d'entreprise. Cela prouve votre compétence et vous rend visible sur Google.",
         },
         {
           title: "Bilingue si nécessaire",

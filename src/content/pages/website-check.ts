@@ -88,7 +88,7 @@ export const websiteCheck: StandalonePage = {
         {
           h2: "Selbst prüfen: drei schnelle Tests",
           paragraphs: [
-            "Einige Dinge können Sie sofort selbst testen. Öffnen Sie Ihre Website auf dem Smartphone und versuchen Sie, Sie selbst anzurufen: Wie viele Schritte braucht es? Suchen Sie bei Google nach Ihrer wichtigsten Leistung und Ihrem Ort: Erscheinen Sie auf der ersten Seite oder in der Karte? Und prüfen Sie Ihre Seite mit PageSpeed Insights von Google, um einen Eindruck der Ladezeit zu erhalten. Was die Werte bedeuten, erklärt unser Ratgeber [Core Web Vitals](guide:core-web-vitals).",
+            "Einige Dinge können Sie sofort selbst testen. Öffnen Sie Ihre Website auf dem Smartphone und versuchen Sie, sich selbst anzurufen: Wie viele Schritte braucht es? Suchen Sie bei Google nach Ihrer wichtigsten Leistung und Ihrem Ort: Erscheinen Sie auf der ersten Seite oder in der Karte? Und prüfen Sie Ihre Seite mit PageSpeed Insights von Google, um einen Eindruck der Ladezeit zu erhalten. Was die Werte bedeuten, erklärt unser Ratgeber [Core Web Vitals](guide:core-web-vitals).",
             "Eine ausführliche Liste, was eine KMU-Website enthalten sollte, finden Sie im Ratgeber [Was eine KMU-Webseite wirklich braucht](guide:kmu-webseite-checkliste). Für das Impressum steht Ihnen unser kostenloser [Impressum-Generator](page:impressum-generator) zur Verfügung.",
           ],
         },
@@ -228,7 +228,7 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "Comment est-ce que je reçois le retour ?",
-          a: "Par téléphone ou e-mail, selon ce que vous indiquez dans le formulaire. Nous vous répondons en un jour ouvrable.",
+          a: "Par téléphone ou e-mail, selon ce que vous indiquez dans le formulaire. Nous vous répondons sous un jour ouvrable.",
         },
         {
           q: "De quoi avez-vous besoin ?",
@@ -248,11 +248,11 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "Que se passe-t-il après l'analyse ?",
-          a: "Vous décidez. Beaucoup de points peuvent être réglés vous-même ou avec votre prestataire actuel. Si vous souhaitez de l'aide, nous vous faisons volontiers un devis sans engagement.",
+          a: "Vous décidez. Vous pouvez régler beaucoup de points vous-même ou avec votre prestataire actuel. Si vous souhaitez de l'aide, nous vous faisons volontiers un devis sans engagement.",
         },
       ],
       ctaTitle: "Faire analyser votre site",
-      ctaText: "Envoyez-nous l'adresse de votre site. Ferhat Demir l'examine personnellement et vous contacte en un jour ouvrable.",
+      ctaText: "Envoyez-nous l'adresse de votre site. Ferhat Demir l'examine personnellement et vous contacte sous un jour ouvrable.",
     },
   },
 };

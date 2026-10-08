@@ -155,7 +155,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   });
 
   const fr = v.locale === "fr";
-  const firstName = v.name.split(" ")[0];
+  // Full name: "Guten Tag Vorname" does not go with "Sie"; the gender is unknown, so no Herr/Frau.
+  const fullName = v.name.trim().replace(/\s+/g, " ");
   // Phone-only leads get no confirmation mail; Ferhat calls back instead.
   if (v.email) await safeSend({
     to: v.email,
@@ -163,8 +164,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     subject: fr ? "Votre demande chez Webnova" : "Ihre Anfrage bei Webnova",
     html: mailLayout(
       fr
-        ? `<p>Bonjour ${escapeHtml(firstName)},</p><p>Merci pour votre demande. Nous avons bien reçu vos informations et vous contactons personnellement dans un délai d'un jour ouvrable.</p><p>Pour toute question urgente, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`
-        : `<p>Guten Tag ${escapeHtml(firstName)}</p><p>Vielen Dank für Ihre Anfrage. Wir haben Ihre Angaben erhalten und melden uns innert eines Arbeitstages persönlich bei Ihnen.</p><p>Bei dringenden Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`,
+        ? `<p>Bonjour ${escapeHtml(fullName)},</p><p>Merci pour votre demande. Nous avons bien reçu vos informations et vous contactons personnellement dans un délai d'un jour ouvrable.</p><p>Pour toute question urgente, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`
+        : `<p>Guten Tag ${escapeHtml(fullName)}</p><p>Vielen Dank für Ihre Anfrage. Wir haben Ihre Angaben erhalten und melden uns innert eines Arbeitstages persönlich bei Ihnen.</p><p>Bei dringenden Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`,
     ),
   });
 

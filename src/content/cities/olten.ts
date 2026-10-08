@@ -18,7 +18,7 @@ export const olten: City = {
       },
       h1: "Webdesign Olten: Webseiten für KMU im Herzen der Schweiz",
       lead:
-        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Olten und Umgebung. Unser Büro in Grenchen liegt ebenfalls im Kanton Solothurn.",
+        "Webnova erstellt Webseiten und Onlineshops für Unternehmen in Olten und Umgebung. Für Besprechungen kommen wir gerne zu Ihnen.",
       sections: [
         {
           h2: "Olten: Verkehrsknoten mit vielfältiger Wirtschaft",
@@ -44,7 +44,7 @@ export const olten: City = {
           h2: "So arbeiten wir mit Ihnen in Olten",
           paragraphs: [
             "Wir starten mit einer kostenlosen Erstberatung, auf Wunsch bei Ihnen in Olten oder per Videocall. Nach dem Gespräch erhalten Sie eine unverbindliche Offerte, die Umfang und Zeitplan klar festhält. Im Projekt arbeiten wir in überschaubaren Etappen, zeigen Entwürfe früh und nehmen Ihr Feedback direkt auf. Sie haben eine feste Ansprechperson und keine wechselnden Projektteams.",
-            "Auch nach dem Launch bleiben wir Ihr Partner: Wartung, Hosting, Sicherheitsupdates, Suchmaschinenoptimierung und Kampagnen auf Google und Meta übernehmen wir auf Wunsch. Für Oltner KMU bedeutet das eine Webagentur aus dem eigenen Kanton, die persönlich erreichbar ist, kurzfristig reagiert und einen klaren Fokus auf messbare Ergebnisse statt auf teure Spielereien legt.",
+            "Auch nach dem Launch bleiben wir Ihr Partner: Wartung, Hosting, Sicherheitsupdates, Suchmaschinenoptimierung und Kampagnen auf Google und Meta übernehmen wir auf Wunsch. Für Oltner KMU bedeutet das eine Webagentur, die persönlich erreichbar ist, kurzfristig reagiert und einen klaren Fokus auf messbare Ergebnisse statt auf teure Spielereien legt.",
           ],
         },
       ],
@@ -73,7 +73,7 @@ export const olten: City = {
       },
       h1: "Création de site internet à Olten pour les PME",
       lead:
-        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises d'Olten et des environs. Notre bureau de Granges se trouve dans le même canton de Soleure.",
+        "Webnova crée des sites internet et des boutiques en ligne pour les entreprises d'Olten et des environs. Nous nous déplaçons volontiers chez vous pour les rendez-vous.",
       sections: [
         {
           h2: "Olten, carrefour ferroviaire de la Suisse",
@@ -99,7 +99,7 @@ export const olten: City = {
           h2: "Notre collaboration à Olten",
           paragraphs: [
             "Nous commençons par un premier conseil gratuit, chez vous à Olten ou en visioconférence. Vous recevez ensuite une offre sans engagement qui fixe clairement le périmètre et le calendrier. Le projet avance par étapes, avec des maquettes présentées tôt et vos retours intégrés directement. Vous gardez le même interlocuteur du début à la fin.",
-            "Après la mise en ligne, nous restons à vos côtés : maintenance, hébergement, mises à jour de sécurité, référencement et campagnes Google et Meta sur demande. Pour les PME d'Olten, c'est une agence web du même canton, facilement joignable, qui mise sur des résultats concrets plutôt que sur des gadgets coûteux.",
+            "Après la mise en ligne, nous restons à vos côtés : maintenance, hébergement, mises à jour de sécurité, référencement et campagnes Google et Meta sur demande. Pour les PME d'Olten, c'est une agence web facilement joignable, qui réagit vite et mise sur des résultats concrets plutôt que sur des gadgets coûteux.",
           ],
         },
       ],

@@ -18,7 +18,7 @@ export const fribourg: City = {
       },
       h1: "Webdesign Freiburg: zweisprachige Webseiten für Fribourg",
       lead:
-        "Webnova erstellt Webseiten auf Deutsch und Französisch für Unternehmen in Freiburg im Üechtland. Wir arbeiten von Grenchen aus und kommen für wichtige Termine gerne nach Fribourg.",
+        "Webnova erstellt Webseiten auf Deutsch und Französisch für Unternehmen in Freiburg im Üechtland. Für wichtige Termine kommen wir gerne nach Fribourg.",
       sections: [
         {
           h2: "Freiburg: zweisprachige Stadt an der Saane",
@@ -43,7 +43,7 @@ export const fribourg: City = {
         {
           h2: "Ehrlich und effizient: unsere Arbeitsweise in Freiburg",
           paragraphs: [
-            "Unser Büro liegt in Grenchen. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, auf Deutsch oder Französisch. Sie profitieren von einer festen Ansprechperson und kurzen Entscheidungswegen ohne den Overhead einer grossen Agentur.",
+            "Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, auf Deutsch oder Französisch. Sie profitieren von einer festen Ansprechperson und kurzen Entscheidungswegen ohne den Overhead einer grossen Agentur.",
             "Wir starten jedes Projekt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte, die Umfang und Zeitplan festhält. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Hosting, Suchmaschinenoptimierung und Kampagnen auf Google und Meta, selbstverständlich in beiden Sprachen und mit verständlichen Berichten.",
           ],
         },
@@ -71,9 +71,9 @@ export const fribourg: City = {
         description:
           "Création de site internet à Fribourg : sites bilingues, boutiques en ligne et référencement pour les PME fribourgeoises. Premier conseil gratuit.",
       },
-      h1: "Création de site internet à Fribourg : une agence web bilingue",
+      h1: "Création de site internet à Fribourg : des sites bilingues pour les PME fribourgeoises",
       lead:
-        "Webnova crée des sites internet en français et en allemand pour les entreprises de Fribourg et du canton. Nous travaillons depuis Granges et venons volontiers à Fribourg pour les rendez-vous importants.",
+        "Webnova crée des sites internet en français et en allemand pour les entreprises de Fribourg et du canton. Nous venons volontiers à Fribourg pour les rendez-vous importants.",
       sections: [
         {
           h2: "Fribourg, ville bilingue au bord de la Sarine",
@@ -98,7 +98,7 @@ export const fribourg: City = {
         {
           h2: "Notre façon de travailler avec vous à Fribourg",
           paragraphs: [
-            "Notre bureau se trouve à Granges. Pour le lancement du projet, un atelier ou une séance photo, nous venons chez vous. Le suivi courant se fait par visioconférence, téléphone et e-mail, en français ou en allemand. Vous avez un interlocuteur fixe et des décisions rapides, sans la lourdeur d'une grande agence.",
+            "Pour le lancement du projet, un atelier ou une séance photo, nous venons chez vous. Le suivi courant se fait par visioconférence, téléphone et e-mail, en français ou en allemand. Vous avez un interlocuteur fixe et des décisions rapides, sans la lourdeur d'une grande agence.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement qui précise le périmètre et le calendrier. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta, dans les deux langues.",
           ],
         },

@@ -31,7 +31,7 @@ export const lyss: City = {
           h2: "Was Gewerbe und Handel in Lyss online brauchen",
           paragraphs: [
             "Für Handwerker, Garagen, Bauunternehmen und technische Betriebe in Lyss zählen klare Leistungsseiten, gute Referenzbilder, ein einfaches Kontaktformular und Stelleninserate, die Fachkräfte ansprechen. Für Läden und Hofläden im Seeland sind Öffnungszeiten, saisonale Angebote und vielleicht ein kleiner Onlineshop wichtig. Gemüse und regionale Produkte aus dem Seeland lassen sich online sehr gut präsentieren.",
-            "Ebenso wichtig ist die lokale Sichtbarkeit. Wer „Schreiner Lyss“ oder „Coiffeur Seeland“ sucht, sieht zuerst die Google-Karte. Darum optimieren wir neben der Webseite auch Ihr Google Unternehmensprofil. Und weil das Seeland an der Sprachgrenze liegt, kann eine französische Version zusätzlich helfen, französischsprachige Kundschaft in der Region zu erreichen.",
+            "Ebenso wichtig ist die lokale Sichtbarkeit. Wer «Schreiner Lyss» oder «Coiffeur Seeland» sucht, sieht zuerst die Google-Karte. Darum optimieren wir neben der Webseite auch Ihr Google Unternehmensprofil. Und weil das Seeland an der Sprachgrenze liegt, kann eine französische Version zusätzlich helfen, französischsprachige Kundschaft in der Region zu erreichen.",
           ],
           bullets: [
             "Webseiten für Gewerbe und Handwerk",
@@ -43,8 +43,8 @@ export const lyss: City = {
         {
           h2: "Zusammenarbeit mit Webnova in Lyss",
           paragraphs: [
-            "Für das Erstgespräch kommen wir gerne zu Ihnen nach Lyss oder Sie besuchen uns in Grenchen. Wir hören zu, schauen uns Ihren aktuellen Auftritt an und erstellen anschliessend eine unverbindliche Offerte. Während des Projekts arbeiten wir in klaren Schritten, zeigen Ihnen Entwürfe früh und halten Sie laufend auf dem Stand. Sie brauchen keine technischen Vorkenntnisse.",
-            "Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Updates und Hosting und unterstützen Sie mit Google Ads oder Social-Media-Werbung, etwa für die Lehrlingssuche oder saisonale Aktionen. So haben Sie eine Webagentur in der Nähe, die Ihr Unternehmen kennt und schnell reagiert. Rufen Sie uns an oder vereinbaren Sie eine kostenlose Erstberatung.",
+            "Für das Erstgespräch kommen wir gerne zu Ihnen nach Lyss, oder Sie besuchen uns in unserem Büro. Wir hören zu, schauen uns Ihren aktuellen Auftritt an und erstellen anschliessend eine unverbindliche Offerte. Während des Projekts arbeiten wir in klaren Schritten, zeigen Ihnen Entwürfe früh und halten Sie laufend auf dem Stand. Sie brauchen keine technischen Vorkenntnisse.",
+            "Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Updates und Hosting und unterstützen Sie mit Google Ads oder Social-Media-Werbung, etwa für die Lehrlingssuche oder saisonale Aktionen. So haben Sie eine Webagentur, die Ihr Unternehmen kennt und schnell reagiert. Rufen Sie uns an oder vereinbaren Sie eine kostenlose Erstberatung.",
           ],
         },
       ],
@@ -98,8 +98,8 @@ export const lyss: City = {
         {
           h2: "Travailler avec Webnova à Lyss",
           paragraphs: [
-            "Pour le premier entretien, nous venons volontiers à Lyss, ou vous nous rendez visite à Granges. Nous écoutons, analysons votre présence actuelle et vous remettons ensuite une offre sans engagement. Le projet avance par étapes claires, vous voyez les maquettes tôt et restez informé à chaque moment. Aucune connaissance technique n'est nécessaire de votre côté.",
-            "Après la mise en ligne, nous assurons sur demande la maintenance, les mises à jour et l'hébergement, et vous soutenons avec Google Ads ou des publicités sur les réseaux sociaux, par exemple pour recruter des apprentis ou promouvoir une action saisonnière. Une agence web proche, qui connaît votre entreprise et réagit vite. Demandez votre premier conseil gratuit.",
+            "Pour le premier entretien, nous venons volontiers à Lyss, ou vous nous rendez visite à notre bureau. Nous écoutons, analysons votre présence actuelle et vous remettons ensuite une offre sans engagement. Le projet avance par étapes claires, vous voyez les maquettes tôt et restez informé à chaque moment. Aucune connaissance technique n'est nécessaire de votre côté.",
+            "Après la mise en ligne, nous assurons sur demande la maintenance, les mises à jour et l'hébergement, et vous soutenons avec Google Ads ou des publicités sur les réseaux sociaux, par exemple pour recruter des apprentis ou promouvoir une action saisonnière. Une agence web qui connaît votre entreprise et réagit vite. Demandez votre premier conseil gratuit.",
           ],
         },
       ],

@@ -67,7 +67,7 @@ export const kassensystemRetail: Service = {
           ],
         },
         {
-          h2: "Einrichtung, Schulung und Support aus der Region",
+          h2: "Einrichtung, Schulung und persönlicher Support",
           paragraphs: [
             "Wir übernehmen die Einrichtung: Artikel importieren oder erfassen, Geräte wie Scanner, Belegdrucker und Kassenschublade installieren und das Zahlungsterminal einbinden. Danach schulen wir Sie und Ihr Team direkt im Laden, damit der Start reibungslos gelingt. Auf Wunsch begleiten wir Sie auch am ersten Verkaufstag.",
             "Für Installation und Schulung kommen wir persönlich zu Ihnen. Auch nach dem Start erreichen Sie uns direkt, wenn Fragen auftauchen oder Sie Ihr System erweitern möchten. Und wenn Ihr Geschäft wächst, wächst die Kasse mit: um weitere Kassenplätze, Geräte oder Filialen.",
@@ -106,7 +106,7 @@ export const kassensystemRetail: Service = {
       meta: {
         title: "Caisse enregistreuse pour commerce",
         description:
-          "Caisse pour magasin et boutique: code-barres, stock, carte et TWINT, rapports. Installation sur place. Demandez une offre sans engagement.",
+          "Caisse pour magasin et boutique : code-barres, stock, carte et TWINT, rapports. Installation sur place. Demandez une offre sans engagement.",
       },
       eyebrow: "Caisse pour le commerce",
       h1: "Caisse enregistreuse pour magasin et boutique",
@@ -142,14 +142,14 @@ export const kassensystemRetail: Service = {
         {
           h2: "Une vision claire de votre magasin",
           paragraphs: [
-            "Dans le commerce, tout est une question de vue d'ensemble. Quels articles se vendent bien, lesquels restent en rayon, que faut-il réapprovisionner? Une caisse moderne répond à ces questions sans effort supplémentaire. Chaque vente met le stock à jour, et le soir vous voyez immédiatement comment s'est passée la journée.",
-            "À la caisse, ce qui compte, c'est la rapidité et la simplicité. Les articles sont saisis au code-barres ou sur l'écran tactile, remises et bons cadeaux se déduisent en quelques gestes. Même un nouveau collaborateur s'y retrouve après une courte formation.",
+            "Dans le commerce, tout est une question de vue d'ensemble. Quels articles se vendent bien, lesquels restent en rayon, que faut-il réapprovisionner ? Une caisse moderne répond à ces questions sans effort supplémentaire. Chaque vente met le stock à jour, et le soir vous voyez immédiatement comment s'est passée la journée.",
+            "À la caisse, ce qui compte, c'est la rapidité et la simplicité. Les articles sont saisis au code-barres ou sur l'écran tactile, remises et bons cadeaux se déduisent en quelques gestes. Même un nouveau collaborateur s'y retrouve après une courte formation. Un vrai soulagement le samedi et pendant les fêtes de fin d'année, quand tout doit aller vite à la caisse.",
           ],
         },
         {
           h2: "Pour boutiques, commerces spécialisés et magasins",
           paragraphs: [
-            "Boutique de mode avec de nombreuses tailles et couleurs, librairie, fleuriste ou commerce spécialisé avec conseil: chaque magasin a ses habitudes. Nous composons donc la caisse selon votre assortiment et votre organisation, d'un seul poste à une solution pour plusieurs succursales.",
+            "Boutique de mode avec de nombreuses tailles et couleurs, librairie, fleuriste ou commerce spécialisé avec conseil : chaque magasin a ses habitudes. Nous composons donc la caisse selon votre assortiment et votre organisation, d'un seul poste à une solution pour plusieurs succursales.",
             "Si vous vendez déjà en ligne ou envisagez de le faire, la caisse du magasin peut être reliée à une boutique en ligne. Assortiment et stock restent à jour au même endroit, sans double saisie. Ce qui est vendu en magasin n'est plus disponible en ligne, et inversement.",
           ],
           bullets: [
@@ -161,32 +161,32 @@ export const kassensystemRetail: Service = {
           ],
         },
         {
-          h2: "Installation, formation et support de proximité",
+          h2: "Installation, formation et support personnalisé",
           paragraphs: [
-            "Nous nous chargeons de la mise en place: import ou saisie des articles, installation du scanner, de l'imprimante de tickets et du tiroir-caisse, intégration du terminal de paiement. Nous formons ensuite votre équipe directement dans votre magasin pour un démarrage sans accroc.",
-            "Pour l'installation et la formation, nous venons en personne chez vous. Après la mise en service, vous nous joignez directement pour toute question ou extension de votre système. Et si votre commerce se développe, la caisse suit: postes, appareils ou succursales supplémentaires s'ajoutent sans difficulté. Sur demande, nous vous accompagnons aussi lors de votre première journée de vente.",
+            "Nous nous chargeons de la mise en place : import ou saisie des articles, installation du scanner, de l'imprimante de tickets et du tiroir-caisse, intégration du terminal de paiement. Nous formons ensuite votre équipe directement dans votre magasin pour un démarrage sans accroc.",
+            "Pour l'installation et la formation, nous venons en personne chez vous. Après la mise en service, vous nous joignez directement pour toute question ou extension de votre système. Et si votre commerce se développe, la caisse suit : postes, appareils ou succursales supplémentaires s'ajoutent sans difficulté. Sur demande, nous vous accompagnons aussi lors de votre première journée de vente.",
           ],
         },
       ],
       faq: [
         {
-          q: "Puis-je reprendre mes données d'articles existantes?",
+          q: "Puis-je reprendre mes données d'articles existantes ?",
           a: "Souvent, oui. Les listes d'articles issues d'Excel ou d'un autre système peuvent généralement être importées. Nous vérifions vos données et nous occupons de l'import.",
         },
         {
-          q: "Le système fonctionne-t-il avec un lecteur de codes-barres?",
+          q: "Le système fonctionne-t-il avec un lecteur de codes-barres ?",
           a: "Oui. Les articles se scannent directement. Pour ceux sans code-barres, vous pouvez créer vos propres étiquettes ou des touches rapides.",
         },
         {
-          q: "Puis-je gérer plusieurs succursales?",
+          q: "Puis-je gérer plusieurs succursales ?",
           a: "Oui. Plusieurs points de vente se gèrent dans un même système, avec chiffres d'affaires et stocks par magasin et au total.",
         },
         {
-          q: "La caisse peut-elle être reliée à une boutique en ligne?",
+          q: "La caisse peut-elle être reliée à une boutique en ligne ?",
           a: "C'est possible. Nous créons aussi des boutiques en ligne et examinons avec vous la meilleure façon de relier magasin et vente en ligne.",
         },
         {
-          q: "Combien coûte une caisse pour commerce?",
+          q: "Combien coûte une caisse pour commerce ?",
           a: "Cela dépend du nombre de postes, d'appareils et des fonctions souhaitées. Après un conseil gratuit, vous recevez une offre sans engagement pour votre commerce.",
         },
       ],

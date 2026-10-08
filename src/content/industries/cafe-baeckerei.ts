@@ -126,7 +126,7 @@ export const cafeBaeckerei: Industry = {
         "Commander gâteaux et plateaux en ligne",
         "Chaque succursale avec ses horaires",
         "Assortiment de saison géré par vous",
-        "Caisse et site d'un seul interlocuteur",
+        "Caisse et site chez un seul interlocuteur",
       ],
       painTitle: "Situations typiques au café et au fournil",
       pains: [
@@ -157,11 +157,11 @@ export const cafeBaeckerei: Industry = {
         },
         {
           title: "Succursales et horaires",
-          text: "Chaque succursale avec adresse, plan, places assises et horaires propres, jours fériés compris. Correctement balisée pour que Google l'affiche juste.",
+          text: "Chaque succursale avec adresse, plan, places assises et horaires propres, jours fériés compris. Bien balisée pour que Google l'affiche correctement.",
         },
         {
           title: "L'assortiment de saison en main",
-          text: "Afficher ou masquer les produits de saison, changer les photos, ajouter des avis. En quelques minutes, sans appeler l'agence.",
+          text: "Afficher ou masquer les produits de saison, changer les photos, ajouter des annonces. En quelques minutes, sans appeler l'agence.",
         },
         {
           title: "Apéros et clients professionnels",
@@ -205,7 +205,7 @@ export const cafeBaeckerei: Industry = {
         },
         {
           q: "Pouvons-nous modifier l'assortiment de saison nous-mêmes ?",
-          a: "Oui. Produits, photos et avis se gèrent par vous. Nous vous montrons tout lors de la remise et restons joignables ensuite.",
+          a: "Oui. Vous gérez vous-mêmes produits, photos et annonces. Nous vous montrons tout lors de la remise et restons joignables ensuite.",
         },
       ],
       ctaTitle: "Moins de téléphone, plus de précommandes",

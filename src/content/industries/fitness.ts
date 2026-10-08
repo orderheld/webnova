@@ -161,11 +161,11 @@ export const fitness: Industry = {
         },
         {
           title: "Des abonnements compréhensibles",
-          text: "Prestations, durées et conditions expliquées clairement, avec mention des reconnaissances par les caisses maladie comme Qualitop si existantes.",
+          text: "Prestations, durées et conditions expliquées clairement, avec mention des reconnaissances par les caisses maladie comme Qualitop, le cas échéant.",
         },
         {
           title: "Une ambiance avec de vraies photos",
-          text: "Votre studio, vos coachs, votre communauté. Des images authentiques convainquent plus que n'importe quelle photo d'archive.",
+          text: "Votre studio, vos coachs, votre communauté. Des images authentiques convainquent plus que n'importe quelle photo de banque d'images.",
         },
         {
           title: "Des campagnes au bon moment",

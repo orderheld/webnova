@@ -26,7 +26,7 @@ export const handwerk: Industry = {
         "Gefunden in Ihrem Einzugsgebiet",
         "Stellen und Lehrstellen sichtbar machen",
       ],
-      painTitle: "Was wir von Handwerksbetrieben immer wieder hören",
+      painTitle: "Was Handwerksbetriebe im Alltag oft bremst",
       pains: [
         {
           title: "Anfragen ohne brauchbare Angaben",
@@ -132,7 +132,7 @@ export const handwerk: Industry = {
         "Trouvé dans votre zone d'intervention",
         "Postes et places d'apprentissage visibles",
       ],
-      painTitle: "Ce que les entreprises artisanales nous disent souvent",
+      painTitle: "Ce qui freine souvent les entreprises artisanales",
       pains: [
         {
           title: "Des demandes sans informations utiles",
@@ -144,7 +144,7 @@ export const handwerk: Industry = {
         },
         {
           title: "Pas les bons mandats",
-          text: "Beaucoup de petits travaux, peu de ce que vous faites vraiment volontiers et bien. Le site ne filtre rien et n'oriente pas.",
+          text: "Beaucoup de petits travaux, peu de ce que vous aimez faire et faites bien. Le site ne filtre rien et n'oriente pas.",
         },
         {
           title: "Il manque des professionnels et des apprentis",
@@ -169,7 +169,7 @@ export const handwerk: Industry = {
         },
         {
           title: "Une zone d'intervention claire",
-          text: "Où vous travaillez est clairement indiqué sur le site et dans le profil d'établissement Google. Les demandes viennent de votre région, pas de loin.",
+          text: "Votre zone d'intervention est clairement indiquée sur le site et dans la fiche d'établissement Google. Les demandes viennent de votre région, pas de loin.",
         },
         {
           title: "Urgences et piquet",
@@ -185,7 +185,7 @@ export const handwerk: Industry = {
           h2: "Dans l'artisanat, la confiance fait la moitié du devis",
           paragraphs: [
             "Qui cherche un artisan laisse entrer quelqu'un chez lui et lui confie un projet qui coûte souvent cher. On regarde donc de près : à quoi ressemble le travail, qui est derrière l'entreprise, y a-t-il un interlocuteur fixe. Votre site répond à ces questions avec de vrais projets, un visage et des informations claires sur formations, affiliations et garanties.",
-            "S'y ajoute la visibilité : qui cherche « rénovation salle de bain » ou « électricien » voit des entreprises proches. Avec une page par prestation, une optimisation locale soignée et un profil Google entretenu, nous veillons à ce que vous soyez présent dans votre région.",
+            "S'y ajoute la visibilité : qui cherche « rénovation salle de bain » ou « électricien » voit des entreprises proches. Avec une page par prestation, une optimisation locale soignée et une fiche Google entretenue, nous veillons à ce que vous soyez présent dans votre région.",
           ],
           bullets: [
             "Charger des photos depuis le téléphone directement dans les références",
@@ -205,7 +205,7 @@ export const handwerk: Industry = {
         },
         {
           q: "Serai-je trouvé sur Google dans ma région ?",
-          a: "C'est le rôle d'une page par prestation, d'une zone d'intervention claire, d'un profil d'établissement Google complet et des avis de clients satisfaits. Nous mettons cela en place et vous montrons comment le tenir à jour.",
+          a: "C'est le rôle d'une page par prestation, d'une zone d'intervention claire, d'une fiche d'établissement Google complète et des avis de clients satisfaits. Nous mettons cela en place et vous montrons comment le tenir à jour.",
         },
         {
           q: "Le site peut-il nous aider à trouver des apprentis ?",

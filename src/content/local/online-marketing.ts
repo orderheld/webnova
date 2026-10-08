@@ -16,7 +16,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Grenchen: Werbung, die in der Region ankommt",
         lead:
-          "Wir planen und betreuen Google Ads und Social-Media-Kampagnen für Betriebe in Grenchen, und zwar von unserem Büro an der Bettlachstrasse 45 aus. Kürzer kann der Weg zu Ihrer Werbeagentur kaum sein.",
+          "Wir planen und betreuen Google Ads und Social-Media-Kampagnen für Betriebe in Grenchen, von unserem Büro an der Bettlachstrasse 45 aus. Sie haben eine feste Ansprechperson, die Ihren Betrieb kennt.",
         sections: [
           {
             h2: "Warum sich gezielte Online-Werbung in Grenchen lohnt",
@@ -28,7 +28,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Was wir für Grenchner Betriebe umsetzen",
             paragraphs: [
-              "Für Handwerk und Dienstleister richten wir Google-Ads-Kampagnen ein, die bei konkreten Suchen wie „Elektriker Grenchen“ oder „Heizung Notfall Grenchen“ erscheinen. Ladengeschäfte und Restaurants im Zentrum profitieren eher von Social Ads, die eine Aktion, einen Mittagsmenü-Wechsel oder eine Neueröffnung im Umkreis weniger Kilometer bekannt machen. Jede Kampagne führt auf eine passende Zielseite, damit aus einem Klick tatsächlich eine Anfrage, ein Anruf oder eine Reservation wird.",
+              "Für Handwerk und Dienstleister richten wir Google-Ads-Kampagnen ein, die bei konkreten Suchen wie «Elektriker Grenchen» oder «Heizung Notfall Grenchen» erscheinen. Ladengeschäfte und Restaurants im Zentrum profitieren eher von Social Ads, die eine Aktion, einen Mittagsmenü-Wechsel oder eine Neueröffnung im näheren Umkreis bekannt machen. Jede Kampagne führt auf eine passende Zielseite, damit aus einem Klick tatsächlich eine Anfrage, ein Anruf oder eine Reservation wird.",
               "Industrie- und Zulieferbetriebe begleiten wir bei Rekrutierungskampagnen und bei Anzeigen, die Einkäufer und Fachpublikum ausserhalb der Region erreichen sollen. Dabei achten wir auf eine Sprache, die zu technischen Berufen passt, und auf Bilder aus Ihrem eigenen Betrieb statt Stockfotos. Vor dem Start richten wir ein datenschutzkonformes Tracking nach nDSG ein, damit Sie sehen, welche Anzeige Bewerbungen oder Anfragen ausgelöst hat.",
             ],
             bullets: [
@@ -76,7 +76,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Granges : une publicité ciblée sur votre région",
         lead:
-          "Nous gérons des campagnes Google Ads et des publicités sur les réseaux sociaux pour les entreprises de Granges, depuis notre bureau de la Bettlachstrasse 45. Votre agence de marketing digital se trouve littéralement au coin de la rue.",
+          "Nous gérons des campagnes Google Ads et des publicités sur les réseaux sociaux pour les entreprises de Granges, depuis notre bureau de la Bettlachstrasse 45. Vous avez un interlocuteur fixe qui connaît votre entreprise.",
         sections: [
           {
             h2: "Pourquoi la publicité en ligne fonctionne bien à Granges",
@@ -88,7 +88,7 @@ export const marketingLocal: LocalService[] = [
           {
             h2: "Ce que nous mettons en place pour vous",
             paragraphs: [
-              "Pour les artisans et prestataires, nous créons des campagnes Google Ads qui s'affichent lors de recherches précises, par exemple un électricien ou un dépannage de chauffage à Granges. Les commerces et restaurants du centre misent plutôt sur les réseaux sociaux pour annoncer une promotion, une nouvelle carte ou une ouverture dans un rayon de quelques kilomètres. Chaque campagne renvoie vers une page dédiée, pour transformer un clic en appel ou en demande.",
+              "Pour les artisans et prestataires, nous créons des campagnes Google Ads qui s'affichent lors de recherches précises, par exemple un électricien ou un dépannage de chauffage à Granges. Les commerces et restaurants du centre misent plutôt sur les réseaux sociaux pour annoncer une promotion, une nouvelle carte ou une ouverture dans les environs immédiats. Chaque campagne renvoie vers une page dédiée, pour transformer un clic en appel ou en demande.",
               "Pour l'industrie, nous menons des campagnes de recrutement et des annonces destinées aux acheteurs et spécialistes hors de la région, en allemand comme en français. Nous privilégions un ton adapté aux métiers techniques et des photos de votre propre atelier plutôt que des images de banque. Avant le lancement, nous installons un suivi des conversions conforme à la nLPD, pour savoir quelle annonce a généré une candidature.",
             ],
             bullets: [
@@ -96,6 +96,7 @@ export const marketingLocal: LocalService[] = [
               "Publicité sociale pour commerces, restaurants et ouvertures",
               "Campagnes de recrutement pour l'industrie et l'artisanat",
               "Pages d'atterrissage dédiées à chaque campagne",
+              "Suivi des conversions conforme à la nLPD",
             ],
           },
           {
@@ -143,12 +144,12 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Biel: Kampagnen für beide Sprachgruppen",
         lead:
-          "In Biel erreichen Sie mit Werbung in nur einer Sprache bloss einen Teil Ihrer Kundschaft. Webnova plant zweisprachige Kampagnen aus Grenchen und kommt für Besprechungen gerne zu Ihnen.",
+          "In Biel erreichen Sie mit Werbung in nur einer Sprache bloss einen Teil Ihrer Kundschaft. Webnova plant zweisprachige Kampagnen und kommt für Besprechungen gerne zu Ihnen.",
         sections: [
           {
             h2: "Werbung in einer zweisprachigen Stadt",
             paragraphs: [
-              "Biel ist die grösste zweisprachige Stadt der Schweiz, und das zeigt sich auch im Suchverhalten. Die eine Kundin sucht auf Google nach „Physiotherapie Biel“, ihr Nachbar nach „physiothérapie Bienne“. Eine Google-Ads-Kampagne, die nur deutsche Suchbegriffe abdeckt, bleibt für die französischsprachige Hälfte unsichtbar. Dasselbe gilt auf Instagram und Facebook: Eine Anzeige wirkt nur, wenn Text und Ansprache sich für die Person natürlich anfühlen.",
+              "Biel ist die grösste zweisprachige Stadt der Schweiz, und das zeigt sich auch im Suchverhalten. Die eine Kundin sucht auf Google nach «Physiotherapie Biel», ihr Nachbar nach «physiothérapie Bienne». Eine Google-Ads-Kampagne, die nur deutsche Suchbegriffe abdeckt, bleibt für die französischsprachige Kundschaft unsichtbar. Dasselbe gilt auf Instagram und Facebook: Eine Anzeige wirkt nur, wenn Text und Ansprache sich für die Person natürlich anfühlen.",
               "Hinzu kommt das Umfeld. Aus dem Seeland suchen viele auf Deutsch, aus dem Berner Jura und dem Raum Neuenburg auf Französisch. Wer in Biel mit Online-Marketing Kundschaft gewinnen will, plant deshalb getrennte Anzeigengruppen, eigene Texte pro Sprache und passende Zielseiten. Das ist mehr Aufwand als eine einsprachige Kampagne, öffnet aber einen Markt, den Mitbewerber aus einsprachigen Städten so nicht bespielen können.",
             ],
           },
@@ -202,7 +203,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Bienne : des campagnes qui parlent aux deux communautés",
         lead:
-          "À Bienne, une publicité dans une seule langue ne touche qu'une partie de votre clientèle. Webnova conçoit des campagnes bilingues depuis Granges et se déplace volontiers pour vous rencontrer.",
+          "À Bienne, une publicité dans une seule langue ne touche qu'une partie de votre clientèle. Webnova conçoit des campagnes bilingues et se déplace volontiers pour vous rencontrer.",
         sections: [
           {
             h2: "Faire de la publicité dans une ville bilingue",
@@ -269,7 +270,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Solothurn: Gäste und Kundschaft zur richtigen Zeit erreichen",
         lead:
-          "Solothurn lebt von seiner Altstadt, seinen Anlässen und einem starken Dienstleistungssektor. Von unserem Büro in Grenchen aus planen wir Kampagnen, die genau auf diesen Rhythmus abgestimmt sind.",
+          "Solothurn lebt von seiner Altstadt, seinen Anlässen und einem starken Dienstleistungssektor. Wir planen Kampagnen, die genau auf diesen Rhythmus abgestimmt sind.",
         sections: [
           {
             h2: "Warum Online-Marketing in Solothurn eine Frage des Timings ist",
@@ -328,7 +329,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Soleure : toucher vos clients au bon moment",
         lead:
-          "Soleure vit au rythme de sa vieille ville, de ses grands événements et d'un secteur tertiaire solide. Depuis notre bureau de Granges, nous concevons des campagnes adaptées à ce calendrier.",
+          "Soleure vit au rythme de sa vieille ville, de ses grands événements et d'un secteur tertiaire solide. Nous concevons des campagnes adaptées à ce calendrier.",
         sections: [
           {
             h2: "À Soleure, la publicité en ligne est une affaire de calendrier",
@@ -395,12 +396,12 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Online-Marketing Bern: präzise Kampagnen statt teurer Streuverluste",
         lead:
-          "Im Raum Bern konkurrieren viele Anbieter um dieselben Suchanfragen. Webnova betreut Ihre Kampagnen von Grenchen aus und setzt auf Genauigkeit statt auf grosses Budget.",
+          "Im Raum Bern konkurrieren viele Anbieter um dieselben Suchanfragen. Webnova betreut Ihre Kampagnen persönlich und setzt auf Genauigkeit statt auf grosses Budget.",
         sections: [
           {
             h2: "Warum Online-Werbung in Bern Präzision braucht",
             paragraphs: [
-              "Bern ist ein grosser, dichter Markt. In vielen Branchen buhlen zahlreiche Anbieter um dieselben Suchbegriffe, von Zahnarztpraxen über Umzugsfirmen bis zu Treuhandbüros. Das treibt die Klickpreise bei Google Ads in die Höhe. Wer einfach breit auf „Bern“ wirbt, gibt schnell viel aus, ohne dass passende Anfragen hereinkommen. Erfolgreich ist, wer genau weiss, welche Suchen zu Aufträgen führen, und den Rest konsequent ausschliesst.",
+              "Bern ist ein grosser, dichter Markt. In vielen Branchen buhlen zahlreiche Anbieter um dieselben Suchbegriffe, von Zahnarztpraxen über Umzugsfirmen bis zu Treuhandbüros. Das treibt die Klickpreise bei Google Ads in die Höhe. Wer einfach breit auf «Bern» wirbt, gibt schnell viel aus, ohne dass passende Anfragen hereinkommen. Erfolgreich ist, wer genau weiss, welche Suchen zu Aufträgen führen, und den Rest konsequent ausschliesst.",
               "Dazu kommt die besondere Struktur der Bundesstadt. Verbände, Organisationen, Beratungsfirmen und Zulieferer der Bundesverwaltung richten sich an Fachleute und Entscheidungsträger, die man auf LinkedIn besser erreicht als über klassische Suchanzeigen. Gewerbe, Gesundheitswesen und Detailhandel im Bern-Mittelland brauchen dagegen lokale Sichtbarkeit in einzelnen Quartieren. Online-Marketing in Bern bedeutet deshalb, für jede Zielgruppe den passenden Kanal zu wählen und das Budget entsprechend aufzuteilen.",
             ],
           },
@@ -419,7 +420,7 @@ export const marketingLocal: LocalService[] = [
             ],
           },
           {
-            h2: "Zusammenarbeit zwischen Grenchen und Bern",
+            h2: "So arbeiten wir mit Ihnen in Bern",
             paragraphs: [
               "Das kostenlose Erstgespräch und den Kick-off führen wir gerne bei Ihnen durch, ob in der Innenstadt, im Wankdorf oder in einer Gemeinde der Agglomeration. Wir prüfen bestehende Kampagnen, Konkurrenz und Webseite und zeigen auf, wo Budget verloren geht. Danach erhalten Sie eine individuelle, klare Offerte, die genau beschreibt, was wir übernehmen.",
               "Die laufende Optimierung erledigen wir effizient aus unserem Büro, Besprechungen finden meist per Videocall statt. Sie sprechen dabei immer mit der Person, die Ihre Kampagnen selbst betreut, nicht mit einem wechselnden Account-Team. Für Strategie-Workshops, Fotoaufnahmen oder den Jahresrückblick kommen wir nach Bern. Bei Bedarf verbinden wir die Werbung mit Suchmaschinenoptimierung, damit Sie langfristig weniger von bezahlten Klicks abhängig sind und Ihre Sichtbarkeit in Bern auf zwei Beinen steht.",
@@ -432,7 +433,7 @@ export const marketingLocal: LocalService[] = [
             a: "Ja, wenn die Kampagne präzise aufgebaut ist. Mit spezifischen Suchbegriffen, Quartier-Ausrichtung und ausgeschlossenen Keywords lässt sich auch in Bern effizient werben. Ob es für Ihre Branche passt, besprechen wir im Erstgespräch offen.",
           },
           {
-            q: "Warum eine Agentur aus Grenchen für Kampagnen in Bern?",
+            q: "Was unterscheidet Webnova von einer grossen Agentur?",
             a: "Sie haben eine feste Ansprechperson, die Ihre Kampagnen selbst betreut, ohne Grossagentur-Overhead. Für wichtige Termine kommen wir zu Ihnen nach Bern.",
           },
           {
@@ -455,7 +456,7 @@ export const marketingLocal: LocalService[] = [
         },
         h1: "Marketing digital à Berne : des campagnes ciblées plutôt que coûteuses",
         lead:
-          "Dans la région de Berne, de nombreuses entreprises se disputent les mêmes recherches. Webnova gère vos campagnes depuis Granges en misant sur la précision plutôt que sur le volume.",
+          "Dans la région de Berne, de nombreuses entreprises se disputent les mêmes recherches. Webnova gère vos campagnes personnellement, en misant sur la précision plutôt que sur le volume.",
         sections: [
           {
             h2: "Pourquoi la publicité en ligne à Berne exige de la précision",
@@ -475,10 +476,11 @@ export const marketingLocal: LocalService[] = [
               "Mots-clés précis plutôt que termes génériques coûteux",
               "Campagnes LinkedIn pour le conseil, les associations et le B2B",
               "Annonces en français et en allemand",
+              "Suivi des conversions et rapports compréhensibles",
             ],
           },
           {
-            h2: "Entre Granges et Berne : notre façon de travailler",
+            h2: "Notre façon de travailler avec vous à Berne",
             paragraphs: [
               "Le premier entretien gratuit et le lancement peuvent se faire chez vous, au centre-ville, au Wankdorf ou dans une commune de l'agglomération. Nous examinons vos campagnes actuelles, la concurrence et votre site, et vous montrons où le budget se perd. Vous recevez ensuite une offre individuelle et claire, qui décrit précisément nos prestations.",
               "L'optimisation courante se fait efficacement depuis notre bureau, et les points réguliers ont souvent lieu en visioconférence. Vous parlez toujours avec la personne qui gère elle-même vos campagnes, pas avec une équipe qui change sans cesse. Pour un atelier de stratégie, une séance photo ou le bilan annuel, nous venons à Berne. Si besoin, nous associons la publicité au référencement naturel pour réduire votre dépendance aux clics payants.",

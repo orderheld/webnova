@@ -122,7 +122,7 @@ export const zuLangsam: Problem = {
       causes: [
         {
           title: "Des images énormes",
-          text: "Des photos tout droit de l'appareil, de plusieurs mégaoctets, en pleine résolution sur chaque écran. La cause la plus fréquente de lenteur.",
+          text: "Des photos tout droit sorties de l'appareil, de plusieurs mégaoctets, en pleine résolution sur chaque écran. La cause la plus fréquente de lenteur.",
         },
         {
           title: "Trop de plugins et de scripts",

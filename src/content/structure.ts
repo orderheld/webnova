@@ -72,9 +72,9 @@ export const structure: Localized<StructureCopy> = {
   de: {
     trustLabel: "Das ist Webnova",
     trust: [
-      { icon: "shield", title: "Schweizer Firma", text: "Sitz in der Schweiz, Verträge nach Schweizer Recht, Datenschutz nach nDSG." },
+      { icon: "shield", title: "Klar geregelt", text: "Schriftliche Offerte, Verträge nach Schweizer Recht, Datenschutz nach nDSG." },
       { icon: "users", title: "Persönlicher Ansprechpartner", text: "Ferhat Demir begleitet Ihr Projekt vom Erstgespräch bis nach dem Launch." },
-      { icon: "globe", title: "Deutsch und Französisch", text: "Beratung, Texte und Webseiten in beiden Landessprachen." },
+      { icon: "globe", title: "Ihre Webseite im Zentrum", text: "Neue Webseite, Erneuerung und Betreuung, auf Wunsch auch auf Französisch." },
       { icon: "terminal", title: "Eigene Entwicklung", text: "Moderne Technik statt Baukasten-Vorlage, schnell und auf Ihr Ziel gebaut." },
       { icon: "chat", title: "Direkt erreichbar", text: "Telefon, E-Mail und WhatsApp. Antwort innert eines Arbeitstages." },
     ],
@@ -164,9 +164,9 @@ export const structure: Localized<StructureCopy> = {
   fr: {
     trustLabel: "Webnova en bref",
     trust: [
-      { icon: "shield", title: "Entreprise suisse", text: "Siège en Suisse, contrats selon le droit suisse, protection des données selon la nLPD." },
+      { icon: "shield", title: "Un cadre clair", text: "Devis écrit, contrats selon le droit suisse, protection des données selon la nLPD." },
       { icon: "users", title: "Un interlocuteur personnel", text: "Ferhat Demir suit votre projet du premier entretien jusqu'après la mise en ligne." },
-      { icon: "globe", title: "Français et allemand", text: "Conseil, textes et sites dans les deux langues nationales." },
+      { icon: "globe", title: "Votre site au centre", text: "Nouveau site, refonte et suivi, sur demande aussi en allemand." },
       { icon: "terminal", title: "Développement maison", text: "Une technologie moderne plutôt qu'un modèle de constructeur, rapide et pensée pour votre objectif." },
       { icon: "chat", title: "Joignable directement", text: "Téléphone, e-mail et WhatsApp. Réponse dans un délai d'un jour ouvrable." },
     ],

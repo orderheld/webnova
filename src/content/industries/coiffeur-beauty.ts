@@ -79,7 +79,7 @@ export const coiffeurBeauty: Industry = {
           h2: "Online-Buchung: eigene Lösung oder bestehendes Tool?",
           paragraphs: [
             "Viele Salons nutzen bereits ein Buchungstool. Dann binden wir es so ein, dass es sich wie ein Teil Ihrer Webseite anfühlt und auf dem Handy reibungslos funktioniert. Wer mehr Kontrolle will, erhält eine eigene Buchung direkt auf der Webseite: freie Zeiten aus Öffnungszeiten und Terminen, Puffer zwischen Behandlungen, Storno-Fristen und E-Mails in der Sprache der Kundschaft.",
-            "Für den GYAN Hair Salon in Biel haben wir genau so eine eigene Buchung umgesetzt, dreisprachig und mit automatischen Bestätigungs-, Erinnerungs- und Feedback-Mails. Im Admin pflegt der Salon Termine, Leistungen und Buchungsregeln selbst.",
+            "Eine eigene Buchung kann mehrsprachig sein und automatisch Bestätigungs-, Erinnerungs- und Feedback-Mails versenden. In einem einfachen Admin-Bereich pflegen Sie Termine, Leistungen und Buchungsregeln selbst.",
           ],
         },
       ],
@@ -120,7 +120,7 @@ export const coiffeurBeauty: Industry = {
       eyebrow: "Sites pour coiffeurs, barbiers et instituts de beauté",
       h1: "Un agenda plein, même pendant que vous coupez.",
       lead:
-        "Vos clients préfèrent réserver le soir à onze heures sur leur smartphone. Nous créons des sites de salon avec réservation en ligne, qui montrent votre style et remplissent l'agenda sans que vous lâchiez le séchoir.",
+        "Vos clients préfèrent réserver à onze heures du soir, sur leur smartphone. Nous créons des sites de salon avec réservation en ligne, qui montrent votre style et remplissent l'agenda sans que vous lâchiez le séchoir.",
       promises: [
         "Réservation en ligne 24 heures sur 24",
         "Prestations et tarifs clairement présentés",
@@ -156,7 +156,7 @@ export const coiffeurBeauty: Industry = {
         },
         {
           title: "Des rappels contre les trous",
-          text: "Confirmation, entrée d'agenda et rappel avant le rendez-vous partent automatiquement. Les annulations arrivent assez tôt pour relouer le créneau.",
+          text: "Confirmation, entrée d'agenda et rappel avant le rendez-vous partent automatiquement. Les annulations arrivent assez tôt pour réattribuer le créneau.",
         },
         {
           title: "Prestations avec durée",
@@ -168,7 +168,7 @@ export const coiffeurBeauty: Industry = {
         },
         {
           title: "Être trouvé localement",
-          text: "Une page par prestation, un profil d'établissement Google soigné et des avis que vous demandez activement après le rendez-vous.",
+          text: "Une page par prestation, une fiche d'établissement Google soignée et des avis que vous demandez activement après le rendez-vous.",
         },
         {
           title: "Vendre des bons cadeaux",
@@ -180,7 +180,7 @@ export const coiffeurBeauty: Industry = {
           h2: "Réservation en ligne : solution sur mesure ou outil existant ?",
           paragraphs: [
             "Beaucoup de salons utilisent déjà un outil de réservation. Nous l'intégrons alors pour qu'il fasse partie de votre site et fonctionne parfaitement sur mobile. Si vous voulez plus de contrôle, vous recevez votre propre réservation directement sur le site : créneaux libres calculés à partir des horaires et rendez-vous, temps tampon entre les soins, délais d'annulation et e-mails dans la langue du client.",
-            "Pour le GYAN Hair Salon à Bienne, nous avons réalisé exactement ce type de réservation, en trois langues et avec e-mails automatiques de confirmation, de rappel et de feedback. Dans l'admin, le salon gère lui-même rendez-vous, prestations et règles de réservation.",
+            "Une réservation sur mesure peut être multilingue et envoyer automatiquement des e-mails de confirmation, de rappel et de feedback. Dans un espace d'administration simple, vous gérez vous-même rendez-vous, prestations et règles de réservation.",
           ],
         },
       ],
@@ -195,10 +195,10 @@ export const coiffeurBeauty: Industry = {
         },
         {
           q: "Comment mieux apparaître sur Google ?",
-          a: "Avec une page par prestation, un profil d'établissement Google complet, des temps de chargement courts et des avis réguliers. Nous mettons tout en place et vous montrons comment l'entretenir.",
+          a: "Avec une page par prestation, une fiche d'établissement Google complète, des temps de chargement courts et des avis réguliers. Nous mettons tout en place et vous montrons comment l'entretenir.",
         },
         {
-          q: "Est-ce aussi adapté aux instituts de beauté et onglerie ?",
+          q: "Est-ce aussi adapté aux instituts de beauté et aux ongleries ?",
           a: "Oui. Les besoins sont proches : des soins clairs avec leur durée, une réservation simple et un design qui reflète votre institut.",
         },
         {
