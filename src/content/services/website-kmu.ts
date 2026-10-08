@@ -157,9 +157,8 @@ export const websiteKmu: Service = {
           ],
         },
         {
-          h2: "Ihre nächsten Schritte",
+          h2: "Neubau oder Überarbeitung?",
           paragraphs: [
-            "Erstens: Sie schildern uns kurz Ihr Unternehmen und Ihr Ziel, per Formular, Telefon oder WhatsApp. Zweitens: Wir besprechen in einem kostenlosen Erstgespräch, was Ihre Website leisten soll und was dafür nötig ist. Drittens: Sie erhalten eine unverbindliche Offerte mit Umfang und Zeitplan. Erst wenn alles passt, beginnen wir mit der Umsetzung.",
             "Sie haben bereits eine Website und sind unsicher, ob sich ein Neubau lohnt? Dann starten Sie mit unserem [kostenlosen Website-Check](page:website-check). Wir sehen uns Ihre Seite an und sagen Ihnen ehrlich, ob eine Überarbeitung reicht oder ein [Relaunch](service:website-redesign) sinnvoller ist.",
           ],
         },
@@ -361,9 +360,8 @@ export const websiteKmu: Service = {
           ],
         },
         {
-          h2: "Vos prochaines étapes",
+          h2: "Nouveau site ou refonte ?",
           paragraphs: [
-            "Premièrement : vous nous décrivez brièvement votre entreprise et votre objectif, par formulaire, téléphone ou WhatsApp. Deuxièmement : lors d'un premier entretien gratuit, nous voyons ce que votre site doit accomplir. Troisièmement : vous recevez un devis sans engagement avec ampleur et calendrier. Nous commençons seulement quand tout vous convient.",
             "Vous avez déjà un site et doutez qu'une refonte en vaille la peine ? Commencez par notre [analyse de site gratuite](page:website-check). Nous examinons votre site et vous disons franchement si une amélioration suffit ou si une [refonte](service:website-redesign) est plus judicieuse.",
           ],
         },

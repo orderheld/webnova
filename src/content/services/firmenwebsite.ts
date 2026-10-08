@@ -156,9 +156,8 @@ export const firmenwebsite: Service = {
           ],
         },
         {
-          h2: "Ihre nächsten Schritte zur neuen Firmenwebsite",
+          h2: "Weiterlesen für Firmen und KMU",
           paragraphs: [
-            "Schreiben oder rufen Sie uns an und erzählen Sie kurz, was Ihre Firma macht und was die Website erreichen soll. Im kostenlosen Erstgespräch klären wir Umfang, Inhalte und Zeitplan. Danach erhalten Sie eine unverbindliche Offerte. Erst wenn Sie zustimmen, beginnen wir.",
             "Sie sind ein kleineres Unternehmen und möchten vor allem wissen, was für KMU besonders wichtig ist? Dann lesen Sie auch unsere Seite [Website für KMU](service:website-kmu). Zu den Kostenfaktoren gibt der Ratgeber [Was kostet eine Webseite?](guide:webseite-kosten) einen guten Überblick.",
           ],
         },
@@ -355,9 +354,8 @@ export const firmenwebsite: Service = {
           ],
         },
         {
-          h2: "Vos prochaines étapes",
+          h2: "Pour aller plus loin",
           paragraphs: [
-            "Écrivez-nous ou appelez-nous et décrivez brièvement ce que fait votre entreprise et ce que le site doit accomplir. Lors du premier entretien gratuit, nous clarifions ampleur, contenus et calendrier. Vous recevez ensuite un devis sans engagement. Nous ne commençons qu'après votre accord.",
             "Vous êtes une petite entreprise et voulez surtout savoir ce qui compte pour une PME ? Consultez aussi notre page [Site internet pour PME](service:website-kmu). Le guide [Combien coûte un site internet ?](guide:webseite-kosten) donne un bon aperçu des facteurs de coût.",
           ],
         },
