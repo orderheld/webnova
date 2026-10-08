@@ -279,7 +279,7 @@ export function LeadForm({
                   key={o}
                   aria-pressed={on}
                   onClick={() => set("services", on ? s.services.filter((x) => x !== o) : [...s.services, o])}
-                  className={`flex min-h-[64px] items-center gap-3 rounded-xl border px-4 py-3 text-left text-[15px] leading-snug transition-colors ${
+                  className={`flex min-h-[64px] items-center gap-3 rounded-xl border last:col-span-2 sm:last:col-span-1 px-4 py-3 text-left text-[15px] leading-snug transition-colors ${
                     on ? "border-bright bg-bright-soft font-medium text-accent" : "border-line bg-white hover:border-bright/50 hover:bg-bg-2"
                   }`}
                 >
