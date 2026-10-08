@@ -34,7 +34,7 @@ export function PhotoSlot({
 }) {
   let inner: React.ReactNode;
   if (photo) {
-    inner = <Image src={photo.src} alt={photo.alt} fill sizes={sizes} priority={priority} className="object-cover" />;
+    inner = <Image src={photo.src} alt={photo.alt} fill sizes={sizes} loading={priority ? "eager" : undefined} fetchPriority={priority ? "high" : undefined} className="object-cover" />;
   } else if (fallback === "monogram") {
     inner = (
       <div aria-hidden="true" className="absolute inset-0 grid place-items-center bg-bg-2">
@@ -142,7 +142,8 @@ export function PortraitCard({ locale, className = "", sizes = "(min-width: 1024
       <div aria-hidden="true" className="stage-accent absolute -bottom-4 -right-4 h-2/3 w-2/3 rounded-3xl sm:-bottom-5 sm:-right-5" />
       <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-bg-2 ring-1 ring-black/5 shadow-lift">
         {p ? (
-          <Image src={p.src} alt={p.alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+          // `priority` (Next 16 deprecated it) only preloaded the photo; as the LCP image it also needs fetchpriority=high.
+          <Image src={p.src} alt={p.alt} fill sizes={sizes} loading={priority ? "eager" : undefined} fetchPriority={priority ? "high" : undefined} className="object-cover object-top" />
         ) : (
           <span className="absolute inset-0 grid place-items-center font-display text-[4rem] font-semibold text-accent">FD</span>
         )}
