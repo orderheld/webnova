@@ -24,7 +24,7 @@ export const neuchatel: City = {
           h2: "Neuenburg: französischsprachig, technologisch, international",
           paragraphs: [
             "Neuenburg ist das wirtschaftliche und politische Zentrum des gleichnamigen Kantons am Nordufer des Neuenburgersees. Die Stadt ist geprägt von ihrer Universität, von Forschung und Mikrotechnik, etwa rund um das CSEM, und von der Nähe zur Uhrenindustrie im Neuenburger Jura. Dazu kommen Weinbau, Tourismus, Detailhandel und viele Dienstleister in der Altstadt und am Seeufer.",
-            "Für Unternehmen in Neuchâtel ist Französisch die Hauptsprache, doch viele Kunden, Partner und Lieferanten sitzen in der Deutschschweiz. Eine Webseite, die in beiden Sprachen gleich gut funktioniert, öffnet deshalb neue Märkte. Als Webagentur an der Sprachgrenze verstehen wir beide Seiten und setzen zweisprachige Webseiten so um, dass jede Sprachversion natürlich klingt und bei Google gefunden wird.",
+            "Für Unternehmen in Neuchâtel ist Französisch die Hauptsprache, doch viele Kunden, Partner und Lieferanten sitzen in der Deutschschweiz. Eine Webseite, die in beiden Sprachen gleich gut funktioniert, öffnet deshalb neue Märkte. Wir verstehen beide Seiten und setzen zweisprachige Webseiten so um, dass jede Sprachversion natürlich klingt und bei Google gefunden wird.",
           ],
         },
         {
@@ -44,7 +44,7 @@ export const neuchatel: City = {
           h2: "Zusammenarbeit über die Sprachgrenze",
           paragraphs: [
             "Für das Erstgespräch und wichtige Workshops kommen wir gerne zu Ihnen nach Neuenburg. Zwischendurch arbeiten wir per Videocall und Telefon, auf Französisch oder Deutsch, ganz wie es Ihnen lieber ist. Sie haben während des ganzen Projekts eine feste Ansprechperson und erhalten Entwürfe früh zur Ansicht.",
-            "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, Suchmaschinenoptimierung und Werbekampagnen auf Google und Meta. So erhalten Sie eine Webagentur aus der Nachbarregion, die schnell erreichbar ist, ohne Overhead einer Grossagentur arbeitet und den Schweizer KMU-Alltag beidseits der Sprachgrenze gut kennt.",
+            "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, Suchmaschinenoptimierung und Werbekampagnen auf Google und Meta. So erhalten Sie eine Webagentur, die schnell erreichbar ist, ohne Overhead einer Grossagentur arbeitet und den Schweizer KMU-Alltag beidseits der Sprachgrenze gut kennt.",
           ],
         },
       ],
@@ -79,7 +79,7 @@ export const neuchatel: City = {
           h2: "Neuchâtel : innovation, horlogerie et art de vivre",
           paragraphs: [
             "Neuchâtel est le cœur économique et politique de son canton, sur la rive nord du lac. La ville vit de son université, de la recherche et de la microtechnique, notamment autour du CSEM, et profite de la proximité de l'industrie horlogère des Montagnes neuchâteloises. La viticulture, le tourisme, le commerce et de nombreux prestataires complètent ce tissu économique varié.",
-            "Pour une entreprise neuchâteloise, le français est la langue principale, mais une bonne partie des clients, partenaires et fournisseurs se trouvent en Suisse alémanique. Un site qui fonctionne aussi bien dans les deux langues ouvre donc de nouveaux marchés. Installée à la frontière linguistique, notre agence web connaît les deux cultures et rédige chaque version pour qu'elle sonne juste.",
+            "Pour une entreprise neuchâteloise, le français est la langue principale, mais une bonne partie des clients, partenaires et fournisseurs se trouvent en Suisse alémanique. Un site qui fonctionne aussi bien dans les deux langues ouvre donc de nouveaux marchés. Notre agence web connaît les deux cultures et rédige chaque version pour qu'elle sonne juste.",
           ],
         },
         {
@@ -99,7 +99,7 @@ export const neuchatel: City = {
           h2: "Une collaboration simple, en français",
           paragraphs: [
             "Pour le premier entretien et les ateliers importants, nous venons volontiers chez vous à Neuchâtel. Le reste du temps, nous échangeons par visioconférence ou par téléphone, en français. Vous avez un interlocuteur unique pendant tout le projet et voyez les premières maquettes rapidement.",
-            "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta. Vous bénéficiez d'une agence web voisine, réactive, qui connaît le quotidien des PME suisses des deux côtés de la frontière linguistique, sans les frais d'une grande structure.",
+            "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta. Vous bénéficiez d'une agence web réactive, qui connaît le quotidien des PME suisses des deux côtés de la frontière linguistique, sans les frais d'une grande structure.",
           ],
         },
       ],

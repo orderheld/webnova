@@ -14,9 +14,9 @@ export const wartungLocal: LocalService[] = [
           description:
             "Website Wartung in Grenchen: Updates, Backups, Sicherheit und Hosting von Ihrer lokalen Agentur an der Bettlachstrasse. Kostenlose Erstberatung anfragen.",
         },
-        h1: "Website Wartung in Grenchen: sicher, aktuell und betreut vom Nachbarn",
+        h1: "Website-Wartung in Grenchen: sicher, aktuell und betreut vom Nachbarn",
         lead:
-          "Unser Büro liegt an der Bettlachstrasse 45 in Grenchen, Ihre Website wird also von einem Team betreut, das Sie persönlich kennen und direkt erreichen. Wir halten Technik, Inhalte und Sicherheit auf Stand, damit Sie sich um Ihren Betrieb kümmern können.",
+          "Unser Büro liegt an der Bettlachstrasse 45 in Grenchen, Ihre Website wird also von einem Ansprechpartner betreut, den Sie persönlich kennen und direkt erreichen. Wir halten Technik, Inhalte und Sicherheit auf Stand, damit Sie sich um Ihren Betrieb kümmern können.",
         sections: [
           {
             h2: "Warum Grenchner Betriebe ihre Website pflegen sollten",
@@ -42,14 +42,14 @@ export const wartungLocal: LocalService[] = [
             h2: "Kurze Wege: so arbeiten wir mit Ihnen zusammen",
             paragraphs: [
               "Am Anfang steht ein kostenloses Erstgespräch, bei Ihnen im Betrieb oder bei uns an der Bettlachstrasse. Wir schauen uns Ihre Website gemeinsam an, auch wenn sie von einer anderen Agentur stammt, und prüfen den technischen Zustand. Danach wissen Sie, welche Massnahmen sofort nötig sind und was warten kann. Erst dann erhalten Sie eine Offerte und entscheiden in Ruhe.",
-              "Weil wir in Grenchen sitzen, sind wir auch für Betriebe in den umliegenden Gemeinden rasch vor Ort, etwa wenn ein Mitarbeiter eine Einführung ins Content-Management braucht oder neue Fotos entstehen sollen. Im Alltag läuft die Betreuung unkompliziert per Telefon und E-Mail. Sie haben eine feste Ansprechperson, die Ihre Website kennt und nicht bei jeder Anfrage von vorne beginnen muss.",
+              "Weil wir in Grenchen sitzen, kommen wir auch zu Betrieben in den umliegenden Gemeinden gerne vorbei, etwa wenn ein Mitarbeiter eine Einführung ins Content-Management braucht oder neue Fotos entstehen sollen. Im Alltag läuft die Betreuung unkompliziert per Telefon und E-Mail. Sie haben eine feste Ansprechperson, die Ihre Website kennt und nicht bei jeder Anfrage von vorne beginnen muss.",
             ],
           },
         ],
         faq: [
           {
             q: "Kommen Sie für die Wartung auch bei uns in Grenchen vorbei?",
-            a: "Ja. Die technische Wartung erledigen wir aus der Ferne, für Besprechungen, Schulungen oder Fotos kommen wir aber gerne zu Ihnen in den Betrieb. Für Besprechungen in Grenchen kommen wir gerne bei Ihnen vorbei.",
+            a: "Ja. Die technische Wartung erledigen wir aus der Ferne, für Besprechungen, Schulungen oder Fotos kommen wir aber gerne zu Ihnen in den Betrieb.",
           },
           {
             q: "Unsere Website wurde von einer anderen Agentur erstellt. Können Sie sie trotzdem betreuen?",
@@ -75,7 +75,7 @@ export const wartungLocal: LocalService[] = [
         },
         h1: "Maintenance de site internet à Granges : un partenaire tout proche",
         lead:
-          "Notre bureau se trouve à la Bettlachstrasse 45, à Granges : votre site est suivi par une équipe que vous connaissez et joignez directement. Nous veillons à la technique, à la sécurité et aux contenus pour que vous restiez concentré sur votre activité.",
+          "Notre bureau se trouve à la Bettlachstrasse 45, à Granges : votre site est suivi par un interlocuteur que vous connaissez et joignez directement. Nous veillons à la technique, à la sécurité et aux contenus pour que vous restiez concentré sur votre activité.",
         sections: [
           {
             h2: "Pourquoi un site bien entretenu compte à Granges",
@@ -101,7 +101,7 @@ export const wartungLocal: LocalService[] = [
             h2: "Une collaboration de proximité",
             paragraphs: [
               "Tout commence par un premier entretien gratuit, chez vous ou dans nos locaux de la Bettlachstrasse. Nous examinons ensemble votre site, même s'il a été réalisé par une autre agence, et faisons le point sur son état technique. Vous savez ensuite ce qui est urgent et ce qui peut attendre. Ce n'est qu'après que vous recevez une offre, et vous décidez sans pression.",
-              "Installés à Granges, nous nous rendons facilement chez vous, à Granges comme dans les communes voisines, par exemple pour former un collaborateur à la gestion des contenus ou réaliser de nouvelles photos. Au quotidien, tout se règle simplement par téléphone ou par e-mail. Vous avez un interlocuteur attitré qui connaît votre site et n'a pas besoin de tout reprendre depuis le début à chaque demande.",
+              "Installés à Granges, nous venons volontiers chez vous, en ville comme dans les communes voisines, par exemple pour former un collaborateur à la gestion des contenus ou réaliser de nouvelles photos. Au quotidien, tout se règle simplement par téléphone ou par e-mail. Vous avez un interlocuteur attitré qui connaît votre site et n'a pas besoin de tout reprendre depuis le début à chaque demande.",
             ],
           },
         ],
@@ -137,17 +137,17 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Website Wartung Biel: zweisprachig betreut",
           description:
-            "Website Wartung in Biel: Updates, Backups und Sicherheit für Ihre zweisprachige Website, betreut aus Grenchen. Jetzt kostenlose Erstberatung anfragen.",
+            "Website Wartung in Biel: Updates, Backups und Sicherheit für Ihre zweisprachige Website, persönlich betreut. Jetzt kostenlose Erstberatung anfragen.",
         },
-        h1: "Website Wartung in Biel: beide Sprachversionen zuverlässig gepflegt",
+        h1: "Website-Wartung in Biel: beide Sprachversionen zuverlässig gepflegt",
         lead:
-          "In Biel muss eine Website auf Deutsch und Französisch funktionieren, und zwar nicht nur am Tag der Lancierung. Von unserem Büro in Grenchen aus betreuen wir Bieler Websites technisch und inhaltlich in beiden Sprachen.",
+          "In Biel muss eine Website auf Deutsch und Französisch funktionieren, und zwar nicht nur am Tag der Lancierung. Wir betreuen Bieler Websites technisch und inhaltlich in beiden Sprachen.",
         sections: [
           {
             h2: "Zweisprachige Websites brauchen doppelte Sorgfalt",
             paragraphs: [
-              "In der grössten zweisprachigen Stadt der Schweiz haben viele Firmen zwei Websites in einer. Mit der Zeit driften die Sprachversionen oft auseinander: Die deutsche Seite zeigt die neuen Öffnungszeiten, die französische noch die alten. Ein Produkt ist nur auf einer Sprache beschrieben, oder der Sprachwechsel führt auf eine Fehlerseite. Kundinnen aus dem Berner Jura oder aus Neuenburg merken das sofort, und Google bewertet solche Lücken ebenfalls.",
-              "Hinzu kommt die Technik hinter der Mehrsprachigkeit. Übersetzungs-Plugins, Sprachweichen und die Angaben, mit denen Suchmaschinen die richtige Version anzeigen, gehören zu den Teilen einer Website, die bei Updates am ehesten Probleme machen. Wer nach einem Systemupdate nicht beide Sprachen prüft, riskiert, dass eine Hälfte der Bieler Kundschaft eine fehlerhafte Seite sieht. Regelmässige Wartung behält beide Versionen im Blick.",
+              "In der grössten zweisprachigen Stadt der Schweiz haben viele Firmen zwei Websites in einer. Mit der Zeit driften die Sprachversionen oft auseinander: Die deutsche Seite zeigt die neuen Öffnungszeiten, die französische noch die alten. Ein Produkt ist nur in einer Sprache beschrieben, oder der Sprachwechsel führt auf eine Fehlerseite. Kundinnen aus dem Berner Jura oder aus Neuenburg merken das sofort, und Google bewertet solche Lücken ebenfalls.",
+              "Hinzu kommt die Technik hinter der Mehrsprachigkeit. Übersetzungs-Plugins, Sprachweichen und die Angaben, mit denen Suchmaschinen die richtige Version anzeigen, gehören zu den Teilen einer Website, die bei Updates am ehesten Probleme machen. Wer nach einem Systemupdate nicht beide Sprachen prüft, riskiert, dass ein Teil der Bieler Kundschaft eine fehlerhafte Seite sieht. Regelmässige Wartung behält beide Versionen im Blick.",
             ],
             bullets: [
               "Inhalte auf Deutsch und Französisch synchron halten",
@@ -166,8 +166,8 @@ export const wartungLocal: LocalService[] = [
           {
             h2: "Persönliche Betreuung in Biel",
             paragraphs: [
-              "Wir starten mit einem kostenlosen Erstgespräch, bei Ihnen in Biel, bei uns in Grenchen oder per Videocall. Dabei prüfen wir den Zustand Ihrer Website, insbesondere die Sprachstruktur, und zeigen, wo Handlungsbedarf besteht. Danach legen wir gemeinsam fest, welche Leistungen sinnvoll sind und wie Sie uns Änderungswünsche schicken. Sie können uns auf Deutsch oder Französisch schreiben.",
-              "Ob Ihr Betrieb in der Altstadt, oder im Industriegebiet Bözingenfeld liegt: Für Schulungen, Workshops oder neue Fotos kommen wir gerne zu Ihnen. Die laufende Wartung erledigen wir aus der Ferne und informieren Sie, wenn etwas Ihre Aufmerksamkeit braucht. Wird Ihre Website irgendwann zu alt für sinnvolle Pflege, sagen wir Ihnen das ehrlich.",
+              "Wir starten mit einem kostenlosen Erstgespräch, bei Ihnen in Biel, bei uns im Büro oder per Videocall. Dabei prüfen wir den Zustand Ihrer Website, insbesondere die Sprachstruktur, und zeigen, wo Handlungsbedarf besteht. Danach legen wir gemeinsam fest, welche Leistungen sinnvoll sind und wie Sie uns Änderungswünsche schicken. Sie können uns auf Deutsch oder Französisch schreiben.",
+              "Ob Ihr Betrieb in der Altstadt oder im Industriegebiet Bözingenfeld liegt: Für Schulungen, Workshops oder neue Fotos kommen wir gerne zu Ihnen. Die laufende Wartung erledigen wir aus der Ferne und informieren Sie, wenn etwas Ihre Aufmerksamkeit braucht. Wird Ihre Website irgendwann zu alt für sinnvolle Pflege, sagen wir Ihnen das ehrlich.",
             ],
           },
         ],
@@ -196,17 +196,17 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Bienne, bilingue",
           description:
-            "Maintenance de site internet à Bienne : mises à jour, sauvegardes et sécurité pour votre site bilingue, suivi depuis Granges. Premier conseil gratuit.",
+            "Maintenance de site internet à Bienne : mises à jour, sauvegardes et sécurité pour votre site bilingue, avec un suivi personnel. Premier conseil gratuit.",
         },
         h1: "Maintenance de site internet à Bienne : vos deux langues toujours à jour",
         lead:
-          "À Bienne, un site doit fonctionner en français et en allemand, et pas seulement le jour de sa mise en ligne. Depuis Granges, nous assurons le suivi technique et éditorial des sites biennois dans les deux langues.",
+          "À Bienne, un site doit fonctionner en français et en allemand, et pas seulement le jour de sa mise en ligne. Nous assurons le suivi technique et éditorial des sites biennois dans les deux langues.",
         sections: [
           {
             h2: "Un site bilingue demande un suivi rigoureux",
             paragraphs: [
               "Dans la plus grande ville bilingue de Suisse, beaucoup d'entreprises gèrent en réalité deux sites en un. Avec le temps, les versions se décalent : les nouveaux horaires figurent en allemand mais pas en français, un produit n'est décrit que dans une langue, le bouton de langue mène à une page d'erreur. La clientèle du Jura bernois ou de Neuchâtel le remarque tout de suite, et Google aussi.",
-              "La partie technique du multilinguisme est elle aussi fragile. Extensions de traduction, redirections linguistiques et balises qui indiquent aux moteurs de recherche quelle version afficher sont souvent les premières touchées lors d'une mise à jour. Si l'on ne contrôle qu'une langue après une intervention, une partie de la clientèle biennoise risque de tomber sur une page défectueuse. Une maintenance régulière garde un oeil sur les deux.",
+              "La partie technique du multilinguisme est elle aussi fragile. Extensions de traduction, redirections linguistiques et balises qui indiquent aux moteurs de recherche quelle version afficher sont souvent les premières touchées lors d'une mise à jour. Si l'on ne contrôle qu'une langue après une intervention, une partie de la clientèle biennoise risque de tomber sur une page défectueuse. Une maintenance régulière garde un œil sur les deux.",
             ],
             bullets: [
               "Contenus français et allemands synchronisés",
@@ -225,7 +225,7 @@ export const wartungLocal: LocalService[] = [
           {
             h2: "Un suivi personnel à Bienne",
             paragraphs: [
-              "Nous commençons par un premier entretien gratuit, chez vous à Bienne, dans nos locaux de Granges ou en visioconférence. Nous analysons l'état de votre site, en particulier sa structure linguistique, et vous montrons ce qui mérite d'être corrigé. Ensuite, nous définissons ensemble les prestations utiles et la façon la plus simple de nous transmettre vos demandes, en français ou en allemand.",
+              "Nous commençons par un premier entretien gratuit, chez vous à Bienne, dans nos locaux ou en visioconférence. Nous analysons l'état de votre site, en particulier sa structure linguistique, et vous montrons ce qui mérite d'être corrigé. Ensuite, nous définissons ensemble les prestations utiles et la façon la plus simple de nous transmettre vos demandes, en français ou en allemand.",
               "Que votre entreprise soit dans la vieille ville ou dans la zone industrielle de Boujean, nous venons volontiers sur place pour une formation, un atelier ou des photos. La maintenance courante se fait à distance et nous vous prévenons quand une décision vous revient. Et le jour où votre site ne vaut plus la peine d'être entretenu, nous vous le disons franchement.",
             ],
           },
@@ -262,17 +262,17 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Website Wartung Solothurn: Pflege und Hosting",
           description:
-            "Website Wartung in Solothurn: Updates, Backups, Sicherheit und aktuelle Inhalte, persönlich betreut aus Grenchen. Kostenlose Erstberatung anfragen.",
+            "Website Wartung in Solothurn: Updates, Backups, Sicherheit und aktuelle Inhalte, persönlich betreut. Kostenlose Erstberatung anfragen.",
         },
-        h1: "Website Wartung in Solothurn: aktuell zur Saison, sicher im Alltag",
+        h1: "Website-Wartung in Solothurn: aktuell zur Saison, sicher im Alltag",
         lead:
-          "Solothurn und Grenchen liegen im selben Kanton, und für Besprechungen kommen wir gerne zu Ihnen. Wir betreuen Websites von Solothurner Betrieben so, dass sie technisch sicher bleiben und Inhalte rechtzeitig online sind.",
+          "Für Besprechungen kommen wir gerne zu Ihnen nach Solothurn. Wir betreuen Websites von Solothurner Betrieben so, dass sie technisch sicher bleiben und Inhalte rechtzeitig online sind.",
         sections: [
           {
             h2: "Wenn die Stadt Gäste anzieht, muss die Website bereit sein",
             paragraphs: [
               "Solothurn erlebt im Jahreslauf deutliche Spitzen. Während der Solothurner Filmtage, der Literaturtage oder an schönen Sommertagen an der Aare suchen Gäste aus der ganzen Schweiz nach Hotels, Restaurants und Geschäften in der Barockstadt. Genau dann darf eine Website weder langsam sein noch veraltete Programme oder falsche Öffnungszeiten zeigen. Was im ruhigen Februar niemand bemerkt, kann in der Hauptsaison direkt Buchungen kosten.",
-              "Ein anderer Teil der Solothurner Wirtschaft braucht vor allem Verlässlichkeit. Praxen, Treuhandbüros, Anwaltskanzleien und Dienstleister rund um die Kantonshauptstadt arbeiten mit vertraulichen Anfragen. Für sie zählen ein gültiges Zertifikat, sichere Formulare und eine Datenschutzerklärung, die dem revidierten Datenschutzgesetz entspricht. Wartung bedeutet hier weniger sichtbare Neuerungen, sondern ein Auftritt, der Vertrauen verdient und rechtlich auf Stand bleibt.",
+              "Ein anderer Teil der Solothurner Wirtschaft braucht vor allem Verlässlichkeit. Praxen, Treuhandbüros, Anwaltskanzleien und Dienstleister rund um die Kantonshauptstadt arbeiten mit vertraulichen Anfragen. Für sie zählen ein gültiges Zertifikat, sichere Formulare und eine Datenschutzerklärung, die dem revidierten Datenschutzgesetz entspricht. Wartung bedeutet hier weniger sichtbare Neuerungen als einen Auftritt, der Vertrauen verdient und rechtlich auf Stand bleibt.",
             ],
           },
           {
@@ -292,7 +292,7 @@ export const wartungLocal: LocalService[] = [
           {
             h2: "Persönlich betreut, von der Altstadt bis Zuchwil",
             paragraphs: [
-              "Zu Beginn treffen wir uns zu einem kostenlosen Erstgespräch, in Ihrem Geschäft in Solothurn, in Ihrem Büro oder bei uns in Grenchen. Wir sehen uns Ihre Website an, prüfen Zugänge, System und Hosting und besprechen, welche Inhalte Sie selbst pflegen möchten und welche wir übernehmen. Gemeinsam erstellen wir einen einfachen Jahresplan für wiederkehrende Anpassungen.",
+              "Zu Beginn treffen wir uns zu einem kostenlosen Erstgespräch, in Ihrem Geschäft oder Büro in Solothurn, bei uns oder per Videocall. Wir sehen uns Ihre Website an, prüfen Zugänge, System und Hosting und besprechen, welche Inhalte Sie selbst pflegen möchten und welche wir übernehmen. Gemeinsam erstellen wir einen einfachen Jahresplan für wiederkehrende Anpassungen.",
               "Ob Ihr Betrieb in der Altstadt oder in der Umgebung liegt: Für Besprechungen oder eine Schulung kommen wir gerne vorbei. Die laufende Wartung erfolgt aus der Ferne, Änderungswünsche senden Sie per E-Mail oder Telefon. Sie haben eine feste Ansprechperson, die Ihren Betrieb und Ihre Saison kennt, und Sie erfahren von uns, wenn Handlungsbedarf besteht.",
             ],
           },
@@ -308,7 +308,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Treffen wir uns persönlich in Solothurn?",
-            a: "Gerne. Das Erstgespräch und spätere Besprechungen führen wir bei Ihnen in Solothurn oder bei uns in Grenchen durch. Die technische Betreuung läuft anschliessend aus der Ferne.",
+            a: "Gerne. Das Erstgespräch und spätere Besprechungen führen wir bei Ihnen in Solothurn, bei uns im Büro oder per Videocall durch. Die technische Betreuung läuft anschliessend aus der Ferne.",
           },
           {
             q: "Wie wird der Preis für die Wartung festgelegt?",
@@ -322,11 +322,11 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Soleure",
           description:
-            "Maintenance de site internet à Soleure : mises à jour, sauvegardes, sécurité et contenus à jour, suivi depuis Granges. Demandez un premier conseil gratuit.",
+            "Maintenance de site internet à Soleure : mises à jour, sauvegardes, sécurité et contenus à jour, avec un suivi personnel. Demandez un premier conseil gratuit.",
         },
         h1: "Maintenance de site internet à Soleure : prêt pour la saison, sûr toute l'année",
         lead:
-          "Soleure et Granges font partie du même canton, et nous nous déplaçons volontiers chez vous pour les réunions. Nous entretenons les sites des entreprises soleuroises pour qu'ils restent sûrs et que vos contenus soient en ligne au bon moment.",
+          "Pour les réunions, nous nous déplaçons volontiers chez vous à Soleure. Nous entretenons les sites des entreprises soleuroises pour qu'ils restent sûrs et que vos contenus soient en ligne au bon moment.",
         sections: [
           {
             h2: "Quand la ville attire du monde, le site doit suivre",
@@ -352,7 +352,7 @@ export const wartungLocal: LocalService[] = [
           {
             h2: "Un suivi personnel, de la vieille ville à Zuchwil",
             paragraphs: [
-              "Nous commençons par un premier entretien gratuit, dans votre commerce ou votre bureau à Soleure, ou chez nous à Granges. Nous passons votre site en revue, vérifions les accès, le système et l'hébergement, et définissons ce que vous souhaitez gérer vous-même et ce que vous nous confiez. Ensemble, nous établissons un petit calendrier annuel des mises à jour récurrentes.",
+              "Nous commençons par un premier entretien gratuit, dans votre commerce ou votre bureau à Soleure, dans nos locaux ou en visioconférence. Nous passons votre site en revue, vérifions les accès, le système et l'hébergement, et définissons ce que vous souhaitez gérer vous-même et ce que vous nous confiez. Ensemble, nous établissons un petit calendrier annuel des mises à jour récurrentes.",
               "Que vous soyez dans la vieille ville ou dans les environs, nous passons volontiers pour une réunion ou une formation. La maintenance courante se fait à distance et vos demandes nous parviennent par e-mail ou par téléphone. Vous avez un interlocuteur attitré qui connaît votre entreprise et votre saison, et qui vous avertit lorsqu'une action est nécessaire.",
             ],
           },
@@ -368,7 +368,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Est-il possible de se rencontrer à Soleure ?",
-            a: "Bien sûr. Le premier entretien et les réunions suivantes ont lieu chez vous à Soleure ou chez nous à Granges. Le suivi technique se fait ensuite à distance.",
+            a: "Bien sûr. Le premier entretien et les réunions suivantes ont lieu chez vous à Soleure, dans nos locaux ou en visioconférence. Le suivi technique se fait ensuite à distance.",
           },
           {
             q: "Comment le prix de la maintenance est-il fixé ?",
@@ -389,11 +389,11 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Website Wartung Bern: direkte Betreuung für KMU",
           description:
-            "Website Wartung in Bern: Updates, Backups, Sicherheit und Hosting mit fester Ansprechperson, betreut aus Grenchen. Jetzt kostenlose Erstberatung anfragen.",
+            "Website Wartung in Bern: Updates, Backups, Sicherheit und Hosting mit fester Ansprechperson. Jetzt kostenlose Erstberatung anfragen.",
         },
-        h1: "Website Wartung in Bern: zuverlässige Betreuung ohne Umwege",
+        h1: "Website-Wartung in Bern: zuverlässige Betreuung ohne Umwege",
         lead:
-          "Von unserem Büro in Grenchen aus betreuen wir Websites von Berner KMU, Verbänden und Dienstleistern mit einer festen Ansprechperson, die Ihre Website wirklich kennt.",
+          "Wir betreuen Websites von Berner KMU, Verbänden und Dienstleistern mit einer festen Ansprechperson, die Ihre Website wirklich kennt.",
         sections: [
           {
             h2: "Warum Wartung für Berner Organisationen und KMU zählt",
@@ -412,7 +412,7 @@ export const wartungLocal: LocalService[] = [
             h2: "Was wir für Websites in Bern übernehmen",
             paragraphs: [
               "Wir halten System, Plugins und Komponenten aktuell, testen nach Updates die zentralen Funktionen und sichern Ihre Website regelmässig. Dazu kommen SSL-Zertifikat, Sicherheitsüberwachung und die Kontrolle der Datenschutzangaben nach nDSG. Für Verbände und Beratungsfirmen achten wir besonders auf Mitgliederbereiche, Anmeldeformulare für Veranstaltungen und Dokumentenablagen, die bei Updates gerne aus dem Tritt geraten.",
-              "Bei der inhaltlichen Pflege achten wir darauf, dass neue Inhalte die bestehende Struktur nicht verwässern: korrekte Überschriften, Alternativtexte für Bilder und verständliche Linktexte. Ein Handwerksbetrieb im Bern-Mittelland erhält seine neuen Referenzbilder, eine Praxis ihre Ferienabwesenheit, ein Beratungsbüro den nächsten Fachbeitrag. Sind Deutsch und Französisch gefragt, pflegen wir beide Versionen. Hosting, Domain und E-Mail übernehmen wir auf Wunsch ebenfalls.",
+              "Bei der inhaltlichen Pflege achten wir darauf, dass neue Inhalte die bestehende Struktur nicht verwässern: korrekte Überschriften, Alternativtexte für Bilder und verständliche Linktexte. Ein Handwerksbetrieb im Berner Mittelland erhält seine neuen Referenzbilder, eine Praxis ihre Ferienabwesenheit, ein Beratungsbüro den nächsten Fachbeitrag. Sind Deutsch und Französisch gefragt, pflegen wir beide Versionen. Hosting, Domain und E-Mail übernehmen wir auf Wunsch ebenfalls.",
             ],
           },
           {
@@ -429,7 +429,7 @@ export const wartungLocal: LocalService[] = [
             a: "Ja. Wir prüfen zuerst Zugänge, Hosting und System und koordinieren die Übergabe. Ziel ist ein Wechsel, bei dem Website und E-Mail möglichst ohne Unterbruch weiterlaufen.",
           },
           {
-            q: "Müssen wir für die Betreuung nach Grenchen kommen?",
+            q: "Müssen wir für die Betreuung zu Ihnen ins Büro kommen?",
             a: "Nein. Die Wartung läuft aus der Ferne, Besprechungen führen wir per Videocall oder bei Ihnen in Bern.",
           },
           {
@@ -452,7 +452,7 @@ export const wartungLocal: LocalService[] = [
         },
         h1: "Maintenance de site internet à Berne : un suivi fiable et direct",
         lead:
-          "Depuis notre bureau de Granges, nous assurons la maintenance des sites de PME, associations et prestataires bernois, avec un interlocuteur attitré qui connaît vraiment votre site.",
+          "Nous assurons la maintenance des sites de PME, associations et prestataires bernois, avec un interlocuteur attitré qui connaît vraiment votre site.",
         sections: [
           {
             h2: "Pourquoi la maintenance compte dans la ville fédérale",
@@ -488,7 +488,7 @@ export const wartungLocal: LocalService[] = [
             a: "Oui. Nous vérifions d'abord les accès, l'hébergement et le système, puis coordonnons la reprise pour que le site et les e-mails continuent de fonctionner, si possible sans interruption.",
           },
           {
-            q: "Faut-il venir à Granges pour le suivi ?",
+            q: "Faut-il venir dans vos locaux pour le suivi ?",
             a: "Non. La maintenance se fait à distance et les réunions ont lieu en visioconférence ou chez vous à Berne.",
           },
           {

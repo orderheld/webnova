@@ -50,7 +50,7 @@ export const brandingLocal: LocalService[] = [
         faq: [
           {
             q: "Kommen Sie für das Briefing zu uns in den Betrieb in Grenchen?",
-            a: "Ja, gerne. Unser Büro liegt an der Bettlachstrasse 45, wir kommen also gerne bei Ihnen vorbei. Vor Ort sehen wir am besten, wo Ihr Logo später eingesetzt wird.",
+            a: "Ja. Unser Büro liegt an der Bettlachstrasse 45, wir kommen also gerne bei Ihnen vorbei. Vor Ort sehen wir am besten, wo Ihr Logo später eingesetzt wird.",
           },
           {
             q: "Funktioniert das Logo auch auf gravierten oder gelaserten Produkten?",
@@ -96,6 +96,7 @@ export const brandingLocal: LocalService[] = [
               "Modèles de fiches techniques, d'offres et de présentations",
               "Supports pour salons professionnels et brochures",
               "Cartes de visite, papier à lettres et bons cadeaux",
+              "Charte graphique pour imprimeurs et enseignistes",
             ],
           },
           {
@@ -109,7 +110,7 @@ export const brandingLocal: LocalService[] = [
         faq: [
           {
             q: "Venez-vous dans notre entreprise à Granges pour le briefing ?",
-            a: "Oui, volontiers. Notre bureau est à la Bettlachstrasse 45, nous venons donc volontiers chez vous. Sur place, nous voyons au mieux où votre logo sera utilisé.",
+            a: "Oui. Notre bureau est à la Bettlachstrasse 45, nous venons donc volontiers chez vous. Sur place, nous voyons au mieux où votre logo sera utilisé.",
           },
           {
             q: "Le logo fonctionne-t-il sur des pièces gravées ou marquées au laser ?",
@@ -202,12 +203,12 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Bienne : une identité qui parle aux deux communautés",
         lead:
-          "À Bienne, une marque doit être aussi à l'aise en français qu'en allemand. Depuis notre bureau de Granges, nous accompagnons les entreprises biennoises du premier croquis de logo jusqu'aux imprimés finaux.",
+          "À Bienne, une marque doit être aussi à l'aise en français qu'en allemand. Nous venons volontiers vous rencontrer et accompagnons les entreprises biennoises du premier croquis de logo jusqu'aux imprimés finaux.",
         sections: [
           {
             h2: "Créer une marque dans la ville bilingue",
             paragraphs: [
-              "À Bienne, tout commence souvent par le nom. Un nom qui sonne bien en allemand peut paraître maladroit, voire prêter à confusion, pour un francophone, et inversement. Les slogans, les noms de produits et le lettrage d'une vitrine posent les mêmes questions. Pour créer un logo à Bienne, il faut donc penser dès le départ aux deux communautés. Les symboles, les couleurs et les formes prennent ici tout leur sens, car ils se comprennent sans traduction, des deux côtés de la Suze.",
+              "À Bienne, tout commence souvent par le nom. Un nom qui sonne bien en allemand peut paraître maladroit, voire prêter à confusion, pour un francophone, et inversement. Les slogans, les noms de produits et le lettrage d'une vitrine posent les mêmes questions. Pour créer un logo à Bienne, il faut donc penser dès le départ aux deux communautés. Les symboles, les couleurs et les formes prennent ici tout leur sens, car ils se comprennent sans traduction, des deux côtés de la frontière linguistique.",
               "Bienne est aussi une ville exigeante en matière de design. L'horlogerie a affiné le regard de nombreux habitants, et autour du Switzerland Innovation Park et de la Haute école spécialisée bernoise naissent régulièrement de jeunes entreprises au style affirmé. Dans ce contexte, une image négligée se remarque plus vite qu'ailleurs. Une identité visuelle originale vous aide à vous démarquer de concurrents qui travaillent parfois à quelques rues de chez vous.",
             ],
           },
@@ -310,7 +311,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Wo finden die Besprechungen statt?",
-            a: "Bei Ihnen in Solothurn, bei uns in Grenchen oder per Videocall. Für die Präsentation der Entwürfe empfehlen wir ein persönliches Treffen.",
+            a: "Bei Ihnen in Solothurn, bei uns im Büro oder per Videocall. Für die Präsentation der Entwürfe empfehlen wir ein persönliches Treffen.",
           },
           {
             q: "Wie wird der Preis für ein Rebranding festgelegt?",
@@ -395,7 +396,7 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Grafikdesign Bern: ein Corporate Design, das im Alltag funktioniert",
         lead:
-          "In Bern zählt ein Auftritt, der seriös wirkt und von allen im Team richtig angewendet wird. Von unserem Büro in Grenchen aus begleiten wir Berner KMU persönlich vom Briefing bis zum fertigen Styleguide.",
+          "In Bern zählt ein Auftritt, der seriös wirkt und von allen im Team richtig angewendet wird. Wir begleiten Berner KMU persönlich vom Briefing bis zum fertigen Styleguide.",
         sections: [
           {
             h2: "Bern: viele Organisationen, hohe Ansprüche an Klarheit",
@@ -418,9 +419,9 @@ export const brandingLocal: LocalService[] = [
             ],
           },
           {
-            h2: "Persönliche Zusammenarbeit zwischen Grenchen und Bern",
+            h2: "Persönliche Zusammenarbeit in Bern",
             paragraphs: [
-              "Wir besuchen Sie gerne vor Ort, ob in der Innenstadt oder in Köniz. Für das Briefing und die Präsentation der Entwürfe treffen wir uns gerne persönlich, gern auch mit den Personen, die später täglich mit den Vorlagen arbeiten. Kleinere Abstimmungen erledigen wir per Videocall, damit das Projekt zügig vorankommt und Ihre Agenda geschont wird.",
+              "Wir besuchen Sie gerne vor Ort, ob in der Innenstadt oder in Köniz. Für das Briefing und die Präsentation der Entwürfe treffen wir uns persönlich, idealerweise auch mit den Personen, die später täglich mit den Vorlagen arbeiten. Kleinere Abstimmungen erledigen wir per Videocall, damit das Projekt zügig vorankommt und Ihre Agenda geschont wird.",
               "Nach dem Briefing entwickeln wir Logo-Entwürfe, verfeinern die gewählte Richtung und bauen darauf Farben, Schriften und Vorlagen auf. Bei der Übergabe zeigen wir Ihrem Team in einer kurzen Einführung, wie die Vorlagen funktionieren. Wenn später neue Dokumente oder ein Jahresbericht dazukommen, erweitern wir das System, statt jedes Mal neu anzufangen. Sie haben eine feste Ansprechperson, die das Projekt selbst umsetzt, ohne Umwege über mehrere Abteilungen.",
             ],
           },
@@ -435,8 +436,8 @@ export const brandingLocal: LocalService[] = [
             a: "Ja. Wir wählen Farben mit ausreichendem Kontrast und gut lesbare Schriften. Das ist besonders für Organisationen wichtig, die mit Verwaltung und Verbänden arbeiten.",
           },
           {
-            q: "Lohnt sich eine Grafikagentur aus Grenchen für ein Projekt in Bern?",
-            a: "Für die wichtigen Termine kommen wir persönlich nach Bern. Sie arbeiten direkt mit der Person, die Ihr Erscheinungsbild gestaltet.",
+            q: "Kommen Sie für das Projekt nach Bern?",
+            a: "Ja. Für die wichtigen Termine kommen wir persönlich nach Bern. Sie arbeiten direkt mit der Person, die Ihr Erscheinungsbild gestaltet.",
           },
           {
             q: "Wie erhalten wir eine Kostenschätzung?",
@@ -454,13 +455,13 @@ export const brandingLocal: LocalService[] = [
         },
         h1: "Graphisme à Berne : une identité visuelle utile au quotidien",
         lead:
-          "À Berne, une image sérieuse, appliquée correctement par toute l'équipe, fait la différence. Depuis notre bureau de Granges, nous accompagnons personnellement les PME bernoises du briefing à la charte finale.",
+          "À Berne, une image sérieuse, appliquée correctement par toute l'équipe, fait la différence. Nous accompagnons personnellement les PME bernoises, du briefing à la charte finale.",
         sections: [
           {
             h2: "Berne, ville d'institutions et d'exigence",
             paragraphs: [
               "Ville fédérale, Berne est marquée par l'administration, les associations, les organisations et les bureaux de conseil. Les entreprises qui collaborent avec eux envoient rapports, offres et présentations qui côtoient des documents officiels soigneusement mis en page. L'identité visuelle se joue alors moins dans le logo que dans chaque modèle de lettre et chaque diapositive. Des règles claires donnent une image fiable et font gagner du temps à vos collaborateurs à chaque nouveau document.",
-              "Le canton de Berne est bilingue et le français est très présent dans la capitale, où travaillent de nombreux Romands. Une identité pensée uniquement pour l'allemand montre vite ses limites : textes qui débordent, titres coupés, mises en page déséquilibrées. Les artisans, cabinets et commerces sous les arcades de la vieille ville font face, eux, à une forte concurrence. Face à plusieurs profils Google comparables, le client retient souvent celui dont l'image est la plus nette et la plus cohérente.",
+              "Le canton de Berne est bilingue et le français est très présent dans la ville fédérale, où travaillent de nombreux Romands. Une identité pensée uniquement pour l'allemand montre vite ses limites : textes qui débordent, titres coupés, mises en page déséquilibrées. Les artisans, cabinets et commerces sous les arcades de la vieille ville font face, eux, à une forte concurrence. Face à plusieurs profils Google comparables, le client retient souvent celui dont l'image est la plus nette et la plus cohérente.",
             ],
           },
           {
@@ -477,7 +478,7 @@ export const brandingLocal: LocalService[] = [
             ],
           },
           {
-            h2: "Une collaboration directe entre Granges et Berne",
+            h2: "Une collaboration directe à Berne",
             paragraphs: [
               "Nous venons volontiers chez vous, au centre-ville comme à Köniz. Pour le briefing et la présentation des propositions, nous préférons nous voir en personne, idéalement avec les collaborateurs qui utiliseront ensuite les modèles au quotidien. Les ajustements plus modestes se règlent en visioconférence, en français ou en allemand, pour avancer vite sans surcharger votre agenda.",
               "Après le briefing, nous esquissons des pistes de logo, affinons celle que vous choisissez et construisons couleurs, typographies et modèles. Lors de la remise, une courte introduction montre à votre équipe comment utiliser les modèles. Si de nouveaux documents ou un rapport annuel s'ajoutent plus tard, nous complétons le système au lieu de repartir de zéro. Vous traitez avec un interlocuteur unique qui réalise lui-même le projet, sans intermédiaires.",
@@ -494,8 +495,8 @@ export const brandingLocal: LocalService[] = [
             a: "Oui. Nous choisissons des couleurs bien contrastées et des polices lisibles, un point important pour les organisations proches de l'administration.",
           },
           {
-            q: "Pourquoi choisir un graphiste de Granges pour un projet à Berne ?",
-            a: "Pour les rendez-vous importants, nous venons en personne à Berne. Vous travaillez directement avec la personne qui crée votre image.",
+            q: "Venez-vous à Berne pour le projet ?",
+            a: "Oui. Pour les rendez-vous importants, nous venons en personne à Berne. Vous travaillez directement avec la personne qui crée votre image.",
           },
           {
             q: "Comment obtenir une estimation des coûts ?",

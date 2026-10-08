@@ -43,14 +43,14 @@ export const kassensystemLocal: LocalService[] = [
             h2: "Von der Bettlachstrasse direkt in Ihren Betrieb",
             paragraphs: [
               "Am Anfang steht eine kostenlose Erstberatung bei Ihnen vor Ort. Wir schauen uns an, wie heute bestellt, kassiert und abgerechnet wird, wo es hakt und welche Geräte bereits vorhanden sind. Danach erhalten Sie eine individuelle, klare Offerte. Den Umstieg planen wir so, dass er Ihren Betrieb möglichst wenig stört, zum Beispiel an einem Ruhetag oder vor der Öffnung. Artikel, Preise und Warengruppen erfassen wir gemeinsam mit Ihnen.",
-              "Am Starttag sind wir dabei, installieren Drucker und Geräte und begleiten die ersten Kassiervorgänge. Ihr Team schulen wir direkt am System, bis die Abläufe sitzen. Weil wir in Grenchen arbeiten, kommen wir auch später schnell vorbei, ob ins Zentrum, in die Industriezone oder nach Bettlach und Selzach. Neue Artikel, ein zusätzlicher Drucker oder ein zweiter Standort lassen sich jederzeit ergänzen. Sie haben immer dieselbe Ansprechperson.",
+              "Am Starttag sind wir dabei, installieren Drucker und Geräte und begleiten die ersten Kassiervorgänge. Ihr Team schulen wir direkt am System, bis die Abläufe sitzen. Weil wir in Grenchen arbeiten, kommen wir auch später gerne vorbei, ob ins Zentrum, in die Industriezone oder nach Bettlach und Selzach. Neue Artikel, ein zusätzlicher Drucker oder ein zweiter Standort lassen sich jederzeit ergänzen. Sie haben immer dieselbe Ansprechperson.",
             ],
           },
         ],
         faq: [
           {
-            q: "Wie schnell sind Sie in Grenchen vor Ort, wenn wir Hilfe brauchen?",
-            a: "Unser Büro liegt an der Bettlachstrasse 45, für Installation und Schulung kommen wir zu Ihnen in den Betrieb. Viele Fragen lassen sich zudem direkt am Telefon klären. Wie die Betreuung nach dem Start aussieht, halten wir in der Offerte fest.",
+            q: "Kommen Sie in Grenchen vorbei, wenn wir Hilfe brauchen?",
+            a: "Ja. Unser Büro liegt an der Bettlachstrasse 45, für Installation und Schulung kommen wir zu Ihnen in den Betrieb. Viele Fragen lassen sich zudem direkt am Telefon klären. Wie die Betreuung nach dem Start aussieht, halten wir in der Offerte fest.",
           },
           {
             q: "Können wir die Kasse während des laufenden Betriebs umstellen?",
@@ -74,7 +74,7 @@ export const kassensystemLocal: LocalService[] = [
           description:
             "Système de caisse à Granges : caisse tactile, carte, TWINT et clôture pour restaurants, cafés et magasins, installée sur place. Premier conseil gratuit.",
         },
-        h1: "Système de caisse à Granges : installé et suivi par une équipe de la ville",
+        h1: "Système de caisse à Granges : installé et suivi par une agence de la ville",
         lead:
           "Webnova est installée à la Bettlachstrasse 45, à Granges, et met en place des systèmes de caisse pour la restauration et le commerce directement dans votre établissement. Comme nous travaillons dans la même ville, nous venons volontiers en personne chez vous.",
         sections: [
@@ -96,13 +96,14 @@ export const kassensystemLocal: LocalService[] = [
               "Plan de salle et bons pour la cuisine et le bar",
               "Carte, TWINT et espèces dans le même encaissement",
               "Gestion des articles et du stock pour les commerces",
+              "Plusieurs points de vente, par exemple Granges et une succursale dans la région",
             ],
           },
           {
             h2: "De notre bureau à votre comptoir",
             paragraphs: [
               "Tout commence par un premier conseil gratuit dans votre établissement. Nous observons comment vous prenez les commandes, encaissez et bouclez la journée, et nous faisons l'inventaire du matériel existant. Vous recevez ensuite une offre individuelle et claire. Le changement de caisse est planifié pour perturber le moins possible votre activité, par exemple un jour de fermeture ou avant l'ouverture. Nous saisissons avec vous articles, prix et catégories.",
-              "Le jour du lancement, nous sommes présents pour installer les appareils et accompagner les premiers encaissements. Nous formons votre équipe directement sur le système, en allemand ou en français. Par la suite, nous passons rapidement chez vous, que vous soyez au centre de Granges, dans la zone industrielle ou à Bettlach. Un nouvel article, une imprimante de plus ou un deuxième point de vente s'ajoutent sans difficulté.",
+              "Le jour du lancement, nous sommes présents pour installer les appareils et accompagner les premiers encaissements. Nous formons votre équipe directement sur le système, en allemand ou en français. Par la suite, nous passons volontiers chez vous, que vous soyez au centre de Granges, dans la zone industrielle ou à Bettlach. Un nouvel article, une imprimante de plus ou un deuxième point de vente s'ajoutent sans difficulté.",
             ],
           },
         ],
@@ -112,8 +113,8 @@ export const kassensystemLocal: LocalService[] = [
             a: "Oui. Nous formons votre personnel en allemand ou en français, directement sur le système et dans votre établissement à Granges. Ainsi, chacun travaille dans la langue où il se sent à l'aise.",
           },
           {
-            q: "En combien de temps êtes-vous sur place en cas de question ?",
-            a: "Notre bureau se trouve à Granges même, pour l'installation et la formation, nous venons dans votre établissement. Beaucoup de questions se règlent aussi par téléphone. Les modalités du suivi figurent dans l'offre.",
+            q: "Passez-vous chez nous à Granges en cas de question ?",
+            a: "Oui. Notre bureau se trouve à Granges même. Pour l'installation et la formation, nous venons dans votre établissement. Beaucoup de questions se règlent aussi par téléphone. Les modalités du suivi figurent dans l'offre.",
           },
           {
             q: "Puis-je garder mes imprimantes et ma tablette actuelles ?",
@@ -222,6 +223,7 @@ export const kassensystemLocal: LocalService[] = [
               "Prise de commande sur tablette pour les terrasses",
               "Bons cuisine et bar, addition partagée",
               "Codes-barres, variantes et stock pour les boutiques",
+              "Des libellés d'articles compris de toute l'équipe",
               "Formation en français ou en allemand",
             ],
           },
@@ -270,7 +272,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Kassensystem Solothurn: kompakt für die Altstadt, schnell an Festtagen",
         lead:
-          "Ob Bar am Landhausquai, Café in der Hauptgasse oder Fachgeschäft in der Vorstadt: Wir richten Ihr Kassensystem so ein, dass es in Ihr Lokal und zu Ihren Spitzentagen passt. Unser Büro in Grenchen liegt im selben Kanton, und wir kommen gerne zu Ihnen.",
+          "Ob Bar am Landhausquai, Café in der Hauptgasse oder Fachgeschäft in der Vorstadt: Wir richten Ihr Kassensystem so ein, dass es in Ihr Lokal und zu Ihren Spitzentagen passt. Für Einrichtung und Schulung kommen wir gerne zu Ihnen.",
         sections: [
           {
             h2: "Besondere Anforderungen in der Barockstadt",
@@ -329,7 +331,7 @@ export const kassensystemLocal: LocalService[] = [
         },
         h1: "Système de caisse à Soleure : compact pour la vieille ville, rapide les jours d'affluence",
         lead:
-          "Bar au bord de l'Aar, café de la vieille ville ou commerce spécialisé : nous adaptons votre système de caisse à vos locaux et à vos pics d'activité. Notre bureau de Granges se trouve dans le même canton, et nous nous déplaçons volontiers chez vous.",
+          "Bar au bord de l'Aar, café de la vieille ville ou commerce spécialisé : nous adaptons votre système de caisse à vos locaux et à vos pics d'activité. Pour l'installation et la formation, nous nous déplaçons volontiers chez vous.",
         sections: [
           {
             h2: "Les particularités de la ville baroque",
@@ -429,7 +431,7 @@ export const kassensystemLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Betreuen Sie Kassensysteme in Bern, obwohl Ihr Büro in Grenchen liegt?",
+            q: "Betreuen Sie Kassensysteme auch vor Ort in Bern?",
             a: "Ja. Erstgespräch, Installation und Schulung machen wir vor Ort in Bern, viele Fragen im Alltag lassen sich zudem rasch telefonisch klären.",
           },
           {
@@ -461,8 +463,8 @@ export const kassensystemLocal: LocalService[] = [
           {
             h2: "Le quotidien bernois et ses exigences",
             paragraphs: [
-              "À Berne, une grande partie de la population active travaille dans l'administration fédérale, des associations, des organisations ou des bureaux de conseil. La restauration en vit au rythme de la pause de midi : take-aways, restaurants et cafés autour de la gare, de la place Fédérale ou de la Länggasse se remplissent en quelques minutes. À ce moment-là, chaque seconde compte. Une caisse avec touches rapides, paiement par carte ou TWINT et bons directs en cuisine fait avancer la file.",
-              "Berne compte aussi de nombreux francophones, liés notamment à l'administration fédérale, et beaucoup d'entre eux travaillent en salle ou derrière un comptoir. Une formation en français est donc souvent bienvenue. À cela s'ajoutent les commerces sous les arcades de la vieille ville, les cafés de quartier du Breitenrain et les entreprises de l'agglomération, dont plusieurs exploitent plus d'un point de vente.",
+              "À Berne, de nombreuses personnes travaillent dans l'administration fédérale, des associations, des organisations ou des bureaux de conseil. La restauration en vit au rythme de la pause de midi : take-aways, restaurants et cafés autour de la gare, de la place Fédérale ou de la Länggasse se remplissent en quelques minutes. À ce moment-là, chaque seconde compte. Une caisse avec touches rapides, paiement par carte ou TWINT et bons directs en cuisine fait avancer la file.",
+              "Berne compte aussi de nombreux francophones, et il n'est pas rare qu'une partie du personnel de service parle français. Une formation en français est donc souvent bienvenue. À cela s'ajoutent les commerces sous les arcades de la vieille ville, les cafés de quartier du Breitenrain et les entreprises de l'agglomération, dont plusieurs exploitent plus d'un point de vente.",
             ],
           },
           {
@@ -489,7 +491,7 @@ export const kassensystemLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Assurez-vous le suivi de caisses à Berne alors que votre bureau est à Granges ?",
+            q: "Assurez-vous aussi le suivi de caisses sur place à Berne ?",
             a: "Oui. Premier entretien, installation et formation se font sur place à Berne, et beaucoup de questions du quotidien se règlent rapidement par téléphone.",
           },
           {

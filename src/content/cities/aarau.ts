@@ -43,7 +43,7 @@ export const aarau: City = {
         {
           h2: "So arbeiten wir mit Ihnen in Aarau",
           paragraphs: [
-            "Unser Büro liegt in Grenchen. Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die übrigen Abstimmungen erledigen wir effizient per Videocall oder Telefon. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt, und keine wechselnden Teams, unklaren Zuständigkeiten oder langen Abstimmungsketten.",
+            "Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen. Die übrigen Abstimmungen erledigen wir effizient per Videocall oder Telefon. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt, und keine wechselnden Teams, unklaren Zuständigkeiten oder langen Abstimmungsketten.",
             "Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO sowie Werbekampagnen auf Google und Meta. So erhalten Aargauer KMU eine persönliche Webagentur mit fairem Fokus auf Wirkung statt Overhead.",
           ],
         },
@@ -98,7 +98,7 @@ export const aarau: City = {
         {
           h2: "Notre collaboration à Aarau",
           paragraphs: [
-            "Notre bureau se trouve à Granges. Pour le premier entretien, un atelier ou des photos, nous venons chez vous. Le reste des échanges se fait efficacement par visioconférence ou téléphone. Vous avez un interlocuteur fixe qui réalise lui-même votre projet, sans équipes changeantes ni longues chaînes de validation.",
+            "Pour le premier entretien, un atelier ou des photos, nous venons chez vous. Le reste des échanges se fait efficacement par visioconférence ou téléphone. Vous avez un interlocuteur fixe qui réalise lui-même votre projet, sans équipes changeantes ni longues chaînes de validation.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes Google et Meta. Une agence web personnelle, centrée sur l'efficacité plutôt que sur les frais de structure.",
           ],
         },

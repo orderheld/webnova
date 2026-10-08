@@ -18,13 +18,13 @@ export const bern: City = {
       },
       h1: "Webdesign Bern: Webseiten für Berner KMU",
       lead:
-        "Sie möchten in Bern eine Webseite erstellen lassen und suchen eine Webagentur, die zuhört und direkt erreichbar ist? Webnova arbeitet von Grenchen aus für KMU aus der Stadt und dem Bern-Mittelland und kommt für Besprechungen gerne zu Ihnen.",
+        "Sie möchten in Bern eine Webseite erstellen lassen und suchen eine Webagentur, die zuhört und direkt erreichbar ist? Webnova arbeitet für KMU aus der Stadt und dem Bern-Mittelland und kommt für Besprechungen gerne zu Ihnen.",
       sections: [
         {
           h2: "Eine persönliche Webagentur für Bern",
           paragraphs: [
             "In Bern gibt es viele Webagenturen, von kleinen Studios bis zu grossen Digitalagenturen. Was KMU oft fehlt, ist eine Ansprechperson, die das Projekt vom ersten Gespräch bis nach dem Launch selbst begleitet. Genau so arbeiten wir: Sie sprechen immer mit den Menschen, die Ihre Webseite tatsächlich planen und umsetzen, ohne Umwege über Projektmanager und Account-Teams.",
-            "Unser Büro liegt in Grenchen. Für Kick-off, Workshops und Fotoaufnahmen kommen wir zu Ihnen, die übrigen Abstimmungen erledigen wir effizient per Videocall. Als Webagentur für Bern konzentrieren wir uns auf Schweizer KMU und stimmen Umfang und Funktionen auf Ihre tatsächlichen Bedürfnisse ab.",
+            "Für Kick-off, Workshops und Fotoaufnahmen kommen wir zu Ihnen, die übrigen Abstimmungen erledigen wir effizient per Videocall. Als Webagentur für Bern konzentrieren wir uns auf Schweizer KMU und stimmen Umfang und Funktionen auf Ihre tatsächlichen Bedürfnisse ab.",
           ],
         },
         {
@@ -63,8 +63,8 @@ export const bern: City = {
       ],
       faq: [
         {
-          q: "Warum eine Webagentur aus Grenchen für ein Projekt in Bern?",
-          a: "Wir kommen für wichtige Termine nach Bern, arbeiten persönlich und ohne den Overhead einer Grossagentur. Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
+          q: "Was unterscheidet Webnova von einer Grossagentur in Bern?",
+          a: "Sie arbeiten persönlich mit uns, ohne den Overhead einer Grossagentur. Für wichtige Termine kommen wir nach Bern, und Sie haben eine feste Ansprechperson, die Ihr Projekt selbst umsetzt.",
         },
         {
           q: "Treffen Sie Kunden in Bern vor Ort?",
@@ -94,13 +94,13 @@ export const bern: City = {
       },
       h1: "Création de site internet à Berne pour les PME",
       lead:
-        "Vous cherchez une agence web à Berne qui écoute et reste joignable ? Webnova travaille depuis Granges pour les PME de Berne et de la région, et se déplace volontiers chez vous.",
+        "Vous cherchez une agence web à Berne qui écoute et reste joignable ? Webnova travaille pour les PME de Berne et de la région, et se déplace volontiers chez vous.",
       sections: [
         {
           h2: "Une agence web à taille humaine pour Berne",
           paragraphs: [
             "Berne compte de nombreuses agences, des petits studios aux grandes agences digitales. Ce qui manque souvent aux PME, c'est un interlocuteur qui suit le projet du premier entretien jusqu'après la mise en ligne. C'est notre façon de travailler : vous parlez toujours aux personnes qui conçoivent et réalisent réellement votre site, sans passer par plusieurs niveaux de gestion de projet.",
-            "Notre bureau est à Granges. Pour le lancement, les ateliers et les photos, nous venons chez vous. Les autres échanges se font efficacement en visioconférence. Nous nous concentrons sur les PME suisses et dimensionnons chaque site selon vos besoins réels, sans fonctions superflues.",
+            "Pour le lancement, les ateliers et les photos, nous venons chez vous. Les autres échanges se font efficacement en visioconférence. Nous nous concentrons sur les PME suisses et dimensionnons chaque site selon vos besoins réels, sans fonctions superflues.",
           ],
         },
         {
@@ -139,8 +139,8 @@ export const bern: City = {
       ],
       faq: [
         {
-          q: "Pourquoi choisir une agence de Granges pour un projet à Berne ?",
-          a: "Nous venons à Berne pour les rendez-vous importants et travaillons de manière personnelle, sans la structure d'une grande agence. Vous avez un interlocuteur fixe qui réalise lui-même votre projet.",
+          q: "Qu'est-ce qui distingue Webnova d'une grande agence bernoise ?",
+          a: "Vous travaillez directement avec nous, sans la structure d'une grande agence. Nous venons à Berne pour les rendez-vous importants, et vous avez un interlocuteur fixe qui réalise lui-même votre projet.",
         },
         {
           q: "Pouvez-vous rédiger la version française de notre site ?",
@@ -241,7 +241,7 @@ export const bern: City = {
           h2: "Pourquoi le SEO à Berne demande une stratégie",
           paragraphs: [
             "Dans une ville comme Berne, de nombreuses entreprises se disputent les mêmes mots-clés dans presque tous les secteurs. Se placer en tête sur des termes génériques demande du temps et des efforts. Un référencement efficace à Berne repose donc sur une stratégie claire : quelles recherches amènent vraiment des clients, dans quels quartiers ou communes êtes-vous actif, où la concurrence est-elle plus faible qu'il n'y paraît ?",
-            "Le francophone est souvent un atout sous-estimé. Berne accueille une importante communauté romande, liée notamment à l'administration fédérale, et beaucoup cherchent en français. Pourtant, rares sont les PME bernoises qui proposent des pages françaises bien optimisées. En combinant des recherches précises par prestation et par quartier avec une version française de qualité, vous gagnez des positions plus accessibles.",
+            "Le français est souvent un atout sous-estimé. Berne accueille une importante communauté romande, liée notamment à l'administration fédérale, et beaucoup cherchent en français. Pourtant, rares sont les PME bernoises qui proposent des pages françaises bien optimisées. En combinant des recherches précises par prestation et par quartier avec une version française de qualité, vous gagnez des positions plus accessibles.",
           ],
         },
         {
@@ -280,7 +280,7 @@ export const bern: City = {
         },
         {
           q: "Une version française aide-t-elle vraiment à Berne ?",
-          a: "Oui. De nombreux Bernois cherchent en français, et peu de concurrents proposent des pages françaises optimisées. C'est souvent un moyen efficace de se démarquer.",
+          a: "Oui, si vous avez une clientèle dans le Jura bernois ou en Suisse romande, ou des interlocuteurs francophones dans l'administration fédérale. Sans version française, vous n'apparaissez tout simplement pas dans les recherches en français.",
         },
         {
           q: "Faut-il signer un contrat de longue durée ?",

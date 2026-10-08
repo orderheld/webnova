@@ -50,7 +50,7 @@ export const onlineshopLocal: LocalService[] = [
         faq: [
           {
             q: "Kommen Sie für die Planung des Onlineshops in unseren Betrieb in Grenchen?",
-            a: "Ja, gerne. Unser Büro liegt in Grenchen, für Besprechungen kommen wir gerne zu Ihnen. Vor Ort sehen wir Ihre Produkte und Abläufe und können auch gleich Fotos planen.",
+            a: "Ja. Unser Büro liegt in Grenchen, für Besprechungen kommen wir gerne zu Ihnen. Vor Ort sehen wir Ihre Produkte und Abläufe und können auch gleich Fotos planen.",
           },
           {
             q: "Eignet sich ein Onlineshop auch für Geschäftskunden aus der Industrie?",
@@ -102,7 +102,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Travailler ensemble à Granges, du concept à la mise en ligne",
             paragraphs: [
-              "Tout commence par un premier conseil gratuit, chez vous ou dans notre bureau de la Bettlachstrasse. Nous examinons votre assortiment, vos processus et les données produits existantes, par exemple des listes Excel ou des exports de votre gestion de stock. Vous recevez ensuite une offre claire et un calendrier. Les photos de produits peuvent être prises sur place, dans votre atelier ou votre point de vente à Lengnau ou Granges.",
+              "Tout commence par un premier conseil gratuit, chez vous ou dans notre bureau de la Bettlachstrasse. Nous examinons votre assortiment, vos processus et les données produits existantes, par exemple des listes Excel ou des exports de votre gestion de stock. Vous recevez ensuite une offre claire et un calendrier. Les photos de produits peuvent être prises sur place, dans votre atelier de la zone industrielle ou votre point de vente à Longeau ou à Perles.",
               "Avant la mise en ligne, nous testons avec vous commandes, paiements et e-mails de confirmation. Nous formons ensuite votre équipe sur place pour qu'elle gère produits, stocks et promotions en autonomie. Après le lancement, nous restons à vos côtés si vous souhaitez ajouter un moyen de paiement, des bons cadeaux ou une nouvelle interface. Maintenance et mises à jour sont possibles sur demande.",
             ],
           },
@@ -156,7 +156,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Ihr Bieler Webshop: zwei Sprachen, ein Sortiment",
             paragraphs: [
-              "Technisch führen wir ein einziges Sortiment mit zwei vollständigen Sprachversionen. Jede Sprache erhält eigene Adressen, eigene Kategorienamen und eigene Texte, damit Google beide richtig zuordnet und Sie bei Suchen wie Geschenk Biel oder cadeau Bienne auftauchen. Bestände, Preise und Bestellungen verwalten Sie an einem Ort. Die Kundschaft erhält Bestätigungen, Rechnungen und Versandinformationen automatisch in der Sprache, in der sie bestellt hat.",
+              "Technisch führen wir ein einziges Sortiment mit zwei vollständigen Sprachversionen. Jede Sprache erhält eigene Adressen, eigene Kategorienamen und eigene Texte, damit Google beide richtig zuordnet und Sie bei Suchen wie «Geschenk Biel» oder «cadeau Bienne» auftauchen. Bestände, Preise und Bestellungen verwalten Sie an einem Ort. Die Kundschaft erhält Bestätigungen, Rechnungen und Versandinformationen automatisch in der Sprache, in der sie bestellt hat.",
               "Für Uhren- und Designmarken legen wir Wert auf grosse Produktbilder, Detailansichten und eine Präsentation, die Qualität vermittelt. Für Boutiquen in der Altstadt oder an der Nidaugasse steht Click & Collect im Vordergrund. Weinbaubetriebe am Bielersee brauchen dagegen Mengenstaffeln, Kartonvarianten und eine Altersbestätigung beim Kauf. Wir richten den Shop nach Ihrem Geschäftsmodell ein, nicht nach einer Standardvorlage. So passt jede Funktion zu dem, was Sie tatsächlich verkaufen.",
             ],
             bullets: [
@@ -203,7 +203,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Bienne : un e-shop qui vend dans les deux langues",
         lead:
-          "À Bienne, une partie de vos clients achète en français, l'autre en allemand, et tous attendent la même qualité. Depuis notre bureau de Granges, nous créons pour vous une boutique qui parle naturellement aux deux publics.",
+          "À Bienne, une partie de vos clients achète en français, l'autre en allemand, et tous attendent la même qualité. Nous venons volontiers vous rencontrer et créons une boutique qui parle naturellement aux deux publics.",
         sections: [
           {
             h2: "À Bienne, on achète dans sa langue",
@@ -215,7 +215,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Votre boutique biennoise : un assortiment, deux langues",
             paragraphs: [
-              "Concrètement, vous gérez un seul assortiment avec deux versions linguistiques complètes. Chaque langue dispose de ses adresses, de ses noms de catégories et de ses textes, afin que Google les distingue et que vous apparaissiez aussi bien sur cadeau Bienne que sur Geschenk Biel. Stocks, prix et commandes restent centralisés. Confirmations, factures et avis d'envoi partent automatiquement dans la langue choisie par le client.",
+              "Concrètement, vous gérez un seul assortiment avec deux versions linguistiques complètes. Chaque langue dispose de ses adresses, de ses noms de catégories et de ses textes, afin que Google les distingue et que vous apparaissiez aussi bien sur « cadeau Bienne » que sur « Geschenk Biel ». Stocks, prix et commandes restent centralisés. Confirmations, factures et avis d'envoi partent automatiquement dans la langue choisie par le client.",
               "Pour une marque horlogère ou de bijoux, nous misons sur de grandes photos, des vues de détail et une mise en scène qui transmet la qualité. Une boutique de la vieille ville profite surtout du retrait en magasin. Un domaine viticole du bord du lac a besoin de prix par quantité, de cartons de six ou douze bouteilles et d'une confirmation d'âge. Votre e-shop suit votre modèle d'affaires, pas un modèle standard.",
             ],
             bullets: [
@@ -228,7 +228,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Comment nous menons votre projet à Bienne",
             paragraphs: [
-              "Nous vous rencontrons à Bienne pour le premier entretien, que vous soyez dans la vieille ville ou chez un producteur au bord du lac. Nous parlons de votre assortiment, de vos clients et de la rédaction des textes dans les deux langues : les fournissez-vous ou les élaborons-nous ensemble ? Vous recevez ensuite une offre claire et un calendrier clair.",
+              "Nous vous rencontrons à Bienne pour le premier entretien, que vous soyez dans la vieille ville ou chez un producteur au bord du lac. Nous parlons de votre assortiment, de vos clients et de la rédaction des textes dans les deux langues : les fournissez-vous ou les élaborons-nous ensemble ? Vous recevez ensuite une offre claire avec un calendrier, qui décrit aussi le travail sur les deux versions linguistiques.",
               "Pendant la réalisation, vous découvrez rapidement la boutique sur un environnement de test et vérifiez chaque version linguistique. Avant le lancement, nous passons des commandes tests en français et en allemand, avec tous les moyens de paiement, TWINT compris. Ensuite, nous restons votre interlocuteur pour la maintenance, les promotions saisonnières et les campagnes Google ou réseaux sociaux, adaptées à chaque public.",
             ],
           },
@@ -270,7 +270,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Onlineshop erstellen in Solothurn: die Altstadt-Boutique, auch nach Ladenschluss",
         lead:
-          "Viele Gäste entdecken Ihr Geschäft bei einem Spaziergang durch die Solothurner Altstadt und möchten später nachbestellen. Wir bauen Ihnen den passenden Onlineshop, von unserem Büro in Grenchen aus.",
+          "Viele Gäste entdecken Ihr Geschäft bei einem Spaziergang durch die Solothurner Altstadt und möchten später nachbestellen. Wir bauen Ihnen den passenden Onlineshop dafür.",
         sections: [
           {
             h2: "Warum Solothurner Geschäfte online verkaufen sollten",
@@ -329,13 +329,13 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Soleure : votre commerce ouvert même le dimanche",
         lead:
-          "Nombre de visiteurs découvrent votre magasin en flânant dans la vieille ville de Soleure, puis aimeraient commander à nouveau une fois rentrés. Nous créons la boutique en ligne qui leur permet de le faire, depuis notre bureau de Granges.",
+          "Nombre de visiteurs découvrent votre magasin en flânant dans la vieille ville de Soleure, puis aimeraient commander à nouveau une fois rentrés. Nous créons la boutique en ligne qui leur permet de le faire.",
         sections: [
           {
             h2: "Pourquoi les commerces soleurois ont intérêt à vendre en ligne",
             paragraphs: [
               "La vieille ville de Soleure doit beaucoup à ses commerces indépendants : confiseries, librairies, boutiques spécialisées et petits ateliers. Les visiteurs venus pour les Journées du cinéma, les Journées littéraires ou une promenade au bord de l'Aar y trouvent des produits introuvables ailleurs. De retour à Lausanne ou à Zurich, ils perdent pourtant souvent le contact. Une boutique en ligne transforme ce coup de cœur en relation durable.",
-              "Les habitants de Soleure et des communes voisines ont eux aussi adopté de nouvelles habitudes. Le soir, ils parcourent l'assortiment en ligne, réservent un article et passent le chercher le lendemain. Pour un commerce situé dans une vieille ville où le stationnement est limité, c'est un vrai avantage : le client vient à coup sûr, l'achat est préparé, et la boutique reste visible après la fermeture.",
+              "Les habitants de Soleure et des communes voisines ont eux aussi adopté de nouvelles habitudes. Le soir, ils parcourent l'assortiment en ligne, réservent un article et passent le chercher le lendemain. Pour un commerce situé dans une vieille ville où le stationnement est limité, c'est un vrai avantage : le client vient en sachant ce qu'il veut, l'achat est préparé, et la boutique reste visible après la fermeture.",
             ],
           },
           {
@@ -396,7 +396,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Onlineshop erstellen in Bern: mit klarem Profil im grossen Wettbewerb",
         lead:
-          "In Bern kämpfen viele Shops um dieselbe Kundschaft, deshalb braucht Ihr Webshop ein klares Profil. Webnova arbeitet von Grenchen aus und begleitet Sie persönlich von der Idee bis zur ersten Bestellung.",
+          "In Bern kämpfen viele Shops um dieselbe Kundschaft, deshalb braucht Ihr Webshop ein klares Profil. Webnova begleitet Sie persönlich von der Idee bis zur ersten Bestellung.",
         sections: [
           {
             h2: "Onlinehandel in Bern: Nischen schlagen Masse",
@@ -456,7 +456,7 @@ export const onlineshopLocal: LocalService[] = [
         },
         h1: "Création de boutique en ligne à Berne : se démarquer dans la ville fédérale",
         lead:
-          "Sur le marché bernois, une boutique en ligne doit avoir un profil net pour se faire remarquer. Webnova travaille depuis Granges et vous accompagne personnellement jusqu'à la première commande.",
+          "Sur le marché bernois, une boutique en ligne doit avoir un profil net pour se faire remarquer. Webnova vous accompagne personnellement, de l'idée jusqu'à la première commande.",
         sections: [
           {
             h2: "Vendre en ligne à Berne : la spécialisation fait la différence",
@@ -476,6 +476,7 @@ export const onlineshopLocal: LocalService[] = [
               "Version française rédigée, pas traduite automatiquement",
               "Boutiques pour associations : publications, cours, cotisations",
               "Livraison dans les quartiers bernois ou retrait en magasin",
+              "Reprise d'une boutique existante ou d'un assortiment de place de marché",
             ],
           },
           {

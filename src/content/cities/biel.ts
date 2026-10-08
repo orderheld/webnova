@@ -18,13 +18,13 @@ export const biel: City = {
       },
       h1: "Webdesign Biel: zweisprachige Webseiten für Biel/Bienne",
       lead:
-        "Sie möchten in Biel eine Webseite erstellen lassen, die auf Deutsch und Französisch überzeugt? Webnova arbeitet von Grenchen aus und kennt die Bedürfnisse der zweisprachigen Stadt.",
+        "Sie möchten in Biel eine Webseite erstellen lassen, die auf Deutsch und Französisch überzeugt? Webnova kennt die Bedürfnisse der zweisprachigen Stadt und setzt beide Sprachversionen gleichwertig um.",
       sections: [
         {
           h2: "Biel/Bienne: eine Stadt, zwei Sprachen, ein Webauftritt",
           paragraphs: [
             "Biel ist die grösste zweisprachige Stadt der Schweiz. Im Alltag wechseln Kundinnen und Kunden ständig zwischen Deutsch und Französisch, und genau das erwarten sie auch von Ihrer Webseite. Eine automatisch übersetzte Seite wirkt schnell unprofessionell. Wir planen deshalb von Anfang an zwei gleichwertige Sprachversionen mit eigenen Texten, eigenen URLs und sauberer Sprachzuordnung für Google.",
-            "Damit werden Sie sowohl bei der Suche nach „Webdesign Biel“ als auch bei „création site internet Bienne“ gefunden. Für viele Bieler Unternehmen verdoppelt das die Reichweite in der Region, denn die Kundschaft aus dem Berner Jura, aus Neuenburg und aus dem Seeland sucht in ihrer eigenen Sprache. Als Webagentur für Biel übernehmen wir auf Wunsch auch die Redaktion beider Sprachversionen.",
+            "Damit werden Sie sowohl bei der Suche nach «Webdesign Biel» als auch bei «création site internet Bienne» gefunden. Das erweitert die Reichweite in der Region, denn die Kundschaft aus dem Berner Jura, aus Neuenburg und aus dem Seeland sucht in ihrer eigenen Sprache. Als Webagentur für Biel übernehmen wir auf Wunsch auch die Redaktion beider Sprachversionen.",
           ],
         },
         {
@@ -41,10 +41,10 @@ export const biel: City = {
           ],
         },
         {
-          h2: "Persönlich in Biel, effizient aus Grenchen",
+          h2: "Persönlich in Biel, effizient per Videocall",
           paragraphs: [
             "Für das Erstgespräch, Workshops oder Fotoaufnahmen kommen wir gerne zu Ihnen, ob in die Altstadt oder ins Bözingenfeld. Zwischendurch arbeiten wir effizient per Videocall und Telefon. Sie haben während des ganzen Projekts eine feste Ansprechperson, die beide Sprachen versteht.",
-            "Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entwickeln wir Struktur, Texte und Design gemeinsam mit Ihnen und zeigen Entwürfe früh. Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Hosting, Google Ads und laufende Optimierung. So haben Bieler KMU eine Webagentur in der Nähe, ohne den Aufwand und Overhead einer Grossagentur.",
+            "Jedes Projekt startet mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entwickeln wir Struktur, Texte und Design gemeinsam mit Ihnen und zeigen Entwürfe früh. Nach dem Launch kümmern wir uns auf Wunsch um Wartung, Hosting, Google Ads und laufende Optimierung. So haben Bieler KMU eine persönliche Webagentur, ohne den Aufwand und Overhead einer Grossagentur.",
           ],
         },
         {
@@ -92,15 +92,15 @@ export const biel: City = {
         description:
           "Agence web pour Bienne/Biel : sites bilingues français-allemand, boutiques en ligne et référencement pour les PME. Premier conseil gratuit.",
       },
-      h1: "Création de site internet à Bienne : une agence web bilingue",
+      h1: "Création de site internet à Bienne : des sites bilingues pour Biel/Bienne",
       lead:
-        "Vous souhaitez un site internet qui parle aussi bien aux Biennois francophones qu'aux germanophones ? Webnova travaille depuis Granges et connaît bien les réalités de la ville bilingue.",
+        "Vous souhaitez un site internet qui parle aussi bien aux Biennois francophones qu'aux germanophones ? Webnova connaît bien les réalités de la ville bilingue et soigne les deux versions linguistiques de la même façon.",
       sections: [
         {
           h2: "À Bienne, votre site doit parler deux langues",
           paragraphs: [
             "Bienne est la plus grande ville bilingue de Suisse. Au guichet, au restaurant ou en réunion, on passe naturellement du français à l'allemand, et vos clients attendent la même aisance sur votre site internet. Une traduction automatique se remarque immédiatement et donne une image peu soignée. Nous concevons donc dès le départ deux versions de même qualité, avec des textes rédigés pour chaque public.",
-            "Chaque langue dispose de ses propres pages et adresses, correctement signalées à Google. Vous êtes ainsi trouvé aussi bien pour « création site internet Bienne » ou « agence web Bienne » que pour « Webdesign Biel ». Pour une entreprise biennoise, c'est l'assurance de toucher la clientèle du Jura bernois, de Neuchâtel et du Seeland. Sur demande, nous rédigeons nous-mêmes les contenus en français.",
+            "Chaque langue dispose de ses propres pages et adresses, correctement signalées à Google. Vous êtes ainsi trouvé aussi bien pour « création site internet Bienne » ou « agence web Bienne » que pour « Webdesign Biel ». Pour une entreprise biennoise, c'est le moyen de toucher aussi la clientèle du Jura bernois, de Neuchâtel et du Seeland. Sur demande, nous rédigeons nous-mêmes les contenus en français.",
           ],
         },
         {
@@ -117,10 +117,10 @@ export const biel: City = {
           ],
         },
         {
-          h2: "Proche de vous, sans la lourdeur d'une grande agence",
+          h2: "Personnel, sans la lourdeur d'une grande agence",
           paragraphs: [
             "Pour le premier entretien, un atelier ou une séance photo, nous venons volontiers chez vous, que ce soit dans la vieille ville ou aux Champs-de-Boujean. Le reste du temps, nous travaillons efficacement par visioconférence et par téléphone. Vous avez un seul interlocuteur du début à la fin, qui comprend les deux langues.",
-            "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Nous élaborons ensuite avec vous la structure, les textes et le design, et vous montrons les maquettes très tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, les campagnes Google Ads et l'optimisation continue. Une agence web proche des PME biennoises, sans frais de structure inutiles.",
+            "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Nous élaborons ensuite avec vous la structure, les textes et le design, et vous montrons les maquettes très tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, les campagnes Google Ads et l'optimisation continue. Une agence web à l'écoute des PME biennoises, sans frais de structure inutiles.",
           ],
         },
         {
@@ -177,7 +177,7 @@ export const biel: City = {
         {
           h2: "Suchmaschinenoptimierung in einer zweisprachigen Stadt",
           paragraphs: [
-            "In Biel sucht die eine Hälfte der Kundschaft nach „Coiffeur Biel“, die andere nach „coiffeur Bienne“. Wer nur eine Sprache optimiert, verschenkt einen grossen Teil der lokalen Nachfrage. Bei der Suchmaschinenoptimierung in Biel arbeiten wir darum mit zwei Keyword-Sets, zwei Sprachversionen der Webseite und einer korrekten Kennzeichnung, damit Google jeder Person die passende Sprache zeigt.",
+            "In Biel sucht ein Teil der Kundschaft nach «Coiffeur Biel», ein anderer nach «coiffeur Bienne». Wer nur eine Sprache optimiert, verschenkt einen grossen Teil der lokalen Nachfrage. Bei der Suchmaschinenoptimierung in Biel arbeiten wir darum mit zwei Keyword-Sets, zwei Sprachversionen der Webseite und einer korrekten Kennzeichnung, damit Google jeder Person die passende Sprache zeigt.",
             "Auch das Google Unternehmensprofil sollte beide Sprachen berücksichtigen, etwa in der Beschreibung, bei Leistungen und in Antworten auf Bewertungen. Viele Bieler Betriebe unterschätzen das. Dabei ist gerade die Zweisprachigkeit ein Vorteil gegenüber Mitbewerbern aus rein deutschsprachigen oder rein französischsprachigen Städten. Gut umgesetzt erreichen Sie damit Kundschaft aus dem Seeland, dem Berner Jura und Neuenburg.",
           ],
         },
@@ -197,7 +197,7 @@ export const biel: City = {
         {
           h2: "Ihre SEO-Agentur für Biel, persönlich vor Ort",
           paragraphs: [
-            "Wir sind in Grenchen zuhause und kommen gerne nach Biel, wenn ein Treffen vor Ort sinnvoll ist, etwa für den Start, Fotos für das Unternehmensprofil oder die Besprechung der Resultate. Die laufende Arbeit erledigen wir effizient aus dem Büro und berichten Ihnen regelmässig, was wir gemacht haben und was es bewirkt. Verständlich, ohne Fachchinesisch und in Ihrer Sprache.",
+            "Wir kommen gerne nach Biel, wenn ein Treffen vor Ort sinnvoll ist, etwa für den Start, Fotos für das Unternehmensprofil oder die Besprechung der Resultate. Die laufende Arbeit erledigen wir effizient aus dem Büro und berichten Ihnen regelmässig, was wir gemacht haben und was es bewirkt. Verständlich, ohne Fachchinesisch und in Ihrer Sprache.",
             "Am Anfang steht eine kostenlose Erstberatung mit einem Blick auf Ihre aktuelle Sichtbarkeit in beiden Sprachen. Danach erhalten Sie eine unverbindliche Offerte mit konkreten Massnahmen. Eine Garantie für Platz 1 geben wir nicht, weil das niemand seriös kann. Was wir zusichern: sorgfältige Arbeit, Transparenz und eine feste Ansprechperson für Ihr Unternehmen in Biel.",
           ],
         },
@@ -261,9 +261,9 @@ export const biel: City = {
           ],
         },
         {
-          h2: "Une agence SEO proche de vous à Bienne",
+          h2: "Votre agence SEO pour Bienne, en contact direct",
           paragraphs: [
-            "Basés à Granges, nous venons à Bienne lorsqu'une rencontre est utile : lancement du projet, photos pour votre profil Google ou présentation des résultats. Le travail courant se fait efficacement depuis notre bureau, et nous vous expliquons régulièrement ce qui a été fait et avec quel effet. Clairement, sans jargon, et en français si vous le souhaitez.",
+            "Nous venons volontiers à Bienne lorsqu'une rencontre est utile : lancement du projet, photos pour votre profil Google ou présentation des résultats. Le travail courant se fait efficacement depuis notre bureau, et nous vous expliquons régulièrement ce qui a été fait et avec quel effet. Clairement, sans jargon, et en français si vous le souhaitez.",
             "Tout commence par un premier conseil gratuit avec une analyse de votre visibilité dans les deux langues. Vous recevez ensuite une offre sans engagement avec des mesures concrètes. Nous ne garantissons pas la première place, car aucune agence sérieuse ne peut le faire. Nous garantissons en revanche un travail soigné, de la transparence et un interlocuteur fixe.",
           ],
         },
