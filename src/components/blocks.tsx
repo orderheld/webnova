@@ -30,6 +30,7 @@ export function Breadcrumbs({ items }: { items: { name: string; url?: string }[]
 export function PageHero({
   eyebrow,
   title,
+  subline,
   lead,
   children,
   crumbs,
@@ -38,6 +39,8 @@ export function PageHero({
 }: {
   eyebrow?: string;
   title: string;
+  /** Benefit line under a keyword H1 (beyondweb pattern: keyword H1, benefit subline). */
+  subline?: string;
   lead?: string;
   children?: React.ReactNode;
   crumbs?: { name: string; url?: string }[];
@@ -54,7 +57,11 @@ export function PageHero({
         <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
           <div className={aside ? "lg:col-span-7" : ""}>
             {eyebrow && <p className="eyebrow mb-6 animate-rise">{eyebrow}</p>}
-            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.4rem,4.8vw,4rem)]" : "text-[clamp(2.4rem,5.4vw,4.4rem)]"}`}>{title}</h1>
+            {/* The H1 is the LCP element: rendered visible on load, never faded in. */}
+            <h1 className={`display max-w-5xl ${aside ? "text-[clamp(2.4rem,4.8vw,4rem)]" : "text-[clamp(2.4rem,5.4vw,4.4rem)]"}`}>{title}</h1>
+            {subline && (
+              <p className="mt-4 max-w-3xl font-display text-[clamp(1.35rem,2.4vw,1.9rem)] font-semibold leading-snug tracking-[-0.015em] text-accent">{subline}</p>
+            )}
             {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[19px]">{lead}</p>}
             {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
           </div>

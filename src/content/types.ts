@@ -32,6 +32,13 @@ export interface ServiceContent {
   features: { title: string; text: string }[];
   sections: Section[]; // 2–4 long-form SEO sections
   faq: Faq[]; // 4–6 questions
+  /** Optional beyondweb-style blocks, rendered by views/service.tsx when present. */
+  problemsTitle?: string;
+  problems?: Point[];
+  benefitsTitle?: string;
+  benefits?: Point[];
+  process?: Point[];
+  fit?: { yes: string[]; no: string[] };
   ctaTitle: string;
   ctaText: string;
 }
