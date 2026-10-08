@@ -25,6 +25,15 @@
   --color-warn: #9a6a12;
   --color-danger: #a12a2a;
 
+  /* One shadow scale, always tinted with night so shadows read blue-grey, never black. */
+  --shadow-xs: 0 1px 2px rgb(27 45 62 / 0.06);
+  --shadow-card: 0 1px 2px rgb(27 45 62 / 0.04), 0 8px 24px -12px rgb(27 45 62 / 0.12);
+  --shadow-lift: 0 1px 2px rgb(27 45 62 / 0.05), 0 24px 48px -24px rgb(27 45 62 / 0.24);
+
+  /* Radius scale: tiles 12px (rounded-xl), cards 16px (rounded-2xl), large panels 24px (rounded-3xl), buttons pill. */
+
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+
   --font-sans: var(--font-inter), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter-tight), var(--font-inter), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -94,7 +103,13 @@
     @apply bg-accent text-white;
   }
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent-ink;
+    @apply outline-2 outline-offset-2 outline-bright;
+  }
+  /* Dark sections: the focus ring switches to the light blue so it stays visible. */
+  .bg-night :focus-visible,
+  .bg-night-2 :focus-visible,
+  .bg-accent :focus-visible {
+    @apply outline-accent-light;
   }
 }
 
@@ -139,9 +154,63 @@
   @apply font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold tracking-[-0.02em] leading-[1.1];
 }
 
-/* Section label: short Schieferblau caps above a heading, no ornaments. */
+/* Section label: short bright-blue caps above a heading, no ornaments. */
 @utility eyebrow {
   @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-bright;
+}
+
+/* The same label on dark (night / Schieferblau) sections. */
+@utility eyebrow-light {
+  @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-accent-light;
+}
+
+/* Vertical rhythm: every full section uses this padding, so spacing is the same site-wide. */
+@utility section-y {
+  @apply py-20 md:py-28;
+}
+
+/* Lead paragraph under a section heading. */
+@utility lead {
+  @apply text-[17px] leading-relaxed text-ink-soft md:text-[18px];
+}
+
+/* Base card: hairline border, white surface, faint shadow. */
+@utility card {
+  @apply rounded-2xl border border-line bg-surface shadow-xs;
+}
+
+/* Interactive card: lifts slightly and the border warms to Schieferblau on hover. */
+@utility card-hover {
+  @apply transition-[transform,box-shadow,border-color] duration-300 ease-out-soft hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-lift;
+}
+
+/* Icon tile on light backgrounds: bright-blue icon on its pale tint. */
+@utility icon-tile {
+  @apply grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-bright-soft text-bright;
+}
+
+/* Icon tile on dark sections. */
+@utility icon-tile-dark {
+  @apply grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[0.08] text-accent-light ring-1 ring-inset ring-white/10;
+}
+
+/* Text link with arrow on light backgrounds. */
+@utility link-arrow {
+  @apply inline-flex items-center gap-2 text-[15px] font-semibold text-bright transition-colors hover:text-accent;
+}
+
+/* Dark panel surface: night with one faint light from the top right. */
+@utility surface-night {
+  background:
+    radial-gradient(70% 60% at 100% 0%, rgb(159 195 236 / 0.10), transparent 70%),
+    var(--color-night);
+}
+
+/* Light-blue wash used to mix the lighter blue into white sections. */
+@utility surface-tint {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgb(44 109 179 / 0.07), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, var(--color-bg-2) 100%);
 }
 
 /* Dark section backdrop: one faint light from the top right. */
@@ -190,7 +259,7 @@
 
 /* Soft card shadow used for floating UI elements and photos. */
 @utility shadow-soft {
-  box-shadow: 0 1px 2px rgb(27 45 62 / 0.05), 0 24px 48px -24px rgb(27 45 62 / 0.22);
+  box-shadow: var(--shadow-lift);
 }
 
 /* Lime marker highlight for words on light backgrounds. */
@@ -230,11 +299,70 @@
   & p { @apply my-4; }
   & ul { @apply my-5 space-y-2.5; }
   & li { @apply relative pl-7; }
-  & li::before { content: ""; @apply absolute left-1 top-[0.62em] h-1.5 w-1.5 rounded-full bg-accent; }
+  & li::before { content: ""; @apply absolute left-1 top-[0.62em] h-1.5 w-1.5 rounded-full bg-bright; }
+  & a { @apply font-medium text-bright underline decoration-bright/30 underline-offset-4 hover:decoration-bright; }
+  & strong { @apply font-semibold text-ink; }
 }
 
 @utility input {
-  @apply w-full rounded-xl border border-line bg-bg/60 px-4 py-3.5 text-[16px] text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-accent focus:bg-white;
+  @apply w-full rounded-xl border border-line bg-bg-2/60 px-4 py-3.5 text-[16px] text-ink outline-none transition-[border-color,background-color,box-shadow] placeholder:text-muted focus:border-bright focus:bg-white focus:ring-4 focus:ring-bright-soft;
+}
+
+/* Home hero intro (components/hero-build.tsx). Each element waits for its --d delay, then plays once. */
+@layer components {
+  .wf * { transform-box: fill-box; }
+  .wf-v { transform-origin: 50% 0; animation: wf-v 0.9s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
+  .wf-h { transform-origin: 0 50%; animation: wf-grow 0.9s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
+  .wf-grow { transform-origin: 0 50%; animation: wf-grow 0.55s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
+  .wf-fade { animation: wf-fade 0.55s var(--ease-out-soft) both; animation-delay: var(--d, 0ms); }
+  .wf-pop { transform-origin: 50% 50%; animation: wf-pop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
+  .wf-ripple { opacity: 0; transform-origin: 50% 50%; animation: wf-ripple 0.7s ease-out both; animation-delay: var(--d, 0ms); }
+  .wf-cursor { animation: wf-cursor 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: var(--d, 0ms); }
+  .wf-click { transform-origin: 0 0; animation: wf-click 0.3s ease both; animation-delay: var(--d, 0ms); }
+  .wf-toast { transform-origin: 50% 100%; animation: wf-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; animation-delay: var(--d, 0ms); filter: drop-shadow(0 10px 18px rgb(27 45 62 / 0.16)); }
+}
+@keyframes wf-v {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes wf-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes wf-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wf-pop {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wf-ripple {
+  0% { opacity: 0; transform: scale(1); }
+  15% { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes wf-cursor {
+  from { opacity: 0; transform: translate(150px, 70px); }
+  30% { opacity: 1; }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wf-click {
+  0%, 100% { transform: none; }
+  50% { transform: scale(0.82); }
+}
+
+/* Home hero backdrop: faint layout columns, the designer's grid, fading out to the left and bottom. */
+@utility hero-guides {
+  background-image: linear-gradient(to right, rgb(36 64 90 / 0.06) 1px, transparent 1px);
+  background-size: 96px 100%;
+  background-position: center top;
+  mask-image: radial-gradient(70% 90% at 85% 10%, #000 20%, transparent 75%);
+}
+
+/* Mobile action bar: leave room so it never covers the footer's last line. */
+@utility pb-safe-bar {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -244,4 +372,6 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  /* Intro wireframe: jump straight to its end state. */
+  .wf, .wf * { animation-delay: 0s !important; }
 }
