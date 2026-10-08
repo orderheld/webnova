@@ -10,7 +10,7 @@ export const onlineshop: Service = {
       slug: "onlineshop-erstellen",
       navLabel: "Onlineshop",
       meta: {
-        title: "Onlineshop erstellen lassen",
+        title: "Onlineshop erstellen lassen in der Schweiz",
         description:
           "Onlineshop erstellen lassen: schnell, mobil, mit TWINT und Kartenzahlung. Für Schweizer KMU. Jetzt kostenlose Erstberatung und Offerte anfragen.",
       },

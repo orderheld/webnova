@@ -10,7 +10,7 @@ import { legal } from "@/content/legal";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
-import { JsonLd, breadcrumbLd } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
@@ -63,6 +63,19 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
   return (
     <>
       <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references, url: href(locale, "references") }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: d.pages.referencesMetaTitle,
+          itemListElement: references.map((r, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: r.name,
+            url: `${site.url}${href(locale, `reference:${r.key}`)}`,
+          })),
+        }}
+      />
       <PageHero
         eyebrow={d.nav.references}
         title={d.pages.referencesH1}
@@ -103,6 +116,20 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
   return (
     <>
       <JsonLd data={breadcrumbLd(crumbs)} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: `${r.name}: ${c.industry}`,
+          description: c.summary,
+          url: `${site.url}${url}`,
+          inLanguage: locale === "de" ? "de-CH" : "fr-CH",
+          creator: { "@id": orgId },
+          about: { "@type": "Organization", name: r.name, url: `https://${r.domain}` },
+          keywords: c.scope.join(", "),
+          ...(r.image && { image: `${site.url}${r.image}` }),
+        }}
+      />
       <PageHero
         eyebrow={[c.industry, c.place].filter(Boolean).join(" · ")}
         title={r.name}

@@ -12,7 +12,7 @@ export const grenchen: City = {
       name: "Grenchen",
       slug: "webdesign-grenchen",
       meta: {
-        title: "Webdesign Grenchen: Webseite erstellen lassen",
+        title: "Webdesign Agentur Grenchen: Webseite erstellen lassen",
         description:
           "Webagentur mit Sitz in Grenchen: Webdesign, Homepage, Onlineshop und SEO für KMU aus der Uhrenstadt. Jetzt kostenlose Erstberatung vereinbaren.",
       },
@@ -92,7 +92,7 @@ export const grenchen: City = {
       name: "Granges",
       slug: "creation-site-internet-granges",
       meta: {
-        title: "Création site internet Granges: Agence web",
+        title: "Agence web Granges : création de site internet",
         description:
           "Agence web basée à Granges (SO) : création de site internet, boutique en ligne et référencement pour les PME. Premier conseil gratuit et sans engagement.",
       },
@@ -237,7 +237,7 @@ export const grenchen: City = {
       name: "Granges",
       slug: "referencement-granges",
       meta: {
-        title: "Référencement Granges: Agence SEO locale",
+        title: "Référencement Granges : agence SEO locale",
         description:
           "Référencement à Granges : SEO local et profil d'entreprise Google pour les PME de la cité horlogère. Premier conseil gratuit avec Webnova.",
       },

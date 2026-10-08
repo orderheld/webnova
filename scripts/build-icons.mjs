@@ -3,8 +3,9 @@
 // any fill colour) and run `node scripts/build-icons.mjs`. The OG images read the same file.
 //
 // Output:
-//   src/app/icon.svg            scalable favicon (Schieferblau tile, white mark)
-//   src/app/favicon.ico         16/32/48 px (PNG-in-ICO)
+//   src/app/icon2.svg           scalable favicon (Schieferblau tile, white mark)
+//   src/app/favicon.ico         48/32/16 px (PNG-in-ICO, 48 first so the <link> says 48x48 for Google)
+//   src/app/icon1.png           192 px PNG favicon (a multiple of 48 px, as Google Search asks)
 //   src/app/apple-icon.png      180 px, opaque, padded (iOS rounds the corners itself)
 //   public/icons/icon-192.png   web app manifest, purpose "any"
 //   public/icons/icon-512.png   web app manifest, purpose "any"
@@ -50,11 +51,12 @@ const png = (svg, size) => sharp(Buffer.from(svg), { density: 72 * Math.max(1, 5
 
 // Favicons: bigger mark, so it stays legible at 16 px.
 const faviconSvg = tile(64, 0.66, 0.22);
-await writeFile(join(root, "src/app/icon.svg"), faviconSvg);
+await writeFile(join(root, "src/app/icon2.svg"), faviconSvg);
 
-const icoSizes = [16, 32, 48];
+const icoSizes = [48, 32, 16];
 const icoImages = await Promise.all(icoSizes.map((s) => png(faviconSvg, s)));
 await writeFile(join(root, "src/app/favicon.ico"), ico(icoSizes, icoImages));
+await writeFile(join(root, "src/app/icon1.png"), await png(tile(192, 0.66, 0.22), 192));
 
 // Apple touch icon: opaque square, iOS applies its own mask.
 await writeFile(join(root, "src/app/apple-icon.png"), await sharp(await png(tile(180, 0.56, 0), 180)).flatten({ background: SLATE }).png().toBuffer());

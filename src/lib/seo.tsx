@@ -68,8 +68,13 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     url: `${site.url}/${locale}`,
     description:
       locale === "de"
-        ? "Webdesign-Agentur für Schweizer KMU: Webseiten, Onlineshops, SEO, Online-Marketing, Branding und Kassensysteme, auf Deutsch und Französisch."
-        : "Agence web pour les PME suisses : sites internet, boutiques en ligne, SEO, marketing en ligne, branding et systèmes de caisse, en français et en allemand.",
+        ? "Webdesign Agentur in Grenchen für Unternehmen in der ganzen Schweiz: Webseiten erstellen lassen, Redesign, Wartung und SEO, dazu Onlineshops und Kassensysteme, auf Deutsch und Französisch."
+        : "Agence web à Granges (SO) pour les entreprises de toute la Suisse : création et refonte de sites internet, maintenance et SEO, ainsi que boutiques en ligne et systèmes de caisse, en français et en allemand.",
+    slogan: locale === "de" ? "Webseiten für Schweizer Unternehmen" : "Des sites internet pour les entreprises suisses",
+    knowsAbout:
+      locale === "de"
+        ? ["Webdesign", "Webseite erstellen", "Website-Redesign", "Suchmaschinenoptimierung", "Local SEO", "Onlineshop", "Kassensystem"]
+        : ["Création de site internet", "Webdesign", "Refonte de site", "Référencement naturel", "SEO local", "Boutique en ligne", "Système de caisse"],
     logo: { "@type": "ImageObject", url: `${site.url}/icons/icon-512.png`, width: 512, height: 512 },
     image: `${site.url}/og/${locale}/home.png`,
     founder: { "@type": "Person", name: "Ferhat Demir" },
@@ -92,7 +97,7 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
       addressCountry: site.address.country,
     },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    areaServed: [{ "@type": "Country", name: "Schweiz" }, ...areaServed.map((name) => ({ "@type": "City", name }))],
+    areaServed: [{ "@type": "Country", name: locale === "de" ? "Schweiz" : "Suisse" }, ...areaServed.map((name) => ({ "@type": "City", name }))],
     knowsLanguage: ["de", "fr"],
     ...(site.google.maps && { hasMap: site.google.maps }),
     ...(site.openingHours.length > 0 && {

@@ -67,7 +67,7 @@ export const luzern: City = {
       name: "Lucerne",
       slug: "creation-site-internet-lucerne",
       meta: {
-        title: "Création site internet Lucerne: Agence web",
+        title: "Création site internet Lucerne : agence web",
         description:
           "Création de site internet à Lucerne : sites multilingues, boutiques en ligne et référencement pour le tourisme et les PME. Premier conseil gratuit.",
       },

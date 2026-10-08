@@ -70,7 +70,7 @@ export const brandingLocal: LocalService[] = [
         name: "Granges",
         slug: "graphisme-granges",
         meta: {
-          title: "Graphisme & logo à Granges: identité visuelle",
+          title: "Graphisme & logo à Granges : identité visuelle",
           description:
             "Graphisme à Granges: logo, identité visuelle et imprimés pour l'industrie, l'artisanat et le commerce de la cité horlogère. Premier conseil gratuit.",
         },
@@ -196,7 +196,7 @@ export const brandingLocal: LocalService[] = [
         name: "Bienne",
         slug: "graphisme-bienne",
         meta: {
-          title: "Graphisme & logo à Bienne: identité bilingue",
+          title: "Graphisme & logo à Bienne : identité bilingue",
           description:
             "Graphisme à Bienne/Biel: logo, identité visuelle et imprimés qui fonctionnent en français et en allemand. Demandez votre premier conseil gratuit.",
         },
@@ -322,7 +322,7 @@ export const brandingLocal: LocalService[] = [
         name: "Soleure",
         slug: "graphisme-soleure",
         meta: {
-          title: "Graphisme & logo à Soleure: identité visuelle",
+          title: "Graphisme & logo à Soleure : identité visuelle",
           description:
             "Graphisme à Soleure: logo, refonte d'image et imprimés pour la restauration, les commerces et les prestataires de la ville baroque. Conseil gratuit.",
         },
@@ -448,7 +448,7 @@ export const brandingLocal: LocalService[] = [
         name: "Berne",
         slug: "graphisme-berne",
         meta: {
-          title: "Graphisme & logo à Berne: identité pour PME",
+          title: "Graphisme & logo à Berne : identité pour PME",
           description:
             "Graphisme à Berne: logo, identité visuelle, modèles de documents et charte graphique pour PME, associations et bureaux de conseil. Premier conseil gratuit.",
         },

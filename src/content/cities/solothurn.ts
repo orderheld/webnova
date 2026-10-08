@@ -12,7 +12,7 @@ export const solothurn: City = {
       name: "Solothurn",
       slug: "webdesign-solothurn",
       meta: {
-        title: "Webdesign Solothurn: Homepage erstellen lassen",
+        title: "Webdesign Solothurn: Webseite erstellen lassen",
         description:
           "Webagentur für Solothurn: Webdesign, Homepage, Onlineshop und lokales SEO für Gastronomie, Handel und KMU. Kostenlose Erstberatung bei Webnova.",
       },
@@ -84,7 +84,7 @@ export const solothurn: City = {
       name: "Soleure",
       slug: "creation-site-internet-soleure",
       meta: {
-        title: "Création site internet Soleure: Agence web",
+        title: "Agence web Soleure : création de site internet",
         description:
           "Agence web pour Soleure : création de site internet, boutique en ligne et référencement local pour la restauration, le commerce et les PME.",
       },
@@ -224,7 +224,7 @@ export const solothurn: City = {
       name: "Soleure",
       slug: "referencement-soleure",
       meta: {
-        title: "Référencement Soleure: Agence SEO locale",
+        title: "Référencement Soleure : agence SEO locale",
         description:
           "Référencement à Soleure : SEO local et profil d'entreprise Google pour restaurants, commerces et PME. Premier conseil gratuit avec Webnova.",
       },

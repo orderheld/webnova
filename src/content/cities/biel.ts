@@ -12,7 +12,7 @@ export const biel: City = {
       name: "Biel",
       slug: "webdesign-biel",
       meta: {
-        title: "Webdesign Biel: Webagentur für Biel/Bienne",
+        title: "Webdesign Biel/Bienne: Webseite erstellen lassen",
         description:
           "Webdesign in Biel/Bienne: zweisprachige Webseiten, Onlineshops und SEO für KMU aus Biel und dem Seeland. Jetzt kostenlose Erstberatung anfragen.",
       },
@@ -88,7 +88,7 @@ export const biel: City = {
       name: "Bienne",
       slug: "creation-site-internet-bienne",
       meta: {
-        title: "Création site internet Bienne: Agence web",
+        title: "Agence web Bienne : création de site internet",
         description:
           "Agence web pour Bienne/Biel : sites bilingues français-allemand, boutiques en ligne et référencement pour les PME. Premier conseil gratuit.",
       },
@@ -232,7 +232,7 @@ export const biel: City = {
       name: "Bienne",
       slug: "referencement-bienne",
       meta: {
-        title: "Référencement Bienne: Agence SEO bilingue",
+        title: "Référencement Bienne : agence SEO bilingue",
         description:
           "Référencement à Bienne : SEO bilingue français-allemand et profil d'entreprise Google pour les PME biennoises. Premier conseil gratuit.",
       },
