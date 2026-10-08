@@ -145,7 +145,7 @@ export function FeatureGrid({ items }: { items: { title: string; text: string }[
     <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
         <div key={i} className="reveal rounded-2xl border border-line bg-surface p-8">
-          <span className="mb-6 block font-display text-[14px] font-semibold text-accent">
+          <span className="mb-6 block font-display text-[14px] font-semibold text-bright">
             {String(i + 1).padStart(2, "0")}
           </span>
           <h3 className="text-[19px] font-semibold tracking-tight">{f.title}</h3>
@@ -176,7 +176,7 @@ export function CardLink({
     >
       <div>
         {icon && (
-          <span className="mb-8 grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+          <span className="mb-8 grid h-12 w-12 place-items-center rounded-xl bg-bright-soft text-bright transition-colors duration-300 group-hover:bg-bright group-hover:text-white">
             <Icon name={icon} className="h-[22px] w-[22px]" />
           </span>
         )}
@@ -184,7 +184,7 @@ export function CardLink({
         <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.02em] transition-colors group-hover:text-accent">{title}</h3>
         {text && <p className="mt-3 text-[15px] leading-relaxed text-muted">{text}</p>}
       </div>
-      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-accent">
+      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-bright">
         <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
     </Link>

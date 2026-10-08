@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* Kalk: warm off-white page background, white surfaces on top. */
-  --color-bg: #f4f1ec;
-  --color-bg-2: #ebe6de;
+  /* Clean white page, a cool light grey for alternating sections. */
+  --color-bg: #ffffff;
+  --color-bg-2: #f3f6f9;
   --color-surface: #ffffff;
   --color-ink: #1c232b;
   --color-ink-soft: #3a434d;
   --color-muted: #646b73;
-  --color-line: #e2ddd4;
+  --color-line: #e3e8ee;
   /* Brand Schieferblau. Fill with white text, or text on light backgrounds. */
   --color-accent: #24405a;
   --color-accent-soft: #e4e9ee;
   --color-accent-ink: #24405a;
+  /* Brighter blue for highlights on white: eyebrows, links, icons, the hero keyword. */
+  --color-bright: #2c6db3;
+  --color-bright-soft: #e8f0f9;
   /* Light blue for accents on dark (night) sections. */
-  --color-accent-light: #b4c6d6;
+  --color-accent-light: #9fc3ec;
   /* Deep slate blue for the few dark sections; never black. */
   --color-night: #1b2d3e;
   --color-night-2: #22384c;
@@ -138,7 +141,7 @@
 
 /* Section label: short Schieferblau caps above a heading, no ornaments. */
 @utility eyebrow {
-  @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-accent;
+  @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-bright;
 }
 
 /* Dark section backdrop: one faint light from the top right. */

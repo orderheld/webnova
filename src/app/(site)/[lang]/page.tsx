@@ -107,7 +107,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-7 animate-rise">{d.hero.eyebrow}</p>
             <h1 className="display animate-rise text-[clamp(2.7rem,5.6vw,4.9rem)] [animation-delay:80ms]">
-              {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
+              {d.hero.title1} <span className="text-bright">{d.hero.title2}</span>
             </h1>
             <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[19px]">{d.hero.lead}</p>
             <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
@@ -119,7 +119,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <ul className="mt-12 flex animate-rise flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6 text-[14.5px] text-ink-soft [animation-delay:320ms]">
               {d.hero.points.map((p) => (
                 <li key={p} className="flex items-center gap-2.5">
-                  <Icon name="check" className="h-4 w-4 text-accent" strokeWidth={2.5} />
+                  <Icon name="check" className="h-4 w-4 text-bright" strokeWidth={2.5} />
                   {p}
                 </li>
               ))}
@@ -186,7 +186,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <ol className="lg:col-span-6 lg:col-start-7">
             {d.home.why.map((w, n) => (
               <li key={n} className="reveal grid grid-cols-[3rem_1fr] gap-4 border-t border-line py-8 last:border-b">
-                <span className="font-display text-[15px] font-semibold text-accent">{String(n + 1).padStart(2, "0")}</span>
+                <span className="font-display text-[15px] font-semibold text-bright">{String(n + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="text-[20px] font-semibold tracking-tight">{w.title}</h3>
                   <p className="mt-2 text-[16px] leading-relaxed text-ink-soft">{w.text}</p>
@@ -224,7 +224,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <p className="eyebrow mb-4">{i.projectsEyebrow}</p>
               <h2 className="h-section">{i.projectsTitle}</h2>
             </div>
-            <Link href={href(lang, "references")} className="inline-flex items-center gap-2 text-[15px] font-medium text-accent">
+            <Link href={href(lang, "references")} className="inline-flex items-center gap-2 text-[15px] font-medium text-bright">
               {d.home.referencesAll}
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
@@ -249,7 +249,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 </p>
                 <h3 className="mt-1.5 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
                 <p className="mt-3 line-clamp-3 text-[15.5px] leading-relaxed text-ink-soft">{r.content[lang].summary}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-accent">
+                <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-bright">
                   {i.toProject}
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -278,7 +278,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/50"
               >
                 <span className="flex items-center gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-bright-soft text-bright">
                     <Icon name={n === 0 ? "utensils" : "bag"} className="h-[22px] w-[22px]" />
                   </span>
                   <span className="font-display text-[20px] font-medium tracking-tight">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>

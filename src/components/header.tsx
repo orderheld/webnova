@@ -81,7 +81,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                       href={s.href}
                       className="group/item flex items-center gap-3 rounded-xl px-3 py-3 text-[15px] text-ink-soft transition-colors hover:bg-bg hover:text-accent"
                     >
-                      <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent-soft text-accent transition-colors group-hover/item:bg-accent group-hover/item:text-white">
+                      <span className="grid h-9 w-9 place-items-center rounded-lg bg-bright-soft text-bright transition-colors group-hover/item:bg-accent group-hover/item:text-white">
                         <Icon name={s.icon} className="h-[18px] w-[18px]" />
                       </span>
                       {s.label}
