@@ -24,19 +24,18 @@ import {
   ProcessSection,
   ReferencesSection,
   SectionHead,
-  TrustFacts,
   hasProjects,
 } from "@/components/sections";
 const homeMeta = {
   de: {
-    title: "Webdesign Agentur Schweiz für KMU | Webnova",
+    title: "Webdesign Agentur Schweiz: Webseiten für Unternehmen | Webnova",
     description:
-      "Webdesign Agentur für Schweizer KMU: Webseiten, Onlineshops und SEO, persönlich betreut, auf Deutsch und Französisch. Kostenlose Erstberatung.",
+      "Webdesign Agentur für Schweizer Unternehmen: individuelle Webseiten, gestaltet, entwickelt und betreut aus einer Hand. Schnell, mobil und bei Google sichtbar. Kostenlose Erstberatung.",
   },
   fr: {
-    title: "Agence web en Suisse pour PME | Webnova",
+    title: "Agence web en Suisse : sites internet pour entreprises | Webnova",
     description:
-      "Agence web pour les PME suisses : sites internet, boutiques en ligne et SEO, suivi personnel, en français et en allemand. Premier conseil gratuit.",
+      "Agence web pour les entreprises suisses : des sites internet sur mesure, conçus, développés et suivis par un seul interlocuteur. Rapides, mobiles et visibles sur Google. Premier conseil gratuit.",
   },
 };
 
@@ -105,41 +104,40 @@ const copy = {
     buildCaption: "So entsteht eine Webseite: Raster, Inhalte, die erste Anfrage",
     servicesIndex: "Leistungen",
     angebotLabel: "Leistungen",
-    angebotTitle: "Wofür soll Ihre Webseite arbeiten?",
-    angebotLead: "Am Anfang steht Ihr Ziel, nicht die Technik. Wählen Sie, was für Ihren Betrieb zählt, wir zeigen Ihnen den passenden Weg.",
+    angebotTitle: "Wo steht Ihre Webseite heute?",
+    angebotLead: "Ob neu, erneuert oder betreut: Webnova macht Webseiten für Unternehmen. Wählen Sie, wo Sie stehen, wir zeigen Ihnen den Weg.",
     goals: [
-      { id: "service:seo", t: "Gefunden werden", x: "Bei Google und in KI-Suchen dort stehen, wo Ihre Kundschaft sucht." },
-      { id: "service:webdesign", t: "Mehr Anfragen erhalten", x: "Eine klare Webseite, die Vertrauen schafft und zur Kontaktaufnahme führt." },
-      { id: "service:onlineshop", t: "Online verkaufen", x: "Ein Onlineshop, der zu Ihrem Sortiment passt und sich einfach pflegen lässt." },
+      { id: "service:webdesign", t: "Neue Webseite", x: "Sie haben noch keine oder eine veraltete Webseite: wir gestalten und bauen sie neu, passend zu Ihrem Unternehmen." },
+      { id: "service:website-redesign", t: "Webseite erneuern", x: "Ihre Webseite ist da, bringt aber kaum Anfragen: wir machen sie modern, schnell und klar." },
+      { id: "service:wartung", t: "Webseite betreuen", x: "Hosting, Updates, Sicherheit und Anpassungen: Ihre Webseite bleibt aktuell, ohne dass Sie sich darum kümmern." },
     ],
     seeService: "Zur Leistung",
     formulaTitle: "Eine Webseite, die zu Ihrem Betrieb passt.",
-    formula: ["Ihr Angebot", "Ihre Kundschaft", "Ihre Region", "Ihre Sprachen"],
+    formula: ["Ihr Angebot", "Ihre Kundschaft", "Ihre Ziele"],
     formulaResult: "Ihre Webseite",
-    blocksTitle: "Fünf Schwerpunkte, eine Ansprechperson.",
+    blocksTitle: "Webseiten für Unternehmen. Von der Idee bis zum Betrieb.",
     focusLabel: "Schwerpunkte",
     moreLabel: "Dazu gehört auch",
+    extraTitle: "Ergänzend zu Ihrer Webseite",
+    extraLead: "Wenn es zum Projekt passt, kümmern wir uns auch darum.",
+    extras: ["seo", "local-seo", "onlineshop", "online-marketing", "kassensystem"],
     problemTitle: "Lieber beim Problem starten?",
     notFoundTitle: "Ihr Anliegen ist nicht dabei?",
     notFoundText: "Erzählen Sie uns kurz von Ihrem Betrieb. Wir sagen Ihnen ehrlich, was sich lohnt, kostenlos und unverbindlich.",
     blocks: [
-      { title: "Webdesign & Entwicklung", main: "webdesign", more: ["website-kmu", "firmenwebsite"] },
-      { title: "Relaunch & Betreuung", main: "website-redesign", more: ["wartung"] },
-      { title: "Onlineshop & Kasse", main: "onlineshop", more: ["kassensystem", "kassensystem-gastro", "kassensystem-retail"] },
-      { title: "SEO & Sichtbarkeit", main: "seo", more: ["local-seo", "ki-sichtbarkeit"] },
-      { title: "Marketing & Branding", main: "online-marketing", more: ["branding"] },
+      { title: "Webdesign & Entwicklung", main: "webdesign", more: ["website-kmu", "firmenwebsite", "branding"] },
+      { title: "Relaunch bestehender Webseiten", main: "website-redesign", more: [] },
+      { title: "Hosting, Wartung & Betreuung", main: "wartung", more: [] },
     ],
     focusSectionLabel: "Branchen",
     focusTitle: "Webseiten, die Ihre Branche verstehen.",
     focusLead: "Ein Restaurant braucht Reservationen, ein Handwerksbetrieb gute Offertanfragen, eine Praxis Vertrauen. Für jede Branche gibt es eine eigene Seite mit dem, was dort zählt.",
-    focusCaption: "Deutschschweiz und Romandie: Webseiten in beiden Sprachen",
-    posTitle: "Kassensystem für Gastronomie und Detailhandel",
     aboutLabel: "Über uns",
     aboutTitle: "Persönlich, direkt und ohne Umwege über Projektteams.",
     aboutCaption: "Ferhat Demir · Inhaber und Ihr Ansprechpartner",
     figures: [
       { n: "1", t: "feste Ansprechperson vom Erstgespräch bis nach dem Launch" },
-      { n: "2", t: "Landessprachen: Beratung und Webseiten auf Deutsch und Französisch" },
+      { n: "0", t: "Baukasten-Vorlagen: jede Webseite wird individuell gestaltet und entwickelt" },
     ],
     aboutMore: "Mehr über Webnova",
     contactLabel: "Kontakt",
@@ -152,7 +150,7 @@ const copy = {
     showTitle: "So kann Ihre Webseite aussehen.",
     showLead: "Vier Beispiel-Designs für erfundene Betriebe: jede Branche bekommt ihren eigenen Look, gebaut auf Anfragen, Buchungen und Reservationen.",
     showNote: "Beispiel-Design · fiktive Marke",
-    blocksLead: "Jeder Schwerpunkt mit klarem Ziel. Ferhat Demir begleitet Sie durch alle, ohne Projektteams und Weiterreichen.",
+    blocksLead: "Konzept, Design, Texte, Entwicklung und Betreuung aus einer Hand. Ferhat Demir begleitet Ihr Projekt persönlich, ohne Weiterreichen.",
   },
   fr: {
     coverLine: "Webnova · Agence web Suisse",
@@ -179,41 +177,40 @@ const copy = {
     buildCaption: "Comment naît un site : grille, contenus, première demande",
     servicesIndex: "Services",
     angebotLabel: "Services",
-    angebotTitle: "À quoi votre site doit-il servir ?",
-    angebotLead: "Tout commence par votre objectif, pas par la technique. Choisissez ce qui compte pour votre entreprise, nous vous montrons le bon chemin.",
+    angebotTitle: "Où en est votre site aujourd'hui ?",
+    angebotLead: "Nouveau, refait ou suivi : Webnova crée des sites pour les entreprises. Choisissez où vous en êtes, nous vous montrons le chemin.",
     goals: [
-      { id: "service:seo", t: "Être trouvé", x: "Apparaître sur Google et dans les recherches IA, là où votre clientèle cherche." },
-      { id: "service:webdesign", t: "Recevoir plus de demandes", x: "Un site clair qui inspire confiance et mène à la prise de contact." },
-      { id: "service:onlineshop", t: "Vendre en ligne", x: "Une boutique adaptée à votre assortiment et simple à gérer." },
+      { id: "service:webdesign", t: "Nouveau site", x: "Vous n'avez pas encore de site ou il est dépassé : nous le concevons et le construisons sur mesure pour votre entreprise." },
+      { id: "service:website-redesign", t: "Refaire son site", x: "Votre site existe, mais n'apporte guère de demandes : nous le rendons moderne, rapide et clair." },
+      { id: "service:wartung", t: "Faire suivre son site", x: "Hébergement, mises à jour, sécurité et modifications : votre site reste à jour, sans que vous ayez à vous en occuper." },
     ],
     seeService: "Voir le service",
     formulaTitle: "Un site qui correspond à votre entreprise.",
-    formula: ["Votre offre", "Votre clientèle", "Votre région", "Vos langues"],
+    formula: ["Votre offre", "Votre clientèle", "Vos objectifs"],
     formulaResult: "Votre site",
-    blocksTitle: "Cinq domaines, un seul interlocuteur.",
+    blocksTitle: "Des sites pour entreprises. De l'idée à l'exploitation.",
     focusLabel: "Points forts",
     moreLabel: "Également",
+    extraTitle: "En complément de votre site",
+    extraLead: "Quand cela sert le projet, nous nous en chargeons aussi.",
+    extras: ["seo", "local-seo", "onlineshop", "online-marketing", "kassensystem"],
     problemTitle: "Plutôt partir du problème ?",
     notFoundTitle: "Votre besoin n'y figure pas ?",
     notFoundText: "Parlez-nous brièvement de votre entreprise. Nous vous disons franchement ce qui en vaut la peine, gratuitement et sans engagement.",
     blocks: [
-      { title: "Webdesign & développement", main: "webdesign", more: ["website-kmu", "firmenwebsite"] },
-      { title: "Refonte & maintenance", main: "website-redesign", more: ["wartung"] },
-      { title: "Boutique & caisse", main: "onlineshop", more: ["kassensystem", "kassensystem-gastro", "kassensystem-retail"] },
-      { title: "SEO & visibilité", main: "seo", more: ["local-seo", "ki-sichtbarkeit"] },
-      { title: "Marketing & branding", main: "online-marketing", more: ["branding"] },
+      { title: "Webdesign & développement", main: "webdesign", more: ["website-kmu", "firmenwebsite", "branding"] },
+      { title: "Refonte de sites existants", main: "website-redesign", more: [] },
+      { title: "Hébergement, maintenance & suivi", main: "wartung", more: [] },
     ],
     focusSectionLabel: "Secteurs",
     focusTitle: "Des sites qui comprennent votre secteur.",
     focusLead: "Un restaurant a besoin de réservations, un artisan de bonnes demandes de devis, un cabinet de confiance. Chaque secteur a sa propre page avec ce qui compte.",
-    focusCaption: "Suisse alémanique et romande : des sites dans les deux langues",
-    posTitle: "Caisse pour la restauration et le commerce",
     aboutLabel: "À propos",
     aboutTitle: "Personnel, direct et sans détour par des équipes de projet.",
     aboutCaption: "Ferhat Demir · propriétaire et votre interlocuteur",
     figures: [
       { n: "1", t: "interlocuteur fixe du premier entretien jusqu'après la mise en ligne" },
-      { n: "2", t: "langues nationales : conseil et sites en français et en allemand" },
+      { n: "0", t: "modèle de constructeur : chaque site est conçu et développé sur mesure" },
     ],
     aboutMore: "En savoir plus sur Webnova",
     contactLabel: "Contact",
@@ -226,7 +223,7 @@ const copy = {
     showTitle: "Voici à quoi votre site peut ressembler.",
     showLead: "Quatre exemples de design pour des entreprises inventées : chaque secteur a son propre style, pensé pour les demandes, les réservations et les rendez-vous.",
     showNote: "Exemple de design · marque fictive",
-    blocksLead: "Chaque domaine avec un objectif clair. Ferhat Demir vous accompagne dans tous, sans équipes de projet ni intermédiaires.",
+    blocksLead: "Concept, design, textes, développement et suivi par un seul interlocuteur. Ferhat Demir suit votre projet personnellement, sans intermédiaires.",
   },
 };
 
@@ -246,9 +243,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      <HomeHero locale={lang} variant="mark" />
-
-      <TrustFacts locale={lang} />
+      <HomeHero locale={lang} />
 
       {/* PROJECTS: horizontal row, only while references are switched on (showReferences). */}
       {projects && <ReferencesSection locale={lang} id={id.projects} />}
@@ -293,9 +288,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* SCHWERPUNKTE: five service blocks on the dark stage, each with its scene. */}
-      <section className="stage-night section-y text-white">
+      <section className="section-y bg-bg-2">
         <div className="container-x">
-          <SectionHead dark eyebrow={c.focusLabel} title={c.blocksTitle} lead={c.blocksLead} />
+          <SectionHead eyebrow={c.focusLabel} title={c.blocksTitle} lead={c.blocksLead} />
           <ol className="space-y-5">
             {c.blocks.map((b, i) => {
               const main = svc(b.main);
@@ -303,20 +298,20 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               const mc = main.content[lang];
               const more = b.more.map(svc).filter((x) => x !== undefined).filter((x) => hasRoute(`service:${x.key}`));
               return (
-                <li key={b.main} className="card-glass reveal grid items-center gap-8 p-4 sm:p-6 lg:grid-cols-12 lg:gap-10 lg:p-8">
-                  <ServiceArt service={main.key} locale={lang} dark className={`aspect-[5/4] lg:col-span-5 ${i % 2 ? "lg:order-last" : ""}`} />
+                <li key={b.main} className="card-soft reveal grid items-center gap-8 p-4 sm:p-6 lg:grid-cols-12 lg:gap-10 lg:p-8">
+                  <ServiceArt service={main.key} locale={lang} className={`aspect-[5/4] lg:col-span-5 ${i % 2 ? "lg:order-last" : ""}`} />
                   <div className="lg:col-span-7">
-                    <span className="font-display text-[14px] font-semibold tabular-nums text-accent-light">{two(i + 1)}</span>
+                    <span className="font-display text-[14px] font-semibold tabular-nums text-bright">{two(i + 1)}</span>
                     <h3 className="mt-3 font-display text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-[1.2]">
-                      <Link href={href(lang, `service:${main.key}`)} className="transition-colors hover:text-accent-light">
+                      <Link href={href(lang, `service:${main.key}`)} className="transition-colors hover:text-accent">
                         {b.title}
                       </Link>
                     </h3>
-                    <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-white/75">{mc.lead}</p>
+                    <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-ink-soft">{mc.lead}</p>
                     <ul className="mt-6 grid gap-2.5 text-[15px] sm:grid-cols-2">
                       {mc.features.slice(0, 4).map((f) => (
                         <li key={f.title} className="flex gap-2.5">
-                          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/10 text-accent-light">
+                          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-bright-soft text-bright">
                             <Icon name="check" className="h-3 w-3" strokeWidth={3} />
                           </span>
                           {f.title}
@@ -324,14 +319,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                       ))}
                     </ul>
                     <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-                      <ButtonLink href={href(lang, `service:${main.key}`)} variant="accent">
+                      <ButtonLink href={href(lang, `service:${main.key}`)} variant="primary">
                         {mc.navLabel}
                       </ButtonLink>
                       {more.length > 0 && (
                         <p className="flex flex-wrap gap-2 text-[14px]">
                           <span className="sr-only">{c.moreLabel}</span>
                           {more.map((m) => (
-                            <Link key={m.key} href={href(lang, `service:${m.key}`)} className="rounded-full px-3.5 py-1.5 text-white/80 ring-1 ring-inset ring-white/20 transition-colors hover:bg-white hover:text-accent">
+                            <Link key={m.key} href={href(lang, `service:${m.key}`)} className="rounded-full px-3.5 py-1.5 bg-white text-ink-soft ring-1 ring-inset ring-line transition-colors hover:text-accent hover:ring-accent/30">
                               {m.content[lang].navLabel}
                             </Link>
                           ))}
@@ -344,6 +339,23 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             })}
           </ol>
 
+          {/* Everything beyond websites stays a compact side note. */}
+          <div className="mt-10 rounded-3xl px-1 sm:px-2">
+            <p className="font-display text-[19px] font-semibold">{c.extraTitle}</p>
+            <p className="mt-1.5 text-[15px] text-ink-soft">{c.extraLead}</p>
+            <p className="mt-5 flex flex-wrap gap-2 text-[14px]">
+              {c.extras
+                .map(svc)
+                .filter((x) => x !== undefined)
+                .filter((x) => hasRoute(`service:${x.key}`))
+                .map((m) => (
+                  <Link key={m.key} href={href(lang, `service:${m.key}`)} className="rounded-full px-3.5 py-1.5 bg-white text-ink-soft ring-1 ring-inset ring-line transition-colors hover:text-accent hover:ring-accent/30">
+                    {m.content[lang].navLabel}
+                  </Link>
+                ))}
+            </p>
+          </div>
+
           <div className="mt-14 grid gap-5 md:grid-cols-12">
             {problemList.length > 0 && (
               <div className="md:col-span-7">
@@ -351,8 +363,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                   {problemList.map((p) => (
                     <li key={p.key}>
-                      <Link href={href(lang, `problem:${p.key}`)} className="group flex items-center gap-3 rounded-2xl bg-white/[0.06] px-4 py-3.5 text-[15.5px] ring-1 ring-inset ring-white/10 transition-colors hover:bg-white hover:text-accent">
-                        <Icon name={p.icon} className="h-5 w-5 shrink-0 text-accent-light group-hover:text-accent" />
+                      <Link href={href(lang, `problem:${p.key}`)} className="group flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5 text-[15.5px] ring-1 ring-inset ring-line transition-colors hover:text-accent hover:ring-accent/30">
+                        <Icon name={p.icon} className="h-5 w-5 shrink-0 text-bright group-hover:text-accent" />
                         <span className="flex-1">{p.content[lang].navLabel}</span>
                         <Icon name="arrow" className="h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5" />
                       </Link>
@@ -361,13 +373,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 </ul>
               </div>
             )}
-            <div className="flex flex-col justify-between gap-8 self-start rounded-3xl bg-white p-8 text-ink md:col-span-5">
+            <div className="flex flex-col justify-between gap-8 self-start rounded-3xl stage-accent p-8 text-white md:col-span-5">
               <div>
                 <p className="font-display text-[24px] font-semibold leading-[1.25]">{c.notFoundTitle}</p>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{c.notFoundText}</p>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-white/75">{c.notFoundText}</p>
               </div>
               <div>
-                <ButtonLink href={href(lang, "request")}>{d.nav.cta}</ButtonLink>
+                <ButtonLink href={href(lang, "request")} variant="light">{d.nav.cta}</ButtonLink>
               </div>
             </div>
           </div>
@@ -401,20 +413,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <p className="lead mt-6 max-w-2xl">{c.focusLead}</p>
             <div className="mt-10">
               <IndustryIndex locale={lang} cols={2} />
-            </div>
-            <div className="mt-8 grid gap-4 rounded-3xl bg-white p-6 ring-1 ring-line sm:grid-cols-[1fr_auto] sm:items-center">
-              <div>
-                <p className="font-display text-[19px] font-semibold">{c.posTitle}</p>
-                <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">{d.home.posLead}</p>
-              </div>
-              <p className="flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
-                {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, n) => (
-                  <Link key={k} href={href(lang, `service:${k}`)} className="link-arrow">
-                    {n === 0 ? d.home.posGastro : d.home.posRetail}
-                    <Icon name="arrow" className="h-4 w-4" />
-                  </Link>
-                ))}
-              </p>
             </div>
           </div>
           <figure className="lg:col-span-5">

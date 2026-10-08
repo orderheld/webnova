@@ -1,107 +1,111 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
-import { HeroCtas } from "./blocks";
+import { href } from "@/lib/routes";
+import { site } from "@/lib/site";
 import { Icon } from "./icons";
-import { BrowserFrame, EnquiryToast, PhoneFrame, RankCard } from "./visuals";
+import { BrowserFrame, EnquiryToast, PhoneFrame } from "./visuals";
 
 const t = {
   de: {
-    eyebrow: "Webnova · Webagentur für Schweizer KMU",
-    h1a: "Webdesign Agentur",
-    h1b: "Schweiz",
-    tag: "Webseiten, die gefunden werden und Anfragen bringen.",
-    points: ["Schweizweit für KMU", "Deutsch & Français", "Eine feste Ansprechperson"],
+    eyebrow: "Webdesign Agentur Schweiz",
+    h1a: "Ihr Partner für professionelle",
+    h1b: "Webseiten",
+    points: ["Individuelles Webdesign", "Für Handy und Google gebaut", "Persönlich betreut"],
+    call: "Anrufen",
     sample: "Beispiel-Designs, fiktive Marken",
   },
   fr: {
-    eyebrow: "Webnova · Agence web pour les PME suisses",
-    h1a: "Agence web",
-    h1b: "en Suisse",
-    tag: "Des sites trouvés sur Google, qui génèrent des demandes.",
-    points: ["Pour les PME de toute la Suisse", "Français & Deutsch", "Un seul interlocuteur"],
+    eyebrow: "Agence web en Suisse",
+    h1a: "Votre partenaire pour des",
+    h1b: "sites internet professionnels",
+    points: ["Webdesign sur mesure", "Pensé pour mobile et Google", "Suivi personnel"],
+    call: "Appeler",
     sample: "Exemples de design, marques fictives",
   },
 };
 
 /**
- * Home hero. The H1 is the LCP text and renders visible immediately; the visual is decorative
- * (fictional sample designs in device frames plus the rendered 3D Webnova mark).
- * variant "mark": dark Schieferblau stage with the 3D mark. variant "showcase": light, layered device collage.
+ * Home hero: light and centred. Big headline, one CTA carrying the owner's face, then a wide
+ * Schieferblau stage with fictional sample designs and the 3D Webnova mark (decorative).
+ * The H1 is the LCP text and renders visible immediately.
  */
-export function HomeHero({ locale, variant = "mark" }: { locale: Locale; variant?: "mark" | "showcase" }) {
+export function HomeHero({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const c = t[locale];
-  const dark = variant === "mark";
   return (
-    <section aria-labelledby="home-h1" className={`relative isolate overflow-hidden ${dark ? "stage-night text-white" : "stage-light text-ink"}`}>
-      <div className="container-x grid items-center gap-12 pb-16 pt-10 md:pb-24 md:pt-14 lg:grid-cols-12 lg:gap-8 lg:pb-24 lg:pt-14">
-        <div className="lg:col-span-6">
-          <p className={`${dark ? "eyebrow-light" : "eyebrow"} mb-6`}>{c.eyebrow}</p>
-          <h1 id="home-h1" className="display text-[clamp(2.6rem,6vw,4.9rem)]">
-            {c.h1a} <span className={dark ? "text-gradient-light" : "text-gradient"}>{c.h1b}</span>
-          </h1>
-          <p className={`mt-7 max-w-xl font-display text-[clamp(1.3rem,2.1vw,1.7rem)] font-medium leading-[1.3] ${dark ? "text-white/90" : "text-ink"}`}>{c.tag}</p>
-          <p className={`mt-5 max-w-xl text-[16.5px] leading-relaxed md:text-[17.5px] ${dark ? "text-white/70" : "text-ink-soft"}`}>{d.hero.lead}</p>
-          <HeroCtas locale={locale} dark={dark} className="mt-9" />
-          <ul className={`mt-9 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px] ${dark ? "text-white/75" : "text-ink-soft"}`}>
-            {c.points.map((p) => (
-              <li key={p} className="flex items-center gap-2">
-                <span className={`grid h-5 w-5 place-items-center rounded-full ${dark ? "bg-white/10 text-accent-light" : "bg-bright-soft text-bright"}`}>
-                  <Icon name="check" className="h-3 w-3" strokeWidth={3} />
-                </span>
-                {p}
-              </li>
-            ))}
-          </ul>
+    <section aria-labelledby="home-h1" className="stage-light relative isolate overflow-hidden text-ink">
+      <div className="container-x pb-16 pt-12 text-center md:pb-24 md:pt-20">
+        <p className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[13.5px] font-medium text-accent shadow-xs ring-1 ring-line">
+          <span className="h-1.5 w-1.5 rounded-full bg-bright" />
+          {c.eyebrow}
+        </p>
+        <h1 id="home-h1" className="display mx-auto mt-7 max-w-[15ch] text-[clamp(2.5rem,6.4vw,5.4rem)]">
+          {c.h1a} <span className="text-gradient">{c.h1b}</span>
+        </h1>
+        <p className="mx-auto mt-7 max-w-2xl text-[17px] leading-relaxed text-ink-soft md:text-[19px]">{d.hero.lead}</p>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href={href(locale, "request")}
+            className="group inline-flex items-center gap-3 rounded-full bg-accent py-1.5 pl-1.5 pr-6 text-[16px] font-semibold text-white shadow-[0_16px_32px_-14px_rgb(36_64_90/0.7)] transition-colors hover:bg-night"
+          >
+            <Image src="/photos/ferhat-avatar.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full ring-2 ring-white/30" />
+            {d.nav.cta}
+            <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+          <a
+            href={site.phoneHref}
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-[15px] text-[16px] font-semibold text-ink shadow-xs ring-1 ring-line transition-colors hover:text-accent"
+          >
+            <Icon name="phone" className="h-4 w-4" />
+            {c.call}
+          </a>
         </div>
 
-        <div className="relative lg:col-span-6" aria-hidden={false}>
-          {dark ? <MarkStage locale={locale} /> : <ShowcaseStage locale={locale} />}
-          <p className={`mt-4 text-right text-[12px] ${dark ? "text-white/45" : "text-muted"}`}>{c.sample}</p>
-        </div>
+        <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14.5px] text-ink-soft">
+          {c.points.map((p) => (
+            <li key={p} className="flex items-center gap-2">
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-bright-soft text-bright">
+                <Icon name="check" className="h-3 w-3" strokeWidth={3} />
+              </span>
+              {p}
+            </li>
+          ))}
+        </ul>
+
+        <HeroStage locale={locale} />
+        <p className="mt-4 text-[12px] text-muted">{c.sample}</p>
       </div>
     </section>
   );
 }
 
-function MarkStage({ locale }: { locale: Locale }) {
+function HeroStage({ locale }: { locale: Locale }) {
   return (
-    <div className="relative mx-auto aspect-[1/0.92] w-full max-w-[640px]">
+    <div className="relative mx-auto mt-14 max-w-[1120px] md:mt-20">
+      {/* Schieferblau panel that the devices stand on. */}
+      <div aria-hidden="true" className="stage-accent absolute inset-x-0 bottom-0 top-[22%] rounded-[2rem] md:rounded-[2.5rem]" />
+      <div className="relative px-[4%] pb-[5%] md:px-[11%]">
+        <BrowserFrame sample="treuhand" locale={locale} priority sizes="(min-width: 1024px) 860px, 92vw" />
+      </div>
       <Image
         src="/visuals/webnova-mark-3d.webp"
         alt=""
         width={1200}
         height={1200}
         priority
-        sizes="(min-width: 1024px) 560px, 90vw"
-        className="mask-soft absolute -right-[4%] -top-[16%] w-[92%] max-w-none select-none"
+        sizes="(min-width: 1024px) 360px, 30vw"
+        className="float-slow pointer-events-none absolute -right-[9%] -top-[24%] hidden w-[36%] max-w-none select-none drop-shadow-[0_30px_40px_rgb(27_45_62/0.25)] md:block"
       />
-      <div className="float-slow absolute bottom-[3%] left-0 w-[60%]">
-        <BrowserFrame sample="treuhand" locale={locale} sizes="(min-width: 1024px) 400px, 60vw" />
+      <div className="float absolute bottom-[-3%] left-[2%] hidden w-[15%] md:block [animation-delay:-2s]">
+        <PhoneFrame sample="coiffeur" locale={locale} sizes="170px" />
       </div>
-      <div className="float absolute bottom-0 right-[6%] w-[22%] [animation-delay:-2s]">
-        <PhoneFrame sample="coiffeur" locale={locale} sizes="160px" />
+      <div className="float-slow absolute bottom-[-5%] right-[3%] w-[24%] md:w-[15%]">
+        <PhoneFrame sample="restaurant" locale={locale} sizes="170px" />
       </div>
-      <EnquiryToast locale={locale} className="float absolute left-[2%] top-[24%] hidden sm:flex [animation-delay:-4s]" />
-    </div>
-  );
-}
-
-function ShowcaseStage({ locale }: { locale: Locale }) {
-  return (
-    <div className="relative mx-auto aspect-[1/0.86] w-full max-w-[660px]">
-      <div className="stage-accent absolute inset-[8%_2%_6%_12%] rounded-[2.5rem]" />
-      <div className="absolute right-0 top-0 w-[70%] rotate-[2deg] opacity-95">
-        <BrowserFrame sample="schreinerei" locale={locale} sizes="(min-width: 1024px) 460px, 70vw" />
-      </div>
-      <div className="float-slow absolute bottom-[14%] left-[2%] w-[74%]">
-        <BrowserFrame sample="restaurant" locale={locale} priority sizes="(min-width: 1024px) 500px, 76vw" />
-      </div>
-      <div className="float absolute bottom-0 right-[3%] w-[23%] [animation-delay:-3s]">
-        <PhoneFrame sample="coiffeur" locale={locale} sizes="160px" />
-      </div>
-      <RankCard locale={locale} className="float absolute -left-[4%] bottom-[0%] hidden w-[250px] sm:block [animation-delay:-5s]" />
+      <EnquiryToast locale={locale} className="float absolute left-[1%] top-[16%] hidden text-left lg:flex [animation-delay:-4s]" />
     </div>
   );
 }

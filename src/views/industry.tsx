@@ -6,7 +6,7 @@ import type { SampleKey } from "@/components/visuals";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
-import { ContactSection, FaqSection, FitSection, LocationsSection, NextSteps, ProcessSection, TrustFacts } from "@/components/sections";
+import { ContactSection, FaqSection, FitSection, LocationsSection, NextSteps, ProcessSection } from "@/components/sections";
 import { serviceFaqTemplates, topUpFaq } from "@/content/structure";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
@@ -157,7 +157,6 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         <HeroButtons locale={locale} />
       </PageHero>
 
-      <TrustFacts locale={locale} />
 
       <section className="container-x py-20 md:py-28">
         <div className="mb-12 grid gap-10 lg:grid-cols-12 lg:items-end">

@@ -12,7 +12,6 @@ import {
   ReferencesSection,
   SectionHead,
   ServicesGrid,
-  TrustFacts,
 } from "@/components/sections";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
@@ -136,7 +135,6 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         <HeroCtas locale={locale} note />
       </PageHero>
 
-      <TrustFacts locale={locale} />
 
       <section className="container-x section-y">
         <SectionHead
