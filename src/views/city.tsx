@@ -65,7 +65,7 @@ export function RegionsPage({ locale }: { locale: Locale }) {
           {cities
             .filter((c) => c.priority === "A")
             .map((c) => (
-              <div key={c.key} className="rounded-2xl border border-line bg-surface p-6">
+              <div key={c.key} className="rounded-md border border-line bg-surface p-6">
                 <h3 className="mb-4 font-display text-[20px] font-semibold tracking-tight">{c.content[locale].name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {cityServiceLinks(locale, c.key).map((l) => (
@@ -84,9 +84,9 @@ export function RegionsPage({ locale }: { locale: Locale }) {
 }
 
 const chip =
-  "rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink";
+  "rounded-[4px] border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink";
 const chipDark =
-  "rounded-full border border-line bg-bg px-4 py-2 text-[14px] text-ink transition-colors hover:border-ink/30";
+  "rounded-[4px] border border-line bg-bg px-4 py-2 text-[14px] text-ink transition-colors hover:border-ink/30";
 
 /** Every service page that exists for a city: webdesign, SEO and the service × city pages. */
 export function cityServiceLinks(locale: Locale, cityKey: string) {
@@ -191,7 +191,7 @@ export function CityPage({
       </PageHero>
 
       {service && (
-        <section className="container-x relative z-10 -mt-10">
+        <section className="container-x relative z-10 pt-16">
           <FeatureGrid items={service.content[locale].features.slice(0, 3)} />
         </section>
       )}
@@ -202,7 +202,7 @@ export function CityPage({
         </div>
         <aside className="space-y-4 lg:col-span-4">
           <div className="sticky top-28 space-y-4">
-            <div className="rounded-2xl border border-line bg-surface p-8 ">
+            <div className="rounded-md border border-line bg-surface p-8 ">
               <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
               <p className="mt-3 text-[18px] leading-snug">
                 Webnova
@@ -225,7 +225,7 @@ export function CityPage({
           <p className="eyebrow mb-8">{d.pages.testimonialsEyebrow}</p>
           <div className="grid gap-4 md:grid-cols-3">
             {quotes.map((q) => (
-              <figure key={q.name} className="rounded-2xl border border-line bg-surface p-8">
+              <figure key={q.name} className="rounded-md border border-line bg-surface p-8">
                 <blockquote className="text-[17px] leading-relaxed">{locale === "fr" ? `«\u00a0${q.quote}\u00a0»` : `«${q.quote}»`}</blockquote>
                 <figcaption className="mt-6 text-[14px] text-muted">
                   <span className="font-semibold text-ink">{q.name}</span>
