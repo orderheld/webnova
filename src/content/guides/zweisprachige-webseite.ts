@@ -5,6 +5,7 @@ export const zweisprachigeWebseite: Guide = {
   date: "2026-10-08",
   readingMinutes: 8,
   related: ["webdesign", "seo", "website-redesign"],
+  relatedGuides: ["lokales-seo-kmu", "website-relaunch-checkliste", "geo-ki-suche"],
   cities: ["biel", "grenchen", "solothurn", "bern"],
   content: {
     de: {
@@ -16,6 +17,16 @@ export const zweisprachigeWebseite: Guide = {
       },
       h1: "Zweisprachige Webseite auf Deutsch und Französisch: so gelingt sie",
       lead: "In der Schweiz endet die Kundschaft selten an der Sprachgrenze. Eine Webseite auf Deutsch und Französisch öffnet Ihnen einen zweiten Markt, aber nur, wenn beide Versionen technisch sauber umgesetzt und inhaltlich wirklich für ihr Publikum geschrieben sind.",
+      keyTakeaways: [
+        "Eine zweite Sprache lohnt sich, wenn Sie Kundschaft in beiden Sprachregionen haben und Anfragen auch in dieser Sprache beantworten können.",
+        "Jede Sprachversion braucht eigene URLs, zum Beispiel /de/ und /fr/, mit übersetzten Adressen.",
+        "hreflang-Angaben und ein Canonical pro Sprachversion sind technische Pflicht.",
+        "Maschinelle Übersetzungen sind ein Startpunkt. Schweizer Französisch und eigene Suchbegriffe pro Sprache machen den Unterschied.",
+        "Ortsnamen wie Biel/Bienne oder Solothurn/Soleure gehören in der jeweiligen Sprache auf die Seite.",
+      ],
+      sources: [
+        { label: "Google Search Central: Lokalisierte Versionen Ihrer Seiten", url: "https://developers.google.com/search/docs/specialty/international/localized-versions" },
+      ],
       sections: [
         {
           h2: "Wann sich eine zweite Sprache lohnt",
@@ -100,6 +111,16 @@ export const zweisprachigeWebseite: Guide = {
       },
       h1: "Site internet bilingue français-allemand : les clés de la réussite",
       lead: "En Suisse, la clientèle s'arrête rarement à la frontière linguistique. Un site en français et en allemand vous ouvre un second marché, à condition que les deux versions soient techniquement propres et vraiment rédigées pour leur public.",
+      keyTakeaways: [
+        "Une deuxième langue vaut la peine si vous avez des clients dans les deux régions linguistiques et pouvez répondre aux demandes dans cette langue.",
+        "Chaque version linguistique a besoin de ses propres URL, par exemple /de/ et /fr/, avec des adresses traduites.",
+        "Les balises hreflang et un canonical par version linguistique sont une obligation technique.",
+        "La traduction automatique est un point de départ. Le français de Suisse et des mots-clés propres à chaque langue font la différence.",
+        "Les noms de lieux comme Bienne/Biel ou Soleure/Solothurn doivent figurer dans la langue de la page.",
+      ],
+      sources: [
+        { label: "Google Search Central : versions localisées de vos pages", url: "https://developers.google.com/search/docs/specialty/international/localized-versions" },
+      ],
       sections: [
         {
           h2: "Quand une deuxième langue vaut la peine",

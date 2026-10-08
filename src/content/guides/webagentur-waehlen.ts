@@ -5,6 +5,7 @@ export const webagenturWaehlen: Guide = {
   date: "2026-10-08",
   readingMinutes: 9,
   related: ["webdesign", "website-redesign", "wartung"],
+  relatedGuides: ["webagentur-unterschied", "webseite-kosten", "website-relaunch-checkliste"],
   cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
@@ -16,6 +17,13 @@ export const webagenturWaehlen: Guide = {
       },
       h1: "Webagentur wählen: 12 Fragen, die Sie vor der Vergabe klären sollten",
       lead: "Eine neue Webseite begleitet Ihr Unternehmen viele Jahre. Wer die Agentur nur nach dem ersten Eindruck oder der tiefsten Offerte auswählt, zahlt später oft drauf. Mit diesen Fragen vergleichen Sie Anbieter fair und erkennen früh, ob die Zusammenarbeit passt.",
+      keyTakeaways: [
+        "Die Domain sollte immer auf Ihr Unternehmen registriert sein, und die Rechte an Code, Design und Inhalten gehören schriftlich geregelt.",
+        "Vergleichen Sie Offerten Punkt für Punkt: Seiten, Sprachen, Texte, SEO-Grundlagen, Schulung und laufende Kosten.",
+        "SEO und ein Weiterleitungskonzept bei einem Relaunch gehören in den Grundauftrag, nicht in ein Zusatzpaket.",
+        "Ranking-Garantien und nicht überprüfbare Referenzen sind Warnsignale.",
+        "Eine feste Ansprechperson und eine klar geregelte Betreuung nach dem Launch sind für KMU besonders wertvoll.",
+      ],
       sections: [
         {
           h2: "Warum die Wahl der Agentur so viel ausmacht",
@@ -99,6 +107,13 @@ export const webagenturWaehlen: Guide = {
       },
       h1: "Choisir une agence web : 12 questions à poser avant de signer",
       lead: "Un nouveau site accompagne votre entreprise pendant des années. Choisir une agence uniquement sur une première impression ou sur le devis le plus bas coûte souvent cher par la suite. Ces questions vous aident à comparer les prestataires équitablement.",
+      keyTakeaways: [
+        "Le domaine doit toujours être enregistré au nom de votre entreprise, et les droits sur le code, le design et les contenus doivent être réglés par écrit.",
+        "Comparez les devis point par point : pages, langues, textes, bases SEO, formation et coûts courants.",
+        "Le SEO et un plan de redirections lors d'une refonte font partie de la mission de base, pas d'une option.",
+        "Les garanties de classement et les références invérifiables sont des signaux d'alerte.",
+        "Un interlocuteur fixe et un suivi clairement réglé après la mise en ligne sont particulièrement précieux pour une PME.",
+      ],
       sections: [
         {
           h2: "Pourquoi le choix de l'agence compte autant",

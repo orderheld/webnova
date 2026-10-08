@@ -6,6 +6,7 @@ export const lokalesSeoKmu: Guide = {
   updated: "2026-10-08",
   readingMinutes: 9,
   related: ["seo", "online-marketing", "webdesign"],
+  relatedGuides: ["google-unternehmensprofil", "geo-ki-suche", "zweisprachige-webseite"],
   cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
@@ -17,6 +18,16 @@ export const lokalesSeoKmu: Guide = {
       },
       h1: "Lokales SEO für KMU: So werden Sie in Ihrer Region gefunden",
       lead: "Wer «Schreiner Grenchen» oder «Coiffeur Biel» sucht, will meist sofort einen Anbieter in der Nähe finden. Mit lokalem SEO sorgen Sie dafür, dass Ihr Unternehmen genau dann in Google Maps und in den Suchergebnissen erscheint.",
+      keyTakeaways: [
+        "Lokales SEO verbindet Google-Unternehmensprofil, einheitliche Firmendaten, Bewertungen und eine Website, die Ihre Region klar nennt.",
+        "Name, Adresse und Telefonnummer müssen auf Website, Google und Verzeichnissen wie local.ch und search.ch identisch sein.",
+        "Echte Bewertungen aktiv sammeln und alle beantworten. Gekaufte Bewertungen schaden.",
+        "Standortseiten lohnen sich nur mit echtem lokalem Inhalt, nicht als Kopie mit anderem Ortsnamen.",
+        "In zweisprachigen Regionen braucht es vollwertige Sprachversionen statt automatischer Übersetzung.",
+      ],
+      sources: [
+        { label: "Google Business Profile Hilfe: Lokales Ranking verbessern", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "Warum lokales SEO für Schweizer KMU entscheidend ist",
@@ -123,6 +134,16 @@ export const lokalesSeoKmu: Guide = {
       },
       h1: "Référencement local pour PME : être trouvé dans sa région",
       lead: "Qui cherche « menuisier Granges » ou « coiffeur Bienne » veut le plus souvent trouver tout de suite un prestataire proche. Le référencement local fait en sorte que votre entreprise apparaisse à ce moment-là dans Google Maps et dans les résultats de recherche.",
+      keyTakeaways: [
+        "Le référencement local combine fiche Google, données cohérentes, avis et un site qui nomme clairement votre région.",
+        "Nom, adresse et téléphone doivent être identiques sur le site, Google et les annuaires comme local.ch et search.ch.",
+        "Récoltez activement de vrais avis et répondez à tous. Les avis achetés nuisent.",
+        "Les pages locales ne valent la peine qu'avec un vrai contenu local, pas en copie avec un autre nom de ville.",
+        "Dans les régions bilingues, il faut de vraies versions linguistiques plutôt qu'une traduction automatique.",
+      ],
+      sources: [
+        { label: "Aide Google Business Profile : améliorer son classement local", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "Pourquoi le référencement local est décisif pour les PME suisses",

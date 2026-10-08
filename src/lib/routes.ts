@@ -5,6 +5,7 @@ import { industries } from "@/content/industries";
 import { problems } from "@/content/problems";
 import { legal } from "@/content/legal";
 import { localServices } from "@/content/local";
+import { standalonePages } from "@/content/pages";
 import { references } from "@/content/references";
 import { services } from "@/content/services";
 import { locales, type Locale, type Localized } from "@/content/types";
@@ -30,6 +31,7 @@ export type RouteKind =
   | "request"
   | "thanks"
   | "legal"
+  | "page"
   | "lp";
 
 export interface RouteEntry {
@@ -99,6 +101,10 @@ function buildRoutes(): RouteEntry[] {
       key: g.key,
       paths: { de: `ratgeber/${g.content.de.slug}`, fr: `conseils/${g.content.fr.slug}` },
     });
+  }
+  // Standalone pages (free website check, Impressum generator): ids "page:<key>".
+  for (const p of standalonePages) {
+    r.push({ id: `page:${p.key}`, kind: "page", key: p.key, paths: { de: p.content.de.slug, fr: p.content.fr.slug } });
   }
   for (const [key, l] of Object.entries(legal)) {
     r.push({ id: `legal:${key}`, kind: "legal", key, paths: { de: l.de.slug, fr: l.fr.slug } });

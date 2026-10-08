@@ -5,6 +5,7 @@ export const googleUnternehmensprofil: Guide = {
   date: "2026-10-08",
   readingMinutes: 9,
   related: ["seo", "online-marketing"],
+  relatedGuides: ["lokales-seo-kmu", "geo-ki-suche", "kmu-webseite-checkliste"],
   cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
@@ -16,6 +17,16 @@ export const googleUnternehmensprofil: Guide = {
       },
       h1: "Google-Unternehmensprofil optimieren: Schritt für Schritt zu mehr Anfragen",
       lead: "Für viele KMU ist das Google-Unternehmensprofil der erste Kontakt mit neuen Kundinnen und Kunden, noch vor der eigenen Webseite. Ein vollständiges, gepflegtes Profil entscheidet, ob Sie in Google Maps erscheinen und ob Suchende anrufen.",
+      keyTakeaways: [
+        "Google ordnet lokale Ergebnisse nach Relevanz, Entfernung und Bekanntheit. Relevanz und Bekanntheit können Sie beeinflussen.",
+        "Verwenden Sie Ihren echten Firmennamen ohne zusätzliche Suchbegriffe und wählen Sie die Hauptkategorie sehr bewusst.",
+        "Leistungen, Beschreibung, aktuelle Öffnungszeiten und echte Fotos machen das Profil vollständig und vertrauenswürdig.",
+        "Bitten Sie zufriedene Kundschaft aktiv um Bewertungen und beantworten Sie jede Bewertung sachlich.",
+        "Profil, Website und Verzeichnisse müssen dieselben Firmendaten zeigen.",
+      ],
+      sources: [
+        { label: "Google Business Profile Hilfe: Lokales Ranking verbessern", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "Was das Google-Unternehmensprofil leistet",
@@ -106,6 +117,16 @@ export const googleUnternehmensprofil: Guide = {
       },
       h1: "Optimiser sa fiche Google Business Profile : le guide pas à pas",
       lead: "Pour beaucoup de PME, la fiche d'établissement Google est le premier contact avec de nouveaux clients, avant même le site internet. Une fiche complète et soignée décide si vous apparaissez dans Google Maps et si l'internaute vous appelle.",
+      keyTakeaways: [
+        "Google classe les résultats locaux selon la pertinence, la distance et la notoriété. Vous pouvez influencer la pertinence et la notoriété.",
+        "Utilisez votre vrai nom d'entreprise sans mots-clés ajoutés et choisissez la catégorie principale avec soin.",
+        "Prestations, description, horaires à jour et vraies photos rendent la fiche complète et digne de confiance.",
+        "Demandez activement des avis à vos clients satisfaits et répondez à chaque avis de façon factuelle.",
+        "La fiche, le site et les annuaires doivent afficher les mêmes données d'entreprise.",
+      ],
+      sources: [
+        { label: "Aide Google Business Profile : améliorer son classement local", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "À quoi sert la fiche d'établissement Google",

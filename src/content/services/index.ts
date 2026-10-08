@@ -9,12 +9,20 @@ import { wartung } from "./wartung";
 import { kassensystem } from "./kassensystem";
 import { kassensystemGastro } from "./kassensystem-gastro";
 import { kassensystemRetail } from "./kassensystem-retail";
+import { websiteKmu } from "./website-kmu";
+import { firmenwebsite } from "./firmenwebsite";
+import { localSeo } from "./local-seo";
+import { kiSichtbarkeit } from "./ki-sichtbarkeit";
 
 export const services: Service[] = [
   webdesign,
   websiteRedesign,
+  websiteKmu,
+  firmenwebsite,
   onlineshop,
   seo,
+  localSeo,
+  kiSichtbarkeit,
   onlineMarketing,
   branding,
   wartung,
