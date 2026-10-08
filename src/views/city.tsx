@@ -1,7 +1,21 @@
 import Link from "next/link";
 import { testimonials } from "@/content/testimonials";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import {
+  ContactSection,
+  FaqSection,
+  FitSection,
+  LocationsSection,
+  NextSteps,
+  ProblemsSection,
+  ProcessSection,
+  ReferencesSection,
+  ServicesGrid,
+  TrustFacts,
+} from "@/components/sections";
+import { problems } from "@/content/problems";
+import { cityFaqTemplates, structure, topUpFaq } from "@/content/structure";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { skylines } from "@/components/skylines";
@@ -10,7 +24,7 @@ import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hasRoute, href, localId } from "@/lib/routes";
-import { JsonLd, breadcrumbLd, faqLd, orgId } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const cityLabel = (locale: Locale, name: string) => `${locale === "de" ? "Webdesign" : "Site internet"} ${name}`;
@@ -106,8 +120,6 @@ function CardSkyline({ cityKey }: { cityKey: string }) {
 
 const chip =
   "rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-accent/40 hover:bg-bright-soft hover:text-accent";
-const chipDark =
-  "rounded-full border border-line bg-bg-2 px-4 py-2 text-[14px] text-ink transition-colors hover:border-accent/40 hover:bg-bright-soft hover:text-accent";
 
 /** Every service page that exists for a city: webdesign, SEO and the service × city pages. */
 export function cityServiceLinks(locale: Locale, cityKey: string) {
@@ -120,6 +132,25 @@ export function cityServiceLinks(locale: Locale, cityKey: string) {
     links.push({ id: localId(ls.service, cityKey), label: `${s.content[locale].navLabel} ${name}` });
   }
   return links.map((l) => ({ ...l, href: href(locale, l.id) }));
+}
+
+/** What a city page is about, for the local cost question ("Was kostet ein Onlineshop in Bern?"). */
+const cityTopic: Record<string, Record<Locale, string>> = {
+  webdesign: { de: "eine Webseite", fr: "un site internet" },
+  seo: { de: "SEO", fr: "le référencement" },
+  onlineshop: { de: "ein Onlineshop", fr: "une boutique en ligne" },
+  "website-redesign": { de: "ein Website-Redesign", fr: "une refonte de site" },
+  kassensystem: { de: "ein Kassensystem", fr: "un système de caisse" },
+  "online-marketing": { de: "Online-Marketing", fr: "le marketing digital" },
+  branding: { de: "ein Corporate Design", fr: "une identité visuelle" },
+  wartung: { de: "die Website-Wartung", fr: "la maintenance d'un site" },
+};
+
+/** "SEO Bern: mehr Sichtbarkeit" -> keyword H1 "SEO Bern" plus benefit subline "Mehr Sichtbarkeit". */
+function splitTitle(h1: string): { title: string; subline?: string } {
+  const m = h1.match(/^(.+?)\s?:\s(.+)$/);
+  if (!m) return { title: h1 };
+  return { title: m[1], subline: m[2].charAt(0).toUpperCase() + m[2].slice(1) };
 }
 
 export function CityPage({
@@ -145,23 +176,28 @@ export function CityPage({
   const id = variant === "seo" ? `citySeo:${city.key}` : variant === "local" ? localId(serviceKey!, city.key) : `city:${city.key}`;
   const url = href(locale, id);
   const cityName = city.content[locale].name;
+  const pos = service?.group === "pos";
+  // Keyword H1 first ("Webdesign Agentur Bern"), the page's own headline becomes the benefit line.
+  const heading =
+    variant === "webdesign"
+      ? { title: locale === "de" ? `Webdesign Agentur ${cityName}` : `Agence web à ${cityName}`, subline: splitTitle(c.h1).subline ?? c.h1 }
+      : splitTitle(c.h1);
   const crumbs = service
     ? [
         { name: d.common.home, url: href(locale, "home") },
         { name: service.content[locale].navLabel, url: href(locale, `service:${service.key}`) },
-        { name: c.h1, url },
+        { name: heading.title, url },
       ]
     : [
         { name: d.common.home, url: href(locale, "home") },
         { name: d.nav.regions, url: href(locale, "regions") },
-        { name: c.h1, url },
+        { name: heading.title, url },
       ];
   const nearby = city.nearby.map((k) => cities.find((x) => x.key === k)).filter((x) => x !== undefined);
   // Same service in nearby cities where that page exists, otherwise their webdesign page.
   const nearbyLinks = nearby.map((n) => {
     const local = service && hasRoute(localId(service.key, n.key));
     return {
-      key: n.key,
       href: href(locale, local ? localId(service!.key, n.key) : `city:${n.key}`),
       label: local ? `${service!.content[locale].navLabel} ${n.content[locale].name}` : cityLabel(locale, n.content[locale].name),
     };
@@ -174,7 +210,6 @@ export function CityPage({
         ? [service.key, ...service.related, "webdesign"].filter((k, i, a) => a.indexOf(k) === i).slice(0, 4)
         : ["webdesign", "website-redesign", "onlineshop", "seo"];
   const quotes = testimonials.filter((t) => t.city === city.key && t.locale === locale);
-  const shown = serviceKeys.map((k) => services.find((s) => s.key === k)!).filter(Boolean);
   // Guides for this city first, then guides about the services shown here.
   const cityGuides = [
     ...guides.filter((g) => g.cities?.includes(city.key)),
@@ -182,6 +217,9 @@ export function CityPage({
   ]
     .filter((g, i, a) => a.indexOf(g) === i)
     .slice(0, 3);
+  const topicKey = variant === "local" ? serviceKey! : variant;
+  const faq = topUpFaq(c.faq, cityFaqTemplates(locale, cityName, cityTopic[topicKey]?.[locale] ?? cityTopic.webdesign[locale], pos), 10);
+  const problemKeys = problems.filter((p) => p.services.some((k) => serviceKeys.includes(k))).map((p) => p.key);
 
   return (
     <>
@@ -204,11 +242,11 @@ export function CityPage({
           url: `${site.url}${url}`,
         }}
       />
-      <JsonLd data={faqLd(c.faq)} />
 
       <PageHero
         eyebrow={service ? `${service.content[locale].navLabel} · ${cityName} ${city.canton}` : `${cityName} · ${city.canton}`}
-        title={c.h1}
+        title={heading.title}
+        subline={heading.subline}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
         backdrop={<HeroSkyline cityKey={city.key} />}
@@ -221,10 +259,12 @@ export function CityPage({
         </div>
       </PageHero>
 
+      <TrustFacts locale={locale} />
+
       {service && (
-        <section className="container-x relative z-10 -mt-10">
-          <h2 className="sr-only">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
-          <FeatureGrid items={service.content[locale].features.slice(0, 3)} reveal={false} />
+        <section className="container-x pt-20 md:pt-28">
+          <h2 className="eyebrow mb-6">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
+          <FeatureGrid items={service.content[locale].features.slice(0, 3)} />
         </section>
       )}
 
@@ -260,19 +300,40 @@ export function CityPage({
         </section>
       )}
 
-      <section className="container-x py-16">
-        <h2 className="h-section mb-10">{d.common.related}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {shown.map((s) => (
-            <CardLink key={s.key} href={href(locale, `service:${s.key}`)} icon={s.icon} title={s.content[locale].navLabel} />
-          ))}
+      {pos ? (
+        <div className="mt-12 bg-bg-2">
+          <ProblemsSection locale={locale} points={service?.content[locale].problems ?? structure[locale].posProblems} />
         </div>
-      </section>
+      ) : (
+        <div className="mt-12 bg-bg-2">
+          <ProblemsSection
+            locale={locale}
+            keys={problemKeys.length >= 2 ? problemKeys : undefined}
+            lead={locale === "de" ? `Diese Anliegen hören wir von KMU in ${cityName} und der ganzen Schweiz am häufigsten.` : `Ce que nous entendons le plus souvent de la part des PME à ${cityName} et dans toute la Suisse.`}
+          />
+        </div>
+      )}
 
-      <FaqList locale={locale} faq={c.faq} />
+      <ServicesGrid
+        locale={locale}
+        current={service ? href(locale, `service:${service.key}`) : undefined}
+        title={locale === "de" ? `Leistungen für KMU in ${cityName}` : `Nos services pour les PME à ${cityName}`}
+      />
+
+      {!pos && <ReferencesSection locale={locale} />}
+
+      {!pos && <ProcessSection locale={locale} />}
+
+      <FitSection locale={locale} pos={pos} />
+
+      <NextSteps locale={locale} />
+
+      <ContactSection locale={locale} />
+
+      <FaqSection locale={locale} faq={faq} />
 
       {cityGuides.length > 0 && (
-        <section className="container-x pb-16">
+        <section className="container-x pb-20">
           <h2 className="h-section mb-10">{locale === "de" ? "Ratgeber für KMU" : "Conseils pour PME"}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {cityGuides.map((g) => (
@@ -282,27 +343,18 @@ export function CityPage({
         </section>
       )}
 
-      <section className="container-x pb-10">
-        <p className="eyebrow mb-4">{locale === "de" ? `Mehr für ${cityName}` : `Plus pour ${cityName}`}</p>
-        <div className="flex flex-wrap gap-2">
-          {sameCity.map((l) => (
-            <Link key={l.id} href={l.href} className={chipDark}>
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section className="container-x pb-20">
-        <p className="eyebrow mb-4">{d.common.nearby}</p>
-        <div className="flex flex-wrap gap-2">
-          {nearbyLinks.map((n) => (
-            <Link key={n.key} href={n.href} className={chip}>
-              {n.label}
-            </Link>
-          ))}
-        </div>
-      </section>
-      <CtaBand locale={locale} />
+      <LocationsSection
+        locale={locale}
+        current={city.key}
+        title={locale === "de" ? `${cityName} und die ganze Schweiz` : `${cityName} et toute la Suisse`}
+        groups={[
+          { label: locale === "de" ? `Mehr für ${cityName}` : `Plus pour ${cityName}`, links: sameCity },
+          { label: d.common.nearby, links: nearbyLinks },
+        ]}
+      />
+      <div className="pt-20 md:pt-28">
+        <CtaBand locale={locale} />
+      </div>
     </>
   );
 }

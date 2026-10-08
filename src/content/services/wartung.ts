@@ -15,7 +15,7 @@ export const wartung: Service = {
           "Website Wartung, Hosting und Betreuung aus einer Hand: Updates, Backups, Sicherheit und Support. Jetzt kostenlose Erstberatung anfragen.",
       },
       eyebrow: "Wartung & Hosting",
-      h1: "Website Wartung, die Ihnen den Rücken freihält",
+      h1: "Website Wartung und Hosting",
       lead:
         "Updates, Backups, Sicherheit und schnelle Hilfe bei Fragen: Wir kümmern uns um Ihre Webseite, damit Sie sich auf Ihr Geschäft konzentrieren können.",
       features: [
@@ -110,7 +110,7 @@ export const wartung: Service = {
           "Maintenance de site internet, hébergement et support: mises à jour, sauvegardes et sécurité. Demandez votre premier conseil gratuit.",
       },
       eyebrow: "Maintenance & hébergement",
-      h1: "Maintenance de site internet en toute sérénité",
+      h1: "Maintenance et hébergement de site internet",
       lead:
         "Mises à jour, sauvegardes, sécurité et aide rapide: nous prenons soin de votre site pour que vous puissiez vous concentrer sur votre métier.",
       features: [

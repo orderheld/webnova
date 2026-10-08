@@ -15,7 +15,7 @@ export const onlineshop: Service = {
           "Onlineshop erstellen lassen: schnell, mobil, mit TWINT und Kartenzahlung. Für Schweizer KMU. Jetzt kostenlose Erstberatung und Offerte anfragen.",
       },
       eyebrow: "E-Commerce",
-      h1: "Onlineshop erstellen lassen, der verkauft",
+      h1: "Onlineshop erstellen lassen",
       lead:
         "Wir bauen Webshops, die einfach zu bedienen sind, schnell laden und auf dem Smartphone überzeugen. Von der Produktseite bis zur Bezahlung.",
       features: [
@@ -105,7 +105,7 @@ export const onlineshop: Service = {
           "Création de boutique en ligne rapide et mobile, avec TWINT et paiement par carte. Pour les PME suisses. Demandez un premier conseil gratuit.",
       },
       eyebrow: "E-commerce",
-      h1: "Création de boutique en ligne qui vend",
+      h1: "Création de boutique en ligne",
       lead:
         "Nous créons des boutiques en ligne simples à utiliser, rapides et efficaces sur smartphone. De la fiche produit jusqu'au paiement.",
       features: [

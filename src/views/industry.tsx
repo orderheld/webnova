@@ -4,6 +4,8 @@ import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/comp
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
+import { ContactSection, FaqSection, FitSection, LocationsSection, NextSteps, ProcessSection, TrustFacts } from "@/components/sections";
+import { serviceFaqTemplates, topUpFaq } from "@/content/structure";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
 import { industryUi } from "@/content/industries/ui";
@@ -146,7 +148,6 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
           url: `${site.url}${url}`,
         }}
       />
-      <JsonLd data={faqLd(c.faq)} />
 
       <PageHero
         eyebrow={c.eyebrow}
@@ -157,6 +158,8 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
       >
         <HeroButtons locale={locale} />
       </PageHero>
+
+      <TrustFacts locale={locale} />
 
       <section className="container-x py-20 md:py-28">
         <div className="reveal mb-12 max-w-3xl">
@@ -187,27 +190,29 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
 
       <ServiceCards locale={locale} keys={ind.services} />
 
-      <section className="bg-bg-2 py-20 md:py-28">
-        <div className="container-x">
-          <div className="reveal max-w-3xl">
-            <p className="eyebrow mb-4">{d.home.processEyebrow}</p>
-            <h2 className="h-section">{d.home.processTitle}</h2>
-          </div>
-          <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {d.home.process.map((p, n) => (
-              <li key={n} className="reveal rounded-2xl bg-surface p-7">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-[14px] font-semibold text-white">{n + 1}</span>
-                <h3 className="mt-8 text-[18px] font-semibold tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <ProcessSection locale={locale} />
+
+      <FitSection locale={locale} />
+
+      <NextSteps locale={locale} />
+
+      <ContactSection locale={locale} />
 
       <GuideCards locale={locale} keys={ind.guides} />
 
-      <FaqList locale={locale} faq={c.faq} />
+      <FaqSection
+        locale={locale}
+        faq={topUpFaq(
+          c.faq,
+          serviceFaqTemplates(
+            locale,
+            c.navLabel,
+            false,
+            locale === "de" ? `Was kostet eine Webseite für ${c.navLabel}?` : `Combien coûte un site pour le secteur ${c.navLabel} ?`,
+          ),
+          9,
+        )}
+      />
 
       <Chips
         label={u.problems}
@@ -217,6 +222,8 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         label={u.otherIndustries}
         links={others.map((x) => ({ href: href(locale, `industry:${x.key}`), label: x.content[locale].navLabel }))}
       />
+
+      <LocationsSection locale={locale} />
 
       <FormSection locale={locale} title={c.ctaTitle} text={c.ctaText} preset={ind.preset} industry={c.formLabel} source={`branche-${ind.key}`} />
     </>

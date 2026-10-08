@@ -15,7 +15,7 @@ export const branding: Service = {
           "Logo erstellen lassen, Corporate Design und Grafikdesign für einen starken, einheitlichen Auftritt. Jetzt kostenlose Erstberatung anfragen.",
       },
       eyebrow: "Branding & Grafikdesign",
-      h1: "Logo und Corporate Design mit Wiedererkennung",
+      h1: "Logo erstellen lassen und Corporate Design",
       lead:
         "Ein starkes Logo und ein durchdachtes Corporate Design machen Ihr Unternehmen auf einen Blick erkennbar. Online, auf Papier und am Fahrzeug.",
       features: [

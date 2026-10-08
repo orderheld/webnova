@@ -1,6 +1,19 @@
-import Link from "next/link";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, CtaCard, FeatureGrid, PageHero, Prose } from "@/components/blocks";
+import {
+  BenefitsSection,
+  ContactSection,
+  FaqSection,
+  FitSection,
+  LocationsSection,
+  NextSteps,
+  ProblemsSection,
+  ProcessSection,
+  ReferencesSection,
+  SectionHead,
+  ServicesGrid,
+  TrustFacts,
+} from "@/components/sections";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
@@ -9,18 +22,17 @@ import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
 import type { Locale } from "@/content/types";
+import { serviceFaqTemplates, serviceSublines, structure, topUpFaq } from "@/content/structure";
 import { getDict } from "@/i18n/dict";
+import { serviceGroups } from "@/lib/nav";
 import { href, localId } from "@/lib/routes";
-import { JsonLd, breadcrumbLd, faqLd, orgId } from "@/lib/seo";
+import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export function ServicesPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
-  const groups = [
-    { key: "web", label: locale === "de" ? "Web & Shop" : "Web & boutique" },
-    { key: "marketing", label: locale === "de" ? "Sichtbarkeit & Marke" : "Visibilité & marque" },
-    { key: "pos", label: d.nav.pos },
-  ] as const;
+  // Same grouping as the mega menu; services added later appear automatically.
+  const groups = serviceGroups(locale);
   return (
     <>
       <JsonLd
@@ -37,36 +49,30 @@ export function ServicesPage({ locale }: { locale: Locale }) {
       />
       {groups.map((g, gi) => (
         <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
-          <h2 className="eyebrow mb-6">
-            {g.label}
-          </h2>
+          <h2 className="eyebrow mb-6">{g.label}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services
-              .filter((s) => s.group === g.key)
-              .map((s) => (
-                <CardLink
-                  key={s.key}
-                  href={href(locale, `service:${s.key}`)}
-                  icon={s.icon}
-                  title={s.content[locale].navLabel}
-                  text={s.content[locale].lead}
-                />
-              ))}
+            {g.items.map((it) => (
+              <CardLink key={it.href} href={it.href} icon={it.icon} title={it.label} text={it.text} />
+            ))}
           </div>
         </section>
       ))}
-      <CtaBand locale={locale} />
+      <FitSection locale={locale} />
+      <NextSteps locale={locale} />
+      <div className="pt-20 md:pt-28">
+        <CtaBand locale={locale} />
+      </div>
     </>
   );
 }
 
 export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey: string }) {
   const d = getDict(locale);
+  const st = structure[locale];
   const s = services.find((x) => x.key === serviceKey)!;
   const c = s.content[locale];
   const url = href(locale, `service:${s.key}`);
-  const related = s.related.map((k) => services.find((x) => x.key === k)).filter((x) => x !== undefined);
-  const isWeb = s.group !== "pos";
+  const pos = s.group === "pos";
   // Local landing pages for this service: its own city pages, else SEO or webdesign per city.
   const local = localServices.filter((l) => l.service === s.key);
   const regionLinks = local.length
@@ -78,7 +84,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       ? cities
           .filter((x) => x.seo)
           .map((x) => ({ href: href(locale, `citySeo:${x.key}`), label: `${c.navLabel} ${x.content[locale].name}` }))
-      : isWeb
+      : !pos
         ? cities.filter((x) => x.priority === "A").map((x) => ({
             href: href(locale, `city:${x.key}`),
             label: `${locale === "de" ? "Webdesign" : "Site internet"} ${x.content[locale].name}`,
@@ -87,15 +93,15 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
   const industryLinks = industries
     .filter((i) => i.services.some((k) => k === s.key || (s.key === "kassensystem" && k.startsWith("kassensystem-"))))
     .map((i) => ({ href: href(locale, `industry:${i.key}`), label: i.content[locale].navLabel }));
-  const problemLinks = problems
-    .filter((p) => p.services.includes(s.key))
-    .map((p) => ({ href: href(locale, `problem:${p.key}`), label: p.content[locale].navLabel }));
+  const problemKeys = problems.filter((p) => p.services.includes(s.key)).map((p) => p.key);
   const crumbs = [
     { name: d.common.home, url: href(locale, "home") },
     { name: d.pages.servicesTitle, url: href(locale, "services") },
     { name: c.navLabel, url },
   ];
   const serviceGuides = guides.filter((g) => g.related.includes(s.key)).slice(0, 3);
+  const faq = topUpFaq(c.faq, serviceFaqTemplates(locale, c.navLabel, pos), 10);
+  const benefits = c.benefits ?? (pos ? st.posBenefits : d.home.why);
   return (
     <>
       <JsonLd data={breadcrumbLd(crumbs)} />
@@ -115,11 +121,11 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           url: `${site.url}${url}`,
         }}
       />
-      <JsonLd data={faqLd(c.faq)} />
 
       <PageHero
         eyebrow={c.eyebrow}
         title={c.h1}
+        subline={serviceSublines[s.key]?.[locale]}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
       >
@@ -131,12 +137,27 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         </div>
       </PageHero>
 
-      <section className="container-x relative z-10 -mt-10 pb-20 md:pb-28">
-        <h2 className="sr-only">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
-        <FeatureGrid items={c.features} reveal={false} />
+      <TrustFacts locale={locale} />
+
+      <section className="container-x section-y">
+        <SectionHead
+          eyebrow={locale === "de" ? "Leistungsumfang" : "Prestations"}
+          title={locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}
+          lead={c.ctaText}
+        />
+        <FeatureGrid items={c.features} />
       </section>
 
-      <section className="container-x grid gap-12 pb-12 lg:grid-cols-12">
+      <div className="bg-bg-2">
+        <ProblemsSection
+          locale={locale}
+          points={c.problems ?? (pos ? st.posProblems : undefined)}
+          keys={problemKeys.length >= 2 ? problemKeys : undefined}
+          title={c.problemsTitle}
+        />
+      </div>
+
+      <section className="container-x grid gap-12 pb-12 pt-20 md:pt-28 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <Prose sections={c.sections} locale={locale} />
         </div>
@@ -147,49 +168,30 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         </aside>
       </section>
 
-      {regionLinks.length > 0 && (
-        <section className="container-x pt-8">
-          <p className="eyebrow mb-4">{d.nav.regions}</p>
-          <div className="flex flex-wrap gap-2">
-            {regionLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-accent/40 hover:bg-bright-soft hover:text-accent"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+      <BenefitsSection locale={locale} items={benefits} title={c.benefitsTitle} />
 
-      {[
-        { label: industryUi[locale].forIndustry, links: industryLinks },
-        { label: industryUi[locale].problems, links: problemLinks },
-      ]
-        .filter((g) => g.links.length > 0)
-        .map((g) => (
-          <section key={g.label} className="container-x pt-8">
-            <p className="eyebrow mb-4">{g.label}</p>
-            <div className="flex flex-wrap gap-2">
-              {g.links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
+      {!pos && <ReferencesSection locale={locale} />}
 
-      <FaqList locale={locale} faq={c.faq} />
+      {(!pos || c.process) && <ProcessSection locale={locale} steps={c.process} />}
+
+      <FitSection locale={locale} fit={c.fit} pos={pos} />
+
+      <NextSteps locale={locale} />
+
+      <ContactSection locale={locale} />
+
+      <LocationsSection
+        locale={locale}
+        groups={[
+          { label: locale === "de" ? `${c.navLabel} in Ihrer Region` : `${c.navLabel} dans votre région`, links: regionLinks },
+          { label: industryUi[locale].forIndustry, links: industryLinks },
+        ]}
+      />
+
+      <FaqSection locale={locale} faq={faq} />
 
       {serviceGuides.length > 0 && (
-        <section className="container-x pb-16">
+        <section className="container-x pb-20">
           <h2 className="h-section mb-10">{locale === "de" ? "Passende Ratgeber" : "Conseils utiles"}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {serviceGuides.map((g) => (
@@ -199,22 +201,9 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         </section>
       )}
 
-      {related.length > 0 && (
-        <section className="container-x pb-20">
-          <h2 className="h-section mb-10">{d.common.related}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {related.map((r) => (
-              <CardLink
-                key={r.key}
-                href={href(locale, `service:${r.key}`)}
-                icon={r.icon}
-                title={r.content[locale].navLabel}
-                text={r.content[locale].lead}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+      <div className="border-t border-line">
+        <ServicesGrid locale={locale} current={url} title={d.common.related} />
+      </div>
       <CtaBand locale={locale} />
     </>
   );
