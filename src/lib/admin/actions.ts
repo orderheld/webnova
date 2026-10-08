@@ -110,11 +110,13 @@ export async function archiveCustomerAction(id: number, archived: boolean) {
 /* ───────────────────────── Quotes & invoices ───────────────────────── */
 
 const itemSchema = z.object({
+  type: z.enum(["item", "title", "text"]).optional(),
   title: z.string().trim().min(1),
   description: z.string().optional().default(""),
   quantity: z.coerce.number().finite(),
   unit: z.string().default("Pauschal"),
   unitPrice: z.coerce.number().finite(),
+  discount: z.coerce.number().min(0).max(100).optional(),
   productId: z.number().int().positive().nullable().optional(),
   recurring: z.enum(billingIntervals).nullable().optional(),
   firstYearIncluded: z.boolean().optional(),
@@ -138,16 +140,20 @@ const docSchema = z.object({
 export type DocPayload = z.input<typeof docSchema>;
 
 const cleanItems = (items: z.infer<typeof itemSchema>[], allowRecurring: boolean): LineItem[] =>
-  items.map((it) => ({
-    title: it.title,
-    description: it.description || "",
-    quantity: it.quantity,
-    unit: it.unit,
-    unitPrice: it.unitPrice,
-    ...(it.productId ? { productId: it.productId } : {}),
-    ...(allowRecurring && it.recurring ? { recurring: it.recurring, firstYearIncluded: !!it.firstYearIncluded } : {}),
-    ...(it.subscriptionId ? { subscriptionId: it.subscriptionId } : {}),
-  }));
+  items.map((it) => {
+    if (it.type === "title" || it.type === "text") return { type: it.type, title: it.title, description: "", quantity: 0, unit: "", unitPrice: 0 };
+    return {
+      title: it.title,
+      description: it.description || "",
+      quantity: it.quantity,
+      unit: it.unit,
+      unitPrice: it.unitPrice,
+      ...(it.discount ? { discount: it.discount } : {}),
+      ...(it.productId ? { productId: it.productId } : {}),
+      ...(allowRecurring && it.recurring ? { recurring: it.recurring, firstYearIncluded: !!it.firstYearIncluded } : {}),
+      ...(it.subscriptionId ? { subscriptionId: it.subscriptionId } : {}),
+    };
+  });
 
 export async function saveQuoteAction(id: number | null, payload: DocPayload & { leadId?: number | null }): Promise<{ error?: string; id?: number }> {
   await requireAdmin();

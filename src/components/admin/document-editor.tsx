@@ -5,7 +5,7 @@ import { useState, useTransition } from "react";
 import type { BillingInterval, LineItem } from "@/db/schema";
 import { saveInvoiceAction, saveQuoteAction } from "@/lib/admin/actions";
 import { intervalLabels, units } from "@/lib/admin/labels";
-import { chf, computeTotals, lineTotal } from "@/lib/admin/money";
+import { chf, computeTotals, isPriced, lineTotal } from "@/lib/admin/money";
 import { Icon } from "./icons";
 import { Field, btn } from "./ui";
 
@@ -36,6 +36,7 @@ export interface CatalogItem {
 }
 
 const emptyItem = (): LineItem => ({ title: "", description: "", quantity: 1, unit: "Pauschal", unitPrice: 0 });
+const layoutRow = (type: "title" | "text"): LineItem => ({ type, title: "", description: "", quantity: 0, unit: "", unitPrice: 0 });
 
 export function DocumentEditor({
   kind,
@@ -82,11 +83,11 @@ export function DocumentEditor({
       ...(kind === "quote" && p.interval ? { recurring: p.interval, firstYearIncluded: p.interval === "jahr" } : {}),
     };
     // replace a single empty starter line
-    const items = v.items.filter((it) => it.title.trim() || it.unitPrice);
+    const items = v.items.filter((it) => !isPriced(it) || it.title.trim() || it.unitPrice);
     set("items", [...items, item]);
   };
   const t = computeTotals(v.items, v.discountPercent, v.vatRate);
-  const recurring = kind === "quote" ? v.items.filter((it) => it.recurring && it.title.trim()) : [];
+  const recurring = kind === "quote" ? v.items.filter((it) => it.recurring && isPriced(it) && it.title.trim()) : [];
   const customerProjects = projects.filter((p) => !v.customerId || p.customerId === v.customerId);
 
   function save() {
@@ -97,7 +98,9 @@ export function DocumentEditor({
         customerId: v.customerId ?? 0,
         projectId: v.projectId || null,
         notes: v.notes ?? "",
-        items: v.items.filter((it) => it.title.trim()).map((it) => ({ ...it, productId: it.productId ?? null, recurring: it.recurring ?? null, subscriptionId: it.subscriptionId ?? null })),
+        items: v.items
+          .filter((it) => it.title.trim())
+          .map((it) => ({ ...it, type: it.type ?? "item", discount: it.discount || 0, productId: it.productId ?? null, recurring: it.recurring ?? null, subscriptionId: it.subscriptionId ?? null })),
       };
       const res = kind === "quote" ? await saveQuoteAction(id, { ...payload, leadId: v.leadId ?? null }) : await saveInvoiceAction(id, payload);
       if (res.error) return setMsg({ type: "err", text: res.error });
@@ -107,7 +110,7 @@ export function DocumentEditor({
     });
   }
 
-  const grid = "md:grid-cols-[1fr_84px_104px_110px_100px_76px]";
+  const grid = "md:grid-cols-[1fr_76px_100px_104px_70px_100px_76px]";
 
   return (
     <div className="space-y-5">
@@ -152,11 +155,23 @@ export function DocumentEditor({
           <span className="text-right">Menge</span>
           <span>Einheit</span>
           <span className="text-right">Preis CHF</span>
+          <span className="text-right">Rabatt %</span>
           <span className="text-right">Total</span>
           <span />
         </div>
         <div className="divide-y divide-line">
-          {v.items.map((it, i) => (
+          {v.items.map((it, i) =>
+            !isPriced(it) ? (
+              <div key={i} className="flex items-start gap-2 bg-bg/50 px-4 py-3 sm:px-5">
+                <span className="mt-2.5 w-12 shrink-0 text-[11px] font-medium uppercase tracking-wider text-muted">{it.type === "title" ? "Titel" : "Text"}</span>
+                {it.type === "title" ? (
+                  <input className="input flex-1 font-semibold" placeholder="Zwischentitel" value={it.title} disabled={locked} onChange={(e) => setItem(i, { title: e.target.value })} />
+                ) : (
+                  <textarea className="input flex-1 text-[14px]" rows={2} placeholder="Freier Text" value={it.title} disabled={locked} onChange={(e) => setItem(i, { title: e.target.value })} />
+                )}
+                {!locked && <RowTools onUp={() => move(i, -1)} onDown={() => move(i, 1)} onRemove={() => set("items", v.items.filter((_, j) => j !== i))} />}
+              </div>
+            ) : (
             <div key={i} className={`grid gap-2 px-4 py-3 sm:px-5 md:items-start md:gap-3 ${grid} ${it.recurring ? "bg-accent-soft/40" : ""}`}>
               <div className="space-y-2">
                 <input className="input font-medium" placeholder="Leistung" value={it.title} disabled={locked} onChange={(e) => setItem(i, { title: e.target.value })} />
@@ -197,7 +212,7 @@ export function DocumentEditor({
                 )}
                 {it.subscriptionId && <p className="text-[12px] text-accent">Aus Abo #{it.subscriptionId}</p>}
               </div>
-              <div className="grid grid-cols-3 gap-2 md:contents">
+              <div className="grid grid-cols-4 gap-2 md:contents">
                 <input
                   type="number"
                   step="0.25"
@@ -221,37 +236,39 @@ export function DocumentEditor({
                   onChange={(e) => setItem(i, { unitPrice: Number(e.target.value) })}
                   aria-label="Preis"
                 />
+                <input
+                  type="number"
+                  step="1"
+                  min={0}
+                  max={100}
+                  className="input text-right tabular-nums"
+                  value={it.discount || ""}
+                  placeholder="0"
+                  disabled={locked}
+                  onChange={(e) => setItem(i, { discount: Number(e.target.value) || 0 })}
+                  aria-label="Rabatt in Prozent"
+                />
               </div>
               <p className="flex items-center justify-between py-1 text-[15px] font-medium tabular-nums md:block md:py-2.5 md:text-right">
                 <span className="text-[12px] font-normal text-muted md:hidden">Total</span>
                 {chf(lineTotal(it))}
                 {it.recurring && <span className="block text-[11px] font-normal text-muted">{intervalLabels[it.recurring]}</span>}
               </p>
-              {!locked && (
-                <div className="flex items-center justify-end gap-0.5 md:py-1.5">
-                  <button type="button" onClick={() => move(i, -1)} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach oben">
-                    <Icon name="up" className="h-3.5 w-3.5" />
-                  </button>
-                  <button type="button" onClick={() => move(i, 1)} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach unten">
-                    <Icon name="down" className="h-3.5 w-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => set("items", v.items.filter((_, j) => j !== i))}
-                    className="grid h-8 w-8 place-items-center rounded-full text-muted hover:bg-danger/10 hover:text-danger"
-                    aria-label="Position entfernen"
-                  >
-                    <Icon name="trash" className="h-4 w-4" />
-                  </button>
-                </div>
-              )}
+              {!locked && <RowTools onUp={() => move(i, -1)} onDown={() => move(i, 1)} onRemove={() => set("items", v.items.filter((_, j) => j !== i))} />}
             </div>
-          ))}
+            ),
+          )}
         </div>
         {!locked && (
           <div className="flex flex-wrap items-center gap-3 border-t border-line px-4 py-3 sm:px-5">
             <button type="button" onClick={() => set("items", [...v.items, emptyItem()])} className="inline-flex items-center gap-2 text-[14px] font-medium text-accent">
               <Icon name="plus" className="h-4 w-4" /> Freie Position
+            </button>
+            <button type="button" onClick={() => set("items", [...v.items, layoutRow("title")])} className="inline-flex items-center gap-2 text-[14px] font-medium text-accent">
+              <Icon name="plus" className="h-4 w-4" /> Titel
+            </button>
+            <button type="button" onClick={() => set("items", [...v.items, layoutRow("text")])} className="inline-flex items-center gap-2 text-[14px] font-medium text-accent">
+              <Icon name="plus" className="h-4 w-4" /> Text
             </button>
             {products.length > 0 && (
               <select
@@ -334,6 +351,22 @@ function Row({ k, v }: { k: string; v: string }) {
     <div className="flex justify-between gap-4">
       <dt className="text-white/60">{k}</dt>
       <dd className="tabular-nums">{v}</dd>
+    </div>
+  );
+}
+
+function RowTools({ onUp, onDown, onRemove }: { onUp: () => void; onDown: () => void; onRemove: () => void }) {
+  return (
+    <div className="flex items-center justify-end gap-0.5 md:py-1.5">
+      <button type="button" onClick={onUp} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach oben">
+        <Icon name="up" className="h-3.5 w-3.5" />
+      </button>
+      <button type="button" onClick={onDown} className="grid h-8 w-6 place-items-center text-muted hover:text-ink" aria-label="Nach unten">
+        <Icon name="down" className="h-3.5 w-3.5" />
+      </button>
+      <button type="button" onClick={onRemove} className="grid h-8 w-8 place-items-center rounded-full text-muted hover:bg-danger/10 hover:text-danger" aria-label="Position entfernen">
+        <Icon name="trash" className="h-4 w-4" />
+      </button>
     </div>
   );
 }

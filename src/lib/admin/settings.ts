@@ -14,6 +14,9 @@ export interface CompanySettings {
   phone: string;
   website: string;
   iban: string;
+  bankName: string;
+  /** company UID, shown in the document footer */
+  uid: string;
   vatNumber: string;
   vatEnabled: boolean;
   vatRate: number;
@@ -54,6 +57,8 @@ export const defaultSettings: CompanySettings = {
   phone: site.phone,
   website: "webnova.ch",
   iban: "",
+  bankName: "",
+  uid: "CHE-439.891.660",
   vatNumber: "",
   vatEnabled: false,
   vatRate: 8.1,

@@ -76,12 +76,19 @@ export const customers = pgTable("customers", {
 export const billingIntervals = ["monat", "quartal", "halbjahr", "jahr"] as const;
 export type BillingInterval = (typeof billingIntervals)[number];
 
+/** "item" (default) is a priced position; "title" and "text" are layout rows without amounts. */
+export type LineItemType = "item" | "title" | "text";
+
 export interface LineItem {
+  /** missing on rows saved before layout rows existed: treated as "item" */
+  type?: LineItemType;
   title: string;
   description?: string;
   quantity: number;
   unit: string; // "Std.", "Pauschal", "Stk.", "Monat"
   unitPrice: number; // CHF, excl. VAT
+  /** line discount in percent (Bexio "Rabatt %") */
+  discount?: number;
   /** catalogue product the line came from */
   productId?: number | null;
   /** Quotes only: recurring fee, listed separately and not part of the one-time total */

@@ -3,7 +3,7 @@ import { and, asc, eq, inArray, isNull, lte, or, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { LineItem, Quote, Subscription } from "@/db/schema";
 import { intervalMonths, intervalUnit } from "./labels";
-import { addDaysIso, addMonthsIso, computeTotals, fmtDate, round2, todayIso } from "./money";
+import { addDaysIso, addMonthsIso, computeTotals, fmtDate, isPriced, lineTotal, recurringItems, round2, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { getSettings } from "./settings";
 
@@ -143,7 +143,7 @@ export async function billSubscriptions(opts: { ids?: number[]; horizon?: string
 
 /** Creates subscriptions for the recurring lines of a quote (once per quote). */
 export async function subscriptionsFromQuote(q: Quote, startDate: string, projectId?: number | null) {
-  const recurring = q.items.filter((it) => it.recurring);
+  const recurring = recurringItems(q.items);
   if (recurring.length === 0) return 0;
   const [{ n }] = await db()
     .select({ n: sql<number>`count(*)::int` })
@@ -168,7 +168,7 @@ export async function subscriptionsFromQuote(q: Quote, startDate: string, projec
         category: guessCategory(prod?.category ?? it.title),
         title: it.title,
         description: it.description || null,
-        amount: round2((Number(it.quantity) || 1) * (Number(it.unitPrice) || 0)),
+        amount: lineTotal({ ...it, quantity: Number(it.quantity) || 1 }),
         interval,
         startDate,
         firstYearIncluded: included,
@@ -208,7 +208,7 @@ export async function insertTemplateTasks(projectId: number, tasks: { title: str
 /** Invoice lines for a quote: one-time lines plus the first period of recurring lines that are not included. */
 export function invoiceItemsFromQuote(items: LineItem[]): LineItem[] {
   return items.flatMap((it) => {
-    if (!it.recurring) return [it];
+    if (!it.recurring || !isPriced(it)) return [it];
     if (it.firstYearIncluded) return [];
     return [{ ...it, recurring: null, firstYearIncluded: undefined, description: [it.description, "Erste Periode"].filter(Boolean).join("\n") }];
   });

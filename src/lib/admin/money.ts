@@ -4,11 +4,15 @@ export const round2 = (n: number) => Math.round((n + Number.EPSILON) * 100) / 10
 /** Swiss cash rounding to 5 Rappen */
 export const round05 = (n: number) => Math.round(n * 20) / 20;
 
-export const lineTotal = (it: Pick<LineItem, "quantity" | "unitPrice">) => (Number(it.quantity) || 0) * (Number(it.unitPrice) || 0);
+/** Priced position (as opposed to a title or text row). */
+export const isPriced = (it: Pick<LineItem, "type">) => !it.type || it.type === "item";
 
-/** Lines that count towards the one-time total (recurring quote lines are listed separately). */
-export const oneTimeItems = (items: LineItem[]) => items.filter((it) => !it.recurring);
-export const recurringItems = (items: LineItem[]) => items.filter((it) => it.recurring);
+export const lineTotal = (it: Pick<LineItem, "quantity" | "unitPrice" | "type" | "discount">) =>
+  isPriced(it) ? round2((Number(it.quantity) || 0) * (Number(it.unitPrice) || 0) * (1 - (Number(it.discount) || 0) / 100)) : 0;
+
+/** Lines that belong to the one-time part (recurring quote lines are listed separately). Includes title and text rows. */
+export const oneTimeItems = (items: LineItem[]) => items.filter((it) => !it.recurring || !isPriced(it));
+export const recurringItems = (items: LineItem[]) => items.filter((it) => it.recurring && isPriced(it));
 
 export function computeTotals(items: LineItem[], discountPercent: number, vatRate: number) {
   const subtotal = round2(oneTimeItems(items).reduce((s, it) => s + lineTotal(it), 0));
