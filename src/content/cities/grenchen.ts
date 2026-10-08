@@ -12,7 +12,7 @@ export const grenchen: City = {
       name: "Grenchen",
       slug: "webdesign-grenchen",
       meta: {
-        title: "Webdesign Grenchen – Webseite erstellen lassen",
+        title: "Webdesign Grenchen: Webseite erstellen lassen",
         description:
           "Webagentur mit Sitz in Grenchen: Webdesign, Homepage, Onlineshop und SEO für KMU aus der Uhrenstadt. Jetzt kostenlose Erstberatung vereinbaren.",
       },
@@ -47,6 +47,19 @@ export const grenchen: City = {
             "Nach dem Launch bleiben wir erreichbar. Wir übernehmen auf Wunsch Wartung, Updates und Hosting, optimieren Ihre Sichtbarkeit bei Google und betreuen Werbekampagnen auf Google und Meta. Weil wir in Grenchen sitzen, können wir auch kurzfristig vorbeikommen, etwa für Fotos, eine Schulung im Content-Management oder die Einrichtung eines Kassensystems. Eine Agentur, die Sie kennen und die Sie kennt.",
           ],
         },
+        {
+          h2: "Alle Leistungen für Grenchner Unternehmen",
+          paragraphs: [
+            "Neben der neuen Webseite begleiten wir Grenchner Betriebe in allen Fragen rund um ihren Auftritt: vom [Onlineshop für Grenchen](local:onlineshop:grenchen) über das [Website-Redesign](local:website-redesign:grenchen) einer in die Jahre gekommenen Seite bis zum [Kassensystem für Gastronomie und Läden](local:kassensystem:grenchen). Wer bei Google sichtbarer werden möchte, findet alles zu [SEO in Grenchen](citySeo:grenchen) auf einer eigenen Seite.",
+            "Viele Fragen tauchen in fast jedem Projekt auf: Was kostet eine Webseite, worauf achte ich bei der Wahl der Agentur, brauche ich eine französische Version? Unsere Ratgeber [Was kostet eine Webseite?](guide:webseite-kosten), [Webagentur wählen](guide:webagentur-waehlen) und [Was eine KMU-Webseite braucht](guide:kmu-webseite-checkliste) geben Ihnen vor dem ersten Gespräch einen guten Überblick.",
+          ],
+          bullets: [
+            "Webdesign für Industrie und Zulieferer",
+            "Online-Marketing und Branding",
+            "Website-Wartung durch eine Agentur vor Ort",
+            "Zweisprachige Webseiten Deutsch und Französisch",
+          ],
+        },
       ],
       faq: [
         {
@@ -65,13 +78,21 @@ export const grenchen: City = {
           q: "Wie lange dauert es, eine Homepage in Grenchen erstellen zu lassen?",
           a: "Das hängt vom Umfang und davon ab, wie schnell Texte und Bilder vorliegen. Einen realistischen Zeitplan erhalten Sie zusammen mit der Offerte nach der kostenlosen Erstberatung.",
         },
+        {
+          q: "Kann ich bei Webnova in Grenchen persönlich vorbeikommen?",
+          a: "Ja, nach Terminvereinbarung empfangen wir Sie gerne in unserem Büro an der Bettlachstrasse 45. Unsere Bürozeiten sind Montag bis Freitag 08.00 bis 18.00 Uhr und Samstag 10.00 bis 16.00 Uhr.",
+        },
+        {
+          q: "Betreuen Sie auch Unternehmen aus Bettlach, Lengnau oder Selzach?",
+          a: "Ja. Neben Grenchen arbeiten wir für Betriebe in der ganzen Umgebung am Jurasüdfuss, im Seeland und im Kanton Solothurn, ebenso für Kundschaft in der übrigen Schweiz.",
+        },
       ],
     },
     fr: {
       name: "Granges",
       slug: "creation-site-internet-granges",
       meta: {
-        title: "Création site internet Granges – Agence web",
+        title: "Création site internet Granges: Agence web",
         description:
           "Agence web basée à Granges (SO) : création de site internet, boutique en ligne et référencement pour les PME. Premier conseil gratuit et sans engagement.",
       },
@@ -106,6 +127,19 @@ export const grenchen: City = {
             "Après la mise en ligne, nous restons à vos côtés. Sur demande, nous assurons la maintenance, les mises à jour et l'hébergement, nous améliorons votre visibilité sur Google et gérons vos campagnes Google et Meta. Comme nous sommes à Granges, nous pouvons passer rapidement pour des photos, une formation au système de gestion de contenu ou l'installation d'une caisse.",
           ],
         },
+        {
+          h2: "Toutes nos prestations pour les entreprises de Granges",
+          paragraphs: [
+            "Au-delà du nouveau site, nous accompagnons les entreprises de Granges dans tout ce qui touche à leur présence en ligne : [boutique en ligne à Granges](local:onlineshop:grenchen), [refonte d'un site vieillissant](local:website-redesign:grenchen) ou [système de caisse pour restaurants et commerces](local:kassensystem:grenchen). Pour gagner en visibilité sur Google, consultez notre page [référencement à Granges](citySeo:grenchen).",
+            "Certaines questions reviennent dans presque chaque projet : combien coûte un site, comment choisir une agence, faut-il une version allemande ? Nos articles [Combien coûte un site internet ?](guide:webseite-kosten), [Choisir une agence web](guide:webagentur-waehlen) et [Site internet bilingue](guide:zweisprachige-webseite) vous donnent une bonne vue d'ensemble avant le premier entretien.",
+          ],
+          bullets: [
+            "Sites pour l'industrie et les sous-traitants",
+            "Marketing en ligne et identité visuelle",
+            "Maintenance de site par une agence locale",
+            "Sites bilingues français et allemand",
+          ],
+        },
       ],
       faq: [
         {
@@ -120,6 +154,14 @@ export const grenchen: City = {
           q: "Travaillez-vous aussi pour de petites entreprises ?",
           a: "Oui, une grande partie de nos projets concerne des PME, des artisans et des indépendants. Nous adaptons le périmètre à vos besoins et vous remettons une offre sans engagement après le premier entretien.",
         },
+        {
+          q: "Puis-je passer chez Webnova à Granges ?",
+          a: "Oui, sur rendez-vous nous vous accueillons volontiers à la Bettlachstrasse 45. Nos horaires sont du lundi au vendredi de 8 h à 18 h et le samedi de 10 h à 16 h.",
+        },
+        {
+          q: "Travaillez-vous aussi pour Bettlach, Longeau ou Selzach ?",
+          a: "Oui. En plus de Granges, nous travaillons pour des entreprises de toute la région du pied du Jura, du Seeland et du canton de Soleure, ainsi que pour des clients dans le reste de la Suisse.",
+        },
       ],
     },
   },
@@ -128,7 +170,7 @@ export const grenchen: City = {
       name: "Grenchen",
       slug: "seo-grenchen",
       meta: {
-        title: "SEO Grenchen – Suchmaschinenoptimierung",
+        title: "SEO Grenchen: Suchmaschinenoptimierung",
         description:
           "SEO in Grenchen: lokale Suchmaschinenoptimierung und Google Unternehmensprofil für KMU aus der Uhrenstadt. Kostenlose Erstberatung bei Webnova.",
       },
@@ -164,6 +206,13 @@ export const grenchen: City = {
             "Weil wir in Grenchen sitzen, können wir Fotos für Ihr Unternehmensprofil vor Ort machen, Sie bei der Pflege schulen oder die Resultate persönlich mit Ihnen besprechen. Auf Wunsch kombinieren wir SEO mit Google Ads, um während des Aufbaus schon sichtbar zu sein. So wächst Ihre Präsenz in der lokalen Suche Schritt für Schritt und messbar.",
           ],
         },
+        {
+          h2: "Weiterlesen und nächste Schritte",
+          paragraphs: [
+            "Viele Massnahmen können Sie selbst angehen. Eine Schritt-für-Schritt-Anleitung finden Sie im Ratgeber [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil), den grösseren Zusammenhang erklärt [Lokales SEO für KMU](guide:lokales-seo-kmu). Ist Ihre Webseite langsam, helfen die Hinweise unter [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
+            "Wenn die technische Basis nicht mehr genügt, ist ein [Website-Redesign in Grenchen](local:website-redesign:grenchen) oft der schnellere Weg zu besseren Rankings als laufendes Nachbessern. Für kurzfristig mehr Anfragen ergänzen wir SEO auf Wunsch mit [Online-Marketing in Grenchen](local:online-marketing:grenchen).",
+          ],
+        },
       ],
       faq: [
         {
@@ -178,13 +227,17 @@ export const grenchen: City = {
           q: "Hilft SEO auch Kunden aus den Nachbargemeinden?",
           a: "Ja. Wir berücksichtigen auch Suchen aus den Nachbargemeinden und der weiteren Region, etwa mit passenden Inhalten und einem korrekt definierten Einzugsgebiet im Unternehmensprofil.",
         },
+        {
+          q: "Welche Suchbegriffe sind für Betriebe in Grenchen wichtig?",
+          a: "Meist Kombinationen aus Leistung und Ort, etwa «Schreiner Grenchen» oder «Physiotherapie Grenchen», dazu Nachbargemeinden und bei Kundschaft aus der Romandie die französischen Begriffe mit «Granges». Eine kurze Keyword-Analyse zeigt, wie oft tatsächlich gesucht wird.",
+        },
       ],
     },
     fr: {
       name: "Granges",
       slug: "referencement-granges",
       meta: {
-        title: "Référencement Granges – Agence SEO locale",
+        title: "Référencement Granges: Agence SEO locale",
         description:
           "Référencement à Granges : SEO local et profil d'entreprise Google pour les PME de la cité horlogère. Premier conseil gratuit avec Webnova.",
       },
@@ -220,6 +273,13 @@ export const grenchen: City = {
             "Comme notre agence SEO est à Granges, nous pouvons réaliser des photos pour votre profil sur place, vous former à sa gestion ou discuter des résultats autour d'une table. Si vous souhaitez être visible rapidement, nous combinons le référencement naturel avec des annonces Google Ads pendant la phase de construction.",
           ],
         },
+        {
+          h2: "Pour aller plus loin",
+          paragraphs: [
+            "Vous pouvez réaliser vous-même de nombreuses mesures. Un guide pas à pas se trouve dans [Optimiser sa fiche Google](guide:google-unternehmensprofil) et le contexte général dans [Référencement local pour PME](guide:lokales-seo-kmu). Si votre site est lent, l'article [Core Web Vitals expliqués simplement](guide:core-web-vitals) vous aidera.",
+            "Lorsque la base technique ne suffit plus, une [refonte de site à Granges](local:website-redesign:grenchen) est souvent plus efficace que des corrections continues. Pour obtenir rapidement plus de demandes, nous complétons le SEO avec du [marketing digital à Granges](local:online-marketing:grenchen).",
+          ],
+        },
       ],
       faq: [
         {
@@ -233,6 +293,10 @@ export const grenchen: City = {
         {
           q: "Faites-vous aussi le référencement en français ?",
           a: "Oui. Nous travaillons les mots-clés en allemand et en français, avec des pages distinctes par langue. C'est important pour une entreprise de Granges qui vise aussi Bienne, Neuchâtel ou le Jura bernois.",
+        },
+        {
+          q: "Quels mots-clés comptent pour les entreprises de Granges ?",
+          a: "En général des combinaisons de prestation et de localité, comme « menuisier Granges » ou « physiothérapie Granges », les communes voisines et, pour la clientèle alémanique, les termes allemands avec « Grenchen ». Une courte analyse montre les volumes de recherche réels.",
         },
       ],
     },

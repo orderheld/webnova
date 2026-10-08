@@ -4,7 +4,7 @@ export const handwerk: Industry = {
   key: "handwerk",
   icon: "wrench",
   services: ["webdesign", "seo", "online-marketing", "wartung"],
-  guides: ["lokales-seo-kmu", "webseite-kosten", "website-relaunch-checkliste"],
+  guides: ["kmu-webseite-checkliste", "lokales-seo-kmu", "webseite-kosten"],
   preset: ["webdesign"],
   content: {
     de: {

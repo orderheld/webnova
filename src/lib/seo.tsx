@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/content/types";
+import { ogFile } from "./og/data";
 import { alternates, type RouteEntry } from "./routes";
 import { site } from "./site";
+
+/** Absolute URL of the social preview image for a route (see src/app/og). */
+export function ogImageUrl(locale: Locale, entry: RouteEntry): string {
+  return `${site.url}/og/${locale}/${ogFile(entry)}.png`;
+}
 
 export function pageMetadata(
   locale: Locale,
@@ -10,30 +16,34 @@ export function pageMetadata(
   opts: { absoluteTitle?: boolean } = {},
 ): Metadata {
   const alt = alternates(entry);
-  const url = alt[locale];
+  const url = `${site.url}${alt[locale]}`;
+  const image = { url: ogImageUrl(locale, entry), width: 1200, height: 630, alt: meta.title, type: "image/png" };
   return {
     title: opts.absoluteTitle ? { absolute: meta.title } : meta.title,
     description: meta.description,
     alternates: {
       canonical: url,
-      languages: { "de-CH": alt.de, "fr-CH": alt.fr, "x-default": alt.de },
+      languages: { "de-CH": `${site.url}${alt.de}`, "fr-CH": `${site.url}${alt.fr}`, "x-default": `${site.url}${alt.de}` },
     },
     openGraph: {
-      type: "website",
+      type: entry.kind === "guide" ? "article" : "website",
       url,
       title: meta.title,
       description: meta.description,
       siteName: site.name,
       locale: locale === "de" ? "de_CH" : "fr_CH",
-      images: [{ url: `/og/${locale}.png`, width: 1200, height: 630, alt: site.name }],
+      alternateLocale: locale === "de" ? ["fr_CH"] : ["de_CH"],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`/og/${locale}.png`],
+      images: [image],
     },
-    robots: entry.noindex ? { index: false, follow: true } : undefined,
+    robots: entry.noindex
+      ? { index: false, follow: true }
+      : { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   };
 }
 
@@ -56,8 +66,21 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     name: site.name,
     legalName: site.legalName,
     url: `${site.url}/${locale}`,
-    logo: `${site.url}/icon.png`,
-    image: `${site.url}/og/de.png`,
+    description:
+      locale === "de"
+        ? "Webdesign-Agentur für Schweizer KMU: Webseiten, Onlineshops, SEO, Online-Marketing, Branding und Kassensysteme, auf Deutsch und Französisch."
+        : "Agence web pour les PME suisses : sites internet, boutiques en ligne, SEO, marketing en ligne, branding et systèmes de caisse, en français et en allemand.",
+    logo: { "@type": "ImageObject", url: `${site.url}/icons/icon-512.png`, width: 512, height: 512 },
+    image: `${site.url}/og/${locale}/home.png`,
+    founder: { "@type": "Person", name: "Ferhat Demir" },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: site.phone,
+      email: site.email,
+      contactType: "customer service",
+      availableLanguage: ["German", "French"],
+      areaServed: "CH",
+    },
     email: site.email,
     telephone: site.phone,
     address: {
@@ -69,7 +92,7 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
       addressCountry: site.address.country,
     },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    areaServed: areaServed.map((name) => ({ "@type": "City", name })),
+    areaServed: [{ "@type": "Country", name: "Schweiz" }, ...areaServed.map((name) => ({ "@type": "City", name }))],
     knowsLanguage: ["de", "fr"],
     ...(site.google.maps && { hasMap: site.google.maps }),
     ...(site.openingHours.length > 0 && {

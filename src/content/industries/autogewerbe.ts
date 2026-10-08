@@ -4,7 +4,7 @@ export const autogewerbe: Industry = {
   key: "autogewerbe",
   icon: "car",
   services: ["webdesign", "seo", "online-marketing", "wartung"],
-  guides: ["lokales-seo-kmu", "website-relaunch-checkliste"],
+  guides: ["google-unternehmensprofil", "lokales-seo-kmu", "website-relaunch-checkliste"],
   preset: ["webdesign"],
   content: {
     de: {

@@ -163,7 +163,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Bekanntgabe von Daten ins Ausland",
           paragraphs: [
             "Wie beschrieben setzen wir Dienstleister ein, die ihren Sitz in den USA haben oder Daten dort bearbeiten können (Vercel, Neon, Resend). Die USA gelten nicht in jedem Fall als Staat mit angemessenem Datenschutzniveau.",
-            "Wir stellen einen angemessenen Schutz sicher, insbesondere durch Standardvertragsklauseln und – soweit der jeweilige Anbieter zertifiziert ist – durch das Swiss-U.S. Data Privacy Framework bzw. das EU-U.S. Data Privacy Framework. Eine Kopie der Garantien können Sie bei uns anfordern.",
+            "Wir stellen einen angemessenen Schutz sicher, insbesondere durch Standardvertragsklauseln und, soweit der jeweilige Anbieter zertifiziert ist, durch das Swiss-U.S. Data Privacy Framework bzw. das EU-U.S. Data Privacy Framework. Eine Kopie der Garantien können Sie bei uns anfordern.",
           ],
         },
         {

@@ -4,7 +4,7 @@ export const gastronomie: Industry = {
   key: "gastronomie",
   icon: "utensils",
   services: ["webdesign", "kassensystem-gastro", "seo", "online-marketing"],
-  guides: ["lokales-seo-kmu", "webseite-kosten"],
+  guides: ["google-unternehmensprofil", "lokales-seo-kmu", "webseite-kosten"],
   preset: ["webdesign"],
   content: {
     de: {

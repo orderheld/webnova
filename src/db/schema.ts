@@ -15,6 +15,8 @@ import {
 /** CRM pipeline stages, in board order. */
 export const leadStatuses = ["neu", "kontaktiert", "gespraech", "offerte", "gewonnen", "verloren"] as const;
 export type LeadStatus = (typeof leadStatuses)[number];
+/** Service-specific answers from the request form: { [service]: { [question]: answer } }, plus "general". */
+export type LeadDetails = Record<string, Record<string, string | string[]>>;
 
 export const leads = pgTable("leads", {
   id: serial("id").primaryKey(),
@@ -36,6 +38,7 @@ export const leads = pgTable("leads", {
   timeline: text("timeline"),
   message: text("message"),
   pageUrl: text("page_url"),
+  details: jsonb("details").$type<LeadDetails>(),
   status: text("status").$type<LeadStatus>().notNull().default("neu"),
   notes: text("notes"),
   customerId: integer("customer_id").references(() => customers.id, { onDelete: "set null" }),

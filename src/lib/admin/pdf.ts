@@ -33,11 +33,47 @@ const QR_TOP = PAGE_H - SwissQRBill.height;
 const QR_FOOTER_Y = QR_TOP - 12 * MM;
 const QR_CONTENT_BOTTOM = QR_FOOTER_Y - 2 * MM;
 
-const INK = "#000000";
-const TEXT = "#1f2328";
-const MUTED = "#6b7075";
-const RULE = "#c9ccd0";
-const RULE_STRONG = "#1f2328";
+/* Corporate design (globals.css): ink, soft ink, muted grey, hairlines, Schieferblau and its lighter logo blue. */
+const INK = "#1c232b";
+const TEXT = "#3a434d";
+const MUTED = "#646b73";
+const RULE = "#d9e0e7";
+const ACCENT = "#24405a";
+const BRIGHT = "#3b6385";
+const TINT = "#e9eff4";
+
+/*
+ * Inter (body) and Inter Tight (headings) as on the website: static instances of the site's
+ * variable woff2 files in ./fonts. Falls back to Helvetica if the files are not deployed.
+ * The QR-bill keeps its own Helvetica, as the Swiss QR-bill style guide requires.
+ */
+const F = { regular: "Helvetica", bold: "Helvetica-Bold", display: "Helvetica-Bold" };
+let fontFiles: { regular: Buffer; bold: Buffer; display: Buffer } | null | undefined;
+function loadFonts() {
+  if (fontFiles === undefined) {
+    try {
+      const dir = path.join(process.cwd(), "src/lib/admin/fonts");
+      fontFiles = {
+        regular: fs.readFileSync(path.join(dir, "Inter-Regular.ttf")),
+        bold: fs.readFileSync(path.join(dir, "Inter-SemiBold.ttf")),
+        display: fs.readFileSync(path.join(dir, "InterTight-SemiBold.ttf")),
+      };
+    } catch {
+      fontFiles = null;
+    }
+  }
+  return fontFiles;
+}
+function registerFonts(pdf: Pdf) {
+  const f = loadFonts();
+  if (!f) return;
+  pdf.registerFont("WN-Regular", f.regular);
+  pdf.registerFont("WN-Bold", f.bold);
+  pdf.registerFont("WN-Display", f.display);
+  F.regular = "WN-Regular";
+  F.bold = "WN-Bold";
+  F.display = "WN-Display";
+}
 
 export type PdfKind = "quote" | "invoice" | "reminder";
 
@@ -179,12 +215,13 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     pdf.on("data", (c: Buffer) => chunks.push(c));
     pdf.on("end", () => resolve(Buffer.concat(chunks)));
     pdf.on("error", reject);
+    registerFonts(pdf);
 
     const headline = d.kind === "reminder" ? label : `${label} ${d.number}`;
     /** starts a continuation page and returns the y to continue at */
     const newPage = () => {
       pdf.addPage();
-      pdf.font("Helvetica").fontSize(8).fillColor(MUTED).text(`${headline} · ${d.title}`, LEFT, 15 * MM, { width: WIDTH - 35 * MM, lineBreak: false, ellipsis: true });
+      pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(`${headline} · ${d.title}`, LEFT, 15 * MM, { width: WIDTH - 35 * MM, lineBreak: false, ellipsis: true });
       return 24 * MM;
     };
     const ensure = (y: number, h: number) => (y + h > CONTENT_BOTTOM ? newPage() : y);
@@ -192,13 +229,13 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     /* ── Letterhead: logo top left ── */
     const logo = logoImage();
     if (logo) pdf.image(logo, LEFT, 14 * MM, { width: 44 * MM });
-    else pdf.font("Helvetica-Bold").fontSize(18).fillColor(INK).text(s.companyName, LEFT, 15 * MM);
+    else pdf.font(F.display).fontSize(18).fillColor(INK).text(s.companyName, LEFT, 15 * MM);
 
     /* ── Address window (left, C5/DL): sender line + recipient ── */
     const winY = 45 * MM;
     const winW = 85 * MM;
     pdf
-      .font("Helvetica")
+      .font(F.regular)
       .fontSize(7)
       .fillColor(MUTED)
       .text([s.companyName, s.street, `${s.zip} ${s.city}`].filter((x) => x.trim()).join(", "), LEFT, winY, { width: winW, lineBreak: false, ellipsis: true });
@@ -219,7 +256,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     ]
       .filter(Boolean)
       .join("\n");
-    pdf.font("Helvetica").fontSize(10).fillColor(INK).text(addr, LEFT, winY + 6 * MM, { width: winW, lineGap: 1.5 });
+    pdf.font(F.regular).fontSize(10).fillColor(INK).text(addr, LEFT, winY + 6 * MM, { width: winW, lineGap: 1.5 });
 
     /* ── Document info block (right of the window) ── */
     const info: [string, string][] = [];
@@ -237,22 +274,22 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     const infoValX = infoX + 30 * MM;
     let iy = winY + 6 * MM;
     for (const [k, v] of info) {
-      pdf.font("Helvetica").fontSize(8.5).fillColor(MUTED).text(k, infoX, iy, { width: 29 * MM, lineBreak: false });
-      pdf.font("Helvetica").fontSize(8.5).fillColor(INK).text(v, infoValX, iy, { width: RIGHT - infoValX });
+      pdf.font(F.regular).fontSize(8.5).fillColor(MUTED).text(k, infoX, iy, { width: 29 * MM, lineBreak: false });
+      pdf.font(F.regular).fontSize(8.5).fillColor(INK).text(v, infoValX, iy, { width: RIGHT - infoValX });
       iy = Math.max(iy + 4.2 * MM, pdf.y + 1);
     }
 
     /* ── Title ── */
     let y = Math.max(85 * MM, iy + 6 * MM);
-    pdf.font("Helvetica-Bold").fontSize(15).fillColor(INK).text(headline, LEFT, y, { width: WIDTH });
-    y = pdf.y + 1.5 * MM;
+    pdf.font(F.display).fontSize(16).fillColor(INK).text(headline, LEFT, y, { width: WIDTH });
+    y = pdf.y + 1.2 * MM;
     if (d.title) {
-      pdf.font("Helvetica-Bold").fontSize(10).fillColor(TEXT).text(d.title, LEFT, y, { width: WIDTH });
+      pdf.font(F.bold).fontSize(10).fillColor(BRIGHT).text(d.title, LEFT, y, { width: WIDTH });
       y = pdf.y;
     }
     if (d.intro) {
       y += 4 * MM;
-      pdf.font("Helvetica").fontSize(9.5).fillColor(TEXT).text(d.intro, LEFT, y, { width: WIDTH, lineGap: 1.5 });
+      pdf.font(F.regular).fontSize(9.5).fillColor(TEXT).text(d.intro, LEFT, y, { width: WIDTH, lineGap: 1.5 });
       y = pdf.y;
     }
 
@@ -292,7 +329,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       y = ensure(y + 2 * MM, rows.length * 5.5 * MM + 8 * MM);
       y = totalsBlock(pdf, rows, y + 2 * MM, 105 * MM);
       if (!s.vatEnabled && d.vatRate === 0) {
-        pdf.font("Helvetica").fontSize(7.5).fillColor(MUTED).text("Nicht mehrwertsteuerpflichtig.", 105 * MM, y, { width: RIGHT - 105 * MM, align: "right" });
+        pdf.font(F.regular).fontSize(7.5).fillColor(MUTED).text("Nicht mehrwertsteuerpflichtig.", 105 * MM, y, { width: RIGHT - 105 * MM, align: "right" });
         y = pdf.y;
       }
 
@@ -300,30 +337,29 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       const rec = d.kind === "quote" ? recurringItems(d.items) : [];
       if (rec.length) {
         y = ensure(y + 7 * MM, 32 * MM);
-        pdf.font("Helvetica-Bold").fontSize(10).fillColor(INK).text("Wiederkehrende Kosten", LEFT, y);
+        pdf.font(F.display).fontSize(11).fillColor(INK).text("Wiederkehrende Kosten", LEFT, y);
         y = pdf.y + 0.5 * MM;
-        pdf.font("Helvetica").fontSize(8).fillColor(MUTED).text("Nicht im Total enthalten. Verrechnung jeweils im Voraus, zuzüglich allfälliger MWST.", LEFT, y, { width: WIDTH });
-        y = pdf.y + 3 * MM;
-        pdf.font("Helvetica-Bold").fontSize(8).fillColor(INK);
-        pdf.text("Beschreibung", LEFT, y, { lineBreak: false });
+        pdf.font(F.regular).fontSize(8).fillColor(MUTED).text("Nicht im Total enthalten. Verrechnung jeweils im Voraus, zuzüglich allfälliger MWST.", LEFT, y, { width: WIDTH });
+        y = pdf.y + 4.6 * MM;
+        pdf.save().rect(LEFT, y - 1.6 * MM, WIDTH, 6.2 * MM).fill(TINT).restore();
+        pdf.font(F.bold).fontSize(7.5).fillColor(ACCENT);
+        pdf.text("Beschreibung", LEFT + 1.5 * MM, y, { lineBreak: false });
         pdf.text("Intervall", RIGHT - 60 * MM, y, { width: 28 * MM, lineBreak: false });
-        pdf.text("Betrag CHF", RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", lineBreak: false });
-        y += 4.2 * MM;
-        pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE_STRONG).lineWidth(0.6).stroke();
-        y += 2 * MM;
+        pdf.text("Betrag CHF", RIGHT - 31.5 * MM, y, { width: 30 * MM, align: "right", lineBreak: false });
+        y += 6.6 * MM;
         for (const it of rec) {
           const note = it.firstYearIncluded ? "1. Jahr im Projektpreis inbegriffen, Verrechnung ab dem 2. Jahr" : "Verrechnung ab Projektstart";
           const descr = [it.description, note].filter(Boolean).join("\n");
           const w = WIDTH - 62 * MM;
-          pdf.font("Helvetica-Bold").fontSize(9);
-          const h = pdf.heightOfString(it.title, { width: w }) + pdf.font("Helvetica").fontSize(8).heightOfString(descr, { width: w }) + 3 * MM;
+          pdf.font(F.bold).fontSize(9);
+          const h = pdf.heightOfString(it.title, { width: w }) + pdf.font(F.regular).fontSize(8).heightOfString(descr, { width: w }) + 3 * MM;
           y = ensure(y, h);
-          pdf.font("Helvetica-Bold").fontSize(9).fillColor(INK).text(it.title, LEFT, y, { width: w });
+          pdf.font(F.bold).fontSize(9).fillColor(INK).text(it.title, LEFT, y, { width: w });
           const ty = pdf.y;
-          pdf.font("Helvetica").fontSize(9).fillColor(INK);
+          pdf.font(F.regular).fontSize(9).fillColor(INK);
           pdf.text(intervalLabels[it.recurring!] ?? "", RIGHT - 60 * MM, y, { width: 28 * MM });
           pdf.text(chf(lineTotal(it)), RIGHT - 30 * MM, y, { width: 30 * MM, align: "right" });
-          pdf.font("Helvetica").fontSize(8).fillColor(MUTED).text(descr, LEFT, ty + 0.5, { width: w });
+          pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(descr, LEFT, ty + 0.5, { width: w });
           y = pdf.y + 2 * MM;
           pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
           y += 2 * MM;
@@ -336,7 +372,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       const days = daysBetween(d.issueDate, d.secondDate);
       y = ensure(y + 4 * MM, 10 * MM);
       pdf
-        .font("Helvetica")
+        .font(F.regular)
         .fontSize(9)
         .fillColor(TEXT)
         .text(`Zahlungsbedingungen: ${days > 0 ? `${days} Tage netto, ` : ""}zahlbar bis ${fmtDate(d.secondDate)}`, LEFT, y, { width: WIDTH });
@@ -344,16 +380,17 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     }
     // Quotes and reminders close with a greeting; invoices and credit notes end with the closing text (as in Bexio).
     const greeting = d.kind === "quote" || d.kind === "reminder";
-    pdf.font("Helvetica").fontSize(9.5);
+    pdf.font(F.regular).fontSize(9.5);
     const outroH = d.outro ? pdf.heightOfString(d.outro, { width: WIDTH, lineGap: 1.5 }) + 4 * MM : 0;
     y = ensure(y, outroH + (greeting ? 26 * MM : 0));
     if (d.outro) {
-      pdf.fillColor(TEXT).text(d.outro, LEFT, y + 4 * MM, { width: WIDTH, lineGap: 1.5 });
+      // set the font again: ensure() may have started a new page with the smaller running header
+      pdf.font(F.regular).fontSize(9.5).fillColor(TEXT).text(d.outro, LEFT, y + 4 * MM, { width: WIDTH, lineGap: 1.5 });
       y = pdf.y;
     }
     if (greeting) {
       y += 6 * MM;
-      pdf.font("Helvetica").fontSize(9.5).fillColor(TEXT).text("Freundliche Grüsse", LEFT, y, { width: WIDTH });
+      pdf.font(F.regular).fontSize(9.5).fillColor(TEXT).text("Freundliche Grüsse", LEFT, y, { width: WIDTH });
       pdf.text(`${s.owner}\n${s.companyName}`, LEFT, pdf.y + 5 * MM, { width: WIDTH, lineGap: 1 });
       y = pdf.y;
     }
@@ -413,15 +450,15 @@ function footer(pdf: Pdf, s: CompanySettings, top: number, page: number, pages: 
     [s.uid && `UID ${s.uid}`, s.vatEnabled && s.vatNumber ? `MWST-Nr. ${s.vatNumber}` : ""],
     [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`],
   ].map((col) => col.filter((x): x is string => !!x && !!x.trim()));
-  const widths = [42, 40, 48, 43].map((w) => w * MM);
+  const widths = [42, 42, 36, 53].map((w) => w * MM);
   let x = LEFT;
-  pdf.font("Helvetica").fontSize(7).fillColor(MUTED);
+  pdf.font(F.regular).fontSize(7).fillColor(MUTED);
   cols.forEach((col, i) => {
     pdf.text(col.join("\n"), x, top + 2.2 * MM, { width: widths[i] - 3 * MM, lineGap: 0.8, lineBreak: true });
     x += widths[i];
   });
   // page number top right, next to the logo (continuation pages: beside the running header)
-  pdf.font("Helvetica").fontSize(8).fillColor(MUTED).text(`Seite ${page}/${pages}`, RIGHT - 30 * MM, 15 * MM, { width: 30 * MM, align: "right", lineBreak: false });
+  pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(`Seite ${page}/${pages}`, RIGHT - 30 * MM, 15 * MM, { width: 30 * MM, align: "right", lineBreak: false });
 }
 
 const fmtPct = (n: number) => String(Number(n)).replace(/\.0+$/, "");
@@ -450,16 +487,16 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
   const n = numCols();
   const descrW = n.qty - COL.descr.x - 3 * MM;
   const header = () => {
-    pdf.font("Helvetica-Bold").fontSize(8).fillColor(INK);
-    pdf.text("Pos.", COL.pos.x, y, { width: COL.pos.w, lineBreak: false });
+    pdf.save().rect(LEFT, y - 1.6 * MM, WIDTH, 6.2 * MM).fill(TINT).restore();
+    pdf.font(F.bold).fontSize(7.5).fillColor(ACCENT);
+    pdf.text("Pos.", COL.pos.x + 1.5 * MM, y, { width: COL.pos.w - 1.5 * MM, lineBreak: false });
     pdf.text("Beschreibung", COL.descr.x, y, { width: descrW, lineBreak: false });
     pdf.text("Menge", n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false });
     pdf.text("Einheit", n.unit + 3 * MM, y, { width: COL.unit.w - 3 * MM, lineBreak: false });
     pdf.text("Preis", n.price, y, { width: COL.price.w, align: "right", lineBreak: false });
     pdf.text("Rabatt %", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
-    pdf.text("Total CHF", n.total, y, { width: COL.total.w, align: "right", lineBreak: false });
-    y += 4.2 * MM;
-    pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE_STRONG).lineWidth(0.6).stroke();
+    pdf.text("Total CHF", n.total - 1.5 * MM, y, { width: COL.total.w, align: "right", lineBreak: false });
+    y += 4.6 * MM;
     y += 2 * MM;
   };
   header();
@@ -468,15 +505,15 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
     const kind = it.type ?? "item";
     let h: number;
     if (kind === "title") {
-      pdf.font("Helvetica-Bold").fontSize(9.5);
+      pdf.font(F.bold).fontSize(9.5);
       h = pdf.heightOfString(it.title, { width: WIDTH }) + 4 * MM;
     } else if (kind === "text") {
-      pdf.font("Helvetica").fontSize(9);
+      pdf.font(F.regular).fontSize(9);
       h = pdf.heightOfString(it.title, { width: n.qty - COL.descr.x - 3 * MM, lineGap: 1 }) + 3 * MM;
     } else {
-      pdf.font("Helvetica-Bold").fontSize(9);
+      pdf.font(F.bold).fontSize(9);
       h = pdf.heightOfString(it.title, { width: descrW });
-      if (it.description) h += pdf.font("Helvetica").fontSize(8).heightOfString(it.description, { width: descrW, lineGap: 0.5 }) + 0.8 * MM;
+      if (it.description) h += pdf.font(F.regular).fontSize(8).heightOfString(it.description, { width: descrW, lineGap: 0.5 }) + 0.8 * MM;
       h += 3.4 * MM;
     }
     if (y + h > CONTENT_BOTTOM) {
@@ -484,28 +521,29 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
       header();
     }
     if (kind === "title") {
-      pdf.font("Helvetica-Bold").fontSize(9.5).fillColor(INK).text(it.title, LEFT, y + 1.5 * MM, { width: WIDTH });
+      pdf.font(F.bold).fontSize(9.5).fillColor(ACCENT).text(it.title, LEFT + 1.5 * MM, y + 1.5 * MM, { width: WIDTH - 1.5 * MM });
       y = pdf.y + 1.5 * MM;
       pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
       y += 1.6 * MM;
       continue;
     }
     if (kind === "text") {
-      pdf.font("Helvetica").fontSize(9).fillColor(TEXT).text(it.title, COL.descr.x, y, { width: n.qty - COL.descr.x - 3 * MM, lineGap: 1 });
+      pdf.font(F.regular).fontSize(9).fillColor(TEXT).text(it.title, COL.descr.x, y, { width: n.qty - COL.descr.x - 3 * MM, lineGap: 1 });
       y = pdf.y + 1.4 * MM;
       pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
       y += 1.6 * MM;
       continue;
     }
     pos++;
-    pdf.font("Helvetica").fontSize(9).fillColor(INK).text(String(pos), COL.pos.x, y, { width: COL.pos.w, lineBreak: false });
+    pdf.font(F.regular).fontSize(9).fillColor(MUTED).text(String(pos), COL.pos.x + 1.5 * MM, y, { width: COL.pos.w - 1.5 * MM, lineBreak: false });
+    pdf.fillColor(INK);
     pdf.text(fmtQty(it.quantity), n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false });
     pdf.text(it.unit || "", n.unit + 3 * MM, y, { width: COL.unit.w - 3 * MM, lineBreak: false, ellipsis: true });
     pdf.text(chf(Number(it.unitPrice) || 0), n.price, y, { width: COL.price.w, align: "right", lineBreak: false });
     pdf.text(it.discount ? fmtPct(it.discount) : "", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
-    pdf.text(chf(lineTotal(it)), n.total, y, { width: COL.total.w, align: "right", lineBreak: false });
-    pdf.font("Helvetica-Bold").fontSize(9).fillColor(INK).text(it.title, COL.descr.x, y, { width: descrW });
-    if (it.description) pdf.font("Helvetica").fontSize(8).fillColor(MUTED).text(it.description, COL.descr.x, pdf.y + 0.8 * MM, { width: descrW, lineGap: 0.5 });
+    pdf.text(chf(lineTotal(it)), n.total - 1.5 * MM, y, { width: COL.total.w, align: "right", lineBreak: false });
+    pdf.font(F.bold).fontSize(9).fillColor(INK).text(it.title, COL.descr.x, y, { width: descrW });
+    if (it.description) pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(it.description, COL.descr.x, pdf.y + 0.8 * MM, { width: descrW, lineGap: 0.5 });
     y = pdf.y + 1.7 * MM;
     pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
     y += 1.7 * MM;
@@ -522,20 +560,22 @@ interface TotalRow {
 function totalsBlock(pdf: Pdf, rows: TotalRow[], y: number, x: number) {
   for (const r of rows) {
     if (r.strong) {
-      y += 0.8 * MM;
-      pdf.moveTo(x, y).lineTo(RIGHT, y).strokeColor(RULE_STRONG).lineWidth(0.8).stroke();
-      y += 1.8 * MM;
+      // Grand total on a soft Schieferblau band, the one accent on the page.
+      y += 1.2 * MM;
+      pdf.font(F.bold).fontSize(10);
+      const h = Math.max(pdf.heightOfString(r.k, { width: RIGHT - x - 36 * MM }), 4 * MM) + 3.6 * MM;
+      pdf.save().roundedRect(x, y, RIGHT - x, h, 2.5).fill(TINT).restore();
+      pdf.font(F.bold).fontSize(10).fillColor(ACCENT);
+      pdf.text(r.k, x + 2.5 * MM, y + 1.9 * MM, { width: RIGHT - x - 36 * MM });
+      pdf.text(r.v, RIGHT - 32.5 * MM, y + 1.9 * MM, { width: 30 * MM, align: "right", lineBreak: false });
+      y += h + 2 * MM;
+      continue;
     }
-    pdf.font(r.strong ? "Helvetica-Bold" : "Helvetica").fontSize(r.strong ? 10 : 9).fillColor(INK);
+    pdf.font(F.regular).fontSize(9).fillColor(TEXT);
     pdf.text(r.k, x, y, { width: RIGHT - x - 32 * MM });
     const ky = pdf.y;
-    pdf.text(r.v, RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", lineBreak: false });
+    pdf.fillColor(INK).text(r.v, RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", lineBreak: false });
     y = Math.max(ky, y + 4.6 * MM) + 0.6 * MM;
-    if (r.strong) {
-      pdf.moveTo(x, y).lineTo(RIGHT, y).strokeColor(RULE_STRONG).lineWidth(0.8).stroke();
-      pdf.moveTo(x, y + 1.1).lineTo(RIGHT, y + 1.1).strokeColor(RULE_STRONG).lineWidth(0.8).stroke();
-      y += 2.5 * MM;
-    }
   }
   return y;
 }

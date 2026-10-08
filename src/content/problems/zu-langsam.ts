@@ -4,7 +4,7 @@ export const zuLangsam: Problem = {
   key: "zu-langsam",
   icon: "bolt",
   services: ["website-redesign", "wartung", "seo"],
-  guides: ["website-relaunch-checkliste"],
+  guides: ["core-web-vitals", "website-relaunch-checkliste"],
   industries: ["gastronomie", "detailhandel", "immobilien"],
   preset: ["redesign"],
   content: {

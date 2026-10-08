@@ -4,7 +4,7 @@ export const fitness: Industry = {
   key: "fitness",
   icon: "activity",
   services: ["webdesign", "online-marketing", "seo", "branding"],
-  guides: ["lokales-seo-kmu", "webseite-kosten"],
+  guides: ["google-unternehmensprofil", "lokales-seo-kmu", "webseite-kosten"],
   preset: ["webdesign"],
   content: {
     de: {

@@ -3,18 +3,31 @@ import type { Guide } from "../types";
 export const websiteRelaunchCheckliste: Guide = {
   key: "website-relaunch-checkliste",
   date: "2026-09-20",
-  readingMinutes: 7,
-  related: ["website-redesign", "seo"],
+  updated: "2026-10-08",
+  readingMinutes: 8,
+  related: ["website-redesign", "seo", "wartung"],
+  relatedGuides: ["core-web-vitals", "zweisprachige-webseite", "webagentur-waehlen"],
+  cities: ["biel", "solothurn", "bern", "grenchen"],
   content: {
     de: {
       slug: "website-relaunch-checkliste",
       meta: {
         title: "Website-Relaunch: Checkliste in 10 Schritten",
         description:
-          "Website-Relaunch ohne Ranking-Verlust: Unsere Checkliste in 10 Schritten – von der Analyse über 301-Weiterleitungen bis zur Kontrolle nach dem Go-live.",
+          "Website-Relaunch ohne Ranking-Verlust: Unsere Checkliste in 10 Schritten: von der Analyse über 301-Weiterleitungen bis zur Kontrolle nach dem Go-live.",
       },
       h1: "Website-Relaunch: Die Checkliste in 10 Schritten",
       lead: "Ein Relaunch ist die Chance, Ihre Webseite moderner, schneller und wirkungsvoller zu machen. Ohne saubere Planung riskieren Sie jedoch, über Jahre aufgebaute Google-Rankings zu verlieren. Diese Checkliste führt Sie Schritt für Schritt durch das Projekt.",
+      keyTakeaways: [
+        "Legen Sie vor dem Relaunch zwei bis drei messbare Ziele fest und analysieren Sie, welche Seiten heute Besucher bringen.",
+        "Eine vollständige Liste aller bestehenden URLs ist das wichtigste Dokument des Projekts.",
+        "Jede alte URL braucht eine 301-Weiterleitung auf die inhaltlich passendste neue Seite, nicht pauschal auf die Startseite.",
+        "Gut rankende Inhalte werden verbessert, nicht gekürzt oder gelöscht.",
+        "Nach dem Go-live prüfen Sie Weiterleitungen, Indexierung und Rankings über mehrere Wochen.",
+      ],
+      sources: [
+        { label: "Google Search Central: Websiteumzüge mit URL-Änderungen", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+      ],
       sections: [
         {
           h2: "Schritt 1 und 2: Ziele festlegen und Ist-Zustand analysieren",
@@ -73,11 +86,32 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Schritt 9 und 10: Go-live und Kontrolle nach dem Launch",
           paragraphs: [
             "Wählen Sie für den Go-live einen ruhigen Zeitpunkt, an dem Ihr Team erreichbar ist. Nach der Umschaltung prüfen Sie sofort Weiterleitungen, Formulare, SSL-Zertifikat und die Erreichbarkeit für Suchmaschinen. Reichen Sie die neue XML-Sitemap in der Google Search Console ein und aktualisieren Sie die Webseiten-Adresse in Ihrem Google-Unternehmensprofil, falls sie sich geändert hat.",
-            "In den Wochen nach dem Launch beobachten Sie Rankings, Besucherzahlen und gemeldete Fehler in der Search Console. Leichte Schwankungen sind normal, deutliche Einbrüche weisen auf fehlende Weiterleitungen oder technische Probleme hin. Je früher Sie reagieren, desto schneller erholen sich die Rankings. Gerne begleiten wir Sie bei Ihrem Relaunch – fragen Sie unverbindlich an.",
+            "In den Wochen nach dem Launch beobachten Sie Rankings, Besucherzahlen und gemeldete Fehler in der Search Console. Leichte Schwankungen sind normal, deutliche Einbrüche weisen auf fehlende Weiterleitungen oder technische Probleme hin. Je früher Sie reagieren, desto schneller erholen sich die Rankings. Gerne begleiten wir Sie bei Ihrem [Website-Redesign](service:website-redesign). Fragen Sie unverbindlich an.",
           ],
           bullets: [
             "Schritt 9: Go-live mit sofortiger technischer Kontrolle",
             "Schritt 10: Monitoring von Rankings und Fehlern in den Wochen danach",
+          ],
+        },
+        {
+          h2: "Die häufigsten Fehler beim Relaunch",
+          paragraphs: [
+            "Der teuerste Fehler ist ein Relaunch ohne Weiterleitungskonzept. Alte Adressen führen dann ins Leere, Google verliert die Verbindung zu den bisherigen Rankings und Besucher landen auf Fehlerseiten. Fast ebenso häufig: Die Testumgebung war für Google gesperrt, und diese Sperre wird beim Go-live vergessen. Dann verschwindet die neue Webseite aus dem Index.",
+            "Weitere Klassiker sind gekürzte Texte auf gut rankenden Seiten, fehlende Titel und Beschreibungen, vergessene Sprachversionen und ein neues Design mit schlechteren Ladezeiten als vorher. Prüfen Sie deshalb vor dem Go-live auch die Messwerte aus dem Ratgeber [Core Web Vitals](guide:core-web-vitals). Ist Ihre Webseite zweisprachig, gehören hreflang-Angaben für beide Versionen dazu, mehr dazu unter [Zweisprachige Webseite](guide:zweisprachige-webseite).",
+          ],
+          bullets: [
+            "Kein Weiterleitungskonzept oder pauschale Weiterleitung auf die Startseite",
+            "Suchmaschinensperre der Testumgebung nicht entfernt",
+            "Gut rankende Inhalte gekürzt oder gelöscht",
+            "Fehlende hreflang-Angaben bei mehrsprachigen Webseiten",
+            "Langsamere Ladezeiten als vor dem Relaunch",
+          ],
+        },
+        {
+          h2: "Nach dem Relaunch: dranbleiben",
+          paragraphs: [
+            "Ein Relaunch ist ein Startpunkt, kein Abschluss. Planen Sie nach dem Go-live regelmässige Updates, Backups und kleine Verbesserungen ein, etwa mit einem [Wartungsvertrag](service:wartung). Werten Sie nach einigen Wochen aus, welche Seiten gut funktionieren und wo Besucher abspringen, und bauen Sie die erfolgreichen Inhalte gezielt aus.",
+            "Gleichzeitig ist der Relaunch ein guter Anlass, die lokale Sichtbarkeit zu stärken: aktuelle Firmendaten im Google-Unternehmensprofil, neue Fotos und Seiten für Ihre wichtigsten Regionen. Wie das geht, erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu). Für Unternehmen in [Biel/Bienne](local:website-redesign:biel), [Solothurn](local:website-redesign:solothurn), [Bern](local:website-redesign:bern) und [Grenchen](local:website-redesign:grenchen) beraten wir Sie gerne persönlich.",
           ],
         },
       ],
@@ -109,6 +143,16 @@ export const websiteRelaunchCheckliste: Guide = {
       },
       h1: "Refonte de site internet : la checklist en 10 étapes",
       lead: "Une refonte est l'occasion de rendre votre site plus moderne, plus rapide et plus efficace. Sans planification rigoureuse, vous risquez toutefois de perdre des positions Google acquises au fil des années. Cette checklist vous guide pas à pas.",
+      keyTakeaways: [
+        "Avant la refonte, fixez deux ou trois objectifs mesurables et analysez quelles pages amènent aujourd'hui des visiteurs.",
+        "Une liste complète de toutes les URL existantes est le document le plus important du projet.",
+        "Chaque ancienne URL a besoin d'une redirection 301 vers la nouvelle page la plus proche, pas vers l'accueil par défaut.",
+        "Les contenus bien classés sont améliorés, pas raccourcis ni supprimés.",
+        "Après la mise en ligne, contrôlez redirections, indexation et positions pendant plusieurs semaines.",
+      ],
+      sources: [
+        { label: "Google Search Central : déplacement de site avec changement d'URL", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+      ],
       sections: [
         {
           h2: "Étapes 1 et 2 : fixer les objectifs et analyser l'existant",
@@ -167,11 +211,32 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Étapes 9 et 10 : mise en ligne et suivi",
           paragraphs: [
             "Choisissez pour la mise en ligne un moment calme où votre équipe est disponible. Juste après la bascule, vérifiez les redirections, les formulaires, le certificat SSL et l'accès pour les moteurs de recherche. Soumettez le nouveau sitemap XML dans la Google Search Console et mettez à jour l'adresse du site dans votre fiche d'établissement Google si elle a changé.",
-            "Durant les semaines suivantes, surveillez les positions, la fréquentation et les erreurs signalées dans la Search Console. De légères fluctuations sont normales ; des chutes marquées indiquent des redirections manquantes ou des problèmes techniques. Plus vous réagissez tôt, plus vite les positions se rétablissent. Nous vous accompagnons volontiers dans votre refonte : demandez-nous une offre sans engagement.",
+            "Durant les semaines suivantes, surveillez les positions, la fréquentation et les erreurs signalées dans la Search Console. De légères fluctuations sont normales ; des chutes marquées indiquent des redirections manquantes ou des problèmes techniques. Plus vous réagissez tôt, plus vite les positions se rétablissent. Nous vous accompagnons volontiers dans votre [refonte de site](service:website-redesign) : demandez-nous une offre sans engagement.",
           ],
           bullets: [
             "Étape 9 : mise en ligne avec contrôle technique immédiat",
             "Étape 10 : suivi des positions et des erreurs dans les semaines suivantes",
+          ],
+        },
+        {
+          h2: "Les erreurs les plus fréquentes lors d'une refonte",
+          paragraphs: [
+            "L'erreur la plus coûteuse est une refonte sans plan de redirections. Les anciennes adresses ne mènent alors nulle part, Google perd le lien avec les positions acquises et les visiteurs tombent sur des pages d'erreur. Presque aussi fréquent : l'environnement de test était bloqué pour Google et ce blocage est oublié lors de la mise en ligne. Le nouveau site disparaît alors de l'index.",
+            "Autres classiques : des textes raccourcis sur des pages bien positionnées, des titres et descriptions manquants, des versions linguistiques oubliées et un nouveau design plus lent que l'ancien. Vérifiez donc avant la mise en ligne les mesures décrites dans l'article [Core Web Vitals](guide:core-web-vitals). Si votre site est bilingue, les balises hreflang des deux versions sont indispensables, voir [Site internet bilingue](guide:zweisprachige-webseite).",
+          ],
+          bullets: [
+            "Pas de plan de redirections ou redirection globale vers l'accueil",
+            "Blocage des moteurs de recherche de l'environnement de test non retiré",
+            "Contenus bien positionnés raccourcis ou supprimés",
+            "Balises hreflang manquantes sur un site multilingue",
+            "Temps de chargement plus longs qu'avant la refonte",
+          ],
+        },
+        {
+          h2: "Après la refonte : rester actif",
+          paragraphs: [
+            "Une refonte est un point de départ, pas une fin. Prévoyez après la mise en ligne des mises à jour, sauvegardes et petites améliorations régulières, par exemple avec un [contrat de maintenance](service:wartung). Analysez après quelques semaines quelles pages fonctionnent bien et où les visiteurs partent, puis développez les contenus qui réussissent.",
+            "La refonte est aussi l'occasion de renforcer la visibilité locale : coordonnées à jour dans la fiche Google, nouvelles photos et pages pour vos régions principales. Notre article [Référencement local pour PME](guide:lokales-seo-kmu) explique comment faire. Nous conseillons personnellement les entreprises de [Bienne](local:website-redesign:biel), [Soleure](local:website-redesign:solothurn), [Berne](local:website-redesign:bern) et [Granges](local:website-redesign:grenchen).",
           ],
         },
       ],

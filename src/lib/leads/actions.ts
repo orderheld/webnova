@@ -5,6 +5,8 @@ import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
 import { adminInbox, escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/email";
 import { site } from "@/lib/site";
+import { describeDetails } from "./details";
+import { parseDetails } from "./details-parse";
 import {
   budgetOptions,
   companySizeOptions,
@@ -17,7 +19,9 @@ import {
 const leadSchema = z.object({
   locale: z.enum(["de", "fr"]),
   source: z.string().max(60).default("anfrage"),
-  services: z.array(z.enum(serviceOptions)).min(1).max(8),
+  services: z.array(z.enum(serviceOptions)).min(1).max(serviceOptions.length),
+  /** service-specific answers, cleaned by parseDetails against the question catalogue */
+  details: z.unknown().optional(),
   hasWebsite: z.boolean().nullable(),
   websiteUrl: z.string().max(300).optional().default(""),
   companySize: z.enum(companySizeOptions).nullable(),
@@ -48,6 +52,16 @@ function rateLimited(ip: string) {
   return arr.length > 5;
 }
 
+/** A mail failure (network, missing key) must never lose a lead that is already stored. */
+async function safeSend(args: Parameters<typeof sendMail>[0]) {
+  try {
+    return await sendMail(args);
+  } catch (e) {
+    console.error("[lead] mail failed", e);
+    return { ok: false as const, error: String(e) };
+  }
+}
+
 export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   const parsed = leadSchema.safeParse(input);
   if (!parsed.success) return { ok: false };
@@ -60,6 +74,9 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (rateLimited(ip)) return { ok: false };
 
+  const services = [...new Set(v.services)];
+  const details = parseDetails(v.details, services);
+
   const row = {
     source: v.source,
     locale: v.locale,
@@ -68,7 +85,8 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     email: v.email,
     phone: v.phone || null,
     preferredContact: v.preferredContact,
-    services: v.services,
+    services,
+    details,
     hasWebsite: v.hasWebsite,
     websiteUrl: v.websiteUrl || null,
     companySize: v.companySize,
@@ -107,20 +125,29 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     ["Quelle", `${v.source} ${v.pageUrl}`],
     ["Nachricht", v.message || "–"],
   ];
+  const cell = (val: string) => escapeHtml(val).replace(/\n/g, "<br>");
   const table = rows
     .map(
       ([k, val]) =>
-        `<tr><td style="padding:6px 12px 6px 0;color:${mailColors.muted};vertical-align:top;white-space:nowrap">${k}</td><td style="padding:6px 0;color:${mailColors.ink}">${escapeHtml(val).replace(/\n/g, "<br>")}</td></tr>`,
+        `<tr><td style="padding:6px 12px 6px 0;color:${mailColors.muted};vertical-align:top;white-space:nowrap">${k}</td><td style="padding:6px 0;color:${mailColors.ink}">${cell(val)}</td></tr>`,
+    )
+    .join("");
+  const detailHtml = describeDetails(details)
+    .map(
+      (g) =>
+        `<h3 style="margin:24px 0 8px;font-size:16px;color:${mailColors.accent}">${escapeHtml(g.title)}</h3><table cellpadding="0" cellspacing="0" style="font-size:14px">${g.rows
+          .map(([k, val]) => `<tr><td style="padding:4px 12px 4px 0;color:${mailColors.muted};vertical-align:top">${escapeHtml(k)}</td><td style="padding:4px 0;color:${mailColors.ink}">${cell(val)}</td></tr>`)
+          .join("")}</table>`,
     )
     .join("");
   const adminUrl = leadId ? `${site.url}/admin/anfragen/${leadId}` : `${site.url}/admin/anfragen`;
 
-  const notify = await sendMail({
+  const notify = await safeSend({
     to: adminInbox(),
     replyTo: v.email,
     subject: `Neue Anfrage: ${v.company || v.name} (${v.services.map((s) => label("services", s)).join(", ")})`,
     html: mailLayout(
-      `<h2 style="margin:0 0 16px;font-size:22px;color:${mailColors.ink}">Neue Anfrage über webnova.ch</h2><table cellpadding="0" cellspacing="0" style="font-size:14px">${table}</table>${
+      `<h2 style="margin:0 0 16px;font-size:22px;color:${mailColors.ink}">Neue Anfrage über webnova.ch</h2><table cellpadding="0" cellspacing="0" style="font-size:14px">${table}</table>${detailHtml}${
         stored ? `<p style="margin-top:24px"><a href="${adminUrl}" style="background:${mailColors.accent};color:#ffffff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;display:inline-block">Im Admin öffnen</a></p>` : `<p style="color:${mailColors.danger}">Achtung: Anfrage konnte nicht in der Datenbank gespeichert werden.</p>`
       }`,
       false,
@@ -129,7 +156,7 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
 
   const fr = v.locale === "fr";
   const firstName = v.name.split(" ")[0];
-  await sendMail({
+  await safeSend({
     to: v.email,
     replyTo: site.email,
     subject: fr ? "Votre demande chez Webnova" : "Ihre Anfrage bei Webnova",

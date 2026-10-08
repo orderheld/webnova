@@ -12,7 +12,7 @@ export const bern: City = {
       name: "Bern",
       slug: "webdesign-bern",
       meta: {
-        title: "Webdesign Bern – Webseite erstellen lassen",
+        title: "Webdesign Bern: Webseite erstellen lassen",
         description:
           "Webagentur für Bern: Webdesign, Homepage, Onlineshop und SEO für Berner KMU. Persönlich, ohne Grossagentur-Overhead. Kostenlose Erstberatung.",
       },
@@ -47,6 +47,19 @@ export const bern: City = {
             "Nach dem Launch betreuen wir Ihre Webseite weiter, wenn Sie das wünschen: Wartung, Sicherheitsupdates, Hosting, laufende Suchmaschinenoptimierung und Werbekampagnen auf Google oder Meta. Für Restaurants und Läden in Bern richten wir auch Kassensysteme ein, die mit dem Onlineshop zusammenspielen. Sie profitieren von direkter Kommunikation und einem fairen Verhältnis zwischen Aufwand und Ergebnis.",
           ],
         },
+        {
+          h2: "Leistungen für Berner KMU, Verbände und Gewerbe",
+          paragraphs: [
+            "In Bern arbeiten viele KMU, Praxen, Verbände und Dienstleister, die eine klare, vertrauenswürdige Webseite brauchen. Neben dem Webdesign bieten wir einen [Onlineshop für Berner KMU](local:onlineshop:bern), das [Website-Redesign ohne Ranking-Verlust](local:website-redesign:bern), [Online-Marketing mit Google Ads](local:online-marketing:bern) und [Corporate Design](local:branding:bern). Für Gastronomie und Detailhandel in der Altstadt und den Quartieren richten wir zudem ein [Kassensystem für Bern](local:kassensystem:bern) ein.",
+            "Weil der Kanton Bern zweisprachig ist und viele Organisationen schweizweit tätig sind, ist eine französische Version oft ein Gewinn. Worauf es dabei ankommt, zeigt der Ratgeber [Zweisprachige Webseite](guide:zweisprachige-webseite). Vor der Vergabe eines Projekts hilft Ihnen unser Ratgeber [Webagentur wählen](guide:webagentur-waehlen), Offerten fair zu vergleichen. Für die Sichtbarkeit bei Google lesen Sie [SEO in Bern](citySeo:bern).",
+          ],
+          bullets: [
+            "Webseiten für Praxen, Verbände und Dienstleister",
+            "Barrierearme Gestaltung und klare Sprache",
+            "Deutsch und Französisch für den zweisprachigen Kanton",
+            "Wartung, Hosting und Support aus einer Hand",
+          ],
+        },
       ],
       faq: [
         {
@@ -65,13 +78,17 @@ export const bern: City = {
           q: "Erhalte ich eine Offerte, bevor das Projekt startet?",
           a: "Ja. Nach der kostenlosen Erstberatung erhalten Sie eine unverbindliche Offerte mit Umfang und Zeitplan. Erst wenn Sie zustimmen, beginnen wir mit der Arbeit.",
         },
+        {
+          q: "Können Sie bestehende Webseiten von Berner Organisationen übernehmen?",
+          a: "Ja. Wir analysieren die bestehende Seite, übernehmen Inhalte und richten Weiterleitungen ein, damit Rankings erhalten bleiben. Ob ein Weiterbetrieb oder ein Redesign sinnvoller ist, zeigen wir nach einer kurzen Analyse.",
+        },
       ],
     },
     fr: {
       name: "Berne",
       slug: "creation-site-internet-berne",
       meta: {
-        title: "Création site internet Berne – Agence web",
+        title: "Création site internet Berne: Agence web",
         description:
           "Agence web pour Berne : création de site internet, boutique en ligne et référencement pour les PME. Contact direct, sans lourdeur. Premier conseil gratuit.",
       },
@@ -106,6 +123,19 @@ export const bern: City = {
             "Après la mise en ligne, nous continuons à vous accompagner si vous le souhaitez : maintenance, mises à jour, hébergement, référencement et campagnes Google ou Meta. Pour les restaurants et commerces bernois, nous installons aussi des systèmes de caisse reliés à la boutique en ligne. Vous profitez d'une communication directe et d'un rapport équilibré entre effort et résultat.",
           ],
         },
+        {
+          h2: "Prestations pour les PME, associations et commerces bernois",
+          paragraphs: [
+            "À Berne, de nombreuses PME, cabinets, associations et prestataires ont besoin d'un site clair et digne de confiance. En plus de la création de sites, nous proposons une [boutique en ligne pour PME bernoises](local:onlineshop:bern), la [refonte sans perte de positions](local:website-redesign:bern), du [marketing digital avec Google Ads](local:online-marketing:bern) et une [identité visuelle](local:branding:bern). Pour la restauration et le commerce, nous installons aussi un [système de caisse à Berne](local:kassensystem:bern).",
+            "Le canton de Berne étant bilingue et beaucoup d'organisations actives dans toute la Suisse, une version française est souvent un vrai atout. L'article [Site internet bilingue](guide:zweisprachige-webseite) explique comment procéder. Avant d'attribuer un projet, notre guide [Choisir une agence web](guide:webagentur-waehlen) vous aide à comparer les devis. Pour la visibilité sur Google, consultez [référencement à Berne](citySeo:bern).",
+          ],
+          bullets: [
+            "Sites pour cabinets, associations et prestataires",
+            "Conception accessible et langage clair",
+            "Français et allemand pour le canton bilingue",
+            "Maintenance, hébergement et support",
+          ],
+        },
       ],
       faq: [
         {
@@ -120,6 +150,10 @@ export const bern: City = {
           q: "Venez-vous à Berne pour les réunions ?",
           a: "Oui, pour le premier entretien, les ateliers ou les photos, nous venons volontiers. Les points intermédiaires se font par visioconférence ou par téléphone, selon votre préférence.",
         },
+        {
+          q: "Pouvez-vous reprendre le site existant d'une organisation bernoise ?",
+          a: "Oui. Nous analysons le site existant, reprenons les contenus et mettons en place les redirections pour conserver les positions. Une courte analyse montre s'il vaut mieux poursuivre l'exploitation ou faire une refonte.",
+        },
       ],
     },
   },
@@ -128,7 +162,7 @@ export const bern: City = {
       name: "Bern",
       slug: "seo-bern",
       meta: {
-        title: "SEO Bern – Suchmaschinenoptimierung für KMU",
+        title: "SEO Bern: Suchmaschinenoptimierung für KMU",
         description:
           "SEO in Bern: Suchmaschinenoptimierung, lokales SEO und Google Unternehmensprofil für Berner KMU. Transparent und persönlich. Kostenlose Erstberatung.",
       },
@@ -164,6 +198,13 @@ export const bern: City = {
             "Wir starten mit einer kostenlosen Erstberatung und einer Analyse Ihrer aktuellen Sichtbarkeit. Danach erhalten Sie eine unverbindliche Offerte mit priorisierten Massnahmen. Wir versprechen keine Platzierungen, sondern sorgfältige Arbeit nach den Richtlinien von Google. Wer schneller Resultate braucht, kann SEO mit Google Ads kombinieren, die wir ebenfalls für Sie aufsetzen und betreuen.",
           ],
         },
+        {
+          h2: "Ratgeber und weitere Leistungen für Bern",
+          paragraphs: [
+            "In einem umkämpften Markt wie Bern lohnt sich eine klare Reihenfolge: zuerst die Grundlagen aus dem Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu), dann ein vollständiges Profil nach der Anleitung [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil) und eine technisch schnelle Webseite, siehe [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
+            "Für schnelle Resultate bei neuen Angeboten kombinieren wir SEO gerne mit [Online-Marketing in Bern](local:online-marketing:bern). Ist die Webseite selbst das Hindernis, starten wir mit [Webdesign in Bern](city:bern) oder einem [Website-Redesign](local:website-redesign:bern).",
+          ],
+        },
       ],
       faq: [
         {
@@ -178,13 +219,17 @@ export const bern: City = {
           q: "Muss ich einen langen Vertrag abschliessen?",
           a: "Nein, wir setzen auf überschaubare Laufzeiten und Transparenz. Details zum Umfang klären wir in der kostenlosen Erstberatung und halten sie in der unverbindlichen Offerte fest.",
         },
+        {
+          q: "Lohnt sich eine französische Version für SEO in Bern?",
+          a: "Wenn Sie Kundschaft aus dem Berner Jura, der Romandie oder Bundesstellen mit französischsprachigen Ansprechpersonen haben, ja. Eine eigene französische Version macht Sie für Suchen auf Französisch überhaupt erst sichtbar.",
+        },
       ],
     },
     fr: {
       name: "Berne",
       slug: "referencement-berne",
       meta: {
-        title: "Référencement Berne – Agence SEO pour PME",
+        title: "Référencement Berne: Agence SEO pour PME",
         description:
           "Référencement à Berne : SEO local, profil d'entreprise Google et contenus en français pour les PME bernoises. Premier conseil gratuit.",
       },
@@ -220,6 +265,13 @@ export const bern: City = {
             "Nous commençons par un premier conseil gratuit et une analyse de votre visibilité actuelle. Vous recevez ensuite une offre sans engagement avec des mesures classées par priorité. Nous ne promettons pas de positions, mais un travail rigoureux conforme aux règles de Google. Si vous avez besoin de résultats plus rapides, nous associons le SEO à des campagnes Google Ads.",
           ],
         },
+        {
+          h2: "Conseils et autres prestations pour Berne",
+          paragraphs: [
+            "Sur un marché aussi concurrentiel que Berne, un ordre clair est payant : d'abord les bases de [Référencement local pour PME](guide:lokales-seo-kmu), puis une fiche complète selon le guide [Optimiser sa fiche Google](guide:google-unternehmensprofil) et un site rapide, voir [Core Web Vitals expliqués simplement](guide:core-web-vitals).",
+            "Pour des résultats rapides avec de nouvelles offres, nous combinons volontiers le SEO avec du [marketing digital à Berne](local:online-marketing:bern). Si le site lui-même est l'obstacle, nous commençons par la [création de site à Berne](city:bern) ou une [refonte](local:website-redesign:bern).",
+          ],
+        },
       ],
       faq: [
         {
@@ -233,6 +285,10 @@ export const bern: City = {
         {
           q: "Faut-il signer un contrat de longue durée ?",
           a: "Non. Nous privilégions des durées raisonnables et la transparence. Le périmètre est défini lors du premier conseil gratuit et précisé dans l'offre sans engagement.",
+        },
+        {
+          q: "Faites-vous le référencement en allemand et en français à Berne ?",
+          a: "Oui. Nous optimisons les deux versions linguistiques avec leurs propres mots-clés, URL et balises hreflang, afin que vous soyez trouvé par la clientèle alémanique comme romande.",
         },
       ],
     },

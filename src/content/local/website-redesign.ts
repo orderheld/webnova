@@ -390,7 +390,7 @@ export const redesignLocal: LocalService[] = [
         name: "Bern",
         slug: "website-redesign-bern",
         meta: {
-          title: "Website Redesign Bern: Relaunch ohne Ranking-Verlust",
+          title: "Website Redesign Bern: Relaunch ohne SEO-Verlust",
           description:
             "Website Redesign in Bern: Wir ordnen gewachsene Webseiten neu, modernisieren das Design und sichern Rankings. Kostenlose Erstberatung anfragen.",
         },

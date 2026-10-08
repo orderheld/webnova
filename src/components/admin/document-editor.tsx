@@ -114,7 +114,7 @@ export function DocumentEditor({
 
   return (
     <div className="space-y-5">
-      <div className="grid gap-3 rounded-2xl border border-line bg-surface p-4 sm:p-5 md:grid-cols-4">
+      <div className="grid gap-3 rounded-2xl border border-line bg-surface shadow-xs p-4 sm:p-5 md:grid-cols-4">
         <Field label="Kunde" className="md:col-span-2">
           <select className="input" value={v.customerId ?? ""} disabled={locked} onChange={(e) => setV((p) => ({ ...p, customerId: e.target.value ? Number(e.target.value) : null, projectId: null }))}>
             <option value="">Kunde wählen …</option>
@@ -149,7 +149,7 @@ export function DocumentEditor({
         </Field>
       </div>
 
-      <div className="rounded-2xl border border-line bg-surface">
+      <div className="rounded-2xl border border-line bg-surface shadow-xs">
         <div className={`hidden gap-3 border-b border-line px-5 py-2.5 text-[11.5px] uppercase tracking-wider text-muted md:grid ${grid}`}>
           <span>Position</span>
           <span className="text-right">Menge</span>
@@ -291,7 +291,7 @@ export function DocumentEditor({
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <div className="space-y-3 rounded-2xl border border-line bg-surface p-4 sm:p-5">
+        <div className="space-y-3 rounded-2xl border border-line bg-surface shadow-xs p-4 sm:p-5">
           <Field label="Schlusstext">
             <textarea className="input" rows={3} value={v.outro} disabled={locked} onChange={(e) => set("outro", e.target.value)} />
           </Field>
@@ -339,7 +339,7 @@ export function DocumentEditor({
             </button>
           )}
           {locked && <p className="mt-6 text-[13px] text-white/60">Bezahlte oder stornierte Dokumente können nicht mehr bearbeitet werden. Duplizieren oder Gutschrift erstellen.</p>}
-          {msg && <p className={`mt-3 text-[13px] ${msg.type === "ok" ? "text-emerald-300" : "text-red-300"}`}>{msg.text}</p>}
+          {msg && <p className={`mt-3 text-[13px] ${msg.type === "ok" ? "text-[#a8d1b5]" : "text-[#e7b9b9]"}`}>{msg.text}</p>}
         </div>
       </div>
     </div>

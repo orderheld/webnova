@@ -4,7 +4,7 @@ export const onlineVerkaufen: Problem = {
   key: "online-verkaufen",
   icon: "cart",
   services: ["onlineshop", "kassensystem-retail", "online-marketing", "seo"],
-  guides: ["webseite-kosten"],
+  guides: ["onlineshop-schweiz", "webseite-kosten"],
   industries: ["detailhandel", "cafe-baeckerei", "gastronomie"],
   preset: ["shop"],
   content: {

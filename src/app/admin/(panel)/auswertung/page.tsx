@@ -12,8 +12,9 @@ import { getSettings } from "@/lib/admin/settings";
 
 export const metadata = { title: "Auswertung" };
 
-const REV = "#2f6aa3";
-const EXP = "#c07a2c";
+// Schieferblau for revenue, a light tint of the logo blue for expenses (corporate palette only).
+const REV = "#24405a";
+const EXP = "#9fb4c7";
 
 export default async function ReportPage({ searchParams }: { searchParams: Promise<{ jahr?: string }> }) {
   const { jahr } = await searchParams;
@@ -39,6 +40,7 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
   return (
     <>
       <PageHeader
+        eyebrow="Finanzen"
         title="Auswertung"
         sub={`Geschäftsjahr ${year} · Umsatz netto nach Rechnungsdatum, Ausgaben brutto`}
         actions={
@@ -88,7 +90,7 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
               <div key={k} className="group relative flex h-full flex-1 items-end justify-center gap-[2px]">
                 <div className="w-[38%] rounded-t-[4px]" style={{ height: `${(Math.max(0, m.revenue) / max) * 100}%`, background: REV }} />
                 <div className="w-[38%] rounded-t-[4px]" style={{ height: `${(m.expenses / max) * 100}%`, background: EXP }} />
-                <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-line bg-surface px-3 py-2 text-[12px] shadow-lg group-hover:block">
+                <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-line bg-surface px-3 py-2 text-[12px] shadow-card group-hover:block">
                   <p className="font-semibold">{monthNames[k]}</p>
                   <p>Umsatz CHF {chf(m.revenue)}</p>
                   <p>Ausgaben CHF {chf(m.expenses)}</p>
@@ -143,8 +145,9 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
 
       <div className="grid gap-5 lg:grid-cols-2">
         <Card title={`MWST pro Quartal ${year}`}>
-          {!s.vatEnabled && <p className="mb-3 rounded-lg bg-bg px-3 py-2 text-[13px] text-muted">In den Einstellungen ist «MWST-pflichtig» nicht aktiv. Die Übersicht dient zur Kontrolle der Umsatzgrenze (CHF 100’000).</p>}
-          <table className="w-full text-[13.5px]">
+          {!s.vatEnabled && <p className="mb-3 rounded-xl bg-bg px-3 py-2 text-[13px] text-muted">In den Einstellungen ist «MWST-pflichtig» nicht aktiv. Die Übersicht dient zur Kontrolle der Umsatzgrenze (CHF 100’000).</p>}
+          <div className="-mx-4 overflow-x-auto px-4 sm:-mx-5 sm:px-5">
+          <table className="w-full min-w-[420px] text-[13.5px]">
             <thead>
               <tr className="border-b border-line text-left text-[11.5px] uppercase tracking-wider text-muted">
                 <th className="py-2 font-medium">Quartal</th>
@@ -176,6 +179,7 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
               ))}
             </tbody>
           </table>
+          </div>
           <p className="mt-3 text-[12px] text-muted">Vereinbartes Entgelt (Rechnungsdatum), Gutschriften abgezogen, Vorsteuer aus den erfassten Ausgaben.</p>
         </Card>
 
@@ -183,7 +187,8 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
           {open.length === 0 ? (
             <p className="text-[14px] text-muted">Keine offenen Rechnungen.</p>
           ) : (
-            <table className="w-full text-[13.5px]">
+            <div className="-mx-4 overflow-x-auto px-4 sm:-mx-5 sm:px-5">
+            <table className="w-full min-w-[420px] text-[13.5px]">
               <tbody className="divide-y divide-line">
                 {open.map(({ i, c }) => (
                   <tr key={i.id}>
@@ -202,6 +207,7 @@ export default async function ReportPage({ searchParams }: { searchParams: Promi
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </Card>
       </div>

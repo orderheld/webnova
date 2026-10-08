@@ -53,6 +53,7 @@ export default async function ExpensesPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHeader
+        eyebrow="Finanzen"
         title="Ausgaben"
         sub={`Geschäftsjahr ${year}`}
         actions={
@@ -88,11 +89,11 @@ export default async function ExpensesPage({ searchParams }: { searchParams: Pro
                 </option>
               ))}
             </select>
-            <input name="q" defaultValue={term} placeholder="Beschreibung, Lieferant …" className="input w-56" />
-            <button className="rounded-full border border-line bg-surface px-3 text-[13px] hover:border-accent">Filtern</button>
+            <input name="q" defaultValue={term} placeholder="Beschreibung, Lieferant …" className="input min-w-0 flex-1 sm:w-56 sm:flex-none" />
+            <button className={btn.ghost}>Filtern</button>
           </form>
           {rows.length === 0 ? (
-            <Empty>Keine Ausgaben in diesem Zeitraum.</Empty>
+            <Empty icon="wallet">Keine Ausgaben in diesem Zeitraum.</Empty>
           ) : (
             <Table
               minWidth={720}

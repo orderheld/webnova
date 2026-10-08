@@ -85,7 +85,7 @@ export function Calculator({
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="min-w-0 space-y-5">
-        <section className="grid gap-4 rounded-2xl border border-line bg-surface p-4 sm:grid-cols-2 sm:p-5">
+        <section className="grid gap-4 rounded-2xl border border-line bg-surface shadow-xs p-4 sm:grid-cols-2 sm:p-5">
           <Field label="Bezeichnung (wird Titel der Offerte)" className="sm:col-span-2">
             <input className="input" value={name} placeholder="z. B. Neue Webseite Bäckerei Muster" onChange={(e) => setName(e.target.value)} />
           </Field>
@@ -102,7 +102,7 @@ export function Calculator({
           {leadHint && <p className="rounded-xl bg-accent-soft px-3 py-2 text-[13px] text-accent sm:col-span-2">{leadHint}</p>}
         </section>
 
-        <section className="rounded-2xl border border-line bg-surface">
+        <section className="rounded-2xl border border-line bg-surface shadow-xs">
           <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-3 sm:px-5">
             <h2 className="text-[15px] font-semibold">1. Paket</h2>
             <p className="text-[12.5px] text-muted">Grundpreis, danach mit Zusatzleistungen ergänzen</p>
@@ -145,7 +145,7 @@ export function Calculator({
           )}
         </section>
 
-        <section className="rounded-2xl border border-line bg-surface">
+        <section className="rounded-2xl border border-line bg-surface shadow-xs">
           <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-3 sm:px-5">
             <h2 className="text-[15px] font-semibold">2. Zusatzleistungen</h2>
             <p className="text-[12.5px] text-muted">Preise pro Projekt anpassbar</p>
@@ -225,7 +225,7 @@ export function Calculator({
           </div>
         </section>
 
-        <section className="rounded-2xl border border-line bg-surface">
+        <section className="rounded-2xl border border-line bg-surface shadow-xs">
           <header className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-3 sm:px-5">
             <h2 className="text-[15px] font-semibold">3. Wiederkehrende Kosten</h2>
             <p className="text-[12.5px] text-muted">Nicht im Projektpreis, Verrechnung als Abo</p>
@@ -294,7 +294,7 @@ export function Calculator({
               <span>{chf0(config.maxTotal)}</span>
             </div>
             {t.total > 0 && (t.total < config.minTotal || t.total > config.maxTotal) && (
-              <p className="mt-1 text-[12px] text-amber-300">Ausserhalb des üblichen Rahmens von CHF {chf0(config.minTotal)} bis {chf0(config.maxTotal)}.</p>
+              <p className="mt-1 text-[12px] text-[#e6c98f]">Ausserhalb des üblichen Rahmens von CHF {chf0(config.minTotal)} bis {chf0(config.maxTotal)}.</p>
             )}
           </div>
 
@@ -349,7 +349,7 @@ export function Calculator({
                 </div>
                 <div className="flex justify-between gap-3">
                   <dt className="text-white/60">Effektiver Stundensatz</dt>
-                  <dd className={`tabular-nums font-medium ${t.hours ? (rateOk ? "text-emerald-300" : "text-amber-300") : ""}`}>{t.hours ? `CHF ${chf0(t.effectiveRate)}` : "–"}</dd>
+                  <dd className={`tabular-nums font-medium ${t.hours ? (rateOk ? "text-[#a8d1b5]" : "text-[#e6c98f]") : ""}`}>{t.hours ? `CHF ${chf0(t.effectiveRate)}` : "–"}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-3">
                   <dt className="text-white/60">Ziel CHF/h</dt>
@@ -394,7 +394,7 @@ export function Calculator({
             </button>
             {!customerId && <p className="mt-2 text-[12px] text-white/50">Für die Offerte zuerst einen Kunden wählen.</p>}
           </div>
-          {msg && <p className={`mt-3 text-[13px] ${msg.type === "ok" ? "text-emerald-300" : "text-red-300"}`}>{msg.text}</p>}
+          {msg && <p className={`mt-3 text-[13px] ${msg.type === "ok" ? "text-[#a8d1b5]" : "text-[#e7b9b9]"}`}>{msg.text}</p>}
         </div>
       </aside>
     </div>

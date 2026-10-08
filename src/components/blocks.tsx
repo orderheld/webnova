@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Faq, Locale, Section } from "@/content/types";
 import { getDict } from "@/i18n/dict";
-import { href } from "@/lib/routes";
+import { hasRoute, href } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { ButtonLink } from "./button";
 import { Icon } from "./icons";
@@ -30,6 +30,7 @@ export function Breadcrumbs({ items }: { items: { name: string; url?: string }[]
 export function PageHero({
   eyebrow,
   title,
+  subline,
   lead,
   children,
   crumbs,
@@ -38,6 +39,8 @@ export function PageHero({
 }: {
   eyebrow?: string;
   title: string;
+  /** Benefit line under a keyword H1 (beyondweb pattern: keyword H1, benefit subline). */
+  subline?: string;
   lead?: string;
   children?: React.ReactNode;
   crumbs?: { name: string; url?: string }[];
@@ -54,7 +57,11 @@ export function PageHero({
         <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
           <div className={aside ? "lg:col-span-7" : ""}>
             {eyebrow && <p className="eyebrow mb-6 animate-rise">{eyebrow}</p>}
-            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.4rem,4.8vw,4rem)]" : "text-[clamp(2.4rem,5.4vw,4.4rem)]"}`}>{title}</h1>
+            {/* The H1 is the LCP element: rendered visible on load, never faded in. */}
+            <h1 className={`display max-w-5xl ${aside ? "text-[clamp(2.4rem,4.8vw,4rem)]" : "text-[clamp(2.4rem,5.4vw,4.4rem)]"}`}>{title}</h1>
+            {subline && (
+              <p className="mt-4 max-w-3xl font-display text-[clamp(1.35rem,2.4vw,1.9rem)] font-semibold leading-snug tracking-[-0.015em] text-accent">{subline}</p>
+            )}
             {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[19px]">{lead}</p>}
             {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
           </div>
@@ -69,19 +76,63 @@ export function PageHero({
   );
 }
 
-export function Prose({ sections }: { sections: Section[] }) {
+/**
+ * Renders text with inline links written as [label](route-id), e.g. "[SEO](service:seo)" or
+ * "[Webdesign Biel](city:biel)". Route ids are resolved per locale, unknown ids render as plain text.
+ */
+export function RichText({ text, locale }: { text: string; locale?: Locale }) {
+  if (!locale || !text.includes("](")) return <>{text}</>;
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    parts.push(text.slice(last, m.index));
+    const [, label, id] = m;
+    parts.push(
+      hasRoute(id) ? (
+        <Link key={m.index} href={href(locale, id)} className="font-medium text-bright underline decoration-bright/30 underline-offset-[3px] hover:decoration-bright">
+          {label}
+        </Link>
+      ) : (
+        label
+      ),
+    );
+    last = m.index + m[0].length;
+  }
+  parts.push(text.slice(last));
+  return <>{parts}</>;
+}
+
+/** URL fragment for a heading, e.g. "Schritt 1: Profil" -> "schritt-1-profil". */
+export function anchorId(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export function Prose({ sections, locale, anchors = false }: { sections: Section[]; locale?: Locale; anchors?: boolean }) {
   return (
     <div className="prose-wn">
       {sections.map((s, i) => (
         <div key={i}>
-          <h2>{s.h2}</h2>
+          <h2 id={anchors ? anchorId(s.h2) : undefined} className={anchors ? "scroll-mt-28" : undefined}>
+            {s.h2}
+          </h2>
           {s.paragraphs.map((p, j) => (
-            <p key={j}>{p}</p>
+            <p key={j}>
+              <RichText text={p} locale={locale} />
+            </p>
           ))}
           {s.bullets && s.bullets.length > 0 && (
             <ul>
               {s.bullets.map((b, j) => (
-                <li key={j}>{b}</li>
+                <li key={j}>
+                  <RichText text={b} locale={locale} />
+                </li>
               ))}
             </ul>
           )}
@@ -235,11 +286,12 @@ export function CtaCard({ locale, title, text }: { locale: Locale; title: string
   );
 }
 
-export function FeatureGrid({ items }: { items: { title: string; text: string }[] }) {
+/** `reveal={false}` for grids near the top of the page, so they are fully visible on load. */
+export function FeatureGrid({ items, reveal = true }: { items: { title: string; text: string }[]; reveal?: boolean }) {
   return (
     <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
-        <div key={i} className="card reveal p-7 md:p-8">
+        <div key={i} className={`card ${reveal ? "reveal " : ""}p-7 md:p-8`}>
           <span className="mb-6 grid h-9 w-9 place-items-center rounded-full bg-bright-soft font-display text-[14px] font-semibold text-bright">
             {i + 1}
           </span>

@@ -112,34 +112,58 @@ export const expenseCategoryLabels: Record<string, string> = {
 
 export const units = ["Pauschal", "Std.", "Stk.", "Seiten", "Tag", "Monat", "Quartal", "Jahr"];
 
+/*
+ * Status tones in the corporate palette: Schieferblau tints for open work, muted green / ochre /
+ * red only for outcomes that need attention. No other hues, so badges never compete with the logo.
+ */
+const tone = {
+  neutral: "bg-bg text-muted ring-line",
+  info: "bg-bright-soft text-bright ring-bright/15",
+  progress: "bg-accent-soft text-accent ring-accent/15",
+  strong: "bg-accent text-white ring-accent",
+  success: "bg-success-soft text-success ring-success/15",
+  warn: "bg-warn-soft text-warn ring-warn/15",
+  danger: "bg-danger-soft text-danger ring-danger/20",
+};
+
 const tones: Record<string, string> = {
   // leads
-  neu: "bg-accent-soft text-accent",
-  kontaktiert: "bg-amber-100 text-amber-800",
-  gespraech: "bg-sky-100 text-sky-800",
-  offerte: "bg-violet-100 text-violet-800",
-  gewonnen: "bg-emerald-100 text-emerald-800",
-  verloren: "bg-zinc-200 text-zinc-600",
+  neu: tone.info,
+  kontaktiert: tone.progress,
+  gespraech: tone.progress,
+  offerte: tone.strong,
+  gewonnen: tone.success,
+  verloren: tone.neutral,
   // documents
-  entwurf: "bg-zinc-100 text-zinc-600",
-  gesendet: "bg-accent-soft text-accent",
-  angenommen: "bg-emerald-100 text-emerald-800",
-  abgelehnt: "bg-zinc-200 text-zinc-600",
-  teilbezahlt: "bg-amber-100 text-amber-800",
-  bezahlt: "bg-emerald-100 text-emerald-800",
-  storniert: "bg-zinc-200 text-zinc-500 line-through",
-  ueberfaellig: "bg-red-100 text-red-700",
+  entwurf: tone.neutral,
+  gesendet: tone.info,
+  angenommen: tone.success,
+  abgelehnt: tone.neutral,
+  teilbezahlt: tone.warn,
+  bezahlt: tone.success,
+  storniert: `${tone.neutral} line-through`,
+  ueberfaellig: tone.danger,
   // projects
-  planung: "bg-zinc-100 text-zinc-700",
-  design: "bg-violet-100 text-violet-800",
-  entwicklung: "bg-sky-100 text-sky-800",
-  review: "bg-amber-100 text-amber-800",
-  live: "bg-emerald-100 text-emerald-800",
-  abgeschlossen: "bg-zinc-200 text-zinc-600",
+  planung: tone.neutral,
+  design: tone.info,
+  entwicklung: tone.progress,
+  review: tone.warn,
+  live: tone.success,
+  abgeschlossen: tone.neutral,
   // subscriptions
-  aktiv: "bg-emerald-100 text-emerald-800",
-  pausiert: "bg-amber-100 text-amber-800",
-  gekuendigt: "bg-zinc-200 text-zinc-600",
+  aktiv: tone.success,
+  pausiert: tone.warn,
+  gekuendigt: tone.neutral,
+};
+
+/** Bar colour per pipeline stage: one Schieferblau ramp from light (early) to dark (late). */
+export const leadStageBar: Record<string, string> = {
+  neu: "bg-accent-light",
+  kontaktiert: "bg-[#8fa6bb]",
+  gespraech: "bg-bright",
+  offerte: "bg-accent",
+  gewonnen: "bg-success",
+  verloren: "bg-line",
 };
 
 const allLabels: Record<string, string> = {
@@ -150,5 +174,5 @@ const allLabels: Record<string, string> = {
   ...subscriptionStatusLabels,
 };
 
-export const statusTone = (s: string) => tones[s] ?? "bg-zinc-100 text-zinc-700";
+export const statusTone = (s: string) => tones[s] ?? tone.neutral;
 export const statusLabel = (s: string) => allLabels[s] ?? s;

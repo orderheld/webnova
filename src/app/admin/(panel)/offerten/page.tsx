@@ -58,7 +58,8 @@ export default async function QuotesPage({ searchParams }: { searchParams: Promi
   const params = { status: filter, q: term, sort: sp.sort, dir: sp.dir };
   return (
     <>
-      <PageHeader title="Offerten" sub={`${agg.n} Offerte${agg.n === 1 ? "" : "n"} · CHF ${chf(agg.sum)}`} actions={<LinkButton href="/admin/offerten/neu" icon="plus">Neue Offerte</LinkButton>} />
+      <PageHeader
+        eyebrow="Verkauf" title="Offerten" sub={`${agg.n} Offerte${agg.n === 1 ? "" : "n"} · CHF ${chf(agg.sum)}`} actions={<LinkButton href="/admin/offerten/neu" icon="plus">Neue Offerte</LinkButton>} />
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <FilterChips
           active={filter}

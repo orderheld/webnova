@@ -3,8 +3,11 @@ import type { Guide } from "../types";
 export const lokalesSeoKmu: Guide = {
   key: "lokales-seo-kmu",
   date: "2026-09-05",
-  readingMinutes: 7,
-  related: ["seo", "online-marketing"],
+  updated: "2026-10-08",
+  readingMinutes: 9,
+  related: ["seo", "online-marketing", "webdesign"],
+  relatedGuides: ["google-unternehmensprofil", "geo-ki-suche", "zweisprachige-webseite"],
+  cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
       slug: "lokales-seo-fuer-kmu",
@@ -15,6 +18,16 @@ export const lokalesSeoKmu: Guide = {
       },
       h1: "Lokales SEO für KMU: So werden Sie in Ihrer Region gefunden",
       lead: "Wer «Schreiner Grenchen» oder «Coiffeur Biel» sucht, will meist sofort einen Anbieter in der Nähe finden. Mit lokalem SEO sorgen Sie dafür, dass Ihr Unternehmen genau dann in Google Maps und in den Suchergebnissen erscheint.",
+      keyTakeaways: [
+        "Lokales SEO verbindet Google-Unternehmensprofil, einheitliche Firmendaten, Bewertungen und eine Website, die Ihre Region klar nennt.",
+        "Name, Adresse und Telefonnummer müssen auf Website, Google und Verzeichnissen wie local.ch und search.ch identisch sein.",
+        "Echte Bewertungen aktiv sammeln und alle beantworten. Gekaufte Bewertungen schaden.",
+        "Standortseiten lohnen sich nur mit echtem lokalem Inhalt, nicht als Kopie mit anderem Ortsnamen.",
+        "In zweisprachigen Regionen braucht es vollwertige Sprachversionen statt automatischer Übersetzung.",
+      ],
+      sources: [
+        { label: "Google Business Profile Hilfe: Lokales Ranking verbessern", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "Warum lokales SEO für Schweizer KMU entscheidend ist",
@@ -30,7 +43,7 @@ export const lokalesSeoKmu: Guide = {
             "Füllen Sie das Profil so vollständig wie möglich aus und halten Sie es aktuell. Ein Profil mit echten Fotos, korrekten Öffnungszeiten und regelmässigen Beiträgen wirkt vertrauenswürdig und wird von Google als aktiv wahrgenommen. Denken Sie auch an Feiertage und Betriebsferien: Falsche Öffnungszeiten führen schnell zu verärgerten Kundinnen und Kunden und zu negativen Bewertungen.",
           ],
           bullets: [
-            "Passende Haupt- und Nebenkategorien",
+            "Passende Haupt- und Nebenkategorien (Details im Ratgeber [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil))",
             "Adresse, Telefon, Webseite und Öffnungszeiten",
             "Beschreibung mit Leistungen und Region",
             "Echte Fotos von Team, Räumen und Arbeiten",
@@ -69,7 +82,27 @@ export const lokalesSeoKmu: Guide = {
           h2: "Zweisprachige Regionen wie Biel/Bienne richtig abdecken",
           paragraphs: [
             "In zweisprachigen Regionen wie Biel/Bienne oder entlang der Sprachgrenze suchen Kundinnen und Kunden auf Deutsch und auf Französisch. Wer «Webdesign Biel» sucht, verwendet andere Begriffe als jemand, der «création site internet Bienne» eingibt. Eine einsprachige Webseite verschenkt hier einen grossen Teil der möglichen Anfragen. Das gilt auch für Grenchen, Solothurn oder Bern, wenn Sie Kundschaft aus der Romandie ansprechen.",
-            "Erstellen Sie deshalb vollwertige Sprachversionen mit eigenen URLs und hreflang-Angaben, statt einer automatischen Übersetzung. Auch das Google-Unternehmensprofil, Beiträge und Antworten auf Bewertungen können zweisprachig sein. So zeigen Sie, dass Sie die ganze Region bedienen. Gerne prüfen wir Ihre lokale Sichtbarkeit und zeigen Ihnen in einem unverbindlichen Gespräch das Potenzial auf.",
+            "Erstellen Sie deshalb vollwertige Sprachversionen mit eigenen URLs und hreflang-Angaben, statt einer automatischen Übersetzung. Wie das technisch und sprachlich gelingt, zeigt der Ratgeber [Zweisprachige Webseite](guide:zweisprachige-webseite). Auch das Google-Unternehmensprofil, Beiträge und Antworten auf Bewertungen können zweisprachig sein. So zeigen Sie, dass Sie die ganze Region bedienen. Gerne prüfen wir Ihre lokale Sichtbarkeit und zeigen Ihnen in einem unverbindlichen Gespräch das Potenzial auf.",
+          ],
+        },
+        {
+          h2: "Ein Plan für die ersten acht Wochen",
+          paragraphs: [
+            "Lokales SEO wirkt am besten, wenn Sie es in einer festen Reihenfolge angehen. In den ersten zwei Wochen bringen Sie das Google-Unternehmensprofil auf Vordermann und prüfen Ihre Firmendaten in den wichtigsten Verzeichnissen. In den Wochen drei und vier überarbeiten Sie Startseite, Kontaktseite und die wichtigsten Leistungsseiten, damit Region und Leistungen klar benannt sind.",
+            "Ab der fünften Woche bauen Sie gezielt Inhalte aus: eine Seite pro wichtigem Ort, häufige Fragen Ihrer Kundschaft und Fotos echter Projekte. Parallel richten Sie einen festen Ablauf für Bewertungen ein. Danach messen Sie monatlich, wie oft Sie in Google Maps erscheinen, wie viele Anrufe entstehen und welche Seiten Anfragen bringen.",
+          ],
+          bullets: [
+            "Woche 1 bis 2: Google-Unternehmensprofil und Verzeichnisse",
+            "Woche 3 bis 4: Startseite, Kontakt und Leistungsseiten",
+            "Woche 5 bis 8: Ortsseiten, FAQ, Projektfotos und Bewertungsablauf",
+            "Danach: monatliche Auswertung und laufende Pflege",
+          ],
+        },
+        {
+          h2: "Unterstützung in Ihrer Region",
+          paragraphs: [
+            "Viele KMU setzen die ersten Schritte selbst um und holen sich für Technik, Texte und Auswertung Unterstützung. Im Rahmen unserer [SEO-Betreuung](service:seo) übernehmen wir genau diese Teile, schweizweit und persönlich. Ist Ihre Webseite selbst das Problem, etwa weil sie langsam oder nicht mobilfreundlich ist, lohnt sich zuerst ein [Website-Redesign](service:website-redesign).",
+            "Für Betriebe in unserer Kernregion haben wir eigene Seiten mit lokalen Besonderheiten: [SEO in Grenchen](citySeo:grenchen), [SEO in Biel/Bienne](citySeo:biel), [SEO in Solothurn](citySeo:solothurn) und [SEO in Bern](citySeo:bern). Dort finden Sie typische Branchen, Fragen und Ansätze für die jeweilige Stadt.",
           ],
         },
       ],
@@ -101,6 +134,16 @@ export const lokalesSeoKmu: Guide = {
       },
       h1: "Référencement local pour PME : être trouvé dans sa région",
       lead: "Qui cherche « menuisier Granges » ou « coiffeur Bienne » veut le plus souvent trouver tout de suite un prestataire proche. Le référencement local fait en sorte que votre entreprise apparaisse à ce moment-là dans Google Maps et dans les résultats de recherche.",
+      keyTakeaways: [
+        "Le référencement local combine fiche Google, données cohérentes, avis et un site qui nomme clairement votre région.",
+        "Nom, adresse et téléphone doivent être identiques sur le site, Google et les annuaires comme local.ch et search.ch.",
+        "Récoltez activement de vrais avis et répondez à tous. Les avis achetés nuisent.",
+        "Les pages locales ne valent la peine qu'avec un vrai contenu local, pas en copie avec un autre nom de ville.",
+        "Dans les régions bilingues, il faut de vraies versions linguistiques plutôt qu'une traduction automatique.",
+      ],
+      sources: [
+        { label: "Aide Google Business Profile : améliorer son classement local", url: "https://support.google.com/business/answer/7091" },
+      ],
       sections: [
         {
           h2: "Pourquoi le référencement local est décisif pour les PME suisses",
@@ -116,7 +159,7 @@ export const lokalesSeoKmu: Guide = {
             "Complétez la fiche le plus possible et tenez-la à jour. Une fiche avec de vraies photos, des horaires corrects et des publications régulières inspire confiance et est perçue comme active par Google. Pensez aussi aux jours fériés et aux vacances : des horaires erronés provoquent rapidement le mécontentement de vos clients.",
           ],
           bullets: [
-            "Catégories principale et secondaires adaptées",
+            "Catégories principale et secondaires adaptées (détails dans [Optimiser sa fiche Google](guide:google-unternehmensprofil))",
             "Adresse, téléphone, site internet et horaires",
             "Description avec vos prestations et votre région",
             "Vraies photos de l'équipe, des locaux et des réalisations",
@@ -155,7 +198,27 @@ export const lokalesSeoKmu: Guide = {
           h2: "Bien couvrir les régions bilingues comme Bienne",
           paragraphs: [
             "Dans les régions bilingues comme Biel/Bienne ou le long de la frontière linguistique, les clients cherchent en français et en allemand. Qui tape « création site internet Bienne » utilise d'autres termes que qui cherche « Webdesign Biel ». Un site unilingue laisse ici échapper une bonne partie des demandes possibles.",
-            "Créez donc de véritables versions linguistiques, avec des URL propres et des balises hreflang, plutôt qu'une traduction automatique. Votre fiche Google, vos publications et vos réponses aux avis peuvent aussi être bilingues. Vous montrez ainsi que vous servez toute la région. Nous analysons volontiers votre visibilité locale et vous présentons son potentiel lors d'un entretien sans engagement.",
+            "Créez donc de véritables versions linguistiques, avec des URL propres et des balises hreflang, plutôt qu'une traduction automatique. L'article [Site internet bilingue](guide:zweisprachige-webseite) explique comment procéder. Votre fiche Google, vos publications et vos réponses aux avis peuvent aussi être bilingues. Vous montrez ainsi que vous servez toute la région. Nous analysons volontiers votre visibilité locale et vous présentons son potentiel lors d'un entretien sans engagement.",
+          ],
+        },
+        {
+          h2: "Un plan pour les huit premières semaines",
+          paragraphs: [
+            "Le référencement local fonctionne le mieux avec un ordre précis. Les deux premières semaines, vous mettez à jour votre fiche Google et vérifiez vos coordonnées dans les principaux annuaires. Les semaines trois et quatre, vous retravaillez l'accueil, la page de contact et les principales pages de prestations pour que la région et les services soient clairement nommés.",
+            "À partir de la cinquième semaine, vous développez les contenus : une page par localité importante, les questions fréquentes de vos clients et des photos de vrais projets. En parallèle, vous mettez en place un processus régulier pour les avis. Ensuite, mesurez chaque mois votre présence dans Google Maps, le nombre d'appels et les pages qui génèrent des demandes.",
+          ],
+          bullets: [
+            "Semaines 1 à 2 : fiche Google et annuaires",
+            "Semaines 3 à 4 : accueil, contact et pages de prestations",
+            "Semaines 5 à 8 : pages locales, FAQ, photos de projets et avis",
+            "Ensuite : analyse mensuelle et entretien continu",
+          ],
+        },
+        {
+          h2: "Un accompagnement dans votre région",
+          paragraphs: [
+            "Beaucoup de PME réalisent elles-mêmes les premières étapes et se font aider pour la technique, les textes et l'analyse. Dans le cadre de notre [accompagnement SEO](service:seo), nous prenons en charge précisément ces éléments, dans toute la Suisse et de manière personnelle. Si votre site lui-même pose problème, parce qu'il est lent ou mal adapté au mobile, une [refonte](service:website-redesign) est souvent la première étape.",
+            "Pour les entreprises de notre région principale, nous avons des pages dédiées avec leurs particularités locales : [référencement à Granges](citySeo:grenchen), [à Bienne](citySeo:biel), [à Soleure](citySeo:solothurn) et [à Berne](citySeo:bern). Vous y trouverez les branches, questions et approches typiques de chaque ville.",
           ],
         },
       ],

@@ -12,7 +12,7 @@ export const solothurn: City = {
       name: "Solothurn",
       slug: "webdesign-solothurn",
       meta: {
-        title: "Webdesign Solothurn – Homepage erstellen lassen",
+        title: "Webdesign Solothurn: Homepage erstellen lassen",
         description:
           "Webagentur für Solothurn: Webdesign, Homepage, Onlineshop und lokales SEO für Gastronomie, Handel und KMU. Kostenlose Erstberatung bei Webnova.",
       },
@@ -47,6 +47,19 @@ export const solothurn: City = {
             "Nach dem Launch sind wir weiterhin für Sie da. Wir übernehmen Wartung, Sicherheitsupdates und Hosting, pflegen saisonale Inhalte wie Menükarten oder Veranstaltungen und betreuen auf Wunsch Google- und Meta-Kampagnen, etwa vor grossen Anlässen in der Stadt. Für Gastronomiebetriebe richten wir zusätzlich Kassensysteme ein. Alles aus einer Hand und mit einer festen Ansprechperson.",
           ],
         },
+        {
+          h2: "Unsere Leistungen für Solothurner KMU",
+          paragraphs: [
+            "Solothurn lebt von Altstadtgeschäften, Gastronomie, Kultur und einem starken Gewerbe in der ganzen Region. Für diese Betriebe bieten wir neben dem Webdesign einen [Onlineshop für Solothurner Läden](local:onlineshop:solothurn), das [Website-Redesign](local:website-redesign:solothurn) bestehender Auftritte, [Online-Marketing auf Google und Social Media](local:online-marketing:solothurn) sowie [Grafikdesign und Corporate Design](local:branding:solothurn). Restaurants und Geschäfte in der Altstadt unterstützen wir mit einem [Kassensystem für Solothurn](local:kassensystem:solothurn).",
+            "Während der Filmtage, der Literaturtage oder an Markttagen suchen besonders viele Gäste unterwegs nach Restaurants, Läden und Öffnungszeiten. Ein gepflegtes Google-Unternehmensprofil ist dann genauso wichtig wie die Webseite, siehe unseren Ratgeber [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil). Alles zur Suchmaschinenoptimierung vor Ort finden Sie unter [SEO in Solothurn](citySeo:solothurn).",
+          ],
+          bullets: [
+            "Webseiten für Gastronomie, Hotellerie und Kultur",
+            "Onlineshops mit Click & Collect für Altstadtgeschäfte",
+            "Zweisprachige Seiten für Gäste aus der Romandie",
+            "Wartung und kurzfristige Anpassungen",
+          ],
+        },
       ],
       faq: [
         {
@@ -61,13 +74,17 @@ export const solothurn: City = {
           q: "Kann ich meine Webseite selbst bearbeiten?",
           a: "Ja. Wir richten ein einfaches Content-Management ein und zeigen Ihnen in einer kurzen Schulung, wie Sie Texte, Bilder und Angebote selbst anpassen.",
         },
+        {
+          q: "Lohnt sich ein Onlineshop für ein Geschäft in der Solothurner Altstadt?",
+          a: "Oft ja, besonders in Kombination mit Abholung im Laden. Kundinnen und Kunden prüfen online Verfügbarkeit und Öffnungszeiten und kommen dann gezielt vorbei. Was dabei rechtlich und bei der Zahlung mit TWINT zu beachten ist, erklärt unser Ratgeber zum Onlineshop in der Schweiz.",
+        },
       ],
     },
     fr: {
       name: "Soleure",
       slug: "creation-site-internet-soleure",
       meta: {
-        title: "Création site internet Soleure – Agence web",
+        title: "Création site internet Soleure: Agence web",
         description:
           "Agence web pour Soleure : création de site internet, boutique en ligne et référencement local pour la restauration, le commerce et les PME.",
       },
@@ -102,6 +119,19 @@ export const solothurn: City = {
             "Après la mise en ligne, nous restons disponibles pour la maintenance, les mises à jour de sécurité et l'hébergement. Nous pouvons aussi actualiser vos contenus saisonniers, comme les cartes ou les événements, et gérer des campagnes Google et Meta avant les grands rendez-vous de la ville. Pour les restaurants, nous installons également des systèmes de caisse.",
           ],
         },
+        {
+          h2: "Nos prestations pour les PME soleuroises",
+          paragraphs: [
+            "Soleure vit de ses commerces de la vieille ville, de sa restauration, de sa culture et d'un artisanat actif dans toute la région. Pour ces entreprises, nous proposons en plus de la création de sites une [boutique en ligne pour les commerces soleurois](local:onlineshop:solothurn), la [refonte de sites existants](local:website-redesign:solothurn), du [marketing digital sur Google et les réseaux sociaux](local:online-marketing:solothurn) ainsi que du [graphisme et identité visuelle](local:branding:solothurn). Pour les restaurants et magasins, nous installons aussi un [système de caisse à Soleure](local:kassensystem:solothurn).",
+            "Pendant les Journées de Soleure, les Journées littéraires ou les jours de marché, de nombreux visiteurs cherchent sur leur téléphone restaurants, boutiques et horaires. Une fiche Google soignée est alors aussi importante que le site, voir notre guide [Optimiser sa fiche Google](guide:google-unternehmensprofil). Tout sur le référencement sur place se trouve sur la page [référencement à Soleure](citySeo:solothurn).",
+          ],
+          bullets: [
+            "Sites pour la restauration, l'hôtellerie et la culture",
+            "Boutiques en ligne avec retrait en magasin",
+            "Pages en allemand et en français pour les visiteurs",
+            "Maintenance et adaptations rapides",
+          ],
+        },
       ],
       faq: [
         {
@@ -116,6 +146,10 @@ export const solothurn: City = {
           q: "Pourrai-je modifier mon site moi-même ?",
           a: "Oui. Nous mettons en place un système de gestion de contenu simple et vous formons pour que vous puissiez adapter textes, images et offres en toute autonomie.",
         },
+        {
+          q: "Une boutique en ligne vaut-elle la peine pour un magasin de la vieille ville ?",
+          a: "Souvent oui, surtout avec le retrait en magasin. Les clients vérifient en ligne la disponibilité et les horaires, puis passent directement. Notre article sur la boutique en ligne en Suisse explique ce qu'il faut savoir sur le droit et le paiement avec TWINT.",
+        },
       ],
     },
   },
@@ -124,7 +158,7 @@ export const solothurn: City = {
       name: "Solothurn",
       slug: "seo-solothurn",
       meta: {
-        title: "SEO Solothurn – Suchmaschinenoptimierung",
+        title: "SEO Solothurn: Suchmaschinenoptimierung",
         description:
           "SEO in Solothurn: lokale Suchmaschinenoptimierung und Google Unternehmensprofil für Gastronomie, Handel und KMU. Kostenlose Erstberatung.",
       },
@@ -159,6 +193,13 @@ export const solothurn: City = {
             "Wir starten mit einer kostenlosen Erstberatung und einer ehrlichen Einschätzung, was in Ihrer Branche in Solothurn realistisch ist. Danach erhalten Sie eine unverbindliche Offerte. Eine Rankinggarantie geben wir nicht, aber eine nachvollziehbare Arbeitsweise. Auf Wunsch ergänzen wir SEO mit Google Ads, zum Beispiel für saisonale Angebote oder besondere Anlässe in der Stadt.",
           ],
         },
+        {
+          h2: "Ratgeber und passende Leistungen",
+          paragraphs: [
+            "Für Restaurants, Hotels und Läden in Solothurn entscheidet oft der Kartenblock in Google, ob Gäste den Weg zu Ihnen finden. Die wichtigsten Schritte erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu). Wer viele Gäste aus der Romandie hat, profitiert zusätzlich von einer [zweisprachigen Webseite](guide:zweisprachige-webseite).",
+            "Läuft die bestehende Seite langsam oder sieht auf dem Smartphone nicht gut aus, bringt ein [Website-Redesign in Solothurn](local:website-redesign:solothurn) meist mehr als einzelne SEO-Massnahmen. Für Aktionen und Saisonangebote ergänzen wir SEO mit [Online-Marketing in Solothurn](local:online-marketing:solothurn).",
+          ],
+        },
       ],
       faq: [
         {
@@ -173,13 +214,17 @@ export const solothurn: City = {
           q: "Betreuen Sie auch Firmen aus der Region Solothurn, nicht nur aus der Stadt?",
           a: "Ja, wir arbeiten für Unternehmen aus dem ganzen Kanton Solothurn und berücksichtigen das tatsächliche Einzugsgebiet bei der Optimierung.",
         },
+        {
+          q: "Hilft ein Google-Profil auch Betrieben ausserhalb der Altstadt?",
+          a: "Ja. Für Betriebe in Zuchwil, Bellach, Langendorf oder Biberist gilt dasselbe Prinzip: vollständiges Profil, passende Kategorien, echte Bewertungen und eine Webseite, die das Einzugsgebiet klar nennt.",
+        },
       ],
     },
     fr: {
       name: "Soleure",
       slug: "referencement-soleure",
       meta: {
-        title: "Référencement Soleure – Agence SEO locale",
+        title: "Référencement Soleure: Agence SEO locale",
         description:
           "Référencement à Soleure : SEO local et profil d'entreprise Google pour restaurants, commerces et PME. Premier conseil gratuit avec Webnova.",
       },
@@ -214,6 +259,13 @@ export const solothurn: City = {
             "Nous commençons par un premier conseil gratuit et une évaluation honnête de ce qui est réaliste dans votre secteur. Vous recevez ensuite une offre sans engagement. Pas de garantie de classement, mais une méthode transparente. Sur demande, nous complétons le référencement naturel par des annonces Google Ads, par exemple pour des offres saisonnières ou des événements.",
           ],
         },
+        {
+          h2: "Conseils et prestations utiles",
+          paragraphs: [
+            "Pour les restaurants, hôtels et commerces de Soleure, le bloc carte de Google décide souvent si les visiteurs trouvent le chemin jusqu'à vous. Les étapes principales sont expliquées dans [Référencement local pour PME](guide:lokales-seo-kmu). Avec beaucoup de visiteurs alémaniques et romands, un [site bilingue](guide:zweisprachige-webseite) est un plus.",
+            "Si votre site actuel est lent ou mal adapté au mobile, une [refonte de site à Soleure](local:website-redesign:solothurn) apporte généralement plus que des mesures SEO isolées. Pour les actions et offres saisonnières, nous complétons le SEO avec du [marketing digital à Soleure](local:online-marketing:solothurn).",
+          ],
+        },
       ],
       faq: [
         {
@@ -227,6 +279,10 @@ export const solothurn: City = {
         {
           q: "Travaillez-vous aussi pour des entreprises de la région de Soleure ?",
           a: "Oui, nous accompagnons des entreprises de tout le canton de Soleure et tenons compte de leur véritable zone de clientèle lors de l'optimisation.",
+        },
+        {
+          q: "Une fiche Google aide-t-elle aussi hors de la vieille ville ?",
+          a: "Oui. Pour les entreprises de Zuchwil, Bellach, Langendorf ou Biberist, le principe est le même : fiche complète, catégories adaptées, vrais avis et un site qui nomme clairement la zone desservie.",
         },
       ],
     },

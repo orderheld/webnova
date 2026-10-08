@@ -4,7 +4,7 @@ export const detailhandel: Industry = {
   key: "detailhandel",
   icon: "bag",
   services: ["onlineshop", "kassensystem-retail", "webdesign", "seo"],
-  guides: ["webseite-kosten", "lokales-seo-kmu"],
+  guides: ["onlineshop-schweiz", "webseite-kosten", "lokales-seo-kmu"],
   reference: "dersut-kaffee",
   preset: ["shop"],
   content: {

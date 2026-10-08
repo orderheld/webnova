@@ -4,7 +4,7 @@ export const keineAnfragen: Problem = {
   key: "keine-anfragen",
   icon: "inbox",
   services: ["website-redesign", "webdesign", "seo", "online-marketing"],
-  guides: ["website-relaunch-checkliste", "webseite-kosten"],
+  guides: ["kmu-webseite-checkliste", "website-relaunch-checkliste", "webseite-kosten"],
   industries: ["handwerk", "treuhand", "immobilien", "praxis"],
   preset: ["redesign"],
   content: {

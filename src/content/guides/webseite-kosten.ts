@@ -3,18 +3,28 @@ import type { Guide } from "../types";
 export const webseiteKosten: Guide = {
   key: "webseite-kosten",
   date: "2026-10-01",
-  readingMinutes: 7,
-  related: ["webdesign", "website-redesign"],
+  updated: "2026-10-08",
+  readingMinutes: 8,
+  related: ["webdesign", "website-redesign", "onlineshop"],
+  relatedGuides: ["webagentur-waehlen", "webagentur-unterschied", "kmu-webseite-checkliste"],
+  cities: ["grenchen", "biel", "solothurn", "bern"],
   content: {
     de: {
       slug: "was-kostet-eine-webseite",
       meta: {
         title: "Was kostet eine Webseite? Die 7 Preisfaktoren",
         description:
-          "Was kostet eine Webseite in der Schweiz? Wir erklären die 7 Faktoren, die den Preis bestimmen – und wie Sie zu einer passenden Offerte kommen.",
+          "Was kostet eine Webseite in der Schweiz? Wir erklären die 7 Faktoren, die den Preis bestimmen, und wie Sie zu einer passenden Offerte kommen.",
       },
       h1: "Was kostet eine Webseite? Die 7 Faktoren, die den Preis bestimmen",
       lead: "Auf die Frage nach den Kosten einer Webseite gibt es keine seriöse Pauschalantwort. Wer versteht, welche Faktoren den Aufwand bestimmen, kann Offerten besser vergleichen und sein Budget gezielt einsetzen.",
+      keyTakeaways: [
+        "Den Aufwand bestimmen vor allem Umfang, Design, Inhalte, Funktionen, SEO, das Redaktionssystem und die laufende Wartung.",
+        "Inhalte wie Texte und Fotos werden bei der Planung am häufigsten unterschätzt.",
+        "Mehrsprachigkeit braucht neben Übersetzungen auch eine saubere technische Umsetzung mit eigenen URLs.",
+        "Vergleichen Sie Offerten Punkt für Punkt und achten Sie auf laufende Kosten nach dem Launch.",
+        "Eine verlässliche Offerte entsteht erst, wenn Ziele, Funktionen und vorhandene Inhalte klar sind.",
+      ],
       sections: [
         {
           h2: "Faktor 1: Umfang und Anzahl Seiten",
@@ -29,14 +39,14 @@ export const webseiteKosten: Guide = {
           ],
         },
         {
-          h2: "Faktor 2: Design – Vorlage oder individuell",
+          h2: "Faktor 2: Vorlage oder individuelles Design",
           paragraphs: [
             "Ein fertiges Template ist schnell eingerichtet, wirkt aber oft austauschbar und lässt sich nur begrenzt an Ihre Marke anpassen. Ein individuelles Webdesign wird dagegen von Grund auf für Ihr Unternehmen entwickelt: Farben, Typografie, Bildsprache und Seitenaufbau orientieren sich an Ihrer Zielgruppe und Ihrem Corporate Design. Das braucht mehr Konzeptions- und Gestaltungsarbeit, hebt Sie aber klar von der Konkurrenz ab.",
             "Auch der Detailgrad spielt mit: Animationen, eigens gestaltete Illustrationen oder ein komplett neues Logo erhöhen den Aufwand. Besteht bereits ein klares Corporate Design mit Logo, Farben und Schriften, kann die Gestaltung darauf aufbauen. Fehlt es noch, empfiehlt es sich, Branding und Webdesign gemeinsam zu planen, damit der ganze Auftritt aus einem Guss entsteht.",
           ],
         },
         {
-          h2: "Faktor 3: Inhalte – Texte, Fotos und Videos",
+          h2: "Faktor 3: Inhalte wie Texte, Fotos und Videos",
           paragraphs: [
             "Inhalte werden bei der Budgetplanung am häufigsten unterschätzt. Liefern Sie fertige Texte und gute Bilder, reduziert das den Aufwand der Agentur deutlich. Sollen die Texte hingegen professionell und suchmaschinenoptimiert geschrieben werden, kommen Konzeption und Redaktion dazu. Gute Texte sind kein Detail: Sie entscheiden, ob Besucherinnen und Besucher Ihr Angebot verstehen und Kontakt aufnehmen.",
             "Ähnlich ist es bei Bildern. Stockfotos sind rasch verfügbar, wirken aber selten authentisch. Eigene Fotos von Team, Räumlichkeiten und Produkten schaffen Vertrauen, setzen aber ein Fotoshooting voraus. Klären Sie deshalb früh, welche Inhalte bereits vorhanden sind, was überarbeitet werden muss und was komplett neu entstehen soll. Eine solche Inhaltsübersicht macht Offerten vergleichbarer.",
@@ -50,22 +60,22 @@ export const webseiteKosten: Guide = {
         {
           h2: "Faktor 4: Funktionen wie Buchung, Shop und Mehrsprachigkeit",
           paragraphs: [
-            "Jede Funktion, die über reine Informationsseiten hinausgeht, beeinflusst den Aufwand. Ein einfaches Kontaktformular ist schnell eingebaut. Ein Online-Buchungssystem, ein Kundenbereich, eine Anbindung an Ihre bestehende Software oder ein Onlineshop mit Zahlungsabwicklung erfordern dagegen deutlich mehr Planung, Entwicklung und Tests. Bei Shops kommen zusätzlich Produktdaten, Versandregeln und Zahlungsarten wie TWINT dazu.",
-            "In der Schweiz ist zudem die Mehrsprachigkeit ein wichtiger Faktor. Ein Auftritt auf Deutsch und Französisch braucht nicht nur Übersetzungen, sondern auch eine saubere technische Umsetzung mit eigenen URLs pro Sprache, damit Google beide Versionen korrekt einordnet. Besonders in zweisprachigen Regionen wie Biel/Bienne zahlt sich dieser Aufwand aus, weil Sie beide Sprachgruppen direkt ansprechen.",
+            "Jede Funktion, die über reine Informationsseiten hinausgeht, beeinflusst den Aufwand. Ein einfaches Kontaktformular ist schnell eingebaut. Ein Online-Buchungssystem, ein Kundenbereich, eine Anbindung an Ihre bestehende Software oder ein [Onlineshop](service:onlineshop) mit Zahlungsabwicklung erfordern dagegen deutlich mehr Planung, Entwicklung und Tests. Bei Shops kommen zusätzlich Produktdaten, Versandregeln und Zahlungsarten wie TWINT dazu.",
+            "In der Schweiz ist zudem die Mehrsprachigkeit ein wichtiger Faktor. Ein Auftritt auf Deutsch und Französisch braucht nicht nur Übersetzungen, sondern auch eine saubere technische Umsetzung mit eigenen URLs pro Sprache, damit Google beide Versionen korrekt einordnet. Besonders in zweisprachigen Regionen wie Biel/Bienne zahlt sich dieser Aufwand aus, weil Sie beide Sprachgruppen direkt ansprechen. Worauf es dabei ankommt, lesen Sie im Ratgeber [Zweisprachige Webseite](guide:zweisprachige-webseite).",
           ],
         },
         {
           h2: "Faktor 5: Suchmaschinenoptimierung (SEO)",
           paragraphs: [
             "Eine Webseite, die niemand findet, bringt kaum Anfragen. Grundlegendes technisches SEO gehört deshalb zu jeder professionellen Webseite: schnelle Ladezeiten, eine klare Seitenstruktur, sinnvolle Titel und Beschreibungen, mobile Optimierung und eine korrekte Indexierung. Diese Basis entsteht am besten gleich beim Aufbau, weil nachträgliche Korrekturen meist aufwendiger sind und bestehende Inhalte oft nochmals angepasst werden müssen.",
-            "Darüber hinaus gibt es weiterführende Massnahmen: Keyword-Recherche, eigene Seiten für Regionen oder Leistungen, die Optimierung Ihres Google-Unternehmensprofils oder regelmässige Ratgeberinhalte. Wie viel davon sinnvoll ist, hängt von Ihrer Konkurrenz und Ihren Zielen ab. Ein lokales Gewerbe braucht eine andere Strategie als ein Unternehmen, das schweizweit Kundschaft sucht. Wir empfehlen nur Massnahmen, die zu Ihren Zielen passen.",
+            "Darüber hinaus gibt es weiterführende Massnahmen: Keyword-Recherche, eigene Seiten für Regionen oder Leistungen, die Optimierung Ihres [Google-Unternehmensprofils](guide:google-unternehmensprofil) oder regelmässige Ratgeberinhalte. Wie viel davon sinnvoll ist, hängt von Ihrer Konkurrenz und Ihren Zielen ab. Ein lokales Gewerbe braucht eine andere Strategie als ein Unternehmen, das schweizweit Kundschaft sucht. Wir empfehlen nur Massnahmen, die zu Ihren Zielen passen.",
           ],
         },
         {
           h2: "Faktor 6 und 7: CMS und laufende Wartung",
           paragraphs: [
             "Möchten Sie Inhalte selbst anpassen, braucht Ihre Webseite ein Content-Management-System (CMS). Wie komfortabel die Bearbeitung sein soll, beeinflusst den Aufwand: Ein paar editierbare Textfelder sind einfacher umzusetzen als ein flexibles System, in dem Sie neue Seiten, Blogartikel oder Teammitglieder selbst anlegen. Eine kurze Einführung gehört idealerweise ebenfalls dazu, damit Sie Ihre Webseite nach dem Go-live sicher selbst bearbeiten können.",
-            "Nach dem Go-live ist die Arbeit nicht vorbei. Hosting, Domain, Sicherheitsupdates, Backups und kleinere Anpassungen verursachen laufende Kosten. Planen Sie diese von Anfang an ein, statt nur die einmalige Erstellung zu betrachten. Eine gepflegte Webseite bleibt sicher, schnell und aktuell – und schützt so Ihre Investition über Jahre. Ein Wartungsvertrag schafft hier klare Verhältnisse.",
+            "Nach dem Go-live ist die Arbeit nicht vorbei. Hosting, Domain, Sicherheitsupdates, Backups und kleinere Anpassungen verursachen laufende Kosten. Planen Sie diese von Anfang an ein, statt nur die einmalige Erstellung zu betrachten. Eine gepflegte Webseite bleibt sicher, schnell und aktuell und schützt so Ihre Investition über Jahre. Ein [Wartungsvertrag](service:wartung) schafft hier klare Verhältnisse.",
           ],
           bullets: [
             "Hosting und Domain",
@@ -74,10 +84,23 @@ export const webseiteKosten: Guide = {
           ],
         },
         {
+          h2: "Offerten richtig vergleichen",
+          paragraphs: [
+            "Zwei Offerten mit ähnlichem Endbetrag können sehr Unterschiedliches enthalten. Legen Sie die Angebote nebeneinander und prüfen Sie Punkt für Punkt: Sind Texte, Bilder, Sprachen, SEO-Grundlagen, Datenschutzerklärung, Schulung und Projektleitung enthalten? Wie viele Korrekturrunden sind vorgesehen? Wem gehören Domain und Inhalte nach dem Projekt? Eine Offerte, die hier vage bleibt, wird später oft teurer.",
+            "Achten Sie auch auf das, was nach dem Launch passiert: Hosting, Updates, Backups und Support. Eine günstige Erstellung mit teurer oder unklarer Betreuung ist über einige Jahre selten die bessere Wahl. Zwölf konkrete Fragen für dieses Gespräch haben wir im Ratgeber [Webagentur wählen](guide:webagentur-waehlen) zusammengestellt. Welche Inhalte eine KMU-Webseite überhaupt braucht, zeigt unsere [Checkliste für KMU-Webseiten](guide:kmu-webseite-checkliste).",
+          ],
+          bullets: [
+            "Leistungen einzeln aufgeführt statt Pauschalposten",
+            "Laufende Kosten separat ausgewiesen",
+            "Anzahl Korrekturrunden und Vorgehen bei Zusatzwünschen",
+            "Eigentum an Domain, Code und Inhalten geregelt",
+          ],
+        },
+        {
           h2: "So erhalten Sie eine verlässliche Offerte",
           paragraphs: [
             "Weil jedes Projekt anders ist, veröffentlichen wir keine Pauschalpreise. Eine seriöse Offerte entsteht erst, wenn klar ist, was Ihre Webseite leisten soll. Je besser Sie Ziele, gewünschte Funktionen und vorhandene Inhalte beschreiben, desto genauer lässt sich der Aufwand einschätzen. Achten Sie beim Vergleich mehrerer Offerten darauf, dass tatsächlich dieselben Leistungen enthalten sind.",
-            "Bei Webnova besprechen wir Ihr Vorhaben zuerst in einem unverbindlichen Gespräch. Danach erhalten Sie eine individuelle Offerte, die transparent aufzeigt, welche Leistungen enthalten sind und welche laufenden Kosten anfallen. Fragen Sie jetzt Ihre unverbindliche Offerte an – wir melden uns persönlich bei Ihnen und beantworten gerne alle offenen Fragen.",
+            "Bei Webnova besprechen wir Ihr Vorhaben zuerst in einem unverbindlichen Gespräch. Danach erhalten Sie eine individuelle Offerte, die transparent aufzeigt, welche Leistungen enthalten sind und welche laufenden Kosten anfallen. Fragen Sie jetzt Ihre unverbindliche Offerte an. Wir melden uns persönlich bei Ihnen und beantworten gerne alle offenen Fragen.",
           ],
         },
       ],
@@ -109,6 +132,13 @@ export const webseiteKosten: Guide = {
       },
       h1: "Combien coûte un site internet ? Les 7 facteurs qui déterminent le prix",
       lead: "Il n'existe pas de réponse forfaitaire sérieuse à la question du prix d'un site internet. En comprenant les facteurs qui influencent le travail, vous comparez mieux les offres et investissez votre budget là où il compte.",
+      keyTakeaways: [
+        "L'effort dépend surtout de l'ampleur, du design, des contenus, des fonctions, du SEO, du système de gestion et de la maintenance.",
+        "Les contenus comme les textes et les photos sont le plus souvent sous-estimés lors de la planification.",
+        "Le multilinguisme demande, en plus des traductions, une réalisation technique propre avec des URL distinctes.",
+        "Comparez les devis point par point et tenez compte des coûts courants après la mise en ligne.",
+        "Un devis fiable n'est possible que lorsque objectifs, fonctions et contenus disponibles sont clairs.",
+      ],
       sections: [
         {
           h2: "Facteur 1 : l'ampleur et le nombre de pages",
@@ -165,6 +195,19 @@ export const webseiteKosten: Guide = {
             "Hébergement et nom de domaine",
             "Mises à jour de sécurité et sauvegardes",
             "Adaptations de contenu et support",
+          ],
+        },
+        {
+          h2: "Bien comparer les devis",
+          paragraphs: [
+            "Deux devis au montant similaire peuvent contenir des prestations très différentes. Placez les offres côte à côte et vérifiez point par point : textes, images, langues, bases SEO, déclaration de protection des données, formation et gestion de projet sont-ils compris ? Combien de tours de corrections sont prévus ? À qui appartiennent le domaine et les contenus après le projet ? Un devis vague sur ces points revient souvent plus cher par la suite.",
+            "Regardez aussi ce qui se passe après la mise en ligne : hébergement, mises à jour, sauvegardes et support. Une création bon marché avec un suivi coûteux ou flou est rarement le meilleur choix sur plusieurs années. Nous avons réuni douze questions concrètes dans l'article [Choisir une agence web](guide:webagentur-waehlen). Les contenus indispensables d'un site de PME sont détaillés dans notre [checklist pour PME et artisans](guide:kmu-webseite-checkliste).",
+          ],
+          bullets: [
+            "Prestations détaillées plutôt que des forfaits globaux",
+            "Coûts récurrents indiqués séparément",
+            "Nombre de tours de corrections et gestion des demandes supplémentaires",
+            "Propriété du domaine, du code et des contenus réglée",
           ],
         },
         {

@@ -15,7 +15,7 @@ export const websiteRedesign: Service = {
           "Website Redesign oder Relaunch ohne Ranking-Verlust: modern, schnell und mobil. Jetzt kostenlose Erstberatung und unverbindliche Offerte anfragen.",
       },
       eyebrow: "Website-Redesign & Relaunch",
-      h1: "Website Redesign: Ihre Webseite, neu gedacht",
+      h1: "Website Redesign und Relaunch",
       lead:
         "Ihre Homepage wirkt veraltet, lädt langsam oder ist auf dem Handy mühsam? Wir modernisieren Ihren Auftritt und behalten dabei bestehende Google-Rankings im Blick.",
       features: [
@@ -105,7 +105,7 @@ export const websiteRedesign: Service = {
           "Refonte de site internet sans perdre votre référencement: moderne, rapide et adapté au mobile. Premier conseil gratuit et offre sans engagement.",
       },
       eyebrow: "Refonte & modernisation",
-      h1: "Refonte de site internet: un nouveau départ",
+      h1: "Refonte de site internet",
       lead:
         "Votre site paraît daté, se charge lentement ou s'affiche mal sur mobile? Nous le modernisons en préservant la visibilité acquise sur Google.",
       features: [

@@ -12,7 +12,7 @@ export const fribourg: City = {
       name: "Freiburg",
       slug: "webdesign-freiburg",
       meta: {
-        title: "Webdesign Freiburg – Webagentur Fribourg",
+        title: "Webdesign Freiburg: Webagentur Fribourg",
         description:
           "Webdesign in Freiburg/Fribourg: zweisprachige Webseiten, Onlineshops und SEO für KMU beidseits der Saane. Kostenlose Erstberatung bei Webnova.",
       },
@@ -67,7 +67,7 @@ export const fribourg: City = {
       name: "Fribourg",
       slug: "creation-site-internet-fribourg",
       meta: {
-        title: "Création site internet Fribourg – Agence web",
+        title: "Création site internet Fribourg: Agence web",
         description:
           "Création de site internet à Fribourg : sites bilingues, boutiques en ligne et référencement pour les PME fribourgeoises. Premier conseil gratuit.",
       },

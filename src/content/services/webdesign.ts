@@ -10,12 +10,12 @@ export const webdesign: Service = {
       slug: "webdesign",
       navLabel: "Webdesign",
       meta: {
-        title: "Webdesign-Agentur – Webseite erstellen lassen",
+        title: "Webdesign-Agentur: Webseite erstellen lassen",
         description:
           "Webseite oder Homepage erstellen lassen: schnell, mobil, Google-ready und datenschutzkonform. Jetzt kostenlose Erstberatung bei Webnova anfragen.",
       },
       eyebrow: "Webdesign & Website-Erstellung",
-      h1: "Webdesign, das Kunden überzeugt",
+      h1: "Website erstellen lassen",
       lead:
         "Wir gestalten und entwickeln Webseiten, die schnell laden, auf jedem Gerät gut aussehen und bei Google gefunden werden. Für KMU in der ganzen Schweiz.",
       features: [

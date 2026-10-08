@@ -103,7 +103,7 @@ export function Modal({
             aria-modal="true"
             aria-label={title}
             onClick={(e) => e.stopPropagation()}
-            className={`max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-surface p-5 shadow-2xl sm:rounded-2xl ${wide ? "sm:max-w-3xl" : "sm:max-w-lg"}`}
+            className={`max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-surface p-5 shadow-lift sm:rounded-2xl ${wide ? "sm:max-w-3xl" : "sm:max-w-lg"}`}
           >
             <div className="mb-4 flex items-center justify-between gap-3">
               <h2 className="text-[18px] font-semibold">{title}</h2>

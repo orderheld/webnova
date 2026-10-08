@@ -1,46 +1,65 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, FaqList } from "@/components/blocks";
-import { references } from "@/content/references";
+import { CardLink, CtaBand } from "@/components/blocks";
 import { HeroBuild } from "@/components/hero-build";
 import { Icon } from "@/components/icons";
-import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { services } from "@/content/services";
 import { getDict } from "@/i18n/dict";
 import { getRoute, href, isLocale } from "@/lib/routes";
-import { JsonLd, faqLd, pageMetadata } from "@/lib/seo";
-import { showReferences } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
+import {
+  BenefitsSection,
+  ContactSection,
+  FaqSection,
+  FitSection,
+  IndustriesTeaser,
+  LocationsSection,
+  NextSteps,
+  ProblemsSection,
+  ProcessSection,
+  ReferencesSection,
+  TrustFacts,
+} from "@/components/sections";
 
 const homeMeta = {
   de: {
-    title: "Webdesign-Agentur für Schweizer KMU | Webnova",
+    title: "Webdesign Agentur Schweiz für KMU | Webnova",
     description:
-      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in der ganzen Schweiz. Persönlich, schnell, auf Anfragen optimiert.",
+      "Webdesign Agentur für Schweizer KMU: Webseiten, Onlineshops und SEO, persönlich betreut, auf Deutsch und Französisch. Kostenlose Erstberatung.",
   },
   fr: {
-    title: "Agence web pour PME suisses | Webnova",
+    title: "Agence web en Suisse pour PME | Webnova",
     description:
-      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de toute la Suisse. Personnel et rapide.",
+      "Agence web pour les PME suisses : sites internet, boutiques en ligne et SEO, suivi personnel, en français et en allemand. Premier conseil gratuit.",
   },
 };
 
 const homeFaq = {
   de: [
-    { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
+    { q: "Webagentur, Website-Agentur oder Webdesign-Agentur: Was ist der Unterschied?", a: "Im Alltag meinen alle drei Begriffe dasselbe: ein Team, das Webseiten plant, gestaltet und technisch umsetzt. Entscheidend ist, was enthalten ist. Webnova ist eine Webdesign Agentur für Schweizer KMU und übernimmt Konzept, Design, Texte, Entwicklung, SEO und Betreuung aus einer Hand." },
+    { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Der Aufwand hängt vor allem von der Anzahl Seiten, den Funktionen, den Sprachen und davon ab, wer die Texte schreibt. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
     { q: "Wie lange dauert es, bis meine Webseite online ist?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Der genaue Zeitplan hängt vom Umfang und davon ab, wie schnell Inhalte wie Texte und Bilder bereitstehen. Den Fahrplan legen wir im Konzept gemeinsam fest." },
+    { q: "Wer ist mein Ansprechpartner?", a: "Ferhat Demir, der Inhaber von Webnova. Er begleitet Ihr Projekt vom Erstgespräch über die Offerte und die Umsetzung bis nach dem Launch. Sie sprechen immer mit derselben Person." },
     { q: "Arbeiten Sie in der ganzen Schweiz?", a: "Ja. Wir betreuen Unternehmen in der ganzen Deutsch- und Westschweiz, persönlich per Videocall und bei Bedarf vor Ort. Sie haben vom ersten Gespräch bis nach dem Launch eine feste Ansprechperson." },
+    { q: "Bieten Sie Webseiten auch zweisprachig an?", a: "Ja, Deutsch und Französisch sind bei uns Alltag. Für Unternehmen an der Sprachgrenze und mit Kundschaft aus der Romandie ist eine zweisprachige Webseite oft der Schlüssel zu mehr Anfragen." },
+    { q: "Wird meine Webseite bei Google gefunden?", a: "Technisches SEO, eine saubere Struktur, schnelle Ladezeiten und lokale Optimierung sind bei uns Standard. Auf Wunsch richten wir Ihr Google-Unternehmensprofil ein und betreuen die Suchmaschinenoptimierung laufend. Bestimmte Positionen kann seriöserweise niemand garantieren." },
+    { q: "Lohnt sich eine Website-Agentur gegenüber einem Baukasten?", a: "Ein Baukasten ist günstig im Einstieg, aber Sie bauen, schreiben und optimieren selbst. Eine Website-Agentur übernimmt Struktur, Texte, Technik und SEO, damit die Seite Anfragen bringt. Wenn Sie nur eine einfache Visitenkarte brauchen und Zeit haben, kann ein Baukasten reichen. Das sagen wir Ihnen im Erstgespräch ehrlich." },
     { q: "Kann ich meine Webseite später selbst bearbeiten?", a: "Ja. Auf Wunsch erhalten Sie ein einfaches Redaktionssystem und eine kurze Einführung. Alternativ übernehmen wir Anpassungen im Rahmen eines Wartungsvertrags für Sie." },
-    { q: "Bieten Sie Webseiten auch zweisprachig an?", a: "Ja, Deutsch und Französisch sind bei uns Alltag. Gerade in Biel/Bienne und der Westschweiz ist eine zweisprachige Webseite oft der Schlüssel zu mehr Kundschaft." },
+    { q: "Gehören Webseite und Daten mir?", a: "Ja. Ihre Webseite, Ihre Inhalte und Ihre Daten gehören Ihnen. Wir vermeiden unnötige Abhängigkeiten und übergeben Ihnen alle Zugänge, die Sie brauchen." },
   ],
   fr: [
-    { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. Après un premier entretien gratuit, vous recevez un devis clair et transparent, adapté à l'envergure, aux fonctions et à votre budget." },
+    { q: "Agence web, agence de création de sites ou agence de webdesign : quelle différence ?", a: "Au quotidien, ces termes désignent la même chose : une équipe qui planifie, conçoit et développe des sites internet. Ce qui compte, c'est ce qui est inclus. Webnova est une agence web pour les PME suisses et prend en charge concept, design, textes, développement, SEO et suivi." },
+    { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. L'effort dépend surtout du nombre de pages, des fonctions, des langues et de qui rédige les textes. Après un premier entretien gratuit, vous recevez un devis clair et transparent, adapté à l'envergure, aux fonctions et à votre budget." },
     { q: "En combien de temps mon site est-il en ligne ?", a: "Un site typique de PME est en ligne en quelques semaines. Le calendrier dépend de l'envergure et de la disponibilité des contenus comme les textes et les images. Nous le fixons ensemble lors du concept." },
+    { q: "Qui est mon interlocuteur ?", a: "Ferhat Demir, le propriétaire de Webnova. Il suit votre projet du premier entretien au devis, à la réalisation et jusqu'après la mise en ligne. Vous parlez toujours à la même personne." },
     { q: "Travaillez-vous dans toute la Suisse ?", a: "Oui. Nous accompagnons des entreprises dans toute la Suisse romande et alémanique, personnellement par visioconférence et sur place si nécessaire. Vous avez un interlocuteur fixe du premier entretien jusqu'après la mise en ligne." },
+    { q: "Proposez-vous des sites bilingues ?", a: "Oui, le français et l'allemand font partie de notre quotidien. Pour les entreprises proches de la frontière linguistique ou avec une clientèle alémanique, un site bilingue est souvent la clé de plus de demandes." },
+    { q: "Mon site sera-t-il trouvé sur Google ?", a: "SEO technique, structure propre, chargement rapide et optimisation locale sont inclus chez nous. Sur demande, nous configurons votre fiche Google et assurons le référencement dans la durée. Personne ne peut sérieusement garantir une position précise." },
+    { q: "Une agence web vaut-elle mieux qu'un constructeur de sites ?", a: "Un constructeur est bon marché au départ, mais vous construisez, rédigez et optimisez vous-même. Une agence web prend en charge structure, textes, technique et SEO pour que le site génère des demandes. Si vous avez seulement besoin d'une carte de visite simple et du temps, un constructeur peut suffire. Nous vous le disons franchement lors du premier entretien." },
     { q: "Pourrai-je modifier mon site moi-même ?", a: "Oui. Sur demande, vous recevez un système de gestion de contenu simple et une courte formation. Nous pouvons aussi effectuer les modifications pour vous dans le cadre d'un contrat de maintenance." },
-    { q: "Proposez-vous des sites bilingues ?", a: "Oui, le français et l'allemand font partie de notre quotidien. À Bienne et en Suisse romande, un site bilingue est souvent la clé pour toucher plus de clients." },
+    { q: "Le site et les données m'appartiennent-ils ?", a: "Oui. Votre site, vos contenus et vos données vous appartiennent. Nous évitons les dépendances inutiles et vous remettons tous les accès dont vous avez besoin." },
   ],
 };
 
@@ -52,6 +71,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
 
 const intro = {
   de: {
+    h1: "Webdesign Agentur",
+    h1Accent: "Schweiz",
+    eyebrow: "Webseiten, Shops und SEO für KMU",
     projectsEyebrow: "Ausgewählte Projekte",
     projectsTitle: "Ein Einblick in unsere Arbeit.",
     heroServices: "Unsere Leistungen",
@@ -68,6 +90,9 @@ const intro = {
       "Bei uns haben Sie vom ersten Gespräch bis zum Launch und darüber hinaus eine feste Ansprechperson. Wir planen klar, gestalten ruhig und bauen Webseiten, die schnell laden, gefunden werden und Anfragen bringen.",
   },
   fr: {
+    h1: "Agence web",
+    h1Accent: "en Suisse",
+    eyebrow: "Sites, boutiques et SEO pour PME",
     projectsEyebrow: "Projets choisis",
     projectsTitle: "Un aperçu de notre travail.",
     heroServices: "Nos services",
@@ -103,24 +128,24 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const d = getDict(lang);
   const i = intro[lang];
   const mainServices = services.filter((s) => s.key !== "kassensystem-gastro" && s.key !== "kassensystem-retail");
-  const core = cities.filter((c) => c.priority === "A");
-  const shown = showReferences ? references : [];
 
   return (
     <>
-      <JsonLd data={faqLd(homeFaq[lang])} />
-
-      {/* HERO: statement on white with faint layout columns; a website building itself plus the services panel on the right */}
+      {/* HERO: keyword H1 plus benefit line on white with faint layout columns; a website building itself plus the services panel on the right.
+          The H1 is the LCP element and is rendered visible on load (no fade-in). */}
       <section className="relative isolate overflow-hidden border-b border-line bg-bg">
         <div aria-hidden="true" className="hero-guides pointer-events-none absolute inset-0 -z-10" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(45%_55%_at_92%_8%,rgb(44_109_179/0.09),transparent_70%)]" />
         <div className="container-x grid items-center gap-12 pb-20 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-24">
           <div className="lg:col-span-7">
-            <p className="eyebrow mb-6">{d.hero.eyebrow}</p>
+            <p className="eyebrow mb-6">{i.eyebrow}</p>
             <h1 className="display text-[clamp(2.6rem,5.4vw,4.75rem)]">
-              {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
+              {i.h1} <span className="text-accent">{i.h1Accent}</span>
             </h1>
-            <p className="mt-7 max-w-xl text-[18px] leading-relaxed text-ink-soft md:text-[19px]">{d.hero.lead}</p>
+            <p className="mt-5 font-display text-[clamp(1.5rem,2.7vw,2.25rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
+              {d.hero.title1} {d.hero.title2}
+            </p>
+            <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-ink-soft md:text-[19px]">{d.hero.lead}</p>
             <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:120ms]">
               <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
               <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
@@ -163,6 +188,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
+      {/* TRUST: true facts only */}
+      <TrustFacts locale={lang} />
+
+      {/* PROBLEMS: "Kennen Sie diese Probleme?" linking to the problem pages */}
+      <div className="bg-bg-2">
+        <ProblemsSection locale={lang} />
+      </div>
+
       {/* SERVICES as the questions clients ask, on the dark night surface */}
       <section className="surface-night section-y text-white">
         <div className="container-x">
@@ -204,153 +237,67 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* APPROACH: why Webnova, as a calm list next to the owner's quote */}
-      <section className="container-x section-y">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="reveal lg:col-span-5">
-            <p className="eyebrow mb-4">{d.home.whyEyebrow}</p>
-            <h2 className="h-section">{d.home.whyTitle}</h2>
-            <p className="lead mt-6">{i.approachLead}</p>
-            <figure className="mt-10 border-l-2 border-bright pl-6">
-              <blockquote className="font-display text-[clamp(1.25rem,2vw,1.5rem)] font-medium leading-snug tracking-[-0.01em] text-ink">«{i.quote}»</blockquote>
-              <figcaption className="mt-4 text-[14px] text-muted">{i.quoteBy}</figcaption>
-            </figure>
-          </div>
-          <ol className="lg:col-span-6 lg:col-start-7">
-            {d.home.why.map((w, n) => (
-              <li key={n} className="reveal grid grid-cols-[3rem_1fr] gap-4 border-t border-line py-7 last:border-b">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-bright-soft font-display text-[14px] font-semibold text-bright">{n + 1}</span>
-                <div>
-                  <h3 className="font-display text-[20px] font-semibold tracking-[-0.01em]">{w.title}</h3>
-                  <p className="mt-2 text-[16px] leading-relaxed text-ink-soft">{w.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      {/* BENEFITS: why Webnova, as a calm list next to the owner's quote */}
+      <BenefitsSection
+        locale={lang}
+        items={d.home.why}
+        eyebrow={d.home.whyEyebrow}
+        title={d.home.whyTitle}
+        lead={i.approachLead}
+        quote={{ text: i.quote, by: i.quoteBy }}
+      />
 
-      {/* PROCESS on the cool grey band */}
-      <section className="section-y bg-bg-2">
-        <div className="container-x">
-          <div className="reveal max-w-3xl">
-            <p className="eyebrow mb-4">{d.home.processEyebrow}</p>
-            <h2 className="h-section">{d.home.processTitle}</h2>
-          </div>
-          <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {d.home.process.map((p, n) => (
-              <li key={n} className="card reveal relative p-7">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-accent font-display text-[14px] font-semibold text-white">{n + 1}</span>
-                <h3 className="mt-8 font-display text-[18px] font-semibold tracking-[-0.01em]">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="reveal mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <ButtonLink href={href(lang, "request")}>{i.processCta}</ButtonLink>
-            <span className="text-[14px] text-muted">{d.common.free}</span>
-          </div>
-        </div>
-      </section>
+      {/* REFERENCES: real projects only */}
+      <div className="border-t border-line">
+        <ReferencesSection locale={lang} eyebrow={i.projectsEyebrow} title={i.projectsTitle} />
+      </div>
 
-      {/* PROJECTS: a quiet look at selected work, after the services */}
-      {shown.length > 0 && (
-        <section className="container-x section-y">
-          <div className="reveal mb-14 flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-4">{i.projectsEyebrow}</p>
-              <h2 className="h-section">{i.projectsTitle}</h2>
-            </div>
-            <Link href={href(lang, "references")} className="link-arrow">
-              {d.home.referencesAll}
-              <Icon name="arrow" className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className={`grid gap-x-8 gap-y-12 md:grid-cols-2 ${shown.length % 3 === 0 ? "lg:grid-cols-3" : ""}`}>
-            {shown.map((r) => (
-              <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="reveal group flex flex-col">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-line shadow-xs transition-shadow duration-500 group-hover:shadow-lift" style={{ background: r.colors.bg }}>
-                  {r.image && (
-                    <Image
-                      src={r.image}
-                      alt={`${r.name}, ${r.content[lang].industry}`}
-                      fill
-                      sizes="(min-width: 768px) 580px, 100vw"
-                      className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
-                  )}
-                </div>
-                <p className="mt-6 text-[13.5px] text-muted">
-                  {r.content[lang].industry}
-                  {r.content[lang].place && <> · {r.content[lang].place}</>}
-                </p>
-                <h3 className="mt-1.5 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
-                <p className="mt-3 line-clamp-3 text-[15.5px] leading-relaxed text-ink-soft">{r.content[lang].summary}</p>
-                <span className="link-arrow mt-5">
-                  {i.toProject}
-                  <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+      {/* PROCESS: five phases */}
+      <ProcessSection locale={lang} title={d.home.processTitle} />
+
+      {/* INDUSTRIES */}
+      <IndustriesTeaser locale={lang} />
 
       {/* POS */}
-      <section className="border-t border-line">
-      <div className="container-x section-y">
-        <div className="reveal grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-6">
-            <p className="eyebrow mb-4">{d.home.posEyebrow}</p>
-            <h2 className="h-section">{d.home.posTitle}</h2>
-            <p className="lead mt-6 max-w-lg">{d.home.posLead}</p>
-            <div className="mt-10">
-              <ButtonLink href={href(lang, "service:kassensystem")}>{d.common.learnMore}</ButtonLink>
+      <section className="border-t border-line bg-bg-2">
+        <div className="container-x section-y">
+          <div className="reveal grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6">
+              <p className="eyebrow mb-4">{d.home.posEyebrow}</p>
+              <h2 className="h-section">{d.home.posTitle}</h2>
+              <p className="lead mt-6 max-w-lg">{d.home.posLead}</p>
+              <div className="mt-10">
+                <ButtonLink href={href(lang, "service:kassensystem")}>{d.common.learnMore}</ButtonLink>
+              </div>
+            </div>
+            <div className="grid gap-3 lg:col-span-5 lg:col-start-8">
+              {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, n) => (
+                <Link key={k} href={href(lang, `service:${k}`)} className="card card-hover group flex items-center justify-between gap-4 p-6">
+                  <span className="flex items-center gap-4">
+                    <span className="icon-tile h-12 w-12 transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+                      <Icon name={n === 0 ? "utensils" : "bag"} className="h-[22px] w-[22px]" />
+                    </span>
+                    <span className="font-display text-[20px] font-semibold tracking-[-0.01em]">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>
+                  </span>
+                  <Icon name="arrow" className="h-5 w-5 text-bright transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
             </div>
           </div>
-          <div className="grid gap-3 lg:col-span-5 lg:col-start-8">
-            {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, n) => (
-              <Link
-                key={k}
-                href={href(lang, `service:${k}`)}
-                className="card card-hover group flex items-center justify-between gap-4 p-6"
-              >
-                <span className="flex items-center gap-4">
-                  <span className="icon-tile h-12 w-12 transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
-                    <Icon name={n === 0 ? "utensils" : "bag"} className="h-[22px] w-[22px]" />
-                  </span>
-                  <span className="font-display text-[20px] font-semibold tracking-[-0.01em]">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>
-                </span>
-                <Icon name="arrow" className="h-5 w-5 text-bright transition-transform group-hover:translate-x-1" />
-              </Link>
-            ))}
-          </div>
         </div>
-      </div>
       </section>
 
-      {/* REGIONS */}
-      <section className="section-y border-t border-line bg-bg-2">
-        <div className="container-x">
-          <div className="reveal mb-12 grid gap-6 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-7">
-              <p className="eyebrow mb-4">{d.home.regionsEyebrow}</p>
-              <h2 className="h-section">{d.home.regionsTitle}</h2>
-            </div>
-            <p className="lead md:col-span-5">{d.home.regionsLead}</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {core.map((c) => (
-              <CardLink key={c.key} href={href(lang, `city:${c.key}`)} title={c.content[lang].h1} />
-            ))}
-          </div>
-          <div className="mt-8">
-            <ButtonLink href={href(lang, "regions")} variant="ghost">
-              {d.nav.regions}
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
+      {/* FIT: honest, no prices */}
+      <FitSection locale={lang} />
+
+      {/* NEXT STEPS: Erstgespräch, Offerte, Umsetzung */}
+      <NextSteps locale={lang} />
+
+      {/* CONTACT PERSON */}
+      <ContactSection locale={lang} />
+
+      {/* LOCATIONS: office and every region page */}
+      <LocationsSection locale={lang} />
 
       {/* GUIDES */}
       <section className="section-y">
@@ -365,7 +312,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </ButtonLink>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
-            {guides.map((g) => (
+            {guides.slice(0, 3).map((g) => (
               <CardLink
                 key={g.key}
                 href={href(lang, `guide:${g.key}`)}
@@ -378,7 +325,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      <FaqList locale={lang} faq={homeFaq[lang]} />
+      <div className="border-t border-line">
+        <FaqSection locale={lang} faq={homeFaq[lang]} />
+      </div>
       <CtaBand locale={lang} />
     </>
   );

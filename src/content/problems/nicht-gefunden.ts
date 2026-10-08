@@ -4,7 +4,7 @@ export const nichtGefunden: Problem = {
   key: "nicht-gefunden",
   icon: "search",
   services: ["seo", "website-redesign", "online-marketing"],
-  guides: ["lokales-seo-kmu", "website-relaunch-checkliste"],
+  guides: ["google-unternehmensprofil", "lokales-seo-kmu", "website-relaunch-checkliste"],
   industries: ["handwerk", "coiffeur-beauty", "gastronomie", "autogewerbe"],
   preset: ["seo"],
   content: {

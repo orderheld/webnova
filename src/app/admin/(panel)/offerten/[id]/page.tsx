@@ -73,7 +73,7 @@ export default async function QuoteDetail({ params }: { params: Promise<{ id: st
           </>
         }
       />
-      <div className="mb-5 flex flex-wrap items-center gap-2 rounded-2xl border border-line bg-surface p-2.5">
+      <div className="mb-5 flex flex-wrap items-center gap-2 rounded-2xl border border-line bg-surface shadow-xs p-2.5">
         <span className="px-1 text-[12.5px] text-muted">Status</span>
         {quoteStatuses.map((s) => (
           <form key={s} action={setQuoteStatusAction.bind(null, q.id, s)}>

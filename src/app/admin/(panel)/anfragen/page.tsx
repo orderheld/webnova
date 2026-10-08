@@ -1,6 +1,6 @@
 import { and, desc, eq, ilike, lte, notInArray, or, sql, type SQL } from "drizzle-orm";
 import Link from "next/link";
-import { Badge, Empty, FilterChips, LinkButton, PageHeader, Stars, Table, qs, td, tdNum } from "@/components/admin/ui";
+import { Badge, Empty, FilterChips, LinkButton, PageHeader, Stars, Table, qs, td, tdNum, btn } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { leadStatuses, type LeadStatus } from "@/db/schema";
 import { leadSourceLabels, leadStageLabels } from "@/lib/admin/labels";
@@ -45,6 +45,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
   return (
     <>
       <PageHeader
+        eyebrow="Verkauf"
         title="Leads & Anfragen"
         sub="Anfragen aus dem Webformular und eigene Akquise an einem Ort"
         actions={
@@ -75,7 +76,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
             <input type="checkbox" name="faellig" value="1" defaultChecked={!!sp.faellig} className="h-4 w-4" /> Follow-up fällig
           </label>
           {filter && <input type="hidden" name="status" value={filter} />}
-          <button className="rounded-full border border-line bg-surface px-3 py-1.5 text-[13px] hover:border-accent">Filtern</button>
+          <button className={btn.ghost}>Filtern</button>
         </form>
       </div>
       {rows.length === 0 ? (

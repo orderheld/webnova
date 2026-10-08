@@ -15,7 +15,7 @@ export const onlineMarketing: Service = {
           "Google Ads und Social Media Werbung, die messbar Anfragen bringt. Online-Marketing für Schweizer KMU. Jetzt kostenlose Erstberatung anfragen.",
       },
       eyebrow: "Online-Marketing",
-      h1: "Online-Marketing, das messbar wirkt",
+      h1: "Online-Marketing und Google Ads",
       lead:
         "Mit Google Ads und Werbung auf Social Media erreichen Sie genau die Menschen, die Ihr Angebot suchen. Wir planen, setzen um und optimieren laufend.",
       features: [
@@ -104,7 +104,7 @@ export const onlineMarketing: Service = {
           "Google Ads et publicité sur les réseaux sociaux pour générer des demandes mesurables. Marketing digital pour PME suisses. Premier conseil gratuit.",
       },
       eyebrow: "Marketing digital",
-      h1: "Un marketing digital aux résultats mesurables",
+      h1: "Marketing digital et Google Ads",
       lead:
         "Avec Google Ads et la publicité sur les réseaux sociaux, vous touchez précisément les personnes qui cherchent votre offre. Nous planifions, lançons et optimisons en continu.",
       features: [

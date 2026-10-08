@@ -4,7 +4,7 @@ export const treuhand: Industry = {
   key: "treuhand",
   icon: "briefcase",
   services: ["webdesign", "website-redesign", "seo", "branding"],
-  guides: ["website-relaunch-checkliste", "lokales-seo-kmu"],
+  guides: ["webagentur-waehlen", "website-relaunch-checkliste", "lokales-seo-kmu"],
   preset: ["webdesign"],
   content: {
     de: {

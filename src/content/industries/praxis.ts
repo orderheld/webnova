@@ -4,7 +4,7 @@ export const praxis: Industry = {
   key: "praxis",
   icon: "heart",
   services: ["webdesign", "website-redesign", "seo", "wartung"],
-  guides: ["website-relaunch-checkliste", "lokales-seo-kmu"],
+  guides: ["kmu-webseite-checkliste", "website-relaunch-checkliste", "lokales-seo-kmu"],
   preset: ["webdesign"],
   content: {
     de: {

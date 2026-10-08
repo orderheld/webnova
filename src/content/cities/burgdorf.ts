@@ -12,7 +12,7 @@ export const burgdorf: City = {
       name: "Burgdorf",
       slug: "webdesign-burgdorf",
       meta: {
-        title: "Webdesign Burgdorf – Webagentur Emmental",
+        title: "Webdesign Burgdorf: Webagentur Emmental",
         description:
           "Webdesign in Burgdorf: Webseiten, Onlineshops und lokales SEO für Gewerbe, Gastronomie und KMU im Emmental. Kostenlose Erstberatung bei Webnova.",
       },
@@ -67,7 +67,7 @@ export const burgdorf: City = {
       name: "Berthoud",
       slug: "creation-site-internet-berthoud",
       meta: {
-        title: "Création site internet Berthoud – Agence web",
+        title: "Création site internet Berthoud: Agence web",
         description:
           "Création de site internet à Berthoud : sites, boutiques en ligne et référencement local pour les PME de l'Emmental. Premier conseil gratuit.",
       },

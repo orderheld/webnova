@@ -4,7 +4,7 @@ export const cafeBaeckerei: Industry = {
   key: "cafe-baeckerei",
   icon: "coffee",
   services: ["webdesign", "onlineshop", "kassensystem-retail", "seo"],
-  guides: ["lokales-seo-kmu", "webseite-kosten"],
+  guides: ["google-unternehmensprofil", "lokales-seo-kmu", "webseite-kosten"],
   preset: ["webdesign"],
   content: {
     de: {

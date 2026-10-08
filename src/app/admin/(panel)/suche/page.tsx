@@ -92,12 +92,12 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       <PageHeader title="Suche" sub={results ? `${total} Treffer für «${q}»` : "Kunden, Kontakte, Leads, Projekte, Offerten, Rechnungen und Abos"} />
       <form action="/admin/suche" className="relative mb-6 max-w-xl">
         <Icon name="search" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-        <input name="q" defaultValue={q} autoFocus placeholder="Suchbegriff, z. B. Firmenname, Nummer, E-Mail" className="input pl-9" aria-label="Suchbegriff" />
+        <input name="q" defaultValue={q} autoFocus placeholder="Suchbegriff, z. B. Firmenname, Nummer, E-Mail" className="input pl-10!" aria-label="Suchbegriff" />
       </form>
       {!results ? (
-        <Empty>Mindestens zwei Zeichen eingeben.</Empty>
+        <Empty icon="search">Mindestens zwei Zeichen eingeben.</Empty>
       ) : total === 0 ? (
-        <Empty>Nichts gefunden.</Empty>
+        <Empty icon="search">Nichts gefunden. Versuchen Sie einen anderen Begriff.</Empty>
       ) : (
         <div className="grid gap-5 lg:grid-cols-2">
           {(() => {

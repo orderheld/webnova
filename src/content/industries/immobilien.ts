@@ -4,7 +4,7 @@ export const immobilien: Industry = {
   key: "immobilien",
   icon: "building",
   services: ["webdesign", "seo", "online-marketing", "branding"],
-  guides: ["website-relaunch-checkliste", "lokales-seo-kmu"],
+  guides: ["zweisprachige-webseite", "website-relaunch-checkliste", "lokales-seo-kmu"],
   preset: ["webdesign"],
   content: {
     de: {

@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // pdfkit reads its font metrics from disk at runtime, so it must not be bundled.
+  // pdfkit reads its font metrics from disk at runtime, so it must not be bundled. The PDFs also read the logo and the Inter font files from disk.
   serverExternalPackages: ["pdfkit", "swissqrbill"],
   outputFileTracingIncludes: {
-    "/admin/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png"],
-    "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png"],
+    "/admin/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png", "./src/lib/admin/fonts/**"],
+    "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png", "./src/lib/admin/fonts/**"],
   },
   poweredByHeader: false,
   // Branded 404 for unmatched URLs (src/app/global-not-found.tsx); the app has several root layouts.
