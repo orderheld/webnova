@@ -14,10 +14,10 @@
   --color-accent-soft: #e4e9ee;
   --color-accent-ink: #24405a;
   /* Brighter blue for highlights on white: eyebrows, links, icons, the hero keyword. */
-  --color-bright: #2c6db3;
-  --color-bright-soft: #e8f0f9;
+  --color-bright: #3b6385;
+  --color-bright-soft: #e9eff4;
   /* Light blue for accents on dark (night) sections. */
-  --color-accent-light: #9fc3ec;
+  --color-accent-light: #b4c6d6;
   /* Deep slate blue for the few dark sections; never black. */
   --color-night: #1b2d3e;
   --color-night-2: #22384c;

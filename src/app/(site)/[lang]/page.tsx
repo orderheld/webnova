@@ -118,7 +118,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="lg:col-span-7">
             <p className="eyebrow mb-6">{d.hero.eyebrow}</p>
             <h1 className="display text-[clamp(2.6rem,5.4vw,4.75rem)]">
-              {d.hero.title1} <span className="text-bright">{d.hero.title2}</span>
+              {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
             </h1>
             <p className="mt-7 max-w-xl text-[18px] leading-relaxed text-ink-soft md:text-[19px]">{d.hero.lead}</p>
             <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:120ms]">

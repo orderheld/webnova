@@ -34,7 +34,7 @@ export const mailColors = {
   muted: "#646b73",
   line: "#e3e8ee",
   accent: "#24405a",
-  bright: "#2c6db3",
+  bright: "#3b6385",
   danger: "#a12a2a",
 };
 const mailFont = "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";

@@ -26,7 +26,7 @@ export function HeroBuild({ locale }: { locale: Locale }) {
         <text x="240" y="18.5" textAnchor="middle" fontSize="8.5" fill="#646b73">{c.url}</text>
 
         {/* layout guides draw in */}
-        <g stroke="#2c6db3" strokeOpacity="0.28" strokeWidth="1" strokeDasharray="3 4">
+        <g stroke="#3b6385" strokeOpacity="0.28" strokeWidth="1" strokeDasharray="3 4">
           {[24, 168, 312, 456].map((x, i) => (
             <line key={x} className="wf-v" style={d(i * 70)} x1={x} y1="30" x2={x} y2="300" />
           ))}
@@ -46,7 +46,7 @@ export function HeroBuild({ locale }: { locale: Locale }) {
 
         {/* hero copy */}
         <rect className="wf-grow" style={d(550)} x="24" y="80" width="196" height="15" rx="4" fill="#1c232b" />
-        <rect className="wf-grow" style={d(700)} x="24" y="101" width="148" height="15" rx="4" fill="#2c6db3" />
+        <rect className="wf-grow" style={d(700)} x="24" y="101" width="148" height="15" rx="4" fill="#3b6385" />
         <rect className="wf-grow" style={d(900)} x="24" y="128" width="190" height="6" rx="3" fill="#d5dde6" />
         <rect className="wf-grow" style={d(960)} x="24" y="140" width="172" height="6" rx="3" fill="#d5dde6" />
         <rect className="wf-grow" style={d(1020)} x="24" y="152" width="120" height="6" rx="3" fill="#d5dde6" />
@@ -58,13 +58,13 @@ export function HeroBuild({ locale }: { locale: Locale }) {
             {c.button}
           </text>
         </g>
-        <circle className="wf-ripple" style={d(2050)} cx="118" cy="181" r="10" fill="none" stroke="#2c6db3" strokeWidth="2" />
+        <circle className="wf-ripple" style={d(2050)} cx="118" cy="181" r="10" fill="none" stroke="#3b6385" strokeWidth="2" />
 
         {/* image block */}
         <g className="wf-fade" style={d(1000)}>
           <rect x="248" y="74" width="208" height="118" rx="10" fill="#e8f0f9" />
-          <circle cx="420" cy="102" r="11" fill="#9fc3ec" />
-          <path d="M248 172 l52 -46 l38 32 l26 -20 l92 74 v-6 a10 10 0 0 1 -10 10 h-188 a10 10 0 0 1 -10 -10 z" fill="#2c6db3" fillOpacity="0.22" />
+          <circle cx="420" cy="102" r="11" fill="#b4c6d6" />
+          <path d="M248 172 l52 -46 l38 32 l26 -20 l92 74 v-6 a10 10 0 0 1 -10 10 h-188 a10 10 0 0 1 -10 -10 z" fill="#3b6385" fillOpacity="0.22" />
           <path d="M248 182 l70 -40 l60 34 l78 -28 v34 a10 10 0 0 1 -10 10 h-188 a10 10 0 0 1 -10 -10 z" fill="#24405a" fillOpacity="0.35" />
         </g>
 
@@ -89,7 +89,7 @@ export function HeroBuild({ locale }: { locale: Locale }) {
         {/* the enquiry arrives */}
         <g className="wf-toast" style={d(2250)}>
           <rect x="300" y="148" width="160" height="44" rx="11" fill="#ffffff" stroke="#e3e8ee" />
-          <circle cx="322" cy="170" r="10" fill="#2c6db3" />
+          <circle cx="322" cy="170" r="10" fill="#3b6385" />
           <path d="m317.5 170 3 3 6 -6" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           <text x="340" y="167" fontSize="10.5" fontWeight="600" fill="#1c232b">{c.toast}</text>
           <text x="340" y="180" fontSize="8.5" fill="#646b73">{c.toastSub}</text>

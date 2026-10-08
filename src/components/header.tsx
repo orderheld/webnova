@@ -159,7 +159,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 key={l.href}
                 href={l.href}
                 className={`whitespace-nowrap rounded-full px-3 py-2 text-[15px] transition-colors hover:bg-bg-2 hover:text-accent xl:px-4 ${
-                  n >= nav.links.length - 2 ? "hidden xl:block" : ""
+                  n >= nav.links.length - 2 ? "hidden 2xl:block" : ""
                 } ${
                   pathname === l.href ? "font-medium text-accent" : "text-ink-soft"
                 }`}
