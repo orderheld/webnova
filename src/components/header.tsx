@@ -66,7 +66,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             <div className="group relative">
               <Link
                 href={nav.servicesHref}
-                className="flex items-center gap-1 rounded-full px-4 py-2 text-[15px] text-ink-soft transition-colors hover:text-accent"
+                className="flex items-center gap-1 rounded-[4px] px-4 py-2 text-[15px] text-ink-soft transition-colors hover:text-accent"
               >
                 {nav.servicesLabel}
                 <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -74,12 +74,12 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 </svg>
               </Link>
               <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <div className="grid grid-cols-2 gap-1 rounded-2xl border border-line bg-surface p-3 shadow-soft">
+                <div className="grid grid-cols-2 gap-1 rounded-md border border-line bg-surface p-3 shadow-soft">
                   {nav.services.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="group/item flex items-center gap-3 rounded-xl px-3 py-3 text-[15px] text-ink-soft transition-colors hover:bg-bg hover:text-accent"
+                      className="group/item flex items-center gap-3 rounded-md px-3 py-3 text-[15px] text-ink-soft transition-colors hover:bg-bg hover:text-accent"
                     >
                       <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent-soft text-accent transition-colors group-hover/item:bg-accent group-hover/item:text-white">
                         <Icon name={s.icon} className="h-[18px] w-[18px]" />
@@ -89,7 +89,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                   ))}
                   <Link
                     href={nav.servicesHref}
-                    className="col-span-2 mt-1 flex items-center justify-between rounded-xl bg-bg px-4 py-3 text-[15px] font-medium text-accent hover:bg-accent-soft"
+                    className="col-span-2 mt-1 flex items-center justify-between rounded-md bg-bg px-4 py-3 text-[15px] font-medium text-accent hover:bg-accent-soft"
                   >
                     {nav.allServicesLabel}
                     <Icon name="arrow" className="h-4 w-4" />
@@ -101,7 +101,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`rounded-full px-4 py-2 text-[15px] transition-colors hover:text-accent ${
+                className={`rounded-[4px] px-4 py-2 text-[15px] transition-colors hover:text-accent ${
                   pathname === l.href ? "text-accent" : "text-ink-soft"
                 }`}
               >
@@ -116,25 +116,25 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
               hrefLang={other}
               lang={other}
               aria-label={other === "fr" ? "Français" : "Deutsch"}
-              className="hidden rounded-full px-3 py-2 text-[13px] font-medium uppercase tracking-wider text-muted transition-colors hover:text-accent sm:block"
+              className="hidden rounded-[4px] px-3 py-2 text-[13px] font-medium uppercase tracking-wider text-muted transition-colors hover:text-accent sm:block"
             >
               {other}
             </Link>
             {minimal && (
-              <a href={nav.phone.href} className="hidden rounded-full px-4 py-2 text-[15px] text-ink-soft hover:text-accent sm:block">
+              <a href={nav.phone.href} className="hidden rounded-[4px] px-4 py-2 text-[15px] text-ink-soft hover:text-accent sm:block">
                 {nav.phone.label}
               </a>
             )}
             <Link
               href={minimal ? "#formular" : nav.cta.href}
-              className="hidden rounded-full bg-accent px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-night sm:inline-flex"
+              className="hidden rounded-[4px] bg-accent px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-night sm:inline-flex"
             >
               {nav.cta.label}
             </Link>
             <button
               type="button"
               onClick={() => setOpenFor(open ? null : pathname)}
-              className={`${minimal ? "hidden" : "grid lg:hidden"} h-11 w-11 place-items-center rounded-full border border-ink/15`}
+              className={`${minimal ? "hidden" : "grid lg:hidden"} h-11 w-11 place-items-center rounded-[4px] border border-ink/15`}
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? nav.closeLabel : nav.menuLabel}
@@ -164,9 +164,9 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                     key={s.href}
                     href={s.href}
                     style={{ animationDelay: `${i * 35}ms` }}
-                    className="animate-pop group flex min-h-[92px] flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-3.5 transition-colors active:border-accent-light/60 active:bg-white/[0.08]"
+                    className="animate-pop group flex min-h-[92px] flex-col justify-between rounded-md border border-white/10 bg-white/[0.04] p-3.5 transition-colors active:border-accent-light/60 active:bg-white/[0.08]"
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-accent-light">
+                    <span className="grid h-9 w-9 place-items-center rounded-md bg-white/10 text-accent-light">
                       <Icon name={s.icon} className="h-[18px] w-[18px]" />
                     </span>
                     <span className="text-[15px] font-medium leading-tight text-white/90">{s.label}</span>
@@ -204,7 +204,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 <Link
                   href={switchHref}
                   hrefLang={other}
-                  className="rounded-full border border-white/15 px-3 py-1.5 font-medium uppercase tracking-wider text-white/70"
+                  className="rounded-[4px] border border-white/15 px-3 py-1.5 font-medium uppercase tracking-wider text-white/70"
                 >
                   {other === "fr" ? "Français" : "Deutsch"}
                 </Link>
@@ -215,7 +215,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
           <div className="relative border-t border-white/10 bg-night/90 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur-xl">
             <Link
               href={nav.cta.href}
-              className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-[16px] font-semibold text-accent"
+              className="flex items-center justify-center gap-2 rounded-[4px] bg-white px-6 py-4 text-[16px] font-semibold text-accent"
             >
               {nav.cta.label}
               <Icon name="arrow" className="h-4 w-4" />
@@ -223,7 +223,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
             <div className="mt-2.5 grid grid-cols-2 gap-2.5">
               <a
                 href={nav.phone.href}
-                className="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3 text-[14px] font-medium"
+                className="flex items-center justify-center gap-2 rounded-[4px] border border-white/15 py-3 text-[14px] font-medium"
               >
                 <Icon name="phone" className="h-4 w-4 text-accent-light" />
                 {nav.locale === "fr" ? "Appeler" : "Anrufen"}
@@ -232,7 +232,7 @@ export function Header({ nav, logo }: { nav: NavData; logo: React.ReactNode }) {
                 href={nav.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3 text-[14px] font-medium"
+                className="flex items-center justify-center gap-2 rounded-[4px] border border-white/15 py-3 text-[14px] font-medium"
               >
                 <Icon name="chat" className="h-4 w-4 text-accent-light" />
                 WhatsApp

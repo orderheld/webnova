@@ -99,10 +99,10 @@ export function FaqList({ locale, faq }: { locale: Locale; faq: Faq[] }) {
         </div>
         <div className="space-y-3 md:col-span-8">
           {faq.map((f, i) => (
-            <details key={i} className="reveal group rounded-2xl border border-line bg-surface px-6 py-5 transition-colors open:border-accent/40 [&_summary::-webkit-details-marker]:hidden">
+            <details key={i} className="reveal group rounded-md border border-line bg-surface px-6 py-5 transition-colors open:border-accent/40 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6 font-display text-[18px] font-medium leading-snug tracking-[-0.01em] md:text-[19px]">
                 {f.q}
-                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-bg transition-all duration-300 group-open:rotate-45 group-open:bg-accent group-open:text-white">
+                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-[4px] bg-bg transition-all duration-300 group-open:rotate-45 group-open:bg-accent group-open:text-white">
                   <Icon name="plus" className="h-4 w-4" />
                 </span>
               </summary>
@@ -119,11 +119,11 @@ export function CtaBand({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   return (
     <section className="container-x pb-20 md:pb-28">
-      <div className="reveal relative isolate overflow-hidden rounded-3xl bg-accent px-6 py-14 text-white sm:px-12 md:px-16 md:py-20">
+      <div className="reveal relative isolate overflow-hidden rounded-lg bg-accent px-6 py-14 text-white sm:px-12 md:px-16 md:py-20">
         <div className="relative grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="eyebrow mb-5 !text-accent-light">{d.cta.badge}</p>
-            <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em]">{d.cta.title}</h2>
+            <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[1.08] tracking-[-0.03em]">{d.cta.title}</h2>
             <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-white/75">{d.cta.text}</p>
           </div>
           <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
@@ -142,13 +142,13 @@ export function CtaBand({ locale }: { locale: Locale }) {
 
 export function FeatureGrid({ items }: { items: { title: string; text: string }[] }) {
   return (
-    <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+    <div className={`grid gap-x-6 gap-y-10 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
-        <div key={i} className="reveal rounded-2xl border border-line bg-surface p-8">
-          <span className="mb-6 block font-display text-[14px] font-semibold text-accent">
+        <div key={i} className="reveal border-t border-ink/80 bg-bg pt-5 pr-4">
+          <span className="mb-6 block text-[13px] tabular-nums text-muted">
             {String(i + 1).padStart(2, "0")}
           </span>
-          <h3 className="text-[19px] font-semibold tracking-tight">{f.title}</h3>
+          <h3 className="font-display text-[19px] font-medium tracking-[-0.01em]">{f.title}</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">{f.text}</p>
         </div>
       ))}
@@ -172,16 +172,16 @@ export function CardLink({
   return (
     <Link
       href={href}
-      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:border-accent/50 hover:shadow-soft"
+      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-md border border-line bg-surface p-7 transition-colors duration-300 hover:border-accent/60"
     >
       <div>
         {icon && (
-          <span className="mb-8 grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+          <span className="mb-8 grid h-12 w-12 place-items-center rounded-md bg-accent-soft text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
             <Icon name={icon} className="h-[22px] w-[22px]" />
           </span>
         )}
         {meta && <p className="mb-3 text-[13px] text-muted">{meta}</p>}
-        <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.02em] transition-colors group-hover:text-accent">{title}</h3>
+        <h3 className="font-display text-[20px] font-medium leading-tight tracking-[-0.015em] transition-colors group-hover:text-accent">{title}</h3>
         {text && <p className="mt-3 text-[15px] leading-relaxed text-muted">{text}</p>}
       </div>
       <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-accent">

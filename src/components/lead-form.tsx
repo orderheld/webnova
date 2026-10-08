@@ -119,7 +119,7 @@ export function LeadForm({
   const card = dark ? "bg-white text-ink" : "bg-surface";
 
   return (
-    <form onSubmit={submit} className={`rounded-3xl border border-line p-6 shadow-[0_40px_80px_-50px_rgba(0,0,0,0.35)] sm:p-10 ${card}`} noValidate>
+    <form onSubmit={submit} className={`rounded-lg border border-line p-6 shadow-[0_40px_80px_-50px_rgba(0,0,0,0.35)] sm:p-10 ${card}`} noValidate>
       <div className="mb-8 flex items-center justify-between gap-4">
         <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-muted">
           {t.step} {step + 1} {t.of} {steps}
@@ -150,7 +150,7 @@ export function LeadForm({
                   key={o}
                   aria-pressed={on}
                   onClick={() => set("services", on ? s.services.filter((x) => x !== o) : [...s.services, o])}
-                  className={`flex min-h-[64px] items-center justify-between gap-2 rounded-2xl border px-4 py-3 text-left text-[15px] transition-all ${
+                  className={`flex min-h-[64px] items-center justify-between gap-2 rounded-md border px-4 py-3 text-left text-[15px] transition-all ${
                     on ? "border-accent bg-accent-soft font-medium text-ink" : "border-line hover:border-accent/40"
                   }`}
                 >
@@ -246,14 +246,14 @@ export function LeadForm({
       )}
 
       {error && (
-        <p role="alert" className="mt-6 rounded-2xl bg-danger/10 px-4 py-3 text-[14px] text-danger">
+        <p role="alert" className="mt-6 rounded-md bg-danger/10 px-4 py-3 text-[14px] text-danger">
           {error}
         </p>
       )}
 
       <div className="mt-10 flex items-center justify-between gap-4">
         {step > 0 ? (
-          <button type="button" onClick={() => setStep(step - 1)} className="rounded-full px-4 py-3 text-[15px] text-muted hover:text-ink">
+          <button type="button" onClick={() => setStep(step - 1)} className="rounded-[4px] px-4 py-3 text-[15px] text-muted hover:text-ink">
             ← {t.back}
           </button>
         ) : (
@@ -262,7 +262,7 @@ export function LeadForm({
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-[15px] font-medium text-white transition-all hover:bg-night disabled:opacity-60"
+          className="group inline-flex items-center gap-2 rounded-[4px] bg-accent px-7 py-4 text-[15px] font-medium text-white transition-all hover:bg-night disabled:opacity-60"
         >
           {step < steps - 1 ? t.next : pending ? t.sending : t.submit}
           <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -312,7 +312,7 @@ function Choice<T extends string | boolean>({
             type="button"
             aria-pressed={on}
             onClick={() => onChange(o.v)}
-            className={`rounded-full border px-5 py-3 text-[15px] transition-all ${
+            className={`rounded-[4px] border px-5 py-3 text-[15px] transition-all ${
               on ? "border-accent bg-accent-soft font-medium text-ink" : "border-line hover:border-accent/40"
             }`}
           >

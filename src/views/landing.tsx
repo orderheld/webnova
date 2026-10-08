@@ -176,8 +176,8 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
         <h2 className="h-section reveal mb-12">{c.benefitsTitle}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.benefits.map((b) => (
-            <div key={b.title} className="reveal group rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
-              <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink">
+            <div key={b.title} className="reveal group rounded-md border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
+              <span className="mb-8 grid h-12 w-12 place-items-center rounded-md bg-bg text-ink">
                 <Icon name={b.icon} />
               </span>
               <h3 className="text-[20px] font-semibold tracking-tight">{b.title}</h3>
@@ -192,7 +192,7 @@ export function LandingPage({ locale, lpKey }: { locale: Locale; lpKey: string }
       <section className="container-x pb-24 text-center">
         <a
           href="#formular"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
+          className="inline-flex items-center gap-2 rounded-[4px] bg-accent px-8 py-4 text-[16px] font-medium text-white transition-colors hover:bg-night"
         >
           {d.nav.cta} <Icon name="arrow" className="h-4 w-4" />
         </a>

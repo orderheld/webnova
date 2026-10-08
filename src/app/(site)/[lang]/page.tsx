@@ -55,8 +55,8 @@ const intro = {
     projectsTitle: "Ein Einblick in unsere Arbeit.",
     heroServices: "Unsere Leistungen",
     toProject: "Zum Projekt",
-    servicesEyebrow: "Wie können wir helfen?",
-    servicesTitle: "Sagen Sie uns, wo der Schuh drückt. Wir kümmern uns um den Rest.",
+    servicesEyebrow: "Leistungen",
+    servicesTitle: "Wobei wir Sie unterstützen.",
     quote: "Wir nehmen uns Zeit, Ihren Betrieb zu verstehen, bevor wir eine Zeile Code schreiben.",
     quoteBy: "Webnova",
     approachLead:
@@ -67,8 +67,8 @@ const intro = {
     projectsTitle: "Un aperçu de notre travail.",
     heroServices: "Nos services",
     toProject: "Voir le projet",
-    servicesEyebrow: "Comment pouvons-nous aider ?",
-    servicesTitle: "Dites-nous ce qui coince. Nous nous occupons du reste.",
+    servicesEyebrow: "Services",
+    servicesTitle: "Comment nous vous accompagnons.",
     quote: "Nous prenons le temps de comprendre votre entreprise avant d'écrire la moindre ligne de code.",
     quoteBy: "Webnova",
     approachLead:
@@ -101,48 +101,32 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
     <>
       <JsonLd data={faqLd(homeFaq[lang])} />
 
-      {/* HERO: calm statement on Kalk, real project work on the right */}
-      <section className="relative overflow-hidden border-b border-line bg-bg">
-        <div className="container-x grid items-center gap-14 pb-20 pt-14 md:pt-20 lg:grid-cols-12 lg:pb-28">
-          <div className="lg:col-span-7">
-            <p className="eyebrow mb-7 animate-rise">{d.hero.eyebrow}</p>
-            <h1 className="display animate-rise text-[clamp(2.7rem,5.6vw,4.9rem)] [animation-delay:80ms]">
-              {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
-            </h1>
-            <p className="mt-8 max-w-xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[19px]">{d.hero.lead}</p>
-            <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
+      {/* HERO: a typographic statement, then the service index on a Swiss grid */}
+      <section className="border-b border-line bg-bg">
+        <div className="container-x pb-16 pt-16 md:pb-20 md:pt-24">
+          <p className="eyebrow mb-8 animate-rise">{d.hero.eyebrow}</p>
+          <h1 className="display max-w-5xl animate-rise text-[clamp(2.8rem,6.6vw,6rem)] [animation-delay:80ms]">
+            {d.hero.title1} <span className="text-accent">{d.hero.title2}</span>
+          </h1>
+          <div className="mt-12 grid gap-8 animate-rise [animation-delay:160ms] md:grid-cols-12 md:items-end">
+            <p className="max-w-xl text-[18px] leading-relaxed text-ink-soft md:col-span-7 md:text-[19px]">{d.hero.lead}</p>
+            <div className="flex flex-wrap gap-3 md:col-span-5 md:justify-end">
               <ButtonLink href={href(lang, "request")}>{d.hero.primary}</ButtonLink>
               <ButtonLink href={href(lang, "services")} variant="ghost" arrow={false}>
                 {d.hero.secondary}
               </ButtonLink>
             </div>
-            <ul className="mt-12 flex animate-rise flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6 text-[14.5px] text-ink-soft [animation-delay:320ms]">
-              {d.hero.points.map((p) => (
-                <li key={p} className="flex items-center gap-2.5">
-                  <Icon name="check" className="h-4 w-4 text-accent" strokeWidth={2.5} />
-                  {p}
-                </li>
-              ))}
-            </ul>
           </div>
-          <div className="animate-rise [animation-delay:200ms] lg:col-span-5 lg:col-start-8">
-            <div className="rounded-3xl bg-night p-3 text-white shadow-soft">
-              <p className="px-5 pb-3 pt-4 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-light">{i.heroServices}</p>
-              <ul className="divide-y divide-white/10 rounded-2xl bg-night-2">
-                {mainServices.map((sv) => (
-                  <li key={sv.key}>
-                    <Link href={href(lang, `service:${sv.key}`)} className="group flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-white/[0.04]">
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/10 text-accent-light">
-                        <Icon name={sv.icon} className="h-[18px] w-[18px]" />
-                      </span>
-                      <span className="flex-1 text-[16px] font-medium">{sv.content[lang].navLabel}</span>
-                      <Icon name="arrow" className="h-4 w-4 text-white/40 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ol className="mt-20 grid animate-rise border-t border-ink/80 [animation-delay:240ms] sm:grid-cols-2 lg:grid-cols-4">
+            {mainServices.map((sv, n) => (
+              <li key={sv.key} className="border-b border-line">
+                <Link href={href(lang, `service:${sv.key}`)} className="group flex items-baseline gap-4 py-5 pr-4 transition-colors hover:text-accent">
+                  <span className="w-6 shrink-0 text-[13px] tabular-nums text-muted">{String(n + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-[19px] font-medium tracking-[-0.01em]">{sv.content[lang].navLabel}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -156,9 +140,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </div>
             <p className="text-[18px] leading-relaxed text-white/70 md:col-span-5">{d.home.servicesLead}</p>
           </div>
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px border-y border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
             {mainServices.map((sv) => (
-              <Link key={sv.key} href={href(lang, `service:${sv.key}`)} className="group flex min-h-[230px] flex-col bg-night p-7 transition-colors hover:bg-night-2">
+              <Link key={sv.key} href={href(lang, `service:${sv.key}`)} className="group flex min-h-[230px] flex-col bg-night py-8 pr-7 sm:px-7 transition-colors hover:bg-night-2">
                 <h3 className="font-display text-[20px] font-medium leading-snug tracking-[-0.01em]">{questions[sv.key]?.[lang] ?? sv.content[lang].navLabel}</h3>
                 <p className="mt-3 line-clamp-3 text-[14.5px] leading-relaxed text-white/60">{sv.content[lang].lead}</p>
                 <span className="mt-auto flex items-center gap-2 pt-6 text-[14.5px] font-medium text-accent-light transition-colors group-hover:text-white">
@@ -186,9 +170,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <ol className="lg:col-span-6 lg:col-start-7">
             {d.home.why.map((w, n) => (
               <li key={n} className="reveal grid grid-cols-[3rem_1fr] gap-4 border-t border-line py-8 last:border-b">
-                <span className="font-display text-[15px] font-semibold text-accent">{String(n + 1).padStart(2, "0")}</span>
+                <span className="text-[13px] tabular-nums text-muted">{String(n + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="text-[20px] font-semibold tracking-tight">{w.title}</h3>
+                  <h3 className="font-display text-[20px] font-medium tracking-[-0.01em]">{w.title}</h3>
                   <p className="mt-2 text-[16px] leading-relaxed text-ink-soft">{w.text}</p>
                 </div>
               </li>
@@ -197,18 +181,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* PROCESS on a warm band */}
-      <section className="bg-bg-2 py-24 md:py-32">
+      {/* PROCESS */}
+      <section className="border-t border-line py-24 md:py-32">
         <div className="container-x">
           <div className="reveal max-w-3xl">
             <p className="eyebrow mb-4">{d.home.processEyebrow}</p>
             <h2 className="h-section">{d.home.processTitle}</h2>
           </div>
-          <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
             {d.home.process.map((p, n) => (
-              <li key={n} className="reveal rounded-2xl bg-surface p-7">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-[14px] font-semibold text-white">{n + 1}</span>
-                <h3 className="mt-8 text-[18px] font-semibold tracking-tight">{p.title}</h3>
+              <li key={n} className="reveal border-t border-ink/80 pt-5">
+                <span className="text-[13px] tabular-nums text-muted">{String(n + 1).padStart(2, "0")}</span>
+                <h3 className="mt-6 font-display text-[19px] font-medium tracking-[-0.01em]">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
               </li>
             ))}
@@ -232,7 +216,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
             {shown.map((r) => (
               <Link key={r.key} href={href(lang, `reference:${r.key}`)} className="reveal group flex flex-col">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-line" style={{ background: r.colors.bg }}>
+                <div className="relative aspect-[16/9] overflow-hidden border border-line" style={{ background: r.colors.bg }}>
                   {r.image && (
                     <Image
                       src={r.image}
@@ -247,7 +231,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   {r.content[lang].industry}
                   {r.content[lang].place && <> · {r.content[lang].place}</>}
                 </p>
-                <h3 className="mt-1.5 font-display text-[24px] font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
+                <h3 className="mt-1.5 font-display text-[24px] font-medium tracking-[-0.02em] transition-colors group-hover:text-accent">{r.name}</h3>
                 <p className="mt-3 line-clamp-3 text-[15.5px] leading-relaxed text-ink-soft">{r.content[lang].summary}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-accent">
                   {i.toProject}
@@ -270,19 +254,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <ButtonLink href={href(lang, "service:kassensystem")}>{d.common.learnMore}</ButtonLink>
             </div>
           </div>
-          <div className="grid gap-3 lg:col-span-5 lg:col-start-8">
+          <div className="border-t border-ink/80 lg:col-span-5 lg:col-start-8">
             {(["kassensystem-gastro", "kassensystem-retail"] as const).map((k, n) => (
               <Link
                 key={k}
                 href={href(lang, `service:${k}`)}
-                className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/50"
+                className="group flex items-center justify-between gap-4 border-b border-line py-6 transition-colors hover:text-accent"
               >
-                <span className="flex items-center gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent">
-                    <Icon name={n === 0 ? "utensils" : "bag"} className="h-[22px] w-[22px]" />
-                  </span>
-                  <span className="font-display text-[20px] font-medium tracking-tight">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>
-                </span>
+                <span className="font-display text-[20px] font-medium tracking-tight">{n === 0 ? d.home.posGastro : d.home.posRetail}</span>
                 <Icon name="arrow" className="h-5 w-5 text-accent transition-transform group-hover:translate-x-1" />
               </Link>
             ))}
