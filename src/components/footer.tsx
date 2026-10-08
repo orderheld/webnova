@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { cities } from "@/content/cities";
+import { industries } from "@/content/industries";
+import { industryUi } from "@/content/industries/ui";
 import { legal } from "@/content/legal";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
@@ -14,8 +16,8 @@ export function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
   return (
     <footer className="surface-night relative isolate overflow-hidden text-white">
-      <div className="container-x grid gap-12 py-20 md:grid-cols-12">
-        <div className="md:col-span-4">
+      <div className="container-x grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="sm:col-span-2 lg:col-span-4">
           <Logo className="h-8" />
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/70">{d.footer.tagline}</p>
           <div className="mt-8 space-y-3 text-[15px]">
@@ -42,14 +44,22 @@ export function Footer({ locale }: { locale: Locale }) {
             <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
         </div>
-        <FooterCol title={d.footer.services} className="md:col-span-3">
+        <FooterCol title={d.footer.services} className="lg:col-span-2">
           {services.map((s) => (
             <FooterLink key={s.key} href={href(locale, `service:${s.key}`)}>
               {s.content[locale].navLabel}
             </FooterLink>
           ))}
         </FooterCol>
-        <FooterCol title={d.footer.regions} className="md:col-span-3">
+        <FooterCol title={industryUi[locale].industries} className="lg:col-span-2">
+          {industries.map((i) => (
+            <FooterLink key={i.key} href={href(locale, `industry:${i.key}`)}>
+              {i.content[locale].navLabel}
+            </FooterLink>
+          ))}
+          <FooterLink href={href(locale, "problems")}>{industryUi[locale].allProblems}</FooterLink>
+        </FooterCol>
+        <FooterCol title={d.footer.regions} className="lg:col-span-2">
           {cities
             .filter((c) => c.priority === "A")
             .map((c) => (
@@ -59,7 +69,7 @@ export function Footer({ locale }: { locale: Locale }) {
             ))}
           <FooterLink href={href(locale, "regions")}>{locale === "de" ? "Alle Standorte" : "Toutes les régions"}</FooterLink>
         </FooterCol>
-        <FooterCol title={d.footer.company} className="md:col-span-2">
+        <FooterCol title={d.footer.company} className="lg:col-span-2">
           <FooterLink href={href(locale, "about")}>{d.nav.about}</FooterLink>
           {showReferences && <FooterLink href={href(locale, "references")}>{d.nav.references}</FooterLink>}
           <FooterLink href={href(locale, "guides")}>{d.nav.guides}</FooterLink>

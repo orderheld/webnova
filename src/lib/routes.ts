@@ -1,6 +1,8 @@
 import { cities } from "@/content/cities";
 import { showReferences } from "./site";
 import { guides } from "@/content/guides";
+import { industries } from "@/content/industries";
+import { problems } from "@/content/problems";
 import { legal } from "@/content/legal";
 import { localServices } from "@/content/local";
 import { references } from "@/content/references";
@@ -17,6 +19,10 @@ export type RouteKind =
   | "localService"
   | "guides"
   | "guide"
+  | "industries"
+  | "industry"
+  | "problems"
+  | "problem"
   | "about"
   | "references"
   | "reference"
@@ -50,6 +56,8 @@ function buildRoutes(): RouteEntry[] {
   const r: RouteEntry[] = [
     page("home", "", ""),
     page("services", "leistungen", "services"),
+    page("industries", "branchen", "secteurs"),
+    page("problems", "loesungen", "solutions"),
     page("regions", "standorte", "regions"),
     ...(showReferences ? [page("references", "referenzen", "references")] : []),
     page("guides", "ratgeber", "conseils"),
@@ -60,6 +68,12 @@ function buildRoutes(): RouteEntry[] {
   ];
   for (const s of services) {
     r.push({ id: `service:${s.key}`, kind: "service", key: s.key, paths: { de: s.content.de.slug, fr: s.content.fr.slug } });
+  }
+  for (const i of industries) {
+    r.push({ id: `industry:${i.key}`, kind: "industry", key: i.key, paths: { de: `branchen/${i.content.de.slug}`, fr: `secteurs/${i.content.fr.slug}` } });
+  }
+  for (const p of problems) {
+    r.push({ id: `problem:${p.key}`, kind: "problem", key: p.key, paths: { de: `loesungen/${p.content.de.slug}`, fr: `solutions/${p.content.fr.slug}` } });
   }
   for (const c of cities) {
     r.push({ id: `city:${c.key}`, kind: "city", key: c.key, paths: { de: c.content.de.slug, fr: c.content.fr.slug } });
