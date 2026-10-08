@@ -12,7 +12,7 @@ export const lyss: City = {
       name: "Lyss",
       slug: "webdesign-lyss",
       meta: {
-        title: "Webdesign Lyss – Webagentur für das Seeland",
+        title: "Webdesign Lyss: Webagentur für das Seeland",
         description:
           "Webdesign in Lyss: Webseiten, Onlineshops und lokales SEO für Gewerbe, Handel und Landwirtschaft im Seeland. Kostenlose Erstberatung bei Webnova.",
       },
@@ -67,7 +67,7 @@ export const lyss: City = {
       name: "Lyss",
       slug: "creation-site-internet-lyss",
       meta: {
-        title: "Création site internet Lyss – Agence web",
+        title: "Création site internet Lyss: Agence web",
         description:
           "Création de site internet à Lyss : sites, boutiques en ligne et référencement local pour les entreprises du Seeland. Premier conseil gratuit.",
       },

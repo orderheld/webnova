@@ -43,7 +43,9 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
     case "reference": {
       const r = references.find((x) => x.key === entry.key)!;
       const c = r.content[locale];
-      return m({ title: `${r.name}: ${c.industry}`, description: clip(c.summary, 160) });
+      const full = `${r.name}: ${c.industry}`;
+      const title = full.length <= 50 ? full : `${r.name}: ${locale === "de" ? "Referenzprojekt" : "Projet de référence"}`;
+      return m({ title, description: clip(c.summary, 155) });
     }
     case "contact":
       return m({ title: d.contactMetaTitle, description: d.contactMetaDesc });

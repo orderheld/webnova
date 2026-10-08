@@ -12,7 +12,7 @@ export const neuchatel: City = {
       name: "Neuenburg",
       slug: "webdesign-neuenburg",
       meta: {
-        title: "Webdesign Neuenburg – Webagentur Neuchâtel",
+        title: "Webdesign Neuenburg: Webagentur Neuchâtel",
         description:
           "Webdesign in Neuenburg/Neuchâtel: zweisprachige Webseiten, Onlineshops und SEO für KMU, Mikrotechnik und Handel. Kostenlose Erstberatung.",
       },
@@ -67,7 +67,7 @@ export const neuchatel: City = {
       name: "Neuchâtel",
       slug: "creation-site-internet-neuchatel",
       meta: {
-        title: "Création site internet Neuchâtel – Agence web",
+        title: "Création site internet Neuchâtel: Agence web",
         description:
           "Création de site internet à Neuchâtel : sites bilingues, boutiques en ligne et référencement pour PME, microtechnique et commerces. Conseil gratuit.",
       },

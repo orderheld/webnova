@@ -199,7 +199,7 @@ export const kassensystemLocal: LocalService[] = [
         meta: {
           title: "Système de caisse Bienne : restaurants et magasins",
           description:
-            "Système de caisse à Bienne : caisse tactile pour terrasses au bord du lac, bars et boutiques, formation en français ou en allemand. Premier conseil gratuit.",
+            "Système de caisse à Bienne : caisse tactile pour terrasses au bord du lac, bars et boutiques, formation en français ou en allemand. Conseil gratuit.",
         },
         h1: "Système de caisse à Bienne : simple pour toute votre équipe, dans les deux langues",
         lead:

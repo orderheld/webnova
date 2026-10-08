@@ -448,7 +448,7 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Berne pour PME",
           description:
-            "Maintenance de site internet à Berne: mises à jour, sauvegardes, sécurité et hébergement avec un interlocuteur attitré. Demandez votre premier conseil gratuit.",
+            "Maintenance de site internet à Berne: mises à jour, sauvegardes, sécurité et hébergement avec un interlocuteur attitré. Premier conseil gratuit.",
         },
         h1: "Maintenance de site internet à Berne: un suivi fiable et direct",
         lead:

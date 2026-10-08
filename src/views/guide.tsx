@@ -25,6 +25,7 @@ export function GuidesPage({ locale }: { locale: Locale }) {
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.guides }]}
       />
       <section className="container-x pb-24 pt-16 md:pt-24">
+        <h2 className="sr-only">{locale === "de" ? "Alle Ratgeber" : "Tous les conseils"}</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {guides.map((g) => (
             <CardLink

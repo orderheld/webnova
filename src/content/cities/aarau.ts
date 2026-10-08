@@ -12,7 +12,7 @@ export const aarau: City = {
       name: "Aarau",
       slug: "webdesign-aarau",
       meta: {
-        title: "Webdesign Aarau – Webseite erstellen lassen",
+        title: "Webdesign Aarau: Webseite erstellen lassen",
         description:
           "Webdesign in Aarau: Webseiten, Onlineshops und SEO für Aargauer KMU und Gewerbe. Persönlich, direkt und ohne Overhead. Kostenlose Erstberatung.",
       },
@@ -67,7 +67,7 @@ export const aarau: City = {
       name: "Aarau",
       slug: "creation-site-internet-aarau",
       meta: {
-        title: "Création site internet Aarau – Agence web",
+        title: "Création site internet Aarau: Agence web",
         description:
           "Création de site internet à Aarau : sites, boutiques en ligne et référencement pour les PME argoviennes. Contact direct. Premier conseil gratuit.",
       },

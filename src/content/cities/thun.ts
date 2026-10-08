@@ -12,7 +12,7 @@ export const thun: City = {
       name: "Thun",
       slug: "webdesign-thun",
       meta: {
-        title: "Webdesign Thun – Webseite erstellen lassen",
+        title: "Webdesign Thun: Webseite erstellen lassen",
         description:
           "Webdesign in Thun: Webseiten, Onlineshops und SEO für Tourismus, Gastronomie und KMU am Thunersee. Jetzt kostenlose Erstberatung vereinbaren.",
       },
@@ -67,7 +67,7 @@ export const thun: City = {
       name: "Thoune",
       slug: "creation-site-internet-thoune",
       meta: {
-        title: "Création site internet Thoune – Agence web",
+        title: "Création site internet Thoune: Agence web",
         description:
           "Création de site internet à Thoune : sites, boutiques en ligne et référencement pour le tourisme, la restauration et les PME. Premier conseil gratuit.",
       },

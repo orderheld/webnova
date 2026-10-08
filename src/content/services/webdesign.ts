@@ -10,7 +10,7 @@ export const webdesign: Service = {
       slug: "webdesign",
       navLabel: "Webdesign",
       meta: {
-        title: "Webdesign-Agentur – Webseite erstellen lassen",
+        title: "Webdesign-Agentur: Webseite erstellen lassen",
         description:
           "Webseite oder Homepage erstellen lassen: schnell, mobil, Google-ready und datenschutzkonform. Jetzt kostenlose Erstberatung bei Webnova anfragen.",
       },

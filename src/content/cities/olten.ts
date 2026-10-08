@@ -12,7 +12,7 @@ export const olten: City = {
       name: "Olten",
       slug: "webdesign-olten",
       meta: {
-        title: "Webdesign Olten – Webseite erstellen lassen",
+        title: "Webdesign Olten: Webseite erstellen lassen",
         description:
           "Webdesign in Olten: Webseiten, Onlineshops und SEO für KMU, Logistik und Dienstleister am Verkehrsknoten. Jetzt kostenlose Erstberatung anfragen.",
       },
@@ -67,7 +67,7 @@ export const olten: City = {
       name: "Olten",
       slug: "creation-site-internet-olten",
       meta: {
-        title: "Création site internet Olten – Agence web",
+        title: "Création site internet Olten: Agence web",
         description:
           "Création de site internet à Olten : sites, boutiques en ligne et référencement pour PME, logistique et services. Premier conseil gratuit.",
       },

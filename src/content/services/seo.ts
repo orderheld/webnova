@@ -10,7 +10,7 @@ export const seo: Service = {
       slug: "seo-agentur",
       navLabel: "SEO",
       meta: {
-        title: "SEO-Agentur – Suchmaschinenoptimierung",
+        title: "SEO-Agentur: Suchmaschinenoptimierung",
         description:
           "Besser gefunden werden bei Google: Suchmaschinenoptimierung und lokales SEO für Schweizer KMU. Jetzt kostenlose Erstberatung bei Webnova anfragen.",
       },
@@ -103,7 +103,7 @@ export const seo: Service = {
       slug: "agence-seo",
       navLabel: "Référencement",
       meta: {
-        title: "Agence SEO – référencement naturel",
+        title: "Agence SEO: référencement naturel",
         description:
           "Référencement naturel et SEO local pour les PME suisses: soyez trouvé sur Google par vos clients. Demandez votre premier conseil gratuit.",
       },

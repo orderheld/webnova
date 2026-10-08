@@ -72,7 +72,7 @@ export const onlineshopLocal: LocalService[] = [
         meta: {
           title: "Création boutique en ligne Granges : e-shop PME",
           description:
-            "Création de boutique en ligne à Granges pour fabricants, sous-traitants et commerces de la cité horlogère. TWINT, retrait sur place. Premier conseil gratuit.",
+            "Création de boutique en ligne à Granges pour fabricants, sous-traitants et commerces de la cité horlogère. TWINT, retrait sur place. Conseil gratuit.",
         },
         h1: "Création de boutique en ligne à Granges : vendez directement à vos clients",
         lead:
@@ -197,7 +197,7 @@ export const onlineshopLocal: LocalService[] = [
         name: "Bienne",
         slug: "creation-boutique-en-ligne-bienne",
         meta: {
-          title: "Création boutique en ligne Bienne : e-shop bilingue",
+          title: "Boutique en ligne à Bienne : e-shop bilingue",
           description:
             "Création de boutique en ligne à Bienne : e-shops bilingues français-allemand pour commerces, marques et producteurs. Premier conseil gratuit.",
         },
@@ -323,7 +323,7 @@ export const onlineshopLocal: LocalService[] = [
         name: "Soleure",
         slug: "creation-boutique-en-ligne-soleure",
         meta: {
-          title: "Création boutique en ligne Soleure : e-shop commerce",
+          title: "Boutique en ligne à Soleure pour commerces",
           description:
             "Création de boutique en ligne à Soleure pour commerces de la vieille ville et restaurants : bons cadeaux, retrait en magasin. Premier conseil gratuit.",
         },

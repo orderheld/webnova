@@ -324,7 +324,7 @@ export const brandingLocal: LocalService[] = [
         meta: {
           title: "Graphisme & logo à Soleure: identité visuelle",
           description:
-            "Graphisme à Soleure: logo, refonte d'image et imprimés pour la restauration, les commerces et les prestataires de la ville baroque. Premier conseil gratuit.",
+            "Graphisme à Soleure: logo, refonte d'image et imprimés pour la restauration, les commerces et les prestataires de la ville baroque. Conseil gratuit.",
         },
         h1: "Graphisme à Soleure: honorer votre histoire, soigner votre image",
         lead:

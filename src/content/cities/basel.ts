@@ -12,7 +12,7 @@ export const basel: City = {
       name: "Basel",
       slug: "webdesign-basel",
       meta: {
-        title: "Webdesign Basel für KMU – Webseite erstellen",
+        title: "Webdesign Basel für KMU: Webseite erstellen",
         description:
           "Webdesign für Basler KMU: Webseiten, Onlineshops und SEO mit direktem Kontakt und ohne Grossagentur-Overhead. Jetzt kostenlose Erstberatung anfragen.",
       },
@@ -67,7 +67,7 @@ export const basel: City = {
       name: "Bâle",
       slug: "creation-site-internet-bale",
       meta: {
-        title: "Création site internet Bâle – Agence web PME",
+        title: "Création site internet Bâle: Agence web PME",
         description:
           "Création de site internet à Bâle : sites multilingues, boutiques en ligne et référencement pour les PME, avec un contact direct. Premier conseil gratuit.",
       },

@@ -12,7 +12,7 @@ export const luzern: City = {
       name: "Luzern",
       slug: "webdesign-luzern",
       meta: {
-        title: "Webdesign Luzern – Webseite erstellen lassen",
+        title: "Webdesign Luzern: Webseite erstellen lassen",
         description:
           "Webdesign für Luzerner KMU: Webseiten, Onlineshops und SEO für Tourismus, Gastronomie und Gewerbe. Persönlich und direkt. Kostenlose Erstberatung.",
       },
@@ -67,7 +67,7 @@ export const luzern: City = {
       name: "Lucerne",
       slug: "creation-site-internet-lucerne",
       meta: {
-        title: "Création site internet Lucerne – Agence web",
+        title: "Création site internet Lucerne: Agence web",
         description:
           "Création de site internet à Lucerne : sites multilingues, boutiques en ligne et référencement pour le tourisme et les PME. Premier conseil gratuit.",
       },

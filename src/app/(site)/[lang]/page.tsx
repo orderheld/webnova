@@ -326,7 +326,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </ButtonLink>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
-            {guides.map((g) => (
+            {guides.slice(0, 3).map((g) => (
               <CardLink
                 key={g.key}
                 href={href(lang, `guide:${g.key}`)}
