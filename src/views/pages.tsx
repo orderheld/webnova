@@ -240,9 +240,12 @@ export function ContactPage({ locale }: { locale: Locale }) {
           <ContactPerson locale={locale} />
           <TrustList locale={locale} className="mb-8 mt-6" />
           <ContactList locale={locale} hours />
-          <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-[14px]">
-            {d.pages.openInMaps} <Icon name="arrow" className="h-4 w-4 -rotate-45" />
-          </a>
+          {/* With a profile link the address in the list above already links to Google Maps. */}
+          {!site.google.maps && (
+            <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-[14px]">
+              {d.pages.openInMaps} <Icon name="arrow" className="h-4 w-4 -rotate-45" />
+            </a>
+          )}
           {site.google.review && (
             <ButtonLink href={site.google.review} variant="ghost" arrow={false} className="mt-6 w-full">
               {d.pages.reviewOnGoogle}

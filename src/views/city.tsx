@@ -9,6 +9,7 @@ import {
   NextSteps,
   ProblemsSection,
   ProcessSection,
+  SectionHead,
   ServicesGrid,
 } from "@/components/sections";
 import { problems } from "@/content/problems";
@@ -230,7 +231,7 @@ export function CityPage({
         subline={heading.subline}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
-        aside={<Art kind={service ? (serviceArt[service.key]?.kind ?? "local") : variant === "seo" ? "seo" : "local"} variant={serviceArt[service?.key ?? ""]?.variant} sample={serviceArt[service?.key ?? ""]?.sample} city={cityName} locale={locale} dark />}
+        aside={<Art kind={service ? (serviceArt[service.key]?.kind ?? "local") : variant === "seo" ? "seo" : "local"} variant={serviceArt[service?.key ?? ""]?.variant} sample={serviceArt[service?.key ?? ""]?.sample} before={serviceArt[service?.key ?? ""]?.before} city={cityName} locale={locale} dark />}
       >
         <HeroCtas locale={locale} note />
       </PageHero>
@@ -293,6 +294,7 @@ export function CityPage({
         locale={locale}
         current={service ? href(locale, `service:${service.key}`) : undefined}
         title={locale === "de" ? `Leistungen für KMU in ${cityName}` : `Nos services pour les PME à ${cityName}`}
+        compact
       />
 
 
@@ -300,15 +302,16 @@ export function CityPage({
 
       <FitSection locale={locale} pos={pos} />
 
-      <NextSteps locale={locale} />
+      {/* The three next steps repeat the process above; only shown where there is no process section. */}
+      {pos && <NextSteps locale={locale} />}
 
       <ContactSection locale={locale} />
 
       <FaqSection locale={locale} faq={faq} />
 
       {cityGuides.length > 0 && (
-        <section className="container-x pb-20">
-          <h2 className="h-section mb-10">{locale === "de" ? "Ratgeber für KMU" : "Conseils pour PME"}</h2>
+        <section className="container-x pb-20 pt-20 md:pt-28">
+          <SectionHead eyebrow={d.nav.guides} title={locale === "de" ? "Ratgeber für KMU" : "Conseils pour PME"} />
           <div className="grid gap-4 md:grid-cols-3">
             {cityGuides.map((g) => (
               <CardLink key={g.key} href={href(locale, `guide:${g.key}`)} meta={`${g.readingMinutes} ${d.common.minutes}`} title={g.content[locale].h1} />

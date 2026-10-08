@@ -5,6 +5,7 @@ import { hoursLines } from "@/lib/hours";
 import { buildFooter } from "@/lib/nav";
 import { href } from "@/lib/routes";
 import { showReferences, site } from "@/lib/site";
+import { FooterIndex } from "./footer-index";
 import { Icon } from "./icons";
 import { Logo } from "./logo";
 
@@ -133,22 +134,7 @@ export function Footer({ locale }: { locale: Locale }) {
       {/* Full link index: every service, region, industry and guide */}
       <nav aria-label={locale === "de" ? "Fusszeile" : "Pied de page"} className="container-x py-14">
         <p className={colTitle}>{t.index}</p>
-        <div className="grid gap-x-8 gap-y-10 border-t border-white/10 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {indexCols.map((c) => (
-            <div key={c.title}>
-              <p className="mb-4 text-[14px] font-semibold text-white">{c.title}</p>
-              <ul className="space-y-2">
-                {c.links.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="text-[14px] leading-snug text-white/60 transition-colors hover:text-white">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <FooterIndex columns={indexCols} />
       </nav>
 
       {/* Bottom line */}

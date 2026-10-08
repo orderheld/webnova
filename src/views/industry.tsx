@@ -6,7 +6,7 @@ import type { SampleKey } from "@/components/visuals";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
-import { ContactSection, FaqSection, FitSection, LocationsSection, NextSteps, ProcessSection } from "@/components/sections";
+import { ContactSection, FaqSection, FitSection, LocationsSection, ProcessSection } from "@/components/sections";
 import { serviceFaqTemplates, topUpFaq } from "@/content/structure";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
@@ -157,7 +157,6 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         <HeroButtons locale={locale} />
       </PageHero>
 
-
       <section className="container-x py-20 md:py-28">
         <div className="mb-12 grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
@@ -196,8 +195,6 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
 
       <FitSection locale={locale} />
 
-      <NextSteps locale={locale} />
-
       <ContactSection locale={locale} />
 
       <GuideCards locale={locale} keys={ind.guides} />
@@ -216,13 +213,11 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         )}
       />
 
-      <Chips
-        label={u.problems}
-        links={relatedProblems.map((p) => ({ href: href(locale, `problem:${p.key}`), label: p.content[locale].navLabel }))}
-      />
-      <Chips
-        label={u.otherIndustries}
-        links={others.map((x) => ({ href: href(locale, `industry:${x.key}`), label: x.content[locale].navLabel }))}
+      <ChipRows
+        rows={[
+          { label: u.problems, links: relatedProblems.map((p) => ({ href: href(locale, `problem:${p.key}`), label: p.content[locale].navLabel })) },
+          { label: u.otherIndustries, links: others.map((x) => ({ href: href(locale, `industry:${x.key}`), label: x.content[locale].navLabel })) },
+        ]}
       />
 
       <LocationsSection locale={locale} />
@@ -308,8 +303,12 @@ export function ProblemPage({ locale, problemKey }: { locale: Locale; problemKey
 
       <FaqList locale={locale} faq={c.faq} />
 
-      <Chips label={u.commonIn} links={inds.map((i) => ({ href: href(locale, `industry:${i.key}`), label: i.content[locale].navLabel }))} />
-      <Chips label={u.problems} links={others.map((x) => ({ href: href(locale, `problem:${x.key}`), label: x.content[locale].navLabel }))} />
+      <ChipRows
+        rows={[
+          { label: u.commonIn, links: inds.map((i) => ({ href: href(locale, `industry:${i.key}`), label: i.content[locale].navLabel })) },
+          { label: u.problems, links: others.map((x) => ({ href: href(locale, `problem:${x.key}`), label: x.content[locale].navLabel })) },
+        ]}
+      />
 
       <FormSection locale={locale} title={c.ctaTitle} text={c.ctaText} preset={p.preset} source={`loesung-${p.key}`} />
     </>
@@ -347,22 +346,25 @@ function HeroButtons({ locale }: { locale: Locale }) {
   );
 }
 
+/** Every industry has its own fictional sample design (Ferhat, 2026-10-08: never e.g. a coiffeur on Fitness). */
 const industrySample: Record<string, SampleKey> = {
   "coiffeur-beauty": "coiffeur",
-  fitness: "coiffeur",
+  fitness: "fitness",
   gastronomie: "restaurant",
-  "cafe-baeckerei": "restaurant",
+  "cafe-baeckerei": "cafe",
   handwerk: "schreinerei",
-  autogewerbe: "schreinerei",
-  immobilien: "schreinerei",
+  autogewerbe: "garage",
+  immobilien: "immobilien",
   treuhand: "treuhand",
-  praxis: "treuhand",
+  praxis: "praxis",
+  detailhandel: "laden",
 };
 
-/** Hero visual for an industry page: a fictional sample design from a fitting branch, or the shop scene. */
+/** Hero visual for an industry page: the sample design of that industry, or the shop scene. */
 function industryArt(key: string, locale: Locale) {
-  if (key === "detailhandel") return <Art kind="shop" locale={locale} dark />;
-  return <Art kind="website" sample={industrySample[key] ?? "treuhand"} locale={locale} dark />;
+  const sample = industrySample[key];
+  if (!sample) return <Art kind="shop" locale={locale} dark />;
+  return <Art kind="website" sample={sample} locale={locale} dark />;
 }
 
 function CheckCard({ title, items, locale, numbered = false }: { title: string; items: string[]; locale: Locale; numbered?: boolean }) {
@@ -468,7 +470,8 @@ function GuideCards({ locale, keys }: { locale: Locale; keys: string[] }) {
     .filter((x) => x !== undefined);
   if (!list.length) return null;
   return (
-    <section className="container-x pt-20 md:pt-28">
+    // Always follows a padded white section and precedes the tinted FAQ, so it only needs bottom space.
+    <section className="container-x pb-20 md:pb-28">
       <SectionHead eyebrow={u.guidesEyebrow} title={u.guidesTitle}>
         <div className="grid gap-4 md:grid-cols-3">
           {list.map((g) => (
@@ -486,22 +489,28 @@ function GuideCards({ locale, keys }: { locale: Locale; keys: string[] }) {
   );
 }
 
-function Chips({ label, links }: { label: string; links: { href: string; label: string }[] }) {
-  if (!links.length) return null;
+/** Link chips to neighbouring pages, one labelled row each, in one padded band after the FAQ. */
+function ChipRows({ rows }: { rows: { label: string; links: { href: string; label: string }[] }[] }) {
+  const list = rows.filter((r) => r.links.length > 0);
+  if (!list.length) return null;
   return (
-    <section className="container-x pb-10">
-      <p className="eyebrow mb-4">{label}</p>
-      <div className="flex flex-wrap gap-2">
-        {links.map((l) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
-          >
-            {l.label}
-          </Link>
-        ))}
-      </div>
+    <section className="container-x space-y-8 py-12 md:py-16">
+      {list.map((r) => (
+        <div key={r.label}>
+          <p className="eyebrow mb-4">{r.label}</p>
+          <div className="flex flex-wrap gap-2">
+            {r.links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="rounded-full border border-line bg-surface px-4 py-2 text-[14px] text-ink-soft transition-colors hover:border-ink/30 hover:text-ink"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }

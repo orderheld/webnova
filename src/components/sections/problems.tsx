@@ -56,7 +56,7 @@ export function ProblemsSection({
           ))}
         </ol>
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className={`grid gap-4 sm:grid-cols-2 ${list.length === 2 || list.length === 4 ? "" : "lg:grid-cols-3"}`}>
           {list.map((p) => (
             <li key={p.key}>
               <Link href={href(locale, `problem:${p.key}`)} className="card-soft card-hover group flex h-full flex-col p-6">

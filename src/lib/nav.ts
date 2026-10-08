@@ -4,6 +4,7 @@ import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
 import { industryUi } from "@/content/industries/ui";
 import { legal } from "@/content/legal";
+import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import type { Locale, Localized } from "@/content/types";
 import { getDict } from "@/i18n/dict";
@@ -35,10 +36,11 @@ export const serviceGroupIds: { key: string; label: Localized<string>; ids: stri
 ];
 
 /**
- * Pages kept for Google (own search terms) but left out of the header menu, because for visitors
- * they repeat "Webdesign" (Ferhat, 2026-10-08). Footer, grids and internal links still show them.
+ * Pages kept for Google (own search terms) but not offered as separate services in menus and grids,
+ * because for visitors they repeat "Webdesign" (Ferhat, 2026-10-08). The footer index and the
+ * sitemap still list them; on their own page they stay visible in the grids.
  */
-const hiddenInMenu = new Set(["service:website-kmu", "service:firmenwebsite"]);
+const secondaryServiceIds = new Set(["service:website-kmu", "service:firmenwebsite"]);
 
 /** Labels and icons for pages that are not services (tools by other branches). */
 const pageLabels: Record<string, { icon: string; label: Localized<string>; text: Localized<string> }> = {
@@ -71,9 +73,17 @@ function items(locale: Locale, ids: string[]): NavItem[] {
   return ids.map((id) => navItem(locale, id)).filter((x) => x !== undefined);
 }
 
-export function serviceGroups(locale: Locale): NavGroup[] {
+/** Service groups as in the mega menu. `current` (an href) keeps a secondary page visible on itself. */
+export function serviceGroups(locale: Locale, current?: string): NavGroup[] {
   return serviceGroupIds
-    .map((g) => ({ key: g.key, label: g.label[locale], items: items(locale, g.ids) }))
+    .map((g) => ({
+      key: g.key,
+      label: g.label[locale],
+      items: items(
+        locale,
+        g.ids.filter((id) => !secondaryServiceIds.has(id) || (hasRoute(id) && href(locale, id) === current)),
+      ),
+    }))
     .filter((g) => g.items.length > 0);
 }
 
@@ -117,9 +127,7 @@ export function buildNav(locale: Locale): NavData {
     servicesLabel: d.nav.services,
     servicesHref: href(locale, "services"),
     allServicesLabel: d.nav.allServices,
-    serviceGroups: serviceGroups(locale)
-      .map((g) => ({ ...g, items: g.items.filter((it) => !serviceGroupIds.some((sg) => sg.ids.some((id) => hiddenInMenu.has(id) && href(locale, id) === it.href))) }))
-      .filter((g) => g.items.length > 0),
+    serviceGroups: serviceGroups(locale),
     industriesLabel: industryUi[locale].industries,
     industriesHref: href(locale, "industries"),
     allIndustriesLabel: industryUi[locale].allIndustries,
@@ -181,9 +189,11 @@ export function buildFooter(locale: Locale): FooterColumn[] {
       ],
     },
     {
-      title: u.industries,
+      title: `${u.industries} & ${u.problems}`,
       links: [
         ...industries.map((i) => ({ label: i.content[locale].navLabel, href: href(locale, `industry:${i.key}`) })),
+        { label: u.allIndustries, href: href(locale, "industries") },
+        ...problems.filter((p) => hasRoute(`problem:${p.key}`)).map((p) => ({ label: p.content[locale].navLabel, href: href(locale, `problem:${p.key}`) })),
         { label: u.allProblems, href: href(locale, "problems") },
       ],
     },
