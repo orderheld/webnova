@@ -57,8 +57,10 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
     case "reference": {
       const r = references.find((x) => x.key === entry.key)!;
       const c = r.content[locale];
-      const full = `${r.name}: ${c.industry}`;
-      const title = full.length <= 50 ? full : `${r.name}: ${locale === "de" ? "Referenzprojekt" : "Projet de référence"}`;
+      const industry = locale === "fr" ? c.industry.charAt(0).toLowerCase() + c.industry.slice(1) : c.industry;
+      const sep = locale === "fr" ? " : " : ": ";
+      const full = `${locale === "de" ? "Referenz" : "Référence"} ${r.name}${sep}${industry}`;
+      const title = full.length <= 52 ? full : `${r.name}${sep}${industry}`;
       return m({ title, description: clip(c.summary, 155) });
     }
     case "contact":
@@ -70,7 +72,7 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
     case "legal": {
       const l = legal[entry.key as keyof typeof legal][locale];
       return m({
-        title: l.title,
+        title: l.title.length < 20 ? `${l.title}${locale === "fr" ? " :" : ":"} ${site.legalName}` : l.title,
         description:
           locale === "de"
             ? `${l.title} von ${site.legalName}, Webdesign-Agentur: Anbieter, Kontakt und rechtliche Angaben zur Webseite.`

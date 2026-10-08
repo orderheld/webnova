@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
       ["/partner-freelancer", "/de/ueber-uns"],
       ["/impressum", "/de/impressum"],
       ["/datenschutzerklaerung", "/de/datenschutz"],
+      // Reference renamed to its real domain dersut.ch (2026-10-08)
+      ["/de/referenzen/dersut-kaffee", "/de/referenzen/dersut"],
+      ["/fr/references/dersut-kaffee", "/fr/references/dersut"],
+      // Favicon file renamed when the PNG favicon was added (2026-10-08)
+      ["/icon.svg", "/icon2.svg"],
     ];
     return [
       // One canonical host: www.webnova.ch -> https://webnova.ch (301)

@@ -31,7 +31,6 @@ const allReferences: Reference[] = [
   {
     key: "orderheld",
     name: "orderheld",
-    hidden: true,
     domain: "orderheld.ch",
     image: "/referenzen/orderheld.jpg",
     colors: { bg: "#f6f7f7", fg: "#111515", accent: "#00a651" },
@@ -46,7 +45,7 @@ const allReferences: Reference[] = [
           "Restaurants und Take-aways zahlen bei grossen Lieferplattformen hohe Provisionen und haben kaum Kontakt zu ihren Gästen. Gesucht war eine eigene Lösung, mit der Betriebe Bestellungen direkt annehmen, ohne den Ablauf in der Küche zu verkomplizieren.",
         solution: [
           "Wir haben orderheld als komplette Plattform entwickelt: Jedes Geschäft erhält eigene Bestellseiten mit Menü, Warenkorb, Abholung, Lieferung und Vorbestellung. Gäste sehen den Status ihrer Bestellung live.",
-          "Hinter den Kulissen arbeiten drei Werkzeuge zusammen: ein Cockpit für Inhaber und Personal, ein Küchen-Terminal mit Zubereitungszeiten und automatischem Bon sowie eine Fahrer-Ansicht fürs Handy. Tagesabschlüsse mit MWST, Zahlarten und Export erledigt das System selbst.",
+          "Hinter den Kulissen arbeiten drei Werkzeuge zusammen: ein Cockpit für Betriebsleitung und Personal, ein Küchen-Terminal mit Zubereitungszeiten und automatischem Bon sowie eine Fahrer-Ansicht fürs Handy. Tagesabschlüsse mit MWST, Zahlarten und Export erledigt das System selbst.",
         ],
         highlights: [
           { title: "Eigene Bestellseiten", text: "Menü, Optionen und Preise pflegt jedes Geschäft selbst, inklusive Öffnungszeiten, Ferien und Liefergebieten." },
@@ -84,7 +83,7 @@ const allReferences: Reference[] = [
     colors: { bg: "#fbf7f0", fg: "#4a5822", accent: "#e8650a" },
     content: {
       de: {
-        industry: "Catering",
+        industry: "Catering & Buffets",
         place: "Pfaffnau LU",
         summary:
           "Webauftritt für ein Catering mit hausgemachten Buffets: Angebot in Kapiteln, Galerie und ein Anfrage-Assistent, der jedes Buffet direkt vorausgefüllt anfragen lässt.",
@@ -103,7 +102,7 @@ const allReferences: Reference[] = [
         ],
       },
       fr: {
-        industry: "Traiteur",
+        industry: "Traiteur & buffets",
         place: "Pfaffnau LU",
         summary:
           "Site pour un traiteur aux buffets faits maison : offre en chapitres, galerie et un assistant de demande qui pré-remplit chaque buffet.",
@@ -171,9 +170,9 @@ const allReferences: Reference[] = [
     },
   },
   {
-    key: "dersut-kaffee",
-    name: "Dersut Kaffee Schweiz",
-    domain: "dersutkaffee.ch",
+    key: "dersut",
+    name: "Dersut",
+    domain: "dersut.ch",
     image: "/referenzen/dersut-kaffee-live.jpg",
     colors: { bg: "#002856", fg: "#ffffff", accent: "#82754f" },
     content: {
@@ -258,5 +257,10 @@ const allReferences: Reference[] = [
   },
 ];
 
-/** Projects shown on the site: GYAN and Dersut. Hidden ones stay in the file for later. */
-export const references: Reference[] = allReferences.filter((r) => !r.hidden);
+/** Order on the site (Ferhat, 2026-10-08): GYAN, Dersut, AVA Catering, orderheld. */
+const order = ["gyan-hair-salon", "dersut", "ava-catering", "orderheld"];
+
+/** Projects shown on the site. Hidden ones (SS Express) stay in the file for later. */
+export const references: Reference[] = allReferences
+  .filter((r) => !r.hidden)
+  .sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));

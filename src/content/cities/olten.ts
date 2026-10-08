@@ -67,7 +67,7 @@ export const olten: City = {
       name: "Olten",
       slug: "creation-site-internet-olten",
       meta: {
-        title: "Création site internet Olten: Agence web",
+        title: "Création site internet Olten : agence web",
         description:
           "Création de site internet à Olten : sites, boutiques en ligne et référencement pour PME, logistique et services. Premier conseil gratuit.",
       },

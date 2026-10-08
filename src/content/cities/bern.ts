@@ -12,7 +12,7 @@ export const bern: City = {
       name: "Bern",
       slug: "webdesign-bern",
       meta: {
-        title: "Webdesign Bern: Webseite erstellen lassen",
+        title: "Webdesign Agentur Bern: Webseite erstellen lassen",
         description:
           "Webagentur für Bern: Webdesign, Homepage, Onlineshop und SEO für Berner KMU. Persönlich, ohne Grossagentur-Overhead. Kostenlose Erstberatung.",
       },
@@ -88,7 +88,7 @@ export const bern: City = {
       name: "Berne",
       slug: "creation-site-internet-berne",
       meta: {
-        title: "Création site internet Berne: Agence web",
+        title: "Agence web Berne : création de site internet",
         description:
           "Agence web pour Berne : création de site internet, boutique en ligne et référencement pour les PME. Contact direct, sans lourdeur. Premier conseil gratuit.",
       },
@@ -229,7 +229,7 @@ export const bern: City = {
       name: "Berne",
       slug: "referencement-berne",
       meta: {
-        title: "Référencement Berne: Agence SEO pour PME",
+        title: "Référencement Berne : agence SEO pour PME",
         description:
           "Référencement à Berne : SEO local, profil d'entreprise Google et contenus en français pour les PME bernoises. Premier conseil gratuit.",
       },

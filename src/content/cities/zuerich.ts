@@ -67,7 +67,7 @@ export const zuerich: City = {
       name: "Zurich",
       slug: "creation-site-internet-zurich",
       meta: {
-        title: "Création site internet Zurich: Agence web PME",
+        title: "Création site internet Zurich : agence web PME",
         description:
           "Création de site internet pour les PME de Zurich : sites, boutiques en ligne et référencement, avec un contact direct et sans structure lourde.",
       },

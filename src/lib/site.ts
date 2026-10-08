@@ -1,7 +1,18 @@
+/**
+ * Canonical origin for canonicals, hreflang, sitemap and JSON-LD. The production deployment on
+ * Vercel always uses https://webnova.ch, so a stray NEXT_PUBLIC_SITE_URL (for example a localhost
+ * value copied from .env.local) can never leak into what Google sees. Previews and local builds
+ * may override it with NEXT_PUBLIC_SITE_URL.
+ */
+const PRODUCTION_URL = "https://webnova.ch";
+const siteUrl = (
+  process.env.VERCEL_ENV === "production" ? PRODUCTION_URL : (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL)
+).replace(/\/+$/, "");
+
 export const site = {
   name: "Webnova",
   legalName: "webnova solutions F. Demir",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webnova.ch",
+  url: siteUrl,
   email: "kontakt@webnova.ch",
   phone: "+41 32 543 80 96",
   phoneHref: "tel:+41325438096",
@@ -35,5 +46,6 @@ export const site = {
 
 export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 
-// References are hidden for now (Ferhat, 2026-10-06). Set to true to bring back the pages, links and home showcase.
-export const showReferences: boolean = false;
+// References are shown again (Ferhat, 2026-10-08): GYAN, Dersut, AVA Catering and orderheld.
+// Set to false to hide the pages, links and home showcase in one go.
+export const showReferences: boolean = true;

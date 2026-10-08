@@ -28,14 +28,14 @@ import {
 } from "@/components/sections";
 const homeMeta = {
   de: {
-    title: "Webdesign Agentur Schweiz: Webseiten für Unternehmen | Webnova",
+    title: "Webdesign Agentur Schweiz: Webseite erstellen lassen | Webnova",
     description:
-      "Webdesign Agentur für Schweizer Unternehmen: individuelle Webseiten, gestaltet, entwickelt und betreut aus einer Hand. Schnell, mobil und bei Google sichtbar. Kostenlose Erstberatung.",
+      "Webseite erstellen lassen: Webdesign aus einer Hand, schnell, mobil und bei Google sichtbar. Für Unternehmen in der ganzen Schweiz. Kostenlose Erstberatung.",
   },
   fr: {
-    title: "Agence web en Suisse : sites internet pour entreprises | Webnova",
+    title: "Agence web Suisse : création de site internet | Webnova",
     description:
-      "Agence web pour les entreprises suisses : des sites internet sur mesure, conçus, développés et suivis par un seul interlocuteur. Rapides, mobiles et visibles sur Google. Premier conseil gratuit.",
+      "Faire créer le site internet de votre entreprise : sur mesure, rapide, mobile et visible sur Google. Partout en Suisse. Premier conseil gratuit.",
   },
 };
 

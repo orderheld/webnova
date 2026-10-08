@@ -10,7 +10,7 @@ export const websiteRedesign: Service = {
       slug: "website-redesign",
       navLabel: "Website-Redesign",
       meta: {
-        title: "Website Redesign & Relaunch",
+        title: "Website Redesign & Relaunch für KMU",
         description:
           "Website Redesign oder Relaunch ohne Ranking-Verlust: modern, schnell und mobil. Jetzt kostenlose Erstberatung und unverbindliche Offerte anfragen.",
       },
@@ -100,7 +100,7 @@ export const websiteRedesign: Service = {
       slug: "refonte-site-internet",
       navLabel: "Refonte de site",
       meta: {
-        title: "Refonte de site internet",
+        title: "Refonte de site internet pour PME en Suisse",
         description:
           "Refonte de site internet sans perdre votre référencement: moderne, rapide et adapté au mobile. Premier conseil gratuit et offre sans engagement.",
       },

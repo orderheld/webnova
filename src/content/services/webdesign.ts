@@ -10,7 +10,7 @@ export const webdesign: Service = {
       slug: "webdesign",
       navLabel: "Webdesign",
       meta: {
-        title: "Webdesign-Agentur: Webseite erstellen lassen",
+        title: "Webseite erstellen lassen: individuelles Webdesign",
         description:
           "Webseite oder Homepage erstellen lassen: schnell, mobil, Google-ready und datenschutzkonform. Jetzt kostenlose Erstberatung bei Webnova anfragen.",
       },
@@ -105,7 +105,7 @@ export const webdesign: Service = {
       slug: "creation-site-internet",
       navLabel: "Création de site",
       meta: {
-        title: "Création site internet en Suisse",
+        title: "Création de site internet sur mesure en Suisse",
         description:
           "Création de site internet rapide, adapté au mobile, optimisé pour Google et conforme à la nLPD. Demandez votre premier conseil gratuit chez Webnova.",
       },

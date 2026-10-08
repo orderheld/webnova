@@ -67,7 +67,7 @@ export const basel: City = {
       name: "Bâle",
       slug: "creation-site-internet-bale",
       meta: {
-        title: "Création site internet Bâle: Agence web PME",
+        title: "Création site internet Bâle : agence web PME",
         description:
           "Création de site internet à Bâle : sites multilingues, boutiques en ligne et référencement pour les PME, avec un contact direct. Premier conseil gratuit.",
       },

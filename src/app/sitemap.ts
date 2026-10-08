@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { guides } from "@/content/guides";
+import { references } from "@/content/references";
 import { routes, type RouteEntry } from "@/lib/routes";
 import { site } from "@/lib/site";
 
@@ -48,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: lastModified(r),
         changeFrequency: (r.kind === "legal" ? "yearly" : r.kind === "home" || r.kind === "guides" ? "weekly" : "monthly") as "yearly" | "weekly" | "monthly",
         priority: prio[r.kind] ?? 0.5,
+        ...(r.kind === "reference" && { images: references.filter((x) => x.key === r.key && x.image).map((x) => `${site.url}${x.image}`) }),
         alternates: { languages: { "de-CH": url("de", r.paths.de), "fr-CH": url("fr", r.paths.fr), "x-default": url("de", r.paths.de) } },
       })),
     );

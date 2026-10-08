@@ -67,7 +67,7 @@ export const neuchatel: City = {
       name: "Neuchâtel",
       slug: "creation-site-internet-neuchatel",
       meta: {
-        title: "Création site internet Neuchâtel: Agence web",
+        title: "Création site internet Neuchâtel : agence web",
         description:
           "Création de site internet à Neuchâtel : sites bilingues, boutiques en ligne et référencement pour PME, microtechnique et commerces. Conseil gratuit.",
       },

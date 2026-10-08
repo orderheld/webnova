@@ -67,7 +67,7 @@ export const thun: City = {
       name: "Thoune",
       slug: "creation-site-internet-thoune",
       meta: {
-        title: "Création site internet Thoune: Agence web",
+        title: "Création site internet Thoune : agence web",
         description:
           "Création de site internet à Thoune : sites, boutiques en ligne et référencement pour le tourisme, la restauration et les PME. Premier conseil gratuit.",
       },
