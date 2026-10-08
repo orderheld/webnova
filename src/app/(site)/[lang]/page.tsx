@@ -15,14 +15,14 @@ import { showReferences } from "@/lib/site";
 
 const homeMeta = {
   de: {
-    title: "Webdesign-Agentur Bern, Biel & Solothurn | Webnova",
+    title: "Webdesign-Agentur für Schweizer KMU | Webnova",
     description:
-      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in Bern, Biel, Solothurn und der ganzen Schweiz. Persönlich, schnell, auf Anfragen optimiert.",
+      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in der ganzen Schweiz. Persönlich, schnell, auf Anfragen optimiert.",
   },
   fr: {
-    title: "Agence web Bienne, Berne & Soleure | Webnova",
+    title: "Agence web pour PME suisses | Webnova",
     description:
-      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de Bienne, Berne, Soleure et de toute la Suisse. Personnel et rapide.",
+      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de toute la Suisse. Personnel et rapide.",
   },
 };
 
@@ -30,14 +30,14 @@ const homeFaq = {
   de: [
     { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
     { q: "Wie lange dauert es, bis meine Webseite online ist?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Der genaue Zeitplan hängt vom Umfang und davon ab, wie schnell Inhalte wie Texte und Bilder bereitstehen. Den Fahrplan legen wir im Konzept gemeinsam fest." },
-    { q: "Arbeiten Sie nur in der Region Bern, Biel und Solothurn?", a: "Unser Schwerpunkt ist die Region Bern, Biel und Solothurn, wo wir Sie gerne vor Ort besuchen. Projekte in der ganzen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort." },
+    { q: "Arbeiten Sie in der ganzen Schweiz?", a: "Ja. Wir betreuen Unternehmen in der ganzen Deutsch- und Westschweiz, persönlich per Videocall und bei Bedarf vor Ort. Sie haben vom ersten Gespräch bis nach dem Launch eine feste Ansprechperson." },
     { q: "Kann ich meine Webseite später selbst bearbeiten?", a: "Ja. Auf Wunsch erhalten Sie ein einfaches Redaktionssystem und eine kurze Einführung. Alternativ übernehmen wir Anpassungen im Rahmen eines Wartungsvertrags für Sie." },
     { q: "Bieten Sie Webseiten auch zweisprachig an?", a: "Ja, Deutsch und Französisch sind bei uns Alltag. Gerade in Biel/Bienne und der Westschweiz ist eine zweisprachige Webseite oft der Schlüssel zu mehr Kundschaft." },
   ],
   fr: [
     { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. Après un premier entretien gratuit, vous recevez un devis clair et transparent, adapté à l'envergure, aux fonctions et à votre budget." },
     { q: "En combien de temps mon site est-il en ligne ?", a: "Un site typique de PME est en ligne en quelques semaines. Le calendrier dépend de l'envergure et de la disponibilité des contenus comme les textes et les images. Nous le fixons ensemble lors du concept." },
-    { q: "Travaillez-vous uniquement dans la région de Bienne, Berne et Soleure ?", a: "Notre région principale est Bienne, Berne et Soleure, où nous vous rendons volontiers visite. Nous accompagnons tout aussi personnellement des projets dans toute la Suisse, par visioconférence et sur place si nécessaire." },
+    { q: "Travaillez-vous dans toute la Suisse ?", a: "Oui. Nous accompagnons des entreprises dans toute la Suisse romande et alémanique, personnellement par visioconférence et sur place si nécessaire. Vous avez un interlocuteur fixe du premier entretien jusqu'après la mise en ligne." },
     { q: "Pourrai-je modifier mon site moi-même ?", a: "Oui. Sur demande, vous recevez un système de gestion de contenu simple et une courte formation. Nous pouvons aussi effectuer les modifications pour vous dans le cadre d'un contrat de maintenance." },
     { q: "Proposez-vous des sites bilingues ?", a: "Oui, le français et l'allemand font partie de notre quotidien. À Bienne et en Suisse romande, un site bilingue est souvent la clé pour toucher plus de clients." },
   ],

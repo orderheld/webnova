@@ -56,7 +56,7 @@ export const seo: Service = {
           h2: "Lokales SEO: In Ihrer Region gefunden werden",
           paragraphs: [
             "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie „Elektriker Solothurn“ oder „Coiffeur Biel“ zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
-            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Agentur aus der Region Biel, Solothurn und Bern kennen wir den Markt und die Zweisprachigkeit des Marktes.",
+            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Schweizer Agentur kennen wir den Markt und die Zweisprachigkeit des Marktes.",
           ],
           bullets: [
             "Google Unternehmensprofil einrichten und optimieren",
