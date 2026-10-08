@@ -143,8 +143,8 @@ export const webdesign: Service = {
         {
           h2: "Votre site internet, votre meilleure vitrine",
           paragraphs: [
-            "Pour beaucoup de clients, votre site est le premier contact avec votre entreprise. Quelques secondes suffisent pour convaincre ou pour perdre un visiteur. C'est pourquoi nous associons un design moderne à des textes clairs et à une navigation simple, qui mène directement à l'essentiel: une demande, un appel ou un achat.",
-            "Notre agence accompagne des entreprises de toute la région bilingue et partout en Suisse. Artisans, cabinets, prestataires de services ou associations: nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
+            "Pour beaucoup de clients, votre site est le premier contact avec votre entreprise. Quelques secondes suffisent pour convaincre ou pour perdre un visiteur. C'est pourquoi nous associons un design moderne à des textes clairs et à une navigation simple, qui mène directement à l'essentiel : une demande, un appel ou un achat.",
+            "Notre agence accompagne des entreprises de toute la région bilingue et partout en Suisse. Artisans, cabinets, prestataires de services ou associations : nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
           ],
         },
         {
@@ -154,45 +154,45 @@ export const webdesign: Service = {
             "Une fois le design validé, nous développons le site, le testons sur tous les appareils courants et le mettons en ligne. Et après le lancement, nous restons à vos côtés pour la maintenance, les mises à jour et les évolutions.",
           ],
           bullets: [
-            "Premier entretien: objectifs, public cible et besoins",
-            "Concept: arborescence, contenus et fonctionnalités",
-            "Design: maquette aux couleurs de votre marque",
-            "Développement: intégration, textes, images et tests",
-            "Mise en ligne: lancement et connexion à Google",
-            "Suivi: maintenance, mises à jour et évolutions",
+            "Premier entretien : objectifs, public cible et besoins",
+            "Concept : arborescence, contenus et fonctionnalités",
+            "Design : maquette aux couleurs de votre marque",
+            "Développement : intégration, textes, images et tests",
+            "Mise en ligne : lancement et connexion à Google",
+            "Suivi : maintenance, mises à jour et évolutions",
           ],
         },
         {
           h2: "Une technologie moderne au service de vos résultats",
           paragraphs: [
             "Un bon site ne se juge pas qu'à son apparence. En coulisses, des technologies récentes assurent un affichage quasi instantané et un fonctionnement fiable. Les images sont optimisées automatiquement et le code reste léger. Vos visiteurs le ressentent, et Google favorise les sites rapides.",
-            "Nous posons aussi les bases du référencement naturel: titres pertinents, adresses propres, données structurées et plan du site. La protection des données selon la nLPD fait partie intégrante du projet. Vous obtenez ainsi un site efficace aujourd'hui et simple à faire évoluer demain.",
+            "Nous posons aussi les bases du référencement naturel : titres pertinents, adresses propres, données structurées et plan du site. La protection des données selon la nLPD fait partie intégrante du projet. Vous obtenez ainsi un site efficace aujourd'hui et simple à faire évoluer demain.",
           ],
         },
       ],
       faq: [
         {
-          q: "Combien coûte la création d'un site internet?",
+          q: "Combien coûte la création d'un site internet ?",
           a: "Tout dépend de l'ampleur du projet, des fonctionnalités et des contenus. Plutôt qu'un prix forfaitaire, nous vous proposons un premier conseil gratuit, suivi d'une offre sans engagement adaptée à vos besoins.",
         },
         {
-          q: "Combien de temps faut-il pour créer un site?",
+          q: "Combien de temps faut-il pour créer un site ?",
           a: "Le délai dépend de la taille du site et de la disponibilité des contenus. Nous fixons ensemble un calendrier réaliste dès le premier entretien, pour que vous sachiez quand votre site sera en ligne.",
         },
         {
-          q: "Pourrai-je modifier mon site moi-même?",
+          q: "Pourrai-je modifier mon site moi-même ?",
           a: "Oui. Nous configurons votre site pour que vous puissiez adapter textes, images et actualités en toute autonomie. Nous vous montrons tout lors de la remise du site.",
         },
         {
-          q: "Travaillez-vous aussi en Suisse romande?",
+          q: "Travaillez-vous aussi en Suisse romande ?",
           a: "Oui, nous accompagnons des clients dans toute la Suisse. Les rendez-vous se font sur place ou en visioconférence.",
         },
         {
-          q: "Dois-je fournir les textes?",
+          q: "Dois-je fournir les textes ?",
           a: "Vous connaissez votre métier mieux que personne, c'est donc vous qui apportez le fond. Si vous le souhaitez, nous rédigeons ou retravaillons les textes pour qu'ils parlent à vos clients et aux moteurs de recherche.",
         },
       ],
-      ctaTitle: "Prêt pour votre nouveau site?",
+      ctaTitle: "Prêt pour votre nouveau site ?",
       ctaText:
         "Parlez-nous de votre projet. Nous vous contactons pour un premier conseil gratuit et vous remettons une offre sans engagement.",
     },

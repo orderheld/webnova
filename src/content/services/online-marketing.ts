@@ -131,14 +131,14 @@ export const onlineMarketing: Service = {
       ],
       sections: [
         {
-          h2: "Google Ads: visible au bon moment",
+          h2: "Google Ads : visible au bon moment",
           paragraphs: [
             "Avec Google Ads, votre entreprise apparaît en tête des résultats au moment précis où quelqu'un recherche votre service. Vous ne payez que lorsqu'on clique sur votre annonce. C'est l'un des moyens les plus directs d'obtenir de nouvelles demandes, en particulier pour un nouveau site ou une offre qui doit vite gagner en visibilité.",
-            "Pour que le budget porte ses fruits, il faut une structure solide: mots-clés pertinents, mots-clés exclus, annonces bien rédigées et une page d'arrivée convaincante. Nous configurons vos campagnes en fonction de votre région et de votre public, puis nous les affinons en continu.",
+            "Pour que le budget porte ses fruits, il faut une structure solide : mots-clés pertinents, mots-clés exclus, annonces bien rédigées et une page d'arrivée convaincante. Nous configurons vos campagnes en fonction de votre région et de votre public, puis nous les affinons en continu.",
           ],
         },
         {
-          h2: "Réseaux sociaux: toucher le bon public",
+          h2: "Réseaux sociaux : toucher le bon public",
           paragraphs: [
             "Sur Instagram et Facebook, vous atteignez les gens avant même qu'ils ne cherchent. Parfait pour des produits, des événements, une ouverture ou un recrutement. Une publicité ciblée vous permet de vous adresser à des personnes selon leur région, leur âge et leurs intérêts, par exemple autour de Bienne, Neuchâtel ou Fribourg.",
             "Nous élaborons l'idée de campagne, les textes et le concept visuel, mettons les annonces en ligne et analysons les résultats. Vous voyez ce qui fonctionne, et nous déplaçons le budget là où il rapporte le plus. Nous pouvons aussi diffuser vos offres d'emploi pour toucher les bons profils dans votre région.",
@@ -153,34 +153,34 @@ export const onlineMarketing: Service = {
         {
           h2: "Des chiffres plutôt que des impressions",
           paragraphs: [
-            "Le marketing digital n'a de sens que si vous savez ce qu'il rapporte. Avant le lancement, nous mettons donc en place un suivi fiable: quelle annonce génère un appel, un formulaire envoyé ou une vente? Le tout dans le respect de la nLPD, avec une bannière cookies conforme.",
+            "Le marketing digital n'a de sens que si vous savez ce qu'il rapporte. Avant le lancement, nous mettons donc en place un suivi fiable : quelle annonce génère un appel, un formulaire envoyé ou une vente ? Le tout dans le respect de la nLPD, avec une bannière cookies conforme.",
             "Vous recevez des rapports clairs plutôt que des tableaux interminables. Ensemble, nous décidons quelles campagnes développer, ajuster ou arrêter. Et pour une visibilité durable, nous complétons la publicité par le référencement naturel. Visibilité payante et naturelle avancent alors main dans la main, pour un budget qui porte ses fruits.",
           ],
         },
       ],
       faq: [
         {
-          q: "Quel budget prévoir pour Google Ads?",
+          q: "Quel budget prévoir pour Google Ads ?",
           a: "Cela dépend de votre secteur, de votre région et de la concurrence. Lors du premier entretien, nous évaluons ensemble un budget publicitaire pertinent. Vous en gardez le contrôle à tout moment.",
         },
         {
-          q: "Google Ads ou référencement naturel: que choisir?",
+          q: "Google Ads ou référencement naturel : que choisir ?",
           a: "Google Ads apporte une visibilité rapide tant que vous investissez. Le SEO agit plus lentement, mais durablement. Pour beaucoup de PME, la combinaison des deux est la meilleure option.",
         },
         {
-          q: "Sur quelles plateformes diffusez-vous les annonces?",
+          q: "Sur quelles plateformes diffusez-vous les annonces ?",
           a: "Principalement sur Google, Instagram, Facebook et LinkedIn. Le choix des canaux dépend de votre public cible.",
         },
         {
-          q: "Créez-vous aussi les annonces et les visuels?",
+          q: "Créez-vous aussi les annonces et les visuels ?",
           a: "Oui. Nous rédigeons les textes et développons le concept visuel. Sur demande, nous créons les visuels selon votre identité visuelle.",
         },
         {
-          q: "Comment démarrer?",
+          q: "Comment démarrer ?",
           a: "Par un premier conseil gratuit. Nous discutons de vos objectifs, analysons votre situation et vous remettons une offre sans engagement pour la mise en place et le suivi.",
         },
       ],
-      ctaTitle: "Plus de demandes via Google et les réseaux sociaux?",
+      ctaTitle: "Plus de demandes via Google et les réseaux sociaux ?",
       ctaText:
         "Parlez-nous de vos objectifs. Nous vous recontactons pour un premier conseil gratuit et une offre sans engagement.",
     },

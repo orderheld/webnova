@@ -72,9 +72,9 @@ export const brandingLocal: LocalService[] = [
         meta: {
           title: "Graphisme & logo à Granges : identité visuelle",
           description:
-            "Graphisme à Granges: logo, identité visuelle et imprimés pour l'industrie, l'artisanat et le commerce de la cité horlogère. Premier conseil gratuit.",
+            "Graphisme à Granges : logo, identité visuelle et imprimés pour l'industrie, l'artisanat et le commerce de la cité horlogère. Premier conseil gratuit.",
         },
-        h1: "Graphisme à Granges: une image aussi précise que votre travail",
+        h1: "Graphisme à Granges : une image aussi précise que votre travail",
         lead:
           "Notre bureau se trouve à la Bettlachstrasse 45, au cœur de Granges. Pour votre logo, votre identité visuelle ou vos imprimés, nous venons volontiers chez vous, à l'atelier, au magasin ou au bureau.",
         sections: [
@@ -82,14 +82,14 @@ export const brandingLocal: LocalService[] = [
             h2: "Pourquoi une identité visuelle soignée compte à Granges",
             paragraphs: [
               "Granges vit de la précision. Horlogers, sous-traitants, mécanique et technique médicale y travaillent au centième de millimètre. Un logo flou sur une fiche technique ou des couleurs qui changent d'un service à l'autre font donc tache. Les acheteurs et partenaires, souvent en Suisse romande ou à l'étranger, jugent votre sérieux à votre image avant même le premier échange. Une identité visuelle rigoureuse montre que rien n'est laissé au hasard, ni dans la communication ni à l'atelier.",
-              "L'artisanat et le commerce local en profitent tout autant. Peintre, boulangerie, salon de coiffure ou garage: dans une ville à taille humaine comme Granges, vos clients croisent votre logo sur la camionnette, la vitrine, une annonce et votre fiche Google. Quand tout est cohérent, on se souvient de vous. À l'inverse, un logo bricolé et des polices qui varient donnent l'impression d'une entreprise plus petite qu'elle ne l'est, face à des concurrents qui soignent leur présentation.",
+              "L'artisanat et le commerce local en profitent tout autant. Peintre, boulangerie, salon de coiffure ou garage : dans une ville à taille humaine comme Granges, vos clients croisent votre logo sur la camionnette, la vitrine, une annonce et votre fiche Google. Quand tout est cohérent, on se souvient de vous. À l'inverse, un logo bricolé et des polices qui varient donnent l'impression d'une entreprise plus petite qu'elle ne l'est, face à des concurrents qui soignent leur présentation.",
             ],
           },
           {
             h2: "Logo, charte graphique et imprimés pour l'industrie et l'artisanat",
             paragraphs: [
               "Pour les entreprises techniques, nous créons des logos qui fonctionnent à l'écran mais aussi gravés, marqués au laser, brodés ou estampés sur une pièce. Nous ajoutons des modèles de fiches techniques, d'offres et de présentations, pour que la vente et le bureau technique parlent d'une seule voix. Si vous exposez sur des salons professionnels, vous recevez des règles claires pour vos kakémonos et brochures. Le tout est réuni dans une charte compacte, utilisable aussi par vos imprimeurs.",
-              "Pour l'artisanat, le commerce et la restauration de Granges, nous restons proches du quotidien: un logo lisible de loin sur un véhicule, des cartes de visite, des bons cadeaux, des flyers et des modèles pour les réseaux sociaux. Beaucoup d'entreprises ont grandi sans ligne graphique définie. Nous trions alors l'existant et en tirons un système calme et reconnaissable. Votre site internet peut ensuite reprendre directement cette nouvelle identité, en allemand comme en français.",
+              "Pour l'artisanat, le commerce et la restauration de Granges, nous restons proches du quotidien : un logo lisible de loin sur un véhicule, des cartes de visite, des bons cadeaux, des flyers et des modèles pour les réseaux sociaux. Beaucoup d'entreprises ont grandi sans ligne graphique définie. Nous trions alors l'existant et en tirons un système calme et reconnaissable. Votre site internet peut ensuite reprendre directement cette nouvelle identité, en allemand comme en français.",
             ],
             bullets: [
               "Logo décliné pour la gravure, la broderie et les véhicules",
@@ -108,19 +108,19 @@ export const brandingLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Venez-vous dans notre entreprise à Granges pour le briefing?",
+            q: "Venez-vous dans notre entreprise à Granges pour le briefing ?",
             a: "Oui, volontiers. Notre bureau est à la Bettlachstrasse 45, nous venons donc volontiers chez vous. Sur place, nous voyons au mieux où votre logo sera utilisé.",
           },
           {
-            q: "Le logo fonctionne-t-il sur des pièces gravées ou marquées au laser?",
+            q: "Le logo fonctionne-t-il sur des pièces gravées ou marquées au laser ?",
             a: "Nous y pensons dès le départ. Pour les usages techniques, nous prévoyons des variantes simplifiées et monochromes, lisibles même en très petit et sans couleur.",
           },
           {
-            q: "Pouvez-vous livrer nos imprimés en allemand et en français?",
+            q: "Pouvez-vous livrer nos imprimés en allemand et en français ?",
             a: "Oui. De nombreuses entreprises de Granges travaillent avec la Suisse romande. Nous concevons les mises en page pour que les deux versions linguistiques restent équilibrées.",
           },
           {
-            q: "Combien coûte un logo ou une identité visuelle?",
+            q: "Combien coûte un logo ou une identité visuelle ?",
             a: "Nous ne publions pas de tarifs forfaitaires, car chaque projet est différent. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
@@ -198,9 +198,9 @@ export const brandingLocal: LocalService[] = [
         meta: {
           title: "Graphisme & logo à Bienne : identité bilingue",
           description:
-            "Graphisme à Bienne/Biel: logo, identité visuelle et imprimés qui fonctionnent en français et en allemand. Demandez votre premier conseil gratuit.",
+            "Graphisme à Bienne/Biel : logo, identité visuelle et imprimés qui fonctionnent en français et en allemand. Demandez votre premier conseil gratuit.",
         },
-        h1: "Graphisme à Bienne: une identité qui parle aux deux communautés",
+        h1: "Graphisme à Bienne : une identité qui parle aux deux communautés",
         lead:
           "À Bienne, une marque doit être aussi à l'aise en français qu'en allemand. Depuis notre bureau de Granges, nous accompagnons les entreprises biennoises du premier croquis de logo jusqu'aux imprimés finaux.",
         sections: [
@@ -214,8 +214,8 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Nos créations pour les entreprises biennoises",
             paragraphs: [
-              "Pour les start-up et les jeunes entreprises technologiques, nous développons une identité capable d'évoluer: un logo net, une palette de couleurs souple et des modèles pour vos présentations aux investisseurs et vos réseaux sociaux. Vous paraissez professionnel dès les premiers contacts, sans vous enfermer dans un style trop rigide. Pour les sous-traitants et bureaux d'ingénieurs, nous privilégions au contraire une image sobre et technique, efficace sur une fiche produit comme sur un stand.",
-              "Les restaurants, bars et commerces de la vieille ville ou des bords du lac ont d'autres besoins: cartes, enseignes, bons cadeaux et chevalets de table qui créent une ambiance et présentent proprement les deux langues. Nous définissons comment le français et l'allemand cohabitent sur une même page, sans que l'un paraisse relégué au second plan. Ces règles figurent dans la charte graphique, pour que vos futurs imprimés et publications restent bilingues de manière cohérente.",
+              "Pour les start-up et les jeunes entreprises technologiques, nous développons une identité capable d'évoluer : un logo net, une palette de couleurs souple et des modèles pour vos présentations aux investisseurs et vos réseaux sociaux. Vous paraissez professionnel dès les premiers contacts, sans vous enfermer dans un style trop rigide. Pour les sous-traitants et bureaux d'ingénieurs, nous privilégions au contraire une image sobre et technique, efficace sur une fiche produit comme sur un stand.",
+              "Les restaurants, bars et commerces de la vieille ville ou des bords du lac ont d'autres besoins : cartes, enseignes, bons cadeaux et chevalets de table qui créent une ambiance et présentent proprement les deux langues. Nous définissons comment le français et l'allemand cohabitent sur une même page, sans que l'un paraisse relégué au second plan. Ces règles figurent dans la charte graphique, pour que vos futurs imprimés et publications restent bilingues de manière cohérente.",
             ],
             bullets: [
               "Vérification du nom et du slogan dans les deux langues",
@@ -228,25 +228,25 @@ export const brandingLocal: LocalService[] = [
             h2: "Notre collaboration à Bienne et dans le Seeland",
             paragraphs: [
               "Nous menons volontiers le premier entretien chez vous, dans la vieille ville ou aux Champs-de-Boujean. Cela nous permet de sentir vos locaux, votre clientèle et la langue de votre quotidien. Les réunions se tiennent en français ou en allemand, comme cela convient à votre équipe. Les étapes intermédiaires se règlent par visioconférence, et nous revenons à Bienne pour vous présenter les propositions de vive voix.",
-              "Le déroulement est simple: briefing, premières pistes, affinage, définition des couleurs, typographies et applications, puis remise de tous les fichiers et de la charte. Lorsqu'un nouveau flyer, un stand ou une campagne estivale au bord du lac se profile, nous repartons des mêmes bases. Votre image reste ainsi cohérente au fil des ans, que vos clients vous découvrent en français ou en allemand.",
+              "Le déroulement est simple : briefing, premières pistes, affinage, définition des couleurs, typographies et applications, puis remise de tous les fichiers et de la charte. Lorsqu'un nouveau flyer, un stand ou une campagne estivale au bord du lac se profile, nous repartons des mêmes bases. Votre image reste ainsi cohérente au fil des ans, que vos clients vous découvrent en français ou en allemand.",
             ],
           },
         ],
         faq: [
           {
-            q: "Vérifiez-vous si notre nom fonctionne aussi en allemand à Bienne?",
+            q: "Vérifiez-vous si notre nom fonctionne aussi en allemand à Bienne ?",
             a: "Oui. Nous examinons le nom, le slogan et les termes clés dans les deux langues et signalons les pièges éventuels avant de dessiner le logo.",
           },
           {
-            q: "Une start-up doit-elle commencer par le logo ou par le site?",
-            a: "Idéalement par les bases de la marque: logo, couleurs et typographies. Le site internet s'appuie ensuite dessus. Nous pouvons réaliser les deux.",
+            q: "Une start-up doit-elle commencer par le logo ou par le site ?",
+            a: "Idéalement par les bases de la marque : logo, couleurs et typographies. Le site internet s'appuie ensuite dessus. Nous pouvons réaliser les deux.",
           },
           {
-            q: "Les réunions peuvent-elles avoir lieu en français à Bienne?",
+            q: "Les réunions peuvent-elles avoir lieu en français à Bienne ?",
             a: "Bien sûr. Nous vous rencontrons à Bienne ou en visioconférence, en français comme en allemand.",
           },
           {
-            q: "Quel est le coût d'une identité visuelle bilingue?",
+            q: "Quel est le coût d'une identité visuelle bilingue ?",
             a: "Il dépend de l'ampleur du projet et des supports nécessaires. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
@@ -324,9 +324,9 @@ export const brandingLocal: LocalService[] = [
         meta: {
           title: "Graphisme & logo à Soleure : identité visuelle",
           description:
-            "Graphisme à Soleure: logo, refonte d'image et imprimés pour la restauration, les commerces et les prestataires de la ville baroque. Conseil gratuit.",
+            "Graphisme à Soleure : logo, refonte d'image et imprimés pour la restauration, les commerces et les prestataires de la ville baroque. Conseil gratuit.",
         },
-        h1: "Graphisme à Soleure: honorer votre histoire, soigner votre image",
+        h1: "Graphisme à Soleure : honorer votre histoire, soigner votre image",
         lead:
           "De nombreuses entreprises soleuroises ont une longue histoire et une image qui a pris de l'âge. Nous venons volontiers vous voir dans la vieille ville pour vous aider à concilier tradition et présentation actuelle.",
         sections: [
@@ -340,7 +340,7 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "Refonte en douceur et imprimés qui ont du caractère",
             paragraphs: [
-              "Pour une marque existante, nous commençons par un état des lieux: quels éléments vos clients reconnaissent-ils au premier regard, lesquels paraissent dépassés? Souvent, il suffit d'épurer le tracé, de choisir une police plus lisible et de raviver les couleurs. Le logo reste familier tout en gagnant en efficacité sur mobile, en vitrine et sur votre fiche Google. Pour une nouvelle entreprise, nous créons une identité affirmée qui trouve naturellement sa place dans la vieille ville.",
+              "Pour une marque existante, nous commençons par un état des lieux : quels éléments vos clients reconnaissent-ils au premier regard, lesquels paraissent dépassés ? Souvent, il suffit d'épurer le tracé, de choisir une police plus lisible et de raviver les couleurs. Le logo reste familier tout en gagnant en efficacité sur mobile, en vitrine et sur votre fiche Google. Pour une nouvelle entreprise, nous créons une identité affirmée qui trouve naturellement sa place dans la vieille ville.",
               "Pour les hôtels, restaurants et cafés, nous concevons cartes des mets et des vins, sets de table et bons cadeaux dans l'esprit de votre maison. Autour d'événements comme les Journées de Soleure ou les Journées littéraires, nous préparons affiches, flyers et modèles pour les réseaux sociaux que vous complétez vous-même. Pour les prestataires de la capitale cantonale, l'accent porte plutôt sur une papeterie sérieuse, des modèles de lettres et des présentations, en allemand et, si besoin, en français.",
             ],
             bullets: [
@@ -353,26 +353,26 @@ export const brandingLocal: LocalService[] = [
           {
             h2: "D'un rendez-vous au bord de l'Aar aux imprimés finaux",
             paragraphs: [
-              "Nous vous rendons visite dans votre commerce de la vieille ville ou dans vos bureaux des environs. Nous voyons ainsi comment votre image se présente aujourd'hui: à l'entrée, au comptoir, sur les emballages ou les véhicules. Pour une refonte, apportez vos anciens imprimés et photos, ils racontent ce qui a fait votre marque. Nous présentons les propositions en personne, afin que vous puissiez juger couleurs et papiers en main.",
+              "Nous vous rendons visite dans votre commerce de la vieille ville ou dans vos bureaux des environs. Nous voyons ainsi comment votre image se présente aujourd'hui : à l'entrée, au comptoir, sur les emballages ou les véhicules. Pour une refonte, apportez vos anciens imprimés et photos, ils racontent ce qui a fait votre marque. Nous présentons les propositions en personne, afin que vous puissiez juger couleurs et papiers en main.",
               "Après le briefing, nous élaborons de premières pistes que nous affinons ensemble. Nous fixons ensuite couleurs, typographies et applications, puis préparons tous les fichiers prêts à imprimer. Sur demande, nous coordonnons directement avec votre imprimeur ou votre fabricant d'enseignes. Après le lancement, nous restons votre interlocuteur pour la nouvelle carte de saison, l'affiche du prochain événement ou l'adaptation de votre site internet à votre nouvelle identité.",
             ],
           },
         ],
         faq: [
           {
-            q: "Pouvez-vous moderniser notre logo sans dérouter notre clientèle fidèle?",
+            q: "Pouvez-vous moderniser notre logo sans dérouter notre clientèle fidèle ?",
             a: "Oui, c'est souvent la meilleure voie pour une maison soleuroise établie. Nous gardons les éléments marquants et retravaillons les détails, la police et les couleurs.",
           },
           {
-            q: "Réalisez-vous des cartes pour les restaurants de la vieille ville de Soleure?",
+            q: "Réalisez-vous des cartes pour les restaurants de la vieille ville de Soleure ?",
             a: "Oui. Nous concevons cartes des mets et des boissons selon votre identité et fournissons des modèles pour adapter vous-même les plats de saison.",
           },
           {
-            q: "Nos imprimés peuvent-ils aussi exister en français?",
+            q: "Nos imprimés peuvent-ils aussi exister en français ?",
             a: "Bien sûr. Soleure accueille de nombreux visiteurs romands. Nous prévoyons des mises en page qui accueillent une version française sans perdre en clarté.",
           },
           {
-            q: "Comment le prix d'une refonte d'image est-il fixé?",
+            q: "Comment le prix d'une refonte d'image est-il fixé ?",
             a: "Il dépend de l'ampleur de la refonte et des imprimés concernés. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
@@ -450,9 +450,9 @@ export const brandingLocal: LocalService[] = [
         meta: {
           title: "Graphisme & logo à Berne : identité pour PME",
           description:
-            "Graphisme à Berne: logo, identité visuelle, modèles de documents et charte graphique pour PME, associations et bureaux de conseil. Premier conseil gratuit.",
+            "Graphisme à Berne : logo, identité visuelle, modèles de documents et charte graphique pour PME, associations et bureaux de conseil. Premier conseil gratuit.",
         },
-        h1: "Graphisme à Berne: une identité visuelle utile au quotidien",
+        h1: "Graphisme à Berne : une identité visuelle utile au quotidien",
         lead:
           "À Berne, une image sérieuse, appliquée correctement par toute l'équipe, fait la différence. Depuis notre bureau de Granges, nous accompagnons personnellement les PME bernoises du briefing à la charte finale.",
         sections: [
@@ -460,14 +460,14 @@ export const brandingLocal: LocalService[] = [
             h2: "Berne, ville d'institutions et d'exigence",
             paragraphs: [
               "Ville fédérale, Berne est marquée par l'administration, les associations, les organisations et les bureaux de conseil. Les entreprises qui collaborent avec eux envoient rapports, offres et présentations qui côtoient des documents officiels soigneusement mis en page. L'identité visuelle se joue alors moins dans le logo que dans chaque modèle de lettre et chaque diapositive. Des règles claires donnent une image fiable et font gagner du temps à vos collaborateurs à chaque nouveau document.",
-              "Le canton de Berne est bilingue et le français est très présent dans la capitale, où travaillent de nombreux Romands. Une identité pensée uniquement pour l'allemand montre vite ses limites: textes qui débordent, titres coupés, mises en page déséquilibrées. Les artisans, cabinets et commerces sous les arcades de la vieille ville font face, eux, à une forte concurrence. Face à plusieurs profils Google comparables, le client retient souvent celui dont l'image est la plus nette et la plus cohérente.",
+              "Le canton de Berne est bilingue et le français est très présent dans la capitale, où travaillent de nombreux Romands. Une identité pensée uniquement pour l'allemand montre vite ses limites : textes qui débordent, titres coupés, mises en page déséquilibrées. Les artisans, cabinets et commerces sous les arcades de la vieille ville font face, eux, à une forte concurrence. Face à plusieurs profils Google comparables, le client retient souvent celui dont l'image est la plus nette et la plus cohérente.",
             ],
           },
           {
             h2: "Identité visuelle, modèles et charte pour les PME bernoises",
             paragraphs: [
               "Pour les bureaux de conseil, associations et organisations, nous créons des identités calmes, crédibles et très lisibles. Nous veillons à des contrastes suffisants et à une hiérarchie typographique claire, pour que vos documents restent accessibles aux personnes malvoyantes. En plus du logo, vous recevez des modèles de lettres, de rapports et de présentations que votre équipe utilise sans compétences graphiques. La charte explique simplement ce qui se fait et ce qui ne se fait pas.",
-              "Pour l'artisanat, la santé et le commerce, l'accent porte sur la reconnaissance dans la rue et en ligne: un logo efficace sur une façade, un véhicule et une fiche Google, accompagné de cartes de visite, de flyers et de modèles pour les réseaux sociaux. Un cabinet de physiothérapie n'a pas les mêmes besoins qu'une boutique de la vieille ville. Nous partons donc toujours de votre clientèle et de vos valeurs plutôt que d'une tendance passagère.",
+              "Pour l'artisanat, la santé et le commerce, l'accent porte sur la reconnaissance dans la rue et en ligne : un logo efficace sur une façade, un véhicule et une fiche Google, accompagné de cartes de visite, de flyers et de modèles pour les réseaux sociaux. Un cabinet de physiothérapie n'a pas les mêmes besoins qu'une boutique de la vieille ville. Nous partons donc toujours de votre clientèle et de vos valeurs plutôt que d'une tendance passagère.",
             ],
             bullets: [
               "Logo et identité visuelle aux contrastes soignés",
@@ -486,19 +486,19 @@ export const brandingLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Créez-vous des modèles Word et PowerPoint pour notre équipe à Berne?",
+            q: "Créez-vous des modèles Word et PowerPoint pour notre équipe à Berne ?",
             a: "Oui. Les modèles de lettres, de rapports et de présentations sont souvent la partie la plus utilisée d'une identité. Nous les concevons pour qu'ils restent simples à manier.",
           },
           {
-            q: "L'identité visuelle peut-elle tenir compte de l'accessibilité?",
+            q: "L'identité visuelle peut-elle tenir compte de l'accessibilité ?",
             a: "Oui. Nous choisissons des couleurs bien contrastées et des polices lisibles, un point important pour les organisations proches de l'administration.",
           },
           {
-            q: "Pourquoi choisir un graphiste de Granges pour un projet à Berne?",
+            q: "Pourquoi choisir un graphiste de Granges pour un projet à Berne ?",
             a: "Pour les rendez-vous importants, nous venons en personne à Berne. Vous travaillez directement avec la personne qui crée votre image.",
           },
           {
-            q: "Comment obtenir une estimation des coûts?",
+            q: "Comment obtenir une estimation des coûts ?",
             a: "Lors d'un premier entretien gratuit, nous définissons l'ampleur du projet et les modèles nécessaires. Vous recevez ensuite une offre individuelle et claire.",
           },
         ],

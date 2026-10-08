@@ -71,16 +71,16 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Granges",
           description:
-            "Maintenance de site internet à Granges: mises à jour, sauvegardes, sécurité et hébergement par une agence locale. Demandez votre premier conseil gratuit.",
+            "Maintenance de site internet à Granges : mises à jour, sauvegardes, sécurité et hébergement par une agence locale. Demandez votre premier conseil gratuit.",
         },
-        h1: "Maintenance de site internet à Granges: un partenaire tout proche",
+        h1: "Maintenance de site internet à Granges : un partenaire tout proche",
         lead:
-          "Notre bureau se trouve à la Bettlachstrasse 45, à Granges: votre site est suivi par une équipe que vous connaissez et joignez directement. Nous veillons à la technique, à la sécurité et aux contenus pour que vous restiez concentré sur votre activité.",
+          "Notre bureau se trouve à la Bettlachstrasse 45, à Granges : votre site est suivi par une équipe que vous connaissez et joignez directement. Nous veillons à la technique, à la sécurité et aux contenus pour que vous restiez concentré sur votre activité.",
         sections: [
           {
             h2: "Pourquoi un site bien entretenu compte à Granges",
             paragraphs: [
-              "La cité horlogère vit en grande partie de clients éloignés. Sous-traitants de l'horlogerie, mécanique de précision, medtech: avant de passer commande, les acheteurs suisses et étrangers consultent votre site. Un avertissement de sécurité dans le navigateur, une fiche technique introuvable ou un formulaire qui n'envoie plus rien suffisent à semer le doute. Et dans une entreprise technique, ce genre de panne passe souvent inaperçu pendant des semaines.",
+              "La cité horlogère vit en grande partie de clients éloignés. Sous-traitants de l'horlogerie, mécanique de précision, medtech : avant de passer commande, les acheteurs suisses et étrangers consultent votre site. Un avertissement de sécurité dans le navigateur, une fiche technique introuvable ou un formulaire qui n'envoie plus rien suffisent à semer le doute. Et dans une entreprise technique, ce genre de panne passe souvent inaperçu pendant des semaines.",
               "Pour les commerces, artisans et restaurants de Granges, l'enjeu est plutôt la fiabilité des informations au quotidien. Les gens vérifient un horaire ou un menu sur leur téléphone, en passant à la gare ou près du Vélodrome. Des données dépassées, une page lente ou un certificat SSL expiré les envoient ailleurs. Un entretien régulier évite que votre site vieillisse en silence alors que votre entreprise, elle, avance.",
             ],
             bullets: [
@@ -93,8 +93,8 @@ export const wartungLocal: LocalService[] = [
           {
             h2: "Ce que comprend notre maintenance",
             paragraphs: [
-              "Nous installons les mises à jour du système, des extensions et des composants, puis contrôlons les pages et formulaires essentiels. Nous effectuons des sauvegardes régulières, surveillons la disponibilité du site, gérons le certificat SSL et vérifions vos mentions de protection des données selon la nLPD. Un fabricant avec catalogue n'a pas les mêmes besoins qu'un salon de coiffure avec réservation en ligne: nous adaptons donc le périmètre à votre site.",
-              "Au-delà de la technique, nous prenons en charge les petites modifications de contenu: un nouveau poste en production, des horaires de fêtes, une certification renouvelée ou les photos d'une nouvelle machine. Il suffit de nous écrire ou de nous appeler. Si vous le souhaitez, nous gérons aussi l'hébergement, le nom de domaine et les adresses e-mail. Vous avez ainsi un seul interlocuteur à Granges pour tout ce qui touche à votre site.",
+              "Nous installons les mises à jour du système, des extensions et des composants, puis contrôlons les pages et formulaires essentiels. Nous effectuons des sauvegardes régulières, surveillons la disponibilité du site, gérons le certificat SSL et vérifions vos mentions de protection des données selon la nLPD. Un fabricant avec catalogue n'a pas les mêmes besoins qu'un salon de coiffure avec réservation en ligne : nous adaptons donc le périmètre à votre site.",
+              "Au-delà de la technique, nous prenons en charge les petites modifications de contenu : un nouveau poste en production, des horaires de fêtes, une certification renouvelée ou les photos d'une nouvelle machine. Il suffit de nous écrire ou de nous appeler. Si vous le souhaitez, nous gérons aussi l'hébergement, le nom de domaine et les adresses e-mail. Vous avez ainsi un seul interlocuteur à Granges pour tout ce qui touche à votre site.",
             ],
           },
           {
@@ -107,20 +107,20 @@ export const wartungLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Vous déplacez-vous dans notre entreprise à Granges?",
+            q: "Vous déplacez-vous dans notre entreprise à Granges ?",
             a: "Oui. La maintenance technique se fait à distance, mais pour un entretien, une formation ou des photos, nous venons volontiers chez vous.",
           },
           {
-            q: "Notre site a été créé par une autre agence. Pouvez-vous en assurer la maintenance?",
+            q: "Notre site a été créé par une autre agence. Pouvez-vous en assurer la maintenance ?",
             a: "Dans la plupart des cas, oui. Nous vérifions d'abord les accès, le système et l'hébergement, puis vous indiquons si une reprise directe est possible ou si des adaptations sont nécessaires.",
           },
           {
-            q: "Combien de temps faut-il pour reprendre un site existant?",
+            q: "Combien de temps faut-il pour reprendre un site existant ?",
             a: "Cela dépend de l'état du site et de l'hébergement. Après l'analyse technique, nous vous communiquons un calendrier clair, y compris pour un éventuel transfert de domaine ou d'e-mails.",
           },
           {
-            q: "Quel est le coût de la maintenance d'un site à Granges?",
-            a: "Il dépend du système, de la taille du site et des prestations souhaitées. Nous ne publions pas de forfaits: vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            q: "Quel est le coût de la maintenance d'un site à Granges ?",
+            a: "Il dépend du système, de la taille du site et des prestations souhaitées. Nous ne publions pas de forfaits : vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
@@ -196,16 +196,16 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Bienne, bilingue",
           description:
-            "Maintenance de site internet à Bienne: mises à jour, sauvegardes et sécurité pour votre site bilingue, suivi depuis Granges. Premier conseil gratuit.",
+            "Maintenance de site internet à Bienne : mises à jour, sauvegardes et sécurité pour votre site bilingue, suivi depuis Granges. Premier conseil gratuit.",
         },
-        h1: "Maintenance de site internet à Bienne: vos deux langues toujours à jour",
+        h1: "Maintenance de site internet à Bienne : vos deux langues toujours à jour",
         lead:
           "À Bienne, un site doit fonctionner en français et en allemand, et pas seulement le jour de sa mise en ligne. Depuis Granges, nous assurons le suivi technique et éditorial des sites biennois dans les deux langues.",
         sections: [
           {
             h2: "Un site bilingue demande un suivi rigoureux",
             paragraphs: [
-              "Dans la plus grande ville bilingue de Suisse, beaucoup d'entreprises gèrent en réalité deux sites en un. Avec le temps, les versions se décalent: les nouveaux horaires figurent en allemand mais pas en français, un produit n'est décrit que dans une langue, le bouton de langue mène à une page d'erreur. La clientèle du Jura bernois ou de Neuchâtel le remarque tout de suite, et Google aussi.",
+              "Dans la plus grande ville bilingue de Suisse, beaucoup d'entreprises gèrent en réalité deux sites en un. Avec le temps, les versions se décalent : les nouveaux horaires figurent en allemand mais pas en français, un produit n'est décrit que dans une langue, le bouton de langue mène à une page d'erreur. La clientèle du Jura bernois ou de Neuchâtel le remarque tout de suite, et Google aussi.",
               "La partie technique du multilinguisme est elle aussi fragile. Extensions de traduction, redirections linguistiques et balises qui indiquent aux moteurs de recherche quelle version afficher sont souvent les premières touchées lors d'une mise à jour. Si l'on ne contrôle qu'une langue après une intervention, une partie de la clientèle biennoise risque de tomber sur une page défectueuse. Une maintenance régulière garde un oeil sur les deux.",
             ],
             bullets: [
@@ -232,19 +232,19 @@ export const wartungLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Mettez-vous à jour les deux langues de mon site biennois?",
+            q: "Mettez-vous à jour les deux langues de mon site biennois ?",
             a: "Oui. Nous veillons à ce que chaque modification soit faite en français et en allemand. Si un texte n'existe que dans une langue, nous convenons avec vous de la manière de le traduire.",
           },
           {
-            q: "Puis-je obtenir le support en français?",
+            q: "Puis-je obtenir le support en français ?",
             a: "Bien sûr. Vous nous joignez par téléphone ou par e-mail en français comme en allemand, selon ce qui convient le mieux à votre équipe à Bienne.",
           },
           {
-            q: "Mon activité au bord du lac est saisonnière. Pouvez-vous préparer les contenus avant la saison?",
+            q: "Mon activité au bord du lac est saisonnière. Pouvez-vous préparer les contenus avant la saison ?",
             a: "Volontiers. Nous planifions avec vous le changement des horaires, offres ou menus et le réalisons à temps dans les deux langues.",
           },
           {
-            q: "Combien coûte la maintenance?",
+            q: "Combien coûte la maintenance ?",
             a: "Cela dépend du système, du nombre de langues et des prestations souhaitées. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
@@ -322,9 +322,9 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Soleure",
           description:
-            "Maintenance de site internet à Soleure: mises à jour, sauvegardes, sécurité et contenus à jour, suivi depuis Granges. Demandez un premier conseil gratuit.",
+            "Maintenance de site internet à Soleure : mises à jour, sauvegardes, sécurité et contenus à jour, suivi depuis Granges. Demandez un premier conseil gratuit.",
         },
-        h1: "Maintenance de site internet à Soleure: prêt pour la saison, sûr toute l'année",
+        h1: "Maintenance de site internet à Soleure : prêt pour la saison, sûr toute l'année",
         lead:
           "Soleure et Granges font partie du même canton, et nous nous déplaçons volontiers chez vous pour les réunions. Nous entretenons les sites des entreprises soleuroises pour qu'ils restent sûrs et que vos contenus soient en ligne au bon moment.",
         sections: [
@@ -342,7 +342,7 @@ export const wartungLocal: LocalService[] = [
               "Côté contenus, nous prenons en charge ce que le quotidien relègue souvent au second plan. Un hôtel met à jour ses forfaits, un café sa carte de la semaine, une boutique de la vieille ville ses ouvertures dominicales ou ses horaires de fin d'année. Vous nous envoyez textes et images, nous les publions proprement. Sur demande, nous gérons aussi l'hébergement, le domaine et les boîtes e-mail.",
             ],
             bullets: [
-              "Contenus saisonniers: menus, forfaits, événements",
+              "Contenus saisonniers : menus, forfaits, événements",
               "Contrôle technique avant les semaines de forte affluence",
               "Formulaires sécurisés pour cabinets, études et fiduciaires",
               "Mentions de protection des données selon la nLPD",
@@ -359,19 +359,19 @@ export const wartungLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Pouvez-vous vérifier notre site avant les Journées de Soleure?",
+            q: "Pouvez-vous vérifier notre site avant les Journées de Soleure ?",
             a: "Oui. Sur demande, nous contrôlons la vitesse, les formulaires et les contenus avant les périodes de forte affluence et publions à temps vos offres spéciales ou informations sur le programme.",
           },
           {
-            q: "Tenez-vous compte de la protection des données?",
+            q: "Tenez-vous compte de la protection des données ?",
             a: "Oui. Dans le cadre de la maintenance, nous vérifions que la déclaration de confidentialité, le bandeau cookies et les formulaires correspondent aux services utilisés. Cela ne remplace pas un avis juridique, mais nous vous signalons les points à régler.",
           },
           {
-            q: "Est-il possible de se rencontrer à Soleure?",
+            q: "Est-il possible de se rencontrer à Soleure ?",
             a: "Bien sûr. Le premier entretien et les réunions suivantes ont lieu chez vous à Soleure ou chez nous à Granges. Le suivi technique se fait ensuite à distance.",
           },
           {
-            q: "Comment le prix de la maintenance est-il fixé?",
+            q: "Comment le prix de la maintenance est-il fixé ?",
             a: "Il dépend de votre site et des prestations dont vous avez besoin. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
           },
         ],
@@ -448,9 +448,9 @@ export const wartungLocal: LocalService[] = [
         meta: {
           title: "Maintenance site internet Berne pour PME",
           description:
-            "Maintenance de site internet à Berne: mises à jour, sauvegardes, sécurité et hébergement avec un interlocuteur attitré. Premier conseil gratuit.",
+            "Maintenance de site internet à Berne : mises à jour, sauvegardes, sécurité et hébergement avec un interlocuteur attitré. Premier conseil gratuit.",
         },
-        h1: "Maintenance de site internet à Berne: un suivi fiable et direct",
+        h1: "Maintenance de site internet à Berne : un suivi fiable et direct",
         lead:
           "Depuis notre bureau de Granges, nous assurons la maintenance des sites de PME, associations et prestataires bernois, avec un interlocuteur attitré qui connaît vraiment votre site.",
         sections: [
@@ -471,7 +471,7 @@ export const wartungLocal: LocalService[] = [
             h2: "Ce que nous prenons en charge",
             paragraphs: [
               "Nous tenons à jour le système, les extensions et les composants, testons les fonctions clés après chaque mise à jour et sauvegardons régulièrement votre site. S'y ajoutent le certificat SSL, la surveillance de la sécurité et le contrôle des mentions de protection des données selon la nLPD. Pour les associations et bureaux de conseil, nous surveillons de près les espaces membres, les inscriptions aux événements et les bibliothèques de documents.",
-              "Pour les contenus, nous veillons à ce que chaque ajout respecte la structure existante: titres corrects, textes alternatifs pour les images, liens explicites. Une entreprise artisanale de la région bernoise publie ses nouvelles réalisations, un cabinet ses absences de vacances, un bureau de conseil son dernier article. Si votre site est en allemand et en français, nous entretenons les deux versions, et nous reprenons volontiers hébergement, domaine et e-mails.",
+              "Pour les contenus, nous veillons à ce que chaque ajout respecte la structure existante : titres corrects, textes alternatifs pour les images, liens explicites. Une entreprise artisanale de la région bernoise publie ses nouvelles réalisations, un cabinet ses absences de vacances, un bureau de conseil son dernier article. Si votre site est en allemand et en français, nous entretenons les deux versions, et nous reprenons volontiers hébergement, domaine et e-mails.",
             ],
           },
           {
@@ -484,20 +484,20 @@ export const wartungLocal: LocalService[] = [
         ],
         faq: [
           {
-            q: "Nous voulons quitter notre agence bernoise actuelle. Pouvez-vous reprendre la maintenance?",
+            q: "Nous voulons quitter notre agence bernoise actuelle. Pouvez-vous reprendre la maintenance ?",
             a: "Oui. Nous vérifions d'abord les accès, l'hébergement et le système, puis coordonnons la reprise pour que le site et les e-mails continuent de fonctionner, si possible sans interruption.",
           },
           {
-            q: "Faut-il venir à Granges pour le suivi?",
+            q: "Faut-il venir à Granges pour le suivi ?",
             a: "Non. La maintenance se fait à distance et les réunions ont lieu en visioconférence ou chez vous à Berne.",
           },
           {
-            q: "Pouvez-vous gérer un site bernois en allemand et en français?",
+            q: "Pouvez-vous gérer un site bernois en allemand et en français ?",
             a: "Oui. Le canton de Berne est bilingue et beaucoup de partenaires viennent de toute la Suisse. Nous entretenons les deux versions et veillons à ce qu'elles restent cohérentes.",
           },
           {
-            q: "Quel budget prévoir pour la maintenance d'un site?",
-            a: "Cela dépend du système, de l'ampleur du site et des prestations souhaitées. Nous ne publions pas de tarifs: vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            q: "Quel budget prévoir pour la maintenance d'un site ?",
+            a: "Cela dépend du système, de l'ampleur du site et des prestations souhaitées. Nous ne publions pas de tarifs : vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },

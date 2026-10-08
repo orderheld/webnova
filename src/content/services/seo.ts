@@ -105,7 +105,7 @@ export const seo: Service = {
       meta: {
         title: "Agence SEO : référencement naturel",
         description:
-          "Référencement naturel et SEO local pour les PME suisses: soyez trouvé sur Google par vos clients. Demandez votre premier conseil gratuit.",
+          "Référencement naturel et SEO local pour les PME suisses : soyez trouvé sur Google par vos clients. Demandez votre premier conseil gratuit.",
       },
       eyebrow: "Référencement naturel",
       h1: "Agence SEO pour les PME suisses",
@@ -114,7 +114,7 @@ export const seo: Service = {
       features: [
         {
           title: "Audit SEO",
-          text: "Technique, contenus, concurrence: nous identifions clairement où se trouve votre plus grand potentiel.",
+          text: "Technique, contenus, concurrence : nous identifions clairement où se trouve votre plus grand potentiel.",
         },
         {
           title: "Stratégie de mots-clés",
@@ -122,7 +122,7 @@ export const seo: Service = {
         },
         {
           title: "SEO technique",
-          text: "Vitesse, indexation, données structurées et affichage mobile: nous posons des bases solides.",
+          text: "Vitesse, indexation, données structurées et affichage mobile : nous posons des bases solides.",
         },
         {
           title: "Référencement local",
@@ -134,7 +134,7 @@ export const seo: Service = {
         },
         {
           title: "Suivi transparent",
-          text: "Visibilité, visites et demandes: vous suivez l'évolution, expliquée simplement, sans jargon.",
+          text: "Visibilité, visites et demandes : vous suivez l'évolution, expliquée simplement, sans jargon.",
         },
       ],
       sections: [
@@ -146,7 +146,7 @@ export const seo: Service = {
           ],
         },
         {
-          h2: "SEO local: être visible dans votre région",
+          h2: "SEO local : être visible dans votre région",
           paragraphs: [
             "Pour la plupart des PME, c'est la clientèle de proximité qui compte. Une recherche comme « électricien Neuchâtel » ou « coiffeur Bienne » affiche souvent une carte avec des entreprises locales. Y figurer apporte de nombreux appels et demandes. L'outil clé, c'est une fiche Google Business Profile bien tenue.",
             "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Tous les détails sur notre page [Référencement local](service:local-seo). Ancrés dans la région de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
@@ -168,27 +168,27 @@ export const seo: Service = {
       ],
       faq: [
         {
-          q: "Combien de temps avant de voir des résultats?",
+          q: "Combien de temps avant de voir des résultats ?",
           a: "Les corrections techniques produisent souvent un effet en quelques semaines. Pour des mots-clés concurrentiels, une nette progression prend généralement plusieurs mois. Nous vous montrons régulièrement l'évolution.",
         },
         {
-          q: "Garantissez-vous la première page de Google?",
+          q: "Garantissez-vous la première page de Google ?",
           a: "Non. Aucune agence sérieuse ne peut garantir un classement, car c'est Google qui décide. Nous nous engageons en revanche à un travail rigoureux et transparent, selon des méthodes reconnues.",
         },
         {
-          q: "Quelle différence entre SEO et Google Ads?",
+          q: "Quelle différence entre SEO et Google Ads ?",
           a: "Avec Google Ads, vous payez pour des annonces et pour chaque clic. Le SEO améliore votre visibilité gratuite dans les résultats naturels. Les deux se combinent très bien.",
         },
         {
-          q: "Travaillez-vous le référencement en français et en allemand?",
+          q: "Travaillez-vous le référencement en français et en allemand ?",
           a: "Oui. Dans une région bilingue comme Bienne, il est souvent utile d'être trouvé dans les deux langues. Nous optimisons vos contenus en français et en allemand.",
         },
         {
-          q: "Combien coûte le référencement?",
+          q: "Combien coûte le référencement ?",
           a: "L'effort dépend de votre situation de départ, de la concurrence et de vos objectifs. Après un premier conseil gratuit, vous recevez une offre sans engagement.",
         },
       ],
-      ctaTitle: "Votre site est-il bien visible?",
+      ctaTitle: "Votre site est-il bien visible ?",
       ctaText:
         "Envoyez-nous l'adresse de votre site. Nous vous recontactons pour un premier conseil gratuit et vous montrons votre potentiel.",
     },

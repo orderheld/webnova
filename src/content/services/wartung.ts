@@ -107,12 +107,12 @@ export const wartung: Service = {
       meta: {
         title: "Maintenance de site internet & hébergement",
         description:
-          "Maintenance de site internet, hébergement et support: mises à jour, sauvegardes et sécurité. Demandez votre premier conseil gratuit.",
+          "Maintenance de site internet, hébergement et support : mises à jour, sauvegardes et sécurité. Demandez votre premier conseil gratuit.",
       },
       eyebrow: "Maintenance & hébergement",
       h1: "Maintenance et hébergement de site internet",
       lead:
-        "Mises à jour, sauvegardes, sécurité et aide rapide: nous prenons soin de votre site pour que vous puissiez vous concentrer sur votre métier.",
+        "Mises à jour, sauvegardes, sécurité et aide rapide : nous prenons soin de votre site pour que vous puissiez vous concentrer sur votre métier.",
       features: [
         {
           title: "Mises à jour régulières",
@@ -132,7 +132,7 @@ export const wartung: Service = {
         },
         {
           title: "Modifications de contenu",
-          text: "Nouveaux textes, images ou pages? Envoyez-nous vos demandes, nous les réalisons rapidement.",
+          text: "Nouveaux textes, images ou pages ? Envoyez-nous vos demandes, nous les réalisons rapidement.",
         },
         {
           title: "Support personnalisé",
@@ -144,7 +144,7 @@ export const wartung: Service = {
           h2: "Pourquoi la maintenance est indispensable",
           paragraphs: [
             "Un site internet n'est pas une brochure imprimée une fois pour toutes. Les logiciels évoluent, des failles de sécurité apparaissent, les navigateurs changent. Sans entretien régulier, un site devient plus lent, plus vulnérable et, dans le pire des cas, inutilisable. Souvent, on ne s'en rend compte que lorsque des clients sont déjà touchés.",
-            "Une maintenance professionnelle vous évite ces mauvaises surprises. Nous maintenons votre site à jour, le sauvegardons régulièrement et intervenons dès que quelque chose cloche. Vous avez l'esprit tranquille: votre vitrine en ligne fonctionne. Et vous n'avez plus à vous soucier des mises à jour, messages d'erreur ou alertes de sécurité.",
+            "Une maintenance professionnelle vous évite ces mauvaises surprises. Nous maintenons votre site à jour, le sauvegardons régulièrement et intervenons dès que quelque chose cloche. Vous avez l'esprit tranquille : votre vitrine en ligne fonctionne. Et vous n'avez plus à vous soucier des mises à jour, messages d'erreur ou alertes de sécurité.",
           ],
         },
         {
@@ -172,23 +172,23 @@ export const wartung: Service = {
       ],
       faq: [
         {
-          q: "Assurez-vous la maintenance de sites créés par d'autres?",
+          q: "Assurez-vous la maintenance de sites créés par d'autres ?",
           a: "Oui. Nous vérifions d'abord l'état technique de votre site. Vous savez ensuite si la reprise est possible tout de suite ou si des adaptations sont nécessaires.",
         },
         {
-          q: "À quelle fréquence faites-vous les mises à jour?",
+          q: "À quelle fréquence faites-vous les mises à jour ?",
           a: "Cela dépend du système et du suivi convenu. Les mises à jour de sécurité sont appliquées aussi rapidement que possible.",
         },
         {
-          q: "Puis-je transférer mon hébergement chez vous?",
+          q: "Puis-je transférer mon hébergement chez vous ?",
           a: "Oui. Nous nous occupons du transfert du site, du nom de domaine et des e-mails, en limitant au maximum les interruptions.",
         },
         {
-          q: "Que se passe-t-il si mon site tombe en panne?",
+          q: "Que se passe-t-il si mon site tombe en panne ?",
           a: "Contactez-nous, nous recherchons la cause. Grâce aux sauvegardes régulières, le site peut être restauré si nécessaire.",
         },
         {
-          q: "Combien coûte la maintenance d'un site?",
+          q: "Combien coûte la maintenance d'un site ?",
           a: "Cela dépend de votre site et des prestations souhaitées. Après un premier conseil gratuit, vous recevez une offre sans engagement.",
         },
       ],
