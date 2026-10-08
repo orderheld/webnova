@@ -63,7 +63,7 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-white focus:px-4 focus:py-2">
           {d.skip}
         </a>
-        <Header nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" priority />} />
+        <Header nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" priority />} logoLight={<Logo tone="light" className="h-7 sm:h-8" />} />
         <main id="main" className="flex-1">
           {children}
         </main>

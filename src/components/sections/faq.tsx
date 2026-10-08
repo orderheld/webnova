@@ -3,12 +3,12 @@ import type { Faq, Locale } from "@/content/types";
 import { JsonLd, faqLd } from "@/lib/seo";
 
 /** FAQ list plus its FAQPage structured data, so both always show the same questions. */
-export function FaqSection({ locale, faq }: { locale: Locale; faq: Faq[] }) {
+export function FaqSection({ locale, faq, id }: { locale: Locale; faq: Faq[]; id?: string }) {
   if (!faq.length) return null;
   return (
     <>
       <JsonLd data={faqLd(faq)} />
-      <FaqList locale={locale} faq={faq} />
+      <FaqList locale={locale} faq={faq} id={id} />
     </>
   );
 }

@@ -6,10 +6,17 @@ export interface Photo {
 }
 
 /**
- * Mood photos for the site, one per slot. A slot without a photo renders its calm fallback,
- * so new photos can be added here (files in /public/photos) without touching the layouts.
+ * Real photos for the site, one per slot. A slot without a photo renders its calm fallback
+ * (a line drawing or a monogram, never a stock or made-up image), so photos can be added here
+ * (files in /public/photos) without touching the layouts.
+ *
+ * Slots:
+ * - cover:    wide image on the home cover (default: composed Swiss skyline drawing)
+ * - founder:  portrait of Ferhat Demir (home "Über uns", contact sections; default: FD monogram)
+ * - office:   the office or a work situation (home "Über uns"; default: Grenchen skyline)
+ * - hero, intro, approach, pos: older slots, kept for compatibility
  */
-export const photos: Partial<Record<"hero" | "intro" | "approach" | "pos", Photo>> = {};
+export const photos: Partial<Record<"cover" | "founder" | "office" | "hero" | "intro" | "approach" | "pos", Photo>> = {};
 
 export function photo(slot: keyof typeof photos, locale: Locale) {
   const p = photos[slot];
