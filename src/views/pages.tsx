@@ -322,8 +322,8 @@ const nextSteps = {
     title: "La suite",
     steps: [
       { title: "Nous examinons vos informations", text: "Votre demande arrive directement chez Ferhat Demir, votre interlocuteur personnel." },
-      { title: "Réponse personnelle", text: "Nous vous répondons en un jour ouvrable, par le moyen que vous avez choisi." },
-      { title: "Premier entretien gratuit", text: "Nous clarifions objectifs et envergure. Vous recevez ensuite un devis transparent." },
+      { title: "Réponse personnelle", text: "Nous vous répondons sous un jour ouvrable, par le moyen que vous avez choisi." },
+      { title: "Premier entretien gratuit", text: "Nous clarifions vos objectifs et l'envergure du projet. Vous recevez ensuite un devis transparent." },
     ],
     meanwhile: "En attendant",
   },

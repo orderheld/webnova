@@ -167,12 +167,13 @@ export function Art({
 
       {kind === "redesign" && before && (
         <>
-          <div className="absolute left-[5%] top-[7%] w-[62%] -rotate-3">
-            <BrowserFrame sample={before} locale={locale} sizes="(min-width: 1024px) 340px, 62vw" />
+          {/* Less overlap than the wireframe version, so the outdated site stays recognisable. */}
+          <div className="absolute left-[4%] top-[7%] w-[60%] -rotate-3">
+            <BrowserFrame sample={before} locale={locale} sizes="(min-width: 1024px) 340px, 60vw" />
             <span className="absolute -top-3 left-4 rounded-full bg-night px-3 py-1 text-[11px] font-semibold text-white">{t.before}</span>
           </div>
-          <div className="absolute bottom-[7%] right-[5%] w-[70%]">
-            <BrowserFrame sample={sample} locale={locale} sizes="(min-width: 1024px) 380px, 70vw" />
+          <div className="absolute bottom-[6%] right-[4%] w-[60%]">
+            <BrowserFrame sample={sample} locale={locale} sizes="(min-width: 1024px) 340px, 60vw" />
             <span className="absolute -top-3 right-4 rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-accent shadow">{t.after}</span>
           </div>
         </>

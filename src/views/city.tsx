@@ -28,8 +28,8 @@ import { site } from "@/lib/site";
 const cityLabel = (locale: Locale, name: string) => `${locale === "de" ? "Webdesign" : "Site internet"} ${name}`;
 
 const regionsIntro = {
-  de: "Unsere Kundinnen und Kunden sind in der ganzen Region zuhause: in Bern, Biel/Bienne, Solothurn und weit darüber hinaus. Für jede Stadt haben wir eine eigene Seite mit lokalen Besonderheiten, typischen Branchen und den Leistungen, die dort am meisten gefragt sind, von der neuen Webseite über SEO bis zum Kassensystem. In der Kernregion kommen wir für Gespräche gerne vorbei. Projekte in der übrigen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort. Zweisprachige Webseiten auf Deutsch und Französisch gehören für uns zum Alltag.",
-  fr: "Nos clients sont dans toute la région : à Bienne, Berne, Soleure et bien au-delà. Pour chaque ville, nous avons une page dédiée avec ses particularités locales, les branches typiques et les prestations les plus demandées, du nouveau site au référencement jusqu'au système de caisse. Dans notre région principale, nous passons volontiers vous voir. Les projets dans le reste de la Suisse sont suivis tout aussi personnellement, par visioconférence et sur place si nécessaire. Les sites bilingues en français et en allemand font partie de notre quotidien.",
+  de: "Wir arbeiten für KMU in der ganzen Schweiz. Für jede Stadt haben wir eine eigene Seite mit lokalen Besonderheiten, typischen Branchen und den Leistungen, die dort am meisten gefragt sind, von der neuen Webseite über SEO bis zum Kassensystem. Jedes Projekt betreuen wir persönlich: per Videocall, am Telefon und bei Bedarf vor Ort. Zweisprachige Webseiten auf Deutsch und Französisch gehören für uns zum Alltag.",
+  fr: "Nous travaillons pour des PME dans toute la Suisse. Pour chaque ville, nous avons une page dédiée avec ses particularités locales, les secteurs typiques et les prestations les plus demandées, du nouveau site au système de caisse en passant par le référencement. Chaque projet est suivi personnellement : par visioconférence, par téléphone et sur place si nécessaire. Les sites bilingues en français et en allemand font partie de notre quotidien.",
 };
 
 export function RegionsPage({ locale }: { locale: Locale }) {
@@ -285,7 +285,7 @@ export function CityPage({
           <ProblemsSection
             locale={locale}
             keys={problemKeys.length >= 2 ? problemKeys : undefined}
-            lead={locale === "de" ? `Diese Anliegen hören wir von KMU in ${cityName} und der ganzen Schweiz am häufigsten.` : `Ce que nous entendons le plus souvent de la part des PME à ${cityName} et dans toute la Suisse.`}
+            lead={locale === "de" ? `Typische Anliegen von KMU in ${cityName} und in der ganzen Schweiz.` : `Les besoins typiques des PME à ${cityName} et dans toute la Suisse.`}
           />
         </div>
       )}

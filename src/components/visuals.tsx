@@ -26,18 +26,19 @@ export type SampleKey =
  * same fictional brands with a deliberately outdated website (the "Vorher" of a redesign); they have
  * no mobile rendering.
  */
-export const samples: Record<SampleKey, { name: string; url: string | Record<Locale, string>; industry: Record<Locale, string> }> = {
+export const samples: Record<SampleKey, { name: string | Record<Locale, string>; url: string | Record<Locale, string>; industry: Record<Locale, string> }> = {
   hero: { name: "Ihre Firma", url: { de: "ihre-webseite.ch", fr: "votre-site.ch" }, industry: { de: "Unternehmen", fr: "Entreprise" } },
   coiffeur: { name: "Salon Mirelle", url: "salon-mirelle.ch", industry: { de: "Coiffeur", fr: "Coiffeur" } },
   restaurant: { name: "Trattoria Velluto", url: "trattoria-velluto.ch", industry: { de: "Restaurant", fr: "Restaurant" } },
   schreinerei: { name: "Kernholz", url: "kernholz-schreinerei.ch", industry: { de: "Schreinerei", fr: "Menuiserie" } },
   treuhand: { name: "Aurel Treuhand", url: "aurel-treuhand.ch", industry: { de: "Treuhand", fr: "Fiduciaire" } },
-  fitness: { name: "Studio Forma", url: "studio-forma.ch", industry: { de: "Fitnessstudio", fr: "Studio de fitness" } },
-  cafe: { name: "Kornhaus", url: "kornhaus-baeckerei.ch", industry: { de: "Bäckerei & Café", fr: "Boulangerie & café" } },
-  praxis: { name: "Physio Lindenhof", url: "physio-lindenhof.ch", industry: { de: "Physiotherapie", fr: "Physiothérapie" } },
-  immobilien: { name: "Seeland Immobilien", url: "seeland-immobilien.ch", industry: { de: "Immobilien", fr: "Immobilier" } },
-  garage: { name: "Garage Albis", url: "garage-albis.ch", industry: { de: "Autogarage", fr: "Garage automobile" } },
-  laden: { name: "Atelier Sora", url: "atelier-sora.ch", industry: { de: "Laden & Onlineshop", fr: "Boutique & e-shop" } },
+  fitness: { name: "Studio Robur", url: "studio-robur.ch", industry: { de: "Fitnessstudio", fr: "Studio de fitness" } },
+  cafe: { name: "Mahlgut", url: "mahlgut.ch", industry: { de: "Bäckerei & Café", fr: "Boulangerie & café" } },
+  praxis: { name: "Physio Salvia", url: "physio-salvia.ch", industry: { de: "Physiotherapie", fr: "Physiothérapie" } },
+  immobilien: { name: { de: "Jolimont Immobilien", fr: "Jolimont Immobilier" }, url: "jolimont-immo.ch", industry: { de: "Immobilien", fr: "Immobilier" } },
+  garage: { name: { de: "Garage Felsenegg", fr: "Garage de la Dôle" }, url: { de: "garage-felsenegg.ch", fr: "garage-de-la-dole.ch" }, industry: { de: "Autogarage", fr: "Garage automobile" } },
+  laden: { name: "Atelier Halm", url: "atelier-halm.ch", industry: { de: "Laden & Onlineshop", fr: "Boutique & e-shop" } },
+  // Same brand and address bar as the new design, so the pair reads as one company before and after.
   "alt-restaurant": { name: "Trattoria Velluto", url: "trattoria-velluto.ch", industry: { de: "Restaurant, alte Webseite", fr: "Restaurant, ancien site" } },
   "alt-schreinerei": { name: "Kernholz", url: "kernholz-schreinerei.ch", industry: { de: "Schreinerei, alte Webseite", fr: "Menuiserie, ancien site" } },
 };
@@ -56,7 +57,8 @@ export function sampleSrc(key: SampleKey, locale: Locale, mobile = false) {
 }
 
 export function sampleAlt(key: SampleKey, locale: Locale) {
-  return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${samples[key].name}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
+  const n = samples[key].name;
+  return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${typeof n === "string" ? n : n[locale]}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
 }
 
 /** Desktop browser window with a sample design inside. */
