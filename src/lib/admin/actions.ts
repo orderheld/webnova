@@ -1,6 +1,6 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { isIBANValid } from "swissqrbill/utils";
@@ -11,7 +11,7 @@ import { checkCredentials, createSession, destroySession, requireAdmin } from "@
 import { escapeHtml, mailLayout, sendMail } from "@/lib/email";
 import { invoiceItemsFromQuote, logActivity, openAmount, subscriptionsFromQuote, syncInvoicePayments } from "./billing";
 import { estimateTotals } from "./calculator";
-import { quoteStatusLabels } from "./labels";
+import { invoiceStatusLabels, quoteStatusLabels } from "./labels";
 import { addDaysIso, chf, computeTotals, fmtDate, round2, todayIso } from "./money";
 import { nextNumber } from "./numbering";
 import { renderDocumentPdf, type PdfKind } from "./pdf";
@@ -271,28 +271,47 @@ export async function setInvoiceStatusAction(id: number, status: InvoiceStatus, 
 
 export async function deleteQuoteAction(id: number) {
   await requireAdmin();
-  await db().delete(schema.quotes).where(eq(schema.quotes.id, id));
+  // invoices, projects and subscriptions keep existing; their link to the quote is cleared by the foreign keys
+  const [q] = await db().delete(schema.quotes).where(eq(schema.quotes.id, id)).returning();
+  if (q) await logActivity(`Offerte ${q.number} gelöscht`, { customerId: q.customerId, leadId: q.leadId, projectId: q.projectId });
   revalidatePath("/admin", "layout");
   redirect("/admin/offerten");
 }
 
+/**
+ * Deletes an invoice or credit note in any status. Payments and reminders are removed with it (cascade),
+ * billed time entries become open again and subscriptions billed by it go back to their previous billing date.
+ */
 export async function deleteInvoiceAction(id: number) {
   await requireAdmin();
-  const [inv] = await db().select().from(schema.invoices).where(eq(schema.invoices.id, id));
-  // Sent invoices must stay in the books; they can only be cancelled.
-  if (inv && inv.status !== "entwurf") redirect(`/admin/rechnungen/${id}?fehler=storno`);
-  if (inv) {
-    // subscriptions billed on this draft go back to their previous billing date
+  const inv = await db().transaction(async (tx) => {
+    const [inv] = await tx.select().from(schema.invoices).where(eq(schema.invoices.id, id));
+    if (!inv) return null;
     const subIds = [...new Set(inv.items.map((it) => it.subscriptionId).filter((x): x is number => !!x))];
-    for (const sid of subIds) {
-      const first = inv.items.find((it) => it.subscriptionId === sid);
-      const from = first?.description?.match(/(\d{2})\.(\d{2})\.(\d{4})/);
-      if (from) await db().update(schema.subscriptions).set({ nextBillingDate: `${from[3]}-${from[2]}-${from[1]}` }).where(eq(schema.subscriptions.id, sid));
+    if (subIds.length) {
+      const subs = await tx.select().from(schema.subscriptions).where(inArray(schema.subscriptions.id, subIds));
+      for (const sub of subs) {
+        // only when no later invoice has billed the subscription further
+        if (sub.lastInvoiceId !== inv.id) continue;
+        const starts = inv.items
+          .filter((it) => it.subscriptionId === sub.id)
+          .map((it) => it.description?.match(/(\d{2})\.(\d{2})\.(\d{4})/))
+          .filter((m): m is RegExpMatchArray => !!m)
+          .map((m) => `${m[3]}-${m[2]}-${m[1]}`)
+          .sort();
+        if (starts[0]) await tx.update(schema.subscriptions).set({ nextBillingDate: starts[0] }).where(eq(schema.subscriptions.id, sub.id));
+      }
     }
+    await tx.update(schema.timeEntries).set({ invoiceId: null }).where(eq(schema.timeEntries.invoiceId, id));
+    await tx.delete(schema.invoices).where(eq(schema.invoices.id, id));
+    return inv;
+  });
+  if (inv) {
+    const label = inv.kind === "gutschrift" ? "Gutschrift" : "Rechnung";
+    await logActivity(`${label} ${inv.number} gelöscht (Status ${invoiceStatusLabels[inv.status] ?? inv.status})`, { customerId: inv.customerId, projectId: inv.projectId });
   }
-  await db().delete(schema.invoices).where(eq(schema.invoices.id, id));
   revalidatePath("/admin", "layout");
-  redirect("/admin/rechnungen");
+  redirect(inv?.kind === "gutschrift" ? "/admin/rechnungen?art=gutschrift" : "/admin/rechnungen");
 }
 
 export async function quoteToInvoiceAction(quoteId: number) {

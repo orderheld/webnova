@@ -13,14 +13,14 @@ import { db, schema } from "@/db";
 import { deleteInvoiceAction, mailDraft, setInvoiceStatusAction } from "@/lib/admin/actions";
 import { openAmount } from "@/lib/admin/billing";
 import { createReminderAction, creditNoteAction, deletePaymentAction, deleteReminderAction, duplicateInvoiceAction, markInvoicesSentAction } from "@/lib/admin/finance-actions";
-import { paymentMethodLabels } from "@/lib/admin/labels";
+import { creditStatusLabels, invoiceStatusLabels, paymentMethodLabels } from "@/lib/admin/labels";
 import { chf, fmtDate, todayIso } from "@/lib/admin/money";
 import { allProjectOptions, customerName, customerOptions, productOptions, routeId } from "@/lib/admin/queries";
 import { getSettings } from "@/lib/admin/settings";
 
-export default async function InvoiceDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ fehler?: string; mahnung?: string }> }) {
+export default async function InvoiceDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ mahnung?: string }> }) {
   const id = routeId((await params).id);
-  const { fehler, mahnung } = await searchParams;
+  const { mahnung } = await searchParams;
   if (!id) notFound();
   const [row] = await db()
     .select({ i: schema.invoices, c: schema.customers })
@@ -50,6 +50,17 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
   const open = openAmount(i);
   const project = i.projectId ? projects.find((p) => p.id === i.projectId) : undefined;
   const canRemind = !credit && open > 0 && i.status !== "entwurf" && i.reminderLevel < 3;
+  const statusText = (credit ? creditStatusLabels : invoiceStatusLabels)[st] ?? st;
+  const deleteMessage = [
+    `${label} ${i.number} (Status: ${statusText}) endgültig löschen?`,
+    payments.length || reminders.length
+      ? `Dazu werden ${[payments.length && `${payments.length} Zahlung${payments.length === 1 ? "" : "en"}`, reminders.length && `${reminders.length} Mahnung${reminders.length === 1 ? "" : "en"}`].filter(Boolean).join(" und ")} gelöscht.`
+      : "",
+    timeCount.length ? `${timeCount.length} verrechnete Zeiteinträge werden wieder offen.` : "",
+    i.status !== "entwurf" ? "Versendete Rechnungen sollten in der Regel storniert statt gelöscht werden." : "",
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 
   return (
     <>
@@ -90,7 +101,6 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
           hinterlegen.
         </Notice>
       )}
-      {fehler === "storno" && <Notice tone="error">Versendete Rechnungen können nicht gelöscht werden. Bitte stornieren oder eine Gutschrift erstellen.</Notice>}
       {st === "ueberfaellig" && (
         <Notice tone="error">
           Seit {fmtDate(i.dueDate)} überfällig, offen CHF {chf(open)}.{i.reminderLevel > 0 ? ` Bereits ${i.reminderLevel}. Mahnung erstellt.` : ""}
@@ -198,13 +208,11 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
                 </ConfirmButton>
               </form>
             )}
-            {i.status === "entwurf" && (
-              <form action={deleteInvoiceAction.bind(null, i.id)}>
-                <ConfirmButton message="Entwurf löschen? Verrechnete Zeiten und Abos werden wieder freigegeben." className={`${btnSm.danger} w-full`}>
-                  Entwurf löschen
-                </ConfirmButton>
-              </form>
-            )}
+            <form action={deleteInvoiceAction.bind(null, i.id)}>
+              <ConfirmButton message={deleteMessage} className={`${btnSm.danger} w-full`}>
+                <Icon name="trash" className="h-3.5 w-3.5" /> {label} löschen
+              </ConfirmButton>
+            </form>
           </div>
           <ul className="mt-4 space-y-1.5 border-t border-line pt-3 text-[13.5px]">
             {i.quoteId && (

@@ -148,7 +148,10 @@ export default async function QuoteDetail({ params }: { params: Promise<{ id: st
         }}
       />
       <form action={deleteQuoteAction.bind(null, q.id)} className="mt-8">
-        <ConfirmButton message="Offerte endgültig löschen?" className={btn.danger}>
+        <ConfirmButton
+          message={`Offerte ${q.number} (Status: ${quoteStatusLabels[q.status]}) endgültig löschen?${invoices.length ? `\n\nVerknüpfte Rechnungen (${invoices.map((x) => x.number).join(", ")}) bleiben bestehen.` : ""}`}
+          className={btn.danger}
+        >
           Offerte löschen
         </ConfirmButton>
       </form>
