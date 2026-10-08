@@ -18,7 +18,7 @@ export const thun: City = {
       },
       h1: "Webdesign Thun: Webseiten für KMU am Thunersee",
       lead:
-        "Webnova erstellt Webseiten, Onlineshops und Kampagnen für Unternehmen in Thun und am Thunersee. Wir arbeiten von Grenchen aus, treffen Sie für wichtige Termine aber gerne vor Ort.",
+        "Webnova erstellt Webseiten, Onlineshops und Kampagnen für Unternehmen in Thun und am Thunersee. Für wichtige Termine treffen wir Sie gerne vor Ort.",
       sections: [
         {
           h2: "Thun: Tor zum Berner Oberland",
@@ -43,7 +43,7 @@ export const thun: City = {
         {
           h2: "Ehrlich: so arbeiten wir mit Kunden in Thun",
           paragraphs: [
-            "Unser Büro liegt in Grenchen. Den grössten Teil der Zusammenarbeit erledigen wir effizient per Videocall, Telefon und E-Mail. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Thun. Dafür erhalten Sie eine feste Ansprechperson, direkte Kommunikation und eine Agentur, die sich auf Schweizer KMU konzentriert.",
+            "Den grössten Teil der Zusammenarbeit erledigen wir effizient per Videocall, Telefon und E-Mail. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Thun. Dafür erhalten Sie eine feste Ansprechperson, direkte Kommunikation und eine Agentur, die sich auf Schweizer KMU konzentriert.",
             "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entwickeln wir Ihre Webseite in klaren Schritten und zeigen Ihnen Entwürfe früh. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, SEO und Werbekampagnen, etwa saisonale Google- oder Meta-Kampagnen für die Sommersaison am See oder für besondere Anlässe in der Region.",
           ],
         },
@@ -73,7 +73,7 @@ export const thun: City = {
       },
       h1: "Création de site internet à Thoune pour les PME",
       lead:
-        "Webnova crée des sites internet, des boutiques en ligne et des campagnes pour les entreprises de Thoune et des bords du lac. Nous travaillons depuis Granges et venons sur place pour les rendez-vous importants.",
+        "Webnova crée des sites internet, des boutiques en ligne et des campagnes pour les entreprises de Thoune et des bords du lac. Pour les rendez-vous importants, nous venons sur place.",
       sections: [
         {
           h2: "Thoune, porte de l'Oberland bernois",
@@ -98,7 +98,7 @@ export const thun: City = {
         {
           h2: "En toute transparence : notre façon de travailler",
           paragraphs: [
-            "Notre bureau se trouve à Granges. L'essentiel de la collaboration se fait efficacement par visioconférence, téléphone et e-mail. Pour le lancement, un atelier ou des photos, nous venons volontiers à Thoune. Vous bénéficiez d'un interlocuteur fixe, d'une communication directe et d'une agence centrée sur les PME suisses.",
+            "L'essentiel de la collaboration se fait efficacement par visioconférence, téléphone et e-mail. Pour le lancement, un atelier ou des photos, nous venons volontiers à Thoune. Vous bénéficiez d'un interlocuteur fixe, d'une communication directe et d'une agence centrée sur les PME suisses.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Nous développons ensuite votre site par étapes et vous montrons les maquettes rapidement. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et des campagnes saisonnières sur Google ou Meta pour la haute saison au bord du lac.",
           ],
         },

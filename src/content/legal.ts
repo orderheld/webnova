@@ -133,16 +133,16 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           ],
         },
         {
-          h2: "Kontakt- und Anfrageformular",
+          h2: "Kontakt-, Anfrage- und Website-Check-Formular",
           paragraphs: [
-            "Wenn Sie uns über das Kontakt- oder Anfrageformular kontaktieren, bearbeiten wir die von Ihnen angegebenen Daten, zum Beispiel Name, Firma, E-Mail-Adresse, Telefonnummer und Ihre Nachricht mit allfälligen Projektangaben. Wir verwenden diese Daten ausschliesslich, um Ihre Anfrage zu beantworten, eine Offerte zu erstellen und mit Ihnen in Kontakt zu bleiben.",
+            "Wenn Sie uns über das Kontakt- oder Anfrageformular oder den kostenlosen Website-Check kontaktieren, bearbeiten wir die von Ihnen angegebenen Daten, zum Beispiel Name, Firma, E-Mail-Adresse, Telefonnummer, die Adresse Ihrer bestehenden Webseite und Ihre Nachricht mit allfälligen Projektangaben. Wir verwenden diese Daten ausschliesslich, um Ihre Anfrage zu beantworten, eine Offerte zu erstellen und mit Ihnen in Kontakt zu bleiben.",
             "Die Anfragen werden in einer Datenbank gespeichert. Dafür nutzen wir den Dienst Neon (Neon Inc., USA) mit einer PostgreSQL-Datenbank, deren Hosting-Region in der EU liegt. Der Zugriff auf die gespeicherten Anfragen ist auf uns beschränkt und durch ein Login geschützt.",
           ],
         },
         {
           h2: "E-Mail-Versand über Resend",
           paragraphs: [
-            "Für den Versand von E-Mails im Zusammenhang mit dem Kontaktformular, etwa Benachrichtigungen über neue Anfragen oder Eingangsbestätigungen, nutzen wir den Dienst Resend (Resend Inc., USA). Dabei werden insbesondere Ihre E-Mail-Adresse, Ihr Name und der Inhalt der Nachricht an Resend übermittelt und dort für den Versand bearbeitet.",
+            "Für den Versand von E-Mails im Zusammenhang mit diesen Formularen, etwa Benachrichtigungen über neue Anfragen oder Eingangsbestätigungen, nutzen wir den Dienst Resend (Resend Inc., USA). Dabei werden insbesondere Ihre E-Mail-Adresse, Ihr Name und der Inhalt der Nachricht an Resend übermittelt und dort für den Versand bearbeitet.",
             "Die Übermittlung in die USA erfolgt auf Grundlage der Standardvertragsklauseln der Europäischen Kommission, die vom Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) anerkannt sind.",
           ],
         },
@@ -228,16 +228,16 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           ],
         },
         {
-          h2: "Formulaire de contact et de demande",
+          h2: "Formulaires de contact, de demande et d'analyse de site",
           paragraphs: [
-            "Lorsque vous nous contactez via le formulaire de contact ou de demande, nous traitons les données que vous indiquez, par exemple nom, entreprise, adresse e-mail, numéro de téléphone et votre message avec d'éventuelles informations sur votre projet. Nous utilisons ces données uniquement pour répondre à votre demande, établir une offre et rester en contact avec vous.",
+            "Lorsque vous nous contactez via le formulaire de contact ou de demande ou via l'analyse de site gratuite, nous traitons les données que vous indiquez, par exemple nom, entreprise, adresse e-mail, numéro de téléphone, l'adresse de votre site actuel et votre message avec d'éventuelles informations sur votre projet. Nous utilisons ces données uniquement pour répondre à votre demande, établir une offre et rester en contact avec vous.",
             "Les demandes sont enregistrées dans une base de données. Nous utilisons à cet effet le service Neon (Neon Inc., États-Unis) avec une base de données PostgreSQL hébergée dans une région de l'UE. L'accès aux demandes enregistrées nous est réservé et protégé par un identifiant.",
           ],
         },
         {
           h2: "Envoi d'e-mails via Resend",
           paragraphs: [
-            "Pour l'envoi d'e-mails liés au formulaire de contact, comme les notifications de nouvelles demandes ou les confirmations de réception, nous utilisons le service Resend (Resend Inc., États-Unis). Votre adresse e-mail, votre nom et le contenu du message sont notamment transmis à Resend et traités pour l'envoi.",
+            "Pour l'envoi d'e-mails liés à ces formulaires, comme les notifications de nouvelles demandes ou les confirmations de réception, nous utilisons le service Resend (Resend Inc., États-Unis). Votre adresse e-mail, votre nom et le contenu du message sont notamment transmis à Resend et traités pour l'envoi.",
             "Le transfert vers les États-Unis repose sur les clauses contractuelles types de la Commission européenne, reconnues par le Préposé fédéral à la protection des données et à la transparence (PFPDT).",
           ],
         },

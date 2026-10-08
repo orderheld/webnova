@@ -39,7 +39,7 @@ const gt = {
     takeaways: "L'essentiel en bref",
     sources: "Sources",
     author: "À propos de l'auteur",
-    authorRole: "Propriétaire de Webnova",
+    authorRole: "Votre interlocuteur chez Webnova",
     authorText:
       "Ferhat Demir dirige Webnova, une agence web pour les PME suisses. Il accompagne personnellement les projets de la première idée jusqu'après la mise en ligne, en français et en allemand, en alliant design, technique et référencement.",
     authorLink: "En savoir plus sur Webnova",
@@ -47,7 +47,7 @@ const gt = {
     midText: "Nous examinons votre situation et vous disons franchement ce qui vaut la peine. Le premier entretien est gratuit.",
     midCheck: "Analyse de site gratuite",
     endTitle: "Et pour vous, quelle suite ?",
-    endText: "Décrivez-nous brièvement votre projet. Ferhat Demir vous répond personnellement en un jour ouvrable.",
+    endText: "Décrivez-nous brièvement votre projet. Ferhat Demir vous répond personnellement sous un jour ouvrable.",
     toc: "Sommaire",
   },
 };
@@ -85,10 +85,11 @@ function AuthorBox({ locale }: { locale: Locale }) {
         <span className="relative h-20 w-16 shrink-0 overflow-hidden rounded-2xl bg-bg-2">
           <Image src="/photos/ferhat-avatar.webp" alt={locale === "de" ? "Ferhat Demir, Ihr Ansprechpartner bei Webnova" : "Ferhat Demir, votre interlocuteur chez Webnova"} fill sizes="64px" className="object-cover" />
         </span>
-        <div>
+        {/* min-w-0 + hyphenation: long German words ("Suchmaschinenoptimierung") pushed the page 12px wide at 360px. */}
+        <div className="min-w-0">
           <p className="font-display text-[19px] font-semibold tracking-[-0.01em] text-ink">Ferhat Demir</p>
           <p className="text-[14px] text-muted">{t.authorRole}</p>
-          <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{t.authorText}</p>
+          <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft hyphens-auto wrap-anywhere">{t.authorText}</p>
           <Link href={href(locale, "about")} className="link-arrow mt-4 text-[14px]">
             {t.authorLink} <Icon name="arrow" className="h-4 w-4" />
           </Link>

@@ -36,7 +36,7 @@ export const branding: Service = {
           text: "Visitenkarten, Briefpapier, Flyer und Broschüren im Look Ihrer Marke, druckfertig aufbereitet.",
         },
         {
-          title: "Social Media Vorlagen",
+          title: "Social-Media-Vorlagen",
           text: "Vorlagen für Beiträge und Stories, mit denen Sie selbst konsistent und professionell posten.",
         },
       ],
@@ -64,7 +64,7 @@ export const branding: Service = {
         {
           h2: "Vom Branding bis zur Webseite",
           paragraphs: [
-            "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social Media Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
+            "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social-Media-Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
             "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in der ganzen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
           ],
         },
@@ -131,14 +131,14 @@ export const branding: Service = {
       ],
       sections: [
         {
-          h2: "Création de logo: soigner la première impression",
+          h2: "Création de logo : soigner la première impression",
           paragraphs: [
-            "Votre logo est partout: sur votre site, vos offres, votre véhicule et votre fiche Google. Il doit exprimer d'emblée ce que représente votre entreprise et rester lisible en petit format. Un logo généré en ligne en quelques clics y parvient rarement.",
-            "Nous commençons par un échange sur votre entreprise, vos valeurs et vos clients. Nous en tirons plusieurs pistes, que nous discutons et affinons avec vous. Vous recevez ensuite votre logo dans tous les formats utiles pour l'écran et l'impression. Avec des variantes pour fonds clairs et foncés ainsi qu'une version monochrome.",
+            "Votre logo est partout : sur votre site, vos offres, votre véhicule et votre fiche Google. Il doit exprimer d'emblée ce que représente votre entreprise et rester lisible en petit format. Un logo généré en ligne en quelques clics y parvient rarement.",
+            "Nous commençons par un échange sur votre entreprise, vos valeurs et vos clients. Nous en tirons plusieurs pistes, que nous discutons et affinons avec vous. Vous recevez ensuite votre logo dans tous les formats utiles pour l'écran et l'impression, avec des variantes pour fonds clairs et foncés ainsi qu'une version monochrome.",
           ],
         },
         {
-          h2: "Identité visuelle: une image cohérente",
+          h2: "Identité visuelle : une image cohérente",
           paragraphs: [
             "Un logo seul ne fait pas une marque. C'est l'harmonie entre couleurs, typographies, images et mises en page qui crée une identité que l'on reconnaît. Une identité visuelle claire inspire confiance et donne une image professionnelle, un vrai atout pour une PME face à de plus grands acteurs.",
             "Nous définissons les règles graphiques et les réunissons dans une charte simple à utiliser. Votre image reste ainsi cohérente, que vos collaborateurs préparent une présentation ou qu'un imprimeur réalise un flyer. Chaque nouvel imprimé ou support publicitaire se crée plus vite, car les bases sont posées.",
@@ -153,30 +153,30 @@ export const branding: Service = {
         {
           h2: "Du branding au site internet",
           paragraphs: [
-            "Confier le branding et le site internet à la même agence a un grand avantage: tout s'accorde. Votre nouvelle identité visuelle s'intègre directement à votre site, à vos réseaux sociaux et à vos publicités, sans coordination fastidieuse entre plusieurs prestataires. Vous gagnez du temps et obtenez une image d'ensemble harmonieuse.",
-            "Création d'entreprise, changement d'image ou modernisation d'un logo existant: nous accompagnons des entreprises de la région bilingue et de toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
+            "Confier le branding et le site internet à la même agence a un grand avantage : tout s'accorde. Votre nouvelle identité visuelle s'intègre directement à votre site, à vos réseaux sociaux et à vos publicités, sans coordination fastidieuse entre plusieurs prestataires. Vous gagnez du temps et obtenez une image d'ensemble harmonieuse.",
+            "Création d'entreprise, changement d'image ou modernisation d'un logo existant : nous accompagnons des entreprises dans toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
           ],
         },
       ],
       faq: [
         {
-          q: "Comment se déroule la création d'un logo?",
+          q: "Comment se déroule la création d'un logo ?",
           a: "Après un entretien de briefing, nous élaborons de premières propositions. Nous les discutons avec vous et affinons la piste retenue jusqu'au résultat final.",
         },
         {
-          q: "Dans quels formats vais-je recevoir mon logo?",
+          q: "Dans quels formats vais-je recevoir mon logo ?",
           a: "Vous recevez votre logo en fichier vectoriel pour l'impression et en images pour le web et les réseaux sociaux, en couleur et en monochrome.",
         },
         {
-          q: "Pouvez-vous moderniser mon logo actuel?",
+          q: "Pouvez-vous moderniser mon logo actuel ?",
           a: "Oui. Il est souvent judicieux de rafraîchir un logo connu plutôt que de le remplacer entièrement. Vous conservez ainsi la reconnaissance acquise.",
         },
         {
-          q: "Une petite entreprise a-t-elle besoin d'une identité visuelle?",
+          q: "Une petite entreprise a-t-elle besoin d'une identité visuelle ?",
           a: "Un cadre simple et clair est utile dès les premiers pas. Il fait gagner du temps à chaque nouvel imprimé et renforce votre image professionnelle.",
         },
         {
-          q: "Combien coûte la création d'un logo?",
+          q: "Combien coûte la création d'un logo ?",
           a: "Cela dépend de l'ampleur du projet, d'un logo seul à une identité visuelle complète. Après un premier conseil gratuit, vous recevez une offre sans engagement.",
         },
       ],

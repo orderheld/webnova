@@ -199,7 +199,7 @@ export const webagenturUnterschied: Guide = {
         {
           h2: "Où se situe Webnova",
           paragraphs: [
-            "Webnova se définit comme une agence web pour les PME suisses. Concrètement : concept, design, réalisation technique, textes, bases SEO, aspects juridiques et suivi viennent d'une seule main, avec Ferhat Demir comme interlocuteur personnel. Nous travaillons en français et en allemand et accompagnons des entreprises dans toute la Suisse, sur place ou en visio.",
+            "Webnova se définit comme une agence web pour les PME suisses. Concrètement : concept, design, réalisation technique, textes, bases SEO, aspects juridiques et suivi sont réunis chez un seul prestataire, avec Ferhat Demir comme interlocuteur personnel. Nous travaillons en français et en allemand et accompagnons des entreprises dans toute la Suisse, sur place ou en visio.",
             "Nos prestations concrètes sont présentées sur les pages [Site internet pour PME](service:website-kmu), [Site d'entreprise](service:firmenwebsite) et [Création de site internet](service:webdesign). Pour savoir d'abord où en est votre site actuel, utilisez notre [analyse de site gratuite](page:website-check).",
           ],
         },

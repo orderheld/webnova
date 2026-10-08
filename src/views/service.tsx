@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { CardLink, CtaBand, CtaCard, FeatureGrid, HeroCtas, PageHero, Prose } from "@/components/blocks";
+import { Icon } from "@/components/icons";
 import { ServiceArt } from "@/components/service-art";
 import {
   BenefitsSection,
@@ -23,7 +25,7 @@ import type { Locale } from "@/content/types";
 import { serviceFaqTemplates, serviceSublines, structure, topUpFaq } from "@/content/structure";
 import { getDict } from "@/i18n/dict";
 import { serviceGroups } from "@/lib/nav";
-import { href, localId } from "@/lib/routes";
+import { hasRoute, href, localId } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -31,6 +33,7 @@ export function ServicesPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   // Same grouping as the mega menu; services added later appear automatically.
   const groups = serviceGroups(locale);
+  const checkHref = hasRoute("page:website-check") ? href(locale, "page:website-check") : undefined;
   return (
     <>
       <JsonLd
@@ -48,16 +51,36 @@ export function ServicesPage({ locale }: { locale: Locale }) {
       >
         <HeroCtas locale={locale} />
       </PageHero>
-      {groups.map((g, gi) => (
-        <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
-          <h2 className="eyebrow mb-6">{g.label}</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {g.items.map((it) => (
-              <CardLink key={it.href} href={it.href} icon={it.icon} title={it.label} text={it.text} />
-            ))}
-          </div>
-        </section>
-      ))}
+      {groups.map((g, gi) => {
+        // Services are the cards (four per row when they fill it); the free check is a slim row below them.
+        const cards = g.items.filter((it) => it.href !== checkHref);
+        const check = g.items.find((it) => it.href === checkHref);
+        return (
+          <section key={g.key} className={`container-x pb-20 ${gi === 0 ? "pt-16 md:pt-24" : ""}`}>
+            <h2 className="eyebrow mb-6">{g.label}</h2>
+            <div className={`grid gap-4 sm:grid-cols-2 ${cards.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+              {cards.map((it) => (
+                <CardLink key={it.href} href={it.href} icon={it.icon} title={it.label} text={it.text} />
+              ))}
+            </div>
+            {check && (
+              <Link
+                href={check.href}
+                className="group mt-4 flex items-center gap-4 rounded-2xl bg-bright-soft p-5 ring-1 ring-inset ring-line transition-colors hover:ring-accent/30 sm:px-6"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-accent">
+                  <Icon name={check.icon} className="h-5 w-5" />
+                </span>
+                <span className="flex-1">
+                  <span className="block font-display text-[17px] font-semibold transition-colors group-hover:text-accent">{check.label}</span>
+                  {check.text && <span className="mt-0.5 block text-[14.5px] leading-relaxed text-ink-soft">{check.text}</span>}
+                </span>
+                <Icon name="arrow" className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            )}
+          </section>
+        );
+      })}
       <FitSection locale={locale} />
       <NextSteps locale={locale} />
       <div className="pt-20 md:pt-28">
@@ -103,6 +126,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
   const serviceGuides = guides.filter((g) => g.related.includes(s.key)).slice(0, 3);
   const faq = topUpFaq(c.faq, serviceFaqTemplates(locale, c.navLabel, pos), 10);
   const benefits = c.benefits ?? (pos ? st.posBenefits : d.home.why);
+  const hasProcess = !pos || Boolean(c.process);
   return (
     <>
       <JsonLd data={breadcrumbLd(crumbs)} />
@@ -167,11 +191,12 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       <BenefitsSection locale={locale} items={benefits} title={c.benefitsTitle} />
 
 
-      {(!pos || c.process) && <ProcessSection locale={locale} steps={c.process} />}
+      {hasProcess && <ProcessSection locale={locale} steps={c.process} />}
 
       <FitSection locale={locale} fit={c.fit} pos={pos} />
 
-      <NextSteps locale={locale} />
+      {/* The three next steps repeat the process above; only shown where there is no process section. */}
+      {!hasProcess && <NextSteps locale={locale} />}
 
       <ContactSection locale={locale} />
 
@@ -186,8 +211,8 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       <FaqSection locale={locale} faq={faq} />
 
       {serviceGuides.length > 0 && (
-        <section className="container-x pb-20">
-          <h2 className="h-section mb-10">{locale === "de" ? "Passende Ratgeber" : "Conseils utiles"}</h2>
+        <section className="container-x pb-20 pt-20 md:pt-28">
+          <SectionHead eyebrow={d.nav.guides} title={locale === "de" ? "Passende Ratgeber" : "Conseils utiles"} />
           <div className="grid gap-4 md:grid-cols-3">
             {serviceGuides.map((g) => (
               <CardLink key={g.key} href={href(locale, `guide:${g.key}`)} meta={`${g.readingMinutes} ${d.common.minutes}`} title={g.content[locale].h1} text={g.content[locale].lead} />
@@ -197,7 +222,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
       )}
 
       <div className="border-t border-line">
-        <ServicesGrid locale={locale} current={url} title={d.common.related} />
+        <ServicesGrid locale={locale} current={url} title={d.common.related} compact />
       </div>
       <CtaBand locale={locale} />
     </>

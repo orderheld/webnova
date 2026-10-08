@@ -44,7 +44,7 @@ export const grenchen: City = {
           h2: "So arbeiten wir mit Ihnen in Grenchen",
           paragraphs: [
             "Am Anfang steht eine kostenlose Erstberatung, gerne bei Ihnen im Betrieb oder bei uns im Büro. Wir schauen uns Ihre bestehende Webseite an, besprechen Ziele und Zeitplan und erstellen danach eine unverbindliche Offerte. Während des Projekts sehen Sie Entwürfe früh, geben Feedback und wissen jederzeit, woran wir gerade arbeiten. Fragen klären wir am Telefon unter +41 32 543 80 96 oder direkt bei einem Kaffee.",
-            "Nach dem Launch bleiben wir erreichbar. Wir übernehmen auf Wunsch Wartung, Updates und Hosting, optimieren Ihre Sichtbarkeit bei Google und betreuen Werbekampagnen auf Google und Meta. Weil wir in Grenchen sitzen, können wir auch kurzfristig vorbeikommen, etwa für Fotos, eine Schulung im Content-Management oder die Einrichtung eines Kassensystems. Eine Agentur, die Sie kennen und die Sie kennt.",
+            "Nach dem Launch bleiben wir erreichbar. Wir übernehmen auf Wunsch Wartung, Updates und Hosting, optimieren Ihre Sichtbarkeit bei Google und betreuen Werbekampagnen auf Google und Meta. Weil wir in Grenchen sitzen, kommen wir auch gerne vorbei, etwa für Fotos, eine Schulung im Content-Management oder die Einrichtung eines Kassensystems. Eine Agentur, die Sie kennen und die Sie kennt.",
           ],
         },
         {
@@ -68,7 +68,7 @@ export const grenchen: City = {
         },
         {
           q: "Arbeiten Sie auch für kleine Betriebe in Grenchen?",
-          a: "Ja, viele unserer Projekte sind für KMU, Gewerbebetriebe und Einzelunternehmen. Wir passen den Umfang an Ihre Bedürfnisse an und erstellen nach dem Erstgespräch eine unverbindliche Offerte.",
+          a: "Ja. Wir arbeiten vor allem für KMU, Gewerbebetriebe und Einzelunternehmen. Wir passen den Umfang an Ihre Bedürfnisse an und erstellen nach dem Erstgespräch eine unverbindliche Offerte.",
         },
         {
           q: "Kann meine Webseite auch auf Französisch erscheinen?",
@@ -124,7 +124,7 @@ export const grenchen: City = {
           h2: "Notre façon de travailler avec vous",
           paragraphs: [
             "Tout commence par un premier conseil gratuit, dans votre entreprise ou dans notre bureau. Nous analysons votre site actuel, discutons de vos objectifs et du calendrier, puis vous remettons une offre sans engagement. Pendant le projet, vous voyez les maquettes tôt, vous donnez votre avis et vous savez toujours où nous en sommes. Nous répondons volontiers en français, par téléphone au +41 32 543 80 96.",
-            "Après la mise en ligne, nous restons à vos côtés. Sur demande, nous assurons la maintenance, les mises à jour et l'hébergement, nous améliorons votre visibilité sur Google et gérons vos campagnes Google et Meta. Comme nous sommes à Granges, nous pouvons passer rapidement pour des photos, une formation au système de gestion de contenu ou l'installation d'une caisse.",
+            "Après la mise en ligne, nous restons à vos côtés. Sur demande, nous assurons la maintenance, les mises à jour et l'hébergement, nous améliorons votre visibilité sur Google et gérons vos campagnes Google et Meta. Comme nous sommes à Granges, nous passons aussi volontiers chez vous pour des photos, une formation au système de gestion de contenu ou l'installation d'une caisse.",
           ],
         },
         {
@@ -152,7 +152,11 @@ export const grenchen: City = {
         },
         {
           q: "Travaillez-vous aussi pour de petites entreprises ?",
-          a: "Oui, une grande partie de nos projets concerne des PME, des artisans et des indépendants. Nous adaptons le périmètre à vos besoins et vous remettons une offre sans engagement après le premier entretien.",
+          a: "Oui. Nous travaillons surtout pour des PME, des artisans et des indépendants. Nous adaptons le périmètre à vos besoins et vous remettons une offre sans engagement après le premier entretien.",
+        },
+        {
+          q: "Combien de temps faut-il pour créer un site internet à Granges ?",
+          a: "Cela dépend de l'ampleur du projet et de la rapidité avec laquelle les textes et les images sont prêts. Vous recevez un calendrier réaliste avec l'offre, après le premier conseil gratuit.",
         },
         {
           q: "Puis-je passer chez Webnova à Granges ?",
@@ -181,7 +185,7 @@ export const grenchen: City = {
         {
           h2: "Warum lokale Suchmaschinenoptimierung in Grenchen zählt",
           paragraphs: [
-            "Wer in Grenchen einen Elektriker, ein Restaurant oder eine Physiotherapie sucht, tippt meist nur wenige Wörter in Google ein, oft mit dem Ortsnamen oder einfach „in der Nähe“. Angezeigt werden dann zuerst die Karte mit drei Einträgen und danach die organischen Treffer. Wer dort fehlt, wird kaum angeklickt. Lokale Suchmaschinenoptimierung sorgt dafür, dass Ihr Betrieb genau in diesen Momenten sichtbar ist.",
+            "Wer in Grenchen einen Elektriker, ein Restaurant oder eine Physiotherapie sucht, tippt meist nur wenige Wörter in Google ein, oft mit dem Ortsnamen oder einfach «in der Nähe». Angezeigt werden dann zuerst die Karte mit drei Einträgen und danach die organischen Treffer. Wer dort fehlt, wird kaum angeklickt. Lokale Suchmaschinenoptimierung sorgt dafür, dass Ihr Betrieb genau in diesen Momenten sichtbar ist.",
             "In einer Stadt wie Grenchen ist der Wettbewerb in vielen Branchen überschaubar. Das ist eine Chance: Mit einer sauber optimierten Webseite und einem gepflegten Google Unternehmensprofil lassen sich gute Positionen oft schneller erreichen als in grossen Städten. Gleichzeitig suchen viele Menschen aus den umliegenden Gemeinden wie Bettlach nach Angeboten in Grenchen. Auch diese Suchen wollen wir für Sie gewinnen.",
           ],
         },

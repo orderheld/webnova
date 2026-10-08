@@ -32,7 +32,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       benefitsTitle: "Was Sie bekommen",
       benefits: [
         { icon: "layout", title: "Design mit Wirkung", text: "Ein klarer, moderner Auftritt, der Vertrauen schafft und Ihre Stärken auf den Punkt bringt." },
-        { icon: "bolt", title: "Blitzschnell", text: "Moderne Technik für kurze Ladezeiten. Das mögen Besucher und Google gleichermassen." },
+        { icon: "bolt", title: "Schnell geladen", text: "Moderne Technik für kurze Ladezeiten. Das mögen Besucher und Google gleichermassen." },
         { icon: "search", title: "SEO inklusive", text: "Saubere Struktur, Meta-Daten und lokale Optimierung, damit Sie gefunden werden." },
         { icon: "users", title: "Ein Ansprechpartner", text: "Vom Erstgespräch bis nach dem Launch: persönlich, direkt und auf Deutsch oder Französisch." },
       ],
@@ -55,7 +55,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       benefitsTitle: "Ce que vous obtenez",
       benefits: [
         { icon: "layout", title: "Un design qui marque", text: "Une présence claire et moderne qui inspire confiance et met vos forces en valeur." },
-        { icon: "bolt", title: "Ultra rapide", text: "Une technologie moderne pour des temps de chargement courts, appréciés des visiteurs comme de Google." },
+        { icon: "bolt", title: "Chargement rapide", text: "Une technologie moderne pour des temps de chargement courts, appréciés des visiteurs comme de Google." },
         { icon: "search", title: "SEO compris", text: "Structure propre, métadonnées et optimisation locale pour être trouvé." },
         { icon: "users", title: "Un seul interlocuteur", text: "Du premier entretien à la mise en ligne et au-delà : personnel, direct, en français ou en allemand." },
       ],
@@ -71,7 +71,7 @@ const content: Record<string, Record<Locale, Lp>> = {
     de: {
       meta: {
         title: "Kassensystem für Gastro & Detailhandel",
-        description: "Modernes Kassensystem für Restaurant, Café, Bar und Laden. Einrichtung und Schulung vor Ort, Support aus der Region. Jetzt unverbindlich anfragen.",
+        description: "Modernes Kassensystem für Restaurant, Café, Bar und Laden. Einrichtung und Schulung vor Ort, persönlicher Support. Jetzt unverbindlich anfragen.",
       },
       eyebrow: "Kassensystem für Gastronomie und Detailhandel",
       h1: "Das Kassensystem, das einfach funktioniert.",
@@ -82,7 +82,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "terminal", title: "Intuitive Bedienung", text: "Touch-Kasse auf Tablet oder Terminal. Neue Mitarbeitende sind in kurzer Zeit startklar." },
         { icon: "utensils", title: "Für die Gastronomie", text: "Tischplan, Bestellungen direkt an Küche und Bar, getrennte Rechnungen." },
         { icon: "bag", title: "Für den Detailhandel", text: "Artikel- und Lagerverwaltung, Barcode-Scan, Belege und Tagesabschluss auf Knopfdruck." },
-        { icon: "users", title: "Support aus der Region", text: "Wir richten alles ein, schulen Ihr Team und sind erreichbar, wenn Sie uns brauchen." },
+        { icon: "users", title: "Persönlicher Support", text: "Wir richten alles ein, schulen Ihr Team und sind erreichbar, wenn Sie uns brauchen." },
       ],
       faq: [
         { q: "Für welche Betriebe eignet sich das Kassensystem?", a: "Für Restaurants, Cafés, Bars, Take-aways sowie Läden und Boutiquen. Wir stimmen die Einrichtung auf Ihren Betrieb ab." },
@@ -94,7 +94,7 @@ const content: Record<string, Record<Locale, Lp>> = {
     fr: {
       meta: {
         title: "Système de caisse restaurant & commerce",
-        description: "Système de caisse moderne pour restaurant, café, bar et magasin. Installation et formation sur place, support régional. Demande sans engagement.",
+        description: "Système de caisse moderne pour restaurant, café, bar et magasin. Installation et formation sur place, support personnel. Demande sans engagement.",
       },
       eyebrow: "Système de caisse pour la restauration et le commerce",
       h1: "Le système de caisse qui fonctionne, tout simplement.",
@@ -105,7 +105,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "terminal", title: "Utilisation intuitive", text: "Caisse tactile sur tablette ou terminal. Les nouveaux collaborateurs sont opérationnels rapidement." },
         { icon: "utensils", title: "Pour la restauration", text: "Plan de salle, commandes envoyées en cuisine et au bar, additions séparées." },
         { icon: "bag", title: "Pour le commerce", text: "Gestion des articles et du stock, scan des codes-barres, tickets et clôture journalière en un clic." },
-        { icon: "users", title: "Support régional", text: "Nous installons tout, formons votre équipe et restons joignables quand vous avez besoin de nous." },
+        { icon: "users", title: "Support personnel", text: "Nous installons tout, formons votre équipe et restons joignables quand vous avez besoin de nous." },
       ],
       faq: [
         { q: "Pour quels établissements ?", a: "Restaurants, cafés, bars, take-aways ainsi que magasins et boutiques. Nous adaptons la configuration à votre établissement." },

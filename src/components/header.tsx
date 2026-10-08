@@ -23,7 +23,7 @@ export interface NavGroup {
 export interface NavData {
   locale: Locale;
   home: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; bar?: "lg" | "xl" }[];
   serviceGroups: NavGroup[];
   servicesLabel: string;
   servicesHref: string;
@@ -63,6 +63,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
   const navRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   // Mobile action bar appears once the visitor has scrolled past the first screen.
   const [deep, setDeep] = useState(false);
@@ -86,6 +87,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
   }, []);
 
   // Fullscreen menu: lock the page, focus the close button, Escape closes and focus returns to "Menü".
+  // It is a modal dialog, so Tab and Shift+Tab cycle inside it instead of reaching the page behind.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     if (!open) return;
@@ -94,20 +96,42 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
       if (e.key === "Escape") {
         setOpenFor(null);
         menuButtonRef.current?.focus();
+        return;
+      }
+      const dialog = dialogRef.current;
+      if (e.key !== "Tab" || !dialog) return;
+      const items = [...dialog.querySelectorAll<HTMLElement>("a[href], button:not([disabled]), summary")].filter((el) => el.getClientRects().length > 0);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const inside = dialog.contains(document.activeElement);
+      if (e.shiftKey && (!inside || document.activeElement === first)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (!inside || document.activeElement === last)) {
+        e.preventDefault();
+        first.focus();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Close an open dropdown on a click outside the navigation.
+  // Close an open dropdown on a click outside the navigation, and with Escape also when it was opened by hover.
   useEffect(() => {
     if (!openMenu) return;
     const onDown = (e: PointerEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) closeMenu();
     };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
     document.addEventListener("pointerdown", onDown);
-    return () => document.removeEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
   }, [openMenu, closeMenu]);
 
   const menuProps = (key: MenuKey) => ({
@@ -210,13 +234,16 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
               </div>
             </Dropdown>
 
-            {nav.links.map((l, n) => (
+            {/* Only as many plain links as fit next to the three menus (1240px container): one from lg,
+                three from xl (see `bar` in buildNav). The others stay one click away in the "Ratgeber"
+                menu, the fullscreen menu and the footer. */}
+            {nav.links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 aria-current={pathname === l.href ? "page" : undefined}
                 className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
-                  n >= nav.links.length - 1 ? "hidden xl:block" : ""
+                  l.bar === "lg" ? "" : l.bar === "xl" ? "hidden xl:block" : "hidden"
                 } ${
                   pathname === l.href
                     ? dk
@@ -244,9 +271,11 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                   <Link
                     key={l}
                     href={switchHref}
+                    // Few visitors switch language: no prefetch of the other language's page on every page view.
+                    prefetch={false}
                     hrefLang={l}
                     lang={l}
-                    aria-label={l === "fr" ? "Français" : "Deutsch"}
+                    aria-label={l === "fr" ? "FR, Français" : "DE, Deutsch"}
                     className="rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-ink-soft transition-colors hover:text-accent"
                   >
                     {l}
@@ -254,9 +283,10 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                 ),
               )}
             </div>
+            {/* Phone only in the reduced landing-page header: next to the full navigation it no longer fits the 1240px container. */}
             <a
               href={nav.phone.href}
-              className={`${minimal ? "hidden sm:flex" : "hidden 2xl:flex"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
+              className={`${minimal ? "hidden sm:flex" : "hidden"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
             >
               <Icon name="phone" className="h-4 w-4 text-bright" />
               {nav.phone.label}
@@ -289,6 +319,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
       {/* Fullscreen menu with numbered entries. Outside the header: its backdrop-filter would make it the containing block. */}
       {open && !minimal && (
         <div
+          ref={dialogRef}
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
@@ -369,7 +400,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                 <a href={`mailto:${nav.email}`} className="py-1 hover:text-white">
                   {nav.email}
                 </a>
-                <Link href={switchHref} hrefLang={other} lang={other} className="py-1 font-medium uppercase tracking-[0.14em] text-white/60 hover:text-white">
+                <Link href={switchHref} prefetch={false} hrefLang={other} lang={other} className="py-1 font-medium uppercase tracking-[0.14em] text-white/60 hover:text-white">
                   {other === "fr" ? "Français" : "Deutsch"}
                 </Link>
               </div>

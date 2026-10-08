@@ -140,7 +140,7 @@ export const autogewerbe: Industry = {
         },
         {
           title: "Des prestations floues",
-          text: "Le garage fait-il la préparation à l'expertise, la climatisation ou les voitures électriques ? Si ce n'est pas écrit, le client va là où ça l'est.",
+          text: "Le garage fait-il la préparation à l'expertise, la climatisation ou les voitures électriques ? Si ce n'est pas indiqué, le client choisit un garage qui le précise.",
         },
         {
           title: "Peu de confiance au premier regard",
@@ -205,7 +205,7 @@ export const autogewerbe: Industry = {
         },
         {
           q: "Comment être trouvé sur Google pour les réparations ?",
-          a: "Avec une page par prestation, un profil d'établissement Google complet avec photos et des avis réguliers de clients satisfaits.",
+          a: "Avec une page par prestation, une fiche d'établissement Google complète avec photos et des avis réguliers de clients satisfaits.",
         },
       ],
       ctaTitle: "Rendez-vous structurés, atelier bien rempli",

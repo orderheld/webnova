@@ -192,7 +192,7 @@ export const geoKiSuche: Guide = {
         {
           h2: "Un plan réaliste pour les PME",
           paragraphs: [
-            "Commencez par un état des lieux : demandez à ChatGPT, Perplexity et Google votre prestation dans votre région et votre entreprise elle-même. Notez qui est cité, quelles informations apparaissent sur vous et quelles sources sont liées. Répétez plus tard ces questions avec les mêmes formulations pour repérer les changements.",
+            "Commencez par un état des lieux : interrogez ChatGPT, Perplexity et Google sur votre prestation dans votre région et sur votre entreprise elle-même. Notez qui est cité, quelles informations apparaissent sur vous et quelles sources sont liées. Répétez plus tard ces questions avec les mêmes formulations pour repérer les changements.",
             "Ensuite, nettoyez vos données d'entreprise, précisez l'accueil, les pages de prestations et la page « À propos » avec des faits clairs, ajoutez une FAQ et vérifiez technique et données structurées. Si vous souhaitez de l'aide, nous prenons ces étapes en charge dans notre prestation [Visibilité dans les recherches IA](service:ki-sichtbarkeit), combinée au [référencement local](service:local-seo) et au [SEO](service:seo).",
           ],
           bullets: [
@@ -215,7 +215,7 @@ export const geoKiSuche: Guide = {
         },
         {
           q: "Dois-je bloquer GPTBot dans le robots.txt ?",
-          a: "Cela dépend si vos contenus peuvent servir à entraîner des modèles de langage. Selon OpenAI, GPTBot sert à l'entraînement et OAI-SearchBot à la recherche. Bloquer seulement GPTBot n'exclut pas la recherche ChatGPT.",
+          a: "La question est de savoir si vos contenus peuvent servir à entraîner des modèles de langage. Selon OpenAI, GPTBot sert à l'entraînement et OAI-SearchBot à la recherche. Bloquer seulement GPTBot n'exclut pas la recherche ChatGPT.",
         },
         {
           q: "Les avis influencent-ils les réponses IA ?",

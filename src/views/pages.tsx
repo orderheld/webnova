@@ -87,8 +87,8 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
         </div>
       </PageHero>
       <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
-        {references.map((r) => (
-          <ReferenceCard key={r.key} r={r} locale={locale} large />
+        {references.map((r, i) => (
+          <ReferenceCard key={r.key} r={r} locale={locale} large priority={i < 2} />
         ))}
       </section>
       <CtaBand locale={locale} />
@@ -147,7 +147,7 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
             </div>
             <div className="relative aspect-[16/8]">
               {r.image ? (
-                <Image src={r.image} alt={`${r.name}: ${c.industry}`} fill priority sizes="(min-width: 1240px) 1180px, 100vw" className="object-cover object-top" />
+                <Image src={r.image} alt={`${r.name}: ${c.industry}`} fill loading="eager" fetchPriority="high" sizes="(min-width: 1240px) 1180px, 100vw" className="object-cover object-top" />
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center" style={{ background: r.colors.bg, color: r.colors.fg }}>
                   <span className="h-1 w-12 rounded-full" style={{ background: r.colors.accent }} />
@@ -240,9 +240,12 @@ export function ContactPage({ locale }: { locale: Locale }) {
           <ContactPerson locale={locale} />
           <TrustList locale={locale} className="mb-8 mt-6" />
           <ContactList locale={locale} hours />
-          <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-[14px]">
-            {d.pages.openInMaps} <Icon name="arrow" className="h-4 w-4 -rotate-45" />
-          </a>
+          {/* With a profile link the address in the list above already links to Google Maps. */}
+          {!site.google.maps && (
+            <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-[14px]">
+              {d.pages.openInMaps} <Icon name="arrow" className="h-4 w-4 -rotate-45" />
+            </a>
+          )}
           {site.google.review && (
             <ButtonLink href={site.google.review} variant="ghost" arrow={false} className="mt-6 w-full">
               {d.pages.reviewOnGoogle}
@@ -319,8 +322,8 @@ const nextSteps = {
     title: "La suite",
     steps: [
       { title: "Nous examinons vos informations", text: "Votre demande arrive directement chez Ferhat Demir, votre interlocuteur personnel." },
-      { title: "Réponse personnelle", text: "Nous vous répondons en un jour ouvrable, par le moyen que vous avez choisi." },
-      { title: "Premier entretien gratuit", text: "Nous clarifions objectifs et envergure. Vous recevez ensuite un devis transparent." },
+      { title: "Réponse personnelle", text: "Nous vous répondons sous un jour ouvrable, par le moyen que vous avez choisi." },
+      { title: "Premier entretien gratuit", text: "Nous clarifions vos objectifs et l'envergure du projet. Vous recevez ensuite un devis transparent." },
     ],
     meanwhile: "En attendant",
   },

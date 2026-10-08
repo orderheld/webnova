@@ -22,7 +22,9 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
+  // /de and /fr paths are left out: the proxy only let them through, and skipping it saves a proxy run
+  // before every page view. (Server Functions posted to these pages skip it too; it never checked them.)
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|icon|apple-icon|opengraph-image|sitemap.xml|robots.txt|manifest.webmanifest|og/|icons/|logo.png|.*\\.(?:png|jpg|jpeg|svg|webp|ico|txt|xml|pdf|webmanifest|woff2?)$).*)",
+    "/((?!(?:de|fr)(?:/|$)|api|_next/static|_next/image|favicon.ico|icon|apple-icon|opengraph-image|sitemap.xml|robots.txt|manifest.webmanifest|og/|icons/|logo.png|.*\\.(?:png|jpg|jpeg|svg|webp|ico|txt|xml|pdf|webmanifest|woff2?)$).*)",
   ],
 };

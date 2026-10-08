@@ -18,13 +18,13 @@ export const basel: City = {
       },
       h1: "Webdesign Basel: Webseiten für KMU in der Region Basel",
       lead:
-        "Webnova erstellt Webseiten, Onlineshops und Kampagnen für kleine und mittlere Unternehmen in Basel. Unser Büro liegt in Grenchen, wir arbeiten effizient remote und kommen für wichtige Termine nach Basel.",
+        "Webnova erstellt Webseiten, Onlineshops und Kampagnen für kleine und mittlere Unternehmen in Basel. Wir arbeiten effizient remote und kommen für wichtige Termine nach Basel.",
       sections: [
         {
           h2: "Basel: Life Sciences, Handel und starkes Gewerbe",
           paragraphs: [
             "Basel ist international vor allem als Standort der Pharma- und Life-Sciences-Industrie bekannt. Dazu kommen Messen, Logistik am Rhein, Kultur mit zahlreichen Museen und eine Lage im Dreiländereck mit Kundschaft aus der Schweiz, Deutschland und Frankreich. Neben den grossen Namen prägen aber vor allem viele KMU die Stadt: Zulieferer, Handwerker, Händler, Gastronomen und Dienstleister.",
-            "Genau für diese KMU arbeiten wir. Grosse Basler Agenturen sind oft auf Konzerne und umfangreiche Budgets ausgerichtet. Wenn Sie in Basel eine Webseite erstellen lassen möchten und eine persönliche Betreuung mit kurzen Wegen suchen, sind Sie bei uns richtig. Sie sprechen direkt mit den Personen, die Ihre Webseite planen, gestalten und umsetzen, ohne Zwischenstufen.",
+            "Genau für diese KMU arbeiten wir. Grosse Basler Agenturen sind oft auf Konzerne und umfangreiche Budgets ausgerichtet. Wenn Sie in Basel eine Webseite erstellen lassen möchten und eine persönliche Betreuung und direkte Wege suchen, sind Sie bei uns richtig. Sie sprechen direkt mit den Personen, die Ihre Webseite planen, gestalten und umsetzen, ohne Zwischenstufen.",
           ],
         },
         {
@@ -43,7 +43,7 @@ export const basel: City = {
         {
           h2: "Ehrlich und effizient: unsere Zusammenarbeit",
           paragraphs: [
-            "Wir sagen es offen: Unser Büro ist in Grenchen. Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, was für beide Seiten Zeit spart. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Basel. Sie haben eine feste Ansprechperson, die Ihr Projekt kennt und selbst umsetzt.",
+            "Die laufende Zusammenarbeit erledigen wir per Videocall, Telefon und E-Mail, was für beide Seiten Zeit spart. Für den Projektstart, Workshops oder Fotoaufnahmen kommen wir gerne nach Basel. Sie haben eine feste Ansprechperson, die Ihr Projekt kennt und selbst umsetzt.",
             "Jedes Projekt beginnt mit einer kostenlosen Erstberatung und einer unverbindlichen Offerte. Danach entsteht Ihre Webseite in klaren Etappen mit frühen Entwürfen. Nach dem Launch übernehmen wir auf Wunsch Wartung, Hosting, Suchmaschinenoptimierung und Werbekampagnen. Unser Fokus liegt auf Schweizer KMU, fairer Zusammenarbeit und messbaren Resultaten statt auf teurem Agentur-Overhead. Vereinbaren Sie jetzt Ihre kostenlose Erstberatung.",
           ],
         },
@@ -73,7 +73,7 @@ export const basel: City = {
       },
       h1: "Création de site internet à Bâle pour les PME",
       lead:
-        "Webnova crée des sites internet, des boutiques en ligne et des campagnes pour les petites et moyennes entreprises de Bâle. Notre bureau est à Granges, nous travaillons efficacement à distance et venons à Bâle pour les rendez-vous importants.",
+        "Webnova crée des sites internet, des boutiques en ligne et des campagnes pour les petites et moyennes entreprises de Bâle. Nous travaillons efficacement à distance et venons à Bâle pour les rendez-vous importants.",
       sections: [
         {
           h2: "Bâle : sciences de la vie, commerce et PME",
@@ -98,7 +98,7 @@ export const basel: City = {
         {
           h2: "Une collaboration franche et efficace",
           paragraphs: [
-            "Nous le disons clairement : notre bureau se trouve à Granges. Le suivi courant se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps aux deux parties. Pour le lancement, un atelier ou des photos, nous venons volontiers à Bâle. Vous avez un interlocuteur fixe qui connaît votre projet et le réalise lui-même.",
+            "Le suivi courant se fait par visioconférence, téléphone et e-mail, ce qui fait gagner du temps aux deux parties. Pour le lancement, un atelier ou des photos, nous venons volontiers à Bâle. Vous avez un interlocuteur fixe qui connaît votre projet et le réalise lui-même.",
             "Chaque projet commence par un premier conseil gratuit et une offre sans engagement. Votre site se construit ensuite par étapes, avec des maquettes présentées tôt. Après la mise en ligne, nous assurons sur demande la maintenance, l'hébergement, le référencement et vos campagnes. Notre priorité : les PME suisses, une collaboration loyale et des résultats mesurables.",
           ],
         },

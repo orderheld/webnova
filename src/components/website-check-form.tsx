@@ -39,11 +39,11 @@ const t = {
     notePh: "p. ex. peu de demandes, Google, mobile",
     send: "Faire analyser mon site",
     sending: "Envoi en cours …",
-    privacy: "En envoyant, vous acceptez la",
-    privacyLink: "politique de confidentialité",
+    privacy: "En envoyant ce formulaire, vous acceptez la",
+    privacyLink: "déclaration de protection des données",
     error: "L'envoi n'a pas fonctionné. Vérifiez vos données ou appelez-nous.",
     errUrl: "Veuillez indiquer l'adresse de votre site.",
-    points: ["Réponse en 1 jour ouvrable", "Personnel, pas de rapport automatique"],
+    points: ["Réponse sous 1 jour ouvrable", "Personnel, pas de rapport automatique"],
   },
 };
 
@@ -112,7 +112,8 @@ export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: 
             <label htmlFor="wc-email" className={lab}>
               {c.email}
             </label>
-            <input id="wc-email" name="email" type="email" required autoComplete="email" className={field} />
+            {/* pattern: the browser alone accepts "name@domain", the server does not; same rule as the lead form. */}
+            <input id="wc-email" name="email" type="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" autoComplete="email" className={field} />
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">

@@ -14,9 +14,9 @@ export const websiteRelaunchCheckliste: Guide = {
       meta: {
         title: "Website-Relaunch: Checkliste in 10 Schritten",
         description:
-          "Website-Relaunch ohne Ranking-Verlust: Unsere Checkliste in 10 Schritten: von der Analyse über 301-Weiterleitungen bis zur Kontrolle nach dem Go-live.",
+          "Website-Relaunch ohne Ranking-Verlust: Unsere Checkliste führt in 10 Schritten von der Analyse über 301-Weiterleitungen bis zur Kontrolle nach dem Go-live.",
       },
-      h1: "Website-Relaunch: Die Checkliste in 10 Schritten",
+      h1: "Website-Relaunch: die Checkliste in 10 Schritten",
       lead: "Ein Relaunch ist die Chance, Ihre Webseite moderner, schneller und wirkungsvoller zu machen. Ohne saubere Planung riskieren Sie jedoch, über Jahre aufgebaute Google-Rankings zu verlieren. Diese Checkliste führt Sie Schritt für Schritt durch das Projekt.",
       keyTakeaways: [
         "Legen Sie vor dem Relaunch zwei bis drei messbare Ziele fest und analysieren Sie, welche Seiten heute Besucher bringen.",
@@ -111,7 +111,7 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Nach dem Relaunch: dranbleiben",
           paragraphs: [
             "Ein Relaunch ist ein Startpunkt, kein Abschluss. Planen Sie nach dem Go-live regelmässige Updates, Backups und kleine Verbesserungen ein, etwa mit einem [Wartungsvertrag](service:wartung). Werten Sie nach einigen Wochen aus, welche Seiten gut funktionieren und wo Besucher abspringen, und bauen Sie die erfolgreichen Inhalte gezielt aus.",
-            "Gleichzeitig ist der Relaunch ein guter Anlass, die lokale Sichtbarkeit zu stärken: aktuelle Firmendaten im Google-Unternehmensprofil, neue Fotos und Seiten für Ihre wichtigsten Regionen. Wie das geht, erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu). Für Unternehmen in [Biel/Bienne](local:website-redesign:biel), [Solothurn](local:website-redesign:solothurn), [Bern](local:website-redesign:bern) und [Grenchen](local:website-redesign:grenchen) beraten wir Sie gerne persönlich.",
+            "Gleichzeitig ist der Relaunch ein guter Anlass, die lokale Sichtbarkeit zu stärken: aktuelle Firmendaten im Google-Unternehmensprofil, neue Fotos und Seiten für Ihre wichtigsten Regionen. Wie das geht, erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu). Unternehmen in [Biel/Bienne](local:website-redesign:biel), [Solothurn](local:website-redesign:solothurn), [Bern](local:website-redesign:bern) und [Grenchen](local:website-redesign:grenchen) beraten wir gerne persönlich.",
           ],
         },
       ],
@@ -158,7 +158,7 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Étapes 1 et 2 : fixer les objectifs et analyser l'existant",
           paragraphs: [
             "Tout commence par une question : pourquoi refaire votre site ? Souhaitez-vous davantage de demandes, un design actuel, un meilleur affichage sur smartphone ou une gestion plus simple ? Formulez deux ou trois objectifs mesurables. Ils serviront de référence pour toutes les décisions et éviteront de surcharger le projet avec des souhaits qui contribuent peu au résultat.",
-            "Analysez ensuite le site actuel. Quelles pages sont les plus visitées, par quels mots-clés les internautes arrivent-ils, où quittent-ils le site ? Les données de la Google Search Console et de votre outil de statistiques montrent ce qui fonctionne déjà. Ces points forts doivent absolument être préservés lors de la refonte.",
+            "Analysez ensuite le site actuel. Quelles pages sont les plus visitées, par quels mots-clés les internautes arrivent-ils, où quittent-ils le site ? Les données de la Google Search Console et de votre outil de statistiques montrent ce qui fonctionne déjà. Ces points forts doivent absolument être préservés lors de la refonte. Documentez les valeurs de départ pour pouvoir mesurer le succès ensuite.",
           ],
           bullets: [
             "Étape 1 : définir les objectifs et les publics cibles",
@@ -169,7 +169,7 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Étape 3 : recenser toutes les URL existantes",
           paragraphs: [
             "Avant de modifier quoi que ce soit, il vous faut une liste complète de toutes les URL existantes. Outre les pages classiques, elle comprend les articles de blog, les fichiers PDF, les images bien positionnées et les anciennes pages de campagne. Un outil d'exploration, le sitemap XML et la Search Console donnent ensemble une bonne vue d'ensemble. Notez pour chaque URL son importance en visites et en liens.",
-            "Cette liste est le document le plus important de toute la refonte. C'est sur elle que reposera le plan de redirections. Si une page importante y manque, son trafic aboutira sur une page d'erreur après la mise en ligne. Prenez donc le temps nécessaire pour cette étape, même si elle paraît peu spectaculaire.",
+            "Cette liste est le document le plus important de toute la refonte. C'est sur elle que reposera le plan de redirections. Si une page importante y manque, son trafic aboutira sur une page d'erreur après la mise en ligne. Prenez donc le temps nécessaire pour cette étape, même si elle paraît peu spectaculaire. C'est la meilleure assurance pour vos positions.",
           ],
         },
         {
@@ -187,7 +187,7 @@ export const websiteRelaunchCheckliste: Guide = {
           h2: "Étapes 6 et 7 : design, développement et environnement de test",
           paragraphs: [
             "Place au design et au développement. Veillez à une mise en page responsive, à des temps de chargement rapides, à une bonne accessibilité et à une hiérarchie de titres propre. Titres, méta-descriptions et textes alternatifs des images sont renseignés pour chaque page. Ces bases techniques ne sont pas un bonus : elles conditionnent la visibilité du nouveau site.",
-            "Développez le nouveau site sur un environnement de test protégé et bloqué pour les moteurs de recherche. Vous pouvez ainsi tester sereinement sans que Google indexe des pages inachevées. Contrôlez les formulaires, l'affichage sur différents appareils, la vitesse et le changement de langue. Juste avant la mise en ligne, ce blocage doit impérativement être levé.",
+            "Développez le nouveau site sur un environnement de test protégé et bloqué pour les moteurs de recherche. Vous pouvez ainsi tester sereinement sans que Google indexe des pages inachevées. Contrôlez les formulaires, l'affichage sur différents appareils, la vitesse et le changement de langue. Juste avant la mise en ligne, ce blocage doit impérativement être levé. Ce point est étonnamment souvent oublié en pratique.",
           ],
           bullets: [
             "Étape 6 : design et développement avec les bases du SEO",

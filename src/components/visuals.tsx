@@ -6,14 +6,41 @@ import type { Locale } from "@/content/types";
  * (rendered from our own HTML, never client work), and small UI cards. Server components, CSS only.
  */
 
-export type SampleKey = "hero" | "coiffeur" | "restaurant" | "schreinerei" | "treuhand";
+export type SampleKey =
+  | "hero"
+  | "coiffeur"
+  | "restaurant"
+  | "schreinerei"
+  | "treuhand"
+  | "fitness"
+  | "cafe"
+  | "praxis"
+  | "immobilien"
+  | "garage"
+  | "laden"
+  | "alt-restaurant"
+  | "alt-schreinerei";
 
-export const samples: Record<SampleKey, { name: string; url: string | Record<Locale, string>; industry: Record<Locale, string> }> = {
+/**
+ * One sample per industry, so no page shows a design from another branch. The "alt-" keys are the
+ * same fictional brands with a deliberately outdated website (the "Vorher" of a redesign); they have
+ * no mobile rendering.
+ */
+export const samples: Record<SampleKey, { name: string | Record<Locale, string>; url: string | Record<Locale, string>; industry: Record<Locale, string> }> = {
   hero: { name: "Ihre Firma", url: { de: "ihre-webseite.ch", fr: "votre-site.ch" }, industry: { de: "Unternehmen", fr: "Entreprise" } },
   coiffeur: { name: "Salon Mirelle", url: "salon-mirelle.ch", industry: { de: "Coiffeur", fr: "Coiffeur" } },
   restaurant: { name: "Trattoria Velluto", url: "trattoria-velluto.ch", industry: { de: "Restaurant", fr: "Restaurant" } },
   schreinerei: { name: "Kernholz", url: "kernholz-schreinerei.ch", industry: { de: "Schreinerei", fr: "Menuiserie" } },
   treuhand: { name: "Aurel Treuhand", url: "aurel-treuhand.ch", industry: { de: "Treuhand", fr: "Fiduciaire" } },
+  fitness: { name: "Studio Robur", url: "studio-robur.ch", industry: { de: "Fitnessstudio", fr: "Studio de fitness" } },
+  cafe: { name: "Mahlgut", url: "mahlgut.ch", industry: { de: "Bäckerei & Café", fr: "Boulangerie & café" } },
+  praxis: { name: "Physio Salvia", url: "physio-salvia.ch", industry: { de: "Physiotherapie", fr: "Physiothérapie" } },
+  immobilien: { name: { de: "Jolimont Immobilien", fr: "Jolimont Immobilier" }, url: "jolimont-immo.ch", industry: { de: "Immobilien", fr: "Immobilier" } },
+  garage: { name: { de: "Garage Felsenegg", fr: "Garage de la Dôle" }, url: { de: "garage-felsenegg.ch", fr: "garage-de-la-dole.ch" }, industry: { de: "Autogarage", fr: "Garage automobile" } },
+  laden: { name: "Atelier Halm", url: "atelier-halm.ch", industry: { de: "Laden & Onlineshop", fr: "Boutique & e-shop" } },
+  // Same brand and address bar as the new design, so the pair reads as one company before and after.
+  "alt-restaurant": { name: "Trattoria Velluto", url: "trattoria-velluto.ch", industry: { de: "Restaurant, alte Webseite", fr: "Restaurant, ancien site" } },
+  "alt-schreinerei": { name: "Kernholz", url: "kernholz-schreinerei.ch", industry: { de: "Schreinerei, alte Webseite", fr: "Menuiserie, ancien site" } },
 };
 
 const exampleLabel: Record<Locale, string> = { de: "Beispiel-Design", fr: "Exemple de design" };
@@ -30,7 +57,8 @@ export function sampleSrc(key: SampleKey, locale: Locale, mobile = false) {
 }
 
 export function sampleAlt(key: SampleKey, locale: Locale) {
-  return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${samples[key].name}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
+  const n = samples[key].name;
+  return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${typeof n === "string" ? n : n[locale]}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
 }
 
 /** Desktop browser window with a sample design inside. */
@@ -50,16 +78,17 @@ export function BrowserFrame({
   dark?: boolean;
 }) {
   return (
-    <div className={`overflow-hidden rounded-xl shadow-[0_40px_80px_-30px_rgb(10_22_34/0.55),0_0_0_1px_rgb(27_45_62/0.08)] ${dark ? "bg-night-2" : "bg-white"} ${className}`}>
+    // Container query: small frames (e.g. the before/after scene) drop the balancing spacer, so the address fits.
+    <div className={`@container overflow-hidden rounded-xl shadow-[0_40px_80px_-30px_rgb(10_22_34/0.55),0_0_0_1px_rgb(27_45_62/0.08)] ${dark ? "bg-night-2" : "bg-white"} ${className}`}>
       <div className={`flex h-7 items-center gap-1.5 px-3 sm:h-8 ${dark ? "bg-night-2" : "bg-[#eef2f6]"}`}>
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className="h-2 w-2 rounded-full bg-[#c9d3dd]" />
-        <span className={`mx-auto truncate rounded-md px-3 py-0.5 text-[10px] sm:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{sampleUrl(sample, locale)}</span>
-        <span className="w-6" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#c9d3dd]" />
+        <span className={`mx-auto truncate rounded-md px-2 py-0.5 text-[10px] @xs:px-3 @xs:text-[11px] ${dark ? "bg-white/10 text-white/60" : "bg-white text-muted"}`}>{sampleUrl(sample, locale)}</span>
+        <span className="hidden w-6 shrink-0 @xs:block" />
       </div>
       <div className="relative aspect-[16/10]">
-        <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+        <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
       </div>
     </div>
   );
@@ -76,7 +105,7 @@ export function PhoneFrame({ sample, locale, className = "", sizes = "220px", pr
       <span aria-hidden="true" className="absolute -right-[1.6%] top-[28%] h-[13%] w-[1.8%] rounded-r-sm bg-[#2a3540]" />
       <div className="relative rounded-[17%/8%] bg-[linear-gradient(145deg,#3a4652,#11181f_45%,#2a3540)] p-[3.2%] shadow-[0_40px_70px_-25px_rgb(10_22_34/0.6),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
         <div className="relative aspect-[9/19.5] overflow-hidden rounded-[14%/6.6%] bg-black">
-          <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+          <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
           <span aria-hidden="true" className="absolute left-1/2 top-[1.6%] h-[3.4%] w-[31%] -translate-x-1/2 rounded-full bg-black" />
         </div>
       </div>

@@ -6,7 +6,7 @@ export const zweisprachigeWebseite: Guide = {
   readingMinutes: 8,
   related: ["webdesign", "seo", "website-redesign"],
   relatedGuides: ["lokales-seo-kmu", "website-relaunch-checkliste", "geo-ki-suche"],
-  cities: ["biel", "grenchen", "solothurn", "bern"],
+  cities: ["biel", "solothurn", "bern", "grenchen"],
   content: {
     de: {
       slug: "zweisprachige-webseite-deutsch-franzoesisch",
@@ -51,7 +51,7 @@ export const zweisprachigeWebseite: Guide = {
         {
           h2: "hreflang und Canonical: technische Pflicht",
           paragraphs: [
-            "Mit hreflang-Angaben teilen Sie Google mit, welche Seiten inhaltlich zusammengehören und für welche Sprache und Region sie bestimmt sind, zum Beispiel de-CH und fr-CH. Ergänzt um x-default für Besucher ohne passende Sprache. Jede Seite verweist dabei auf sich selbst und auf ihre Gegenstücke. Fehlen diese Angaben, zeigt Google unter Umständen die falsche Sprachversion an.",
+            "Mit hreflang-Angaben teilen Sie Google mit, welche Seiten inhaltlich zusammengehören und für welche Sprache und Region sie bestimmt sind, zum Beispiel de-CH und fr-CH, ergänzt um x-default für Besucher ohne passende Sprache. Jede Seite verweist dabei auf sich selbst und auf ihre Gegenstücke. Fehlen diese Angaben, zeigt Google unter Umständen die falsche Sprachversion an.",
             "Jede Sprachversion braucht zudem ein Canonical auf sich selbst, nicht auf die deutsche Version. Auch Sitemap, Titel, Meta-Beschreibungen, Bild-Alternativtexte, strukturierte Daten und Vorschaubilder für WhatsApp oder LinkedIn sollten pro Sprache vorhanden sein. Bei Webnova ist das in jedem [Webdesign-Projekt](service:webdesign) Standard.",
           ],
         },
@@ -79,7 +79,7 @@ export const zweisprachigeWebseite: Guide = {
           h2: "Bestehende Webseite um Französisch erweitern",
           paragraphs: [
             "Haben Sie bereits eine deutschsprachige Webseite, lässt sich eine französische Version oft ergänzen, ohne alles neu zu bauen. Voraussetzung ist ein System, das mehrere Sprachen sauber verwaltet. Ist das nicht der Fall, ist die Erweiterung ein guter Anlass für ein [Website-Redesign](service:website-redesign). Beginnen Sie mit den wichtigsten Seiten: Startseite, Hauptleistungen, Kontakt und Rechtliches.",
-            "Wir setzen zweisprachige Webseiten seit Jahren um und arbeiten selbst auf Deutsch und Französisch. Unternehmen in [Biel/Bienne](city:biel), [Grenchen](city:grenchen), [Solothurn](city:solothurn), [Bern](city:bern) und in der ganzen Schweiz beraten wir gerne in einem kostenlosen Erstgespräch, in der Sprache Ihrer Wahl.",
+            "Wir setzen zweisprachige Webseiten um und arbeiten selbst auf Deutsch und Französisch. Unternehmen in [Biel/Bienne](city:biel), [Solothurn](city:solothurn), [Bern](city:bern), [Grenchen](city:grenchen) und in der ganzen Schweiz beraten wir gerne in einem kostenlosen Erstgespräch, in der Sprache Ihrer Wahl.",
           ],
         },
       ],
@@ -152,7 +152,7 @@ export const zweisprachigeWebseite: Guide = {
         {
           h2: "Traduire ou réécrire ?",
           paragraphs: [
-            "La traduction automatique est un bon point de départ, mais ne remplace pas une relecture. Les lecteurs remarquent vite si un texte a été écrit pour eux ou simplement transposé. En Suisse romande, on attend « septante » et « nonante », un « devis » plutôt qu'une « offre » et un ton poli. Côté alémanique, on demande une « Offerte » et on écrit en allemand de Suisse.",
+            "La traduction automatique est un bon point de départ, mais ne remplace pas une relecture. Les lecteurs remarquent vite si un texte a été écrit pour eux ou simplement transposé. En Suisse romande, on attend « septante » et « nonante » et un ton poli, plutôt formel. Côté alémanique, on demande une « Offerte » et on écrit en allemand de Suisse.",
             "Les mots-clés diffèrent aussi. Qui cherche « création site internet » en français tape plutôt « Webseite erstellen lassen » en allemand. Une courte recherche de mots-clés par langue montre les termes réellement utilisés par votre clientèle. Ils doivent figurer dans les titres, intertitres et textes de chaque version.",
           ],
           bullets: [
@@ -173,7 +173,7 @@ export const zweisprachigeWebseite: Guide = {
           h2: "Ajouter l'allemand à un site existant",
           paragraphs: [
             "Si vous avez déjà un site en français, une version allemande peut souvent être ajoutée sans tout reconstruire. Il faut pour cela un système qui gère proprement plusieurs langues. Si ce n'est pas le cas, c'est une bonne occasion pour une [refonte de site](service:website-redesign). Commencez par les pages essentielles : accueil, prestations principales, contact et mentions légales.",
-            "Nous réalisons des sites bilingues depuis des années et travaillons nous-mêmes en français et en allemand. Nous conseillons volontiers les entreprises de [Bienne](city:biel), [Granges](city:grenchen), [Soleure](city:solothurn), [Berne](city:bern) et de toute la Suisse lors d'un premier entretien gratuit, dans la langue de votre choix.",
+            "Nous réalisons des sites bilingues et travaillons nous-mêmes en français et en allemand. Nous conseillons volontiers les entreprises de [Bienne](city:biel), [Soleure](city:solothurn), [Berne](city:bern), [Granges](city:grenchen) et de toute la Suisse lors d'un premier entretien gratuit, dans la langue de votre choix.",
           ],
         },
       ],

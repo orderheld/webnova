@@ -9,11 +9,12 @@ import { BrowserFrame, PhoneFrame, type SampleKey } from "./visuals";
 
 export type ArtKind = "website" | "redesign" | "shop" | "seo" | "local" | "ai" | "ads" | "brand" | "care" | "pos";
 
-export const serviceArt: Record<string, { kind: ArtKind; sample?: SampleKey; variant?: "gastro" | "retail" }> = {
+export const serviceArt: Record<string, { kind: ArtKind; sample?: SampleKey; before?: SampleKey; variant?: "gastro" | "retail" }> = {
   webdesign: { kind: "website", sample: "hero" },
   "website-kmu": { kind: "website", sample: "hero" },
   firmenwebsite: { kind: "website", sample: "coiffeur" },
-  "website-redesign": { kind: "redesign", sample: "hero" },
+  // Before and after of the same fictional restaurant: a 2008-style site and its new design.
+  "website-redesign": { kind: "redesign", sample: "restaurant", before: "alt-restaurant" },
   onlineshop: { kind: "shop" },
   seo: { kind: "seo" },
   "local-seo": { kind: "local" },
@@ -110,15 +111,31 @@ export function ArtStage({ children, dark = false, className = "" }: { children:
   );
 }
 
-export function ServiceArt({ service, locale, dark = false, className = "aspect-[5/4]", city }: { service: string; locale: Locale; dark?: boolean; className?: string; city?: string }) {
+/** Scene of a service; `sample` swaps the design shown, e.g. so the home page never repeats its hero. */
+export function ServiceArt({
+  service,
+  locale,
+  sample,
+  dark = false,
+  className = "aspect-[5/4]",
+  city,
+}: {
+  service: string;
+  locale: Locale;
+  sample?: SampleKey;
+  dark?: boolean;
+  className?: string;
+  city?: string;
+}) {
   const a = serviceArt[service] ?? { kind: "website", sample: "treuhand" };
-  return <Art kind={a.kind} sample={a.sample} variant={a.variant} locale={locale} dark={dark} className={className} city={city} />;
+  return <Art kind={a.kind} sample={sample ?? a.sample} before={a.before} variant={a.variant} locale={locale} dark={dark} className={className} city={city} />;
 }
 
 export function Art({
   kind,
   locale,
   sample = "treuhand",
+  before,
   variant = "gastro",
   dark = false,
   className = "aspect-[5/4]",
@@ -127,6 +144,8 @@ export function Art({
   kind: ArtKind;
   locale: Locale;
   sample?: SampleKey;
+  /** Redesign scene: the outdated site shown as "Vorher"; without it a neutral wireframe. */
+  before?: SampleKey;
   variant?: "gastro" | "retail";
   dark?: boolean;
   className?: string;
@@ -146,7 +165,21 @@ export function Art({
         </>
       )}
 
-      {kind === "redesign" && (
+      {kind === "redesign" && before && (
+        <>
+          {/* Less overlap than the wireframe version, so the outdated site stays recognisable. */}
+          <div className="absolute left-[4%] top-[7%] w-[60%] -rotate-3">
+            <BrowserFrame sample={before} locale={locale} sizes="(min-width: 1024px) 340px, 60vw" />
+            <span className="absolute -top-3 left-4 rounded-full bg-night px-3 py-1 text-[11px] font-semibold text-white">{t.before}</span>
+          </div>
+          <div className="absolute bottom-[6%] right-[4%] w-[60%]">
+            <BrowserFrame sample={sample} locale={locale} sizes="(min-width: 1024px) 340px, 60vw" />
+            <span className="absolute -top-3 right-4 rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-accent shadow">{t.after}</span>
+          </div>
+        </>
+      )}
+
+      {kind === "redesign" && !before && (
         <>
           <div className="absolute left-[6%] top-[8%] w-[62%] -rotate-3 rounded-xl bg-[#e9eef3] p-3 opacity-80 shadow-lg">
             <div className="mb-3 flex gap-1.5">
@@ -332,7 +365,8 @@ export function Art({
       )}
 
       {kind === "care" && (
-        <div className={`absolute inset-[10%_9%] p-5 ${card}`}>
+        // Small cards (e.g. the three home goals) show three checks and no uptime bars, so nothing is cut off.
+        <div className={`@container absolute inset-[9%_8%] flex flex-col overflow-hidden p-4 @sm:p-5 ${card}`}>
           <div className="flex items-center justify-between">
             <p className="text-[12.5px] font-semibold">{t.careTitle}</p>
             <span className="flex items-center gap-1.5 rounded-full bg-bright-soft px-2.5 py-1 text-[11px] font-semibold text-accent">
@@ -340,17 +374,17 @@ export function Art({
               {t.online}
             </span>
           </div>
-          <ul className="mt-4 space-y-2.5">
-            {t.care.map((c) => (
-              <li key={c} className="flex items-center gap-3 rounded-xl bg-bg-2 px-3 py-2.5 text-[12.5px]">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-white">
+          <ul className="mt-3 space-y-2 @sm:mt-4 @sm:space-y-2.5">
+            {t.care.map((c, i) => (
+              <li key={c} className={`flex items-center gap-3 rounded-xl bg-bg-2 px-3 py-2 text-[12.5px] @sm:py-2.5 ${i > 2 ? "@max-sm:hidden" : ""}`}>
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent text-white">
                   <Check small />
                 </span>
                 {c}
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex gap-[3px]">
+          <div className="mt-auto flex gap-[3px] pt-4 @max-sm:hidden">
             {Array.from({ length: 30 }).map((_, i) => (
               <span key={i} className="h-5 flex-1 rounded-sm bg-accent/80" style={{ opacity: 0.45 + (i % 5) * 0.12 }} />
             ))}

@@ -22,7 +22,7 @@ export const praxis: Industry = {
         "Patientinnen und Patienten suchen Orientierung: Wer behandelt hier, was wird angeboten, wie komme ich zu einem Termin? Wir gestalten seriöse, ruhige Praxis-Webseiten, die diese Fragen beantworten und den Datenschutz ernst nehmen.",
       promises: [
         "Seriös und sachlich, wie es der Beruf verlangt",
-        "Datenschutz nach revDSG mitgedacht",
+        "Datenschutz nach nDSG mitgedacht",
         "Online-Termin über Ihr bestehendes Tool",
         "Barrierearm und gut lesbar für alle",
       ],
@@ -148,7 +148,7 @@ export const praxis: Industry = {
         },
         {
           title: "Les nouveaux patients ne vous trouvent pas",
-          text: "Qui cherche une physiothérapie ou un médecin de famille à proximité ne vous trouve pas, alors que vous avez encore de la disponibilité.",
+          text: "Qui cherche une physiothérapie ou un médecin de famille à proximité ne vous trouve pas, alors que vous avez encore des disponibilités.",
         },
       ],
       needsTitle: "Ce que doit faire le site d'un cabinet",
@@ -157,7 +157,7 @@ export const praxis: Industry = {
       needs: [
         {
           title: "Équipe et qualifications",
-          text: "Médecins, thérapeutes et équipe avec photo, spécialité et formation. Pour les thérapies, aussi les reconnaissances comme RME ou ASCA si existantes.",
+          text: "Médecins, thérapeutes et équipe avec photo, spécialité et formation. Pour les thérapies, aussi les reconnaissances comme RME ou ASCA, le cas échéant.",
         },
         {
           title: "Une offre claire",
@@ -213,7 +213,7 @@ export const praxis: Industry = {
         },
         {
           q: "Qui entretient le site si nous n'avons pas le temps ?",
-          a: "Les absences et les avis courts se modifient en quelques minutes par vous. Pour le reste, notre maintenance garde technique et sécurité à jour et effectue les modifications pour vous.",
+          a: "Vous modifiez vous-mêmes les absences et les courtes annonces en quelques minutes. Pour le reste, notre maintenance garde technique et sécurité à jour et effectue les modifications pour vous.",
         },
       ],
       ctaTitle: "Un site de cabinet qui soulage votre équipe",

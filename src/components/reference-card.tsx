@@ -10,11 +10,16 @@ const t = {
   fr: { visit: "Voir le projet" },
 };
 
-/** Showcase card for a client project: browser mock-up with screenshot (or brand panel) plus facts. */
-export function ReferenceCard({ r, locale, large = false }: { r: Reference; locale: Locale; large?: boolean }) {
+/**
+ * Showcase card for a client project: browser mock-up with screenshot (or brand panel) plus facts.
+ * `priority` is for cards in the first screen: the screenshot loads eagerly with high priority (it is the
+ * LCP image there) and the scroll reveal is skipped, which would otherwise keep the card half transparent
+ * until the visitor scrolls.
+ */
+export function ReferenceCard({ r, locale, large = false, priority = false }: { r: Reference; locale: Locale; large?: boolean; priority?: boolean }) {
   const c = r.content[locale];
   return (
-    <Link href={href(locale, `reference:${r.key}`)} className="card card-hover reveal group flex h-full flex-col overflow-hidden">
+    <Link href={href(locale, `reference:${r.key}`)} className={`card card-hover group flex h-full flex-col overflow-hidden ${priority ? "" : "reveal"}`}>
       <div className="relative overflow-hidden bg-bg-2 p-3 pb-0 sm:p-5 sm:pb-0">
         <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface transition-transform duration-700 group-hover:-translate-y-1">
           <div className="flex items-center gap-1.5 px-3.5 py-2.5">
@@ -30,6 +35,8 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
                 alt={`${r.name}, ${c.industry}`}
                 fill
                 sizes={large ? "(min-width: 1024px) 600px, 100vw" : "(min-width: 1024px) 400px, 100vw"}
+                loading={priority ? "eager" : undefined}
+                fetchPriority={priority ? "high" : undefined}
                 className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
               />
             ) : (

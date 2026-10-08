@@ -55,6 +55,7 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const d = getDict(lang);
+  const nav = buildNav(lang);
   return (
     <html lang={lang === "de" ? "de-CH" : "fr-CH"} className={`${inter.variable} ${interTight.variable}`}>
       <body className="flex min-h-screen flex-col">
@@ -63,11 +64,11 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-white focus:px-4 focus:py-2">
           {d.skip}
         </a>
-        <Header tone="light" nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" priority />} logoLight={<Logo tone="light" className="h-7 sm:h-8" priority />} />
+        <Header tone="light" nav={nav} logo={<Logo tone="dark" className="h-7 sm:h-8" priority />} logoLight={<Logo tone="light" className="h-7 sm:h-8" priority />} />
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer locale={lang} />
+        <Footer locale={lang} switchMap={nav.switchMap} />
       </body>
     </html>
   );

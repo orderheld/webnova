@@ -6,7 +6,7 @@ export const webagenturWaehlen: Guide = {
   readingMinutes: 9,
   related: ["webdesign", "website-redesign", "wartung"],
   relatedGuides: ["webagentur-unterschied", "webseite-kosten", "website-relaunch-checkliste"],
-  cities: ["grenchen", "biel", "solothurn", "bern"],
+  cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {
       slug: "webagentur-waehlen",
@@ -75,7 +75,7 @@ export const webagenturWaehlen: Guide = {
           h2: "Lokal oder schweizweit: was für KMU sinnvoll ist",
           paragraphs: [
             "Viele Unternehmen suchen bewusst eine Agentur in der Nähe, weil persönliche Treffen für Workshops, Fotos oder die Einführung ins Redaktionssystem einfacher sind. Gleichzeitig funktionieren die meisten Abstimmungen heute problemlos per Videocall. Entscheidend ist weniger die Postleitzahl als die Frage, ob die Agentur Ihren Markt versteht: Ihre Kundschaft, Ihre Sprachen und Ihre Konkurrenz.",
-            "Arbeiten Sie in einer zweisprachigen Region oder mit Kundschaft aus der Romandie, sollte die Agentur Deutsch und Französisch sicher beherrschen. Webnova betreut KMU in der ganzen Deutsch- und Westschweiz, mit persönlichen Terminen zum Beispiel in [Biel/Bienne](city:biel), [Solothurn](city:solothurn), [Bern](city:bern) und [Grenchen](city:grenchen). Gerne beantworten wir alle zwölf Fragen in einem kostenlosen Erstgespräch.",
+            "Arbeiten Sie in einer zweisprachigen Region oder mit Kundschaft aus der Romandie, sollte die Agentur Deutsch und Französisch sicher beherrschen. Webnova betreut KMU in der ganzen Schweiz, per Videocall oder mit persönlichen Terminen, zum Beispiel in [Biel/Bienne](city:biel), [Solothurn](city:solothurn), [Bern](city:bern) und [Grenchen](city:grenchen). Gerne beantworten wir alle zwölf Fragen in einem kostenlosen Erstgespräch.",
           ],
         },
       ],
@@ -126,7 +126,7 @@ export const webagenturWaehlen: Guide = {
           h2: "Propriété et indépendance : questions 1 à 3",
           paragraphs: [
             "Question 1 : au nom de qui le nom de domaine est-il enregistré ? Il doit toujours appartenir à votre entreprise, même si l'agence le gère techniquement. Question 2 : à qui appartiennent le code, le design et les contenus après la réception ? Faites préciser par écrit que vous pouvez poursuivre le site avec un autre prestataire.",
-            "Question 3 : un changement de prestataire est-il facile ? Demandez quel système est utilisé et si vous recevez vos propres accès à l'hébergement, au système de gestion de contenu et aux outils d'analyse. Les solutions propriétaires qui ne fonctionnent qu'avec une seule agence rendent tout changement coûteux.",
+            "Question 3 : un changement de prestataire est-il facile ? Demandez quel système est utilisé et si vous recevez vos propres accès à l'hébergement, au système de gestion de contenu et aux outils d'analyse. Les solutions propriétaires qui ne fonctionnent qu'avec une seule agence rendent tout changement coûteux. Une bonne agence vous fidélise par la qualité, pas par la dépendance technique.",
           ],
           bullets: [
             "Nom de domaine enregistré au nom de votre entreprise",
@@ -138,14 +138,14 @@ export const webagenturWaehlen: Guide = {
           h2: "Coûts et devis : questions 4 à 6",
           paragraphs: [
             "Question 4 : que comprend exactement le devis ? Nombre de pages, langues, textes, images, formulaires, bases SEO, formation et gestion de projet doivent apparaître séparément. C'est la seule façon de voir si deux offres sont réellement comparables. Notre article [Combien coûte un site internet ?](guide:webseite-kosten) détaille les facteurs qui influencent le prix.",
-            "Question 5 : quels sont les coûts récurrents ? Hébergement, domaine, licences, mises à jour et support s'ajoutent après la mise en ligne. Question 6 : comment les demandes de modification sont-elles facturées pendant le projet ? Un prestataire sérieux indique le nombre de tours de corrections inclus. Méfiez-vous des devis très bas qui omettent l'optimisation mobile ou la protection des données.",
+            "Question 5 : quels sont les coûts récurrents ? Hébergement, domaine, licences, mises à jour et support s'ajoutent après la mise en ligne. Question 6 : comment les demandes de modification sont-elles facturées pendant le projet ? Un prestataire sérieux indique le nombre de tours de corrections inclus et ce qui est facturé en plus. Méfiez-vous des devis très bas qui omettent l'optimisation mobile ou la protection des données.",
           ],
         },
         {
           h2: "Visibilité et qualité : questions 7 à 9",
           paragraphs: [
             "Question 7 : comment le référencement est-il intégré dès le départ ? Une structure claire, des URL parlantes, un titre et une description par page, des données structurées et des temps de chargement courts font partie de la construction, pas d'une option ultérieure. Lors d'une refonte, un plan de redirections est indispensable. Notre [checklist de refonte](guide:website-relaunch-checkliste) décrit chaque étape.",
-            "Question 8 : les projets existants sont-ils rapides et adaptés au mobile ? Testez vous-même deux ou trois références sur smartphone et avec PageSpeed Insights. Question 9 : les références sont-elles réelles et vérifiables ? Demandez des sites en ligne. Une promesse de « première place sur Google » est en revanche un signal d'alarme : personne ne peut garantir un classement.",
+            "Question 8 : les projets existants sont-ils rapides et adaptés au mobile ? Testez vous-même deux ou trois références sur smartphone et avec PageSpeed Insights. Question 9 : les références sont-elles réelles et vérifiables ? Demandez des sites en ligne et, si possible, une personne de contact. Une promesse de « première place sur Google » est en revanche un signal d'alarme : personne ne peut garantir un classement.",
           ],
           bullets: [
             "Bases SEO comprises dans le projet",
@@ -165,7 +165,7 @@ export const webagenturWaehlen: Guide = {
           h2: "Agence locale ou dans toute la Suisse ?",
           paragraphs: [
             "Beaucoup d'entreprises cherchent une agence proche, car les rencontres pour les ateliers, les photos ou la formation au CMS sont plus simples. La plupart des échanges se font toutefois très bien par visioconférence. Le plus important n'est pas le code postal, mais la compréhension de votre marché : votre clientèle, vos langues et votre concurrence.",
-            "Si vous travaillez dans une région bilingue ou avec une clientèle alémanique, l'agence doit maîtriser le français et l'allemand. Webnova accompagne des PME dans toute la Suisse romande et alémanique, avec des rendez-vous personnels par exemple à [Bienne](city:biel), [Soleure](city:solothurn), [Berne](city:bern) et [Granges](city:grenchen). Nous répondons volontiers à ces douze questions lors d'un premier entretien gratuit.",
+            "Si vous travaillez dans une région bilingue ou avec une clientèle alémanique, l'agence doit maîtriser le français et l'allemand. Webnova accompagne des PME dans toute la Suisse, en visioconférence ou lors de rendez-vous personnels, par exemple à [Bienne](city:biel), [Soleure](city:solothurn), [Berne](city:bern) et [Granges](city:grenchen). Nous répondons volontiers à ces douze questions lors d'un premier entretien gratuit.",
           ],
         },
       ],

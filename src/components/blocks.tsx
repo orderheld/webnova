@@ -334,7 +334,7 @@ export function CardLink({
 
 const ctaText = {
   de: { call: "Kostenloses Erstgespräch", note: "Kostenlos & unverbindlich · Antwort innert 1 Arbeitstag" },
-  fr: { call: "Premier entretien gratuit", note: "Gratuit et sans engagement · réponse en 1 jour ouvrable" },
+  fr: { call: "Premier entretien gratuit", note: "Gratuit et sans engagement · réponse sous 1 jour ouvrable" },
 };
 
 /** The one consistent pair of next steps: "Projekt anfragen" (form) and the free first call (phone). */

@@ -92,7 +92,7 @@ export const keineZeit: Problem = {
         },
         {
           q: "Kann ich trotzdem selbst Änderungen machen?",
-          a: "Natürlich. Viele Kundinnen und Kunden pflegen einfache Inhalte selbst und überlassen uns Technik, Sicherheit und grössere Anpassungen.",
+          a: "Natürlich. Einfache Inhalte können Sie selbst pflegen und uns Technik, Sicherheit und grössere Anpassungen überlassen.",
         },
       ],
       ctaTitle: "Geben Sie die Webseite in gute Hände",
@@ -116,7 +116,7 @@ export const keineZeit: Problem = {
         "Vous ne savez pas s'il existe une sauvegarde récente",
         "Les petites modifications traînent pendant des semaines",
         "Personne ne remarque quand le formulaire ne fonctionne plus",
-        "Le site a déjà été piraté ou hors ligne",
+        "Le site a déjà été piraté ou s'est retrouvé hors ligne",
       ],
       causesTitle: "Pourquoi les sites sont négligés",
       causes: [
@@ -182,10 +182,10 @@ export const keineZeit: Problem = {
         },
         {
           q: "Puis-je quand même faire des modifications moi-même ?",
-          a: "Bien sûr. Beaucoup de clients gèrent les contenus simples eux-mêmes et nous laissent la technique, la sécurité et les adaptations plus importantes.",
+          a: "Bien sûr. Vous pouvez gérer vous-même les contenus simples et nous laisser la technique, la sécurité et les adaptations plus importantes.",
         },
       ],
-      ctaTitle: "Confiez votre site à de bonnes mains",
+      ctaTitle: "Remettez votre site entre de bonnes mains",
       ctaText: "Dites-nous quel site vous avez et ce qui vous préoccupe. Nous revenons vers vous avec une proposition.",
     },
   },
