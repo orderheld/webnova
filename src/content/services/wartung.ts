@@ -15,7 +15,7 @@ export const wartung: Service = {
           "Website Wartung, Hosting und Betreuung aus einer Hand: Updates, Backups, Sicherheit und Support. Jetzt kostenlose Erstberatung anfragen.",
       },
       eyebrow: "Wartung & Hosting",
-      h1: "Website Wartung und Hosting",
+      h1: "Website-Wartung und Hosting",
       lead:
         "Updates, Backups, Sicherheit und schnelle Hilfe bei Fragen: Wir kümmern uns um Ihre Webseite, damit Sie sich auf Ihr Geschäft konzentrieren können.",
       features: [
@@ -71,7 +71,7 @@ export const wartung: Service = {
           h2: "Ein Ansprechpartner für alles",
           paragraphs: [
             "Statt sich zwischen Hosting-Anbieter, Programmierer und Grafiker hin- und herschicken zu lassen, haben Sie bei uns einen Ansprechpartner. Wir kennen Ihre Website und finden schnell eine Lösung, egal ob es um ein Update, eine neue Unterseite oder eine Frage zum Mailkonto geht.",
-            "Wir betreuen Kunden in der Region und in der ganzen Schweiz. Und wenn Ihre Webseite in die Jahre kommt, beraten wir Sie ehrlich, ob sich ein Redesign lohnt. Bis dahin sorgen wir dafür, dass sie sicher, schnell und aktuell bleibt.",
+            "Wir betreuen Kunden in der ganzen Schweiz. Und wenn Ihre Webseite in die Jahre kommt, beraten wir Sie ehrlich, ob sich ein Redesign lohnt. Bis dahin sorgen wir dafür, dass sie sicher, schnell und aktuell bleibt.",
           ],
         },
       ],
@@ -154,7 +154,7 @@ export const wartung: Service = {
             "Nous reprenons aussi volontiers des sites que nous n'avons pas réalisés. Nous commençons par un contrôle technique et vous indiquons si des mesures sont nécessaires. Vous décidez ensuite en toute tranquillité si vous souhaitez nous confier le suivi de votre site. Au besoin, nous reprenons aussi l'hébergement, le nom de domaine et les e-mails.",
           ],
           bullets: [
-            "Mises à jour du système, des extensions et composants",
+            "Mises à jour du système, des extensions et des composants",
             "Sauvegardes régulières et restauration en cas d'urgence",
             "Certificat SSL et surveillance de la sécurité",
             "Hébergement, nom de domaine et e-mails",
@@ -166,7 +166,7 @@ export const wartung: Service = {
           h2: "Un seul interlocuteur pour tout",
           paragraphs: [
             "Plutôt que de jongler entre hébergeur, développeur et graphiste, vous avez chez nous un interlocuteur unique. Nous connaissons votre site et trouvons rapidement une solution, qu'il s'agisse d'une mise à jour, d'une nouvelle page ou d'une question sur votre messagerie.",
-            "Nous accompagnons des clients dans la région et dans toute la Suisse. Et lorsque votre site prend de l'âge, nous vous disons franchement si une refonte vaut la peine. D'ici là, nous veillons à ce qu'il reste sûr, rapide et à jour.",
+            "Nous accompagnons des clients dans toute la Suisse. Et lorsque votre site prend de l'âge, nous vous disons franchement si une refonte vaut la peine. D'ici là, nous veillons à ce qu'il reste sûr, rapide et à jour.",
           ],
         },
       ],

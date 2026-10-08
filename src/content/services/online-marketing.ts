@@ -24,7 +24,7 @@ export const onlineMarketing: Service = {
           text: "Anzeigen erscheinen genau dann, wenn jemand nach Ihrer Leistung sucht. Ideal für schnelle Sichtbarkeit.",
         },
         {
-          title: "Social Media Werbung",
+          title: "Social-Media-Werbung",
           text: "Kampagnen auf Instagram, Facebook und weiteren Kanälen, gezielt nach Region, Interessen und Alter ausgerichtet.",
         },
         {
@@ -49,9 +49,9 @@ export const onlineMarketing: Service = {
           ],
         },
         {
-          h2: "Social Media Werbung mit klarer Zielgruppe",
+          h2: "Social-Media-Werbung mit klarer Zielgruppe",
           paragraphs: [
-            "Auf Instagram und Facebook erreichen Sie Menschen, bevor sie aktiv suchen. Das eignet sich für Produkte, Events, Neueröffnungen oder die Suche nach Fachkräften. Mit gezielter Social Media Werbung sprechen Sie Personen nach Region, Alter und Interessen an, zum Beispiel im Umkreis von Bern, Biel oder Solothurn.",
+            "Auf Instagram und Facebook erreichen Sie Menschen, bevor sie aktiv suchen. Das eignet sich für Produkte, Events, Neueröffnungen oder die Suche nach Fachkräften. Mit gezielter Social-Media-Werbung sprechen Sie Personen nach Region, Alter und Interessen an, zum Beispiel im Umkreis Ihres Standorts.",
             "Wir entwickeln Kampagnenidee, Texte und Bildkonzept, setzen die Anzeigen auf und werten die Resultate aus. So sehen Sie, welche Botschaft funktioniert, und wir verschieben das Budget dorthin, wo es am meisten bringt. Auch Werbung für Stellenausschreibungen setzen wir so um, dass sie die richtigen Fachkräfte in Ihrer Region erreicht.",
           ],
           bullets: [
@@ -140,7 +140,7 @@ export const onlineMarketing: Service = {
         {
           h2: "Réseaux sociaux : toucher le bon public",
           paragraphs: [
-            "Sur Instagram et Facebook, vous atteignez les gens avant même qu'ils ne cherchent. Parfait pour des produits, des événements, une ouverture ou un recrutement. Une publicité ciblée vous permet de vous adresser à des personnes selon leur région, leur âge et leurs intérêts, par exemple autour de Bienne, Neuchâtel ou Fribourg.",
+            "Sur Instagram et Facebook, vous atteignez les gens avant même qu'ils ne cherchent. Parfait pour des produits, des événements, une ouverture ou un recrutement. Une publicité ciblée vous permet de vous adresser à des personnes selon leur région, leur âge et leurs intérêts, par exemple dans les environs de votre entreprise.",
             "Nous élaborons l'idée de campagne, les textes et le concept visuel, mettons les annonces en ligne et analysons les résultats. Vous voyez ce qui fonctionne, et nous déplaçons le budget là où il rapporte le plus. Nous pouvons aussi diffuser vos offres d'emploi pour toucher les bons profils dans votre région.",
           ],
           bullets: [

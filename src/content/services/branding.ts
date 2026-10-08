@@ -36,7 +36,7 @@ export const branding: Service = {
           text: "Visitenkarten, Briefpapier, Flyer und Broschüren im Look Ihrer Marke, druckfertig aufbereitet.",
         },
         {
-          title: "Social Media Vorlagen",
+          title: "Social-Media-Vorlagen",
           text: "Vorlagen für Beiträge und Stories, mit denen Sie selbst konsistent und professionell posten.",
         },
       ],
@@ -64,7 +64,7 @@ export const branding: Service = {
         {
           h2: "Vom Branding bis zur Webseite",
           paragraphs: [
-            "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social Media Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
+            "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social-Media-Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
             "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in der ganzen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
           ],
         },
@@ -134,7 +134,7 @@ export const branding: Service = {
           h2: "Création de logo : soigner la première impression",
           paragraphs: [
             "Votre logo est partout : sur votre site, vos offres, votre véhicule et votre fiche Google. Il doit exprimer d'emblée ce que représente votre entreprise et rester lisible en petit format. Un logo généré en ligne en quelques clics y parvient rarement.",
-            "Nous commençons par un échange sur votre entreprise, vos valeurs et vos clients. Nous en tirons plusieurs pistes, que nous discutons et affinons avec vous. Vous recevez ensuite votre logo dans tous les formats utiles pour l'écran et l'impression. Avec des variantes pour fonds clairs et foncés ainsi qu'une version monochrome.",
+            "Nous commençons par un échange sur votre entreprise, vos valeurs et vos clients. Nous en tirons plusieurs pistes, que nous discutons et affinons avec vous. Vous recevez ensuite votre logo dans tous les formats utiles pour l'écran et l'impression, avec des variantes pour fonds clairs et foncés ainsi qu'une version monochrome.",
           ],
         },
         {
@@ -154,7 +154,7 @@ export const branding: Service = {
           h2: "Du branding au site internet",
           paragraphs: [
             "Confier le branding et le site internet à la même agence a un grand avantage : tout s'accorde. Votre nouvelle identité visuelle s'intègre directement à votre site, à vos réseaux sociaux et à vos publicités, sans coordination fastidieuse entre plusieurs prestataires. Vous gagnez du temps et obtenez une image d'ensemble harmonieuse.",
-            "Création d'entreprise, changement d'image ou modernisation d'un logo existant : nous accompagnons des entreprises de la région bilingue et de toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
+            "Création d'entreprise, changement d'image ou modernisation d'un logo existant : nous accompagnons des entreprises dans toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence. Nous prenons le temps de comprendre votre entreprise avant de créer.",
           ],
         },
       ],

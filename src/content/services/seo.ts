@@ -55,8 +55,8 @@ export const seo: Service = {
         {
           h2: "Lokales SEO: In Ihrer Region gefunden werden",
           paragraphs: [
-            "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie „Elektriker Solothurn“ oder „Coiffeur Biel“ zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
-            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Schweizer Agentur kennen wir den Markt und die Zweisprachigkeit des Marktes. Alle Details zu Profil, Verzeichnissen und Bewertungen finden Sie auf unserer Seite [Local SEO](service:local-seo).",
+            "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie «Elektriker Solothurn» oder «Coiffeur Biel» zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
+            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Dabei berücksichtigen wir, dass in der Schweiz oft auf Deutsch und auf Französisch gesucht wird. Alle Details zu Profil, Verzeichnissen und Bewertungen finden Sie auf unserer Seite [Local SEO](service:local-seo).",
           ],
           bullets: [
             "Google Unternehmensprofil einrichten und optimieren",
@@ -88,7 +88,7 @@ export const seo: Service = {
         },
         {
           q: "Bieten Sie SEO auch auf Französisch an?",
-          a: "Ja. Gerade in der Region Biel/Bienne lohnt es sich, in beiden Sprachen gefunden zu werden. Wir optimieren deutsch- und französischsprachige Inhalte.",
+          a: "Ja. Gerade in zweisprachigen Regionen wie Biel/Bienne oder Freiburg lohnt es sich, in beiden Sprachen gefunden zu werden. Wir optimieren deutsch- und französischsprachige Inhalte.",
         },
         {
           q: "Was kostet Suchmaschinenoptimierung?",
@@ -149,7 +149,7 @@ export const seo: Service = {
           h2: "SEO local : être visible dans votre région",
           paragraphs: [
             "Pour la plupart des PME, c'est la clientèle de proximité qui compte. Une recherche comme « électricien Neuchâtel » ou « coiffeur Bienne » affiche souvent une carte avec des entreprises locales. Y figurer apporte de nombreux appels et demandes. L'outil clé, c'est une fiche Google Business Profile bien tenue.",
-            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Tous les détails sur notre page [Référencement local](service:local-seo). Ancrés dans la région de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
+            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Nous tenons compte du fait qu'en Suisse, on cherche souvent en français et en allemand. Tous les détails sur notre page [Référencement local](service:local-seo).",
           ],
           bullets: [
             "Création et optimisation de votre fiche Google",
@@ -181,7 +181,7 @@ export const seo: Service = {
         },
         {
           q: "Travaillez-vous le référencement en français et en allemand ?",
-          a: "Oui. Dans une région bilingue comme Bienne, il est souvent utile d'être trouvé dans les deux langues. Nous optimisons vos contenus en français et en allemand.",
+          a: "Oui. Dans les régions bilingues comme Bienne ou Fribourg, il est souvent utile d'être trouvé dans les deux langues. Nous optimisons vos contenus en français et en allemand.",
         },
         {
           q: "Combien coûte le référencement ?",

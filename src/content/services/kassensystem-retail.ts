@@ -67,7 +67,7 @@ export const kassensystemRetail: Service = {
           ],
         },
         {
-          h2: "Einrichtung, Schulung und Support aus der Region",
+          h2: "Einrichtung, Schulung und persönlicher Support",
           paragraphs: [
             "Wir übernehmen die Einrichtung: Artikel importieren oder erfassen, Geräte wie Scanner, Belegdrucker und Kassenschublade installieren und das Zahlungsterminal einbinden. Danach schulen wir Sie und Ihr Team direkt im Laden, damit der Start reibungslos gelingt. Auf Wunsch begleiten wir Sie auch am ersten Verkaufstag.",
             "Für Installation und Schulung kommen wir persönlich zu Ihnen. Auch nach dem Start erreichen Sie uns direkt, wenn Fragen auftauchen oder Sie Ihr System erweitern möchten. Und wenn Ihr Geschäft wächst, wächst die Kasse mit: um weitere Kassenplätze, Geräte oder Filialen.",
@@ -143,7 +143,7 @@ export const kassensystemRetail: Service = {
           h2: "Une vision claire de votre magasin",
           paragraphs: [
             "Dans le commerce, tout est une question de vue d'ensemble. Quels articles se vendent bien, lesquels restent en rayon, que faut-il réapprovisionner ? Une caisse moderne répond à ces questions sans effort supplémentaire. Chaque vente met le stock à jour, et le soir vous voyez immédiatement comment s'est passée la journée.",
-            "À la caisse, ce qui compte, c'est la rapidité et la simplicité. Les articles sont saisis au code-barres ou sur l'écran tactile, remises et bons cadeaux se déduisent en quelques gestes. Même un nouveau collaborateur s'y retrouve après une courte formation.",
+            "À la caisse, ce qui compte, c'est la rapidité et la simplicité. Les articles sont saisis au code-barres ou sur l'écran tactile, remises et bons cadeaux se déduisent en quelques gestes. Même un nouveau collaborateur s'y retrouve après une courte formation. Un vrai soulagement le samedi et pendant les fêtes de fin d'année, quand tout doit aller vite à la caisse.",
           ],
         },
         {
@@ -161,7 +161,7 @@ export const kassensystemRetail: Service = {
           ],
         },
         {
-          h2: "Installation, formation et support de proximité",
+          h2: "Installation, formation et support personnalisé",
           paragraphs: [
             "Nous nous chargeons de la mise en place : import ou saisie des articles, installation du scanner, de l'imprimante de tickets et du tiroir-caisse, intégration du terminal de paiement. Nous formons ensuite votre équipe directement dans votre magasin pour un démarrage sans accroc.",
             "Pour l'installation et la formation, nous venons en personne chez vous. Après la mise en service, vous nous joignez directement pour toute question ou extension de votre système. Et si votre commerce se développe, la caisse suit : postes, appareils ou succursales supplémentaires s'ajoutent sans difficulté. Sur demande, nous vous accompagnons aussi lors de votre première journée de vente.",

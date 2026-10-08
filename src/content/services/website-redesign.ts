@@ -15,7 +15,7 @@ export const websiteRedesign: Service = {
           "Website Redesign oder Relaunch ohne Ranking-Verlust: modern, schnell und mobil. Jetzt kostenlose Erstberatung und unverbindliche Offerte anfragen.",
       },
       eyebrow: "Website-Redesign & Relaunch",
-      h1: "Website Redesign und Relaunch",
+      h1: "Website-Redesign und Relaunch",
       lead:
         "Ihre Homepage wirkt veraltet, lädt langsam oder ist auf dem Handy mühsam? Wir modernisieren Ihren Auftritt und behalten dabei bestehende Google-Rankings im Blick.",
       features: [
@@ -66,7 +66,7 @@ export const websiteRedesign: Service = {
           h2: "Unser Vorgehen beim Website-Redesign",
           paragraphs: [
             "Am Anfang steht ein Erstgespräch und eine Analyse Ihrer bestehenden Website. Daraus entwickeln wir ein Konzept: Welche Seiten braucht es, welche Inhalte sind stark, wo verlieren Besucher den Faden? Danach folgen Design, Umsetzung und Tests auf allen gängigen Geräten. Sie geben jeden wichtigen Schritt frei und behalten so jederzeit den Überblick über Ihr Projekt.",
-            "Nach dem Launch bleiben wir Ihr Ansprechpartner. Mit Wartung und regelmässigen Updates bleibt Ihre neue Webseite sicher und aktuell. Wir betreuen Kunden in der Region ebenso wie in der übrigen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder bequem per Video.",
+            "Nach dem Launch bleiben wir Ihr Ansprechpartner. Mit Wartung und regelmässigen Updates bleibt Ihre neue Webseite sicher und aktuell. Wir betreuen Kunden in der ganzen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder bequem per Video.",
           ],
         },
       ],
@@ -135,7 +135,7 @@ export const websiteRedesign: Service = {
           h2: "Quand une refonte devient nécessaire",
           paragraphs: [
             "Beaucoup de sites ont grandi au fil des ans : des pages ajoutées, des extensions installées, un design resté figé. Résultat : des temps de chargement trop longs, une navigation confuse et un affichage peu convaincant sur smartphone. Si les demandes se font rares ou si vous hésitez à donner l'adresse de votre site, il est temps d'agir.",
-            "Il y a aussi des raisons techniques : un système de gestion de contenu obsolète, des mises à jour de sécurité qui manquent ou une politique de confidentialité qui ne respecte pas la nouvelle loi sur la protection des données (nLPD). Une refonte sur une base moderne règle tout cela d'un coup.",
+            "Il y a aussi des raisons techniques : un système de gestion de contenu obsolète, des mises à jour de sécurité qui manquent ou une politique de confidentialité qui ne respecte pas la nouvelle loi sur la protection des données (nLPD). Une refonte sur une base moderne règle tout cela d'un coup. C'est aussi l'occasion d'affiner vos contenus et d'aligner le site sur vos objectifs actuels.",
           ],
           bullets: [
             "Le site est difficile à utiliser sur smartphone",
@@ -155,8 +155,8 @@ export const websiteRedesign: Service = {
         {
           h2: "Notre démarche, étape par étape",
           paragraphs: [
-            "Tout commence par un premier entretien et une analyse de votre site actuel. Nous en tirons un concept : quelles pages sont utiles, quels contenus sont forts, où les visiteurs décrochent-ils ? Suivent le design, le développement et des tests sur tous les appareils courants.",
-            "Après la mise en ligne, nous restons votre interlocuteur. Grâce à la maintenance et aux mises à jour régulières, votre site reste sûr et à jour. Nous accompagnons des clients dans la région bilingue et dans toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence.",
+            "Tout commence par un premier entretien et une analyse de votre site actuel. Nous en tirons un concept : quelles pages sont utiles, quels contenus sont forts, où les visiteurs décrochent-ils ? Suivent le design, le développement et des tests sur tous les appareils courants. Vous validez chaque étape importante et gardez ainsi une vue d'ensemble sur votre projet.",
+            "Après la mise en ligne, nous restons votre interlocuteur. Grâce à la maintenance et aux mises à jour régulières, votre site reste sûr et à jour. Nous accompagnons des clients dans toute la Suisse. Les rendez-vous ont lieu chez vous ou en visioconférence.",
           ],
         },
       ],

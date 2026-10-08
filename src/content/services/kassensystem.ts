@@ -17,7 +17,7 @@ export const kassensystem: Service = {
       eyebrow: "Kassensystem",
       h1: "Kassensystem für Gastronomie und Detailhandel",
       lead:
-        "Ein modernes POS-System, das sich einfach bedienen lässt und Ihren Alltag vereinfacht. Wir richten es bei Ihnen ein, schulen Ihr Team und bleiben erreichbar.",
+        "Ein modernes POS-System, das sich einfach bedienen lässt und Ihren Alltag erleichtert. Wir richten es bei Ihnen ein, schulen Ihr Team und bleiben erreichbar.",
       features: [
         {
           title: "Touch-Kasse",
@@ -69,7 +69,7 @@ export const kassensystem: Service = {
           ],
         },
         {
-          h2: "Persönlich eingerichtet, lokal betreut",
+          h2: "Persönlich eingerichtet und betreut",
           paragraphs: [
             "Ein neues Kassensystem einzuführen, bedeutet Umstellung. Darum lassen wir Sie damit nicht allein. Wir erfassen mit Ihnen Artikel und Preise, installieren Geräte und Drucker vor Ort und schulen Ihr Team, bis die Abläufe sitzen. Dafür kommen wir persönlich zu Ihnen in den Betrieb.",
             "Auch nach dem Start bleiben wir Ihr Ansprechpartner. Wenn Fragen auftauchen oder Sie Ihr System erweitern möchten, erreichen Sie uns direkt. Und wenn Sie auch online verkaufen, verbinden wir Kasse und Webseite oder Onlineshop zu einem stimmigen Ganzen. So arbeiten alle Teile Ihres Auftritts zusammen.",
@@ -165,9 +165,9 @@ export const kassensystem: Service = {
           ],
         },
         {
-          h2: "Installation personnalisée, support de proximité",
+          h2: "Installation et suivi personnalisés",
           paragraphs: [
-            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Nous sommes rapidement chez vous à Bienne et dans la région.",
+            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Pour cela, nous venons en personne dans votre établissement.",
             "Après le démarrage, nous restons votre interlocuteur. Une question, un besoin d'extension : vous nous joignez directement. Et si vous vendez aussi en ligne, nous relions caisse et site internet ou boutique en ligne pour un ensemble cohérent. Toute votre présence fonctionne ainsi d'un seul tenant.",
           ],
         },

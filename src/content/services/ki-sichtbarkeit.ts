@@ -290,7 +290,7 @@ export const kiSichtbarkeit: Service = {
         },
         {
           title: "Technique et données structurées",
-          text: "Indexation, robots.txt, vitesse, structure HTML propre et données structurées sont vérifiées et complétées.",
+          text: "Indexation, robots.txt, vitesse, structure HTML propre et données structurées sont vérifiés et complétés.",
         },
         {
           title: "Fiches et mentions",
@@ -377,7 +377,7 @@ export const kiSichtbarkeit: Service = {
         },
         {
           q: "Dois-je bloquer les robots IA dans le robots.txt ?",
-          a: "C'est une pesée d'intérêts. Bloquer un robot de recherche empêche d'apparaître comme source dans la recherche IA correspondante. Chez certains fournisseurs, robots de recherche et d'entraînement se règlent séparément. Nous vous expliquons les options.",
+          a: "C'est une pesée d'intérêts. Bloquer un robot de recherche empêche d'apparaître comme source dans la recherche IA correspondante. Chez certains fournisseurs, robots de recherche et d'entraînement se règlent séparément. Nous vous expliquons les options et appliquons votre choix.",
         },
         {
           q: "Les données structurées aident-elles pour les recherches IA ?",

@@ -17,7 +17,7 @@ export const webdesign: Service = {
       eyebrow: "Webdesign & Website-Erstellung",
       h1: "Website erstellen lassen",
       lead:
-        "Wir gestalten und entwickeln Webseiten, die schnell laden, auf jedem Gerät gut aussehen und bei Google gefunden werden. Für KMU in der ganzen Schweiz.",
+        "Wir gestalten und entwickeln Websites, die schnell laden, auf jedem Gerät gut aussehen und bei Google gefunden werden. Für KMU in der ganzen Schweiz.",
       features: [
         {
           title: "Individuelles Design",
@@ -49,7 +49,7 @@ export const webdesign: Service = {
           h2: "Webseite erstellen lassen: Ihr digitales Aushängeschild",
           paragraphs: [
             "Ihre Webseite ist oft der erste Kontakt mit neuen Kunden. In wenigen Sekunden entscheidet sich, ob jemand bleibt oder zurück zu Google geht. Darum verbinden wir ein klares, modernes Design mit verständlichen Texten und einer Navigation, die ohne Umwege zum Ziel führt: zur Anfrage, zum Anruf oder zum Kauf.",
-            "Als Webdesign-Agentur arbeiten wir für Unternehmen in der Region und in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann.",
+            "Als Webdesign-Agentur arbeiten wir für Unternehmen in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann.",
           ],
         },
         {
@@ -112,7 +112,7 @@ export const webdesign: Service = {
       eyebrow: "Webdesign & création de sites",
       h1: "Création de site internet sur mesure",
       lead:
-        "Nous concevons des sites rapides, élégants sur tous les écrans et faciles à trouver sur Google. Pour les PME de Bienne, de la région et de toute la Suisse romande.",
+        "Nous concevons des sites rapides, élégants sur tous les écrans et faciles à trouver sur Google. Pour les PME de toute la Suisse.",
       features: [
         {
           title: "Un design qui vous ressemble",
@@ -144,7 +144,7 @@ export const webdesign: Service = {
           h2: "Votre site internet, votre meilleure vitrine",
           paragraphs: [
             "Pour beaucoup de clients, votre site est le premier contact avec votre entreprise. Quelques secondes suffisent pour convaincre ou pour perdre un visiteur. C'est pourquoi nous associons un design moderne à des textes clairs et à une navigation simple, qui mène directement à l'essentiel : une demande, un appel ou un achat.",
-            "Notre agence accompagne des entreprises de toute la région bilingue et partout en Suisse. Artisans, cabinets, prestataires de services ou associations : nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
+            "Notre agence accompagne des entreprises dans toute la Suisse. Artisans, cabinets, prestataires de services ou associations : nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
           ],
         },
         {

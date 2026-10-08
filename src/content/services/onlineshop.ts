@@ -135,7 +135,7 @@ export const onlineshop: Service = {
           h2: "Une boutique en ligne taillée pour la Suisse",
           paragraphs: [
             "Une boutique en ligne, ce n'est pas seulement un catalogue avec un panier. Elle doit inspirer confiance, répondre aux questions et rendre l'achat aussi simple que possible. Nous la concevons donc du point de vue de vos clients : comment trouvent-ils le bon produit, de quoi ont-ils besoin pour se décider, et comment arrivent-ils au paiement sans obstacle ?",
-            "Nous créons des boutiques pour des commerçants, producteurs, artisans et prestataires dans toute la Suisse, de Bienne à Genève. Quelques produits phares ou un large assortiment : la solution s'adapte à votre activité, et non l'inverse. Nous vous conseillons franchement sur la solution qui convient à votre assortiment et à vos projets.",
+            "Nous créons des boutiques pour des commerçants, producteurs, artisans et prestataires dans toute la Suisse. Quelques produits phares ou un large assortiment : la solution s'adapte à votre activité, et non l'inverse. Nous vous conseillons franchement sur la solution qui convient à votre assortiment et à vos projets.",
           ],
         },
         {
@@ -155,7 +155,7 @@ export const onlineshop: Service = {
         {
           h2: "Être trouvé et se développer",
           paragraphs: [
-            "La plus belle boutique ne sert à rien si personne ne la trouve. Dès le développement, nous posons les bases du référencement : chargement rapide, fiches produits soignées, données structurées et adresses lisibles. Vos produits ont ainsi toutes les chances d'apparaître sur Google.",
+            "La plus belle boutique ne sert à rien si personne ne la trouve. Dès le développement, nous posons les bases du référencement : chargement rapide, fiches produits soignées, données structurées et adresses lisibles. Vos produits ont ainsi toutes les chances d'apparaître sur Google. Nous planifions aussi les pages de catégories et les filtres pour que les moteurs de recherche les comprennent bien.",
             "Pour gagner en visibilité, nous vous accompagnons aussi en référencement et en marketing digital, par exemple avec Google Ads ou des campagnes sur les réseaux sociaux. Après le lancement, nous restons à vos côtés pour la maintenance et les évolutions.",
           ],
         },

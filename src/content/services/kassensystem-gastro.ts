@@ -143,14 +143,14 @@ export const kassensystemGastro: Service = {
           h2: "Un service plus fluide",
           paragraphs: [
             "En restauration, chaque minute compte. Quand la salle est pleine, la caisse doit suivre : prendre la commande, la transmettre en cuisine et au bar, préparer l'addition, encaisser. Une caisse moderne pour restaurant épargne de nombreux déplacements à votre équipe et limite les erreurs, car les commandes arrivent claires et lisibles.",
-            "Grâce au plan de salle numérique, votre personnel voit immédiatement quelles tables sont occupées, ce qui a été commandé et quelles additions restent ouvertes. Si vous le souhaitez, la commande se prend directement à table sur tablette. Il reste ainsi plus de temps pour vos clients.",
+            "Grâce au plan de salle numérique, votre personnel voit immédiatement quelles tables sont occupées, ce qui a été commandé et quelles additions restent ouvertes. Si vous le souhaitez, la commande se prend directement à table sur tablette. Il reste ainsi plus de temps pour vos clients. Et en fin de soirée, la clôture de caisse se fait en quelques minutes.",
           ],
         },
         {
           h2: "Une solution pour chaque établissement",
           paragraphs: [
             "Un restaurant avec terrasse n'a pas les mêmes besoins qu'un bar ou un café avec vente à l'emporter. Nous composons donc la caisse selon votre établissement : nombre de postes et de tablettes, imprimantes cuisine et bar, terminal de paiement et fonctions comme menus, suppléments ou happy hour.",
-            "Les établissements à plusieurs sites ou à activité saisonnière y trouvent aussi leur compte. Vous modifiez la carte et les prix de manière centralisée, et les rapports montrent quels plats et boissons se vendent le mieux. De quoi mieux planifier achats, personnel et offre.",
+            "Les établissements à plusieurs sites ou à activité saisonnière y trouvent aussi leur compte. Vous modifiez la carte et les prix de manière centralisée, et les rapports montrent quels plats et boissons se vendent le mieux. De quoi mieux planifier achats, personnel et offre. Au besoin, nous ajoutons des caisses ou des tablettes.",
           ],
           bullets: [
             "Restaurants, brasseries et hôtels avec restauration",
@@ -164,7 +164,7 @@ export const kassensystemGastro: Service = {
           h2: "Installation et formation sur place",
           paragraphs: [
             "Nous ne configurons pas votre caisse à distance avant de disparaître. Ensemble, nous saisissons votre carte, vos prix et vos tables. Nous installons ensuite caisse, imprimantes et terminal chez vous et formons votre équipe, idéalement avant un service calme. Nous restons sur place le temps qu'il faut pour que chacun se sente à l'aise.",
-            "Nous sommes rapidement sur place à Bienne et dans la région, et vous nous joignez directement après la mise en service. Besoin aussi d'un nouveau site pour votre restaurant ? Nous le créons volontiers dans le même esprit. Pour une image cohérente, de la salle jusqu'à internet.",
+            "Pour l'installation et la formation, nous venons chez vous, et après la mise en service, vous nous joignez directement. Besoin aussi d'un nouveau site pour votre restaurant ? Nous le créons volontiers dans le même esprit, pour une image cohérente, de la salle jusqu'à internet.",
           ],
         },
       ],

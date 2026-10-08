@@ -210,7 +210,7 @@ export const firmenwebsite: Service = {
       meta: {
         title: "Faire créer le site de son entreprise en Suisse",
         description:
-          "Faire créer le site de votre entreprise : concept, design, textes, technique, aspects juridiques et SEO d'une seule main, en français et en allemand.",
+          "Faire créer le site de votre entreprise : concept, design, textes, technique, aspects juridiques et SEO réunis chez nous, en français et en allemand.",
       },
       eyebrow: "Site d'entreprise",
       h1: "Faire créer le site de votre entreprise : du concept à la mise en ligne",
@@ -306,7 +306,7 @@ export const firmenwebsite: Service = {
         yes: [
           "Vous voulez un premier site professionnel ou renouveler en profondeur votre site actuel.",
           "Il vous importe que domaine, contenus et accès soient au nom de votre entreprise.",
-          "Vous souhaitez concept, design, textes, technique et SEO d'une seule main, avec un interlocuteur fixe.",
+          "Vous souhaitez concept, design, textes, technique et SEO chez un seul prestataire, avec un interlocuteur fixe.",
           "Votre entreprise est active en Suisse romande, en Suisse alémanique ou dans les deux régions.",
         ],
         no: [
@@ -395,7 +395,7 @@ export const firmenwebsite: Service = {
         },
         {
           q: "Quelle différence entre agence web, agence de création de sites et agence de webdesign ?",
-          a: "Ces termes sont souvent utilisés comme synonymes. Ce qui compte, c'est ce que l'agence couvre concrètement : concept, design, technique, textes, SEO et suivi. Chez nous, tout cela vient d'une seule main.",
+          a: "Ces termes sont souvent utilisés comme synonymes. Ce qui compte, c'est ce que l'agence couvre concrètement : concept, design, technique, textes, SEO et suivi. Chez nous, vous obtenez tout cela auprès d'un seul prestataire.",
         },
       ],
       ctaTitle: "Planifier le site de votre entreprise ?",

@@ -282,7 +282,7 @@ export const websiteKmu: Service = {
         },
         {
           title: "Un seul interlocuteur",
-          text: "Concept, design, technique, SEO et suivi viennent d'une seule main. Vous n'avez pas à coordonner graphiste, développeur et hébergeur.",
+          text: "Concept, design, technique, SEO et suivi sont réunis chez un seul prestataire. Vous n'avez pas à coordonner graphiste, développeur et hébergeur.",
         },
       ],
       process: [
@@ -362,7 +362,7 @@ export const websiteKmu: Service = {
         {
           h2: "Nouveau site ou refonte ?",
           paragraphs: [
-            "Vous avez déjà un site et doutez qu'une refonte en vaille la peine ? Commencez par notre [analyse de site gratuite](page:website-check). Nous examinons votre site et vous disons franchement si une amélioration suffit ou si une [refonte](service:website-redesign) est plus judicieuse.",
+            "Vous avez déjà un site et doutez qu'un nouveau site en vaille la peine ? Commencez par notre [analyse de site gratuite](page:website-check). Nous examinons votre site et vous disons franchement si une amélioration suffit ou si une [refonte](service:website-redesign) est plus judicieuse.",
           ],
         },
       ],
@@ -410,7 +410,7 @@ export const websiteKmu: Service = {
       ],
       ctaTitle: "Parlons de votre site de PME",
       ctaText:
-        "Présentez-nous brièvement votre entreprise. Nous vous répondons en un jour ouvrable pour un premier entretien gratuit.",
+        "Présentez-nous brièvement votre entreprise. Nous vous répondons dans un délai d'un jour ouvrable pour un premier entretien gratuit.",
     },
   },
 };
