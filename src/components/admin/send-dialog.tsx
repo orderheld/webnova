@@ -2,20 +2,25 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Icon } from "@/components/icons";
 import { sendDocumentAction } from "@/lib/admin/actions";
-import { Field, btn } from "./ui";
+import type { PdfKind } from "@/lib/admin/pdf";
+import { Icon } from "./icons";
+import { Field, btn, btnSm } from "./ui";
 
 export function SendDialog({
   kind,
   id,
   draft,
   sentAt,
+  label,
+  small = false,
 }: {
-  kind: "quote" | "invoice";
+  kind: PdfKind;
   id: number;
   draft: { to: string; subject: string; text: string };
   sentAt: string | null;
+  label?: string;
+  small?: boolean;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -36,18 +41,18 @@ export function SendDialog({
 
   return (
     <>
-      <button type="button" onClick={() => (setOpen(true), setDone(false))} className={btn.accent}>
-        <Icon name="send" className="h-4 w-4" /> {sentAt ? "Erneut senden" : "Per E-Mail senden"}
+      <button type="button" onClick={() => (setOpen(true), setDone(false))} className={small ? btnSm.ghost : btn.accent}>
+        <Icon name="send" className="h-4 w-4" /> {label ?? (sentAt ? "Erneut senden" : "Per E-Mail senden")}
       </button>
       {open && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-ink/40 p-4 backdrop-blur-sm" onClick={() => setOpen(false)}>
           <form
             action={submit}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-xl space-y-4 rounded-[24px] bg-surface p-6 shadow-2xl"
+            className="max-h-[92vh] w-full max-w-xl space-y-4 overflow-y-auto rounded-2xl bg-surface p-5 shadow-2xl"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-[20px] font-medium tracking-tight">{kind === "quote" ? "Offerte" : "Rechnung"} senden</h2>
+              <h2 className="text-[18px] font-semibold tracking-tight">{kind === "quote" ? "Offerte" : kind === "reminder" ? "Mahnung" : "Rechnung"} senden</h2>
               <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full hover:bg-bg" aria-label="Schliessen">
                 <Icon name="close" className="h-4 w-4" />
               </button>
@@ -66,7 +71,7 @@ export function SendDialog({
             <Field label="Nachricht">
               <textarea name="text" rows={9} defaultValue={draft.text} className="input" />
             </Field>
-            <p className="text-[13px] text-muted">Das PDF wird automatisch angehängt{kind === "invoice" ? " (inkl. QR-Einzahlungsschein, falls IBAN hinterlegt)" : ""}.</p>
+            <p className="text-[13px] text-muted">Das PDF wird automatisch angehängt{kind !== "quote" ? " (inkl. QR-Einzahlungsschein, falls IBAN hinterlegt)" : ""}.</p>
             {error && <p className="text-[13px] text-danger">{error}</p>}
             {done && <p className="text-[13px] text-success">Gesendet.</p>}
             <div className="flex justify-end gap-2">

@@ -34,6 +34,8 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
       <Card title="Zahlung & Steuern">
         <div className="grid gap-4 sm:grid-cols-2">
           {input("iban", "IBAN (für QR-Rechnung)", "text", "sm:col-span-2")}
+          {input("bankName", "Bank (Fusszeile)")}
+          {input("uid", "UID (CHE-…)")}
           {input("hourlyRate", "Stundensatz CHF (Rechner)", "number")}
           {input("paymentTermDays", "Zahlungsfrist (Tage)", "number")}
           {input("quoteValidityDays", "Offerte gültig (Tage)", "number")}
@@ -44,6 +46,7 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
           {input("vatNumber", "MWST-Nr. (CHE-…)")}
           {input("quotePrefix", "Präfix Offerten")}
           {input("invoicePrefix", "Präfix Rechnungen")}
+          {input("creditPrefix", "Präfix Gutschriften")}
         </div>
       </Card>
       <Card title="Texte Offerte">
@@ -58,6 +61,29 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
           {area("invoiceIntro", "Einleitung")}
           {area("invoiceOutro", "Schlusstext")}
           {area("invoiceEmailText", "E-Mail-Text ({name}, {nummer}, {betrag}, {faellig}, {absender})", 7)}
+        </div>
+      </Card>
+      <Card title="Mahnwesen">
+        <div className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {input("reminderDays", "Neue Frist (Tage)", "number")}
+            {input("reminderFee1", "Gebühr 1. Mahnung CHF", "number")}
+            {input("reminderFee2", "Gebühr 2. Mahnung CHF", "number")}
+          </div>
+          {area("reminderText1", "Text Zahlungserinnerung (1. Mahnung)", 4)}
+          {area("reminderText2", "Text 2. Mahnung", 4)}
+          {area("reminderEmailText", "E-Mail-Text ({name}, {nummer}, {betrag}, {faellig}, {absender})", 7)}
+        </div>
+      </Card>
+      <Card title="Abos und Gutschriften">
+        <div className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {input("subscriptionLeadDays", "Abos verrechnen (Tage im Voraus)", "number")}
+            {input("subscriptionInvoiceTitle", "Titel Abo-Rechnung")}
+          </div>
+          {area("subscriptionIntro", "Einleitung Abo-Rechnung")}
+          {area("creditIntro", "Einleitung Gutschrift")}
+          {area("creditOutro", "Schlusstext Gutschrift")}
         </div>
       </Card>
       <div className="flex items-center gap-4 lg:col-span-2">

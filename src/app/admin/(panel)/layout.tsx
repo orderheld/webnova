@@ -1,6 +1,8 @@
-import { count, eq } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { Sidebar } from "@/components/admin/sidebar";
-import { db, hasDb, schema } from "@/db";
+import { db, hasDb } from "@/db";
+import { addDaysIso, todayIso } from "@/lib/admin/money";
+import { getSettings } from "@/lib/admin/settings";
 import { requireAdmin } from "@/lib/auth";
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
@@ -17,12 +19,28 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       </div>
     );
   }
-  const [{ n }] = await db().select({ n: count() }).from(schema.leads).where(eq(schema.leads.status, "neu"));
+  const today = todayIso();
+  const s = await getSettings();
+  const horizon = addDaysIso(today, s.subscriptionLeadDays);
+  const res = await db().execute<{ new_leads: number; follow_ups: number; open_tasks: number; overdue: number; due_subs: number }>(sql`
+    select
+      (select count(*)::int from leads where status = 'neu') as new_leads,
+      (select count(*)::int from leads where follow_up_at <= ${today} and status not in ('gewonnen','verloren')) as follow_ups,
+      (select count(*)::int from project_tasks t join projects p on p.id = t.project_id
+         where not t.done and t.due_date <= ${today} and p.status <> 'abgeschlossen') as open_tasks,
+      (select count(*)::int from invoices where kind = 'rechnung' and status in ('gesendet','teilbezahlt') and due_date < ${today}) as overdue,
+      (select count(*)::int from subscriptions where status = 'aktiv' and next_billing_date <= ${horizon}
+         and (end_date is null or next_billing_date <= end_date)) as due_subs
+  `);
+  const r = res.rows[0];
   return (
     <div className="lg:flex">
-      <Sidebar newLeads={n} user={user} />
-      <main className="min-w-0 flex-1 px-4 py-6 sm:px-8 lg:py-10">
-        <div className="mx-auto max-w-[1200px]">{children}</div>
+      <Sidebar
+        user={user}
+        counts={{ newLeads: r.new_leads, followUps: r.follow_ups, openTasks: r.open_tasks, overdueInvoices: r.overdue, dueSubscriptions: r.due_subs }}
+      />
+      <main className="min-w-0 flex-1 px-4 py-5 sm:px-6 lg:px-8 lg:py-8">
+        <div className="mx-auto max-w-[1280px]">{children}</div>
       </main>
     </div>
   );

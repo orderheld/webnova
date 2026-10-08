@@ -1,16 +1,13 @@
-"use client";
-
-import { useActionState } from "react";
 import type { Customer } from "@/db/schema";
 import { saveCustomerAction } from "@/lib/admin/actions";
-import { Field, btn } from "./ui";
+import { ActionForm, Submit } from "./action-form";
+import { Field } from "./ui";
 
 export function CustomerForm({ customer }: { customer?: Customer }) {
-  const [state, action, pending] = useActionState(saveCustomerAction.bind(null, customer?.id ?? null), {});
   const c = customer;
   return (
-    <form action={action} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <ActionForm action={saveCustomerAction.bind(null, c?.id ?? null)} className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2">
         <Field label="Firma" className="sm:col-span-2">
           <input name="company" defaultValue={c?.company ?? ""} className="input" />
         </Field>
@@ -42,20 +39,24 @@ export function CustomerForm({ customer }: { customer?: Customer }) {
           <select name="language" defaultValue={c?.language ?? "de"} className="input">
             <option value="de">Deutsch</option>
             <option value="fr">Französisch</option>
+            <option value="it">Italienisch</option>
+            <option value="en">Englisch</option>
           </select>
         </Field>
-        <Field label="Webseite" className="sm:col-span-2">
+        <Field label="Webseite">
           <input name="website" defaultValue={c?.website ?? ""} className="input" />
+        </Field>
+        <Field label="Branche">
+          <input name="industry" defaultValue={c?.industry ?? ""} className="input" />
+        </Field>
+        <Field label="UID / MWST-Nr.">
+          <input name="vatNumber" defaultValue={c?.vatNumber ?? ""} className="input" placeholder="CHE-123.456.789" />
         </Field>
         <Field label="Notizen" className="sm:col-span-2">
           <textarea name="notes" rows={4} defaultValue={c?.notes ?? ""} className="input" />
         </Field>
       </div>
-      {state?.error && <p className="text-[13px] text-danger">{state.error}</p>}
-      {state?.ok && <p className="text-[13px] text-success">Gespeichert.</p>}
-      <button disabled={pending} className={btn.dark}>
-        {pending ? "Speichern …" : c ? "Änderungen speichern" : "Kunde anlegen"}
-      </button>
-    </form>
+      <Submit>{c ? "Änderungen speichern" : "Kunde anlegen"}</Submit>
+    </ActionForm>
   );
 }
