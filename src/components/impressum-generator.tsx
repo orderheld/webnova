@@ -84,7 +84,7 @@ const ui = {
     copied: "Copié",
     empty: "Remplissez les champs. Le texte apparaît ici.",
     uidInvalid: "Format : CHE-123.456.789",
-    note: "Ce générateur crée un projet en toute bonne foi et ne remplace pas un conseil juridique. Vérifiez les indications avant de les publier. Vos saisies restent dans votre navigateur.",
+    note: "Ce générateur crée un projet de texte au mieux de nos connaissances et ne remplace pas un conseil juridique. Vérifiez les indications avant de les publier. Vos saisies restent dans votre navigateur.",
     legend: "Vos données",
   },
 };

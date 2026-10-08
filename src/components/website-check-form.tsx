@@ -39,11 +39,11 @@ const t = {
     notePh: "p. ex. peu de demandes, Google, mobile",
     send: "Faire analyser mon site",
     sending: "Envoi en cours …",
-    privacy: "En envoyant, vous acceptez la",
-    privacyLink: "politique de confidentialité",
+    privacy: "En envoyant ce formulaire, vous acceptez la",
+    privacyLink: "déclaration de protection des données",
     error: "L'envoi n'a pas fonctionné. Vérifiez vos données ou appelez-nous.",
     errUrl: "Veuillez indiquer l'adresse de votre site.",
-    points: ["Réponse en 1 jour ouvrable", "Personnel, pas de rapport automatique"],
+    points: ["Réponse sous 1 jour ouvrable", "Personnel, pas de rapport automatique"],
   },
 };
 

@@ -171,7 +171,7 @@ export function buildFooter(locale: Locale): FooterColumn[] {
       links: [...byKey("visibility"), ...seoCities],
     },
     {
-      title: locale === "de" ? "Regionen" : "Régions",
+      title: locale === "de" ? "Standorte" : "Régions",
       links: [
         ...cities.map((c) => ({
           label: `${locale === "de" ? "Webdesign" : "Site internet"} ${c.content[locale].name}`,
@@ -205,9 +205,9 @@ export function buildFooter(locale: Locale): FooterColumn[] {
   ];
 }
 
-/** Guide H1s are long; the footer shows the part before a colon. */
+/** Guide H1s are long; the footer shows the part before a colon (keeps the French space before "?"). */
 export function guideLabel(h1: string) {
-  const m = h1.match(/^(.+?)\s?([?:])\s/);
+  const m = h1.match(/^(.+?)(\s?)([?:])\s/);
   if (!m || m[1].length < 12) return h1;
-  return m[2] === "?" ? `${m[1]}?` : m[1];
+  return m[3] === "?" ? `${m[1]}${m[2]}?` : m[1];
 }

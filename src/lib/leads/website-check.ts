@@ -127,7 +127,8 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
   });
 
   const fr = v.locale === "fr";
-  const firstName = escapeHtml(v.name.split(" ")[0]);
+  // Full name: "Guten Tag Vorname" does not go with "Sie"; the gender is unknown, so no Herr/Frau.
+  const fullName = escapeHtml(v.name.trim().replace(/\s+/g, " "));
   const site2 = escapeHtml(url.replace(/^https?:\/\//, ""));
   await safeSend({
     to: v.email,
@@ -135,8 +136,8 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
     subject: fr ? "Votre analyse de site chez Webnova" : "Ihr Website-Check bei Webnova",
     html: mailLayout(
       fr
-        ? `<p>Bonjour ${firstName},</p><p>Merci, nous avons bien reçu votre demande d'analyse pour <strong>${site2}</strong>. Ferhat Demir examine votre site personnellement et vous contacte dans un délai d'un jour ouvrable.</p><p>Pour toute question, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`
-        : `<p>Guten Tag ${firstName}</p><p>Vielen Dank, wir haben Ihren Website-Check für <strong>${site2}</strong> erhalten. Ferhat Demir sieht sich Ihre Webseite persönlich an und meldet sich innert eines Arbeitstages bei Ihnen.</p><p>Bei Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`,
+        ? `<p>Bonjour ${fullName},</p><p>Merci, nous avons bien reçu votre demande d'analyse pour <strong>${site2}</strong>. Ferhat Demir examine votre site personnellement et vous contacte dans un délai d'un jour ouvrable.</p><p>Pour toute question, vous pouvez nous joindre au <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Meilleures salutations<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`
+        : `<p>Guten Tag ${fullName}</p><p>Vielen Dank, wir haben Ihren Website-Check für <strong>${site2}</strong> erhalten. Ferhat Demir sieht sich Ihre Webseite persönlich an und meldet sich innert eines Arbeitstages bei Ihnen.</p><p>Bei Fragen erreichen Sie uns unter <a href="${site.phoneHref}">${site.phone}</a>.</p><p>Freundliche Grüsse<br><strong style="color:${mailColors.ink}">Ferhat Demir</strong><br>Webnova</p>`,
     ),
   });
 

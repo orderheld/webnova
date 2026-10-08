@@ -31,7 +31,7 @@ export async function GET(_req: Request, ctx: RouteContext<"/og/[lang]/[file]">)
   const len = data.title.length;
   const size = len > 80 ? 52 : len > 56 ? 60 : len > 36 ? 70 : 84;
   const tagline =
-    lang === "de" ? "Webseiten · Onlineshops · SEO für Schweizer KMU" : "Sites internet · Boutiques en ligne · SEO pour PME suisses";
+    lang === "de" ? "Webdesign und Webseiten für KMU in der ganzen Schweiz" : "Webdesign et sites internet pour les PME de toute la Suisse";
 
   return new ImageResponse(
     (
