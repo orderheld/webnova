@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { testimonials } from "@/content/testimonials";
-import { ServiceArt } from "@/components/service-art";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
 import { cities } from "@/content/cities";
@@ -66,8 +65,8 @@ export function RegionsPage({ locale }: { locale: Locale }) {
           {cities
             .filter((c) => c.priority === "A")
             .map((c) => (
-              <div key={c.key} className="rounded-[24px] border border-line bg-surface p-6">
-                <h3 className="mb-4 font-display text-[20px] font-bold tracking-tight">{c.content[locale].name}</h3>
+              <div key={c.key} className="rounded-2xl border border-line bg-surface p-6">
+                <h3 className="mb-4 font-display text-[20px] font-semibold tracking-tight">{c.content[locale].name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {cityServiceLinks(locale, c.key).map((l) => (
                     <Link key={l.id} href={l.href} className={chip}>
@@ -182,11 +181,10 @@ export function CityPage({
         title={c.h1}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: cityName }]}
-        aside={<ServiceArt k={service?.key ?? (variant === "seo" ? "seo" : "webdesign")} locale={locale} />}
       >
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
+          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
@@ -204,7 +202,7 @@ export function CityPage({
         </div>
         <aside className="space-y-4 lg:col-span-4">
           <div className="sticky top-28 space-y-4">
-            <div className="rounded-[24px] border border-line bg-surface p-8 ">
+            <div className="rounded-2xl border border-line bg-surface p-8 ">
               <p className="text-[13px] uppercase tracking-[0.12em] text-muted">{d.pages.office}</p>
               <p className="mt-3 text-[18px] leading-snug">
                 Webnova
@@ -227,7 +225,7 @@ export function CityPage({
           <p className="eyebrow mb-8">{d.pages.testimonialsEyebrow}</p>
           <div className="grid gap-4 md:grid-cols-3">
             {quotes.map((q) => (
-              <figure key={q.name} className="rounded-[24px] border border-line bg-surface p-8">
+              <figure key={q.name} className="rounded-2xl border border-line bg-surface p-8">
                 <blockquote className="text-[17px] leading-relaxed">{locale === "fr" ? `«\u00a0${q.quote}\u00a0»` : `«${q.quote}»`}</blockquote>
                 <figcaption className="mt-6 text-[14px] text-muted">
                   <span className="font-semibold text-ink">{q.name}</span>

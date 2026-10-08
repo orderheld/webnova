@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, PageHero, Prose } from "@/components/blocks";
-import { ServiceArt } from "@/components/service-art";
 import { cities } from "@/content/cities";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
@@ -108,11 +107,10 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         title={c.h1}
         lead={c.lead}
         crumbs={[crumbs[0], crumbs[1], { name: c.navLabel }]}
-        aside={<ServiceArt k={s.key} locale={locale} />}
       >
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")} variant="accent">{d.hero.primary}</ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false}>
+          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false}>
             {site.phone}
           </ButtonLink>
         </div>
@@ -127,8 +125,8 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
           <Prose sections={c.sections} />
         </div>
         <aside className="lg:col-span-4">
-          <div className="sticky top-28 overflow-hidden rounded-[24px] border border-line bg-surface p-8 ">
-            <h2 className="text-[26px] font-bold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
+          <div className="sticky top-28 overflow-hidden rounded-2xl border border-line bg-surface p-8 ">
+            <h2 className="text-[26px] font-semibold leading-tight tracking-[-0.03em]">{c.ctaTitle}</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{c.ctaText}</p>
             <ButtonLink href={href(locale, "request")} className="mt-8 w-full">
               {d.nav.cta}

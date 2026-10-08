@@ -29,7 +29,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0b0c0a",
+  themeColor: "#f4f1ec",
 };
 
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
@@ -52,10 +52,10 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd(lang, cities.map((c) => c.content[lang].name))} />
         <JsonLd data={websiteLd(lang)} />
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-night focus:px-4 focus:py-2">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-white focus:px-4 focus:py-2">
           {d.skip}
         </a>
-        <Header nav={buildNav(lang)} logo={<Logo className="h-7 sm:h-8" />} />
+        <Header nav={buildNav(lang)} logo={<Logo tone="dark" className="h-7 sm:h-8" />} />
         <main id="main" className="flex-1">
           {children}
         </main>

@@ -8,17 +8,17 @@ import { Icon } from "./icons";
 
 export function Breadcrumbs({ items }: { items: { name: string; url?: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-8 text-[13px] text-white/45">
+    <nav aria-label="Breadcrumb" className="mb-10 text-[13px] text-muted">
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((it, i) => (
           <li key={i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden="true">/</span>}
             {it.url ? (
-              <Link href={it.url} className="transition-colors hover:text-white">
+              <Link href={it.url} className="transition-colors hover:text-accent">
                 {it.name}
               </Link>
             ) : (
-              <span className="text-white/75">{it.name}</span>
+              <span className="text-ink-soft">{it.name}</span>
             )}
           </li>
         ))}
@@ -44,21 +44,19 @@ export function PageHero({
   aside?: React.ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-night text-white">
-      <div aria-hidden="true" className="hero-dark-glow absolute inset-0 -z-10" />
-      <div aria-hidden="true" className="bg-noise absolute inset-0 -z-10 opacity-50" />
-      <div className="container-x pb-20 pt-8 md:pb-28 md:pt-12">
+    <section className="relative border-b border-line bg-bg">
+      <div className="container-x pb-16 pt-8 md:pb-24 md:pt-12">
         {crumbs && <Breadcrumbs items={crumbs} />}
         <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
           <div className={aside ? "lg:col-span-7" : ""}>
-            {eyebrow && <p className="eyebrow mb-6 animate-rise !text-white/55">{eyebrow}</p>}
-            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.6rem,5.6vw,4.8rem)]" : "text-[clamp(2.6rem,6.6vw,5.4rem)]"}`}>{title}</h1>
-            {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-white/70 [animation-delay:160ms] md:text-[20px]">{lead}</p>}
+            {eyebrow && <p className="eyebrow mb-6 animate-rise">{eyebrow}</p>}
+            <h1 className={`display max-w-5xl animate-rise [animation-delay:80ms] ${aside ? "text-[clamp(2.4rem,4.8vw,4rem)]" : "text-[clamp(2.4rem,5.4vw,4.4rem)]"}`}>{title}</h1>
+            {lead && <p className="mt-7 max-w-2xl animate-rise text-[18px] leading-relaxed text-ink-soft [animation-delay:160ms] md:text-[20px]">{lead}</p>}
             {children && <div className="animate-rise [animation-delay:240ms]">{children}</div>}
           </div>
           {aside && (
             <div className="animate-rise [animation-delay:300ms] lg:col-span-5">
-              <div className="mx-auto h-64 max-w-[460px] sm:h-72">{aside}</div>
+              <div className="mx-auto max-w-[520px]">{aside}</div>
             </div>
           )}
         </div>
@@ -101,10 +99,10 @@ export function FaqList({ locale, faq }: { locale: Locale; faq: Faq[] }) {
         </div>
         <div className="space-y-3 md:col-span-8">
           {faq.map((f, i) => (
-            <details key={i} className="reveal group rounded-[20px] border border-line bg-surface px-6 py-5 transition-colors open:border-ink/30 [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 font-display text-[18px] font-semibold leading-snug tracking-[-0.01em] md:text-[19px]">
+            <details key={i} className="reveal group rounded-2xl border border-line bg-surface px-6 py-5 transition-colors open:border-accent/40 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 font-display text-[18px] font-medium leading-snug tracking-[-0.01em] md:text-[19px]">
                 {f.q}
-                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-bg transition-all duration-300 group-open:rotate-45 group-open:bg-night group-open:text-white">
+                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-bg transition-all duration-300 group-open:rotate-45 group-open:bg-accent group-open:text-white">
                   <Icon name="plus" className="h-4 w-4" />
                 </span>
               </summary>
@@ -121,13 +119,12 @@ export function CtaBand({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   return (
     <section className="container-x pb-20 md:pb-28">
-      <div className="reveal relative isolate overflow-hidden rounded-[32px] bg-night px-6 py-14 text-white sm:px-12 md:px-16 md:py-20">
-        <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[420px] w-[420px] rounded-full bg-accent/20 blur-[120px]" />
+      <div className="reveal relative isolate overflow-hidden rounded-3xl bg-accent px-6 py-14 text-white sm:px-12 md:px-16 md:py-20">
         <div className="relative grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
-            <p className="eyebrow mb-5 !text-white/50">{d.cta.badge}</p>
-            <h2 className="font-display text-[clamp(2.1rem,4.6vw,3.8rem)] font-bold leading-[1.04] tracking-[-0.04em]">{d.cta.title}</h2>
-            <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-white/65">{d.cta.text}</p>
+            <p className="eyebrow mb-5 !text-accent-light">{d.cta.badge}</p>
+            <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em]">{d.cta.title}</h2>
+            <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-white/75">{d.cta.text}</p>
           </div>
           <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
             <ButtonLink href={href(locale, "request")} variant="accent">
@@ -147,11 +144,11 @@ export function FeatureGrid({ items }: { items: { title: string; text: string }[
   return (
     <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
-        <div key={i} className="reveal rounded-[20px] border border-line bg-surface p-8">
-          <span className="mb-6 block font-display text-[14px] font-semibold text-muted">
+        <div key={i} className="reveal rounded-2xl border border-line bg-surface p-8">
+          <span className="mb-6 block font-display text-[14px] font-semibold text-accent">
             {String(i + 1).padStart(2, "0")}
           </span>
-          <h3 className="text-[19px] font-bold tracking-tight">{f.title}</h3>
+          <h3 className="text-[19px] font-semibold tracking-tight">{f.title}</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">{f.text}</p>
         </div>
       ))}
@@ -175,19 +172,19 @@ export function CardLink({
   return (
     <Link
       href={href}
-      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-[20px] border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-night hover:bg-night hover:text-white hover:shadow-soft"
+      className="reveal group relative isolate flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl border border-line bg-surface p-7 transition-all duration-300 hover:border-accent/50 hover:shadow-soft"
     >
       <div>
         {icon && (
-          <span className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors duration-300 group-hover:bg-accent group-hover:text-night">
+          <span className="mb-8 grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
             <Icon name={icon} className="h-[22px] w-[22px]" />
           </span>
         )}
-        {meta && <p className="mb-3 text-[13px] text-muted transition-colors group-hover:text-white/55">{meta}</p>}
-        <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.02em]">{title}</h3>
-        {text && <p className="mt-3 text-[15px] leading-relaxed text-muted transition-colors group-hover:text-white/65">{text}</p>}
+        {meta && <p className="mb-3 text-[13px] text-muted">{meta}</p>}
+        <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.02em] transition-colors group-hover:text-accent">{title}</h3>
+        {text && <p className="mt-3 text-[15px] leading-relaxed text-muted">{text}</p>}
       </div>
-      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-ink transition-colors group-hover:text-accent">
+      <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-accent">
         <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
     </Link>
