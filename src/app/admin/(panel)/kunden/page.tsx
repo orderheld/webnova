@@ -14,10 +14,10 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
   const archived = sp.ansicht === "archiv";
   const c = schema.customers;
   const like = `%${term}%`;
-  const projects = sql<number>`(select count(*)::int from projects p where p.customer_id = ${c.id} and p.status <> 'abgeschlossen')`;
-  const open = sql<number>`(select coalesce(sum(i.total - i.paid_amount),0)::float from invoices i where i.customer_id = ${c.id} and i.kind = 'rechnung' and i.status in ('gesendet','teilbezahlt'))`;
-  const revenue = sql<number>`(select coalesce(sum(p.amount),0)::float from payments p join invoices i on i.id = p.invoice_id where i.customer_id = ${c.id} and i.kind = 'rechnung')`;
-  const arr = sql<number>`(select coalesce(sum(s.amount * 12.0 / case s.interval when 'monat' then 1 when 'quartal' then 3 when 'halbjahr' then 6 else 12 end),0)::float from subscriptions s where s.customer_id = ${c.id} and s.status = 'aktiv')`;
+  const projects = sql<number>`(select count(*)::int from projects p where p.customer_id = "customers"."id" and p.status <> 'abgeschlossen')`;
+  const open = sql<number>`(select coalesce(sum(i.total - i.paid_amount),0)::float from invoices i where i.customer_id = "customers"."id" and i.kind = 'rechnung' and i.status in ('gesendet','teilbezahlt'))`;
+  const revenue = sql<number>`(select coalesce(sum(p.amount),0)::float from payments p join invoices i on i.id = p.invoice_id where i.customer_id = "customers"."id" and i.kind = 'rechnung')`;
+  const arr = sql<number>`(select coalesce(sum(s.amount * 12.0 / case s.interval when 'monat' then 1 when 'quartal' then 3 when 'halbjahr' then 6 else 12 end),0)::float from subscriptions s where s.customer_id = "customers"."id" and s.status = 'aktiv')`;
   const name = sql`lower(coalesce(${c.company}, ${c.lastName}, ${c.firstName}))`;
   const sortCols: Record<string, ReturnType<typeof sql>> = { name, ort: sql`lower(${c.city})`, projekte: projects, offen: open, umsatz: revenue, abos: arr };
   const sortKey = sp.sort && sortCols[sp.sort] ? sp.sort : "name";
@@ -36,7 +36,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
               ilike(c.email, like),
               ilike(c.city, like),
               ilike(c.phone, like),
-              sql`exists (select 1 from contacts k where k.customer_id = ${c.id} and (k.first_name ilike ${like} or k.last_name ilike ${like} or k.email ilike ${like}))`,
+              sql`exists (select 1 from contacts k where k.customer_id = "customers"."id" and (k.first_name ilike ${like} or k.last_name ilike ${like} or k.email ilike ${like}))`,
             )
           : undefined,
       ),
