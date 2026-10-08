@@ -453,6 +453,39 @@ export const expenses = pgTable(
   (t) => [index("expenses_date_idx").on(t.date), index("expenses_customer_idx").on(t.customerId), index("expenses_project_idx").on(t.projectId)],
 );
 
+/* ───────────── Website visitors (statistics without cookies) ───────────── */
+
+/**
+ * One row per page view on the public site (src/app/api/p). No cookies and no IP address: `visitor` is
+ * a hash of IP, browser and a random salt that changes every day (visitor_salts), so it only groups the
+ * views of one day and cannot be traced back to a person. Rows older than 13 months are deleted.
+ */
+export const pageViews = pgTable(
+  "page_views",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    /** e.g. "/de/kontakt" */
+    path: text("path").notNull(),
+    /** referrer host or utm_source, only on the first view of a visit; null = direct */
+    source: text("source"),
+    /** mobile | tablet | desktop */
+    device: text("device").notNull(),
+    /** country code from the IP (Vercel), e.g. "CH" */
+    country: text("country"),
+    /** first-level region from the IP, for Switzerland the canton, e.g. "SO" */
+    region: text("region"),
+    visitor: text("visitor").notNull(),
+  },
+  (t) => [index("page_views_created_idx").on(t.createdAt), index("page_views_visitor_idx").on(t.visitor, t.createdAt)],
+);
+
+/** Random salt of the day for the visitor hash. Only the current day's row is kept. */
+export const visitorSalts = pgTable("visitor_salts", {
+  day: date("day", { mode: "string" }).primaryKey(),
+  salt: text("salt").notNull(),
+});
+
 export type Lead = typeof leads.$inferSelect;
 export type Customer = typeof customers.$inferSelect;
 export type Quote = typeof quotes.$inferSelect;
@@ -469,3 +502,4 @@ export type Subscription = typeof subscriptions.$inferSelect;
 export type Expense = typeof expenses.$inferSelect;
 export type Payment = typeof payments.$inferSelect;
 export type InvoiceReminder = typeof invoiceReminders.$inferSelect;
+export type PageView = typeof pageViews.$inferSelect;

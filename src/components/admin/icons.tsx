@@ -52,6 +52,10 @@ const paths: Record<string, React.ReactNode> = {
   alert: (<><path d="M12 3 2 20h20Z" /><path d="M12 10v4M12 17h.01" /></>),
   list: (<><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01" /></>),
   box: (<><path d="m12 3 9 4.5v9L12 21l-9-4.5v-9Z" /><path d="m3 7.5 9 4.5 9-4.5M12 12v9" /></>),
+  activity: (<><path d="M3 12h4l3-8 4 16 3-8h4" /></>),
+  smartphone: (<><rect x="7" y="2.5" width="10" height="19" rx="2" /><path d="M11 18h2" /></>),
+  tablet: (<><rect x="4.5" y="3" width="15" height="18" rx="2" /><path d="M11 18h2" /></>),
+  monitor: (<><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></>),
 };
 
 export function Icon({ name, ...props }: { name: string } & SVGProps<SVGSVGElement>) {

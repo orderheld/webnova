@@ -52,6 +52,12 @@ export function todayIso() {
   return new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Zurich" });
 }
 
+/** Hour of the day in Zurich, 0 to 23. (de-CH formats a lone hour as "17 Uhr", so it is read from the parts.) */
+export function zurichHour(d = new Date()) {
+  const parts = new Intl.DateTimeFormat("de-CH", { hour: "numeric", hourCycle: "h23", timeZone: "Europe/Zurich" }).formatToParts(d);
+  return Number(parts.find((p) => p.type === "hour")?.value ?? 0);
+}
+
 export function addDaysIso(iso: string, days: number) {
   const d = new Date(`${iso}T12:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
