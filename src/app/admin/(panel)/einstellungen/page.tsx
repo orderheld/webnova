@@ -1,3 +1,4 @@
+import { ResetData } from "@/components/admin/reset-data";
 import { SettingsForm } from "@/components/admin/settings-form";
 import { Card, KeyValues, PageHeader } from "@/components/admin/ui";
 import { infraRegions } from "@/lib/admin/infra";
@@ -27,6 +28,7 @@ export default async function SettingsPage() {
           ])}
         />
       </Card>
+      <ResetData />
     </>
   );
 }
