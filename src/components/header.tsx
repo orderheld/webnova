@@ -51,7 +51,8 @@ type MenuKey = "services" | "industries" | "resources";
 
 const two = (n: number) => String(n).padStart(2, "0");
 
-export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.ReactNode; logoLight?: React.ReactNode }) {
+export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; logo: React.ReactNode; logoLight?: React.ReactNode; tone?: "dark" | "light" }) {
+  const dk = tone === "dark";
   const pathname = usePathname();
   // The menu stays open only for the path it was opened on, so navigating closes it.
   const [openFor, setOpenFor] = useState<string | null>(null);
@@ -133,17 +134,19 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
     <>
       <header
         id="top"
-        className={`sticky top-0 z-50 border-b text-ink transition-[background-color,border-color] duration-300 ${
-          scrolled || openMenu ? "border-line bg-bg/95 backdrop-blur-xl" : "border-transparent bg-bg"
+        className={`sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
+          dk
+            ? `text-white ${scrolled || openMenu ? "border-white/10 bg-night/95 backdrop-blur-xl" : "border-transparent bg-night"}`
+            : `text-ink ${scrolled || openMenu ? "border-line bg-bg/95 backdrop-blur-xl" : "border-transparent bg-bg"}`
         }`}
       >
         <div className="container-x relative flex h-[72px] items-center justify-between gap-6">
           <Link href={nav.home} aria-label="Webnova" className="shrink-0">
-            {logo}
+            {dk ? (logoLight ?? logo) : logo}
           </Link>
 
           <nav ref={navRef} className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1 self-stretch`} aria-label={de ? "Hauptnavigation" : "Navigation principale"}>
-            <Dropdown label={nav.servicesLabel} active={pathname.startsWith(nav.servicesHref)} {...menuProps("services")}>
+            <Dropdown label={nav.servicesLabel} active={pathname.startsWith(nav.servicesHref)} dark={dk} {...menuProps("services")}>
               <div className="grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 lg:grid-cols-3">
                 {nav.serviceGroups.map((g, i) => (
                   <MenuGroup key={g.key} group={g} start={serviceStarts[i]} detailed />
@@ -165,11 +168,11 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
               </MenuFooter>
             </Dropdown>
 
-            <Dropdown label={nav.industriesLabel} active={pathname.startsWith(nav.industriesHref)} {...menuProps("industries")}>
+            <Dropdown label={nav.industriesLabel} active={pathname.startsWith(nav.industriesHref)} dark={dk} {...menuProps("industries")}>
               <div className="grid gap-10 px-8 pb-8 pt-7 lg:grid-cols-12">
                 <div className="lg:col-span-8">
                   <p className="label mb-3">{nav.industriesLabel}</p>
-                  <ul className="grid grid-cols-2 gap-x-8 border-t border-ink">
+                  <ul className="grid grid-cols-2 gap-x-8 border-t border-line">
                     {nav.industries.map((s, i) => (
                       <li key={s.href}>
                         <MenuLink item={s} n={i + 1} />
@@ -179,7 +182,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
                 </div>
                 <div className="flex flex-col gap-2 border-l border-line pl-8 lg:col-span-4">
                   <p className="label mb-2">{nav.problemsLabel}</p>
-                  <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.02em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</p>
+                  <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.01em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</p>
                   <p className="text-[14.5px] leading-relaxed text-ink-soft">
                     {de ? "Keine Anfragen, nicht gefunden, veraltet oder zu langsam: die häufigsten Anliegen und wie wir sie lösen." : "Pas de demandes, introuvable, dépassé ou trop lent : les cas les plus fréquents et nos solutions."}
                   </p>
@@ -197,7 +200,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
               </MenuFooter>
             </Dropdown>
 
-            <Dropdown label={nav.resourcesLabel} active={pathname.startsWith(nav.resourcesHref)} {...menuProps("resources")}>
+            <Dropdown label={nav.resourcesLabel} active={pathname.startsWith(nav.resourcesHref)} dark={dk} {...menuProps("resources")}>
               <div className={`grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 ${nav.resourceGroups.length >= 3 ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
                 {nav.resourceGroups.map((g, i) => (
                   <div key={g.key} className={nav.resourceGroups.length >= 3 ? (i === 0 ? "lg:col-span-6" : "lg:col-span-3") : ""}>
@@ -214,7 +217,15 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
                 aria-current={pathname === l.href ? "page" : undefined}
                 className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
                   n >= nav.links.length - 1 ? "hidden xl:block" : ""
-                } ${pathname === l.href ? "font-medium text-accent underline decoration-accent decoration-[1.5px] underline-offset-[10px]" : "text-ink-soft"}`}
+                } ${
+                  pathname === l.href
+                    ? dk
+                      ? "font-medium text-white underline decoration-accent-light decoration-[1.5px] underline-offset-[10px]"
+                      : "font-medium text-accent underline decoration-accent decoration-[1.5px] underline-offset-[10px]"
+                    : dk
+                      ? "text-white/75 hover:!text-white"
+                      : "text-ink-soft"
+                }`}
               >
                 {l.label}
               </Link>
@@ -227,20 +238,20 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
               hrefLang={other}
               lang={other}
               aria-label={other === "fr" ? "Français" : "Deutsch"}
-              className="hidden px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-muted transition-colors hover:text-accent sm:block"
+              className={`hidden px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] transition-colors sm:block ${dk ? "text-white/60 hover:text-white" : "text-muted hover:text-accent"}`}
             >
               {other}
             </Link>
             <a
               href={nav.phone.href}
-              className={`${minimal ? "hidden sm:flex" : "hidden 2xl:flex"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] text-ink-soft transition-colors hover:text-accent`}
+              className={`${minimal ? "hidden sm:flex" : "hidden 2xl:flex"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
             >
               <Icon name="phone" className="h-4 w-4 text-bright" />
               {nav.phone.label}
             </a>
             <Link
               href={minimal ? "#formular" : nav.cta.href}
-              className="group hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-night sm:inline-flex"
+              className={`group hidden items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] font-medium transition-colors sm:inline-flex ${dk ? "bg-white text-accent hover:bg-bright-soft" : "bg-accent text-white hover:bg-night"}`}
             >
               {nav.cta.label}
               <Icon name="arrow" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -249,7 +260,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
               ref={menuButtonRef}
               type="button"
               onClick={() => setOpenFor(open ? null : pathname)}
-              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border border-line bg-white pl-4 pr-3.5 text-[14px] font-medium text-ink transition-colors hover:border-accent/40`}
+              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border pl-4 pr-3.5 text-[14px] font-medium transition-colors ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
               aria-expanded={open}
               aria-controls="mobile-menu"
             >
@@ -270,7 +281,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
           role="dialog"
           aria-modal="true"
           aria-label={nav.menuLabel}
-          className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-night text-white lg:hidden"
+          className="stage-night fixed inset-0 z-[60] flex flex-col overflow-hidden text-white lg:hidden"
         >
           <div className="container-x flex h-[72px] shrink-0 items-center justify-between border-b border-white/10">
             <Link href={nav.home} aria-label="Webnova" className="shrink-0">
@@ -301,7 +312,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
                           <summary className="flex cursor-pointer list-none items-center justify-between py-4">
                             <span className="flex items-baseline gap-4">
                               <span className="w-6 text-[12px] tabular-nums text-accent-light">{two(i + 1)}</span>
-                              <span className="font-display text-[1.75rem] font-semibold tracking-[-0.025em]">{l.label}</span>
+                              <span className="font-display text-[1.75rem] font-semibold tracking-[-0.012em]">{l.label}</span>
                             </span>
                             <Icon name="plus" className="h-5 w-5 text-white/60 transition-transform group-open:rotate-45" />
                           </summary>
@@ -325,7 +336,7 @@ export function Header({ nav, logo, logoLight }: { nav: NavData; logo: React.Rea
                         <Link href={l.href} aria-current={pathname === l.href ? "page" : undefined} className="flex items-center justify-between py-4">
                           <span className="flex items-baseline gap-4">
                             <span className="w-6 text-[12px] tabular-nums text-accent-light">{two(i + 1)}</span>
-                            <span className={`font-display text-[1.75rem] font-semibold tracking-[-0.025em] ${pathname === l.href ? "text-accent-light" : ""}`}>{l.label}</span>
+                            <span className={`font-display text-[1.75rem] font-semibold tracking-[-0.012em] ${pathname === l.href ? "text-accent-light" : ""}`}>{l.label}</span>
                           </span>
                           <Icon name="arrow" className="h-5 w-5 -rotate-45 text-white/50" />
                         </Link>
@@ -423,8 +434,10 @@ function Dropdown({
   onOpen,
   onToggle,
   onClose,
+  dark = false,
   children,
 }: {
+  dark?: boolean;
   id: string;
   label: string;
   active: boolean;
@@ -466,8 +479,8 @@ function Dropdown({
             window.setTimeout(() => panelRef.current?.querySelector<HTMLElement>("a")?.focus(), 60);
           }
         }}
-        className={`flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
-          open || active ? "text-accent" : "text-ink-soft"
+        className={`flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors xl:px-3.5 ${
+          dark ? (open || active ? "text-white" : "text-white/75 hover:text-white") : open || active ? "text-accent" : "text-ink-soft hover:text-accent"
         }`}
       >
         {label}
@@ -482,7 +495,7 @@ function Dropdown({
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         }`}
       >
-        <div className="overflow-hidden border border-t-2 border-line border-t-accent bg-surface shadow-lift">{children}</div>
+        <div className="overflow-hidden rounded-2xl border border-line bg-surface text-ink shadow-lift">{children}</div>
       </div>
     </div>
   );
@@ -492,7 +505,7 @@ function MenuGroup({ group, detailed = false, start }: { group: NavGroup; detail
   return (
     <div>
       <p className="label mb-3">{group.label}</p>
-      <ul className="border-t border-ink">
+      <ul className="border-t border-line">
         {group.items.map((s, i) => (
           <li key={s.href}>
             <MenuLink item={s} detailed={detailed} n={start + i + 1} />

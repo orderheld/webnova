@@ -1,8 +1,7 @@
 import { ButtonLink } from "@/components/button";
-import { CardLink, ContactPerson, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose, TrustList } from "@/components/blocks";
-import { Icon } from "@/components/icons";
+import { CardLink, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose, TrustList, callLabel } from "@/components/blocks";
+import { WebsiteCheckForm } from "@/components/website-check-form";
 import { ImpressumGenerator } from "@/components/impressum-generator";
-import { LeadForm } from "@/components/lead-form";
 import { guides } from "@/content/guides";
 import { standalonePages } from "@/content/pages";
 import { services } from "@/content/services";
@@ -83,16 +82,28 @@ export function StandalonePageView({ locale, pageKey }: { locale: Locale; pageKe
       />
       <JsonLd data={faqLd(c.faq)} />
 
-      <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], { name: c.navLabel }]}>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={`#${isTool ? TOOL_ID : FORM_ID}`} variant="primary">
+      <PageHero
+        eyebrow={c.eyebrow}
+        title={c.h1}
+        lead={c.lead}
+        crumbs={[crumbs[0], { name: c.navLabel }]}
+        aside={
+          isTool ? undefined : (
+            <div id={FORM_ID} className="scroll-mt-24">
+              <WebsiteCheckForm locale={locale} thanksHref={href(locale, "thanks")} privacyHref={href(locale, "legal:datenschutz")} />
+            </div>
+          )
+        }
+      >
+        <div className="mt-9 flex flex-wrap gap-3">
+          <ButtonLink href={`#${isTool ? TOOL_ID : FORM_ID}`} variant="accent" className={isTool ? "" : "lg:hidden"}>
             {isTool ? t.toTool : t.toForm}
           </ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghost" arrow={false} icon="phone">
-            {site.phone}
+          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false} icon="phone">
+            {callLabel(locale)}
           </ButtonLink>
         </div>
-        {!isTool && <TrustList locale={locale} className="mt-8 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:space-y-0" />}
+        {!isTool && <TrustList locale={locale} dark className="mt-8 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:space-y-0" />}
       </PageHero>
 
       {isTool && (
@@ -120,52 +131,27 @@ export function StandalonePageView({ locale, pageKey }: { locale: Locale; pageKe
         </ol>
       </section>
 
-      {!isTool && (
-        <section id={FORM_ID} className="scroll-mt-20 bg-night py-20 text-white md:py-28">
-          <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-5 lg:pt-6">
-              <p className="eyebrow mb-5 !text-accent-light">{d.common.free}</p>
-              <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em]">{t.formTitle}</h2>
-              <p className="mt-6 text-[18px] leading-relaxed text-white/75">{t.formText}</p>
-              <div className="mt-10 border-t border-white/10 pt-8">
-                <ContactPerson locale={locale} dark />
-                <div className="mt-6 space-y-3 text-[15px]">
-                  <a href={site.phoneHref} className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
-                    <Icon name="phone" className="h-4 w-4 text-accent-light" /> {site.phone}
-                  </a>
-                  <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
-                    <Icon name="chat" className="h-4 w-4 text-accent-light" /> {d.common.whatsapp}
-                  </a>
-                </div>
-                <p className="mt-8 text-[15px] text-white/70">
-                  {t.orRequest}{" "}
-                  <a href={`${href(locale, "request")}?service=website-check`} className="font-medium text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
-                    {d.nav.cta}
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div className="lg:col-span-7">
-              <LeadForm
-                locale={locale}
-                t={d.form}
-                thanksHref={href(locale, "thanks")}
-                privacyHref={href(locale, "legal:datenschutz")}
-                source="website-check"
-                dark
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className={`container-x grid gap-12 pb-12 lg:grid-cols-12 ${isTool ? "" : "pt-16 md:pt-24"}`}>
         <div className="lg:col-span-8">
           <Prose sections={c.sections} locale={locale} />
         </div>
         <aside className="lg:col-span-4">
           <div className="sticky top-28">
-            <CtaCard locale={locale} title={c.ctaTitle} text={c.ctaText} />
+            {isTool ? (
+              <CtaCard locale={locale} title={c.ctaTitle} text={c.ctaText} />
+            ) : (
+              <div className="stage-night rounded-3xl p-7 text-white sm:p-8">
+                <p className="kicker-light mb-4">{t.formTitle}</p>
+                <h2 className="font-display text-[24px] font-semibold leading-[1.25]">{c.ctaTitle}</h2>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/75">{c.ctaText}</p>
+                <ButtonLink href={`#${FORM_ID}`} variant="accent" className="mt-7 w-full">
+                  {t.toForm}
+                </ButtonLink>
+                <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false} icon="phone" className="mt-3 w-full">
+                  {callLabel(locale)}
+                </ButtonLink>
+              </div>
+            )}
           </div>
         </aside>
       </section>

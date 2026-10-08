@@ -1,8 +1,8 @@
 import { ButtonLink } from "@/components/button";
 import Image from "next/image";
-import { ContactPerson, CtaBand, FeatureGrid, PageHero, Prose, TrustList } from "@/components/blocks";
+import { ContactPerson, CtaBand, FeatureGrid, HeroCtas, PageHero, Prose, TrustList } from "@/components/blocks";
 import { Icon } from "@/components/icons";
-import { ContactList } from "@/components/editorial";
+import { ContactList, PortraitCard } from "@/components/editorial";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
 import { references } from "@/content/references";
@@ -23,7 +23,10 @@ export function AboutPage({ locale }: { locale: Locale }) {
         title={d.pages.aboutH1}
         lead={d.pages.aboutLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.about }]}
-      />
+        aside={<PortraitCard locale={locale} priority className="mx-auto max-w-[380px]" />}
+      >
+        <HeroCtas locale={locale} />
+      </PageHero>
       <section className="container-x grid gap-12 pb-20 pt-14 md:pt-20 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <Prose sections={d.pages.aboutSections} />
@@ -67,7 +70,7 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.references }]}
       >
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={href(locale, "request")} variant="primary">{d.hero.primary}</ButtonLink>
+          <ButtonLink href={href(locale, "request")} variant="accent">{d.nav.cta}</ButtonLink>
         </div>
       </PageHero>
       <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
@@ -121,7 +124,7 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center" style={{ background: r.colors.bg, color: r.colors.fg }}>
                   <span className="h-1 w-12 rounded-full" style={{ background: r.colors.accent }} />
-                  <span className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-semibold leading-none tracking-[-0.04em]">{r.name}</span>
+                  <span className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-semibold leading-none tracking-[-0.015em]">{r.name}</span>
                   <span className="text-[13px] uppercase tracking-[0.25em] opacity-60">{c.industry}</span>
                 </div>
               )}
@@ -134,7 +137,7 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
         <div className="space-y-12 lg:col-span-8">
           <div>
             <p className="eyebrow mb-4">{t.challenge}</p>
-            <p className="font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold leading-snug tracking-[-0.02em]">{c.challenge}</p>
+            <p className="font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold leading-snug tracking-[-0.01em]">{c.challenge}</p>
           </div>
           <div>
             <p className="eyebrow mb-4">{t.solution}</p>
@@ -202,6 +205,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
         title={d.pages.contactH1}
         lead={d.pages.contactLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.contact }]}
+        aside={<PortraitCard locale={locale} priority className="mx-auto max-w-[340px]" />}
       />
       <section className="container-x grid gap-12 pb-24 pt-14 md:pt-20 lg:grid-cols-12">
         <div className="lg:col-span-5">

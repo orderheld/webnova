@@ -46,7 +46,7 @@ export default function GlobalNotFound() {
           <div className="container-x py-20 md:py-28">
             <p className="eyebrow mb-6">404</p>
             <h1 className="display max-w-3xl text-[clamp(2.4rem,5.4vw,4.2rem)]">{de.pages.notFoundTitle}</h1>
-            <p className="mt-3 font-display text-[clamp(1.4rem,2.6vw,2rem)] font-semibold tracking-[-0.02em] text-muted" lang="fr-CH">
+            <p className="mt-3 font-display text-[clamp(1.4rem,2.6vw,2rem)] font-semibold tracking-[-0.01em] text-muted" lang="fr-CH">
               {fr.pages.notFoundTitle}
             </p>
             <div className="mt-12 grid max-w-4xl gap-8 md:grid-cols-2">

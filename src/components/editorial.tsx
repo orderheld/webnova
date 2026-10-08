@@ -4,16 +4,16 @@ import { getDict } from "@/i18n/dict";
 import { hoursLines } from "@/lib/hours";
 import { site } from "@/lib/site";
 import { Icon } from "./icons";
-import { skylines } from "./skylines";
+import { photo } from "@/lib/photos";
 
 /**
- * Editorial building blocks for the studio look: photo slots with captions, the contact list and
- * the composed Swiss skyline. Server components only, no client JS.
+ * Editorial building blocks: photo slots, the founder portrait card and the contact list.
+ * Server components only, no client JS.
  */
 
 /**
  * A figure that shows a real photo when one is set (src/lib/photos.ts), otherwise an honest
- * fallback: the FD monogram, a city skyline drawing or any node passed in. Always with a caption.
+ * fallback: the FD monogram or any node passed in.
  */
 export function PhotoSlot({
   photo,
@@ -25,7 +25,7 @@ export function PhotoSlot({
   className = "",
 }: {
   photo?: { src: string; alt: string };
-  fallback: "monogram" | { skyline: string } | React.ReactNode;
+  fallback: "monogram" | React.ReactNode;
   caption?: React.ReactNode;
   ratio?: string;
   sizes?: string;
@@ -38,15 +38,8 @@ export function PhotoSlot({
   } else if (fallback === "monogram") {
     inner = (
       <div aria-hidden="true" className="absolute inset-0 grid place-items-center bg-bg-2">
-        <span className="font-display text-[clamp(3rem,6vw,4.5rem)] font-semibold tracking-[-0.04em] text-accent">FD</span>
+        <span className="font-display text-[clamp(3rem,6vw,4.5rem)] font-semibold tracking-[-0.015em] text-accent">FD</span>
         <span className="absolute inset-3 border border-accent/15" />
-      </div>
-    );
-  } else if (fallback && typeof fallback === "object" && "skyline" in fallback) {
-    const Skyline = skylines[(fallback as { skyline: string }).skyline];
-    inner = (
-      <div aria-hidden="true" className="absolute inset-0 bg-bg-2 text-accent/70">
-        {Skyline && <Skyline preserveAspectRatio="xMidYMax slice" className="absolute inset-0 h-full w-full" />}
       </div>
     );
   } else {
@@ -73,7 +66,7 @@ export function ContactList({ locale, hours = false, dark = false, className = "
   const lab = `text-[12px] font-semibold uppercase tracking-[0.12em] ${dark ? "text-white/55" : "text-muted"}`;
   const val = `text-[15.5px] font-medium transition-colors ${dark ? "text-white hover:text-accent-light" : "text-ink hover:text-accent"}`;
   return (
-    <dl className={`border-t ${dark ? "border-white/25" : "border-ink"} ${className}`}>
+    <dl className={`border-t ${dark ? "border-white/15" : "border-line"} ${className}`}>
       <div className={row}>
         <dt className={lab}>{t.phone}</dt>
         <dd>
@@ -131,22 +124,35 @@ export function ContactList({ locale, hours = false, dark = false, className = "
   );
 }
 
+
+const pc = {
+  de: { role: "Inhaber und Ihr Ansprechpartner", line: "Persönlich vom ersten Gespräch bis nach dem Launch" },
+  fr: { role: "Fondateur et votre interlocuteur", line: "Personnellement, du premier entretien jusqu'après la mise en ligne" },
+};
+
 /**
- * Wide composed Swiss skyline: several city line drawings side by side on one baseline.
- * Decorative only; the caption names the cities.
+ * Ferhat Demir's portrait (greyscale, light Schieferblau backdrop) in a soft rounded frame with a
+ * Schieferblau accent shape and a name plate. 4:5, the face is never cropped.
  */
-export function SwissPanorama({ cities = ["basel", "zuerich", "bern", "luzern", "neuchatel"], animate = false, className = "" }: { cities?: string[]; animate?: boolean; className?: string }) {
+export function PortraitCard({ locale, className = "", sizes = "(min-width: 1024px) 420px, 90vw", priority = false, plate = true }: { locale: Locale; className?: string; sizes?: string; priority?: boolean; plate?: boolean }) {
+  const p = photo("founder", locale);
+  const t = pc[locale];
   return (
-    <div aria-hidden="true" className={`flex ${className}`}>
-      {cities.map((k, i) => {
-        const Skyline = skylines[k];
-        if (!Skyline) return null;
-        return (
-          <div key={k} className={`h-full min-w-0 flex-1 border-current/40 ${i > 0 ? "border-l" : ""} ${i >= 3 ? "hidden md:block" : ""}`}>
-            <Skyline animate={animate} preserveAspectRatio="xMidYMax slice" className="h-full w-full" />
-          </div>
-        );
-      })}
-    </div>
+    <figure className={`relative ${className}`}>
+      <div aria-hidden="true" className="stage-accent absolute -bottom-4 -right-4 h-2/3 w-2/3 rounded-3xl sm:-bottom-5 sm:-right-5" />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-bg-2 ring-1 ring-black/5 shadow-lift">
+        {p ? (
+          <Image src={p.src} alt={p.alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+        ) : (
+          <span className="absolute inset-0 grid place-items-center font-display text-[4rem] font-semibold text-accent">FD</span>
+        )}
+      </div>
+      {plate && (
+        <figcaption className="absolute bottom-4 left-4 right-10 rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur sm:bottom-5 sm:left-5">
+          <span className="block font-display text-[17px] font-semibold text-ink">Ferhat Demir</span>
+          <span className="block text-[13px] leading-snug text-muted">{t.role}</span>
+        </figcaption>
+      )}
+    </figure>
   );
 }

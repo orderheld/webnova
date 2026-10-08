@@ -49,7 +49,7 @@ export const websiteCheck: StandalonePage = {
       steps: [
         {
           title: "Adresse senden",
-          text: "Füllen Sie das kurze Formular aus und geben Sie Ihre Website-Adresse an. Unter «Nachricht» können Sie schreiben, was Sie besonders interessiert.",
+          text: "Geben Sie im kurzen Formular Ihre Website-Adresse, Ihren Namen und Ihre E-Mail an. Wenn Sie möchten, notieren Sie in einer Zeile, worauf wir besonders achten sollen.",
         },
         {
           title: "Persönliche Durchsicht",
@@ -108,7 +108,7 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "Was brauche ich für den Check?",
-          a: "Nur die Adresse Ihrer Website und Ihre Kontaktdaten. Wenn Sie ein konkretes Anliegen haben, etwa wenige Anfragen oder schlechte Sichtbarkeit bei Google, schreiben Sie es in die Nachricht.",
+          a: "Nur die Adresse Ihrer Website und Ihre Kontaktdaten. Wenn Sie ein konkretes Anliegen haben, etwa wenige Anfragen oder schlechte Sichtbarkeit bei Google, notieren Sie es im Feld für Ihr Anliegen.",
         },
         {
           q: "Müssen Sie Zugang zu meiner Website haben?",
@@ -173,7 +173,7 @@ export const websiteCheck: StandalonePage = {
       steps: [
         {
           title: "Envoyer l'adresse",
-          text: "Remplissez le court formulaire avec l'adresse de votre site. Dans le message, indiquez ce qui vous intéresse particulièrement.",
+          text: "Indiquez dans le court formulaire l'adresse de votre site, votre nom et votre e-mail. Si vous le souhaitez, notez en une ligne ce que nous devons regarder en particulier.",
         },
         {
           title: "Examen personnel",
@@ -232,7 +232,7 @@ export const websiteCheck: StandalonePage = {
         },
         {
           q: "De quoi avez-vous besoin ?",
-          a: "Seulement de l'adresse de votre site et de vos coordonnées. Si vous avez une préoccupation précise, comme peu de demandes ou une faible visibilité sur Google, indiquez-la dans le message.",
+          a: "Seulement de l'adresse de votre site et de vos coordonnées. Si vous avez une préoccupation précise, comme peu de demandes ou une faible visibilité sur Google, notez-la dans le champ prévu à cet effet.",
         },
         {
           q: "Devez-vous avoir accès à mon site ?",

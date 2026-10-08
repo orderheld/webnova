@@ -1,7 +1,6 @@
 /**
- * Editorial section heading used by all shared sections: a numbered label (the number comes from
- * the page's section counter), a large H2 and an optional lead or action next to it.
- * `numbered={false}` renders a plain label for sections that should not take a number.
+ * Section heading used by all shared sections: a small label, a large H2 and an optional lead or
+ * action next to it. `numbered` is kept for compatibility (labels are no longer numbered).
  */
 export function SectionHead({
   eyebrow,
@@ -9,7 +8,6 @@ export function SectionHead({
   lead,
   dark = false,
   action,
-  numbered = true,
   id,
 }: {
   eyebrow: string;
@@ -21,16 +19,15 @@ export function SectionHead({
   /** id on the H2, for aria-labelledby or anchors. */
   id?: string;
 }) {
-  const label = numbered ? (dark ? "kicker-light" : "kicker") : dark ? "eyebrow-light" : "eyebrow";
   return (
-    <div className="mb-12 md:mb-16">
-      <p className={`${label} mb-6 md:mb-8`}>{eyebrow}</p>
-      <div className="grid gap-6 md:grid-cols-12 md:items-end">
-        <h2 id={id} className={`h-section md:col-span-8 ${lead || action ? "" : "md:col-span-10"}`}>
+    <div className="mb-12 md:mb-14">
+      <p className={`${dark ? "kicker-light" : "kicker"} mb-5`}>{eyebrow}</p>
+      <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-10">
+        <h2 id={id} className={`h-section md:col-span-7 ${lead || action ? "" : "md:col-span-10"}`}>
           {title}
         </h2>
         {(lead || action) && (
-          <div className="md:col-span-4 md:pb-1">
+          <div className="md:col-span-5 md:pb-1">
             {lead && <p className={dark ? "text-[16.5px] leading-relaxed text-white/75" : "text-[16.5px] leading-relaxed text-ink-soft"}>{lead}</p>}
             {action && <div className={lead ? "mt-5" : ""}>{action}</div>}
           </div>
@@ -40,7 +37,7 @@ export function SectionHead({
   );
 }
 
-/** Plain numbered label for sections that build their own heading layout. */
+/** Plain section label for sections that build their own heading layout. */
 export function Kicker({ children, dark = false, className = "" }: { children: React.ReactNode; dark?: boolean; className?: string }) {
   return <p className={`${dark ? "kicker-light" : "kicker"} ${className}`}>{children}</p>;
 }
