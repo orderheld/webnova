@@ -1,7 +1,8 @@
 import { Logo } from "@/components/logo";
 import { LoginForm } from "@/components/admin/login-form";
+import { ADMIN_MANIFEST } from "@/lib/admin/app";
 
-export const metadata = { title: "Login" };
+export const metadata = { title: "Login", manifest: ADMIN_MANIFEST };
 
 export default function LoginPage() {
   return (
