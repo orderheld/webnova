@@ -217,7 +217,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
               href={c.href}
               className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-6 transition-all hover:border-ink/30"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors group-hover:bg-accent group-hover:text-white">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-bg text-ink transition-colors group-hover:bg-bright group-hover:text-white">
                 <Icon name={c.icon} />
               </span>
               <span>

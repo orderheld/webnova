@@ -59,7 +59,7 @@ export function ReferenceCard({ r, locale, large = false }: { r: Reference; loca
             </li>
           ))}
         </ul>
-        <span className="mt-auto inline-flex items-center gap-2 self-start rounded-full border border-line px-4 py-2 text-[14px] font-semibold transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+        <span className="mt-auto inline-flex items-center gap-2 self-start rounded-full border border-line px-4 py-2 text-[14px] font-semibold transition-colors group-hover:border-accent group-hover:bg-bright group-hover:text-white">
           {t[locale].visit} <Icon name="arrow" className="h-4 w-4" />
         </span>
       </div>
