@@ -48,6 +48,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
   return (
     <>
       <PageHeader
+        eyebrow="Verkauf"
         title="Kunden"
         sub={`${rows.length} ${archived ? "archivierte " : ""}Kunden`}
         actions={

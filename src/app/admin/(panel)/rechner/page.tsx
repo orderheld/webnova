@@ -26,6 +26,7 @@ export default async function EstimatesPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Verkauf"
         title="Rechner"
         sub="Projektpreis aus Paket und Zusatzleistungen kalkulieren und direkt als Offerte übernehmen"
         actions={

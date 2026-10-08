@@ -40,6 +40,7 @@ export default async function PipelinePage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHeader
+        eyebrow="Verkauf"
         title="Pipeline"
         sub="Leads per Drag & Drop durch die Phasen ziehen"
         actions={
@@ -57,9 +58,9 @@ export default async function PipelinePage({ searchParams }: { searchParams: Pro
         }
       />
       <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Offene Leads" value={String(open.length)} />
-        <Stat label="Pipeline-Potenzial" value={`CHF ${chf0(pipelineValue)}`} />
-        <Stat label="In Offertphase" value={String(inOffer[0].n)} />
+        <Stat label="Offene Leads" value={String(open.length)} icon="inbox" />
+        <Stat label="Pipeline-Potenzial" value={`CHF ${chf0(pipelineValue)}`} icon="chart" />
+        <Stat label="In Offertphase" value={String(inOffer[0].n)} icon="file" />
         <Stat label="Abschlussquote (90 Tage)" value={rate === null ? "–" : `${rate} %`} sub={`${won.length} gewonnen, ${lost.length} verloren`} />
       </div>
       {due.length > 0 && (
@@ -67,8 +68,8 @@ export default async function PipelinePage({ searchParams }: { searchParams: Pro
           <ul className="flex flex-wrap gap-2">
             {due.map((d) => (
               <li key={d.id}>
-                <Link href={`/admin/anfragen/${d.id}`} className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[13px] text-red-800 hover:border-red-400">
-                  {d.company || d.name} <span className="text-red-600/80">{fmtDate(d.followUpAt)}</span>
+                <Link href={`/admin/anfragen/${d.id}`} className="inline-flex items-center gap-2 rounded-full bg-danger-soft px-3 py-1 text-[13px] font-medium text-danger ring-1 ring-inset ring-danger/20 transition-colors hover:ring-danger/40">
+                  {d.company || d.name} <span className="font-normal opacity-80">{fmtDate(d.followUpAt)}</span>
                 </Link>
               </li>
             ))}

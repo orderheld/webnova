@@ -39,7 +39,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         user={user}
         counts={{ newLeads: r.new_leads, followUps: r.follow_ups, openTasks: r.open_tasks, overdueInvoices: r.overdue, dueSubscriptions: r.due_subs }}
       />
-      <main className="min-w-0 flex-1 px-4 py-5 sm:px-6 lg:px-8 lg:py-8">
+      <main className="min-w-0 flex-1 px-4 pb-12 pt-6 sm:px-6 lg:px-10 lg:pt-9">
         <div className="mx-auto max-w-[1280px]">{children}</div>
       </main>
     </div>

@@ -38,13 +38,15 @@ export const mailColors = {
   danger: "#a12a2a",
 };
 const mailFont = "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+/** Headings use Inter Tight like the website, where the mail client has it. */
+const mailDisplayFont = "'Inter Tight',Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
 
 /** Simple, robust HTML wrapper for transactional mails. */
 export function mailLayout(bodyHtml: string, footer = true) {
   const c = mailColors;
   // Plain links (no own style) in the body get the bright blue of the site.
   const body = bodyHtml.replace(/<a href="([^"]*)">/g, `<a href="$1" style="color:${c.bright};text-decoration:underline">`);
-  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head><body style="margin:0;background:${c.bg};font-family:${mailFont};color:${c.ink}">
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><style>h1,h2,h3{font-family:${mailDisplayFont};font-weight:600;letter-spacing:-0.01em;color:${c.ink}}</style></head><body style="margin:0;background:${c.bg};font-family:${mailFont};color:${c.ink}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${c.bg}"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" style="max-width:600px;background:${c.surface};border-radius:16px;border:1px solid ${c.line};overflow:hidden" cellpadding="0" cellspacing="0">
 <tr><td style="height:4px;background:${c.accent};font-size:0;line-height:0">&nbsp;</td></tr>

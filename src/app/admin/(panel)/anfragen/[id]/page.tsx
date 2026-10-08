@@ -97,7 +97,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
         }
       />
 
-      <div className="mb-5 flex flex-wrap items-center gap-1.5 rounded-2xl border border-line bg-surface p-2">
+      <div className="mb-5 flex flex-wrap items-center gap-1.5 rounded-2xl border border-line bg-surface shadow-xs p-2">
         <span className="px-2 text-[12.5px] text-muted">Phase</span>
         {leadStatuses.map((s) => (
           <form key={s} action={setLeadStageAction.bind(null, l.id, s)}>

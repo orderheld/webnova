@@ -14,6 +14,7 @@ export default async function TemplatesPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Einstellungen"
         title="Projektvorlagen"
         sub="Vorlagen legen beim Projektstart Aufgaben mit Fälligkeiten an und füllen die Offerte mit Leistungen."
         actions={
@@ -23,7 +24,7 @@ export default async function TemplatesPage() {
         }
       />
       {rows.length === 0 ? (
-        <Empty>Noch keine Vorlagen.</Empty>
+        <Empty icon="layers">Noch keine Vorlagen.</Empty>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {rows.map((t) => (

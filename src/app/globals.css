@@ -24,6 +24,10 @@
   --color-success: #2f6b45;
   --color-warn: #9a6a12;
   --color-danger: #a12a2a;
+  /* Soft tints for status badges and notices (admin). */
+  --color-success-soft: #e7f0ea;
+  --color-warn-soft: #f6efe0;
+  --color-danger-soft: #f6e6e6;
 
   /* One shadow scale, always tinted with night so shadows read blue-grey, never black. */
   --shadow-xs: 0 1px 2px rgb(27 45 62 / 0.06);
@@ -113,30 +117,44 @@
   }
 }
 
-/* Admin: calm, dense work surface in brand Schieferblau. Tokens are pinned here so the
+/* Admin: calm, dense work surface in the corporate design. Tokens are pinned here so the
    public site can evolve without moving the admin. */
 .admin-theme {
   --color-accent: #24405a;
   --color-accent-soft: #e4e9ee;
   --color-accent-ink: #24405a;
-  --color-bg: #f3f4f5;
+  --color-bright: #3b6385;
+  --color-bright-soft: #e9eff4;
+  --color-accent-light: #b4c6d6;
+  --color-bg: #f3f6f9;
+  --color-bg-2: #f3f6f9;
   --color-surface: #ffffff;
   --color-ink: #1c232b;
   --color-ink-soft: #3a434d;
   --color-muted: #646b73;
-  --color-line: #e3e5e8;
+  --color-line: #e3e8ee;
   --color-night: #1b2d3e;
+  --color-night-2: #22384c;
   --color-success: #2f6b45;
+  --color-warn: #9a6a12;
   --color-danger: #a12a2a;
 
-  & h1, & h2, & h3 { font-family: var(--font-sans); }
+  /* Never scroll the whole admin sideways on phones; wide tables scroll inside their card. */
+  overflow-x: clip;
+
+  & h1, & h2, & h3 { font-family: var(--font-display); }
   & .input {
     border-radius: 12px;
     padding: 0.6rem 0.8rem;
     background: #fff;
   }
+  & .input:hover:not(:focus):not(:disabled) { border-color: #cfd8e1; }
   & .input:disabled { background: var(--color-bg); color: var(--color-muted); }
   & select.input { padding-right: 2rem; }
+  & input[type="checkbox"], & input[type="radio"] { accent-color: var(--color-accent); }
+  /* Grid columns may shrink below their content, so wide tables scroll inside their card
+     instead of pushing the page sideways on phones. */
+  & main .grid > * { min-width: 0; }
   @media (min-width: 768px) {
     & .input { font-size: 14px; }
   }

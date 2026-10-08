@@ -56,6 +56,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHeader
+        eyebrow="Projekte"
         title="Projekte"
         sub="Von der Planung bis zum Go-live"
         actions={

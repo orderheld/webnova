@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useOptimistic, useState, startTransition } from "react";
 import type { LeadStatus } from "@/db/schema";
 import { setLeadStageAction } from "@/lib/admin/crm-actions";
-import { leadStageLabels } from "@/lib/admin/labels";
+import { leadStageBar, leadStageLabels } from "@/lib/admin/labels";
 import { chf0, fmtDate } from "@/lib/admin/money";
 import { Icon } from "./icons";
 
@@ -53,11 +53,12 @@ export function LeadKanban({ cards, stages, today }: { cards: KanbanCard[]; stag
               className={`flex min-h-[420px] flex-col rounded-2xl border p-2 transition-colors ${over === s ? "border-accent bg-accent-soft/60" : "border-line bg-bg/70"}`}
               aria-label={leadStageLabels[s]}
             >
-              <header className="flex items-baseline justify-between px-2 pb-2 pt-1">
-                <h2 className="text-[13px] font-semibold">
+              <header className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 px-2 pb-2 pt-1">
+                <h2 className="flex items-center gap-2 text-[13px] font-semibold">
+                  <span className={`h-2 w-2 rounded-full ${leadStageBar[s]}`} aria-hidden="true" />
                   {leadStageLabels[s]} <span className="font-normal text-muted">{col.length}</span>
                 </h2>
-                {sum > 0 && <span className="text-[12px] tabular-nums text-muted">CHF {chf0(sum)}</span>}
+                {sum > 0 && <span className="whitespace-nowrap text-[12px] tabular-nums text-muted">CHF {chf0(sum)}</span>}
               </header>
               <div className="flex flex-1 flex-col gap-2">
                 {col.map((c) => {
@@ -71,7 +72,7 @@ export function LeadKanban({ cards, stages, today }: { cards: KanbanCard[]; stag
                         setDrag(c.id);
                       }}
                       onDragEnd={() => setDrag(null)}
-                      className={`cursor-grab rounded-xl border border-line bg-surface p-3 shadow-sm active:cursor-grabbing ${drag === c.id ? "opacity-50" : ""}`}
+                      className={`cursor-grab rounded-xl border border-line bg-surface p-3 shadow-xs transition-[border-color,box-shadow] hover:border-accent/30 hover:shadow-card active:cursor-grabbing ${drag === c.id ? "opacity-50" : ""}`}
                     >
                       <Link href={`/admin/anfragen/${c.id}`} className="block text-[14px] font-medium leading-snug hover:text-accent">
                         {c.title}
@@ -81,7 +82,7 @@ export function LeadKanban({ cards, stages, today }: { cards: KanbanCard[]; stag
                         {c.value ? <span className="tabular-nums text-ink-soft">CHF {chf0(c.value)}</span> : null}
                         {c.rating ? (
                           <span className="inline-flex items-center gap-0.5">
-                            <Icon name="star" className="h-3 w-3 fill-amber-400 text-amber-400" />
+                            <Icon name="star" className="h-3 w-3 fill-current text-bright" />
                             {c.rating}
                           </span>
                         ) : null}
@@ -91,7 +92,7 @@ export function LeadKanban({ cards, stages, today }: { cards: KanbanCard[]; stag
                             {fmtDate(c.followUpAt)}
                           </span>
                         )}
-                        {c.source === "anfrage" && <span className="rounded bg-accent-soft px-1.5 text-accent">Web</span>}
+                        {c.source === "anfrage" && <span className="rounded-md bg-bright-soft px-1.5 font-medium text-bright">Web</span>}
                       </div>
                       {/* touch fallback: move with a select */}
                       <select
