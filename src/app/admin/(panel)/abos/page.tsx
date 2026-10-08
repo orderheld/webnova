@@ -61,6 +61,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
   return (
     <>
       <PageHeader
+        eyebrow="Finanzen"
         title="Abos & wiederkehrende Leistungen"
         sub="Hosting, Wartung, Domains, SEO-Betreuung und Lizenzen. Verrechnung jeweils im Voraus."
         actions={
@@ -88,7 +89,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
           href={(v) => qs(base, params, { status: v })}
           items={[[undefined, "Aktiv", n("aktiv")], ["pausiert", "Pausiert", n("pausiert")], ["gekuendigt", "Gekündigt", n("gekuendigt")], ["alle", "Alle", all.length]]}
         />
-        <form className="ml-auto flex gap-2">
+        <form className="flex w-full flex-wrap gap-2 sm:ml-auto sm:w-auto">
           {sp.status && <input type="hidden" name="status" value={sp.status} />}
           <select name="art" defaultValue={sp.art ?? ""} className="input w-auto">
             <option value="">Alle Arten</option>
@@ -98,8 +99,8 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
               </option>
             ))}
           </select>
-          <input name="q" defaultValue={term} placeholder="Abo oder Kunde …" className="input w-48" />
-          <button className="rounded-full border border-line bg-surface px-3 text-[13px] hover:border-accent">Filtern</button>
+          <input name="q" defaultValue={term} placeholder="Abo oder Kunde …" className="input min-w-0 flex-1 sm:w-48 sm:flex-none" />
+          <button className={btn.ghost}>Filtern</button>
         </form>
       </div>
       {customerId && rows[0] && (

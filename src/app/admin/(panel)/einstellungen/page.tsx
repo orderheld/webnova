@@ -8,7 +8,8 @@ export default async function SettingsPage() {
   const s = await getSettings();
   return (
     <>
-      <PageHeader title="Einstellungen" sub="Firmendaten, Zahlungsangaben und Textvorlagen für Offerten und Rechnungen" />
+      <PageHeader
+        eyebrow="Einstellungen" title="Einstellungen" sub="Firmendaten, Zahlungsangaben und Textvorlagen für Offerten und Rechnungen" />
       <SettingsForm s={s} />
     </>
   );

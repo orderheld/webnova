@@ -44,7 +44,7 @@ export function TemplateEditor({
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
-      <div className="space-y-4 rounded-2xl border border-line bg-surface p-4 sm:p-5">
+      <div className="space-y-4 rounded-2xl border border-line bg-surface shadow-xs p-4 sm:p-5">
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Name">
             <input className="input" value={v.name} onChange={(e) => setV({ ...v, name: e.target.value })} placeholder="z. B. Webseite KMU" />
@@ -90,7 +90,7 @@ export function TemplateEditor({
         </div>
       </div>
       <aside className="space-y-4">
-        <div className="rounded-2xl border border-line bg-surface p-4">
+        <div className="rounded-2xl border border-line bg-surface shadow-xs p-4">
           <p className="mb-2 text-[14px] font-semibold">Leistungen für die Offerte</p>
           <p className="mb-3 text-[12.5px] text-muted">Beim Umwandeln eines Leads wird damit eine Offerte vorbereitet.</p>
           <ul className="max-h-[360px] space-y-1.5 overflow-y-auto">

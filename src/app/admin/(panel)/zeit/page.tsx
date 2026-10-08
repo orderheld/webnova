@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ConfirmButton } from "@/components/admin/confirm-button";
 import { TimeForm } from "@/components/admin/forms";
 import { Icon } from "@/components/admin/icons";
-import { Card, Empty, FilterChips, PageHeader, Stat, Table, iconBtn, qs, td, tdNum } from "@/components/admin/ui";
+import { Card, Empty, FilterChips, PageHeader, Stat, Table, iconBtn, qs, td, tdNum, btn } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { deleteTimeAction } from "@/lib/admin/project-actions";
 import { chf, fmtDate, fmtHours, monthNames, todayIso } from "@/lib/admin/money";
@@ -50,7 +50,8 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
 
   return (
     <>
-      <PageHeader title="Zeiterfassung" sub={sp.status === "offen" ? "Alle noch nicht verrechneten Stunden" : `${monthNames[m - 1]} ${y}`} />
+      <PageHeader
+        eyebrow="Projekte" title="Zeiterfassung" sub={sp.status === "offen" ? "Alle noch nicht verrechneten Stunden" : `${monthNames[m - 1]} ${y}`} />
       <Card title="Zeit erfassen" className="mb-5">
         <TimeForm projects={projects} />
       </Card>
@@ -69,10 +70,10 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
           </div>
         )}
         <FilterChips active={sp.status} href={(v) => qs(base, params, { status: v })} items={[[undefined, "Alle"], ["offen", "Unverrechnet"], ["verrechnet", "Verrechnet"]]} />
-        <form className="ml-auto">
+        <form className="flex w-full flex-wrap gap-2 sm:ml-auto sm:w-auto">
           {sp.monat && <input type="hidden" name="monat" value={sp.monat} />}
           {sp.status && <input type="hidden" name="status" value={sp.status} />}
-          <select name="projekt" defaultValue={sp.projekt ?? ""} className="input w-auto">
+          <select name="projekt" defaultValue={sp.projekt ?? ""} className="input min-w-0 flex-1 sm:w-auto sm:max-w-xs sm:flex-none">
             <option value="">Alle Projekte</option>
             {projects.map((p) => (
               <option key={p.id} value={p.id}>
@@ -80,7 +81,7 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
               </option>
             ))}
           </select>
-          <button className="ml-2 rounded-full border border-line bg-surface px-3 py-1.5 text-[13px] hover:border-accent">Filtern</button>
+          <button className={btn.ghost}>Filtern</button>
         </form>
       </div>
       <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -90,7 +91,7 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
         <Stat label="Davon noch offen" value={`CHF ${chf(openValue)}`} tone={openValue > 0 ? "warn" : undefined} />
       </div>
       {rows.length === 0 ? (
-        <Empty>Keine Zeiteinträge in diesem Zeitraum.</Empty>
+        <Empty icon="clock">Keine Zeiteinträge in diesem Zeitraum.</Empty>
       ) : (
         <Table minWidth={760} head={["Datum", "Projekt", "Tätigkeit", { label: "Std.", align: "right" }, { label: "CHF", align: "right" }, "Status", ""]}>
           {rows.map(({ e, p, c }) => (
@@ -111,7 +112,7 @@ export default async function TimePage({ searchParams }: { searchParams: Promise
                     verrechnet
                   </Link>
                 ) : e.billable ? (
-                  <span className="text-amber-700">offen</span>
+                  <span className="text-warn">offen</span>
                 ) : (
                   <span className="text-muted">intern</span>
                 )}

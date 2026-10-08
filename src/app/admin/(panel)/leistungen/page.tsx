@@ -16,6 +16,7 @@ export default async function ProductsPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Einstellungen"
         title="Leistungen"
         sub="Katalog mit Standardpreisen. Wird in Offerten, Rechnungen, Abos und Projektvorlagen verwendet."
         actions={
@@ -25,7 +26,7 @@ export default async function ProductsPage() {
         }
       />
       {rows.length === 0 ? (
-        <Empty>Noch keine Leistungen erfasst.</Empty>
+        <Empty icon="tag">Noch keine Leistungen erfasst.</Empty>
       ) : (
         <Table minWidth={760} head={["Leistung", "Kategorie", "Einheit", { label: "Preis CHF", align: "right" }, "Wiederkehrend", "Status", ""]}>
           {rows.map((p) => (

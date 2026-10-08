@@ -36,7 +36,7 @@ export function DocTable({
   showOpen?: boolean;
   empty?: React.ReactNode;
 }) {
-  if (rows.length === 0) return <Empty>{empty ?? "Noch nichts vorhanden."}</Empty>;
+  if (rows.length === 0) return <Empty icon={base.includes("rechnungen") ? "receipt" : "file"}>{empty ?? "Noch nichts vorhanden."}</Empty>;
   const head = [
     { label: "Nummer", key: "nummer" },
     { label: "Kunde", key: "kunde" },

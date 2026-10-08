@@ -95,6 +95,7 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHeader
+        eyebrow="Finanzen"
         title={kind === "gutschrift" ? "Gutschriften" : "Rechnungen"}
         actions={
           <>
@@ -134,7 +135,7 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
       <div className="mb-4 flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-3">
           <FilterChips active={kind === "gutschrift" ? "gutschrift" : undefined} href={(v) => qs(base, {}, { art: v })} items={[[undefined, "Rechnungen"], ["gutschrift", "Gutschriften"]]} />
-          <form className="ml-auto flex gap-2">
+          <form className="flex w-full flex-wrap gap-2 sm:ml-auto sm:w-auto">
             {status && <input type="hidden" name="status" value={status} />}
             {sp.art && <input type="hidden" name="art" value={sp.art} />}
             <select name="jahr" defaultValue={year ?? ""} className="input w-auto">
@@ -143,8 +144,8 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
                 <option key={y}>{y}</option>
               ))}
             </select>
-            <input name="q" defaultValue={term} placeholder="Nummer, Titel, Kunde …" className="input w-52" />
-            <button className="rounded-full border border-line bg-surface px-3 text-[13px] hover:border-accent">Filtern</button>
+            <input name="q" defaultValue={term} placeholder="Nummer, Titel, Kunde …" className="input min-w-0 flex-1 sm:w-52 sm:flex-none" />
+            <button className={btn.ghost}>Filtern</button>
           </form>
         </div>
         <FilterChips

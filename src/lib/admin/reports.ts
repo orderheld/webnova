@@ -111,3 +111,75 @@ export async function dashboardFigures(monthStart: string, yearStart: string, to
   ]);
   return { monthRev: round2(rev.month), yearRev: round2(rev.year), monthIn: round2(inc.month), yearIn: round2(inc.year), yearExp: exp };
 }
+
+/** Net invoiced revenue per calendar month ("YYYY-MM") between two dates, credit notes subtracted. */
+export async function monthlyRevenue(from: string, to: string) {
+  const i = schema.invoices;
+  const month = sql<string>`to_char(${i.issueDate}, 'YYYY-MM')`;
+  const rows = await db()
+    .select({
+      month,
+      net: sql<number>`coalesce(sum(case when ${i.kind} = 'gutschrift' then -1 else 1 end * ${i.total} / (1 + ${i.vatRate} / 100.0)), 0)::float`,
+    })
+    .from(i)
+    .where(and(gte(i.issueDate, from), lte(i.issueDate, to), notInArray(i.status, ["entwurf", "storniert"])))
+    .groupBy(month);
+  return new Map(rows.map((r) => [r.month, round2(r.net)]));
+}
+
+/**
+ * Sales and operations figures for the dashboard in one round trip: leads, quotes (open, accepted
+ * this year, acceptance rate), recurring revenue normalised to one month and tasks due.
+ */
+export async function salesFigures(yearStart: string, today: string, weekEnd: string) {
+  const res = await db().execute<{
+    new_leads: number;
+    open_leads: number;
+    leads_month: number;
+    quotes_open: number;
+    quotes_open_sum: number;
+    quotes_expired: number;
+    quotes_won: number;
+    quotes_won_sum: number;
+    quotes_lost: number;
+    subs_active: number;
+    mrr: number;
+    tasks_due: number;
+    tasks_week: number;
+  }>(sql`
+    select
+      (select count(*)::int from leads where status = 'neu') as new_leads,
+      (select count(*)::int from leads where status not in ('gewonnen','verloren')) as open_leads,
+      (select count(*)::int from leads where created_at >= date_trunc('month', ${today}::date)) as leads_month,
+      (select count(*)::int from quotes where status = 'gesendet') as quotes_open,
+      (select coalesce(sum(total),0)::float from quotes where status = 'gesendet') as quotes_open_sum,
+      (select count(*)::int from quotes where status = 'gesendet' and valid_until < ${today}) as quotes_expired,
+      (select count(*)::int from quotes where status = 'angenommen' and issue_date >= ${yearStart}) as quotes_won,
+      (select coalesce(sum(total),0)::float from quotes where status = 'angenommen' and issue_date >= ${yearStart}) as quotes_won_sum,
+      (select count(*)::int from quotes where status = 'abgelehnt' and issue_date >= ${yearStart}) as quotes_lost,
+      (select count(*)::int from subscriptions where status = 'aktiv' and (end_date is null or end_date >= ${today})) as subs_active,
+      (select coalesce(sum(amount / case "interval" when 'monat' then 1 when 'quartal' then 3 when 'halbjahr' then 6 else 12 end), 0)::float
+         from subscriptions where status = 'aktiv' and (end_date is null or end_date >= ${today})) as mrr,
+      (select count(*)::int from project_tasks t join projects p on p.id = t.project_id
+         where not t.done and t.due_date <= ${today} and p.status <> 'abgeschlossen') as tasks_due,
+      (select count(*)::int from project_tasks t join projects p on p.id = t.project_id
+         where not t.done and t.due_date > ${today} and t.due_date <= ${weekEnd} and p.status <> 'abgeschlossen') as tasks_week
+  `);
+  const r = res.rows[0];
+  const decided = r.quotes_won + r.quotes_lost;
+  return {
+    newLeads: r.new_leads,
+    openLeads: r.open_leads,
+    leadsMonth: r.leads_month,
+    quotesOpen: r.quotes_open,
+    quotesOpenSum: round2(r.quotes_open_sum),
+    quotesExpired: r.quotes_expired,
+    quotesWon: r.quotes_won,
+    quotesWonSum: round2(r.quotes_won_sum),
+    winRate: decided ? Math.round((r.quotes_won / decided) * 100) : null,
+    subsActive: r.subs_active,
+    mrr: round2(r.mrr),
+    tasksDue: r.tasks_due,
+    tasksWeek: r.tasks_week,
+  };
+}

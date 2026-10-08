@@ -49,7 +49,7 @@ export function SendDialog({
           <form
             action={submit}
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[92vh] w-full max-w-xl space-y-4 overflow-y-auto rounded-2xl bg-surface p-5 shadow-2xl"
+            className="max-h-[92vh] w-full max-w-xl space-y-4 overflow-y-auto rounded-2xl bg-surface p-5 shadow-lift"
           >
             <div className="flex items-center justify-between">
               <h2 className="text-[18px] font-semibold tracking-tight">{kind === "quote" ? "Offerte" : kind === "reminder" ? "Mahnung" : "Rechnung"} senden</h2>

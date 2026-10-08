@@ -32,12 +32,13 @@ export default async function TasksPage({ searchParams }: { searchParams: Promis
   const visible = zeitraum === "woche" ? groups.slice(0, 3) : groups;
   return (
     <>
-      <PageHeader title="Aufgaben" sub="Alle offenen Aufgaben aus laufenden Projekten" />
+      <PageHeader
+        eyebrow="Projekte" title="Aufgaben" sub="Alle offenen Aufgaben aus laufenden Projekten" />
       <div className="mb-4">
         <FilterChips active={zeitraum} href={(v) => (v ? `/admin/aufgaben?zeitraum=${v}` : "/admin/aufgaben")} items={[[undefined, "Alle", rows.length], ["woche", "Bis in 7 Tagen"]]} />
       </div>
       {rows.length === 0 ? (
-        <Empty>Keine offenen Aufgaben. Alles erledigt.</Empty>
+        <Empty icon="checkSquare">Keine offenen Aufgaben. Alles erledigt.</Empty>
       ) : (
         <div className="space-y-5">
           {visible

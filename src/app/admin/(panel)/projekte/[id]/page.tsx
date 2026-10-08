@@ -101,7 +101,7 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
       />
       {fehler === "keine-stunden" && <Notice tone="warn">Keine offenen, verrechenbaren Stunden vorhanden.</Notice>}
 
-      <div className="mb-5 flex flex-wrap items-center gap-1 rounded-2xl border border-line bg-surface p-2">
+      <div className="mb-5 flex flex-wrap items-center gap-1 rounded-2xl border border-line bg-surface shadow-xs p-2">
         {projectStatuses.map((s, i) => {
           const idx = projectStatuses.indexOf(p.status);
           return (
@@ -225,7 +225,7 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
                               verrechnet
                             </Link>
                           ) : t.billable ? (
-                            <span className="text-amber-700">offen</span>
+                            <span className="text-warn">offen</span>
                           ) : (
                             <span className="text-muted">intern</span>
                           )}
