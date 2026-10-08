@@ -22,9 +22,7 @@ import {
   Kicker,
   LocationsSection,
   ProcessSection,
-  ReferencesSection,
   SectionHead,
-  hasProjects,
 } from "@/components/sections";
 const homeMeta = {
   de: {
@@ -74,8 +72,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
 
 /** Anchor ids of the home sections, per language. */
 const ids = {
-  de: { projects: "projekte", services: "leistungen", focus: "branchen", process: "ablauf", about: "ueber-uns", contact: "kontakt", faq: "fragen" },
-  fr: { projects: "projets", services: "services", focus: "secteurs", process: "methode", about: "a-propos", contact: "contact", faq: "questions" },
+  de: { services: "leistungen", focus: "branchen", process: "ablauf", about: "ueber-uns", contact: "kontakt", faq: "fragen" },
+  fr: { services: "services", focus: "secteurs", process: "methode", about: "a-propos", contact: "contact", faq: "questions" },
 };
 
 const copy = {
@@ -239,7 +237,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const st = structure[lang];
   const id = ids[lang];
   const svc = (key: string) => services.find((s) => s.key === key);
-  const projects = hasProjects();
 
   const problemList = problems.filter((p) => hasRoute(`problem:${p.key}`));
 
@@ -247,8 +244,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
     <>
       <HomeHero locale={lang} />
 
-      {/* PROJECTS: horizontal row, only while references are switched on (showReferences). */}
-      {projects && <ReferencesSection locale={lang} id={id.projects} />}
 
       {/* ANGEBOT: the goal question with three goals, each with its own scene. */}
       <section id={id.services} className="section-y scroll-mt-20">

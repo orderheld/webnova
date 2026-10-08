@@ -9,7 +9,6 @@ import {
   NextSteps,
   ProblemsSection,
   ProcessSection,
-  ReferencesSection,
   SectionHead,
   ServicesGrid,
 } from "@/components/sections";
@@ -167,7 +166,6 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
 
       <BenefitsSection locale={locale} items={benefits} title={c.benefitsTitle} />
 
-      {!pos && <ReferencesSection locale={locale} />}
 
       {(!pos || c.process) && <ProcessSection locale={locale} steps={c.process} />}
 

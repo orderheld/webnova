@@ -33,8 +33,8 @@ export const site = {
   // Google Business Profile and directory links. Empty until Ferhat sends them;
   // anything empty is simply not rendered (no placeholder text on the site).
   google: {
-    maps: "", // "In Google Maps öffnen" link of the business profile (maps.app.goo.gl/... or ?cid=...)
-    review: "", // review short link from the profile (g.page/r/.../review)
+    maps: "https://maps.google.com/?cid=350473176621825350", // "In Google Maps öffnen" link of the business profile (maps.app.goo.gl/... or ?cid=...)
+    review: "https://g.page/r/CUa92Et_Id0EEBM/review", // review short link from the profile (g.page/r/.../review)
   },
   directories: [] as string[], // local.ch entry, Apple Maps link, ...
   // Office hours as in the Google Business Profile (Ferhat, 2026-10-08). Sunday closed.

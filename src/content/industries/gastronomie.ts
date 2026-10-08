@@ -6,7 +6,6 @@ export const gastronomie: Industry = {
   services: ["webdesign", "kassensystem-gastro", "seo", "online-marketing"],
   guides: ["google-unternehmensprofil", "lokales-seo-kmu", "webseite-kosten"],
   preset: ["webdesign"],
-  reference: "orderheld",
   content: {
     de: {
       slug: "webseite-restaurant",
