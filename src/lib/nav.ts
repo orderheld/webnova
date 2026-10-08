@@ -34,6 +34,12 @@ export const serviceGroupIds: { key: string; label: Localized<string>; ids: stri
   },
 ];
 
+/**
+ * Pages kept for Google (own search terms) but left out of the header menu, because for visitors
+ * they repeat "Webdesign" (Ferhat, 2026-10-08). Footer, grids and internal links still show them.
+ */
+const hiddenInMenu = new Set(["service:website-kmu", "service:firmenwebsite"]);
+
 /** Labels and icons for pages that are not services (tools by other branches). */
 const pageLabels: Record<string, { icon: string; label: Localized<string>; text: Localized<string> }> = {
   "page:website-check": {
@@ -111,7 +117,9 @@ export function buildNav(locale: Locale): NavData {
     servicesLabel: d.nav.services,
     servicesHref: href(locale, "services"),
     allServicesLabel: d.nav.allServices,
-    serviceGroups: serviceGroups(locale),
+    serviceGroups: serviceGroups(locale)
+      .map((g) => ({ ...g, items: g.items.filter((it) => !serviceGroupIds.some((sg) => sg.ids.some((id) => hiddenInMenu.has(id) && href(locale, id) === it.href))) }))
+      .filter((g) => g.items.length > 0),
     industriesLabel: industryUi[locale].industries,
     industriesHref: href(locale, "industries"),
     allIndustriesLabel: industryUi[locale].allIndustries,
