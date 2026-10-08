@@ -34,6 +34,7 @@ export function PageHero({
   children,
   crumbs,
   aside,
+  backdrop,
 }: {
   eyebrow?: string;
   title: string;
@@ -42,9 +43,12 @@ export function PageHero({
   crumbs?: { name: string; url?: string }[];
   /** Optional visual on the right (desktop) or below (mobile). */
   aside?: React.ReactNode;
+  /** Decorative layer painted behind the hero content (e.g. a city skyline). */
+  backdrop?: React.ReactNode;
 }) {
   return (
-    <section className="relative border-b border-line bg-bg">
+    <section className="relative isolate border-b border-line bg-bg">
+      {backdrop}
       <div className="container-x pb-16 pt-8 md:pb-24 md:pt-12">
         {crumbs && <Breadcrumbs items={crumbs} />}
         <div className={aside ? "grid items-center gap-14 lg:grid-cols-12" : ""}>
