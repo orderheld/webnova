@@ -6,7 +6,7 @@ export const kmuWebseiteCheckliste: Guide = {
   readingMinutes: 8,
   related: ["webdesign", "seo", "wartung"],
   relatedGuides: ["webagentur-unterschied", "barrierefreie-website", "lokales-seo-kmu"],
-  cities: ["grenchen", "solothurn", "biel", "bern"],
+  cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {
       slug: "was-eine-kmu-webseite-braucht",
@@ -69,7 +69,7 @@ export const kmuWebseiteCheckliste: Guide = {
           h2: "Recht und Datenschutz",
           paragraphs: [
             "Jede geschäftliche Webseite in der Schweiz braucht ein Impressum mit Firmenname, Adresse und Kontakt. Seit dem revidierten Datenschutzgesetz ist zudem eine Datenschutzerklärung nötig, sobald Personendaten bearbeitet werden, etwa über ein Kontaktformular, eingebettete Karten oder Analyse-Tools. Sie muss beschreiben, welche Daten zu welchem Zweck bearbeitet werden und an wen sie gehen.",
-            "Setzen Sie Analyse- und Werbe-Tools sparsam ein und prüfen Sie, ob ein Cookie-Hinweis nötig ist, besonders wenn Sie auch Kundschaft aus der EU ansprechen. Bilder und Texte müssen Ihnen gehören oder lizenziert sein. Übernommene Fotos aus dem Internet führen immer wieder zu teuren Abmahnungen.",
+            "Setzen Sie Analyse- und Werbe-Tools sparsam ein und prüfen Sie, ob ein Cookie-Hinweis nötig ist, besonders wenn Sie auch Kundschaft aus der EU ansprechen. Bilder und Texte müssen Ihnen gehören oder lizenziert sein. Übernommene Fotos aus dem Internet führen immer wieder zu teuren Lizenzforderungen.",
           ],
         },
         {
@@ -83,7 +83,7 @@ export const kmuWebseiteCheckliste: Guide = {
           h2: "Fachkräfte gewinnen über die Webseite",
           paragraphs: [
             "Viele KMU suchen nicht nur Kundschaft, sondern auch Mitarbeitende. Eine eigene Seite für offene Stellen und Lehrstellen mit Einblicken in Team, Werkstatt und Arbeitsalltag wirkt oft mehr als ein Inserat. Bewerbende sollten einfach und ohne lange Formulare Kontakt aufnehmen können.",
-            "Wir erstellen Webseiten für KMU und Handwerksbetriebe in der ganzen Schweiz. Ob Neubau mit [Webdesign](service:webdesign) oder Auffrischung einer bestehenden Seite: Persönliche Gespräche führen wir gerne auch vor Ort, zum Beispiel in [Grenchen](city:grenchen), [Solothurn](city:solothurn), [Biel/Bienne](city:biel) oder [Bern](city:bern).",
+            "Wir erstellen Webseiten für KMU und Handwerksbetriebe in der ganzen Schweiz. Ob Neubau mit [Webdesign](service:webdesign) oder Auffrischung einer bestehenden Seite: Persönliche Gespräche führen wir gerne bei Ihnen vor Ort, bei uns im Büro oder per Videocall.",
           ],
         },
       ],
@@ -181,7 +181,7 @@ export const kmuWebseiteCheckliste: Guide = {
           h2: "Recruter grâce au site",
           paragraphs: [
             "Beaucoup de PME cherchent non seulement des clients, mais aussi du personnel. Une page dédiée aux postes et places d'apprentissage, avec un aperçu de l'équipe, de l'atelier et du quotidien, a souvent plus d'effet qu'une annonce. Les candidats doivent pouvoir prendre contact simplement, sans long formulaire.",
-            "Nous créons des sites pour PME et artisans dans toute la Suisse. Nouveau site avec notre offre de [création de site internet](service:webdesign) ou rafraîchissement d'un site existant : nous vous rencontrons volontiers, par exemple à [Granges](city:grenchen), [Soleure](city:solothurn), [Bienne](city:biel) ou [Berne](city:bern).",
+            "Nous créons des sites pour PME et artisans dans toute la Suisse. Nouveau site avec notre offre de [création de site internet](service:webdesign) ou rafraîchissement d'un site existant : nous vous rencontrons volontiers chez vous, dans nos locaux ou en visioconférence.",
           ],
         },
       ],

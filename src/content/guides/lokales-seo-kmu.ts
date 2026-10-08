@@ -7,7 +7,7 @@ export const lokalesSeoKmu: Guide = {
   readingMinutes: 9,
   related: ["seo", "online-marketing", "webdesign"],
   relatedGuides: ["google-unternehmensprofil", "geo-ki-suche", "zweisprachige-webseite"],
-  cities: ["grenchen", "biel", "solothurn", "bern"],
+  cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {
       slug: "lokales-seo-fuer-kmu",
@@ -17,7 +17,7 @@ export const lokalesSeoKmu: Guide = {
           "Lokales SEO für Schweizer KMU: Google-Unternehmensprofil, einheitliche Firmendaten, Bewertungen und lokale Seiten. So werden Sie in Ihrer Region gefunden.",
       },
       h1: "Lokales SEO für KMU: So werden Sie in Ihrer Region gefunden",
-      lead: "Wer «Schreiner Grenchen» oder «Coiffeur Biel» sucht, will meist sofort einen Anbieter in der Nähe finden. Mit lokalem SEO sorgen Sie dafür, dass Ihr Unternehmen genau dann in Google Maps und in den Suchergebnissen erscheint.",
+      lead: "Wer «Schreiner Luzern» oder «Coiffeur Biel» sucht, will meist sofort einen Anbieter in der Nähe finden. Mit lokalem SEO sorgen Sie dafür, dass Ihr Unternehmen genau dann in Google Maps und in den Suchergebnissen erscheint.",
       keyTakeaways: [
         "Lokales SEO verbindet Google-Unternehmensprofil, einheitliche Firmendaten, Bewertungen und eine Website, die Ihre Region klar nennt.",
         "Name, Adresse und Telefonnummer müssen auf Website, Google und Verzeichnissen wie local.ch und search.ch identisch sein.",
@@ -32,7 +32,7 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Warum lokales SEO für Schweizer KMU entscheidend ist",
           paragraphs: [
-            "Viele KMU haben ihre Kundschaft in einem Umkreis von wenigen Kilometern. Für sie ist es wichtiger, bei Suchen in der eigenen Region sichtbar zu sein, als schweizweit für allgemeine Begriffe zu ranken. Google zeigt bei Suchanfragen mit lokalem Bezug eine Karte mit ausgewählten Unternehmen an, das sogenannte Local Pack. Wer dort erscheint, erhält besonders viel Aufmerksamkeit.",
+            "Viele KMU haben ihre Kundschaft vor allem in der näheren Umgebung. Für sie ist es wichtiger, bei Suchen in der eigenen Region sichtbar zu sein, als schweizweit für allgemeine Begriffe zu ranken. Google zeigt bei Suchanfragen mit lokalem Bezug eine Karte mit ausgewählten Unternehmen an, das sogenannte Local Pack. Wer dort erscheint, erhält besonders viel Aufmerksamkeit.",
             "Lokales SEO kombiniert mehrere Bausteine: ein gepflegtes Google-Unternehmensprofil, einheitliche Firmendaten in Verzeichnissen, echte Kundenbewertungen und eine Webseite, die Ihre Region klar benennt. Keiner dieser Bausteine wirkt allein. Erst im Zusammenspiel versteht Google, wo Sie tätig sind, was Sie anbieten und warum Ihr Unternehmen für Suchende in der Nähe relevant ist.",
           ],
         },
@@ -81,7 +81,7 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Zweisprachige Regionen wie Biel/Bienne richtig abdecken",
           paragraphs: [
-            "In zweisprachigen Regionen wie Biel/Bienne oder entlang der Sprachgrenze suchen Kundinnen und Kunden auf Deutsch und auf Französisch. Wer «Webdesign Biel» sucht, verwendet andere Begriffe als jemand, der «création site internet Bienne» eingibt. Eine einsprachige Webseite verschenkt hier einen grossen Teil der möglichen Anfragen. Das gilt auch für Grenchen, Solothurn oder Bern, wenn Sie Kundschaft aus der Romandie ansprechen.",
+            "In zweisprachigen Regionen wie Biel/Bienne oder entlang der Sprachgrenze suchen Kundinnen und Kunden auf Deutsch und auf Französisch. Wer «Webdesign Biel» sucht, verwendet andere Begriffe als jemand, der «création site internet Bienne» eingibt. Eine einsprachige Webseite verschenkt hier einen grossen Teil der möglichen Anfragen. Das gilt auch für Betriebe in der übrigen Deutschschweiz, wenn Sie Kundschaft aus der Romandie ansprechen.",
             "Erstellen Sie deshalb vollwertige Sprachversionen mit eigenen URLs und hreflang-Angaben, statt einer automatischen Übersetzung. Wie das technisch und sprachlich gelingt, zeigt der Ratgeber [Zweisprachige Webseite](guide:zweisprachige-webseite). Auch das Google-Unternehmensprofil, Beiträge und Antworten auf Bewertungen können zweisprachig sein. So zeigen Sie, dass Sie die ganze Region bedienen. Gerne prüfen wir Ihre lokale Sichtbarkeit und zeigen Ihnen in einem unverbindlichen Gespräch das Potenzial auf.",
           ],
         },
@@ -102,7 +102,7 @@ export const lokalesSeoKmu: Guide = {
           h2: "Unterstützung in Ihrer Region",
           paragraphs: [
             "Viele KMU setzen die ersten Schritte selbst um und holen sich für Technik, Texte und Auswertung Unterstützung. Im Rahmen unserer [SEO-Betreuung](service:seo) übernehmen wir genau diese Teile, schweizweit und persönlich. Ist Ihre Webseite selbst das Problem, etwa weil sie langsam oder nicht mobilfreundlich ist, lohnt sich zuerst ein [Website-Redesign](service:website-redesign).",
-            "Für Betriebe in unserer Kernregion haben wir eigene Seiten mit lokalen Besonderheiten: [SEO in Grenchen](citySeo:grenchen), [SEO in Biel/Bienne](citySeo:biel), [SEO in Solothurn](citySeo:solothurn) und [SEO in Bern](citySeo:bern). Dort finden Sie typische Branchen, Fragen und Ansätze für die jeweilige Stadt.",
+            "Für einige Städte haben wir eigene Seiten mit lokalen Besonderheiten: [SEO in Bern](citySeo:bern), [SEO in Biel/Bienne](citySeo:biel), [SEO in Solothurn](citySeo:solothurn) und [SEO in Grenchen](citySeo:grenchen). Dort finden Sie typische Branchen, Fragen und Ansätze für die jeweilige Stadt.",
           ],
         },
       ],
@@ -120,7 +120,7 @@ export const lokalesSeoKmu: Guide = {
           a: "Korrekturen am Google-Unternehmensprofil können relativ rasch sichtbar werden. Bewertungen, Verzeichniseinträge und lokale Inhalte entfalten ihre Wirkung dagegen über Wochen und Monate. Lokales SEO ist deshalb eine laufende Aufgabe.",
         },
         {
-          q: "Lohnt sich eine französische Version für ein KMU in Biel oder Grenchen?",
+          q: "Lohnt sich eine französische Version für ein Deutschschweizer KMU?",
           a: "Wenn Sie Kundschaft aus der Romandie oder aus dem französischsprachigen Teil von Biel/Bienne ansprechen möchten, in der Regel ja. Eine eigene französische Version macht Sie für Suchen auf Französisch überhaupt erst sichtbar.",
         },
       ],
@@ -133,7 +133,7 @@ export const lokalesSeoKmu: Guide = {
           "Référencement local pour PME suisses : fiche Google, coordonnées cohérentes, avis clients et pages locales. Soyez trouvé dans votre région.",
       },
       h1: "Référencement local pour PME : être trouvé dans sa région",
-      lead: "Qui cherche « menuisier Granges » ou « coiffeur Bienne » veut le plus souvent trouver tout de suite un prestataire proche. Le référencement local fait en sorte que votre entreprise apparaisse à ce moment-là dans Google Maps et dans les résultats de recherche.",
+      lead: "Qui cherche « menuisier Fribourg » ou « coiffeur Bienne » veut le plus souvent trouver tout de suite un prestataire proche. Le référencement local fait en sorte que votre entreprise apparaisse à ce moment-là dans Google Maps et dans les résultats de recherche.",
       keyTakeaways: [
         "Le référencement local combine fiche Google, données cohérentes, avis et un site qui nomme clairement votre région.",
         "Nom, adresse et téléphone doivent être identiques sur le site, Google et les annuaires comme local.ch et search.ch.",
@@ -148,7 +148,7 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Pourquoi le référencement local est décisif pour les PME suisses",
           paragraphs: [
-            "Beaucoup de PME ont leur clientèle dans un rayon de quelques kilomètres. Pour elles, être visibles dans leur région compte davantage que se positionner dans toute la Suisse sur des termes généraux. Pour les recherches à dimension locale, Google affiche une carte avec une sélection d'entreprises, le « Local Pack ». Les entreprises qui y figurent bénéficient d'une attention particulière.",
+            "Beaucoup de PME trouvent l'essentiel de leur clientèle à proximité. Pour elles, être visibles dans leur région compte davantage que se positionner dans toute la Suisse sur des termes généraux. Pour les recherches à dimension locale, Google affiche une carte avec une sélection d'entreprises, le « Local Pack ». Les entreprises qui y figurent bénéficient d'une attention particulière.",
             "Le référencement local combine plusieurs éléments : une fiche d'établissement Google soignée, des coordonnées cohérentes dans les annuaires, de vrais avis clients et un site qui nomme clairement votre région. Aucun de ces éléments ne suffit seul. C'est leur combinaison qui permet à Google de comprendre où vous êtes actif, ce que vous proposez et pourquoi vous êtes pertinent pour les internautes proches.",
           ],
         },
@@ -169,8 +169,8 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Cohérence NAP : des données identiques sur local.ch, search.ch et ailleurs",
           paragraphs: [
-            "NAP signifie Name, Address, Phone : raison sociale, adresse et numéro de téléphone. Ces informations doivent apparaître exactement de la même façon partout : sur votre site, dans votre fiche Google et dans des annuaires comme local.ch, search.ch, des portails sectoriels ou vos profils sur les réseaux sociaux. Des données contradictoires déroutent vos clients, mais aussi Google.",
-            "Vérifiez régulièrement vos inscriptions, surtout après un déménagement, un changement de nom ou un nouveau numéro. Les anciennes adresses subsistent souvent des années dans les annuaires. Soignez aussi les détails, comme « rue » ou « r. » et une écriture uniforme du numéro de téléphone. Sur votre propre site, vos coordonnées doivent figurer bien en vue dans le pied de page et sur la page de contact.",
+            "NAP signifie Name, Address, Phone : raison sociale, adresse et numéro de téléphone. Ces informations doivent apparaître exactement de la même façon partout : sur votre site, dans votre fiche Google et dans des annuaires comme local.ch, search.ch, des portails sectoriels ou vos profils sur les réseaux sociaux. Des données contradictoires déroutent vos clients, mais aussi Google. Des données uniformes renforcent au contraire la confiance dans votre adresse.",
+            "Vérifiez régulièrement vos inscriptions, surtout après un déménagement, un changement de nom ou un nouveau numéro. Les anciennes adresses subsistent souvent des années dans les annuaires. Soignez aussi les détails, comme « rue » ou « r. » et une écriture uniforme du numéro de téléphone. Sur votre propre site, vos coordonnées doivent figurer bien en vue dans le pied de page, sur la page de contact et dans les mentions légales.",
           ],
           bullets: [
             "Votre site (pied de page, contact, mentions légales)",
@@ -181,17 +181,17 @@ export const lokalesSeoKmu: Guide = {
           ],
         },
         {
-          h2: "Récolter et répondre aux avis clients",
+          h2: "Récolter des avis clients et y répondre",
           paragraphs: [
             "Les avis clients influencent à la fois la visibilité dans le Local Pack et la décision des internautes. Une fiche avec de nombreux avis récents et authentiques inspire confiance. Demandez activement un avis à vos clients satisfaits, par exemple après un mandat terminé, par e-mail avec un lien direct ou grâce à un code QR au comptoir.",
-            "Répondez à tous les avis, y compris aux critiques. Une réponse factuelle et aimable à un avis négatif montre aux autres internautes que vous prenez les retours au sérieux. N'achetez jamais d'avis et n'en rédigez pas vous-même : c'est contraire aux règles de Google et peut, dans le pire des cas, entraîner la suspension de votre fiche.",
+            "Répondez à tous les avis, y compris aux critiques. Une réponse factuelle et aimable à un avis négatif montre aux autres internautes que vous prenez les retours au sérieux. N'achetez jamais d'avis et n'en rédigez pas vous-même : c'est contraire aux règles de Google et peut, dans le pire des cas, entraîner la suspension de votre fiche. Misez plutôt sur une démarche simple et régulière.",
           ],
         },
         {
           h2: "Des pages locales sur votre propre site",
           paragraphs: [
             "Votre site doit montrer clairement où vous êtes actif. Mentionnez votre localité et votre zone d'intervention dans les titres, les textes et le pied de page. Si vous travaillez dans plusieurs localités, des pages dédiées peuvent être utiles. L'essentiel est que chacune apporte une vraie valeur : informations sur la région, projets typiques sur place ou accès.",
-            "Évitez les pages qui ne diffèrent que par le nom de la ville : Google les considère comme du contenu de faible qualité. Complétez votre site avec des données structurées pour entreprises locales, une carte intégrée sur la page de contact et un affichage mobile rapide. Les recherches locales se font en grande partie en déplacement, sur smartphone.",
+            "Évitez les pages qui ne diffèrent que par le nom de la ville : Google les considère comme du contenu de faible qualité. Complétez votre site avec des données structurées pour entreprises locales, une carte intégrée sur la page de contact et un affichage mobile rapide. Les recherches locales se font en grande partie en déplacement, sur smartphone. Si la page tarde à charger, l'internaute appelle plutôt la concurrence.",
           ],
         },
         {
@@ -218,7 +218,7 @@ export const lokalesSeoKmu: Guide = {
           h2: "Un accompagnement dans votre région",
           paragraphs: [
             "Beaucoup de PME réalisent elles-mêmes les premières étapes et se font aider pour la technique, les textes et l'analyse. Dans le cadre de notre [accompagnement SEO](service:seo), nous prenons en charge précisément ces éléments, dans toute la Suisse et de manière personnelle. Si votre site lui-même pose problème, parce qu'il est lent ou mal adapté au mobile, une [refonte](service:website-redesign) est souvent la première étape.",
-            "Pour les entreprises de notre région principale, nous avons des pages dédiées avec leurs particularités locales : [référencement à Granges](citySeo:grenchen), [à Bienne](citySeo:biel), [à Soleure](citySeo:solothurn) et [à Berne](citySeo:bern). Vous y trouverez les branches, questions et approches typiques de chaque ville.",
+            "Pour certaines villes, nous avons des pages dédiées avec leurs particularités locales : [référencement à Berne](citySeo:bern), [à Bienne](citySeo:biel), [à Soleure](citySeo:solothurn) et [à Granges](citySeo:grenchen). Vous y trouverez les branches, questions et approches typiques de chaque ville.",
           ],
         },
       ],

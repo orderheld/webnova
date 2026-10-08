@@ -6,7 +6,7 @@ export const googleUnternehmensprofil: Guide = {
   readingMinutes: 9,
   related: ["seo", "online-marketing"],
   relatedGuides: ["lokales-seo-kmu", "geo-ki-suche", "kmu-webseite-checkliste"],
-  cities: ["grenchen", "biel", "solothurn", "bern"],
+  cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {
       slug: "google-unternehmensprofil-optimieren",
@@ -73,7 +73,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Schritt 5: Bewertungen gewinnen und beantworten",
           paragraphs: [
             "Bewertungen beeinflussen sowohl das Ranking als auch die Entscheidung der Suchenden. Bitten Sie zufriedene Kundinnen und Kunden aktiv darum, idealerweise direkt nach einem gelungenen Auftrag. Am einfachsten geht das mit dem Bewertungslink aus dem Profil, per E-Mail, SMS oder als QR-Code auf Rechnung, Visitenkarte oder Theke.",
-            "Beantworten Sie jede Bewertung freundlich und sachlich, auch kritische. Eine gute Antwort auf eine negative Bewertung überzeugt oft mehr als zehn positive. Kaufen Sie keine Bewertungen und schreiben Sie keine selbst: Google erkennt solche Muster und kann Bewertungen löschen oder das Profil einschränken.",
+            "Beantworten Sie jede Bewertung freundlich und sachlich, auch kritische. Eine gute Antwort auf eine negative Bewertung kann mehr überzeugen als viele positive. Kaufen Sie keine Bewertungen und schreiben Sie keine selbst: Google erkennt solche Muster und kann Bewertungen löschen oder das Profil einschränken.",
           ],
           bullets: [
             "Bewertungslink in E-Mail-Signatur und Auftragsbestätigung",
@@ -85,7 +85,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Profil und Webseite zusammen denken",
           paragraphs: [
             "Das Profil allein reicht selten. Google gleicht die Angaben mit Ihrer Webseite und mit Verzeichnissen wie local.ch und search.ch ab. Identische Firmendaten, eine Kontaktseite mit Adresse und Karte sowie Seiten zu Ihren Leistungen und Regionen stärken die Bekanntheit. Wie das im Detail funktioniert, erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu).",
-            "Werten Sie im Profil regelmässig aus, wie oft Sie gefunden werden, wie viele Anrufe und Routenanfragen entstehen und über welche Suchbegriffe Menschen Sie finden. Gerne prüfen wir Ihr Profil im Rahmen unserer [SEO-Betreuung](service:seo), etwa für Betriebe in [Grenchen](citySeo:grenchen), [Biel/Bienne](citySeo:biel), [Solothurn](citySeo:solothurn) oder [Bern](citySeo:bern).",
+            "Werten Sie im Profil regelmässig aus, wie oft Sie gefunden werden, wie viele Anrufe und Routenanfragen entstehen und über welche Suchbegriffe Menschen Sie finden. Gerne prüfen wir Ihr Profil im Rahmen unserer [SEO-Betreuung](service:seo) für Betriebe in der ganzen Schweiz, zum Beispiel in [Bern](citySeo:bern), [Biel/Bienne](citySeo:biel), [Solothurn](citySeo:solothurn) oder [Grenchen](citySeo:grenchen).",
           ],
         },
       ],
@@ -159,13 +159,13 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Étape 3 : services, description et horaires",
           paragraphs: [
             "Saisissez vos services ou produits un par un avec une courte description. Cela aide Google à afficher votre fiche pour des recherches précises et donne aux internautes une vue d'ensemble rapide. La description de l'entreprise doit expliquer en langage naturel ce que vous proposez, pour qui et dans quelle région, sans liste de mots-clés.",
-            "Tenez à jour les horaires et les horaires exceptionnels : jours fériés, fêtes de fin d'année, vacances. Des horaires erronés provoquent des clients mécontents et de mauvais avis. Liez la fiche à la page la plus pertinente de votre site, en cas de plusieurs sites à la page de chaque localité plutôt qu'à la page d'accueil.",
+            "Tenez à jour les horaires et les horaires exceptionnels : jours fériés, fêtes de fin d'année, vacances. Des horaires erronés mécontentent vos clients et entraînent de mauvais avis. Liez la fiche à la page la plus pertinente de votre site, si vous avez plusieurs implantations, à la page de chaque localité plutôt qu'à la page d'accueil.",
           ],
         },
         {
           h2: "Étape 4 : photos et publications",
           paragraphs: [
-            "Les fiches avec de vraies photos récentes inspirent confiance et obtiennent plus de clics. Montrez votre équipe, vos locaux, vos véhicules, votre atelier et vos réalisations. Les photos de banque d'images n'apportent pas grand-chose ici. Ajoutez régulièrement de nouvelles images, par exemple après chaque mandat important.",
+            "Les fiches avec de vraies photos récentes inspirent confiance et obtiennent plus de clics. Montrez votre équipe, vos locaux, vos véhicules, votre atelier et vos réalisations. Les photos de banque d'images n'apportent pas grand-chose ici. Ajoutez régulièrement de nouvelles images, par exemple après chaque mandat important, avec un bon éclairage et un cadre bien rangé.",
             "Les publications permettent d'annoncer nouveautés, offres ou événements directement dans la fiche. Elles se créent rapidement et montrent à Google comme aux clients que l'entreprise est active. Une publication par mois est un bon rythme. Liez-les à la page correspondante de votre site, par exemple une prestation ou votre formulaire de contact.",
           ],
         },
@@ -173,7 +173,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Étape 5 : obtenir des avis et y répondre",
           paragraphs: [
             "Les avis influencent à la fois le classement et la décision des internautes. Demandez-les activement à vos clients satisfaits, idéalement juste après un mandat réussi. Le plus simple est d'utiliser le lien d'avis de la fiche, par e-mail, SMS ou sous forme de code QR sur la facture, la carte de visite ou le comptoir.",
-            "Répondez à chaque avis de manière aimable et factuelle, y compris aux critiques. Une bonne réponse à un avis négatif convainc souvent davantage que dix avis positifs. N'achetez jamais d'avis et n'en rédigez pas vous-même : Google détecte ces pratiques et peut supprimer des avis ou restreindre la fiche.",
+            "Répondez à chaque avis de manière aimable et factuelle, y compris aux critiques. Une bonne réponse à un avis négatif peut convaincre davantage que bien des avis positifs. N'achetez jamais d'avis et n'en rédigez pas vous-même : Google détecte ces pratiques et peut supprimer des avis ou restreindre la fiche.",
           ],
           bullets: [
             "Lien d'avis dans la signature e-mail et la confirmation de commande",
@@ -185,7 +185,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Penser fiche et site internet ensemble",
           paragraphs: [
             "La fiche seule suffit rarement. Google compare ses informations avec votre site et avec des annuaires comme local.ch et search.ch. Des coordonnées identiques, une page de contact avec adresse et carte ainsi que des pages sur vos prestations et vos régions renforcent votre notoriété. Notre article [Référencement local pour PME](guide:lokales-seo-kmu) explique le fonctionnement en détail.",
-            "Analysez régulièrement dans la fiche combien de fois vous êtes trouvé, combien d'appels et de demandes d'itinéraire en résultent et avec quelles recherches. Nous vérifions volontiers votre fiche dans le cadre de notre [accompagnement SEO](service:seo), par exemple pour les entreprises de [Granges](citySeo:grenchen), [Bienne](citySeo:biel), [Soleure](citySeo:solothurn) ou [Berne](citySeo:bern).",
+            "Analysez régulièrement dans la fiche combien de fois vous êtes trouvé, combien d'appels et de demandes d'itinéraire en résultent et avec quelles recherches. Nous vérifions volontiers votre fiche dans le cadre de notre [accompagnement SEO](service:seo), pour les entreprises de toute la Suisse, par exemple à [Berne](citySeo:bern), [Bienne](citySeo:biel), [Soleure](citySeo:solothurn) ou [Granges](citySeo:grenchen).",
           ],
         },
       ],

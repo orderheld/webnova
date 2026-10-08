@@ -160,7 +160,7 @@ export const onlineshopSchweiz: Guide = {
           h2: "CG, retours et protection des données",
           paragraphs: [
             "Contrairement à l'UE, la Suisse ne connaît pas de droit de rétractation légal général pour les achats en ligne. Beaucoup de boutiques offrent néanmoins un droit de retour volontaire, car les clients l'attendent. Fixez vos règles de retour, garantie, délais de livraison et paiement dans des conditions générales claires, accessibles avant la commande. Si vous vendez activement dans l'UE, le droit européen de la consommation peut aussi s'appliquer.",
-            "Depuis septembre 2023, la loi révisée sur la protection des données est en vigueur. Votre boutique a besoin d'une déclaration de protection des données qui décrit quelles données vous traitez pour la commande, la livraison, le paiement, la newsletter et l'analyse, et à quels prestataires elles sont transmises.",
+            "Depuis septembre 2023, la loi révisée sur la protection des données est en vigueur. Votre boutique a besoin d'une déclaration de protection des données qui décrit quelles données vous traitez pour la commande, la livraison, le paiement, la newsletter et l'analyse, et à quels prestataires elles sont transmises. Utilisez les outils de suivi et de marketing avec discernement et informez-en vos clients de manière transparente.",
           ],
         },
         {
