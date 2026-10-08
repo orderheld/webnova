@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CardLink, CtaBand, FaqList, PageHero, Prose } from "@/components/blocks";
+import { CardLink, CtaBand, FaqList, PageHero, Prose, anchorId } from "@/components/blocks";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
 import { services } from "@/content/services";
@@ -89,9 +89,23 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
           { name: d.nav.guides, url: href(locale, "guides") },
         ]}
       />
-      <article className="container-x pb-12 pt-14 md:pt-20">
-        <div className="max-w-3xl">
-          <Prose sections={c.sections} locale={locale} />
+      <div className="container-x grid gap-12 pb-12 pt-14 md:pt-20 lg:grid-cols-12">
+        <nav aria-label={locale === "de" ? "Inhalt" : "Sommaire"} className="lg:order-2 lg:col-span-4">
+          <div className="rounded-2xl border border-line bg-bg-2 p-6 lg:sticky lg:top-28">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{locale === "de" ? "Inhalt" : "Sommaire"}</p>
+            <ol className="mt-4 space-y-1 text-[15px] leading-snug">
+              {c.sections.map((s) => (
+                <li key={s.h2}>
+                  <a href={`#${anchorId(s.h2)}`} className="block py-1.5 text-ink-soft transition-colors hover:text-bright">
+                    {s.h2}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
+        <article className="max-w-[42rem] lg:order-1 lg:col-span-8">
+          <Prose sections={c.sections} locale={locale} anchors />
           {guideCities.length > 0 && (
             <div className="mt-14 rounded-2xl border border-line bg-bg-2 p-7">
               <p className="text-[15px] font-semibold">{locale === "de" ? "Persönliche Beratung in Ihrer Region" : "Conseil personnel dans votre région"}</p>
@@ -108,8 +122,8 @@ export function GuidePage({ locale, guideKey }: { locale: Locale; guideKey: stri
               </div>
             </div>
           )}
-        </div>
-      </article>
+        </article>
+      </div>
       <FaqList locale={locale} faq={c.faq} />
       {related.length > 0 && (
         <section className="container-x pb-20">

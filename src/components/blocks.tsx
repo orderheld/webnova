@@ -93,12 +93,24 @@ export function RichText({ text, locale }: { text: string; locale?: Locale }) {
   return <>{parts}</>;
 }
 
-export function Prose({ sections, locale }: { sections: Section[]; locale?: Locale }) {
+/** URL fragment for a heading, e.g. "Schritt 1: Profil" -> "schritt-1-profil". */
+export function anchorId(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export function Prose({ sections, locale, anchors = false }: { sections: Section[]; locale?: Locale; anchors?: boolean }) {
   return (
     <div className="prose-wn">
       {sections.map((s, i) => (
         <div key={i}>
-          <h2>{s.h2}</h2>
+          <h2 id={anchors ? anchorId(s.h2) : undefined} className={anchors ? "scroll-mt-28" : undefined}>
+            {s.h2}
+          </h2>
           {s.paragraphs.map((p, j) => (
             <p key={j}>
               <RichText text={p} locale={locale} />
@@ -172,11 +184,12 @@ export function CtaBand({ locale }: { locale: Locale }) {
   );
 }
 
-export function FeatureGrid({ items }: { items: { title: string; text: string }[] }) {
+/** `reveal={false}` for grids near the top of the page, so they are fully visible on load. */
+export function FeatureGrid({ items, reveal = true }: { items: { title: string; text: string }[]; reveal?: boolean }) {
   return (
     <div className={`grid gap-4 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((f, i) => (
-        <div key={i} className="reveal rounded-2xl border border-line bg-surface p-8">
+        <div key={i} className={`${reveal ? "reveal " : ""}rounded-2xl border border-line bg-surface p-8`}>
           <span className="mb-6 block font-display text-[14px] font-semibold text-bright">
             {String(i + 1).padStart(2, "0")}
           </span>

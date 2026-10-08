@@ -203,7 +203,7 @@ export function CityPage({
       {service && (
         <section className="container-x relative z-10 -mt-10">
           <h2 className="sr-only">{locale === "de" ? "Das erhalten Sie" : "Ce que vous obtenez"}</h2>
-          <FeatureGrid items={service.content[locale].features.slice(0, 3)} />
+          <FeatureGrid items={service.content[locale].features.slice(0, 3)} reveal={false} />
         </section>
       )}
 
