@@ -2,7 +2,7 @@ import type { Guide } from "../types";
 
 export const lokalesSeoKmu: Guide = {
   key: "lokales-seo-kmu",
-  date: "2026-09-05",
+  date: "2026-10-06",
   updated: "2026-10-08",
   readingMinutes: 9,
   related: ["seo", "online-marketing", "webdesign"],

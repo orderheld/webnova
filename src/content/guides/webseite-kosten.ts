@@ -2,11 +2,11 @@ import type { Guide } from "../types";
 
 export const webseiteKosten: Guide = {
   key: "webseite-kosten",
-  date: "2026-10-01",
+  date: "2026-10-06",
   updated: "2026-10-08",
   readingMinutes: 8,
   related: ["webdesign", "website-redesign", "onlineshop"],
-  relatedGuides: ["webagentur-waehlen", "webagentur-unterschied", "kmu-webseite-checkliste"],
+  relatedGuides: ["webseite-erstellen-ablauf", "baukasten-oder-agentur", "webagentur-waehlen"],
   cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {

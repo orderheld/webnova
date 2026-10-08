@@ -2,11 +2,11 @@ import type { Guide } from "../types";
 
 export const websiteRelaunchCheckliste: Guide = {
   key: "website-relaunch-checkliste",
-  date: "2026-09-20",
+  date: "2026-10-06",
   updated: "2026-10-08",
   readingMinutes: 8,
   related: ["website-redesign", "seo", "wartung"],
-  relatedGuides: ["core-web-vitals", "zweisprachige-webseite", "webagentur-waehlen"],
+  relatedGuides: ["webseite-erneuern", "core-web-vitals", "zweisprachige-webseite"],
   cities: ["biel", "solothurn", "bern", "grenchen"],
   content: {
     de: {

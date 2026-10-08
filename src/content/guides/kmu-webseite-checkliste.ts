@@ -2,10 +2,10 @@ import type { Guide } from "../types";
 
 export const kmuWebseiteCheckliste: Guide = {
   key: "kmu-webseite-checkliste",
-  date: "2026-10-07",
+  date: "2026-10-08",
   readingMinutes: 8,
   related: ["webdesign", "seo", "wartung"],
-  relatedGuides: ["webagentur-unterschied", "barrierefreie-website", "lokales-seo-kmu"],
+  relatedGuides: ["webseite-erstellen-ablauf", "website-wartung-checkliste", "lokales-seo-kmu"],
   cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
     de: {

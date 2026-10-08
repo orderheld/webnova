@@ -123,7 +123,11 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
     { name: d.pages.servicesTitle, url: href(locale, "services") },
     { name: c.navLabel, url },
   ];
-  const serviceGuides = guides.filter((g) => g.related.includes(s.key)).slice(0, 3);
+  // Guides written mainly about this service first (its key earlier in `related`), newest first within each rank.
+  const serviceGuides = guides
+    .filter((g) => g.related.includes(s.key))
+    .sort((a, b) => a.related.indexOf(s.key) - b.related.indexOf(s.key))
+    .slice(0, 3);
   const faq = topUpFaq(c.faq, serviceFaqTemplates(locale, c.navLabel, pos), 10);
   const benefits = c.benefits ?? (pos ? st.posBenefits : d.home.why);
   const hasProcess = !pos || Boolean(c.process);
