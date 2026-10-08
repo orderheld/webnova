@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Calculator } from "@/components/admin/calculator";
 import { ConfirmButton } from "@/components/admin/confirm-button";
 import { PageHeader, btn } from "@/components/admin/ui";
-import { Icon } from "@/components/icons";
+import { Icon } from "@/components/admin/icons";
 import { db, schema } from "@/db";
 import { deleteEstimateAction, estimateToQuoteAction } from "@/lib/admin/actions";
 import { customerOptions } from "@/lib/admin/queries";
@@ -18,6 +18,7 @@ export default async function EstimateDetail({ params, searchParams }: { params:
   return (
     <>
       <PageHeader
+        back={{ href: "/admin/rechner", label: "Rechner" }}
         title={e.name}
         sub="Kostenschätzung"
         actions={

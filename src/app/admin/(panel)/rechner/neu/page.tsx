@@ -17,7 +17,7 @@ export default async function NewEstimate({ searchParams }: { searchParams: Prom
     : undefined;
   return (
     <>
-      <PageHeader title="Neue Kostenschätzung" />
+      <PageHeader back={{ href: "/admin/rechner", label: "Rechner" }} title="Neue Kostenschätzung" />
       <Calculator
         id={null}
         customers={customers}
