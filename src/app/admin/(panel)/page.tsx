@@ -371,7 +371,7 @@ export default async function Dashboard() {
           </Card>
 
           <Card title="Nicht verrechnete Stunden">
-            <p className="text-[22px] font-semibold tabular-nums">{fmtHours(unbilled[0].hours)} h</p>
+            <p className="text-[22px] font-semibold tabular-nums">{fmtHours(unbilled[0].hours)}</p>
             <p className="text-[13px] text-muted">Wert CHF {chf(unbilled[0].value)} exkl. MWST</p>
             <Link href="/admin/zeit?status=offen" className="mt-2 inline-block text-[13px] font-medium text-accent">
               Zur Zeiterfassung

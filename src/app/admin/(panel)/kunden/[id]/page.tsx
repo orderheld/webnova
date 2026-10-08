@@ -196,7 +196,7 @@ export default async function CustomerDetail({ params, searchParams }: { params:
           )}
 
           {estimates.length > 0 && (
-            <Card title="Kostenschätzungen">
+            <Card title="Kalkulationen">
               <ul className="-my-2 divide-y divide-line">
                 {estimates.map((e) => (
                   <li key={e.id}>

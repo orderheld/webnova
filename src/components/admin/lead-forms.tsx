@@ -108,7 +108,7 @@ export function ConvertLeadForm({ lead, customers, templates }: { lead: Lead; cu
         <span className="flex-1 space-y-2">
           <span className="block text-[14px] font-medium">Projekt anlegen</span>
           <input name="projectName" className="input" placeholder={`Projektname, z. B. Webseite ${label}`} />
-          <select name="templateId" className="input" defaultValue={templates[0]?.id ?? ""}>
+          <select name="templateId" className="input" defaultValue={(templates.find((t) => /webseite/i.test(t.name)) ?? templates[0])?.id ?? ""}>
             <option value="">Ohne Vorlage</option>
             {templates.map((t) => (
               <option key={t.id} value={t.id}>
