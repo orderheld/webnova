@@ -84,7 +84,7 @@ export const veraltet: Problem = {
         },
         {
           q: "Verliere ich bei einem Redesign meine Google-Positionen?",
-          a: "Nicht, wenn der Umzug sauber geplant wird. Wir übernehmen bewährte Inhalte und richten Weiterleitungen ein, damit Besucher und Rankings erhalten bleiben.",
+          a: "In der Regel nicht, wenn der Umzug sauber geplant wird. Wir übernehmen bewährte Inhalte und richten Weiterleitungen ein, damit Besucher und Rankings erhalten bleiben.",
         },
         {
           q: "Kann ich die neue Webseite selbst pflegen?",
@@ -126,7 +126,7 @@ export const veraltet: Problem = {
         },
         {
           title: "Personne n'est responsable",
-          text: "La personne qui a créé le site n'est plus là, et en interne personne n'ose toucher à rien.",
+          text: "La personne qui a créé le site n'est plus là, et en interne, personne n'ose y toucher.",
         },
         {
           title: "L'entreprise a évolué",
@@ -174,11 +174,11 @@ export const veraltet: Problem = {
         },
         {
           q: "Vais-je perdre mes positions Google avec une refonte ?",
-          a: "Non, si la migration est bien planifiée. Nous reprenons les contenus qui fonctionnent et mettons en place des redirections pour conserver visiteurs et positions.",
+          a: "En règle générale non, si la migration est bien planifiée. Nous reprenons les contenus qui fonctionnent et mettons en place des redirections pour conserver visiteurs et positions.",
         },
         {
           q: "Puis-je gérer le nouveau site moi-même ?",
-          a: "Oui. Vous recevez une interface simple pour textes, images et actualités, ainsi qu'une introduction lors de la remise.",
+          a: "Oui. Vous recevez une interface simple pour textes, images et actualités, ainsi qu'une prise en main lors de la remise.",
         },
         {
           q: "Que deviennent mes contenus actuels ?",

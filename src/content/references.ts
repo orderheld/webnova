@@ -64,7 +64,7 @@ const allReferences: Reference[] = [
           "Les restaurants et take-aways paient des commissions élevées aux grandes plateformes de livraison et n'ont guère de lien avec leurs clients. Il fallait leur propre solution pour recevoir les commandes en direct, sans compliquer le travail en cuisine.",
         solution: [
           "Nous avons développé orderheld comme une plateforme complète : chaque commerce reçoit ses propres pages de commande avec menu, panier, retrait, livraison et précommande. Les clients suivent l'état de leur commande en direct.",
-          "En coulisses, trois outils travaillent ensemble : un cockpit pour le patron et l'équipe, un écran cuisine avec temps de préparation et ticket automatique, et une vue livreur pour le smartphone. Les clôtures journalières avec TVA, moyens de paiement et export sont générées automatiquement.",
+          "En coulisses, trois outils travaillent ensemble : un cockpit pour la direction et l'équipe, un écran cuisine avec temps de préparation et ticket automatique, et une vue livreur pour le smartphone. Les clôtures journalières avec TVA, moyens de paiement et export sont générées automatiquement.",
         ],
         highlights: [
           { title: "Pages de commande dédiées", text: "Chaque commerce gère son menu, ses options et ses prix, ainsi que ses horaires, vacances et zones de livraison." },
@@ -155,7 +155,7 @@ const allReferences: Reference[] = [
           "Site trilingue avec réservation en ligne pour un coiffeur hommes à Bienne : les créneaux libres sont confirmés immédiatement, les rappels partent automatiquement.",
         scope: ["Webdesign DE/FR/EN", "Réservation en ligne", "Admin & e-mails", "SEO local Bienne et environs"],
         challenge:
-          "Un salon vit de son ambiance et d'un agenda bien rempli. Les rendez-vous arrivaient par téléphone et message, souvent pendant le travail sur un client. À Bienne s'ajoute la clientèle germanophone, francophone et anglophone.",
+          "Un salon vit de son ambiance et d'un agenda bien rempli. Les rendez-vous arrivaient par téléphone et message, souvent pendant le travail sur un client. À Bienne s'ajoute une particularité : la clientèle parle allemand, français et anglais.",
         solution: [
           "Nous avons créé une présence claire et calme en blanc et beige, avec de vraies photos du salon. Chaque prestation a sa page, la page d'accueil indique en direct si le salon est ouvert et quel est le prochain créneau libre.",
           "Au cœur du projet : la réservation en ligne. Les clients choisissent prestation et horaire, le rendez-vous est confirmé immédiatement et les doubles réservations sont exclues. Confirmation avec entrée d'agenda, rappel et e-mail de feedback partent automatiquement dans la langue du client. Dans l'admin, le salon gère lui-même rendez-vous, prestations, horaires et règles de réservation.",
@@ -204,7 +204,7 @@ const allReferences: Reference[] = [
         challenge:
           "Dersut Kaffee GmbH a repris la distribution suisse d'une torréfaction italienne de tradition. Il fallait une présence à la hauteur d'une marque fondée en 1947 et une boutique qui fonctionne au quotidien, sans paiement par carte ni charge administrative.",
         solution: [
-          "Nous avons traduit l'univers Dersut, avec le Blu Dersut, l'or et une typographie classique, en une présence calme et haut de gamme : histoire, qualité et torréfaction, certifications, durabilité et une offre dédiée à la restauration, l'hôtellerie et aux bureaux.",
+          "Nous avons traduit l'univers Dersut, avec le Blu Dersut, l'or et une typographie classique, en une présence calme et haut de gamme : histoire, qualité et torréfaction, certifications, durabilité et une offre dédiée à la restauration, à l'hôtellerie et aux bureaux.",
           "La boutique calcule en francs TVA comprise, le paiement se fait d'avance : après la commande, le client reçoit numéro de commande, IBAN et code QR suisse sur la page de confirmation et par e-mail. Dans l'admin, Dersut marque les commandes comme payées ou expédiées, saisit le numéro de suivi, gère produits et stock et exporte le tout en CSV.",
         ],
         highlights: [

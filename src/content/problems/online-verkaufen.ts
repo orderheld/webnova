@@ -72,8 +72,8 @@ export const onlineVerkaufen: Problem = {
         {
           h2: "Klein anfangen ist kein Kompromiss",
           paragraphs: [
-            "Die erfolgreichsten Shops kleiner Unternehmen starten oft mit einer überschaubaren Auswahl: die Bestseller, Geschenke, Gutscheine oder Produkte, die man im Laden nicht immer vorrätig hat. So lernen Sie mit wenig Aufwand, was online funktioniert, und bauen gezielt aus.",
-            "Für Dersut, den Schweizer Vertrieb von Dersut Caffè, haben wir zum Beispiel einen Shop mit Vorauskasse und Swiss QR-Rechnung umgesetzt, ohne Kartenanbieter und mit einem eigenen Admin für Bestellungen, Versand und Lager. Es muss nicht kompliziert sein, um professionell zu wirken.",
+            "Viele Shops kleiner Unternehmen starten erfolgreich mit einer überschaubaren Auswahl: die Bestseller, Geschenke, Gutscheine oder Produkte, die man im Laden nicht immer vorrätig hat. So lernen Sie mit wenig Aufwand, was online funktioniert, und bauen gezielt aus.",
+            "Ein möglicher Einstieg ist ein Shop mit Vorauskasse und Swiss QR-Rechnung, ohne Kartenanbieter und mit einem eigenen Admin-Bereich für Bestellungen, Versand und Lager. Es muss nicht kompliziert sein, um professionell zu wirken.",
           ],
         },
       ],
@@ -166,8 +166,8 @@ export const onlineVerkaufen: Problem = {
         {
           h2: "Commencer petit n'est pas un compromis",
           paragraphs: [
-            "Les boutiques les plus réussies des petites entreprises démarrent souvent avec une sélection limitée : les meilleures ventes, des cadeaux, des bons ou des produits pas toujours en stock au magasin. Vous apprenez ainsi avec peu d'effort ce qui fonctionne en ligne, puis vous développez de façon ciblée.",
-            "Pour Dersut, le distributeur suisse de Dersut Caffè, nous avons par exemple réalisé une boutique avec paiement anticipé et QR-facture, sans prestataire de cartes et avec un admin dédié aux commandes, envois et stock. Pas besoin d'être compliqué pour paraître professionnel.",
+            "Beaucoup de boutiques de petites entreprises démarrent avec succès sur une sélection limitée : les meilleures ventes, des cadeaux, des bons ou des produits pas toujours en stock au magasin. Vous apprenez ainsi avec peu d'effort ce qui fonctionne en ligne, puis vous développez de façon ciblée.",
+            "Un départ possible est une boutique avec paiement anticipé et QR-facture, sans prestataire de cartes et avec un espace d'administration pour les commandes, les envois et le stock. Pas besoin d'être compliqué pour paraître professionnel.",
           ],
         },
       ],

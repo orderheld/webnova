@@ -121,7 +121,7 @@ export const immobilien: Industry = {
       eyebrow: "Sites pour courtiers, régies et promoteurs",
       h1: "Plus de mandats de vente, pas seulement plus de visites.",
       lead:
-        "Les acheteurs trouvent vos biens sur les grands portails. Mais les propriétaires qui veulent vendre vous choisissent sur votre site. Nous créons des sites immobiliers qui font les deux : présenter les biens avec force et gagner des mandats.",
+        "Les acheteurs trouvent vos biens sur les grands portails. Mais les propriétaires qui veulent vendre vous choisissent sur votre site. Nous créons des sites immobiliers qui font les deux : mettre vos biens en valeur et gagner des mandats.",
       promises: [
         "Biens repris automatiquement de votre logiciel",
         "Demande d'estimation pour propriétaires",
@@ -136,7 +136,7 @@ export const immobilien: Industry = {
         },
         {
           title: "Aucune demande de vendeurs",
-          text: "Le site ne parle qu'aux acheteurs. Les propriétaires qui pensent vendre ne trouvent aucune raison de vous contacter vous.",
+          text: "Le site ne parle qu'aux acheteurs. Les propriétaires qui pensent vendre ne trouvent aucune raison de vous contacter plutôt qu'un autre.",
         },
         {
           title: "Des projets neufs sans vitrine",
@@ -181,7 +181,7 @@ export const immobilien: Industry = {
           h2: "Les portails pour les acheteurs, votre site pour les propriétaires",
           paragraphs: [
             "Qui cherche un appartement cherche sur les grands portails immobiliers. Qui veut vendre une maison cherche un courtier de confiance et arrive pour cela sur son site. C'est là que se décide le mandat. Outre la liste des biens, nous mettons donc l'accent sur la page propriétaires : déroulement d'une vente, vos prestations, votre équipe et une demande d'estimation facile.",
-            "Pour que les biens soient toujours justes, nous connectons votre logiciel de courtage. Vous saisissez une annonce une fois, elle apparaît sur les portails et sur votre site, avec toutes les photos et documents.",
+            "Pour que les annonces soient toujours à jour, nous connectons votre logiciel de courtage. Vous saisissez une annonce une fois, elle apparaît sur les portails et sur votre site, avec toutes les photos et documents.",
           ],
           bullets: [
             "Liste des biens avec filtres par type, lieu et prix",

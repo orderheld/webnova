@@ -72,7 +72,7 @@ export const nichtGefunden: Problem = {
         {
           h2: "Ehrliche Erwartungen an SEO",
           paragraphs: [
-            "Seriöse Suchmaschinenoptimierung verspricht keine Platzierungen in einer bestimmten Zeit. Google entscheidet selbst, und die Konkurrenz schläft nicht. Was wir versprechen können: eine technisch saubere Webseite, Inhalte, die besser sind als die der Mitbewerber, und eine transparente Auswertung, damit Sie sehen, was sich bewegt.",
+            "Seriöse Suchmaschinenoptimierung verspricht keine Platzierungen in einer bestimmten Zeit. Google entscheidet selbst, und die Konkurrenz schläft nicht. Was wir versprechen können: eine technisch saubere Webseite, Inhalte, die Suchenden wirklich weiterhelfen, und eine transparente Auswertung, damit Sie sehen, was sich bewegt.",
             "Erfahrungsgemäss zeigen sich erste Verbesserungen nach einigen Wochen, stabile Ergebnisse brauchen meist einige Monate. Bei lokalen Suchen geht es oft schneller, weil das Google-Unternehmensprofil direkt wirkt.",
           ],
         },
@@ -166,7 +166,7 @@ export const nichtGefunden: Problem = {
         {
           h2: "Des attentes honnêtes envers le SEO",
           paragraphs: [
-            "Un référencement sérieux ne promet pas de positions dans un délai donné. Google décide seul, et la concurrence ne dort pas. Ce que nous pouvons promettre : un site techniquement propre, des contenus meilleurs que ceux des concurrents et une analyse transparente pour voir ce qui évolue.",
+            "Un référencement sérieux ne promet pas de positions dans un délai donné. Google décide seul, et la concurrence ne dort pas. Ce que nous pouvons promettre : un site techniquement propre, des contenus qui aident vraiment les internautes et une analyse transparente pour voir ce qui évolue.",
             "Selon notre expérience, les premières améliorations apparaissent après quelques semaines, des résultats stables demandent généralement quelques mois. Pour les recherches locales, c'est souvent plus rapide, car le profil d'établissement Google agit directement.",
           ],
         },

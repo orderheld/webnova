@@ -137,7 +137,7 @@ export const gastronomie: Industry = {
         "La carte en vraie page, pas en PDF",
         "Réservation ou demande en un geste",
         "Menu du jour et horaires modifiables par vous",
-        "Caisse et site internet d'un seul interlocuteur",
+        "Caisse et site internet chez un seul interlocuteur",
       ],
       painTitle: "Cela vous dit quelque chose ?",
       pains: [
@@ -164,7 +164,7 @@ export const gastronomie: Industry = {
       needs: [
         {
           title: "La carte en page web",
-          text: "Plats, allergènes et prix en texte, lisibles sur mobile et indexés par Google. Le menu du jour se met à jour en une minute, par vous.",
+          text: "Plats, allergènes et prix en texte, lisibles sur mobile et indexés par Google. Vous mettez à jour le menu du jour vous-même, en une minute.",
         },
         {
           title: "Réserver sans téléphoner",
@@ -180,7 +180,7 @@ export const gastronomie: Industry = {
         },
         {
           title: "Des photos qui donnent faim",
-          text: "De vraies photos des plats, de la salle et de l'équipe plutôt que des images d'archives. Légères et cadrées pour le mobile.",
+          text: "De vraies photos des plats, de la salle et de l'équipe plutôt que des photos de banque d'images. Légères et cadrées pour le mobile.",
         },
         {
           title: "Caisse et site ensemble",
