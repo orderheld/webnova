@@ -24,7 +24,7 @@ const groups: { label?: string; items: { href: string; label: string; icon: stri
       { href: "/admin/pipeline", label: "Pipeline", icon: "kanban", count: "followUps", warn: true },
       { href: "/admin/kunden", label: "Kunden", icon: "users" },
       { href: "/admin/offerten", label: "Offerten", icon: "file" },
-      { href: "/admin/rechner", label: "Kostenrechner", icon: "calc" },
+      { href: "/admin/rechner", label: "Rechner", icon: "calc" },
     ],
   },
   {

@@ -193,14 +193,8 @@ export const invoiceReminders = pgTable(
   (t) => [index("invoice_reminders_invoice_idx").on(t.invoiceId)],
 );
 
-export interface EstimateData {
-  hourlyRate: number;
-  /** checked item ids with quantity */
-  items: { id: string; qty: number }[];
-  custom: { title: string; hours: number }[];
-  riskPercent: number;
-  marginNote?: string;
-}
+/** Calculator state. Version 2 is CalcState (lib/admin/calculator.ts); older rows hold the former hour checklist. */
+export type EstimateData = { version?: number } & Record<string, unknown>;
 
 export const estimates = pgTable("estimates", {
   id: serial("id").primaryKey(),

@@ -10,7 +10,6 @@ import { billingIntervals, type InvoiceStatus, type LineItem, type QuoteStatus }
 import { checkCredentials, createSession, destroySession, requireAdmin } from "@/lib/auth";
 import { escapeHtml, mailLayout, sendMail } from "@/lib/email";
 import { invoiceItemsFromQuote, logActivity, openAmount, subscriptionsFromQuote, syncInvoicePayments } from "./billing";
-import { estimateTotals } from "./calculator";
 import { invoiceStatusLabels, quoteStatusLabels } from "./labels";
 import { addDaysIso, chf, computeTotals, fmtDate, round2, todayIso } from "./money";
 import { nextNumber } from "./numbering";
@@ -443,94 +442,6 @@ export async function mailDraft(kind: PdfKind, id: number) {
     subject: `${label} ${doc.number}: ${doc.title}`,
     text: fillTemplate(isCredit ? tpl.replace(/zahlbar bis \{faellig\}/, "").replace("Rechnung", "Gutschrift") : tpl, vars),
   };
-}
-
-/* ───────────────────────── Calculator ───────────────────────── */
-
-const estimateSchema = z.object({
-  name: z.string().trim().min(1),
-  customerId: z.number().int().positive().nullable(),
-  leadId: z.number().int().positive().nullable(),
-  hourlyRate: z.number().positive(),
-  riskPercent: z.number().min(0).max(100),
-  items: z.array(z.object({ id: z.string(), qty: z.number() })),
-  custom: z.array(z.object({ title: z.string(), hours: z.number() })),
-  marginNote: z.string().optional(),
-});
-export type EstimatePayload = z.infer<typeof estimateSchema>;
-
-export async function saveEstimateAction(id: number | null, payload: EstimatePayload): Promise<{ error?: string; id?: number }> {
-  await requireAdmin();
-  const p = estimateSchema.safeParse(payload);
-  if (!p.success) return { error: "Bitte einen Namen für die Schätzung angeben." };
-  const v = p.data;
-  const t = estimateTotals(v);
-  const values = {
-    name: v.name,
-    customerId: v.customerId,
-    leadId: v.leadId,
-    data: { hourlyRate: v.hourlyRate, riskPercent: v.riskPercent, items: v.items, custom: v.custom, marginNote: v.marginNote },
-    totalHours: t.totalHours,
-    total: t.total,
-    updatedAt: new Date(),
-  };
-  if (id) await db().update(schema.estimates).set(values).where(eq(schema.estimates.id, id));
-  else id = (await db().insert(schema.estimates).values(values).returning({ id: schema.estimates.id }))[0].id;
-  revalidatePath("/admin", "layout");
-  return { id };
-}
-
-export async function deleteEstimateAction(id: number) {
-  await requireAdmin();
-  await db().delete(schema.estimates).where(eq(schema.estimates.id, id));
-  revalidatePath("/admin", "layout");
-  redirect("/admin/rechner");
-}
-
-/** Creates a quote draft from an estimate: one line per calculator group. */
-export async function estimateToQuoteAction(id: number) {
-  await requireAdmin();
-  const [e] = await db().select().from(schema.estimates).where(eq(schema.estimates.id, id));
-  if (!e) redirect("/admin/rechner");
-  if (!e.customerId) redirect(`/admin/rechner/${id}?fehler=kunde`);
-  const s = await getSettings();
-  const t = estimateTotals(e.data);
-  const factor = t.baseHours > 0 ? t.totalHours / t.baseHours : 1;
-  const groups = new Map<string, { hours: number; labels: string[] }>();
-  for (const l of t.lines) {
-    const g = groups.get(l.group) ?? { hours: 0, labels: [] };
-    g.hours += l.hours * factor;
-    g.labels.push(l.label);
-    groups.set(l.group, g);
-  }
-  const items: LineItem[] = [...groups.entries()].map(([group, g]) => ({
-    title: group,
-    description: g.labels.join(", "),
-    quantity: Math.round(g.hours * 4) / 4,
-    unit: "Std.",
-    unitPrice: e.data.hourlyRate,
-  }));
-  const vatRate = s.vatEnabled ? s.vatRate : 0;
-  const issueDate = todayIso();
-  const number = await nextNumber("quote", s.quotePrefix);
-  const [q] = await db()
-    .insert(schema.quotes)
-    .values({
-      number,
-      customerId: e.customerId,
-      leadId: e.leadId,
-      title: e.name,
-      intro: s.quoteIntro,
-      outro: s.quoteOutro,
-      items,
-      vatRate,
-      total: computeTotals(items, 0, vatRate).total,
-      issueDate,
-      validUntil: addDaysIso(issueDate, s.quoteValidityDays),
-    })
-    .returning({ id: schema.quotes.id });
-  revalidatePath("/admin", "layout");
-  redirect(`/admin/offerten/${q.id}`);
 }
 
 /* ───────────────────────── Settings ───────────────────────── */

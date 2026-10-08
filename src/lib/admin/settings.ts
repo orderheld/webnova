@@ -2,6 +2,7 @@ import "server-only";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { site } from "@/lib/site";
+import { defaultCalculatorConfig, type CalculatorConfig } from "./calculator";
 
 export interface CompanySettings {
   companyName: string;
@@ -102,5 +103,19 @@ export async function saveSettings(value: CompanySettings) {
   await db()
     .insert(schema.settings)
     .values({ key: "company", value })
+    .onConflictDoUpdate({ target: schema.settings.key, set: { value } });
+}
+
+/** Calculator prices (packages, add-ons, recurring fees), editable under Rechner > Preise. */
+export async function getCalculatorConfig(): Promise<CalculatorConfig> {
+  const [row] = await db().select().from(schema.settings).where(eq(schema.settings.key, "calculator"));
+  const v = (row?.value as Partial<CalculatorConfig> | undefined) ?? {};
+  return { ...defaultCalculatorConfig, ...v };
+}
+
+export async function saveCalculatorConfig(value: CalculatorConfig) {
+  await db()
+    .insert(schema.settings)
+    .values({ key: "calculator", value })
     .onConflictDoUpdate({ target: schema.settings.key, set: { value } });
 }
