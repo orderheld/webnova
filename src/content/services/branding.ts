@@ -65,7 +65,7 @@ export const branding: Service = {
           h2: "Vom Branding bis zur Webseite",
           paragraphs: [
             "Der grosse Vorteil, wenn Branding und Webdesign aus einer Hand kommen: Alles passt zusammen. Ihr neues Corporate Design fliesst direkt in die Gestaltung Ihrer Website, Ihrer Social Media Kanäle und Ihrer Werbung ein. Abstimmungen zwischen verschiedenen Dienstleistern entfallen. Das spart Zeit und sorgt für ein stimmiges Gesamtbild.",
-            "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in der Region Bern, Biel, Solothurn und in der ganzen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
+            "Ob Neugründung, Rebranding oder Auffrischung eines bestehenden Logos: Wir begleiten Unternehmen in der ganzen Schweiz. Gespräche führen wir gerne persönlich bei Ihnen vor Ort oder per Video. Wir nehmen uns Zeit, Ihr Unternehmen zu verstehen, bevor wir gestalten.",
           ],
         },
       ],
