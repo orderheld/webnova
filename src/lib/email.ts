@@ -25,17 +25,35 @@ export function escapeHtml(s: string) {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 }
 
+/** Corporate palette for mails, mirrors the site tokens in globals.css. */
+export const mailColors = {
+  bg: "#f3f6f9",
+  surface: "#ffffff",
+  ink: "#1c232b",
+  inkSoft: "#3a434d",
+  muted: "#646b73",
+  line: "#e3e8ee",
+  accent: "#24405a",
+  bright: "#2c6db3",
+  danger: "#a12a2a",
+};
+const mailFont = "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+
 /** Simple, robust HTML wrapper for transactional mails. */
 export function mailLayout(bodyHtml: string, footer = true) {
-  return `<!doctype html><html><body style="margin:0;background:#f4f5f0;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#0e0e10">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
-<table role="presentation" width="100%" style="max-width:600px;background:#ffffff;border-radius:20px;border:1px solid #e3e1db" cellpadding="0" cellspacing="0">
+  const c = mailColors;
+  // Plain links (no own style) in the body get the bright blue of the site.
+  const body = bodyHtml.replace(/<a href="([^"]*)">/g, `<a href="$1" style="color:${c.bright};text-decoration:underline">`);
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head><body style="margin:0;background:${c.bg};font-family:${mailFont};color:${c.ink}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${c.bg}"><tr><td align="center" style="padding:32px 16px">
+<table role="presentation" width="100%" style="max-width:600px;background:${c.surface};border-radius:16px;border:1px solid ${c.line};overflow:hidden" cellpadding="0" cellspacing="0">
+<tr><td style="height:4px;background:${c.accent};font-size:0;line-height:0">&nbsp;</td></tr>
 <tr><td style="padding:28px 32px 0 32px"><img src="${site.url}/logo-email.png" width="150" height="28" alt="Webnova" style="display:block;border:0;height:auto"></td></tr>
-<tr><td style="padding:20px 32px 32px 32px;font-size:15px;line-height:1.6">${bodyHtml}</td></tr>
+<tr><td style="padding:20px 32px 32px 32px;font-size:15px;line-height:1.6;color:${c.inkSoft}">${body}</td></tr>
 </table>
 ${
   footer
-    ? `<p style="font-size:12px;color:#66666d;margin:20px 0 0">${site.legalName} · ${site.address.street} · ${site.address.zip} ${site.address.city} · ${site.phone} · <a href="${site.url}" style="color:#66666d">${site.url.replace("https://", "")}</a></p>`
+    ? `<p style="font-size:12px;line-height:1.6;color:${c.muted};margin:20px 0 0">${site.legalName} · ${site.address.street} · ${site.address.zip} ${site.address.city} · ${site.phone} · <a href="${site.url}" style="color:${c.muted}">${site.url.replace("https://", "")}</a></p>`
     : ""
 }
 </td></tr></table></body></html>`;
