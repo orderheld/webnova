@@ -1,4 +1,5 @@
 import { sql } from "drizzle-orm";
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Toaster } from "@/components/admin/feedback";
 import { Sidebar } from "@/components/admin/sidebar";
@@ -6,7 +7,10 @@ import { db, hasDb } from "@/db";
 import { addDaysIso, todayIso } from "@/lib/admin/money";
 import { FLASH_COOKIE } from "@/lib/admin/flash";
 import { getSettings } from "@/lib/admin/settings";
+import { ADMIN_MANIFEST } from "@/lib/admin/app";
 import { requireAdmin } from "@/lib/auth";
+
+export const metadata: Metadata = { manifest: ADMIN_MANIFEST };
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const user = await requireAdmin();

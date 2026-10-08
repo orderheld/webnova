@@ -10,6 +10,8 @@
 //   public/icons/icon-192.png   web app manifest, purpose "any"
 //   public/icons/icon-512.png   web app manifest, purpose "any"
 //   public/icons/maskable-512.png  web app manifest, purpose "maskable" (mark inside the 80 % safe zone)
+//   public/icons/admin-*.png    admin app (iPhone home screen, public/admin.webmanifest): mark plus an
+//                               "ADMIN" pill, so it is told apart from the website icon
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -66,6 +68,41 @@ await writeFile(join(root, "public/icons/icon-192.png"), await png(tile(192, 0.6
 await writeFile(join(root, "public/icons/icon-512.png"), await png(tile(512, 0.6, 0.22), 512));
 // Maskable: full bleed, mark well inside the central 80 % circle.
 await writeFile(join(root, "public/icons/maskable-512.png"), await png(tile(512, 0.46, 0), 512));
+
+// Admin app icon: the mark a little higher and an "ADMIN" pill below it. The word is an outline
+// (Inter Tight SemiBold, letter-spacing 0.12 em, font units, baseline at y = 0), so no font is needed here.
+const ADMIN_WORD = { capHeight: 1490, width: 7398.0, d: "M300 0H11L537 -1490H869L1394 0H1106L708 -1184H696ZM310 -584H1095V-368H310ZM2264.76 0H1886.76V-234H2250.76Q2405.76 -234 2510.26 -290.5Q2614.76 -347 2667.26 -461.0Q2719.76 -575 2719.76 -746Q2719.76 -917 2667.76 -1030.0Q2615.76 -1143 2512.76 -1199.5Q2409.76 -1256 2257.76 -1256H1878.76V-1490H2273.76Q2495.76 -1490 2655.26 -1401.0Q2814.76 -1312 2900.76 -1145.0Q2986.76 -978 2986.76 -746Q2986.76 -514 2900.76 -346.5Q2814.76 -179 2653.26 -89.5Q2491.76 0 2264.76 0ZM2028.76 -1490V0H1758.76V-1490ZM3410.52 -1490H3741.52L4183.52 -411H4200.52L4643.52 -1490H4978.52V0H4713.52V-1024H4701.52L4287.52 -5H4093.52L3684.52 -1026H3670.52V0H3410.52ZM5710.28 -1490V0H5440.28V-1490ZM7398.04 -1490V0H7156.04L6455.04 -1015H6442.04V0H6172.04V-1490H6414.04L7115.04 -475H7128.04V-1490Z" };
+
+/**
+ * @param {number} size  output px
+ * @param {number} radius  corner radius relative to the tile
+ * @param {number} zoom  content scale around the centre (below 1 for the maskable safe zone)
+ */
+function adminTile(size, radius, zoom = 1) {
+  const c = size / 2;
+  const at = (v) => c + (v - c) * zoom;
+  const mh = size * 0.4 * zoom;
+  const ms = mh / vh;
+  const mx = (size - vw * ms) / 2 - vx * ms;
+  const my = at(size * 0.4) - mh / 2 - vy * ms;
+  const th = size * 0.075 * zoom;
+  const ts = th / ADMIN_WORD.capHeight;
+  const tw = ADMIN_WORD.width * ts;
+  const ty = at(size * 0.78);
+  const pw = tw + th * 2.2;
+  const ph = th * 2.3;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">` +
+    `<rect width="${size}" height="${size}" rx="${radius * size}" fill="${SLATE}"/>` +
+    `<g transform="translate(${mx.toFixed(2)} ${my.toFixed(2)}) scale(${ms.toFixed(5)})">${inner}</g>` +
+    `<rect x="${((size - pw) / 2).toFixed(2)}" y="${(ty - ph / 2).toFixed(2)}" width="${pw.toFixed(2)}" height="${ph.toFixed(2)}" rx="${(ph / 2).toFixed(2)}" fill="${WHITE}"/>` +
+    `<path transform="translate(${((size - tw) / 2).toFixed(2)} ${(ty + th / 2).toFixed(2)}) scale(${ts.toFixed(6)})" fill="${SLATE}" d="${ADMIN_WORD.d}"/></svg>`;
+}
+
+// iOS: opaque square, the system rounds the corners.
+await writeFile(join(root, "public/icons/admin-apple-180.png"), await sharp(await png(adminTile(180, 0), 180)).flatten({ background: SLATE }).png().toBuffer());
+await writeFile(join(root, "public/icons/admin-192.png"), await png(adminTile(192, 0.22), 192));
+await writeFile(join(root, "public/icons/admin-512.png"), await png(adminTile(512, 0.22), 512));
+await writeFile(join(root, "public/icons/admin-maskable-512.png"), await png(adminTile(512, 0, 0.78), 512));
 
 console.log("Icons written from public/logo-mark.svg");
 

@@ -21,6 +21,13 @@ const interTight = localFont({
 export const metadata: Metadata = {
   title: { default: "Admin", template: "%s · Webnova Admin" },
   robots: { index: false, follow: false },
+  // Own app on the home screen: admin icon and name here, the manifest (start page /admin) is set one
+  // level deeper, see src/lib/admin/app.ts. The files sit outside the login check in src/proxy.ts.
+  appleWebApp: { capable: true, title: "Webnova Admin", statusBarStyle: "default" },
+  icons: {
+    icon: [{ url: "/icons/admin-192.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/icons/admin-apple-180.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function AdminRoot({ children }: { children: React.ReactNode }) {
