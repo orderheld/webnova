@@ -53,6 +53,8 @@ export function LeadForm({
   const uid = useId();
   const startedAt = useRef(0);
   const topRef = useRef<HTMLParagraphElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const moved = useRef(false);
   useEffect(() => {
     startedAt.current = Date.now();
@@ -104,7 +106,14 @@ export function LeadForm({
       return;
     }
     setTouched(true);
-    if (!nameOk || !emailOk) return;
+    if (!nameOk || !emailOk) {
+      // Take the visitor to the first field that needs attention (it may sit above the fold on phones),
+      // centred so the sticky header cannot cover it.
+      const field = (nameOk ? emailRef : nameRef).current;
+      field?.focus({ preventScroll: true });
+      field?.scrollIntoView({ block: "center" });
+      return;
+    }
     setError(null);
     startTransition(async () => {
       try {
@@ -230,6 +239,7 @@ export function LeadForm({
             <div className="space-y-3">
               <Field id={`${uid}-name`} label={t.q.name} required error={touched && !nameOk ? t.required : undefined}>
                 <input
+                  ref={nameRef}
                   id={`${uid}-name`}
                   className="input"
                   autoComplete="name"
@@ -238,6 +248,7 @@ export function LeadForm({
                   required
                   aria-required="true"
                   aria-invalid={touched && !nameOk}
+                  aria-describedby={touched && !nameOk ? `${uid}-name-error` : undefined}
                 />
               </Field>
               <Field id={`${uid}-company`} label={t.q.company} optional={t.q.optional}>
@@ -246,6 +257,7 @@ export function LeadForm({
               <div className="grid gap-3 sm:grid-cols-2">
                 <Field id={`${uid}-email`} label={t.q.email} required error={touched && !emailOk ? emailError : undefined}>
                   <input
+                    ref={emailRef}
                     id={`${uid}-email`}
                     className="input"
                     type="email"
@@ -256,6 +268,7 @@ export function LeadForm({
                     required
                     aria-required="true"
                     aria-invalid={touched && !emailOk}
+                    aria-describedby={touched && !emailOk ? `${uid}-email-error` : undefined}
                   />
                 </Field>
                 <Field id={`${uid}-phone`} label={t.q.phone} optional={t.q.optional}>
@@ -345,7 +358,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p role="alert" className="mt-1.5 text-[13px] text-danger">
+        <p id={`${id}-error`} role="alert" className="mt-1.5 text-[13px] text-danger">
           {error}
         </p>
       )}

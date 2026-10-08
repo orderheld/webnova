@@ -11,7 +11,7 @@ export function Logo({ tone = "light", className = "h-8", priority = false }: { 
       alt="Webnova"
       width={2964}
       height={551}
-      priority={priority}
+      preload={priority}
       className={`w-auto ${className}`}
     />
   );

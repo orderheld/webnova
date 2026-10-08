@@ -112,7 +112,8 @@ export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: 
             <label htmlFor="wc-email" className={lab}>
               {c.email}
             </label>
-            <input id="wc-email" name="email" type="email" required autoComplete="email" className={field} />
+            {/* pattern: the browser alone accepts "name@domain", the server does not; same rule as the lead form. */}
+            <input id="wc-email" name="email" type="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" autoComplete="email" className={field} />
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
