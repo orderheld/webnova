@@ -56,7 +56,7 @@ export const seo: Service = {
           h2: "Lokales SEO: In Ihrer Region gefunden werden",
           paragraphs: [
             "Für die meisten KMU zählt vor allem die eigene Region. Suchanfragen wie „Elektriker Solothurn“ oder „Coiffeur Biel“ zeigen bei Google oft eine Karte mit lokalen Anbietern. Wer dort erscheint, erhält besonders viele Anrufe und Anfragen. Das wichtigste Werkzeug dafür ist ein gepflegtes Google Unternehmensprofil.",
-            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Agentur aus Grenchen kennen wir die Region und die Zweisprachigkeit des Marktes.",
+            "Wir optimieren Ihr Profil, sorgen für einheitliche Einträge in Verzeichnissen wie local.ch und search.ch und erstellen bei Bedarf Seiten für Ihre wichtigsten Standorte. Als Agentur aus der Region Biel, Solothurn und Bern kennen wir den Markt und die Zweisprachigkeit des Marktes.",
           ],
           bullets: [
             "Google Unternehmensprofil einrichten und optimieren",
@@ -149,7 +149,7 @@ export const seo: Service = {
           h2: "SEO local: être visible dans votre région",
           paragraphs: [
             "Pour la plupart des PME, c'est la clientèle de proximité qui compte. Une recherche comme « électricien Neuchâtel » ou « coiffeur Bienne » affiche souvent une carte avec des entreprises locales. Y figurer apporte de nombreux appels et demandes. L'outil clé, c'est une fiche Google Business Profile bien tenue.",
-            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Basés à Granges, près de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
+            "Nous optimisons votre fiche, harmonisons vos données dans les annuaires comme local.ch et search.ch et créons au besoin des pages pour vos zones d'activité. Ancrés dans la région de Bienne, nous connaissons bien le marché bilingue et les habitudes de recherche des Romands.",
           ],
           bullets: [
             "Création et optimisation de votre fiche Google",

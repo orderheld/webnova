@@ -15,14 +15,14 @@ import { showReferences } from "@/lib/site";
 
 const homeMeta = {
   de: {
-    title: "Webdesign-Agentur Grenchen, Biel, Solothurn & Bern | Webnova",
+    title: "Webdesign-Agentur Bern, Biel & Solothurn | Webnova",
     description:
-      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in Grenchen, Biel, Solothurn und Bern. Persönlich, schnell, auf Anfragen optimiert.",
+      "Webnova erstellt moderne Webseiten und Onlineshops mit SEO für KMU in Bern, Biel, Solothurn und der ganzen Schweiz. Persönlich, schnell, auf Anfragen optimiert.",
   },
   fr: {
-    title: "Agence web Bienne, Granges, Soleure & Berne | Webnova",
+    title: "Agence web Bienne, Berne & Soleure | Webnova",
     description:
-      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de Bienne, Granges, Soleure et Berne. Personnel et rapide.",
+      "Webnova crée des sites internet et boutiques en ligne optimisés pour Google, pour les PME de Bienne, Berne, Soleure et de toute la Suisse. Personnel et rapide.",
   },
 };
 
@@ -30,14 +30,14 @@ const homeFaq = {
   de: [
     { q: "Was kostet eine neue Webseite bei Webnova?", a: "Jedes Projekt ist anders, deshalb arbeiten wir nicht mit Pauschalpreisen. Nach einem kostenlosen Erstgespräch erhalten Sie eine transparente Offerte, abgestimmt auf Umfang, Funktionen und Ihr Budget." },
     { q: "Wie lange dauert es, bis meine Webseite online ist?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Der genaue Zeitplan hängt vom Umfang und davon ab, wie schnell Inhalte wie Texte und Bilder bereitstehen. Den Fahrplan legen wir im Konzept gemeinsam fest." },
-    { q: "Arbeiten Sie nur in der Region Grenchen, Biel, Solothurn und Bern?", a: "Unser Schwerpunkt ist die Region rund um Grenchen, Biel, Solothurn und Bern, wo wir Sie gerne vor Ort besuchen. Projekte in der ganzen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort." },
+    { q: "Arbeiten Sie nur in der Region Bern, Biel und Solothurn?", a: "Unser Schwerpunkt ist die Region Bern, Biel und Solothurn, wo wir Sie gerne vor Ort besuchen. Projekte in der ganzen Schweiz betreuen wir genauso persönlich, per Videocall und bei Bedarf vor Ort." },
     { q: "Kann ich meine Webseite später selbst bearbeiten?", a: "Ja. Auf Wunsch erhalten Sie ein einfaches Redaktionssystem und eine kurze Einführung. Alternativ übernehmen wir Anpassungen im Rahmen eines Wartungsvertrags für Sie." },
     { q: "Bieten Sie Webseiten auch zweisprachig an?", a: "Ja, Deutsch und Französisch sind bei uns Alltag. Gerade in Biel/Bienne und der Westschweiz ist eine zweisprachige Webseite oft der Schlüssel zu mehr Kundschaft." },
   ],
   fr: [
     { q: "Combien coûte un nouveau site chez Webnova ?", a: "Chaque projet est différent, c'est pourquoi nous ne travaillons pas avec des forfaits. Après un premier entretien gratuit, vous recevez un devis clair et transparent, adapté à l'envergure, aux fonctions et à votre budget." },
     { q: "En combien de temps mon site est-il en ligne ?", a: "Un site typique de PME est en ligne en quelques semaines. Le calendrier dépend de l'envergure et de la disponibilité des contenus comme les textes et les images. Nous le fixons ensemble lors du concept." },
-    { q: "Travaillez-vous uniquement dans la région de Bienne, Granges, Soleure et Berne ?", a: "Notre région principale est autour de Granges, Bienne, Soleure et Berne, où nous vous rendons volontiers visite. Nous accompagnons tout aussi personnellement des projets dans toute la Suisse, par visioconférence et sur place si nécessaire." },
+    { q: "Travaillez-vous uniquement dans la région de Bienne, Berne et Soleure ?", a: "Notre région principale est Bienne, Berne et Soleure, où nous vous rendons volontiers visite. Nous accompagnons tout aussi personnellement des projets dans toute la Suisse, par visioconférence et sur place si nécessaire." },
     { q: "Pourrai-je modifier mon site moi-même ?", a: "Oui. Sur demande, vous recevez un système de gestion de contenu simple et une courte formation. Nous pouvons aussi effectuer les modifications pour vous dans le cadre d'un contrat de maintenance." },
     { q: "Proposez-vous des sites bilingues ?", a: "Oui, le français et l'allemand font partie de notre quotidien. À Bienne et en Suisse romande, un site bilingue est souvent la clé pour toucher plus de clients." },
   ],
@@ -58,7 +58,7 @@ const intro = {
     servicesEyebrow: "Wie können wir helfen?",
     servicesTitle: "Sagen Sie uns, wo der Schuh drückt. Wir kümmern uns um den Rest.",
     quote: "Wir nehmen uns Zeit, Ihren Betrieb zu verstehen, bevor wir eine Zeile Code schreiben.",
-    quoteBy: "Webnova, Grenchen",
+    quoteBy: "Webnova",
     approachLead:
       "Bei uns haben Sie vom ersten Gespräch bis zum Launch und darüber hinaus eine feste Ansprechperson. Wir planen klar, gestalten ruhig und bauen Webseiten, die schnell laden, gefunden werden und Anfragen bringen.",
   },
@@ -70,7 +70,7 @@ const intro = {
     servicesEyebrow: "Comment pouvons-nous aider ?",
     servicesTitle: "Dites-nous ce qui coince. Nous nous occupons du reste.",
     quote: "Nous prenons le temps de comprendre votre entreprise avant d'écrire la moindre ligne de code.",
-    quoteBy: "Webnova, Granges",
+    quoteBy: "Webnova",
     approachLead:
       "Du premier entretien à la mise en ligne et au-delà, vous avez un seul interlocuteur. Nous planifions clairement, concevons avec sobriété et créons des sites rapides, bien référencés et qui génèrent des demandes.",
   },

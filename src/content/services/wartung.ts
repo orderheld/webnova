@@ -71,7 +71,7 @@ export const wartung: Service = {
           h2: "Ein Ansprechpartner für alles",
           paragraphs: [
             "Statt sich zwischen Hosting-Anbieter, Programmierer und Grafiker hin- und herschicken zu lassen, haben Sie bei uns einen Ansprechpartner. Wir kennen Ihre Website und finden schnell eine Lösung, egal ob es um ein Update, eine neue Unterseite oder eine Frage zum Mailkonto geht.",
-            "Von unserem Büro in Grenchen aus betreuen wir Kunden in der Region und in der ganzen Schweiz. Und wenn Ihre Webseite in die Jahre kommt, beraten wir Sie ehrlich, ob sich ein Redesign lohnt. Bis dahin sorgen wir dafür, dass sie sicher, schnell und aktuell bleibt.",
+            "Wir betreuen Kunden in der Region und in der ganzen Schweiz. Und wenn Ihre Webseite in die Jahre kommt, beraten wir Sie ehrlich, ob sich ein Redesign lohnt. Bis dahin sorgen wir dafür, dass sie sicher, schnell und aktuell bleibt.",
           ],
         },
       ],
@@ -166,7 +166,7 @@ export const wartung: Service = {
           h2: "Un seul interlocuteur pour tout",
           paragraphs: [
             "Plutôt que de jongler entre hébergeur, développeur et graphiste, vous avez chez nous un interlocuteur unique. Nous connaissons votre site et trouvons rapidement une solution, qu'il s'agisse d'une mise à jour, d'une nouvelle page ou d'une question sur votre messagerie.",
-            "Depuis notre bureau de Granges, nous accompagnons des clients dans la région et dans toute la Suisse. Et lorsque votre site prend de l'âge, nous vous disons franchement si une refonte vaut la peine. D'ici là, nous veillons à ce qu'il reste sûr, rapide et à jour.",
+            "Nous accompagnons des clients dans la région et dans toute la Suisse. Et lorsque votre site prend de l'âge, nous vous disons franchement si une refonte vaut la peine. D'ici là, nous veillons à ce qu'il reste sûr, rapide et à jour.",
           ],
         },
       ],

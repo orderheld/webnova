@@ -164,7 +164,7 @@ export const kassensystemGastro: Service = {
           h2: "Installation et formation sur place",
           paragraphs: [
             "Nous ne configurons pas votre caisse à distance avant de disparaître. Ensemble, nous saisissons votre carte, vos prix et vos tables. Nous installons ensuite caisse, imprimantes et terminal chez vous et formons votre équipe, idéalement avant un service calme. Nous restons sur place le temps qu'il faut pour que chacun se sente à l'aise.",
-            "Depuis Granges, nous sommes rapidement sur place à Bienne et dans la région, et vous nous joignez directement après la mise en service. Besoin aussi d'un nouveau site pour votre restaurant? Nous le créons volontiers dans le même esprit. Pour une image cohérente, de la salle jusqu'à internet.",
+            "Nous sommes rapidement sur place à Bienne et dans la région, et vous nous joignez directement après la mise en service. Besoin aussi d'un nouveau site pour votre restaurant? Nous le créons volontiers dans le même esprit. Pour une image cohérente, de la salle jusqu'à internet.",
           ],
         },
       ],
