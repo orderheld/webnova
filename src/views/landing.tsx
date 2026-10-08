@@ -28,7 +28,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Webdesign für KMU in der Schweiz",
       h1: "Ihre neue Webseite. Modern, schnell und gemacht für Anfragen.",
       lead: "Schluss mit veralteten Webseiten, die niemand findet. Wir bauen Ihnen einen Auftritt, der überzeugt und Kunden bringt.",
-      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung aus Grenchen"],
+      bullets: ["Individuelles Design, kein Baukasten", "Optimiert für Handy und Google", "Persönliche Betreuung aus der Region"],
       benefitsTitle: "Was Sie bekommen",
       benefits: [
         { icon: "layout", title: "Design mit Wirkung", text: "Ein klarer, moderner Auftritt, der Vertrauen schafft und Ihre Stärken auf den Punkt bringt." },
@@ -51,7 +51,7 @@ const content: Record<string, Record<Locale, Lp>> = {
       eyebrow: "Création de sites pour PME en Suisse",
       h1: "Votre nouveau site. Moderne, rapide et pensé pour les demandes.",
       lead: "Fini les sites dépassés que personne ne trouve. Nous créons une présence en ligne qui convainc et vous apporte des clients.",
-      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel depuis Granges"],
+      bullets: ["Design sur mesure, pas de modèle", "Optimisé pour mobile et Google", "Accompagnement personnel dans la région"],
       benefitsTitle: "Ce que vous obtenez",
       benefits: [
         { icon: "layout", title: "Un design qui marque", text: "Une présence claire et moderne qui inspire confiance et met vos forces en valeur." },

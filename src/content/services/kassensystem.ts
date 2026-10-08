@@ -167,7 +167,7 @@ export const kassensystem: Service = {
         {
           h2: "Installation personnalisée, support de proximité",
           paragraphs: [
-            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Depuis Granges, nous sommes rapidement chez vous à Bienne et dans la région.",
+            "Changer de caisse implique une période d'adaptation. Nous ne vous laissons pas seul. Nous saisissons avec vous articles et prix, installons appareils et imprimantes sur place et formons votre équipe jusqu'à ce que tout roule. Nous sommes rapidement chez vous à Bienne et dans la région.",
             "Après le démarrage, nous restons votre interlocuteur. Une question, un besoin d'extension: vous nous joignez directement. Et si vous vendez aussi en ligne, nous relions caisse et site internet ou boutique en ligne pour un ensemble cohérent. Toute votre présence fonctionne ainsi d'un seul tenant.",
           ],
         },

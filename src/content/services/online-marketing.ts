@@ -51,7 +51,7 @@ export const onlineMarketing: Service = {
         {
           h2: "Social Media Werbung mit klarer Zielgruppe",
           paragraphs: [
-            "Auf Instagram und Facebook erreichen Sie Menschen, bevor sie aktiv suchen. Das eignet sich für Produkte, Events, Neueröffnungen oder die Suche nach Fachkräften. Mit gezielter Social Media Werbung sprechen Sie Personen nach Region, Alter und Interessen an, zum Beispiel im Umkreis von Grenchen, Biel oder Solothurn.",
+            "Auf Instagram und Facebook erreichen Sie Menschen, bevor sie aktiv suchen. Das eignet sich für Produkte, Events, Neueröffnungen oder die Suche nach Fachkräften. Mit gezielter Social Media Werbung sprechen Sie Personen nach Region, Alter und Interessen an, zum Beispiel im Umkreis von Bern, Biel oder Solothurn.",
             "Wir entwickeln Kampagnenidee, Texte und Bildkonzept, setzen die Anzeigen auf und werten die Resultate aus. So sehen Sie, welche Botschaft funktioniert, und wir verschieben das Budget dorthin, wo es am meisten bringt. Auch Werbung für Stellenausschreibungen setzen wir so um, dass sie die richtigen Fachkräfte in Ihrer Region erreicht.",
           ],
           bullets: [

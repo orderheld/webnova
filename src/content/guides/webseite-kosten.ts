@@ -77,7 +77,7 @@ export const webseiteKosten: Guide = {
           h2: "So erhalten Sie eine verlässliche Offerte",
           paragraphs: [
             "Weil jedes Projekt anders ist, veröffentlichen wir keine Pauschalpreise. Eine seriöse Offerte entsteht erst, wenn klar ist, was Ihre Webseite leisten soll. Je besser Sie Ziele, gewünschte Funktionen und vorhandene Inhalte beschreiben, desto genauer lässt sich der Aufwand einschätzen. Achten Sie beim Vergleich mehrerer Offerten darauf, dass tatsächlich dieselben Leistungen enthalten sind.",
-            "Bei Webnova in Grenchen besprechen wir Ihr Vorhaben zuerst in einem unverbindlichen Gespräch. Danach erhalten Sie eine individuelle Offerte, die transparent aufzeigt, welche Leistungen enthalten sind und welche laufenden Kosten anfallen. Fragen Sie jetzt Ihre unverbindliche Offerte an – wir melden uns persönlich bei Ihnen und beantworten gerne alle offenen Fragen.",
+            "Bei Webnova besprechen wir Ihr Vorhaben zuerst in einem unverbindlichen Gespräch. Danach erhalten Sie eine individuelle Offerte, die transparent aufzeigt, welche Leistungen enthalten sind und welche laufenden Kosten anfallen. Fragen Sie jetzt Ihre unverbindliche Offerte an – wir melden uns persönlich bei Ihnen und beantworten gerne alle offenen Fragen.",
           ],
         },
       ],
@@ -171,7 +171,7 @@ export const webseiteKosten: Guide = {
           h2: "Comment obtenir une offre fiable",
           paragraphs: [
             "Comme chaque projet est différent, nous ne publions pas de prix forfaitaires. Une offre sérieuse n'est possible que lorsque l'on sait ce que votre site doit accomplir. Plus vous décrivez précisément vos objectifs, les fonctions souhaitées et les contenus existants, plus l'estimation sera juste. Lorsque vous comparez plusieurs offres, vérifiez qu'elles comprennent bien les mêmes prestations.",
-            "Chez Webnova à Granges, nous discutons d'abord de votre projet lors d'un entretien sans engagement. Vous recevez ensuite une offre individuelle qui indique clairement les prestations comprises et les coûts récurrents. Demandez dès maintenant votre offre sans engagement : nous vous recontactons personnellement et répondons volontiers à toutes vos questions.",
+            "Chez Webnova, nous discutons d'abord de votre projet lors d'un entretien sans engagement. Vous recevez ensuite une offre individuelle qui indique clairement les prestations comprises et les coûts récurrents. Demandez dès maintenant votre offre sans engagement : nous vous recontactons personnellement et répondons volontiers à toutes vos questions.",
           ],
         },
       ],
