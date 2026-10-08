@@ -79,7 +79,6 @@ const allReferences: Reference[] = [
   {
     key: "ava-catering",
     name: "AVA Catering",
-    hidden: true,
     domain: "avacatering.ch",
     image: "/referenzen/ava-catering.jpg",
     colors: { bg: "#fbf7f0", fg: "#4a5822", accent: "#e8650a" },
