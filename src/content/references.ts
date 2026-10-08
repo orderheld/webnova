@@ -31,6 +31,7 @@ const allReferences: Reference[] = [
   {
     key: "orderheld",
     name: "orderheld",
+    hidden: true,
     domain: "orderheld.ch",
     image: "/referenzen/orderheld.jpg",
     colors: { bg: "#f6f7f7", fg: "#111515", accent: "#00a651" },
@@ -127,7 +128,7 @@ const allReferences: Reference[] = [
     key: "gyan-hair-salon",
     name: "GYAN Hair Salon",
     domain: "gyanhairsalon.ch",
-    image: "/referenzen/gyan-hair-salon.jpg",
+    image: "/referenzen/gyan-hair-salon-live.jpg",
     colors: { bg: "#f7f3ec", fg: "#2b2722", accent: "#8a6f4e" },
     content: {
       de: {
@@ -174,7 +175,7 @@ const allReferences: Reference[] = [
     key: "dersut-kaffee",
     name: "Dersut Kaffee Schweiz",
     domain: "dersutkaffee.ch",
-    image: "/referenzen/dersut-kaffee.jpg",
+    image: "/referenzen/dersut-kaffee-live.jpg",
     colors: { bg: "#002856", fg: "#ffffff", accent: "#82754f" },
     content: {
       de: {
@@ -258,5 +259,5 @@ const allReferences: Reference[] = [
   },
 ];
 
-/** Projects shown on the site: orderheld, GYAN and Dersut. Hidden ones stay in the file for later. */
+/** Projects shown on the site: GYAN and Dersut. Hidden ones stay in the file for later. */
 export const references: Reference[] = allReferences.filter((r) => !r.hidden);
