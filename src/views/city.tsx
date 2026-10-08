@@ -105,7 +105,7 @@ function HeroSkyline({ cityKey }: { cityKey: string }) {
   const Skyline = skylines[cityKey];
   if (!Skyline) return null;
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[clamp(200px,25vw,380px)] text-bright/30 [mask-image:linear-gradient(to_top,#000_55%,transparent)]">
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[clamp(150px,17vw,250px)] text-bright/25 [mask-image:linear-gradient(to_top,#000_55%,transparent)]">
       <Skyline animate className="h-full w-full" />
     </div>
   );

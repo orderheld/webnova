@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/button";
 import Image from "next/image";
 import { ContactPerson, CtaBand, FeatureGrid, PageHero, Prose, TrustList } from "@/components/blocks";
 import { Icon } from "@/components/icons";
+import { ContactList } from "@/components/editorial";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
 import { references } from "@/content/references";
@@ -10,7 +11,7 @@ import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
-import { site, type Weekday } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -188,26 +189,11 @@ export function ReferencePage({ locale, refKey }: { locale: Locale; refKey: stri
   );
 }
 
-const dayShort: Record<Locale, Record<Weekday, string>> = {
-  de: { Monday: "Mo", Tuesday: "Di", Wednesday: "Mi", Thursday: "Do", Friday: "Fr", Saturday: "Sa", Sunday: "So" },
-  fr: { Monday: "lu", Tuesday: "ma", Wednesday: "me", Thursday: "je", Friday: "ve", Saturday: "sa", Sunday: "di" },
-};
-
-function dayRange(locale: Locale, days: Weekday[]) {
-  const t = dayShort[locale];
-  return days.length > 2 ? `${t[days[0]]}–${t[days[days.length - 1]]}` : days.map((x) => t[x]).join(", ");
-}
-
 export function ContactPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const mapsHref =
     site.google.maps ||
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Webnova ${site.address.street} ${site.address.zip} ${site.address.city}`)}`;
-  const channels = [
-    { icon: "phone", label: d.common.callUs, value: site.phone, href: site.phoneHref },
-    { icon: "mail", label: d.common.writeUs, value: site.email, href: `mailto:${site.email}` },
-    { icon: "chat", label: d.common.whatsapp, value: site.phone, href: site.whatsappHref },
-  ];
   return (
     <>
       <JsonLd data={breadcrumbLd([{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.contact, url: href(locale, "contact") }])} />
@@ -217,66 +203,20 @@ export function ContactPage({ locale }: { locale: Locale }) {
         lead={d.pages.contactLead}
         crumbs={[{ name: d.common.home, url: href(locale, "home") }, { name: d.nav.contact }]}
       />
-      <section className="container-x relative z-10 -mt-10 grid gap-10 pb-24 lg:grid-cols-12">
-        <div className="space-y-4 lg:col-span-5">
-          <div className="surface-night rounded-2xl p-6 text-white shadow-lift">
-            <ContactPerson locale={locale} dark />
-            <TrustList locale={locale} dark className="mt-5 border-t border-white/10 pt-5" />
-          </div>
-          {channels.map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="card card-hover group flex items-center gap-5 p-6"
-            >
-              <span className="icon-tile h-12 w-12 transition-colors group-hover:bg-accent group-hover:text-white">
-                <Icon name={c.icon} />
-              </span>
-              <span>
-                <span className="block text-[13px] text-muted">{c.label}</span>
-                <span className="block font-display text-[19px] font-semibold tracking-tight">{c.value}</span>
-              </span>
-            </a>
-          ))}
-          <div className="card p-6">
-            <p className="eyebrow">{d.pages.office}</p>
-            <p className="mt-3 text-[18px] leading-snug">
-              Webnova
-              <br />
-              {site.address.street}
-              <br />
-              {site.address.zip} {locale === "fr" ? "Granges (SO)" : `${site.address.city} SO`}
-            </p>
-            <a
-              href={mapsHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-arrow mt-5 text-[14px]"
-            >
-              {d.pages.openInMaps} <Icon name="arrowUpRight" className="h-4 w-4" />
-            </a>
-            {site.openingHours.length > 0 && (
-              <div className="mt-6 border-t border-line pt-5">
-                <p className="eyebrow">{d.pages.hours}</p>
-                <dl className="mt-3 space-y-1 text-[15px]">
-                  {site.openingHours.map((h) => (
-                    <div key={h.days.join()} className="flex justify-between gap-4">
-                      <dt className="text-ink-soft">{dayRange(locale, h.days)}</dt>
-                      <dd>
-                        {h.opens}–{h.closes}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            )}
-            {site.google.review && (
-              <ButtonLink href={site.google.review} variant="ghost" arrow={false} className="mt-6 w-full">
-                {d.pages.reviewOnGoogle}
-              </ButtonLink>
-            )}
-          </div>
+      <section className="container-x grid gap-12 pb-24 pt-14 md:pt-20 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <p className="kicker mb-8">{d.nav.contact}</p>
+          <ContactPerson locale={locale} />
+          <TrustList locale={locale} className="mb-8 mt-6" />
+          <ContactList locale={locale} hours />
+          <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="link-arrow mt-6 text-[14px]">
+            {d.pages.openInMaps} <Icon name="arrow" className="h-4 w-4 -rotate-45" />
+          </a>
+          {site.google.review && (
+            <ButtonLink href={site.google.review} variant="ghost" arrow={false} className="mt-6 w-full">
+              {d.pages.reviewOnGoogle}
+            </ButtonLink>
+          )}
         </div>
         <div className="lg:col-span-7">
           <LeadForm

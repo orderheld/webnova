@@ -163,7 +163,7 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
 
       <section className="container-x py-20 md:py-28">
         <div className="reveal mb-12 max-w-3xl">
-          <p className="eyebrow mb-4">{u.painEyebrow}</p>
+          <p className="kicker mb-8">{u.painEyebrow}</p>
           <h2 className="h-section">{c.painTitle}</h2>
         </div>
         <FeatureGrid items={c.pains} />
@@ -177,7 +177,7 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         <section className="container-x py-20 md:py-28">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="reveal lg:col-span-5">
-              <p className="eyebrow mb-4">{u.proofEyebrow}</p>
+              <p className="kicker mb-8">{u.proofEyebrow}</p>
               <h2 className="h-section">{u.proofTitle}</h2>
               <p className="mt-6 text-[18px] leading-relaxed text-ink-soft">{u.proofText}</p>
             </div>
@@ -316,12 +316,12 @@ export function ProblemPage({ locale, problemKey }: { locale: Locale; problemKey
 function SectionHead({ eyebrow, title, lead, children }: { eyebrow: string; title: string; lead?: string; children: React.ReactNode }) {
   return (
     <>
-      <div className="reveal mb-12 grid gap-6 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p className="eyebrow mb-4">{eyebrow}</p>
-          <h2 className="h-section">{title}</h2>
+      <div className="mb-12 md:mb-16">
+        <p className="kicker mb-6 md:mb-8">{eyebrow}</p>
+        <div className="grid gap-6 md:grid-cols-12 md:items-end">
+          <h2 className="h-section md:col-span-8">{title}</h2>
+          {lead && <p className="text-[16.5px] leading-relaxed text-ink-soft md:col-span-4">{lead}</p>}
         </div>
-        {lead && <p className="text-[18px] leading-relaxed text-ink-soft md:col-span-5">{lead}</p>}
       </div>
       {children}
     </>
@@ -343,8 +343,8 @@ function HeroButtons({ locale }: { locale: Locale }) {
 function CheckCard({ title, items, locale, numbered = false }: { title: string; items: string[]; locale: Locale; numbered?: boolean }) {
   const d = getDict(locale);
   return (
-    <div className="rounded-2xl border border-line bg-surface p-8 shadow-soft">
-      <p className="eyebrow mb-6">{title}</p>
+    <div className="border border-line border-t-[3px] border-t-accent bg-surface p-8">
+      <p className="label mb-6">{title}</p>
       <ul className="space-y-4 text-[16px] leading-snug text-ink-soft">
         {items.map((t, n) => (
           <li key={t} className="flex items-start gap-3">
@@ -373,24 +373,18 @@ function NightGrid({ eyebrow, title, lead, items, numbered = false }: { eyebrow:
   return (
     <section className="bg-night py-20 text-white md:py-28">
       <div className="container-x">
-        <div className="reveal mb-14 grid gap-6 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-            <p className="eyebrow mb-4 !text-accent-light">{eyebrow}</p>
-            <h2 className="h-section">{title}</h2>
+        <div className="mb-12 md:mb-16">
+          <p className="kicker-light mb-6 md:mb-8">{eyebrow}</p>
+          <div className="grid gap-6 md:grid-cols-12 md:items-end">
+            <h2 className="h-section md:col-span-8">{title}</h2>
+            <p className="text-[16.5px] leading-relaxed text-white/70 md:col-span-4">{lead}</p>
           </div>
-          <p className="text-[18px] leading-relaxed text-white/70 md:col-span-5">{lead}</p>
         </div>
-        <div className={`grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <div className={`grid gap-x-8 sm:grid-cols-2 ${items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {items.map((it, n) => (
-            <div key={it.title} className="flex flex-col bg-night p-7">
-              {numbered ? (
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-[14px] font-semibold text-accent">{n + 1}</span>
-              ) : (
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-accent-light">
-                  <Icon name="check" className="h-4 w-4" strokeWidth={2.4} />
-                </span>
-              )}
-              <h3 className="mt-8 font-display text-[20px] font-medium leading-snug tracking-[-0.01em]">{it.title}</h3>
+            <div key={it.title} className="flex flex-col border-t border-white/25 pb-10 pt-6">
+              <span className="font-display text-[14px] font-semibold tabular-nums text-accent-light">{numbered ? String(n + 1).padStart(2, "0") : "+"}</span>
+              <h3 className="mt-5 font-display text-[20px] font-semibold leading-snug tracking-[-0.01em]">{it.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/65">{it.text}</p>
             </div>
           ))}
@@ -408,7 +402,7 @@ function ProseWithAside({ locale, sections, ctaTitle, ctaText }: { locale: Local
         <Prose sections={sections} />
       </div>
       <aside className="lg:col-span-4 lg:pt-14">
-        <div className="sticky top-28 overflow-hidden rounded-2xl border border-line bg-surface p-8">
+        <div className="sticky top-28 border border-line border-t-[3px] border-t-accent bg-surface p-8">
           <h2 className="text-[26px] font-semibold leading-tight tracking-[-0.03em]">{ctaTitle}</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{ctaText}</p>
           <ButtonLink href={`#${FORM_ID}`} className="mt-8 w-full">

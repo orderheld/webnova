@@ -7,7 +7,7 @@ import type { Locale } from "@/content/types";
 import { href } from "@/lib/routes";
 import { SectionHead } from "./head";
 
-/** Teaser grid of all industry pages. */
+/** Index of all industry pages: numbered, typographic, three columns on desktop. */
 export function IndustriesTeaser({ locale, exclude, title, lead }: { locale: Locale; exclude?: string; title?: string; lead?: string }) {
   const s = structure[locale];
   const list = industries.filter((i) => i.key !== exclude);
@@ -24,21 +24,23 @@ export function IndustriesTeaser({ locale, exclude, title, lead }: { locale: Loc
           </Link>
         }
       />
-      <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-        {list.map((i) => (
-          <li key={i.key} className="reveal">
-            <Link
-              href={href(locale, `industry:${i.key}`)}
-              className="card card-hover group flex h-full flex-col gap-4 p-5"
-            >
-              <span className="icon-tile h-10 w-10 transition-colors group-hover:bg-accent group-hover:text-white">
-                <Icon name={i.icon} className="h-[18px] w-[18px]" />
-              </span>
-              <span className="text-[15.5px] font-semibold leading-snug text-ink group-hover:text-accent">{i.content[locale].navLabel}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <IndustryIndex locale={locale} list={list} />
     </section>
+  );
+}
+
+export function IndustryIndex({ locale, list = industries, cols = 3 }: { locale: Locale; list?: typeof industries; cols?: 2 | 3 }) {
+  return (
+    <ul className={`grid border-t border-ink sm:grid-cols-2 sm:gap-x-8 ${cols === 3 ? "lg:grid-cols-3" : ""}`}>
+      {list.map((i, n) => (
+        <li key={i.key}>
+          <Link href={href(locale, `industry:${i.key}`)} className="group grid grid-cols-[2.25rem_1fr_auto] items-baseline gap-x-3 border-b border-line py-4">
+            <span className="text-[12.5px] tabular-nums text-muted">{String(n + 1).padStart(2, "0")}</span>
+            <span className="font-display text-[18px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">{i.content[locale].navLabel}</span>
+            <Icon name="arrow" className="h-4 w-4 self-center text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent" />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

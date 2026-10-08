@@ -44,37 +44,36 @@ export function ProblemsSection({
         }
       />
       {points?.length ? (
-        <div className={`grid gap-4 sm:grid-cols-2 ${points.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <ol className={`grid gap-x-8 sm:grid-cols-2 ${points.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {points.map((p, i) => (
-            <div key={p.title} className="card reveal p-7">
-              <span className="font-display text-[15px] font-semibold text-bright">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-5 font-display text-[19px] font-semibold leading-snug tracking-[-0.01em]">{p.title}</h3>
+            <li key={p.title} className="border-t border-ink pb-8 pt-6">
+              <span className="font-display text-[14px] font-semibold tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-4 font-display text-[20px] font-semibold leading-snug tracking-[-0.015em]">{p.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{p.text}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((p) => (
-            <Link
-              key={p.key}
-              href={href(locale, `problem:${p.key}`)}
-              className="card card-hover reveal group flex flex-col p-7"
-            >
-              <span className="icon-tile mb-6 transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
-                <Icon name={p.icon} className="h-5 w-5" />
-              </span>
-              <h3 className="font-display text-[19px] font-semibold leading-snug tracking-[-0.01em] transition-colors group-hover:text-accent">
-                {p.content[locale].navLabel}
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{p.content[locale].h1}</p>
-              <span className="link-arrow mt-auto pt-6">
-                {p.content[locale].solutionTitle}
-                <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
+        <ul className="border-t border-ink">
+          {list.map((p, i) => (
+            <li key={p.key}>
+              <Link
+                href={href(locale, `problem:${p.key}`)}
+                className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 border-b border-line py-6 md:grid-cols-[3.5rem_5fr_6fr_auto] md:py-7"
+              >
+                <span className="font-display text-[14px] font-semibold tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-display text-[clamp(1.25rem,2vw,1.6rem)] font-semibold leading-snug tracking-[-0.02em] transition-colors group-hover:text-accent">
+                  {p.content[locale].navLabel}
+                </h3>
+                <p className="col-start-2 mt-2 text-[15px] leading-relaxed text-ink-soft md:col-start-3 md:mt-0">
+                  {p.content[locale].h1}
+                  <span className="mt-2 block text-[14px] font-medium text-bright">{p.content[locale].solutionTitle}</span>
+                </p>
+                <Icon name="arrow" className="col-start-3 row-start-1 h-5 w-5 self-center text-ink-soft transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent md:col-start-4" />
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </section>
   );

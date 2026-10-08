@@ -110,6 +110,10 @@
     @apply outline-2 outline-offset-2 outline-bright;
   }
   /* Dark sections: the focus ring switches to the light blue so it stays visible. */
+  /* Numbered section labels (utility "kicker") count up per page, so every page reads like an index. */
+  main {
+    counter-reset: sec;
+  }
   .bg-night :focus-visible,
   .bg-night-2 :focus-visible,
   .bg-accent :focus-visible {
@@ -169,22 +173,85 @@
 }
 
 @utility h-section {
-  @apply font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold tracking-[-0.02em] leading-[1.1];
+  @apply font-display text-[clamp(2.1rem,4.4vw,3.5rem)] font-semibold tracking-[-0.03em] leading-[1.06] text-balance;
 }
 
-/* Section label: short bright-blue caps above a heading, no ornaments. */
+/* Smaller editorial heading for blocks inside a section. */
+@utility h-block {
+  @apply font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold tracking-[-0.02em] leading-[1.15];
+}
+
+/* Micro label: small spaced caps, the editorial signpost above headings and lists. */
 @utility eyebrow {
-  @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-bright;
+  @apply block text-[12.5px] font-semibold uppercase tracking-[0.14em] text-bright;
 }
 
 /* The same label on dark (night / Schieferblau) sections. */
 @utility eyebrow-light {
-  @apply block text-[13px] font-semibold uppercase tracking-[0.1em] text-accent-light;
+  @apply block text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-light;
+}
+
+/* Muted micro label without colour, e.g. column titles and captions. */
+@utility label {
+  @apply block text-[12px] font-semibold uppercase tracking-[0.14em] text-muted;
+}
+
+/*
+ * Numbered section label, Webnova style: "01", a short Schieferblau rule, then the label in caps.
+ * The number comes from a CSS counter on <main>, so sections number themselves in reading order.
+ */
+@utility kicker {
+  @apply flex items-center text-[12.5px] font-semibold uppercase tracking-[0.14em] text-muted;
+  &::before {
+    counter-increment: sec;
+    content: counter(sec, decimal-leading-zero);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    padding-right: 2.75rem;
+    margin-right: 0.85rem;
+    background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat right center / 2rem 1.5px;
+  }
+}
+
+/* The numbered label on dark sections. */
+@utility kicker-light {
+  @apply flex items-center text-[12.5px] font-semibold uppercase tracking-[0.14em] text-white/60;
+  &::before {
+    counter-increment: sec;
+    content: counter(sec, decimal-leading-zero);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-light);
+    padding-right: 2.75rem;
+    margin-right: 0.85rem;
+    background: linear-gradient(var(--color-accent-light), var(--color-accent-light)) no-repeat right center / 2rem 1.5px;
+  }
+}
+
+/* Meta line: small muted text, parts separated with " · ". */
+@utility meta {
+  @apply text-[13.5px] leading-snug text-muted;
+}
+
+/* Figure caption under images and drawings: hairline on top, number in Schieferblau. */
+@utility caption {
+  @apply mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-3 text-[12.5px] leading-snug text-muted;
+}
+
+/* Index row: number, title and arrow on one hairline, used for editorial link lists. */
+@utility index-row {
+  @apply grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-3 border-b border-line py-4 transition-colors hover:text-accent;
 }
 
 /* Vertical rhythm: every full section uses this padding, so spacing is the same site-wide. */
 @utility section-y {
-  @apply py-20 md:py-28;
+  @apply py-20 md:py-32;
+}
+
+/* Hairline between editorial sections on the white page. */
+@utility rule-t {
+  @apply border-t border-line;
 }
 
 /* Lead paragraph under a section heading. */
