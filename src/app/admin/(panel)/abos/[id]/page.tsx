@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { desc, eq, sql } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -70,16 +71,16 @@ export default async function SubscriptionDetail({ params, searchParams }: { par
             )}
             {s.status === "aktiv" && (
               <form action={setSubscriptionStatusAction.bind(null, s.id, "pausiert")}>
-                <button className={btn.ghost}>
+                <PendingButton className={btn.ghost}>
                   <Icon name="pause" className="h-4 w-4" /> Pausieren
-                </button>
+                </PendingButton>
               </form>
             )}
             {s.status !== "aktiv" && (
               <form action={setSubscriptionStatusAction.bind(null, s.id, "aktiv")}>
-                <button className={btn.ghost}>
+                <PendingButton className={btn.ghost}>
                   <Icon name="play" className="h-4 w-4" /> Reaktivieren
-                </button>
+                </PendingButton>
               </form>
             )}
             {s.status !== "gekuendigt" && (

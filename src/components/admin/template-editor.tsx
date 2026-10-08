@@ -1,5 +1,7 @@
 "use client";
 
+import { Spinner } from "./feedback";
+
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import type { TemplateTask } from "@/db/schema";
@@ -114,6 +116,8 @@ export function TemplateEditor({
           </ul>
         </div>
         <button type="button" onClick={save} disabled={pending} className={`${btn.dark} w-full`}>
+          {pending && <Spinner className="h-3.5 w-3.5" />}
+
           {pending ? "Speichern …" : id ? "Vorlage speichern" : "Vorlage anlegen"}
         </button>
         {msg && <p className={`text-[13px] ${msg.ok ? "text-success" : "text-danger"}`}>{msg.text}</p>}

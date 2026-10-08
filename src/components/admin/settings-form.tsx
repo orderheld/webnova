@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { saveSettingsAction } from "@/lib/admin/actions";
 import type { CompanySettings } from "@/lib/admin/settings";
+import { Spinner } from "./feedback";
 import { Card, Field, btn } from "./ui";
 
 export function SettingsForm({ s }: { s: CompanySettings }) {
@@ -87,7 +88,8 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
         </div>
       </Card>
       <div className="flex items-center gap-4 lg:col-span-2">
-        <button disabled={pending} className={btn.dark}>
+        <button disabled={pending} aria-busy={pending || undefined} className={btn.dark}>
+          {pending && <Spinner className="h-3.5 w-3.5" />}
           {pending ? "Speichern …" : "Einstellungen speichern"}
         </button>
         {state?.ok && <span className="text-[14px] text-success">Gespeichert.</span>}

@@ -1,6 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { flashDone } from "./flash";
+
 import { db, schema } from "@/db";
 import { requireAdmin } from "@/lib/auth";
 
@@ -27,6 +28,6 @@ export async function resetBusinessDataAction(_: ResetState, fd: FormData): Prom
     const customers = await tx.delete(schema.customers).returning({ id: schema.customers.id });
     return { customers: customers.length, quotes: quotes.length, invoices: invoices.length, projects: projects.length };
   });
-  revalidatePath("/admin", "layout");
+  await flashDone("Daten gelöscht");
   return { done };
 }

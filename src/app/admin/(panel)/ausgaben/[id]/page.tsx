@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { ConfirmButton } from "@/components/admin/confirm-button";
@@ -29,9 +30,9 @@ export default async function ExpenseDetail({ params }: { params: Promise<{ id: 
               </a>
             )}
             <form action={duplicateExpenseAction.bind(null, e.id)}>
-              <button className={btn.ghost}>
+              <PendingButton className={btn.ghost}>
                 <Icon name="copy" className="h-4 w-4" /> Duplizieren
-              </button>
+              </PendingButton>
             </form>
           </>
         }

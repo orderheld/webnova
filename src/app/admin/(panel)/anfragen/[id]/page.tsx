@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { desc, eq } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -101,7 +102,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
         <span className="px-2 text-[12.5px] text-muted">Phase</span>
         {leadStatuses.map((s) => (
           <form key={s} action={setLeadStageAction.bind(null, l.id, s)}>
-            <button className={`rounded-full px-3 py-1.5 text-[13px] transition-colors ${l.status === s ? "bg-accent text-white" : "hover:bg-bg"}`}>{leadStageLabels[s]}</button>
+            <PendingButton className={`rounded-full px-3 py-1.5 text-[13px] transition-colors ${l.status === s ? "bg-accent text-white" : "hover:bg-bg"}`}>{leadStageLabels[s]}</PendingButton>
           </form>
         ))}
       </div>
@@ -134,7 +135,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
               className="mt-3 flex gap-2"
             >
               <input type="date" name="date" defaultValue={l.followUpAt ?? ""} className="input flex-1" aria-label="Follow-up Datum" />
-              <button className={btnSm.ghost}>Setzen</button>
+              <PendingButton className={btnSm.ghost}>Setzen</PendingButton>
             </form>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {[
@@ -144,7 +145,7 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
                 [30, "+1 Monat"],
               ].map(([d, t]) => (
                 <form key={d} action={snoozeFollowUpAction.bind(null, l.id, Number(d))}>
-                  <button className="rounded-full border border-line px-2.5 py-1 text-[12px] hover:border-accent">{t}</button>
+                  <PendingButton className="rounded-full border border-line px-2.5 py-1 text-[12px] hover:border-accent">{t}</PendingButton>
                 </form>
               ))}
             </div>

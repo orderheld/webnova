@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { and, eq, ilike, inArray, lt, or, sql } from "drizzle-orm";
 import { DocTable } from "@/components/admin/doc-table";
 import { Icon } from "@/components/admin/icons";
@@ -120,7 +121,7 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
             {due.rows.length} Abo{due.rows.length === 1 ? "" : "s"} bis {due.horizon.split("-").reverse().join(".")} zur Verrechnung fällig.
           </p>
           <form action={billDueSubscriptionsAction}>
-            <button className={btn.dark}>Fällige Abos verrechnen</button>
+            <PendingButton className={btn.dark}>Fällige Abos verrechnen</PendingButton>
           </form>
         </div>
       )}
@@ -145,7 +146,7 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
               ))}
             </select>
             <input name="q" defaultValue={term} placeholder="Nummer, Titel, Kunde …" className="input min-w-0 flex-1 sm:w-52 sm:flex-none" />
-            <button className={btn.ghost}>Filtern</button>
+            <PendingButton className={btn.ghost}>Filtern</PendingButton>
           </form>
         </div>
         <FilterChips

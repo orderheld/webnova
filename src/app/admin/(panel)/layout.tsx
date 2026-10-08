@@ -1,7 +1,10 @@
 import { sql } from "drizzle-orm";
+import { cookies } from "next/headers";
+import { Toaster } from "@/components/admin/feedback";
 import { Sidebar } from "@/components/admin/sidebar";
 import { db, hasDb } from "@/db";
 import { addDaysIso, todayIso } from "@/lib/admin/money";
+import { FLASH_COOKIE } from "@/lib/admin/flash";
 import { getSettings } from "@/lib/admin/settings";
 import { requireAdmin } from "@/lib/auth";
 
@@ -20,7 +23,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     );
   }
   const today = todayIso();
-  const s = await getSettings();
+  const [s, jar] = await Promise.all([getSettings(), cookies()]);
   const horizon = addDaysIso(today, s.subscriptionLeadDays);
   const res = await db().execute<{ new_leads: number; follow_ups: number; open_tasks: number; overdue: number; due_subs: number }>(sql`
     select
@@ -42,6 +45,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       <main className="min-w-0 flex-1 px-4 pb-12 pt-6 sm:px-6 lg:px-10 lg:pt-9">
         <div className="mx-auto max-w-[1280px]">{children}</div>
       </main>
+      <Toaster flash={jar.get(FLASH_COOKIE)?.value} />
     </div>
   );
 }

@@ -30,8 +30,7 @@ const leadSchema = z.object({
   timeline: z.enum(timelineOptions).nullable(),
   name: z.string().trim().min(2).max(120),
   company: z.string().trim().max(160).optional().default(""),
-  // E-mail or phone: at least one of them (checked below), so a lead never needs both.
-  email: z.union([z.literal(""), z.email().max(200)]).optional().default(""),
+  email: z.email().max(200),
   phone: z.string().trim().max(40).optional().default(""),
   preferredContact: z.enum(contactOptions).nullable(),
   message: z.string().max(4000).optional().default(""),
@@ -39,7 +38,7 @@ const leadSchema = z.object({
   // spam protection
   website2: z.string().max(0).optional().default(""), // honeypot, must stay empty
   startedAt: z.number(),
-}).refine((v) => v.email !== "" || v.phone.replace(/\D/g, "").length >= 6, { path: ["email"] });
+});
 
 export type LeadInput = z.input<typeof leadSchema>;
 

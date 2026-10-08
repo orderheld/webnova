@@ -1,3 +1,4 @@
+import { PendingButton } from "@/components/admin/feedback";
 import { asc } from "drizzle-orm";
 import { Modal } from "@/components/admin/action-form";
 import { ConfirmButton } from "@/components/admin/confirm-button";
@@ -46,9 +47,9 @@ export default async function ProductsPage() {
                     <ProductForm product={p} />
                   </Modal>
                   <form action={duplicateProductAction.bind(null, p.id)}>
-                    <button className={iconBtn} aria-label="Duplizieren">
+                    <PendingButton className={iconBtn} aria-label="Duplizieren">
                       <Icon name="copy" className="h-3.5 w-3.5" />
-                    </button>
+                    </PendingButton>
                   </form>
                   <form action={deleteProductAction.bind(null, p.id)}>
                     <ConfirmButton message={`«${p.name}» löschen? Bestehende Dokumente bleiben unverändert.`} className={iconBtn}>

@@ -1,14 +1,12 @@
 "use client";
 
+import { PendingButton } from "./feedback";
+
+/** Submit button that asks before it runs (deletes) and shows a spinner while the action runs. */
 export function ConfirmButton({ message, className, children }: { message: string; className?: string; children: React.ReactNode }) {
   return (
-    <button
-      className={className}
-      onClick={(e) => {
-        if (!window.confirm(message)) e.preventDefault();
-      }}
-    >
+    <PendingButton confirm={message} className={className}>
       {children}
-    </button>
+    </PendingButton>
   );
 }

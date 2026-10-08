@@ -1,5 +1,7 @@
 "use client";
 
+import { Spinner } from "./feedback";
+
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import type { BillingInterval } from "@/db/schema";
@@ -370,6 +372,8 @@ export function Calculator({
           </div>
 
           <button type="button" onClick={() => save()} disabled={pending} className={`${btn.ghost} mt-5 w-full border-white/30 bg-transparent text-white hover:border-white hover:text-white`}>
+            {pending && <Spinner className="h-3.5 w-3.5" />}
+
             {pending ? "Speichern …" : "Kalkulation speichern"}
           </button>
 

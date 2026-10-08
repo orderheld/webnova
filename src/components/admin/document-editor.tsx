@@ -1,5 +1,7 @@
 "use client";
 
+import { Spinner } from "./feedback";
+
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import type { BillingInterval, LineItem } from "@/db/schema";
@@ -335,6 +337,8 @@ export function DocumentEditor({
           )}
           {!locked && (
             <button type="button" onClick={save} disabled={pending} className={`${btn.ghost} mt-6 w-full border-white bg-white text-ink hover:bg-accent-soft hover:text-ink`}>
+              {pending && <Spinner className="h-3.5 w-3.5" />}
+
               {pending ? "Speichern …" : id ? "Änderungen speichern" : kind === "quote" ? "Offerte erstellen" : credit ? "Gutschrift erstellen" : "Rechnung erstellen"}
             </button>
           )}

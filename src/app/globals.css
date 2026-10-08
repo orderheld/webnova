@@ -474,3 +474,41 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Admin feedback: toast entrance, loading skeletons and a tactile press on buttons. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+}
+@utility toast-in {
+  animation: toast-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@utility dialog-in {
+  animation: dialog-in 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@utility skeleton {
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, #e9eef3 0%, #f4f7fa 50%, #e9eef3 100%) 0 0 / 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+.admin-theme button:not(:disabled):active,
+.admin-theme a[class*="rounded-full"]:active {
+  transform: scale(0.97);
+}
+.admin-theme button,
+.admin-theme a[class*="rounded-full"] {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+}
