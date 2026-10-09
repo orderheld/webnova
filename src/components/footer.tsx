@@ -9,6 +9,7 @@ import { FooterIndex } from "./footer-index";
 import { Icon } from "./icons";
 import { LangSwitchLink } from "./lang-switch-link";
 import { Logo } from "./logo";
+import { SocialIcons } from "./social-icons";
 
 const ft = {
   de: {
@@ -95,13 +96,11 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
                   {site.email}
                 </a>
               </li>
-              {site.social.map((s) => (
-                <li key={s.name}>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className={link}>
-                    {s.name}
-                  </a>
+              {site.social.length > 0 && (
+                <li className="pt-2">
+                  <SocialIcons dark />
                 </li>
-              ))}
+              )}
             </ul>
           </div>
           <div>

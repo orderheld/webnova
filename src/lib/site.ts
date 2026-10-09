@@ -15,8 +15,6 @@ export const linkedinLive: boolean = true;
 
 export interface SocialProfile {
   name: string;
-  /** What the contact lists show as the link text. */
-  handle: string;
   /** Icon name in src/components/icons.tsx. */
   icon: string;
   url: string;
@@ -41,8 +39,8 @@ export const site = {
   // Social profiles in display order: footer, contact lists, thank-you page, e-mails, llms.txt and the sameAs list
   // for Google. No Facebook: Ferhat named Instagram and LinkedIn as his channels (2026-10-09).
   social: [
-    { name: "Instagram", handle: "@webnova.ch", icon: "instagram", url: "https://www.instagram.com/webnova.ch/" },
-    ...(linkedinLive ? [{ name: "LinkedIn", handle: "Webnova", icon: "linkedin", url: "https://www.linkedin.com/company/webnova-solutions/" }] : []),
+    { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/webnova.ch/" },
+    ...(linkedinLive ? [{ name: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/company/webnova-solutions/" }] : []),
   ] as SocialProfile[],
   // Google Business Profile and directory links. Empty until Ferhat sends them;
   // anything empty is simply not rendered (no placeholder text on the site).
