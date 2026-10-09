@@ -44,6 +44,17 @@ const nextConfig: NextConfig = {
       ["/partner-freelancer", "/de/ueber-uns"],
       ["/impressum", "/de/impressum"],
       ["/datenschutzerklaerung", "/de/datenschutz"],
+      // More old URLs that still had Google impressions (Search Console export, 3 months to 2026-10-06).
+      // Old posts lead to the closest guide; /template-pages/* (theme demo pages) stay 404.
+      ["/uber-uns", "/de/ueber-uns"],
+      ["/team/:slug*", "/de/ueber-uns"],
+      ["/newsletter", "/de/kontakt"],
+      ["/blog/website-relaunch-wann-er-sinn-macht", "/de/ratgeber/webseite-erneuern"],
+      ["/blog/seo-2026-was-wirklich-funktioniert", "/de/ratgeber/lokales-seo-fuer-kmu"],
+      ["/blog/:slug*", "/de/ratgeber"],
+      ["/category/:slug*", "/de/ratgeber"],
+      ["/seo-in-2026-what-businesses-need-to-focus-on-now", "/de/ratgeber/lokales-seo-fuer-kmu"],
+      ["/why-your-website-is-your-most-powerful-marketing-asset", "/de/ratgeber/was-eine-kmu-webseite-braucht"],
       // Reference renamed to its real domain dersut.ch (2026-10-08)
       ["/de/referenzen/dersut-kaffee", "/de/referenzen/dersut"],
       ["/fr/references/dersut-kaffee", "/fr/references/dersut"],
