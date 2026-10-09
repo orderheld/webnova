@@ -1,8 +1,10 @@
 "use server";
 
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
+import { pushNewLead } from "@/lib/admin/push";
 import { adminInbox, escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/email";
 import { site } from "@/lib/site";
 
@@ -93,6 +95,16 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
       console.error("[website-check] db insert failed", e);
     }
   }
+
+  // Push to the admin devices, after the response so the visitor does not wait for it.
+  after(() =>
+    pushNewLead({
+      title: "Neuer Website-Check",
+      body: `${url.replace(/^https?:\/\//, "")} · ${v.company ? `${v.name}, ${v.company}` : v.name}${v.locale === "fr" ? " (FR)" : ""}`,
+      url: leadId ? `/admin/anfragen/${leadId}` : "/admin/anfragen",
+      tag: leadId ? `lead-${leadId}` : undefined,
+    }),
+  );
 
   const rows: [string, string][] = [
     ["Website", url],
