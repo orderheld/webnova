@@ -73,6 +73,7 @@ export function GET() {
     `- E-Mail: ${site.email}`,
     `- Telefon: ${site.phone}`,
     `- Adresse: ${site.address.street}, ${site.address.zip} ${site.address.city}, Schweiz`,
+    ...site.social.map((s) => `- ${s.name}: ${s.url}`),
     "",
     `${text.fr.summary} ${text.fr.about}`,
     "",

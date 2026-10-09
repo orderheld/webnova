@@ -58,7 +58,7 @@ const cl = {
   fr: { phone: "Téléphone", email: "E-mail", address: "Adresse", whatsapp: "WhatsApp", write: "Écrire un message", hours: "Horaires", sunday: "Fermé le dimanche" },
 };
 
-/** Contact lines as a labelled list on hairlines: phone, WhatsApp, e-mail, address and office hours. */
+/** Contact lines as a labelled list on hairlines: phone, WhatsApp, e-mail, social profiles, address and office hours. */
 export function ContactList({ locale, hours = false, dark = false, className = "" }: { locale: Locale; hours?: boolean; dark?: boolean; className?: string }) {
   const t = cl[locale];
   const lines = hours ? hoursLines(locale) : [];
@@ -92,6 +92,17 @@ export function ContactList({ locale, hours = false, dark = false, className = "
           </a>
         </dd>
       </div>
+      {site.social.map((s) => (
+        <div key={s.name} className={row}>
+          <dt className={lab}>{s.name}</dt>
+          <dd>
+            <a href={s.url} target="_blank" rel="noopener noreferrer" className={`${val} inline-flex items-center gap-1.5`}>
+              {s.handle}
+              <Icon name="arrow" className="h-3.5 w-3.5 -rotate-45" />
+            </a>
+          </dd>
+        </div>
+      ))}
       <div className={row}>
         <dt className={lab}>{t.address}</dt>
         <dd className={`text-[15.5px] leading-relaxed ${dark ? "text-white/85" : "text-ink-soft"}`}>

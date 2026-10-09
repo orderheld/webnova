@@ -1,6 +1,13 @@
+import { linkedinLive } from "@/lib/site";
 import type { Localized, Section } from "./types";
 
 type LegalPage = { slug: string; title: string; sections: Section[] };
+
+// Social networks named in the privacy policy, in step with the profiles linked on the site (site.social).
+const networks = {
+  de: ["Instagram (Meta Platforms Ireland Limited, Irland)", ...(linkedinLive ? ["LinkedIn (LinkedIn Ireland Unlimited Company, Irland)"] : [])].join(" und "),
+  fr: ["Instagram (Meta Platforms Ireland Limited, Irlande)", ...(linkedinLive ? ["LinkedIn (LinkedIn Ireland Unlimited Company, Irlande)"] : [])].join(" et "),
+};
 
 export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = {
   impressum: {
@@ -169,6 +176,13 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           ],
         },
         {
+          h2: "Profile in sozialen Netzwerken",
+          paragraphs: [
+            `Wir sind auf ${networks.de} vertreten. Auf dieser Webseite verweisen wir darauf nur mit einfachen Links, ohne eingebettete Inhalte, Plugins oder Tracking. Daten gehen erst an das jeweilige Netzwerk, wenn Sie einen solchen Link anklicken.`,
+            "Wenn Sie uns dort folgen, kommentieren oder schreiben, bearbeitet das Netzwerk Ihre Daten nach seinen eigenen Datenschutzbestimmungen, auch ausserhalb der Schweiz. Nachrichten, die Sie uns dort schicken, verwenden wir nur, um Ihr Anliegen zu beantworten. Die Statistiken, die wir vom Netzwerk erhalten, sind zusammengefasst und lassen keine Rückschlüsse auf einzelne Personen zu.",
+          ],
+        },
+        {
           h2: "Bekanntgabe von Daten ins Ausland",
           paragraphs: [
             "Wie beschrieben setzen wir Dienstleister ein, die ihren Sitz in den USA haben oder Daten dort bearbeiten können (Vercel, Neon, Resend). Die USA gelten nicht in jedem Fall als Staat mit angemessenem Datenschutzniveau.",
@@ -270,6 +284,13 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
           h2: "Polices de caractères",
           paragraphs: [
             "Les polices utilisées sur ce site (Google Fonts) sont hébergées localement et servies par notre propre hébergement. Aucune connexion aux serveurs de Google n'est établie lors de la consultation du site et aucune donnée n'est transmise à Google.",
+          ],
+        },
+        {
+          h2: "Profils sur les réseaux sociaux",
+          paragraphs: [
+            `Nous sommes présents sur ${networks.fr}. Sur ce site, nous y renvoyons uniquement par de simples liens, sans contenus intégrés, plugins ni suivi. Aucune donnée n'est transmise au réseau concerné tant que vous ne cliquez pas sur l'un de ces liens.`,
+            "Lorsque vous nous suivez, commentez ou nous écrivez sur ces réseaux, le réseau traite vos données selon ses propres règles de protection des données, y compris en dehors de la Suisse. Les messages que vous nous y envoyez servent uniquement à répondre à votre demande. Les statistiques que nous recevons du réseau sont globales et ne permettent pas d'identifier des personnes.",
           ],
         },
         {

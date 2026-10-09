@@ -108,7 +108,7 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
         closes: h.closes,
       })),
     }),
-    sameAs: [...Object.values(site.social), site.google.maps, ...site.directories].filter(Boolean),
+    sameAs: [...site.social.map((s) => s.url), site.google.maps, ...site.directories].filter(Boolean),
   };
 }
 
