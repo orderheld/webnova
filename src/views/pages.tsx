@@ -389,6 +389,11 @@ export function ThanksPage({ locale }: { locale: Locale }) {
           <ButtonLink href={href(locale, "guides")} variant="ghost" arrow={false}>
             {t.meanwhile}: {d.nav.guides}
           </ButtonLink>
+          {site.social.map((s) => (
+            <ButtonLink key={s.name} href={s.url} variant="ghost" arrow={false} icon={s.icon}>
+              {s.name}
+            </ButtonLink>
+          ))}
         </div>
       </div>
     </section>

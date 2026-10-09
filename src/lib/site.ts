@@ -9,6 +9,19 @@ const siteUrl = (
   process.env.VERCEL_ENV === "production" ? PRODUCTION_URL : (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL)
 ).replace(/\/+$/, "");
 
+// LinkedIn company page linkedin.com/company/webnova-ch: Ferhat is setting it up (2026-10-09). Set to true once
+// it is live; it then appears next to Instagram everywhere below (site.social) and in the privacy policy.
+export const linkedinLive: boolean = false;
+
+export interface SocialProfile {
+  name: string;
+  /** What the contact lists show as the link text. */
+  handle: string;
+  /** Icon name in src/components/icons.tsx. */
+  icon: string;
+  url: string;
+}
+
 export const site = {
   name: "Webnova",
   legalName: "webnova solutions F. Demir",
@@ -25,11 +38,12 @@ export const site = {
     country: "CH",
   },
   geo: { lat: 47.1925, lng: 7.3878 },
-  social: {
-    instagram: "https://www.instagram.com/webnova.ch/",
-    facebook: "https://www.facebook.com/webnova.ch",
-    linkedin: "https://www.linkedin.com/company/webnova-ch",
-  },
+  // Social profiles in display order: footer, contact lists, thank-you page, e-mails, llms.txt and the sameAs list
+  // for Google. No Facebook: Ferhat named Instagram and LinkedIn as his channels (2026-10-09).
+  social: [
+    { name: "Instagram", handle: "@webnova.ch", icon: "instagram", url: "https://www.instagram.com/webnova.ch/" },
+    ...(linkedinLive ? [{ name: "LinkedIn", handle: "Webnova", icon: "linkedin", url: "https://www.linkedin.com/company/webnova-ch" }] : []),
+  ] as SocialProfile[],
   // Google Business Profile and directory links. Empty until Ferhat sends them;
   // anything empty is simply not rendered (no placeholder text on the site).
   google: {

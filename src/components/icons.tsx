@@ -44,6 +44,8 @@ const paths: Record<string, React.ReactNode> = {
   activity: (<><path d="M3 12h4l3-7 4 14 3-7h4" /></>),
   building: (<><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M2 21h20" /><path d="M8 8h3M8 12h3M8 16h3" /></>),
   car: (<><path d="M5 16V11l2-5h10l2 5v5" /><path d="M3 16h18v3H3zM5 11h14" /><circle cx="7.5" cy="13.5" r=".5" /><circle cx="16.5" cy="13.5" r=".5" /></>),
+  instagram: (<><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></>),
+  linkedin: (<><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10.5V17M8 7.5h.01M12 17v-6.5M12 13.5a3 3 0 0 1 6 0V17" /></>),
 };
 
 export function Icon({ name, className = "h-5 w-5", ...props }: { name: string } & SVGProps<SVGSVGElement>) {

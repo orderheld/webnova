@@ -95,21 +95,13 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
                   {site.email}
                 </a>
               </li>
-              <li>
-                <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className={link}>
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className={link}>
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className={link}>
-                  Facebook
-                </a>
-              </li>
+              {site.social.map((s) => (
+                <li key={s.name}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className={link}>
+                    {s.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

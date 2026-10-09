@@ -55,7 +55,9 @@ export function mailLayout(bodyHtml: string, footer = true) {
 </table>
 ${
   footer
-    ? `<p style="font-size:12px;line-height:1.6;color:${c.muted};margin:20px 0 0">${site.legalName} · ${site.address.street} · ${site.address.zip} ${site.address.city} · ${site.phone} · <a href="${site.url}" style="color:${c.muted}">${site.url.replace("https://", "")}</a></p>`
+    ? `<p style="font-size:12px;line-height:1.6;color:${c.muted};margin:20px 0 0">${site.legalName} · ${site.address.street} · ${site.address.zip} ${site.address.city} · ${site.phone} · <a href="${site.url}" style="color:${c.muted}">${site.url.replace("https://", "")}</a>${site.social
+        .map((s) => ` · <a href="${s.url}" style="color:${c.muted}">${s.name}</a>`)
+        .join("")}</p>`
     : ""
 }
 </td></tr></table></body></html>`;
