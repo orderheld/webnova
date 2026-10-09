@@ -1,9 +1,10 @@
 import { createHash, randomBytes } from "node:crypto";
-import { sql } from "drizzle-orm";
-import { userAgent, type NextRequest } from "next/server";
+import { eq, sql } from "drizzle-orm";
+import { after, userAgent, type NextRequest } from "next/server";
 import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
 import { todayIso } from "@/lib/admin/money";
+import { LIVE_MINUTES } from "@/lib/admin/visitors";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/session";
 
 /*
@@ -81,6 +82,24 @@ function sourceOf(referrer?: string, utm?: string): string | null {
   }
 }
 
+/** «Neuer Besucher» push, e.g. "Kontakt · Smartphone · Solothurn · über Google". */
+async function visitorMessage(view: { path: string; source: string | null; device: string; country: string | null; region: string | null }) {
+  // The labels pull in the site content, so they are only loaded when a push goes out.
+  const { deviceLabels, pageLabel, placeLabel, sourceLabel } = await import("@/lib/admin/visitor-labels");
+  const live = await db().execute<{ n: number }>(
+    sql`select count(distinct visitor)::int as n from page_views where created_at > now() - make_interval(mins => ${LIVE_MINUTES})`,
+  );
+  const n = live.rows[0]?.n ?? 1;
+  const parts = [
+    `${pageLabel(view.path)}${view.path.startsWith("/fr") ? " (FR)" : ""}`,
+    deviceLabels[view.device] ?? view.device,
+    view.country ? placeLabel(view.country, view.region) : null,
+    view.source ? `über ${sourceLabel(view.source)}` : "direkt",
+    n > 1 ? `${n} gerade live` : null,
+  ];
+  return { title: "Neuer Besucher auf webnova.ch", body: parts.filter(Boolean).join(" · "), url: "/admin/besucher" };
+}
+
 export async function POST(req: NextRequest) {
   if (!hasDb()) return none();
   const ua = req.headers.get("user-agent") ?? "";
@@ -113,16 +132,20 @@ export async function POST(req: NextRequest) {
       .update(`${await dailySalt(day)}|${ip}|${ua}`)
       .digest("hex")
       .slice(0, 16);
+    const [seen] = await db().select({ id: schema.pageViews.id }).from(schema.pageViews).where(eq(schema.pageViews.visitor, visitor)).limit(1);
+    const view = {
+      path: body.p,
+      source: sourceOf(body.r, body.s),
+      device,
+      country: /^[A-Z]{2}$/.test(country) ? country : null,
+      region: /^[A-Z0-9]{1,3}$/.test(region) ? region : null,
+    };
     await db()
       .insert(schema.pageViews)
-      .values({
-        path: body.p,
-        source: sourceOf(body.r, body.s),
-        device,
-        country: /^[A-Z]{2}$/.test(country) ? country : null,
-        region: /^[A-Z0-9]{1,3}$/.test(region) ? region : null,
-        visitor,
-      });
+      .values({ ...view, visitor });
+    // First view of this visitor today: push to the admin devices, after the response so the beacon stays fast.
+    // Loaded on demand, like the labels: most page views never need the push code.
+    if (!seen) after(async () => (await import("@/lib/admin/push")).pushNewVisitor(() => visitorMessage(view)));
   } catch (err) {
     console.error("[page-view]", err);
   }

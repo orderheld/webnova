@@ -36,6 +36,13 @@
       "when": 1791473219878,
       "tag": "0004_visitors",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1791509462104,
+      "tag": "0005_push_subscriptions",
+      "breakpoints": true
     }
   ]
 }

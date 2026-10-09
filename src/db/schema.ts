@@ -486,6 +486,29 @@ export const visitorSalts = pgTable("visitor_salts", {
   salt: text("salt").notNull(),
 });
 
+/* ───────────── Push notifications of the admin app ───────────── */
+
+/**
+ * One row per device (home-screen app or browser) that allowed notifications in the admin, with the keys of
+ * its push subscription. `leads` and `visitors` choose the messages (both on by default, switchable in
+ * Einstellungen). Devices the push service no longer knows (404/410) are deleted when sending.
+ */
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  /** e.g. "iPhone", "Mac · Safari" */
+  device: text("device").notNull(),
+  leads: boolean("leads").notNull().default(true),
+  visitors: boolean("visitors").notNull().default(true),
+  /** last message the push service accepted for this device */
+  lastSentAt: timestamp("last_sent_at", { withTimezone: true }),
+  /** last visitor message, at most one per minute so a rush of visitors does not ring constantly */
+  visitorSentAt: timestamp("visitor_sent_at", { withTimezone: true }),
+});
+
 export type Lead = typeof leads.$inferSelect;
 export type Customer = typeof customers.$inferSelect;
 export type Quote = typeof quotes.$inferSelect;
@@ -503,3 +526,4 @@ export type Expense = typeof expenses.$inferSelect;
 export type Payment = typeof payments.$inferSelect;
 export type InvoiceReminder = typeof invoiceReminders.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
+export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;

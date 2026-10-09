@@ -98,6 +98,14 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
       })),
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      // Service worker of the admin app (push notifications): always fetched fresh, and it loads nothing itself.
+      {
+        source: "/admin-sw.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache" },
+          { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self'" },
+        ],
+      },
     ];
   },
 };
