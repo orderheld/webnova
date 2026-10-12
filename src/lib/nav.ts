@@ -9,7 +9,7 @@ import { services } from "@/content/services";
 import type { Locale, Localized } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hasRoute, href, routes } from "./routes";
-import { showReferences, site } from "./site";
+import { showReferences, site, whatsappLink } from "./site";
 
 /*
  * Navigation data, shared by header, footer and the services grids.
@@ -151,7 +151,7 @@ export function buildNav(locale: Locale): NavData {
     menuLabel: d.nav.menu,
     closeLabel: d.nav.close,
     phone: { label: site.phone, href: site.phoneHref },
-    whatsappHref: site.whatsappHref,
+    whatsappHref: whatsappLink(locale),
     email: site.email,
     switchMap,
   };

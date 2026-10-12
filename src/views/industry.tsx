@@ -18,7 +18,7 @@ import type { LeadService, Locale, Point } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hasRoute, href } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, faqLd, orgId } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 
 const FORM_ID = "anfrage";
 
@@ -553,7 +553,7 @@ function FormSection({
             <a href={site.phoneHref} className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
               <Icon name="phone" className="h-4 w-4 text-accent-light" /> {site.phone}
             </a>
-            <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
+            <a href={whatsappLink(locale)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/80 transition-colors hover:text-white">
               <Icon name="chat" className="h-4 w-4 text-accent-light" /> {d.common.whatsapp}
             </a>
           </div>

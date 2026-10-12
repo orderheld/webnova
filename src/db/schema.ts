@@ -486,6 +486,25 @@ export const visitorSalts = pgTable("visitor_salts", {
   salt: text("salt").notNull(),
 });
 
+/**
+ * Taps on the contact links of the public site (call, WhatsApp, e-mail), sent by the same beacon as the page views
+ * and counted under the same rules: no cookies, no IP, the daily anonymous id of page_views, deleted after 13 months.
+ */
+export const contactClicks = pgTable(
+  "contact_clicks",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    /** page the link was tapped on, e.g. "/de/webdesign" */
+    path: text("path").notNull(),
+    /** phone | whatsapp | email */
+    channel: text("channel").notNull(),
+    /** same daily id as page_views.visitor, so the source of the visit can be looked up */
+    visitor: text("visitor").notNull(),
+  },
+  (t) => [index("contact_clicks_created_idx").on(t.createdAt)],
+);
+
 /* ───────────── Push notifications of the admin app ───────────── */
 
 /**

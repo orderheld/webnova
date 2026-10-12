@@ -1,3 +1,5 @@
+import type { Locale } from "@/content/types";
+
 /**
  * Canonical origin for canonicals, hreflang, sitemap and JSON-LD. The production deployment on
  * Vercel always uses https://webnova.ch, so a stray NEXT_PUBLIC_SITE_URL (for example a localhost
@@ -55,6 +57,21 @@ export const site = {
     { days: ["Saturday"], opens: "10:00", closes: "16:00" },
   ] as { days: Weekday[]; opens: string; closes: string }[],
 };
+
+// First words of a WhatsApp chat started on the site. Visitors do not face an empty box, and Ferhat sees at once
+// that the message comes from the website. They can change or delete the text before sending.
+const whatsappIntro: Record<Locale, string> = {
+  de: "Grüezi, ich komme von webnova.ch und habe eine Frage: ",
+  fr: "Bonjour, je viens du site webnova.ch et j'ai une question : ",
+};
+
+/** WhatsApp chat with Webnova, with the first words already typed (`text` replaces the default intro). */
+export function whatsappLink(locale: Locale, text: string = whatsappIntro[locale]): string {
+  return `${site.whatsappHref}?text=${encodeURIComponent(text)}`;
+}
+
+/** Short link to the Google review form for review requests to clients (redirect in next.config.ts). */
+export const reviewLink = (locale: Locale) => `${PRODUCTION_URL}/${locale === "fr" ? "avis" : "bewertung"}`;
 
 export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 

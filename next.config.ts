@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { referencesOnRequest, showReferences } from "./src/lib/site";
+import { referencesOnRequest, showReferences, site } from "./src/lib/site";
 
 /*
  * Content Security Policy for the pages (site and admin): scripts, styles, images, fonts and requests
@@ -69,6 +69,9 @@ const nextConfig: NextConfig = {
         destination: "https://webnova.ch/:path*",
         statusCode: 301 as const,
       },
+      // Short links for review requests (e-mails, WhatsApp, business cards): webnova.ch/bewertung and /avis open the
+      // Google review form of the business profile. Temporary (307), so the target can still change.
+      ...(site.google.review ? ["/bewertung", "/avis"].map((source) => ({ source, destination: site.google.review, permanent: false })) : []),
       // References on request (src/lib/site.ts): the project pages lead to the overview for now (307).
       // Listed before the old-URL map, so the old Dersut address does not take two hops.
       ...(showReferences && referencesOnRequest

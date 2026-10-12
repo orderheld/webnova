@@ -97,6 +97,9 @@ export function groupSources(rows: { source: string | null; visitors: number }[]
 }
 
 export const deviceLabels: Record<string, string> = { mobile: "Smartphone", tablet: "Tablet", desktop: "Computer" };
+/** Contact links on the site, in the order they are listed in the admin. */
+export const contactLabels: Record<string, string> = { whatsapp: "WhatsApp", phone: "Anrufen", email: "E-Mail" };
+export const contactIcons: Record<string, string> = { whatsapp: "chat", phone: "phone", email: "mail" };
 export const deviceIcons: Record<string, string> = { mobile: "smartphone", tablet: "tablet", desktop: "monitor" };
 
 const cantons: Record<string, string> = {

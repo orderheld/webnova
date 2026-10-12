@@ -3,7 +3,7 @@ import { ColumnChart, type BarDatum } from "@/components/admin/charts";
 import { Icon } from "@/components/admin/icons";
 import { Card, FilterChips, PageHeader, Stat } from "@/components/admin/ui";
 import { addDaysIso, fmtDate, todayIso, zurichHour } from "@/lib/admin/money";
-import { cantonName, countryName, deviceIcons, deviceLabels, groupSources, pageLabel, placeLabel, sourceLabel } from "@/lib/admin/visitor-labels";
+import { cantonName, contactIcons, contactLabels, countryName, deviceIcons, deviceLabels, groupSources, pageLabel, placeLabel, sourceLabel } from "@/lib/admin/visitor-labels";
 import { LIVE_MINUTES, isVisitorRange, liveVisitors, rangeLabel, visitorRanges, visitorReport, type VisitorRange } from "@/lib/admin/visitors";
 
 export const metadata = { title: "Besucher" };
@@ -117,6 +117,19 @@ export default async function VisitorsPage({ searchParams }: { searchParams: Pro
                   <p className="mt-0.5 text-[12.5px] leading-snug text-muted">
                     {placeLabel(v.country, v.region)} · {sourceLabel(v.source)} · {plural(v.views, "Seite", "Seiten")} seit {clock(v.firstSeen)}
                   </p>
+                  {v.contacts.length > 0 && (
+                    <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[12.5px] font-medium text-success">
+                      {Object.keys(contactLabels)
+                        .filter((k) => v.contacts.includes(k))
+                        .map((k) => (
+                          <span key={k} className="inline-flex items-center gap-1 whitespace-nowrap">
+                            <Icon name={contactIcons[k]} className="h-3.5 w-3.5" />
+                            {contactLabels[k]}
+                          </span>
+                        ))}
+                      <span>angetippt</span>
+                    </p>
+                  )}
                 </div>
                 <span className="shrink-0 pt-0.5 text-[12px] tabular-nums text-muted">{ago(v.lastSeen, now)}</span>
               </li>
@@ -142,6 +155,8 @@ export default async function VisitorsPage({ searchParams }: { searchParams: Pro
         />
         <Stat label="Über Google" icon="search" value={`${pct(google, r.visitors)} %`} sub={`${num(google)} Besucher aus der Google-Suche`} />
       </section>
+
+      <ContactCard r={r} rangeText={rangeSub[range]} />
 
       <Card title={hourly ? `Besucher pro Stunde, ${rangeLabel(range).toLowerCase()}` : `Besucher pro Tag, letzte ${rangeLabel(range)}`} className="mb-5">
         <ColumnChart data={chart} label="Besucher" integer format={(v) => `${num(v)} Besucher`} height={160} />
@@ -228,7 +243,8 @@ export default async function VisitorsPage({ searchParams }: { searchParams: Pro
       <p className="mt-6 max-w-3xl text-[12.5px] leading-relaxed text-muted">
         So wird gezählt: Jeder Seitenaufruf wird ohne Cookies erfasst, die IP-Adresse wird nicht gespeichert. Besucher werden über eine anonyme Kennung
         unterschieden, die jeden Tag wechselt. Suchmaschinen und Bots werden herausgefiltert, ebenso Aufrufe aus einem Browser, in dem der Admin angemeldet ist.
-        Live heisst: mindestens ein Seitenaufruf in den letzten {LIVE_MINUTES} Minuten.
+        Live heisst: mindestens ein Seitenaufruf in den letzten {LIVE_MINUTES} Minuten. Kontakt heisst: Anrufen, WhatsApp oder E-Mail auf der Webseite
+        angetippt, je Besucher und Weg einmal gezählt. Ob danach wirklich angerufen oder geschrieben wurde, sieht die Webseite nicht.
       </p>
     </>
   );
@@ -250,5 +266,79 @@ function RankList({ rows }: { rows: { key: string; label: React.ReactNode; sub?:
         </li>
       ))}
     </ul>
+  );
+}
+
+/**
+ * How visitors got in touch: website inquiries plus taps on call, WhatsApp and e-mail, the pages they did it on and
+ * where those visitors came from. Shows which pages and channels actually bring contacts.
+ */
+function ContactCard({ r, rangeText }: { r: Awaited<ReturnType<typeof visitorReport>>; rangeText: string }) {
+  const channels = [
+    { key: "form", label: "Anfrage über ein Formular", icon: "inbox", value: r.leads },
+    ...Object.keys(contactLabels).map((k) => ({
+      key: k,
+      label: `${contactLabels[k]} angetippt`,
+      icon: contactIcons[k],
+      value: r.contacts.find((c) => c.channel === k)?.visitors ?? 0,
+    })),
+  ];
+  const sources = groupSources(r.contactSources);
+  const none = r.leads === 0 && r.contactVisitors === 0;
+  return (
+    <Card
+      className="mb-5"
+      title="Kontaktaufnahmen"
+      actions={<span className="text-[12px] text-muted">{none ? rangeText : `${plural(r.contactVisitors, "Besucher", "Besucher")} mit Klick auf einen Kontakt`}</span>}
+    >
+      {none ? (
+        <p className="text-[13.5px] text-muted">Noch keine Anfragen und keine Klicks auf Anrufen, WhatsApp oder E-Mail in diesem Zeitraum.</p>
+      ) : (
+        <div className="grid gap-6 md:grid-cols-3">
+          <div>
+            <p className="mb-1.5 px-2.5 text-[12px] text-muted">Weg</p>
+            <RankList
+              rows={channels.map((c) => ({
+                key: c.key,
+                label: (
+                  <span className="inline-flex items-center gap-2">
+                    <Icon name={c.icon} className="h-4 w-4 text-bright" />
+                    {c.label}
+                  </span>
+                ),
+                value: c.value,
+              }))}
+            />
+          </div>
+          <div>
+            <p className="mb-1.5 px-2.5 text-[12px] text-muted">Auf welcher Seite</p>
+            {r.contactPages.length === 0 ? (
+              <p className="px-2.5 text-[13px] text-muted">Noch keine Klicks.</p>
+            ) : (
+              <RankList
+                rows={r.contactPages.slice(0, 5).map((p) => ({
+                  key: p.path,
+                  label: (
+                    <a href={p.path} target="_blank" className="hover:text-accent">
+                      {pageLabel(p.path)}
+                    </a>
+                  ),
+                  sub: p.path,
+                  value: p.visitors,
+                }))}
+              />
+            )}
+          </div>
+          <div>
+            <p className="mb-1.5 px-2.5 text-[12px] text-muted">Woher diese Besucher kamen</p>
+            {sources.length === 0 ? (
+              <p className="px-2.5 text-[13px] text-muted">Noch keine Klicks.</p>
+            ) : (
+              <RankList rows={sources.slice(0, 5).map((s) => ({ key: s.label, label: s.label, value: s.visitors }))} />
+            )}
+          </div>
+        </div>
+      )}
+    </Card>
   );
 }

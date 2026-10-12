@@ -3,7 +3,7 @@ import { sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { manualLeadSources } from "./labels";
 
-/* Visitor statistics of the public site (table page_views, filled by src/app/api/p). */
+/* Visitor statistics of the public site (tables page_views and contact_clicks, filled by src/app/api/p). */
 
 export const visitorRanges = [
   ["heute", "Heute"],
@@ -45,18 +45,20 @@ export type LiveVisitor = {
   firstSeen: Date;
   views: number;
   source: string | null;
+  /** contact links this visitor tapped today: phone, whatsapp, email */
+  contacts: string[];
 };
 
 /** Visitors with a page view in the last minutes: current page, pages and source of the day. */
 export async function liveVisitors(): Promise<LiveVisitor[]> {
   // raw queries return timestamps as text, so times come back as epoch milliseconds
-  const res = await db().execute<Omit<LiveVisitor, "lastSeen" | "firstSeen"> & { lastSeen: number; firstSeen: number }>(sql`
+  const res = await db().execute<Omit<LiveVisitor, "lastSeen" | "firstSeen" | "contacts"> & { lastSeen: number; firstSeen: number; contacts: string }>(sql`
     with live as (
       select distinct on (visitor) visitor, path, device, country, region, created_at
       from page_views where created_at > now() - make_interval(mins => ${LIVE_MINUTES})
       order by visitor, created_at desc
     )
-    select l.path, l.device, l.country, l.region, s.views, s.source,
+    select l.path, l.device, l.country, l.region, s.views, s.source, coalesce(k.contacts, '') as contacts,
       (extract(epoch from l.created_at) * 1000)::float8 as "lastSeen", (extract(epoch from s.first_seen) * 1000)::float8 as "firstSeen"
     from live l
     cross join lateral (
@@ -64,9 +66,13 @@ export async function liveVisitors(): Promise<LiveVisitor[]> {
         (array_agg(source order by created_at) filter (where source is not null))[1] as source
       from page_views p where p.visitor = l.visitor and p.created_at > now() - interval '1 day'
     ) s
+    cross join lateral (
+      select string_agg(distinct channel, ',') as contacts
+      from contact_clicks c where c.visitor = l.visitor and c.created_at > now() - interval '1 day'
+    ) k
     order by l.created_at desc
     limit 50`);
-  return res.rows.map((r) => ({ ...r, lastSeen: new Date(r.lastSeen), firstSeen: new Date(r.firstSeen) }));
+  return res.rows.map((r) => ({ ...r, contacts: r.contacts ? r.contacts.split(",") : [], lastSeen: new Date(r.lastSeen), firstSeen: new Date(r.firstSeen) }));
 }
 
 export interface VisitorReport {
@@ -82,6 +88,12 @@ export interface VisitorReport {
   cantons: { region: string | null; visitors: number }[];
   /** page views per language ("de", "fr") */
   languages: { lang: string; views: number }[];
+  /** visitors who tapped a contact link (call, WhatsApp, e-mail), in total and per channel */
+  contactVisitors: number;
+  contacts: { channel: string; visitors: number }[];
+  /** pages on which those links were tapped, and where those visitors came from */
+  contactPages: { path: string; visitors: number }[];
+  contactSources: { source: string | null; visitors: number }[];
   /** first page view ever counted */
   since: Date | null;
 }
@@ -97,7 +109,7 @@ export async function visitorReport(range: VisitorRange): Promise<VisitorReport>
     manualLeadSources.map((s) => sql`${s}`),
     sql`, `,
   );
-  const [totals, series, pages, sources, devices, countries, cantons, languages, leads, since] = await Promise.all([
+  const [totals, series, pages, sources, devices, countries, cantons, languages, leads, since, contactTotal, contacts, contactPages, contactSources] = await Promise.all([
     d.execute<{ views: number; visitors: number }>(sql`select count(*)::int as views, count(distinct visitor)::int as visitors from page_views where ${w}`),
     d.execute<{ k: string; visitors: number; views: number }>(
       sql`select ${bucket} as k, count(distinct visitor)::int as visitors, count(*)::int as views from page_views where ${w} group by 1`,
@@ -126,6 +138,22 @@ export async function visitorReport(range: VisitorRange): Promise<VisitorReport>
     // requests that came in through the website forms (manually entered leads left out)
     d.execute<{ n: number }>(sql`select count(*)::int as n from leads where ${w} and source not in (${manual})`),
     d.execute<{ since: number | null }>(sql`select (extract(epoch from min(created_at)) * 1000)::float8 as since from page_views`),
+    d.execute<{ n: number }>(sql`select count(distinct visitor)::int as n from contact_clicks where ${w}`),
+    d.execute<{ channel: string; visitors: number }>(
+      sql`select channel, count(distinct visitor)::int as visitors from contact_clicks where ${w} group by channel order by visitors desc`,
+    ),
+    d.execute<{ path: string; visitors: number }>(
+      sql`select path, count(distinct visitor)::int as visitors from contact_clicks where ${w} group by path order by visitors desc, path limit 8`,
+    ),
+    // the first source of each of those visitors (the visitor id only lives for one day, so it matches their page views)
+    d.execute<{ source: string | null; visitors: number }>(sql`
+      select f.source, count(*)::int as visitors
+      from (select distinct visitor from contact_clicks where ${w}) c
+      cross join lateral (
+        select (array_agg(source order by created_at) filter (where source is not null))[1] as source
+        from page_views p where p.visitor = c.visitor
+      ) f
+      group by f.source order by visitors desc limit 40`),
   ]);
   return {
     visitors: totals.rows[0]?.visitors ?? 0,
@@ -139,5 +167,9 @@ export async function visitorReport(range: VisitorRange): Promise<VisitorReport>
     cantons: cantons.rows,
     languages: languages.rows,
     since: since.rows[0]?.since ? new Date(since.rows[0].since) : null,
+    contactVisitors: contactTotal.rows[0]?.n ?? 0,
+    contacts: contacts.rows,
+    contactPages: contactPages.rows,
+    contactSources: contactSources.rows,
   };
 }
