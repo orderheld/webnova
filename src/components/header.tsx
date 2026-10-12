@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Locale } from "@/content/types";
-import { Icon } from "./icons";
+import { Icon, WhatsAppGlyph } from "./icons";
 
 export interface NavItem {
   label: string;
@@ -74,6 +74,8 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
   // No action bar where the form already is (request, contact, landing pages).
   const contactHref = nav.links.find((l) => /\/(kontakt|contact)$/.test(l.href))?.href;
   const showBar = !minimal && pathname !== nav.cta.href && pathname !== contactHref;
+  // While the action bar is shown, its WhatsApp button stands in for the floating one (phones only).
+  const barShown = showBar && deep && !open;
   const closeMenu = useCallback(() => setMenu(null), []);
 
   useEffect(() => {
@@ -142,6 +144,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
     onClose: closeMenu,
   });
   const de = nav.locale === "de";
+  const whatsappLabel = de ? "Auf WhatsApp schreiben" : "Écrire sur WhatsApp";
   // Running numbers across the service columns (01, 02, ... continue from column to column).
   const serviceStarts = nav.serviceGroups.map((_, i) => nav.serviceGroups.slice(0, i).reduce((sum, g) => sum + g.items.length, 0));
 
@@ -417,54 +420,73 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                 href={nav.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="grid h-[52px] w-[52px] place-items-center rounded-full border border-white/20"
+                aria-label={whatsappLabel}
+                className="grid h-[52px] w-[52px] place-items-center rounded-full bg-whatsapp text-white"
               >
-                <Icon name="chat" className="h-5 w-5 text-accent-light" />
+                <WhatsAppGlyph className="h-6 w-6" />
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* Mobile action bar: call, WhatsApp and the request, always one tap away. */}
+      {/* Mobile action bar: call, the request and WhatsApp, always one tap away. */}
       {showBar && (
         <div
           className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-3 pb-[max(0.6rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-xl transition-transform duration-300 lg:hidden ${
-            deep && !open ? "translate-y-0" : "pointer-events-none translate-y-full"
+            barShown ? "translate-y-0" : "pointer-events-none translate-y-full"
           }`}
-          aria-hidden={!deep || open}
+          aria-hidden={!barShown}
         >
           <div className="mx-auto flex max-w-md items-center gap-2">
             <a
               href={nav.phone.href}
-              tabIndex={deep && !open ? 0 : -1}
+              tabIndex={barShown ? 0 : -1}
               aria-label={de ? "Anrufen" : "Appeler"}
               className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-line text-accent"
             >
               <Icon name="phone" className="h-5 w-5" />
             </a>
-            <a
-              href={nav.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              tabIndex={deep && !open ? 0 : -1}
-              aria-label="WhatsApp"
-              className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-line text-accent"
-            >
-              <Icon name="chat" className="h-5 w-5" />
-            </a>
             <Link
               href={nav.cta.href}
-              tabIndex={deep && !open ? 0 : -1}
+              tabIndex={barShown ? 0 : -1}
               className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 text-[15px] font-semibold text-white"
             >
               {nav.cta.label}
               <Icon name="arrow" className="h-4 w-4" />
             </Link>
+            <a
+              href={nav.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={barShown ? 0 : -1}
+              aria-label={whatsappLabel}
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-whatsapp text-white"
+            >
+              <WhatsAppGlyph className="h-6 w-6" />
+            </a>
           </div>
         </div>
       )}
+
+      {/* WhatsApp at the bottom right of every page. On phones the action bar takes it over while the bar is shown. */}
+      <a
+        href={nav.whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={whatsappLabel}
+        className={`group fixed bottom-4 right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-white shadow-[0_12px_28px_-10px_rgb(27_45_62/0.55)] transition-[opacity,scale,visibility] duration-300 hover:scale-105 print:hidden lg:bottom-6 lg:right-6 ${
+          barShown ? "max-lg:invisible max-lg:scale-75 max-lg:opacity-0" : ""
+        }`}
+      >
+        <WhatsAppGlyph className="h-7 w-7" />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-full bg-accent px-4 py-2 text-[14px] font-medium text-white opacity-0 shadow-lift transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 lg:block"
+        >
+          {whatsappLabel}
+        </span>
+      </a>
     </>
   );
 }

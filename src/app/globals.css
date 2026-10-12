@@ -24,6 +24,8 @@
   --color-success: #2f6b45;
   --color-warn: #9a6a12;
   --color-danger: #a12a2a;
+  /* WhatsApp's own green, only for the WhatsApp buttons: visitors know the button by it. */
+  --color-whatsapp: #25d366;
   /* Soft tints for status badges and notices (admin). */
   --color-success-soft: #e7f0ea;
   --color-warn-soft: #f6efe0;

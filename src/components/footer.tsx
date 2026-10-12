@@ -158,7 +158,8 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
 
       {/* Large faint wordmark mark as the closing graphic */}
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 -right-16 -z-10 h-[420px] w-[420px] opacity-[0.06] [background:url(/logo-mark.svg)_center/contain_no-repeat] [filter:brightness(0)_invert(1)]" />
-      <div className="pb-24 lg:pb-8" />
+      {/* Room for the action bar (phones) and the WhatsApp button (all screens), so they never cover the last line. */}
+      <div className="pb-24" />
     </footer>
   );
 }
