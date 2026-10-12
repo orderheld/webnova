@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hoursLines } from "@/lib/hours";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { Icon } from "./icons";
 import { SocialIcons } from "./social-icons";
 import { photo } from "@/lib/photos";
@@ -80,7 +80,7 @@ export function ContactList({ locale, hours = false, dark = false, className = "
         <div className={row}>
           <dt className={lab}>{t.whatsapp}</dt>
           <dd>
-            <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className={`${val} inline-flex items-center gap-1.5`}>
+            <a href={whatsappLink(locale)} target="_blank" rel="noopener noreferrer" className={`${val} inline-flex items-center gap-1.5`}>
               {t.write}
               <Icon name="arrow" className="h-3.5 w-3.5 -rotate-45" />
             </a>

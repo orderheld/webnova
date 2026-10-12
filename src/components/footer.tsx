@@ -4,7 +4,7 @@ import { getDict } from "@/i18n/dict";
 import { hoursLines } from "@/lib/hours";
 import { buildFooter } from "@/lib/nav";
 import { href } from "@/lib/routes";
-import { showReferences, site } from "@/lib/site";
+import { showReferences, site, whatsappLink } from "@/lib/site";
 import { FooterIndex } from "./footer-index";
 import { Icon } from "./icons";
 import { LangSwitchLink } from "./lang-switch-link";
@@ -87,7 +87,7 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
                 </a>
               </li>
               <li>
-                <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className={link}>
+                <a href={whatsappLink(locale)} target="_blank" rel="noopener noreferrer" className={link}>
                   WhatsApp
                 </a>
               </li>

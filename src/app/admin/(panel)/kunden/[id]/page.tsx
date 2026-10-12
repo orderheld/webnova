@@ -9,6 +9,7 @@ import { CustomerForm } from "@/components/admin/customer-form";
 import { ContactForm, ProjectForm, SubscriptionForm } from "@/components/admin/forms";
 import { Icon } from "@/components/admin/icons";
 import { InvoiceRows, ProjectRows, QuoteRows, SubscriptionRows } from "@/components/admin/lists";
+import { ReviewRequestCard, type ReviewPerson } from "@/components/admin/review-request";
 import { Badge, Card, KeyValues, LinkButton, Notice, PageHeader, Stat, btn, iconBtn } from "@/components/admin/ui";
 import { db, schema } from "@/db";
 import { archiveCustomerAction, deleteCustomerAction } from "@/lib/admin/actions";
@@ -181,6 +182,8 @@ export default async function CustomerDetail({ params, searchParams }: { params:
             )}
           </Card>
 
+          <ReviewRequestCard language={c.language} person={reviewPerson(c, contacts[0])} />
+
           {leads.length > 0 && (
             <Card title="Leads">
               <ul className="-my-2 divide-y divide-line">
@@ -245,3 +248,11 @@ export default async function CustomerDetail({ params, searchParams }: { params:
     </>
   );
 }
+
+/** Who gets the review request: the main contact (listed first) where it has the detail, otherwise the customer record. */
+const reviewPerson = (c: ReviewPerson, k?: ReviewPerson): ReviewPerson => ({
+  firstName: k?.firstName || c.firstName,
+  lastName: k?.firstName ? k.lastName : c.lastName,
+  email: k?.email || c.email,
+  phone: k?.phone || c.phone,
+});

@@ -4,7 +4,7 @@ import { photos } from "@/lib/photos";
 import type { Faq, Locale, Section } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hasRoute, href } from "@/lib/routes";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { ButtonLink } from "./button";
 import { Icon } from "./icons";
 
@@ -168,7 +168,7 @@ export function FaqList({ locale, faq, id }: { locale: Locale; faq: Faq[]; id?: 
               <a href={site.phoneHref} className="inline-flex items-center gap-2 font-medium text-accent hover:text-bright">
                 <Icon name="phone" className="h-4 w-4 text-bright" /> {site.phone}
               </a>
-              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium text-accent hover:text-bright">
+              <a href={whatsappLink(locale)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium text-accent hover:text-bright">
                 <Icon name="chat" className="h-4 w-4 text-bright" /> WhatsApp
               </a>
             </div>

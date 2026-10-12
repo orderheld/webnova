@@ -11,7 +11,7 @@ import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { href } from "@/lib/routes";
 import { JsonLd, breadcrumbLd, orgId } from "@/lib/seo";
-import { referencesOnRequest, site } from "@/lib/site";
+import { referencesOnRequest, site, whatsappLink } from "@/lib/site";
 
 export function AboutPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -112,7 +112,7 @@ function ReferencesOnRequest({ locale }: { locale: Locale }) {
       >
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink href={href(locale, "contact")} variant="accent">{p.referencesRequestCta}</ButtonLink>
-          <ButtonLink href={`${site.whatsappHref}?text=${encodeURIComponent(p.referencesRequestWhatsapp)}`} variant="ghostLight" arrow={false} icon="chat">
+          <ButtonLink href={whatsappLink(locale, p.referencesRequestWhatsapp)} variant="ghostLight" arrow={false} icon="chat">
             WhatsApp
           </ButtonLink>
         </div>
@@ -316,7 +316,7 @@ export function RequestPage({ locale }: { locale: Locale }) {
               <a href={site.phoneHref} className="flex items-center gap-3 transition-colors hover:text-accent">
                 <Icon name="phone" className="h-4 w-4 text-bright" /> {site.phone}
               </a>
-              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 transition-colors hover:text-accent">
+              <a href={whatsappLink(locale)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 transition-colors hover:text-accent">
                 <Icon name="chat" className="h-4 w-4 text-bright" /> WhatsApp
               </a>
               <a href={`mailto:${site.email}`} className="flex items-center gap-3 transition-colors hover:text-accent">
@@ -331,7 +331,7 @@ export function RequestPage({ locale }: { locale: Locale }) {
             <ContactPerson locale={locale} />
             <div className="mt-5 flex flex-wrap gap-2">
               <ButtonLink href={site.phoneHref} variant="ghost" arrow={false} icon="phone">{site.phone}</ButtonLink>
-              <ButtonLink href={site.whatsappHref} variant="ghost" arrow={false} icon="chat">WhatsApp</ButtonLink>
+              <ButtonLink href={whatsappLink(locale)} variant="ghost" arrow={false} icon="chat">WhatsApp</ButtonLink>
             </div>
           </div>
         </div>

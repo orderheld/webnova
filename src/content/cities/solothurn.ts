@@ -12,7 +12,7 @@ export const solothurn: City = {
       name: "Solothurn",
       slug: "webdesign-solothurn",
       meta: {
-        title: "Webdesign Solothurn: Webseite erstellen lassen",
+        title: "Webagentur Solothurn: Webdesign & Webseiten",
         description:
           "Webagentur für Solothurn: Webdesign, Homepage, Onlineshop und lokales SEO für Gastronomie, Handel und KMU. Kostenlose Erstberatung bei Webnova.",
       },

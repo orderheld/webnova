@@ -8,7 +8,8 @@ import { LIVE_MINUTES } from "@/lib/admin/visitors";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/session";
 
 /*
- * Page views for the visitor statistics in the admin (/admin/besucher), sent by PageViewBeacon.
+ * Page views and taps on the contact links (call, WhatsApp, e-mail) for the visitor statistics in the admin
+ * (/admin/besucher), sent by PageViewBeacon.
  * No cookies and no IP address are stored. The visitor id is a hash of IP, browser and the salt of the
  * day; the salt is replaced and deleted every day, so the id only groups the views of one day.
  */
@@ -22,6 +23,8 @@ const input = z.object({
   s: z.string().max(100).optional(),
   /** touch Mac = iPad with a desktop user agent */
   t: z.boolean().optional(),
+  /** a contact link was tapped on page `p` (no page view) */
+  c: z.enum(["phone", "whatsapp", "email"]).optional(),
 });
 
 // Bots that run JavaScript or call the endpoint directly. Next's userAgent().isBot covers the search engines.
@@ -44,6 +47,7 @@ async function dailySalt(day: string) {
     // First view of a new day: drop the old salts (yesterday's ids can no longer be recomputed) and expired statistics.
     await db().execute(sql`delete from visitor_salts where day < ${day}`);
     await db().execute(sql`delete from page_views where created_at < now() - interval '13 months'`);
+    await db().execute(sql`delete from contact_clicks where created_at < now() - interval '13 months'`);
   } else {
     const found = await db().execute<{ salt: string }>(sql`select salt from visitor_salts where day = ${day}`);
     value = found.rows[0].salt;
@@ -132,6 +136,10 @@ export async function POST(req: NextRequest) {
       .update(`${await dailySalt(day)}|${ip}|${ua}`)
       .digest("hex")
       .slice(0, 16);
+    if (body.c) {
+      await db().insert(schema.contactClicks).values({ path: body.p, channel: body.c, visitor });
+      return none();
+    }
     const [seen] = await db().select({ id: schema.pageViews.id }).from(schema.pageViews).where(eq(schema.pageViews.visitor, visitor)).limit(1);
     const view = {
       path: body.p,
