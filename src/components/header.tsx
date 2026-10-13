@@ -49,8 +49,6 @@ export interface NavData {
 
 type MenuKey = "services" | "industries" | "resources";
 
-const two = (n: number) => String(n).padStart(2, "0");
-
 export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; logo: React.ReactNode; logoLight?: React.ReactNode; tone?: "dark" | "light" }) {
   const dk = tone === "dark";
   const pathname = usePathname();
@@ -145,11 +143,8 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
   });
   const de = nav.locale === "de";
   const whatsappLabel = de ? "Auf WhatsApp schreiben" : "Écrire sur WhatsApp";
-  // Running numbers across the service columns (01, 02, ... continue from column to column).
-  const serviceStarts = nav.serviceGroups.map((_, i) => nav.serviceGroups.slice(0, i).reduce((sum, g) => sum + g.items.length, 0));
-
-  // Numbered entries of the fullscreen menu; the first three open their sub-lists in place.
-  const overlayLinks: { label: string; href: string; sub?: { label: string; href: string }[] }[] = [
+  // Entries of the fullscreen menu; the first three open their sub-lists in place.
+  const overlayLinks: { label: string; href: string; sub?: { label: string; href: string; icon?: string }[] }[] = [
     { label: nav.servicesLabel, href: nav.servicesHref, sub: nav.serviceGroups.flatMap((g) => g.items) },
     { label: nav.industriesLabel, href: nav.industriesHref, sub: nav.industries },
     { label: nav.resourcesLabel, href: nav.resourcesHref, sub: nav.resourceGroups.filter((g) => g.key !== "agency").flatMap((g) => g.items) },
@@ -159,24 +154,24 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
 
   return (
     <>
-      <header
-        id="top"
-        className={`sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
-          dk
-            ? `text-white ${scrolled || openMenu ? "border-white/10 bg-night/95 backdrop-blur-xl" : "border-transparent bg-night"}`
-            : `text-ink ${scrolled || openMenu ? "border-line bg-bg/95 backdrop-blur-xl" : "border-transparent bg-bg"}`
-        }`}
-      >
-        <div className="container-x relative flex h-[72px] items-center justify-between gap-6">
+      {/* Floating bar: a rounded pill with a little air around it, it gets a soft shadow once the page scrolls. */}
+      <header id="top" className={`sticky top-0 z-50 px-3 pb-2 pt-3 sm:px-5 lg:pt-4 ${dk ? "text-white" : "text-ink"}`}>
+        <div
+          className={`relative mx-auto flex h-[60px] max-w-[1240px] items-center justify-between gap-4 rounded-full pl-5 pr-2 ring-1 transition-[background-color,box-shadow] duration-300 sm:h-16 sm:pl-6 ${
+            dk
+              ? `bg-night/85 ring-white/10 backdrop-blur-xl ${scrolled || openMenu ? "shadow-[0_18px_40px_-20px_rgb(0_0_0/0.6)]" : ""}`
+              : `ring-line/80 backdrop-blur-xl ${scrolled || openMenu ? "bg-white/85 shadow-[0_18px_40px_-22px_rgb(27_45_62/0.45)]" : "bg-white/70"}`
+          }`}
+        >
           <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
             {dk ? (logoLight ?? logo) : logo}
           </Link>
 
-          <nav ref={navRef} className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1 self-stretch`} aria-label={de ? "Hauptnavigation" : "Navigation principale"}>
+          <nav ref={navRef} className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-0.5 self-stretch`} aria-label={de ? "Hauptnavigation" : "Navigation principale"}>
             <Dropdown label={nav.servicesLabel} active={pathname.startsWith(nav.servicesHref)} dark={dk} {...menuProps("services")}>
-              <div className="grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 lg:grid-cols-3">
-                {nav.serviceGroups.map((g, i) => (
-                  <MenuGroup key={g.key} group={g} start={serviceStarts[i]} detailed />
+              <div className="grid gap-x-6 gap-y-6 p-5 lg:grid-cols-3">
+                {nav.serviceGroups.map((g) => (
+                  <MenuGroup key={g.key} group={g} detailed />
                 ))}
               </div>
               <MenuFooter>
@@ -184,40 +179,45 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                   {nav.allServicesLabel}
                   <Icon name="arrow" className="h-4 w-4" />
                 </Link>
-                <span className="flex items-center gap-6 text-[14px] text-ink-soft">
-                  <a href={nav.phone.href} className="inline-flex items-center gap-2 hover:text-accent">
+                <span className="flex items-center gap-2 text-[14px] text-ink-soft">
+                  <a href={nav.phone.href} className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors hover:bg-white hover:text-accent">
                     <Icon name="phone" className="h-4 w-4 text-bright" /> {nav.phone.label}
                   </a>
-                  <a href={`mailto:${nav.email}`} className="hover:text-accent">
-                    {nav.email}
+                  <a href={`mailto:${nav.email}`} className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors hover:bg-white hover:text-accent">
+                    <Icon name="mail" className="h-4 w-4 text-bright" /> {nav.email}
                   </a>
                 </span>
               </MenuFooter>
             </Dropdown>
 
             <Dropdown label={nav.industriesLabel} active={pathname.startsWith(nav.industriesHref)} dark={dk} {...menuProps("industries")}>
-              <div className="grid gap-10 px-8 pb-8 pt-7 lg:grid-cols-12">
+              <div className="grid gap-5 p-5 lg:grid-cols-12">
                 <div className="lg:col-span-8">
-                  <p className="label mb-3">{nav.industriesLabel}</p>
-                  <ul className="grid grid-cols-2 gap-x-8 border-t border-line">
-                    {nav.industries.map((s, i) => (
+                  <p className="label mb-2 px-2.5">{nav.industriesLabel}</p>
+                  <ul className="grid grid-cols-2 gap-x-2">
+                    {nav.industries.map((s) => (
                       <li key={s.href}>
-                        <MenuLink item={s} n={i + 1} />
+                        <MenuLink item={s} />
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="flex flex-col gap-2 border-l border-line pl-8 lg:col-span-4">
-                  <p className="label mb-2">{nav.problemsLabel}</p>
-                  <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.01em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</p>
-                  <p className="text-[14.5px] leading-relaxed text-ink-soft">
+                <Link
+                  href={nav.problemsHref}
+                  className="stage-night group/card flex flex-col gap-3 rounded-2xl p-6 text-white lg:col-span-4"
+                >
+                  <span className="icon-tile-dark">
+                    <Icon name="spark" className="h-5 w-5" />
+                  </span>
+                  <span className="font-display text-[21px] font-semibold leading-tight tracking-[-0.01em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</span>
+                  <span className="text-[14.5px] leading-relaxed text-white/70">
                     {de ? "Keine Anfragen, nicht gefunden, veraltet oder zu langsam: die häufigsten Anliegen und wie wir sie lösen." : "Pas de demandes, introuvable, dépassé ou trop lent : les cas les plus fréquents et nos solutions."}
-                  </p>
-                  <Link href={nav.problemsHref} className="link-arrow mt-auto pt-3">
+                  </span>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-2 text-[15px] font-semibold text-accent-light">
                     {nav.problemsLabel}
-                    <Icon name="arrow" className="h-4 w-4" />
-                  </Link>
-                </div>
+                    <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-0.5" />
+                  </span>
+                </Link>
               </div>
               <MenuFooter>
                 <Link href={nav.industriesHref} className="link-arrow">
@@ -228,16 +228,16 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
             </Dropdown>
 
             <Dropdown label={nav.resourcesLabel} active={pathname.startsWith(nav.resourcesHref)} dark={dk} {...menuProps("resources")}>
-              <div className={`grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 ${nav.resourceGroups.length >= 3 ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
+              <div className={`grid gap-x-6 gap-y-6 p-5 ${nav.resourceGroups.length >= 3 ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
                 {nav.resourceGroups.map((g, i) => (
                   <div key={g.key} className={nav.resourceGroups.length >= 3 ? (i === 0 ? "lg:col-span-6" : "lg:col-span-3") : ""}>
-                    <MenuGroup group={g} start={0} />
+                    <MenuGroup group={g} />
                   </div>
                 ))}
               </div>
             </Dropdown>
 
-            {/* Only as many plain links as fit next to the three menus (1240px container): one from lg,
+            {/* Only as many plain links as fit next to the three menus (1240px bar): one from lg,
                 three from xl (see `bar` in buildNav). The others stay one click away in the "Ratgeber"
                 menu, the fullscreen menu and the footer. */}
             {nav.links.map((l) => (
@@ -245,16 +245,16 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                 key={l.href}
                 href={l.href}
                 aria-current={pathname === l.href ? "page" : undefined}
-                className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
-                  l.bar === "lg" ? "" : l.bar === "xl" ? "hidden xl:block" : "hidden"
+                className={`items-center whitespace-nowrap rounded-full px-3 py-2 text-[15px] transition-colors xl:px-3.5 ${
+                  l.bar === "lg" ? "flex" : l.bar === "xl" ? "hidden xl:flex" : "hidden"
                 } ${
                   pathname === l.href
                     ? dk
-                      ? "font-medium text-white underline decoration-accent-light decoration-[1.5px] underline-offset-[10px]"
-                      : "font-medium text-accent underline decoration-accent decoration-[1.5px] underline-offset-[10px]"
+                      ? "bg-white/10 font-medium text-white"
+                      : "bg-bright-soft font-medium text-accent"
                     : dk
-                      ? "text-white/75 hover:!text-white"
-                      : "text-ink-soft"
+                      ? "text-white/75 hover:bg-white/10 hover:text-white"
+                      : "text-ink-soft hover:bg-bg-2 hover:text-ink"
                 }`}
               >
                 {l.label}
@@ -264,10 +264,10 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
 
           <div className="flex items-center gap-2">
             {/* Language switch: both languages always visible, the current one highlighted. */}
-            <div className="flex items-center rounded-full bg-bg-2 p-1 text-[12.5px] font-semibold ring-1 ring-inset ring-line">
+            <div className={`flex items-center rounded-full p-1 text-[12.5px] font-semibold ${dk ? "bg-white/10" : "bg-bg-2"}`}>
               {(["de", "fr"] as const).map((l) =>
                 l === nav.locale ? (
-                  <span key={l} aria-current="true" className="rounded-full bg-accent px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-white">
+                  <span key={l} aria-current="true" className={`rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] shadow-xs ${dk ? "bg-white text-accent" : "bg-white text-accent ring-1 ring-line"}`}>
                     {l}
                   </span>
                 ) : (
@@ -279,14 +279,14 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                     hrefLang={l}
                     lang={l}
                     aria-label={l === "fr" ? "FR, Français" : "DE, Deutsch"}
-                    className="rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-ink-soft transition-colors hover:text-accent"
+                    className={`rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] transition-colors ${dk ? "text-white/70 hover:text-white" : "text-muted hover:text-accent"}`}
                   >
                     {l}
                   </Link>
                 ),
               )}
             </div>
-            {/* Phone only in the reduced landing-page header: next to the full navigation it no longer fits the 1240px container. */}
+            {/* Phone only in the reduced landing-page header: next to the full navigation it no longer fits the bar. */}
             <a
               href={nav.phone.href}
               className={`${minimal ? "hidden sm:flex" : "hidden"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
@@ -296,30 +296,33 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
             </a>
             <Link
               href={minimal ? "#formular" : nav.cta.href}
-              className={`group hidden items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] font-medium transition-colors sm:inline-flex ${dk ? "bg-white text-accent hover:bg-bright-soft" : "bg-accent text-white hover:bg-night"}`}
+              className={`group hidden h-11 items-center gap-2.5 whitespace-nowrap rounded-full pl-5 pr-1.5 text-[14.5px] font-medium transition-colors sm:inline-flex sm:h-12 ${dk ? "bg-white text-accent hover:bg-bright-soft" : "bg-accent text-white hover:bg-night"}`}
             >
               {nav.cta.label}
-              <Icon name="arrow" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              <span className={`grid h-8 w-8 place-items-center rounded-full sm:h-9 sm:w-9 ${dk ? "bg-accent text-white" : "bg-white/15"}`}>
+                <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </span>
             </Link>
             <button
               ref={menuButtonRef}
               type="button"
               onClick={() => setOpenFor(open ? null : pathname)}
-              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border pl-4 pr-3.5 text-[14px] font-medium transition-colors max-[399px]:px-3.5 ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
+              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full pl-4 pr-3.5 text-[14px] font-medium transition-colors max-[399px]:w-11 max-[399px]:justify-center max-[399px]:px-0 ${dk ? "bg-white text-accent" : "bg-accent text-white hover:bg-night"}`}
               aria-expanded={open}
               aria-controls="mobile-menu"
             >
               <span className="max-[399px]:sr-only">{nav.menuLabel}</span>
               <span aria-hidden="true" className="flex w-4 flex-col gap-[5px]">
-                <span className="h-[1.5px] w-full bg-current" />
-                <span className="h-[1.5px] w-2/3 self-end bg-current" />
+                <span className="h-[1.5px] w-full rounded-full bg-current" />
+                <span className="h-[1.5px] w-2/3 self-end rounded-full bg-current" />
               </span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Fullscreen menu with numbered entries. Outside the header: its backdrop-filter would make it the containing block. */}
+      {/* Fullscreen menu, light: big entries that open their lists in place, contact and the request at the bottom.
+          Outside the header: its backdrop-filter would make it the containing block. */}
       {open && !minimal && (
         <div
           ref={dialogRef}
@@ -327,55 +330,60 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
           role="dialog"
           aria-modal="true"
           aria-label={nav.menuLabel}
-          className="stage-night fixed inset-0 z-[60] flex flex-col overflow-hidden text-white lg:hidden"
+          className="animate-menu-in fixed inset-0 z-[60] flex flex-col overflow-hidden bg-bg text-ink lg:hidden"
           onClick={(e) => {
             // any link in the menu closes it, also when it points to the page that is already open
             if ((e.target as HTMLElement).closest("a")) setOpenFor(null);
           }}
         >
-          <div className="container-x flex h-[72px] shrink-0 items-center justify-between border-b border-white/10">
-            <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
-              {logoLight ?? logo}
-            </Link>
-            <button
-              ref={closeButtonRef}
-              type="button"
-              onClick={() => {
-                setOpenFor(null);
-                menuButtonRef.current?.focus();
-              }}
-              className="flex h-11 items-center gap-2.5 rounded-full border border-white/20 pl-4 pr-3.5 text-[14px] font-medium"
-            >
-              {nav.closeLabel}
-              <Icon name="close" className="h-4 w-4" />
-            </button>
+          <div className="shrink-0 px-3 pt-3 sm:px-5">
+            <div className="flex h-[60px] items-center justify-between rounded-full bg-bg-2 pl-5 pr-2 sm:h-16 sm:pl-6">
+              <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
+                {logo}
+              </Link>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                aria-label={nav.closeLabel}
+                onClick={() => {
+                  setOpenFor(null);
+                  menuButtonRef.current?.focus();
+                }}
+                className="grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-xs ring-1 ring-line transition-colors hover:text-accent"
+              >
+                <Icon name="close" className="h-5 w-5" />
+              </button>
+            </div>
           </div>
-          <div className="flex-1 overflow-y-auto">
-            <div className="container-x pb-8 pt-4">
-              <p className="label pb-2 pt-4 text-white/50">{de ? "Webnova · Webagentur Schweiz" : "Webnova · Agence web Suisse"}</p>
+          <div className="flex-1 overflow-y-auto overscroll-contain">
+            <div className="mx-auto max-w-xl px-5 pb-8 pt-5 sm:px-8">
               <nav aria-label={de ? "Menü" : "Menu"}>
-                <ul>
+                <ul className="space-y-1">
                   {overlayLinks.map((l, i) => (
-                    <li key={l.href} className="border-b border-white/10">
+                    <li key={l.href} className="animate-menu-item" style={{ animationDelay: `${60 + i * 35}ms` }}>
                       {l.sub && l.sub.length > 0 ? (
-                        <details className="group [&_summary::-webkit-details-marker]:hidden">
-                          <summary className="flex cursor-pointer list-none items-center justify-between py-4">
-                            <span className="flex items-baseline gap-4">
-                              <span className="w-6 text-[12px] tabular-nums text-accent-light">{two(i + 1)}</span>
-                              <span className="font-display text-[1.75rem] font-semibold tracking-[-0.012em]">{l.label}</span>
+                        <details className="group rounded-2xl transition-colors open:bg-bg-2 [&_summary::-webkit-details-marker]:hidden">
+                          <summary className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-3 py-3.5">
+                            <span className="font-display text-[1.5rem] font-semibold tracking-[-0.012em]">{l.label}</span>
+                            <span className="grid h-9 w-9 place-items-center rounded-full bg-bg-2 text-accent transition-[transform,background-color] duration-300 group-open:rotate-180 group-open:bg-white">
+                              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2}>
+                                <path d="m6 9 6 6 6-6" />
+                              </svg>
                             </span>
-                            <Icon name="plus" className="h-5 w-5 text-white/60 transition-transform group-open:rotate-45" />
                           </summary>
-                          <ul className="pb-5 pl-10">
+                          <ul className="grid gap-0.5 px-1.5 pb-3">
                             {l.sub.map((s) => (
                               <li key={s.href}>
-                                <Link href={s.href} className="block py-2 text-[16px] text-white/80 hover:text-white">
+                                <Link href={s.href} className="flex items-center gap-3 rounded-xl px-1.5 py-2 text-[15.5px] text-ink-soft transition-colors hover:bg-white hover:text-ink">
+                                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white text-bright ring-1 ring-line">
+                                    <Icon name={s.icon ?? "arrow"} className="h-4 w-4" />
+                                  </span>
                                   {s.label}
                                 </Link>
                               </li>
                             ))}
                             <li>
-                              <Link href={l.href} className="mt-1 inline-flex items-center gap-1.5 py-2 text-[14px] font-medium text-accent-light">
+                              <Link href={l.href} className="ml-1.5 mt-1 inline-flex items-center gap-1.5 py-2 text-[14.5px] font-semibold text-bright">
                                 {de ? "Übersicht" : "Vue d'ensemble"}
                                 <Icon name="arrow" className="h-3.5 w-3.5" />
                               </Link>
@@ -383,12 +391,13 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                           </ul>
                         </details>
                       ) : (
-                        <Link href={l.href} aria-current={pathname === l.href ? "page" : undefined} className="flex items-center justify-between py-4">
-                          <span className="flex items-baseline gap-4">
-                            <span className="w-6 text-[12px] tabular-nums text-accent-light">{two(i + 1)}</span>
-                            <span className={`font-display text-[1.75rem] font-semibold tracking-[-0.012em] ${pathname === l.href ? "text-accent-light" : ""}`}>{l.label}</span>
-                          </span>
-                          <Icon name="arrow" className="h-5 w-5 -rotate-45 text-white/50" />
+                        <Link
+                          href={l.href}
+                          aria-current={pathname === l.href ? "page" : undefined}
+                          className={`flex items-center justify-between rounded-2xl px-3 py-3.5 transition-colors hover:bg-bg-2 ${pathname === l.href ? "bg-bright-soft text-accent" : ""}`}
+                        >
+                          <span className="font-display text-[1.5rem] font-semibold tracking-[-0.012em]">{l.label}</span>
+                          <Icon name="arrow" className="h-5 w-5 text-muted" />
                         </Link>
                       )}
                     </li>
@@ -396,23 +405,26 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
                 </ul>
               </nav>
 
-              <div className="mt-8 grid gap-1 text-[15px] text-white/75">
-                <a href={nav.phone.href} className="py-1 hover:text-white">
+              <div className="animate-menu-item mt-6 grid gap-2 rounded-3xl bg-bg-2 p-3" style={{ animationDelay: `${80 + overlayLinks.length * 35}ms` }}>
+                <a href={nav.phone.href} className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-[15.5px] font-medium shadow-xs ring-1 ring-line">
+                  <Icon name="phone" className="h-5 w-5 text-bright" />
                   {nav.phone.label}
                 </a>
-                <a href={`mailto:${nav.email}`} className="py-1 hover:text-white">
+                <a href={`mailto:${nav.email}`} className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-[15.5px] font-medium shadow-xs ring-1 ring-line">
+                  <Icon name="mail" className="h-5 w-5 text-bright" />
                   {nav.email}
                 </a>
-                <Link href={switchHref} prefetch={false} hrefLang={other} lang={other} className="py-1 font-medium uppercase tracking-[0.14em] text-white/60 hover:text-white">
-                  {other === "fr" ? "Français" : "Deutsch"}
+                <Link href={switchHref} prefetch={false} hrefLang={other} lang={other} className="flex items-center gap-3 rounded-2xl px-4 py-3 text-[15px] text-ink-soft">
+                  <Icon name="globe" className="h-5 w-5 text-bright" />
+                  {other === "fr" ? "Version française" : "Deutsche Version"}
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4">
+          <div className="border-t border-line bg-white/90 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur-xl">
             <div className="mx-auto grid max-w-md grid-cols-[1fr_auto] gap-2.5">
-              <Link href={nav.cta.href} className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[16px] font-semibold text-accent">
+              <Link href={nav.cta.href} className="flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[16px] font-semibold text-white">
                 {nav.cta.label}
                 <Icon name="arrow" className="h-4 w-4" />
               </Link>
@@ -493,7 +505,7 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
 
 /**
  * Desktop mega dropdown. Opens on hover, on click and with the arrow-down key; Escape closes it and
- * returns focus to the trigger, and tabbing out of it closes it. The panel spans the full width under the header.
+ * returns focus to the trigger, and tabbing out of it closes it. The panel spans the width of the floating bar.
  */
 function Dropdown({
   id,
@@ -548,8 +560,14 @@ function Dropdown({
             window.setTimeout(() => panelRef.current?.querySelector<HTMLElement>("a")?.focus(), 60);
           }
         }}
-        className={`flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors xl:px-3.5 ${
-          dark ? (open || active ? "text-white" : "text-white/75 hover:text-white") : open || active ? "text-accent" : "text-ink-soft hover:text-accent"
+        className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-[15px] transition-colors xl:px-3.5 ${
+          dark
+            ? open || active
+              ? "bg-white/10 text-white"
+              : "text-white/75 hover:bg-white/10 hover:text-white"
+            : open || active
+              ? "bg-bright-soft text-accent"
+              : "text-ink-soft hover:bg-bg-2 hover:text-ink"
         }`}
       >
         {label}
@@ -560,29 +578,30 @@ function Dropdown({
       <div
         ref={panelRef}
         id={panelId}
-        className={`absolute inset-x-5 top-full transition-[opacity,visibility,transform] duration-200 sm:inset-x-8 ${
-          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
+        // pt-3 instead of a margin: the gap under the bar belongs to the panel, so the pointer can cross it.
+        className={`absolute inset-x-0 top-full pt-3 transition-[opacity,visibility,transform] duration-200 ${
+          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1.5 opacity-0"
         }`}
       >
-        <div className="overflow-hidden rounded-2xl border border-line bg-surface text-ink shadow-lift">{children}</div>
+        <div className="overflow-hidden rounded-[28px] bg-white text-ink shadow-[0_30px_60px_-30px_rgb(27_45_62/0.4)] ring-1 ring-line">{children}</div>
       </div>
     </div>
   );
 }
 
-function MenuGroup({ group, detailed = false, start }: { group: NavGroup; detailed?: boolean; start: number }) {
+function MenuGroup({ group, detailed = false }: { group: NavGroup; detailed?: boolean }) {
   return (
     <div>
-      <p className="label mb-3">{group.label}</p>
-      <ul className="border-t border-line">
-        {group.items.map((s, i) => (
+      <p className="label mb-2 px-2.5">{group.label}</p>
+      <ul className="grid gap-0.5">
+        {group.items.map((s) => (
           <li key={s.href}>
-            <MenuLink item={s} detailed={detailed} n={start + i + 1} />
+            <MenuLink item={s} detailed={detailed} />
           </li>
         ))}
       </ul>
       {group.more && (
-        <Link href={group.more.href} className="link-arrow mt-3 text-[14px]">
+        <Link href={group.more.href} className="link-arrow mt-2 px-2.5 text-[14px]">
           {group.more.label}
           <Icon name="arrow" className="h-4 w-4" />
         </Link>
@@ -591,15 +610,15 @@ function MenuGroup({ group, detailed = false, start }: { group: NavGroup; detail
   );
 }
 
-function MenuLink({ item, detailed = false, n }: { item: NavItem; detailed?: boolean; n: number }) {
+/** Menu entry with its icon; the tile turns Schieferblau on hover. */
+function MenuLink({ item, detailed = false }: { item: NavItem; detailed?: boolean }) {
   return (
-    <Link
-      href={item.href}
-      className="group/item grid grid-cols-[2rem_1fr] items-baseline gap-x-2 border-b border-line py-2.5 transition-colors hover:text-accent focus-visible:text-accent"
-    >
-      <span className="text-[12px] tabular-nums text-muted group-hover/item:text-accent">{two(n)}</span>
-      <span className="min-w-0">
-        <span className="block text-[15px] font-medium leading-snug text-ink group-hover/item:text-accent">{item.label}</span>
+    <Link href={item.href} className="group/item flex items-start gap-3 rounded-2xl p-2.5 transition-colors hover:bg-bg-2 focus-visible:bg-bg-2">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-bright-soft text-bright transition-colors group-hover/item:bg-accent group-hover/item:text-white">
+        <Icon name={item.icon} className="h-[18px] w-[18px]" />
+      </span>
+      <span className="min-w-0 self-center">
+        <span className="block text-[14.5px] font-medium leading-snug text-ink">{item.label}</span>
         {detailed && item.text && <span className="mt-0.5 line-clamp-1 text-[13px] leading-snug text-muted">{item.text}</span>}
       </span>
     </Link>
@@ -607,5 +626,5 @@ function MenuLink({ item, detailed = false, n }: { item: NavItem; detailed?: boo
 }
 
 function MenuFooter({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line bg-bg-2 px-8 py-4">{children}</div>;
+  return <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line bg-bg-2 px-7 py-3.5">{children}</div>;
 }
