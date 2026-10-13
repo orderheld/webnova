@@ -261,7 +261,7 @@ export default async function Dashboard() {
             <Icon name="repeat" className="h-[18px] w-[18px]" />
           </span>
           <p className="flex-1 text-[14px]">
-            <span className="font-semibold">{due.rows.length} Abo{due.rows.length === 1 ? "" : "s"}</span> bis {fmtDate(due.horizon)} fällig, total CHF {chf(due.rows.reduce((a, s) => a + s.amount, 0))} exkl. MWST.
+            <span className="font-semibold">{due.rows.length} Abo{due.rows.length === 1 ? "" : "s"}</span> bis {fmtDate(due.horizon)} fällig, total CHF {chf(due.rows.reduce((a, s) => a + s.amount, 0))}.
           </p>
           <form action={billDueSubscriptionsAction}>
             <PendingButton className={btn.dark}>Fällige Abos verrechnen</PendingButton>
@@ -488,7 +488,7 @@ export default async function Dashboard() {
 
           <Card title="Nicht verrechnete Stunden">
             <p className="font-display text-[25px] font-semibold tracking-[-0.02em] tabular-nums">{fmtHours(unbilled[0].hours)}</p>
-            <p className="mb-3 text-[13px] text-muted">Wert CHF {chf(unbilled[0].value)} exkl. MWST</p>
+            <p className="mb-3 text-[13px] text-muted">Wert CHF {chf(unbilled[0].value)}</p>
             <CardLink href="/admin/zeit?status=offen">Zur Zeiterfassung</CardLink>
           </Card>
 

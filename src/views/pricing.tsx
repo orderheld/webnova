@@ -17,7 +17,7 @@ import {
   prices,
   websitePackages,
   swissNumber,
-  vatNote,
+  currencyNote,
 } from "@/content/pricing";
 import type { Faq, Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
@@ -29,7 +29,7 @@ export const pricingText = {
   de: {
     title: "Preise",
     metaTitle: "Preise: Was kostet eine Webseite?",
-    metaDesc: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Endpreise, keine MWST.`,
+    metaDesc: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Alle Preise in CHF.`,
     h1: "Preise für Webseiten und Onlineshops",
     subline: "Einmal bezahlt, ohne versteckte Kosten.",
     lead: "Ihre Webseite bezahlen Sie einmal. Hosting buchen Sie nur, wenn Sie es möchten, monatlich und jederzeit kündbar. Die genaue Offerte erhalten Sie nach einem kostenlosen Erstgespräch.",
@@ -92,7 +92,6 @@ export const pricingText = {
         q: "Welche laufenden Kosten kommen dazu?",
         a: `Hosting ist freiwillig und monatlich kündbar: Hosting ${prices.hosting}, Hosting + SEO ${prices.hostingSeo} oder Rundum ${prices.rundum} pro Monat. Rundum enthält auch die Betreuung Ihres Google-Unternehmensprofils. Verrechnet wird ab der Aufschaltung. Die Domain läuft auf Ihren Namen, kostet ca. ${chf(domainYearly)} pro Jahr und wird separat verrechnet.`,
       },
-      { q: "Kommt noch MWST dazu?", a: "Nein. Webnova ist nicht mehrwertsteuerpflichtig. Die Preise auf dieser Seite sind Endpreise, es kommt keine MWST dazu." },
       { q: "Was kostet das Google-Unternehmensprofil?", a: costAnswer("de", "gbp") },
       { q: "Gibt es versteckte Kosten?", a: "Nein. Vor dem Start erhalten Sie eine schriftliche Offerte mit allen Positionen, auch den laufenden Kosten. Wir beginnen erst, wenn Sie zugestimmt haben." },
       {
@@ -105,7 +104,7 @@ export const pricingText = {
   fr: {
     title: "Tarifs",
     metaTitle: "Tarifs : combien coûte un site internet ?",
-    metaDesc: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting}/mois. Sans TVA.`,
+    metaDesc: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting}/mois. Tous les prix en CHF.`,
     h1: "Tarifs des sites internet et boutiques en ligne",
     subline: "Payé une fois, sans coûts cachés.",
     lead: "Vous payez votre site une seule fois. L'hébergement, vous le prenez seulement si vous le souhaitez, au mois et résiliable en tout temps. Vous recevez le devis exact après un premier entretien gratuit.",
@@ -168,7 +167,6 @@ export const pricingText = {
         q: "Quels coûts récurrents s'ajoutent ?",
         a: `L'hébergement est facultatif et résiliable chaque mois : Hébergement ${prices.hosting}, Hébergement + SEO ${prices.hostingSeo} ou Tout compris ${prices.rundum} par mois. Tout compris inclut aussi le suivi de votre fiche Google Business Profile. La facturation commence à la mise en ligne. Le nom de domaine est à votre nom, coûte env. ${chf(domainYearly)} par an et est facturé séparément.`,
       },
-      { q: "Faut-il ajouter la TVA ?", a: "Non. Webnova n'est pas assujettie à la TVA. Les prix de cette page sont des prix finaux, aucune TVA ne s'y ajoute." },
       { q: "Combien coûte la fiche Google Business Profile ?", a: costAnswer("fr", "gbp") },
       { q: "Y a-t-il des coûts cachés ?", a: "Non. Avant le début, vous recevez un devis écrit avec tous les postes, y compris les coûts récurrents. Nous ne commençons qu'avec votre accord." },
       {
@@ -314,7 +312,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
         )}
         <p className="mt-8 flex items-start gap-2.5 text-[15px] leading-relaxed text-ink-soft">
           <Icon name="shield" className="mt-0.5 h-5 w-5 shrink-0 text-bright" />
-          {vatNote[locale]}
+          {currencyNote[locale]}
         </p>
       </section>
 

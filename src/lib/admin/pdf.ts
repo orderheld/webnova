@@ -329,10 +329,6 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       }
       y = ensure(y + 2 * MM, rows.length * 5.5 * MM + 8 * MM);
       y = totalsBlock(pdf, rows, y + 2 * MM, 105 * MM);
-      if (!s.vatEnabled && d.vatRate === 0) {
-        pdf.font(F.regular).fontSize(7.5).fillColor(MUTED).text("Nicht mehrwertsteuerpflichtig.", 105 * MM, y, { width: RIGHT - 105 * MM, align: "right" });
-        y = pdf.y;
-      }
 
       // Recurring fees (quotes only, not part of the total)
       const rec = d.kind === "quote" ? recurringItems(d.items) : [];
@@ -340,7 +336,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
         y = ensure(y + 7 * MM, 32 * MM);
         pdf.font(F.display).fontSize(11).fillColor(INK).text("Wiederkehrende Kosten", LEFT, y);
         y = pdf.y + 0.5 * MM;
-        pdf.font(F.regular).fontSize(8).fillColor(MUTED).text("Nicht im Total enthalten. Verrechnung jeweils im Voraus, zuzüglich allfälliger MWST.", LEFT, y, { width: WIDTH });
+        pdf.font(F.regular).fontSize(8).fillColor(MUTED).text("Nicht im Total enthalten. Verrechnung jeweils im Voraus.", LEFT, y, { width: WIDTH });
         y = pdf.y + 4.6 * MM;
         pdf.save().rect(LEFT, y - 1.6 * MM, WIDTH, 6.2 * MM).fill(TINT).restore();
         pdf.font(F.bold).fontSize(7.5).fillColor(ACCENT);
