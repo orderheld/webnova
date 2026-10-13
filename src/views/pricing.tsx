@@ -7,6 +7,7 @@ import {
   careTiers,
   chf,
   costAnswer,
+  fromPrice,
   gbpPrice,
   guaranteeDays,
   guaranteeNote,
@@ -28,13 +29,13 @@ export const pricingText = {
   de: {
     title: "Preise",
     metaTitle: "Preise: Was kostet eine Webseite?",
-    metaDesc: `Onepager ${prices.starter}, bis 5 Seiten ${prices.kmu}, bis 10 Seiten ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Endpreise, keine MWST.`,
+    metaDesc: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Endpreise, keine MWST.`,
     h1: "Preise für Webseiten und Onlineshops",
     subline: "Einmal bezahlt, ohne versteckte Kosten.",
     lead: "Ihre Webseite bezahlen Sie einmal. Hosting buchen Sie nur, wenn Sie es möchten, monatlich und jederzeit kündbar. Die genaue Offerte erhalten Sie nach einem kostenlosen Erstgespräch.",
     facts: ["Kostenloses Erstgespräch", "Webseite einmal bezahlt", "Hosting monatlich kündbar"],
     packagesEyebrow: "Pakete",
-    packagesTitle: "Ein Preis pro Paket, vorab bekannt.",
+    packagesTitle: "Klare Pakete mit Startpreis.",
     packagesLead: "Starten Sie mit einer Design-Demo oder direkt mit einem Paket. Eine zweite Sprache, Texte von uns oder weitere Funktionen ergänzen wir als Extras.",
     from: "ab",
     recommended: "Unsere Empfehlung",
@@ -108,13 +109,13 @@ export const pricingText = {
   fr: {
     title: "Tarifs",
     metaTitle: "Tarifs : combien coûte un site internet ?",
-    metaDesc: `Site d'une page ${prices.starter}, jusqu'à 5 pages ${prices.kmu}, jusqu'à 10 pages ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting} par mois. Prix finaux, sans TVA.`,
+    metaDesc: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting}/mois. Sans TVA.`,
     h1: "Tarifs des sites internet et boutiques en ligne",
     subline: "Payé une fois, sans coûts cachés.",
     lead: "Vous payez votre site une seule fois. L'hébergement, vous le prenez seulement si vous le souhaitez, au mois et résiliable en tout temps. Vous recevez le devis exact après un premier entretien gratuit.",
     facts: ["Premier entretien gratuit", "Site payé une fois", "Hébergement résiliable chaque mois"],
     packagesEyebrow: "Formules",
-    packagesTitle: "Un prix par formule, connu d'avance.",
+    packagesTitle: "Des formules claires avec prix de départ.",
     packagesLead: "Commencez par une démo design ou directement par une formule. Deuxième langue, textes rédigés par nous ou fonctions en plus s'ajoutent en options.",
     from: "dès",
     recommended: "Notre recommandation",
@@ -219,7 +220,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
       url: `${site.url}${url}#laufend`,
       priceSpecification: monthly(c.price),
     })),
-    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, priceSpecification: [{ "@type": "PriceSpecification", price: gbpPrice.setup, priceCurrency: "CHF" }, monthly(gbpPrice.monthly)] },
+    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, priceSpecification: [{ "@type": "PriceSpecification", minPrice: gbpPrice.setup, priceCurrency: "CHF" }, monthly(gbpPrice.monthly)] },
   ];
 
   return (
@@ -360,7 +361,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
             <PriceCard
               icon="pin"
               name={t.gbp.name}
-              price={chf(gbpPrice.setup)}
+              price={fromPrice(locale, gbpPrice.setup)}
               per={t.once}
               note={t.gbp.care}
               items={t.gbp.items}

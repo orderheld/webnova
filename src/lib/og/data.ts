@@ -41,8 +41,8 @@ export function ogData(locale: Locale, file: string): OgData | undefined {
     }
     case "pricing":
       return locale === "de"
-        ? { eyebrow: d.nav.pricing, title: `Onepager ${prices.starter}, bis 5 Seiten ${prices.kmu}, bis 10 Seiten ${prices.professional}` }
-        : { eyebrow: d.nav.pricing, title: `Site d'une page ${prices.starter}, jusqu'à 5 pages ${prices.kmu}, jusqu'à 10 pages ${prices.professional}` };
+        ? { eyebrow: d.nav.pricing, title: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}` }
+        : { eyebrow: d.nav.pricing, title: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}` };
     case "city":
     case "citySeo": {
       const city = cities.find((c) => c.key === entry.key)!;
