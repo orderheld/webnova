@@ -204,7 +204,8 @@ export function DocumentEditor({
                         ))}
                       </select>
                     </label>
-                    {it.recurring && (
+                    {/* No included first year any more (Ferhat 2026-10-13); older lines keep the switch to turn it off. */}
+                    {it.recurring && it.firstYearIncluded && (
                       <label className="flex items-center gap-1.5">
                         <input type="checkbox" checked={!!it.firstYearIncluded} disabled={locked} onChange={(e) => setItem(i, { firstYearIncluded: e.target.checked })} />
                         1. Jahr inbegriffen, Verrechnung ab Jahr 2

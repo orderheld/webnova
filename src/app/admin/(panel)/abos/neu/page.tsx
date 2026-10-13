@@ -11,7 +11,7 @@ export default async function NewSubscriptionPage({ searchParams }: { searchPara
     <>
       <PageHeader
         title="Neues Abo"
-        sub="Ist das 1. Jahr im Projektpreis inbegriffen, wird erstmals 12 Monate nach Leistungsbeginn verrechnet."
+        sub="Verrechnet wird ab dem Leistungsbeginn."
         back={{ href: "/admin/abos", label: "Abos" }}
       />
       <Card className="max-w-3xl">

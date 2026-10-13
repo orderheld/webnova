@@ -318,12 +318,15 @@ export function SubscriptionForm({
         <Field label="Leistungsbeginn (z. B. Go-live) *">
           <input type="date" name="startDate" required defaultValue={s?.startDate ?? todayIso()} className="input" />
         </Field>
-        <Field label="Nächste Verrechnung" hint="Leer lassen: wird aus Beginn und Option «1. Jahr inbegriffen» berechnet.">
+        <Field label="Nächste Verrechnung" hint={s?.firstYearIncluded ? "Leer lassen: wird aus Beginn und Option «1. Jahr inbegriffen» berechnet." : "Leer lassen: erste Verrechnung am Leistungsbeginn."}>
           <input type="date" name="nextBillingDate" defaultValue={s?.nextBillingDate ?? ""} className="input" />
         </Field>
-        <div className="sm:col-span-2">
-          <Check name="firstYearIncluded" label="1. Jahr im Projektpreis inbegriffen (erste Verrechnung ab dem 2. Jahr)" defaultChecked={s ? s.firstYearIncluded : false} />
-        </div>
+        {/* No included first year for new subscriptions (Ferhat 2026-10-13: «ich möchte alles verrechnen können»); older ones keep the switch. */}
+        {s?.firstYearIncluded && (
+          <div className="sm:col-span-2">
+            <Check name="firstYearIncluded" label="1. Jahr im Projektpreis inbegriffen (erste Verrechnung ab dem 2. Jahr)" defaultChecked />
+          </div>
+        )}
         {s && (
           <>
             <Field label="Status">

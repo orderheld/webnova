@@ -61,7 +61,7 @@ export const defaultCalculatorConfig: CalculatorConfig = {
     {
       id: "kmu",
       name: "Webseite KMU",
-      description: "Bis 5 Seiten, eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen, Hosting mit SEO 3 Monate gratis",
+      description: "Bis 5 Seiten, eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen",
       price: 2790,
       hours: 24,
     },

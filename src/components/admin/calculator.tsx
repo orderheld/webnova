@@ -261,9 +261,12 @@ export function Calculator({
                           </option>
                         ))}
                       </select>
-                      <label className="flex items-center gap-1.5 text-[12.5px]">
-                        <input type="checkbox" checked={line.fromYear2} onChange={(e) => setR({ fromYear2: e.target.checked })} /> ab Jahr 2
-                      </label>
+                      {/* Ferhat 2026-10-13: no included periods, everything is billed from the start. Only older lines keep the switch to turn it off. */}
+                      {line.fromYear2 && (
+                        <label className="flex items-center gap-1.5 text-[12.5px]">
+                          <input type="checkbox" checked={line.fromYear2} onChange={(e) => setR({ fromYear2: e.target.checked })} /> ab Jahr 2
+                        </label>
+                      )}
                     </div>
                   ) : (
                     <span className="text-[13px] tabular-nums text-muted">
@@ -334,7 +337,13 @@ export function Calculator({
               <span className="tabular-nums">CHF {chf(t.yearly)} / Jahr</span>
             </p>
             <p className="mt-0.5 text-[12px] text-white/50">
-              {c.recurring.length === 0 ? "Keine wiederkehrenden Kosten gewählt." : t.firstYear > 0 ? `davon CHF ${chf(t.firstYear)} bereits im 1. Jahr` : "Verrechnung ab dem 2. Jahr"}
+              {c.recurring.length === 0
+                ? "Keine wiederkehrenden Kosten gewählt."
+                : t.firstYear === t.yearly
+                  ? "Verrechnung ab Projektstart"
+                  : t.firstYear > 0
+                    ? `davon CHF ${chf(t.firstYear)} bereits im 1. Jahr`
+                    : "Verrechnung ab dem 2. Jahr"}
             </p>
           </div>
 
