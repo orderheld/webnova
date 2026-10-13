@@ -288,7 +288,6 @@ export function Calculator({
         <div className="rounded-2xl bg-night p-5 text-white sm:p-6">
           <p className="text-[12px] uppercase tracking-[0.12em] text-white/50">Projektpreis einmalig</p>
           <p className="mt-2 text-[38px] font-semibold leading-none tracking-tight tabular-nums">CHF {chf0(t.total)}</p>
-          <p className="mt-1.5 text-[12.5px] text-white/55">exkl. MWST</p>
 
           <div className="mt-4">
             <div className="relative h-1.5 rounded-full bg-white/15">

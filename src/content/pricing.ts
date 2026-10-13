@@ -7,7 +7,6 @@ import type { Locale, Localized } from "./types";
  * Individuell ab 6'600): a paid
  * design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
  * month. Nothing is free for a period (13:17 «ich möchte alles verrechnen können»): hosting is billed from the launch.
- * Webnova is not subject to VAT: the prices are final, no MWST is added.
  * The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts): change both together.
  * Every price on the site (Preise page, service and industry pages, FAQ answers, llms.txt) is built from this file.
  */
@@ -219,10 +218,13 @@ export function packagePriceLabel(locale: Locale, p: PricePackage): string {
   return p.from ? fromPrice(locale, p.price) : chf(p.price);
 }
 
-/** The VAT note shown next to the prices. */
-export const vatNote: Localized<string> = {
-  de: "Alle Preise in CHF. Webnova ist nicht mehrwertsteuerpflichtig, es kommt keine MWST dazu.",
-  fr: "Tous les prix en CHF. Webnova n'est pas assujettie à la TVA, aucune TVA ne s'y ajoute.",
+/**
+ * The note shown next to the prices. Ferhat 2026-10-13 15:39: «Bitte nirgendwo erwähnen, dass ich nicht
+ * mehrwertsteuerpflichtig bin»: no word on MWST anywhere (not «exkl.», not «inkl.»), only the currency.
+ */
+export const currencyNote: Localized<string> = {
+  de: "Alle Preise in CHF.",
+  fr: "Tous les prix en CHF.",
 };
 
 /** Domain line for price texts: amount per year, billed separately. */

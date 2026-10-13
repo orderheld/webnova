@@ -303,7 +303,7 @@ export function SubscriptionForm({
             ))}
           </select>
         </Field>
-        <Field label="Betrag pro Intervall CHF (exkl. MWST) *">
+        <Field label="Betrag pro Intervall CHF *">
           <input name="amount" required inputMode="decimal" defaultValue={s?.amount ?? ""} className="input" data-pick="price" />
         </Field>
         <Field label="Intervall">
@@ -428,7 +428,7 @@ export function ProductForm({ product }: { product?: Product }) {
             ))}
           </select>
         </Field>
-        <Field label="Preis CHF (exkl. MWST) *">
+        <Field label="Preis CHF *">
           <input name="price" required inputMode="decimal" defaultValue={p?.price ?? ""} className="input" />
         </Field>
         <Field label="Wiederkehrend">
