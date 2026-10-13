@@ -8,7 +8,8 @@ import { HomeHero } from "@/components/home-hero";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ServiceArt } from "@/components/service-art";
-import { BrowserFrame, type SampleKey } from "@/components/visuals";
+import { SectorShowcase } from "@/components/sector-showcase";
+import type { SampleKey } from "@/components/visuals";
 import { guides } from "@/content/guides";
 import { problems } from "@/content/problems";
 import { services } from "@/content/services";
@@ -116,7 +117,7 @@ const copy = {
     guidesAll: "Alle Ratgeber",
     showLabel: "Beispiel-Designs",
     showTitle: "So kann Ihre Webseite aussehen.",
-    showLead: "Jede Webseite bekommt ihren eigenen Look, abgestimmt auf Ihr Unternehmen, Ihre Kundschaft und Ihr Ziel.",
+    showLead: "Jede Webseite bekommt ihren eigenen Look. Wählen Sie Ihre Branche und sehen Sie, wie Ihre Webseite auf dem Computer und auf dem Handy aussehen kann.",
     industriesLink: "Webseiten nach Branche",
   },
   fr: {
@@ -158,7 +159,7 @@ const copy = {
     guidesAll: "Tous les conseils",
     showLabel: "Exemples de design",
     showTitle: "Voici à quoi votre site peut ressembler.",
-    showLead: "Chaque site a son propre style, adapté à votre entreprise, à votre clientèle et à votre objectif.",
+    showLead: "Chaque site a son propre style. Choisissez votre secteur et découvrez à quoi votre site peut ressembler sur ordinateur et sur mobile.",
     industriesLink: "Sites par secteur",
   },
 };
@@ -282,7 +283,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* BEISPIEL-DESIGNS: sample sites without captions (alt texts say they are fictional). */}
+      {/* BEISPIEL-DESIGNS: sector preview with scroll videos. Physio Salvia and Trattoria Velluto are left out, the goal cards above already show them. */}
       <section className="section-y overflow-hidden">
         <div className="container-x">
           <SectionHead
@@ -296,13 +297,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </Link>
             }
           />
-          <div className="grid gap-5 md:grid-cols-2">
-            {(["coiffeur", "fitness", "schreinerei", "treuhand"] as const).map((k, i) => (
-              <div key={k} className={`reveal rounded-3xl p-4 sm:p-6 ${i === 0 || i === 3 ? "stage-accent" : "bg-bg-2 ring-1 ring-line"}`}>
-                <BrowserFrame sample={k} locale={lang} sizes="(min-width: 768px) 560px, 92vw" />
-              </div>
-            ))}
-          </div>
+          <SectorShowcase locale={lang} keys={["coiffeur-beauty", "handwerk", "treuhand", "fitness", "cafe-baeckerei", "immobilien", "autogewerbe", "detailhandel"]} />
         </div>
       </section>
 

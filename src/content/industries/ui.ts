@@ -13,6 +13,9 @@ export const industryUi: Localized<{
   hubLead: string;
   hubIndustriesTitle: string;
   hubIndustriesLead: string;
+  previewEyebrow: string;
+  previewTitle: string;
+  previewLead: string;
   hubProblemsEyebrow: string;
   hubProblemsTitle: string;
   hubProblemsLead: string;
@@ -55,6 +58,9 @@ export const industryUi: Localized<{
       "Ein Restaurant braucht Reservationen, ein Handwerksbetrieb gute Offertanfragen, eine Praxis Vertrauen und Datenschutz. Wir bauen Webseiten, die auf die Abläufe und die Kundschaft Ihrer Branche zugeschnitten sind.",
     hubIndustriesTitle: "Für welche Branche arbeiten Sie?",
     hubIndustriesLead: "Wählen Sie Ihre Branche und sehen Sie, was eine Webseite für Ihren Betrieb leisten muss.",
+    previewEyebrow: "Beispiele nach Branche",
+    previewTitle: "So kann Ihre Webseite aussehen.",
+    previewLead: "Zehn Branchen, zehn eigene Designs. Wählen Sie Ihre Branche und sehen Sie die ganze Seite auf dem Computer und auf dem Handy.",
     hubProblemsEyebrow: "Lösungen",
     hubProblemsTitle: "Oder starten Sie bei Ihrem Problem.",
     hubProblemsLead: "Die häufigsten Probleme von KMU-Webseiten und wie wir sie lösen.",
@@ -100,6 +106,9 @@ export const industryUi: Localized<{
       "Un restaurant a besoin de réservations, un artisan de bonnes demandes de devis, un cabinet de confiance et de protection des données. Nous créons des sites adaptés aux processus et à la clientèle de votre secteur.",
     hubIndustriesTitle: "Dans quel secteur travaillez-vous ?",
     hubIndustriesLead: "Choisissez votre secteur et découvrez ce qu'un site doit faire pour votre entreprise.",
+    previewEyebrow: "Exemples par secteur",
+    previewTitle: "Voici à quoi votre site peut ressembler.",
+    previewLead: "Dix secteurs, dix designs différents. Choisissez votre secteur et découvrez la page entière sur ordinateur et sur mobile.",
     hubProblemsEyebrow: "Solutions",
     hubProblemsTitle: "Ou partez de votre problème.",
     hubProblemsLead: "Les problèmes les plus fréquents des sites de PME, et comment nous les résolvons.",
