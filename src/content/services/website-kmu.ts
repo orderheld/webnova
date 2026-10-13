@@ -167,7 +167,7 @@ export const websiteKmu: Service = {
       faq: [
         {
           q: "Was kostet eine Website für KMU?",
-          a: `Unser Paket KMU mit bis zu 6 Seiten, individuellem Design, CMS, Onpage-SEO und eingerichtetem Google-Unternehmensprofil kostet ab ${prices.kmu}. Für einen kleinen Auftritt gibt es Starter ab ${prices.starter}, für viele Seiten Professional ab ${prices.professional}. Hosting und Wartung kosten ${prices.care} pro Monat und sind im ersten Jahr inbegriffen. Welche Faktoren den Preis bestimmen, erklärt unser Ratgeber «Was kostet eine Webseite?».`,
+          a: `Unser Paket KMU mit 2 bis 5 Seiten, individuellem Design, Kontaktformular, Terminbuchung und SEO-Grundlagen kostet ${prices.kmu} einmalig. Für einen Onepager gibt es Starter für ${prices.starter}, für viele Seiten oder einen Shop Professional ab ${prices.professional}. Hosting gibt es ab ${prices.hosting} pro Monat, monatlich kündbar, beim Paket KMU sind Hosting und SEO die ersten 3 Monate gratis. Welche Faktoren den Preis bestimmen, erklärt unser Ratgeber «Was kostet eine Webseite?».`,
         },
         {
           q: "Wie lange dauert es, bis die Website online ist?",
@@ -370,7 +370,7 @@ export const websiteKmu: Service = {
       faq: [
         {
           q: "Combien coûte un site internet pour PME ?",
-          a: `Notre formule PME, avec jusqu'à 6 pages, un design sur mesure, un CMS, le SEO on-page et la fiche Google Business Profile créée, coûte dès ${prices.kmu}. Pour une petite présence, Starter commence à ${prices.starter}, pour beaucoup de pages Professional à ${prices.professional}. L'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris la première année. Notre guide « Combien coûte un site internet ? » explique les facteurs de coût.`,
+          a: `Notre formule PME, avec 2 à 5 pages, un design sur mesure, un formulaire de contact, la prise de rendez-vous et les bases SEO, coûte ${prices.kmu} en paiement unique. Pour un site d'une page, Starter coûte ${prices.starter}, pour beaucoup de pages ou une boutique Professional commence à ${prices.professional}. L'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois, et avec la formule PME l'hébergement avec SEO est offert les 3 premiers mois. Notre guide « Combien coûte un site internet ? » explique les facteurs de coût.`,
         },
         {
           q: "Combien de temps faut-il pour mettre le site en ligne ?",

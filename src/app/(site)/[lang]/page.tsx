@@ -11,7 +11,7 @@ import { ServiceArt } from "@/components/service-art";
 import { SectorShowcase } from "@/components/sector-showcase";
 import type { SampleKey } from "@/components/visuals";
 import { guides } from "@/content/guides";
-import { costAnswer, prices } from "@/content/pricing";
+import { costAnswer } from "@/content/pricing";
 import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import { getDict } from "@/i18n/dict";
@@ -42,7 +42,7 @@ const homeMeta = {
 const homeFaq = {
   de: [
     { q: "Webagentur, Website-Agentur oder Webdesign-Agentur: Was ist der Unterschied?", a: "Im Alltag meinen alle drei Begriffe dasselbe: ein Team, das Webseiten plant, gestaltet und technisch umsetzt. Entscheidend ist, was enthalten ist. Webnova ist eine Webdesign Agentur für Schweizer KMU und übernimmt Konzept, Design, Texte, Entwicklung, SEO und Betreuung aus einer Hand." },
-    { q: "Was kostet eine neue Webseite bei Webnova?", a: `${costAnswer("de", "website")} Onlineshops gibt es ab ${prices.shop}. Alle Pakete finden Sie auf der [Preisseite](pricing).` },
+    { q: "Was kostet eine neue Webseite bei Webnova?", a: `${costAnswer("de", "website")} Alle Pakete finden Sie auf der [Preisseite](pricing).` },
     { q: "Wie lange dauert es, bis meine Webseite online ist?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Der genaue Zeitplan hängt vom Umfang und davon ab, wie schnell Inhalte wie Texte und Bilder bereitstehen. Den Fahrplan legen wir im Konzept gemeinsam fest." },
     { q: "Wer ist mein Ansprechpartner?", a: "Ferhat Demir. Er begleitet Ihr Projekt vom Erstgespräch über die Offerte und die Umsetzung bis nach dem Launch. Sie sprechen immer mit derselben Person." },
     { q: "Arbeiten Sie in der ganzen Schweiz?", a: "Ja. Wir betreuen Unternehmen in der ganzen Deutsch- und Westschweiz, persönlich per Videocall und bei Bedarf vor Ort. Sie haben vom ersten Gespräch bis nach dem Launch eine feste Ansprechperson." },
@@ -54,7 +54,7 @@ const homeFaq = {
   ],
   fr: [
     { q: "Agence web, agence de création de sites ou agence de webdesign : quelle différence ?", a: "Au quotidien, ces termes désignent la même chose : une équipe qui planifie, conçoit et développe des sites internet. Ce qui compte, c'est ce qui est inclus. Webnova est une agence web pour les PME suisses et prend en charge concept, design, textes, développement, SEO et suivi." },
-    { q: "Combien coûte un nouveau site chez Webnova ?", a: `${costAnswer("fr", "website")} Les boutiques en ligne commencent à ${prices.shop}. Toutes les formules figurent sur la [page des tarifs](pricing).` },
+    { q: "Combien coûte un nouveau site chez Webnova ?", a: `${costAnswer("fr", "website")} Toutes les formules figurent sur la [page des tarifs](pricing).` },
     { q: "En combien de temps mon site est-il en ligne ?", a: "Un site typique de PME est en ligne en quelques semaines. Le calendrier dépend de l'envergure et de la disponibilité des contenus comme les textes et les images. Nous le fixons ensemble lors de la phase de conception." },
     { q: "Qui est mon interlocuteur ?", a: "Ferhat Demir. Il suit votre projet du premier entretien au devis, à la réalisation et jusqu'après la mise en ligne. Vous parlez toujours à la même personne." },
     { q: "Travaillez-vous dans toute la Suisse ?", a: "Oui. Nous accompagnons des entreprises dans toute la Suisse romande et alémanique, personnellement par visioconférence et sur place si nécessaire. Vous avez un interlocuteur fixe du premier entretien jusqu'après la mise en ligne." },

@@ -3,7 +3,20 @@ import { ButtonLink } from "@/components/button";
 import { CtaBand, HeroCtas, PageHero } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { FaqSection, ProcessSection, SectionHead } from "@/components/sections";
-import { carePrice, chf, costAnswer, gbpPrice, packagePrice, pricePackages, swissNumber } from "@/content/pricing";
+import {
+  careTiers,
+  chf,
+  costAnswer,
+  gbpPrice,
+  guaranteeDays,
+  guaranteeNote,
+  hostingTrialDays,
+  kmuFreeMonths,
+  pricePackages,
+  prices,
+  swissNumber,
+  vatNote,
+} from "@/content/pricing";
 import type { Faq, Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { hasRoute, href } from "@/lib/routes";
@@ -14,36 +27,28 @@ export const pricingText = {
   de: {
     title: "Preise",
     metaTitle: "Preise: Was kostet eine Webseite?",
-    metaDesc: `Webseiten ab ${chf(packagePrice("starter"))}, Onlineshops ab ${chf(packagePrice("shop"))}, Hosting und Wartung ${chf(carePrice)} pro Monat. Klare Pakete für Schweizer KMU. Jetzt kostenlos beraten lassen.`,
+    metaDesc: `Onepager ${prices.starter}, Webseite bis 5 Seiten ${prices.kmu}, grössere Projekte ab ${prices.professional}. Hosting ab ${prices.hosting} pro Monat, monatlich kündbar. Endpreise, keine MWST.`,
     h1: "Preise für Webseiten und Onlineshops",
-    subline: "Klar vorab, ohne versteckte Kosten.",
-    lead: "Alle Preise in Schweizer Franken. Hier sehen Sie, womit Sie rechnen können. Die genaue Offerte mit allen Positionen erhalten Sie nach einem kostenlosen Erstgespräch.",
-    facts: ["Kostenloses Erstgespräch", "Schriftliche Offerte vor dem Start", "Hosting und Wartung im 1. Jahr inbegriffen"],
-    packagesEyebrow: "Webseiten-Pakete",
-    packagesTitle: "Vier Pakete, ein klarer Preis.",
-    packagesLead: "Wählen Sie das Paket, das zu Ihrem Betrieb passt. Mehr Seiten, eine zweite Sprache oder zusätzliche Funktionen ergänzen wir als Extras.",
+    subline: "Einmal bezahlt, ohne versteckte Kosten.",
+    lead: "Ihre Webseite bezahlen Sie einmal. Hosting buchen Sie nur, wenn Sie es möchten, monatlich und jederzeit kündbar. Die genaue Offerte erhalten Sie nach einem kostenlosen Erstgespräch.",
+    facts: ["Kostenloses Erstgespräch", "Webseite einmal bezahlt", "Hosting monatlich kündbar"],
+    packagesEyebrow: "Pakete",
+    packagesTitle: "Vom ersten Entwurf bis zum grossen Auftritt.",
+    packagesLead: "Starten Sie mit einer Design-Demo oder direkt mit einem Paket. Eine zweite Sprache, Texte von uns oder weitere Funktionen ergänzen wir als Extras.",
     from: "ab",
-    once: "einmalig",
     recommended: "Unsere Empfehlung",
-    choose: "Paket anfragen",
-    firstYear: `Bei allen Paketen sind Hosting und Wartung im ersten Jahr inbegriffen, danach kosten sie ${chf(carePrice)} pro Monat.`,
     runningEyebrow: "Nach dem Start",
-    runningTitle: "Laufende Kosten und Google-Profil",
-    runningLead: "Damit Ihre Webseite sicher und aktuell bleibt und Ihr Betrieb auch in Google Maps gefunden wird.",
+    runningTitle: "Hosting und Betreuung, monatlich kündbar",
+    runningLead: `Für Webseiten von uns. Ab der Aufschaltung testen Sie das Hosting ${hostingTrialDays} Tage gratis, beim Paket KMU sind Hosting und SEO sogar ${kmuFreeMonths} Monate gratis.`,
     perMonth: "pro Monat",
-    care: {
-      name: "Hosting und Wartung",
-      note: "Im ersten Jahr im Projektpreis inbegriffen.",
-      items: ["Hosting mit SSL-Zertifikat", "Tägliche Backups", "Updates und Sicherheit", "Kleine Anpassungen", "Persönlicher Support"],
-      foot: "Für Webseiten anderer Anbieter erhalten Sie eine eigene Offerte.",
-      more: "Mehr zur Wartung",
-    },
+    once: "einmalig",
+    careFoot: "Die Domain läuft auf Ihren Namen und steht als eigene Position in der Offerte. Für Webseiten anderer Anbieter erhalten Sie eine eigene Offerte.",
+    careMore: "Mehr zur Wartung",
     gbp: {
       name: "Google-Unternehmensprofil",
-      care: `Betreuung auf Wunsch: ${chf(gbpPrice.monthly)} pro Monat`,
+      care: `Betreuung auf Wunsch: ${prices.gbpMonthly} pro Monat`,
       items: ["Profil einrichten oder übernehmen", "Bestätigung bei Google", "Logo, Fotos und alle Angaben", "Bewertungen mit System"],
       careText: "Die Betreuung umfasst Beiträge, Antworten auf Bewertungen, die Pflege der Angaben und eine kurze Auswertung jeden Monat.",
-      note: "Im Paket KMU ist die Einrichtung bereits enthalten.",
       more: "Mehr zum Google-Profil",
     },
     extrasEyebrow: "Extras",
@@ -66,26 +71,34 @@ export const pricingText = {
     stepsLead: "Sie wissen vor dem Start, was Ihre Webseite kostet, und entscheiden erst dann.",
     steps: [
       { title: "Kostenloses Erstgespräch", text: "Wir klären Ziel, Umfang und Budget. Am Telefon, per Videocall oder bei Ihnen vor Ort." },
-      { title: "Schriftliche Offerte", text: "Sie erhalten eine Offerte mit allen Positionen, auch den laufenden Kosten." },
+      { title: "Schriftliche Offerte", text: `Sie erhalten eine Offerte mit allen Positionen. Auf Wunsch sehen Sie vorher Ihre Startseite als Design-Demo für ${prices.demo}.` },
       { title: "Start mit Ihrem OK", text: "Wir beginnen erst, wenn Sie der Offerte zugestimmt haben." },
     ],
     faq: [
-      {
-        q: "Was bedeutet «ab» bei den Preisen?",
-        a: "Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder eine Online-Buchung, steht das als eigene Position in der Offerte. So sehen Sie vor dem Start, was Ihre Webseite kostet.",
-      },
       { q: "Was kostet eine Webseite bei Webnova?", a: costAnswer("de", "website") },
+      {
+        q: "Was ist im Paketpreis enthalten?",
+        a: "Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte. So sehen Sie vor dem Start, was Ihre Webseite kostet.",
+      },
+      {
+        q: "Was ist die Design-Demo?",
+        a: `Für ${prices.demo} gestalten wir die Startseite Ihrer künftigen Webseite mit Ihrem Logo, Ihren Farben und Inhalten. Sie erhalten sie als Bild zum Anschauen, noch nicht als fertige Webseite. Bestellen Sie danach die Webseite, rechnen wir die ${prices.demo} voll an.`,
+      },
+      {
+        q: "Wie funktioniert die Geld-zurück-Garantie?",
+        a: `Die Design-Demo verrechnen wir, sobald sie fertig ist. Erteilen Sie innert ${guaranteeDays} Tagen nach Erhalt der Demo keinen Auftrag für die Webseite, erstatten wir Ihnen die ${prices.demo} auf Wunsch vollständig zurück. Eine kurze Nachricht genügt, ohne Begründung.`,
+      },
       { q: "Was kostet ein Onlineshop?", a: costAnswer("de", "shop") },
       {
         q: "Welche laufenden Kosten kommen dazu?",
-        a: `Hosting und Wartung kosten ${chf(carePrice)} pro Monat. Im ersten Jahr sind sie im Projektpreis inbegriffen, verrechnet werden sie ab dem zweiten Jahr. Die Kosten für Ihre Domain stehen ebenfalls in der Offerte.`,
+        a: `Hosting ist freiwillig und monatlich kündbar: Hosting ${prices.hosting}, Hosting + SEO ${prices.hostingSeo} oder Rundum ${prices.rundum} pro Monat. Ab der Aufschaltung testen Sie es ${hostingTrialDays} Tage gratis, ohne automatische Verlängerung. Beim Paket KMU sind Hosting und SEO ${kmuFreeMonths} Monate gratis. Die Domain läuft auf Ihren Namen und steht separat in der Offerte.`,
       },
+      { q: "Kommt noch MWST dazu?", a: "Nein. Webnova ist nicht mehrwertsteuerpflichtig. Die Preise auf dieser Seite sind Endpreise, es kommt keine MWST dazu." },
       { q: "Was kostet das Google-Unternehmensprofil?", a: costAnswer("de", "gbp") },
       { q: "Gibt es versteckte Kosten?", a: "Nein. Vor dem Start erhalten Sie eine schriftliche Offerte mit allen Positionen, auch den laufenden Kosten. Wir beginnen erst, wenn Sie zugestimmt haben." },
-      { q: "Ist das Erstgespräch kostenlos?", a: "Ja. Im Erstgespräch klären wir Ziel, Umfang und Budget, kostenlos und unverbindlich. Danach erhalten Sie eine schriftliche Offerte." },
       {
         q: "Kann ich klein starten und später ausbauen?",
-        a: "Ja. Sie können mit Starter oder KMU beginnen und später Seiten, eine zweite Sprache oder einen Shop ergänzen, ohne die Webseite neu bauen zu müssen.",
+        a: "Ja. Sie können mit Starter beginnen und später Seiten, eine zweite Sprache oder einen Shop ergänzen, ohne die Webseite neu bauen zu müssen.",
       },
     ] as Faq[],
     offerName: "Webseite",
@@ -93,36 +106,28 @@ export const pricingText = {
   fr: {
     title: "Tarifs",
     metaTitle: "Tarifs : combien coûte un site internet ?",
-    metaDesc: `Sites internet dès ${chf(packagePrice("starter"))}, boutiques en ligne dès ${chf(packagePrice("shop"))}, hébergement et maintenance ${chf(carePrice)} par mois. Des formules claires pour les PME suisses.`,
+    metaDesc: `Site d'une page ${prices.starter}, site jusqu'à 5 pages ${prices.kmu}, projets plus grands dès ${prices.professional}. Hébergement dès ${prices.hosting} par mois, résiliable. Prix finaux, sans TVA.`,
     h1: "Tarifs des sites internet et boutiques en ligne",
-    subline: "Clairs dès le départ, sans coûts cachés.",
-    lead: "Tous les prix en francs suisses. Vous voyez ici à quoi vous attendre. Vous recevez le devis exact avec tous les postes après un premier entretien gratuit.",
-    facts: ["Premier entretien gratuit", "Devis écrit avant le début", "Hébergement et maintenance compris la 1re année"],
-    packagesEyebrow: "Formules site internet",
-    packagesTitle: "Quatre formules, un prix clair.",
-    packagesLead: "Choisissez la formule qui correspond à votre entreprise. Pages supplémentaires, deuxième langue ou fonctions en plus s'ajoutent en options.",
+    subline: "Payé une fois, sans coûts cachés.",
+    lead: "Vous payez votre site une seule fois. L'hébergement, vous le prenez seulement si vous le souhaitez, au mois et résiliable en tout temps. Vous recevez le devis exact après un premier entretien gratuit.",
+    facts: ["Premier entretien gratuit", "Site payé une fois", "Hébergement résiliable chaque mois"],
+    packagesEyebrow: "Formules",
+    packagesTitle: "De la première maquette à la grande présence.",
+    packagesLead: "Commencez par une démo design ou directement par une formule. Deuxième langue, textes rédigés par nous ou fonctions en plus s'ajoutent en options.",
     from: "dès",
-    once: "paiement unique",
     recommended: "Notre recommandation",
-    choose: "Demander cette formule",
-    firstYear: `Avec toutes les formules, l'hébergement et la maintenance sont compris la première année, ensuite ils coûtent ${chf(carePrice)} par mois.`,
     runningEyebrow: "Après la mise en ligne",
-    runningTitle: "Coûts récurrents et fiche Google",
-    runningLead: "Pour que votre site reste sûr et à jour, et que votre entreprise soit aussi trouvée dans Google Maps.",
+    runningTitle: "Hébergement et suivi, résiliables chaque mois",
+    runningLead: `Pour les sites créés par nous. Dès la mise en ligne, vous testez l'hébergement gratuitement pendant ${hostingTrialDays} jours, avec la formule PME l'hébergement avec SEO est même offert ${kmuFreeMonths} mois.`,
     perMonth: "par mois",
-    care: {
-      name: "Hébergement et maintenance",
-      note: "Compris dans le prix du projet la première année.",
-      items: ["Hébergement avec certificat SSL", "Sauvegardes quotidiennes", "Mises à jour et sécurité", "Petites adaptations", "Support personnel"],
-      foot: "Pour les sites d'autres prestataires, vous recevez une offre séparée.",
-      more: "En savoir plus sur la maintenance",
-    },
+    once: "paiement unique",
+    careFoot: "Le nom de domaine est à votre nom et figure comme poste séparé dans le devis. Pour les sites d'autres prestataires, vous recevez une offre séparée.",
+    careMore: "En savoir plus sur la maintenance",
     gbp: {
       name: "Fiche Google Business Profile",
-      care: `Suivi sur demande : ${chf(gbpPrice.monthly)} par mois`,
+      care: `Suivi sur demande : ${prices.gbpMonthly} par mois`,
       items: ["Création ou reprise de la fiche", "Validation auprès de Google", "Logo, photos et toutes les informations", "Avis clients avec méthode"],
       careText: "Le suivi comprend des publications, les réponses aux avis, la mise à jour des informations et un bref rapport chaque mois.",
-      note: "Dans la formule PME, la mise en place est déjà comprise.",
       more: "En savoir plus sur la fiche Google",
     },
     extrasEyebrow: "Options",
@@ -145,33 +150,41 @@ export const pricingText = {
     stepsLead: "Vous savez avant le début ce que coûte votre site, et vous décidez ensuite.",
     steps: [
       { title: "Premier entretien gratuit", text: "Nous clarifions objectif, ampleur et budget. Par téléphone, en visioconférence ou chez vous." },
-      { title: "Devis écrit", text: "Vous recevez un devis avec tous les postes, y compris les coûts récurrents." },
+      { title: "Devis écrit", text: `Vous recevez un devis avec tous les postes. Si vous le souhaitez, vous voyez d'abord votre page d'accueil en démo design pour ${prices.demo}.` },
       { title: "Début avec votre accord", text: "Nous ne commençons qu'une fois le devis accepté." },
     ],
     faq: [
-      {
-        q: "Que signifie « dès » dans les prix ?",
-        a: "Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou d'une réservation en ligne, cela figure comme poste séparé dans le devis. Vous savez ainsi avant le début ce que coûte votre site.",
-      },
       { q: "Combien coûte un site internet chez Webnova ?", a: costAnswer("fr", "website") },
+      {
+        q: "Qu'est-ce qui est compris dans le prix de la formule ?",
+        a: "Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis. Vous savez ainsi avant le début ce que coûte votre site.",
+      },
+      {
+        q: "Qu'est-ce que la démo design ?",
+        a: `Pour ${prices.demo}, nous concevons la page d'accueil de votre futur site avec votre logo, vos couleurs et vos contenus. Vous la recevez en image, pas encore comme site en ligne. Si vous commandez ensuite le site, les ${prices.demo} sont entièrement déduits.`,
+      },
+      {
+        q: "Comment fonctionne la garantie de remboursement ?",
+        a: `Nous facturons la démo design une fois terminée. Si vous ne commandez pas le site dans les ${guaranteeDays} jours qui suivent la remise de la démo, nous vous remboursons entièrement les ${prices.demo} sur demande. Un court message suffit, sans justification.`,
+      },
       { q: "Combien coûte une boutique en ligne ?", a: costAnswer("fr", "shop") },
       {
         q: "Quels coûts récurrents s'ajoutent ?",
-        a: `L'hébergement et la maintenance coûtent ${chf(carePrice)} par mois. Ils sont compris dans le prix du projet la première année et facturés dès la deuxième année. Les frais de votre nom de domaine figurent aussi dans le devis.`,
+        a: `L'hébergement est facultatif et résiliable chaque mois : Hébergement ${prices.hosting}, Hébergement + SEO ${prices.hostingSeo} ou Tout compris ${prices.rundum} par mois. Dès la mise en ligne, vous le testez gratuitement pendant ${hostingTrialDays} jours, sans renouvellement automatique. Avec la formule PME, l'hébergement avec SEO est offert ${kmuFreeMonths} mois. Le nom de domaine est à votre nom et figure séparément dans le devis.`,
       },
+      { q: "Faut-il ajouter la TVA ?", a: "Non. Webnova n'est pas assujettie à la TVA. Les prix de cette page sont des prix finaux, aucune TVA ne s'y ajoute." },
       { q: "Combien coûte la fiche Google Business Profile ?", a: costAnswer("fr", "gbp") },
       { q: "Y a-t-il des coûts cachés ?", a: "Non. Avant le début, vous recevez un devis écrit avec tous les postes, y compris les coûts récurrents. Nous ne commençons qu'avec votre accord." },
-      { q: "Le premier entretien est-il gratuit ?", a: "Oui. Lors du premier entretien, nous clarifions objectif, ampleur et budget, gratuitement et sans engagement. Vous recevez ensuite un devis écrit." },
       {
         q: "Puis-je commencer petit et agrandir plus tard ?",
-        a: "Oui. Vous pouvez commencer avec Starter ou PME, puis ajouter des pages, une deuxième langue ou une boutique sans reconstruire le site.",
+        a: "Oui. Vous pouvez commencer avec Starter, puis ajouter des pages, une deuxième langue ou une boutique sans reconstruire le site.",
       },
     ] as Faq[],
     offerName: "Site internet",
   },
 };
 
-/** The price list: website packages, running costs, the Google profile, extras, how the price comes about and FAQ. */
+/** The price list: demo and website packages, hosting, the Google profile, extras, how the price comes about and FAQ. */
 export function PricingPage({ locale }: { locale: Locale }) {
   const d = getDict(locale);
   const t = pricingText[locale];
@@ -190,13 +203,19 @@ export function PricingPage({ locale }: { locale: Locale }) {
   const offers = [
     ...pricePackages.map((p) => ({
       "@type": "Offer",
-      name: p.id === "shop" ? p.name[locale] : `${t.offerName} ${p.name[locale]}`,
+      name: p.id === "demo" ? p.name[locale] : `${t.offerName} ${p.name[locale]}`,
       description: p.features[locale].join(", "),
       url: `${site.url}${url}#${p.id}`,
-      priceSpecification: { "@type": "PriceSpecification", minPrice: p.price, priceCurrency: "CHF" },
+      priceSpecification: p.from ? { "@type": "PriceSpecification", minPrice: p.price, priceCurrency: "CHF" } : { "@type": "PriceSpecification", price: p.price, priceCurrency: "CHF" },
     })),
-    { "@type": "Offer", name: t.care.name, url: `${site.url}${url}#laufend`, priceSpecification: monthly(carePrice) },
-    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, price: gbpPrice.setup, priceCurrency: "CHF" },
+    ...careTiers.map((c) => ({
+      "@type": "Offer",
+      name: c.name[locale],
+      description: c.items[locale].join(", "),
+      url: `${site.url}${url}#laufend`,
+      priceSpecification: monthly(c.price),
+    })),
+    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, priceSpecification: [{ "@type": "PriceSpecification", price: gbpPrice.setup, priceCurrency: "CHF" }, monthly(gbpPrice.monthly)] },
   ];
 
   return (
@@ -236,12 +255,13 @@ export function PricingPage({ locale }: { locale: Locale }) {
         <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {pricePackages.map((p) => {
             const rec = p.recommended;
+            const demo = p.id === "demo";
             return (
               <li
                 key={p.id}
                 id={p.id}
                 className={`relative flex scroll-mt-28 flex-col rounded-3xl p-6 sm:p-7 lg:row-span-6 lg:grid lg:grid-rows-subgrid lg:gap-y-0 ${
-                  rec ? "stage-night text-white shadow-lift ring-1 ring-night" : "bg-white shadow-xs ring-1 ring-line"
+                  rec ? "stage-night text-white shadow-lift ring-1 ring-night" : demo ? "bg-bright-soft ring-1 ring-line" : "bg-white shadow-xs ring-1 ring-line"
                 }`}
               >
                 {rec && (
@@ -252,13 +272,11 @@ export function PricingPage({ locale }: { locale: Locale }) {
                 <h3 className="font-display text-[22px] font-semibold tracking-[-0.01em]">{p.name[locale]}</h3>
                 <p className={`mt-2 text-[14.5px] leading-relaxed ${rec ? "text-white/70" : "text-ink-soft"}`}>{p.forWhom[locale]}</p>
                 <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5">
-                  <span className={`text-[15px] font-medium ${rec ? "text-white/75" : "text-ink-soft"}`}>
-                    {t.from} CHF
-                  </span>{" "}
+                  <span className={`text-[15px] font-medium ${rec ? "text-white/75" : "text-ink-soft"}`}>{p.from ? `${t.from} CHF` : "CHF"}</span>{" "}
                   <span className="font-display text-[40px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{swissNumber(p.price)}</span>
                 </p>
-                <p className={`mt-2 text-[13.5px] ${rec ? "text-white/60" : "text-muted"}`}>{t.once}</p>
-                <ul className={`mt-6 space-y-2.5 border-t pt-6 ${rec ? "border-white/15" : "border-line"}`}>
+                <p className={`mt-2 text-[13.5px] ${rec ? "text-white/60" : "text-muted"}`}>{p.note[locale]}</p>
+                <ul className={`mt-6 space-y-2.5 border-t pt-6 ${rec ? "border-white/15" : demo ? "border-accent/15" : "border-line"}`}>
                   {p.features[locale].map((f) => (
                     <li key={f} className={`flex gap-2.5 text-[14.5px] leading-snug ${rec ? "text-white/85" : "text-ink-soft"}`}>
                       <Icon name="check" className={`mt-0.5 h-4 w-4 shrink-0 ${rec ? "text-accent-light" : "text-bright"}`} strokeWidth={2.5} />
@@ -268,7 +286,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
                 </ul>
                 <div className="mt-auto pt-8">
                   <ButtonLink href={`${request}?paket=${p.id}`} variant={rec ? "accent" : "ghost"} className="w-full">
-                    {t.choose}
+                    {p.cta[locale]}
                   </ButtonLink>
                 </div>
               </li>
@@ -277,24 +295,42 @@ export function PricingPage({ locale }: { locale: Locale }) {
         </ol>
         <p className="mt-8 flex items-start gap-2.5 text-[15px] leading-relaxed text-ink-soft">
           <Icon name="shield" className="mt-0.5 h-5 w-5 shrink-0 text-bright" />
-          {t.firstYear}
+          {vatNote[locale]}
         </p>
       </section>
 
       <section id="laufend" className="scroll-mt-20 bg-bg-2" aria-labelledby="laufend-title">
         <div className="container-x section-y">
           <SectionHead id="laufend-title" eyebrow={t.runningEyebrow} title={t.runningTitle} lead={t.runningLead} />
-          <div className="grid gap-5 lg:grid-cols-2">
-            <PriceCard
-              icon="shield"
-              name={t.care.name}
-              price={chf(carePrice)}
-              per={t.perMonth}
-              note={t.care.note}
-              items={t.care.items}
-              foot={t.care.foot}
-              more={hasRoute("service:wartung") ? { href: href(locale, "service:wartung"), label: t.care.more } : undefined}
-            />
+          <ul className="grid gap-5 md:grid-cols-3">
+            {careTiers.map((c) => (
+              <li key={c.id} className="flex flex-col rounded-3xl bg-white p-6 shadow-xs ring-1 ring-line sm:p-7">
+                <h3 className="font-display text-[20px] font-semibold tracking-[-0.01em]">{c.name[locale]}</h3>
+                <p className="mt-4 flex flex-wrap items-baseline gap-x-2">
+                  <span className="font-display text-[34px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{chf(c.price)}</span>{" "}
+                  <span className="text-[15px] text-muted">{t.perMonth}</span>
+                </p>
+                <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
+                  {c.items[locale].map((it) => (
+                    <li key={it} className="flex gap-2.5 text-[14.5px] leading-snug text-ink-soft">
+                      <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-bright" strokeWidth={2.5} />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-[14.5px] leading-relaxed text-ink-soft">
+            {t.careFoot}{" "}
+            {hasRoute("service:wartung") && (
+              <Link href={href(locale, "service:wartung")} className="link-arrow inline-flex">
+                {t.careMore}
+                <Icon name="arrow" className="h-4 w-4" />
+              </Link>
+            )}
+          </p>
+          <div className="mt-12">
             <PriceCard
               icon="pin"
               name={t.gbp.name}
@@ -303,7 +339,6 @@ export function PricingPage({ locale }: { locale: Locale }) {
               note={t.gbp.care}
               items={t.gbp.items}
               text={t.gbp.careText}
-              foot={t.gbp.note}
               more={hasRoute("service:google-profil") ? { href: href(locale, "service:google-profil"), label: t.gbp.more } : undefined}
             />
           </div>
@@ -342,6 +377,10 @@ export function PricingPage({ locale }: { locale: Locale }) {
       <ProcessSection locale={locale} steps={t.steps} title={t.stepsTitle} lead={t.stepsLead} />
 
       <FaqSection locale={locale} faq={t.faq} />
+
+      <div className="container-x mt-10">
+        <p className="max-w-4xl text-[13px] leading-relaxed text-muted">{guaranteeNote[locale]}</p>
+      </div>
 
       <div className="pt-20 md:pt-28">
         <CtaBand locale={locale} />

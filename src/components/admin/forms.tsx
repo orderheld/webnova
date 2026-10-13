@@ -322,7 +322,7 @@ export function SubscriptionForm({
           <input type="date" name="nextBillingDate" defaultValue={s?.nextBillingDate ?? ""} className="input" />
         </Field>
         <div className="sm:col-span-2">
-          <Check name="firstYearIncluded" label="1. Jahr im Projektpreis inbegriffen (erste Verrechnung ab dem 2. Jahr)" defaultChecked={s ? s.firstYearIncluded : true} />
+          <Check name="firstYearIncluded" label="1. Jahr im Projektpreis inbegriffen (erste Verrechnung ab dem 2. Jahr)" defaultChecked={s ? s.firstYearIncluded : false} />
         </div>
         {s && (
           <>

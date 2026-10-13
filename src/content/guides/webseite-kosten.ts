@@ -15,7 +15,7 @@ export const webseiteKosten: Guide = {
       meta: {
         title: "Was kostet eine Webseite? Die 7 Preisfaktoren",
         description:
-          "Was kostet eine Webseite in der Schweiz? Die 7 Preisfaktoren erklärt, dazu unsere Pakete ab CHF 2’000 als Richtwert. So kommen Sie zur passenden Offerte.",
+          `Was kostet eine Webseite in der Schweiz? Die 7 Preisfaktoren erklärt, dazu unsere Pakete ab ${prices.starter} als Richtwert. So kommen Sie zur passenden Offerte.`,
       },
       h1: "Was kostet eine Webseite? Die 7 Faktoren, die den Preis bestimmen",
       lead: `Was eine Webseite kostet, hängt von sieben Faktoren ab. Wer sie kennt, kann Offerten besser vergleichen und sein Budget gezielt einsetzen. Bei Webnova beginnen Webseiten bei ${prices.starter}.`,
@@ -25,7 +25,7 @@ export const webseiteKosten: Guide = {
         "Mehrsprachigkeit braucht neben Übersetzungen auch eine saubere technische Umsetzung mit eigenen URLs.",
         "Vergleichen Sie Offerten Punkt für Punkt und achten Sie auf laufende Kosten nach dem Launch.",
         "Eine verlässliche Offerte entsteht erst, wenn Ziele, Funktionen und vorhandene Inhalte klar sind.",
-        `Bei Webnova kosten Webseiten ab ${prices.starter}, Onlineshops ab ${prices.shop}, Hosting und Wartung ${prices.care} pro Monat.`,
+        `Bei Webnova kostet ein Onepager ${prices.starter}, eine Webseite mit 2 bis 5 Seiten ${prices.kmu}, grössere Projekte und Onlineshops ab ${prices.professional}. Hosting gibt es ab ${prices.hosting} pro Monat.`,
       ],
       sections: [
         {
@@ -104,11 +104,11 @@ export const webseiteKosten: Guide = {
             "Damit Sie die Faktoren oben einordnen können, hier unsere Pakete als Richtwert. Die Preise gelten einmalig für die Erstellung, in Schweizer Franken. Alle Details finden Sie auf unserer [Preisseite](pricing).",
           ],
           bullets: [
-            `Starter ab ${prices.starter}: Onepager oder bis 3 Seiten, Kontaktformular, Basis-SEO`,
-            `KMU ab ${prices.kmu}: bis 6 Seiten, individuelles Design, CMS, Onpage-SEO, Google-Unternehmensprofil`,
-            `Professional ab ${prices.professional}: bis 12 Seiten, Designkonzept, Blog oder News, erweiterte SEO-Grundlagen`,
-            `Onlineshop ab ${prices.shop}: bis 50 Produkte, TWINT und Karte, Versand, Kundenkonto`,
-            `Hosting und Wartung: ${prices.care} pro Monat, im ersten Jahr inbegriffen`,
+            `Design-Demo ${prices.demo}: Entwurf Ihrer Startseite, bei Auftrag angerechnet`,
+            `Starter ${prices.starter}: Onepager mit individuellem Design und Kontaktformular`,
+            `KMU ${prices.kmu}: 2 bis 5 Seiten, Kontaktformular und Terminbuchung, SEO-Grundlagen`,
+            `Professional ab ${prices.professional}: ab 6 Seiten, Onlineshop oder besondere Funktionen`,
+            `Hosting: ${prices.hosting}, ${prices.hostingSeo} mit SEO oder ${prices.rundum} mit laufenden Änderungen pro Monat, monatlich kündbar`,
           ],
         },
         {
@@ -130,7 +130,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Gibt es neben der Erstellung laufende Kosten?",
-          a: `Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Bei Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Die Domain weisen wir in der Offerte separat aus.`,
+          a: `Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Bei Webnova gibt es Hosting ab ${prices.hosting} pro Monat, monatlich kündbar. Die Domain weisen wir in der Offerte separat aus.`,
         },
         {
           q: "Kann ich klein starten und die Webseite später erweitern?",
@@ -143,7 +143,7 @@ export const webseiteKosten: Guide = {
       meta: {
         title: "Combien coûte un site internet ? Les 7 facteurs",
         description:
-          "Combien coûte un site internet en Suisse ? Les 7 facteurs de prix expliqués, avec nos formules dès CHF 2’000 comme repère. Obtenez une offre adaptée.",
+          `Combien coûte un site internet en Suisse ? Les 7 facteurs de prix expliqués, avec nos formules dès ${prices.starter} comme repère. Obtenez une offre adaptée.`,
       },
       h1: "Combien coûte un site internet ? Les 7 facteurs qui déterminent le prix",
       lead: `Le prix d'un site internet dépend de sept facteurs. En les connaissant, vous comparez mieux les offres et investissez votre budget là où il compte. Chez Webnova, les sites internet commencent à ${prices.starter}.`,
@@ -153,7 +153,7 @@ export const webseiteKosten: Guide = {
         "Le multilinguisme demande, en plus des traductions, une réalisation technique propre avec des URL distinctes.",
         "Comparez les devis point par point et tenez compte des coûts courants après la mise en ligne.",
         "Un devis fiable n'est possible que lorsque objectifs, fonctions et contenus disponibles sont clairs.",
-        `Chez Webnova, les sites internet coûtent dès ${prices.starter}, les boutiques en ligne dès ${prices.shop}, l'hébergement et la maintenance ${prices.care} par mois.`,
+        `Chez Webnova, un site d'une page coûte ${prices.starter}, un site de 2 à 5 pages ${prices.kmu}, les projets plus grands et les boutiques en ligne dès ${prices.professional}. L'hébergement commence à ${prices.hosting} par mois.`,
       ],
       sections: [
         {
@@ -232,11 +232,11 @@ export const webseiteKosten: Guide = {
             "Pour situer les facteurs ci-dessus, voici nos formules comme repère. Les prix s'entendent une fois pour la création, en francs suisses. Tous les détails figurent sur notre [page des tarifs](pricing).",
           ],
           bullets: [
-            `Starter dès ${prices.starter} : one-page ou jusqu'à 3 pages, formulaire de contact, SEO de base`,
-            `PME dès ${prices.kmu} : jusqu'à 6 pages, design sur mesure, CMS, SEO on-page, fiche Google Business Profile`,
-            `Professional dès ${prices.professional} : jusqu'à 12 pages, concept graphique, blog ou actualités, bases SEO avancées`,
-            `Boutique en ligne dès ${prices.shop} : jusqu'à 50 produits, TWINT et carte, livraison, compte client`,
-            `Hébergement et maintenance : ${prices.care} par mois, compris la première année`,
+            `Démo design ${prices.demo} : maquette de votre page d'accueil, déduite à la commande`,
+            `Starter ${prices.starter} : site d'une page avec design sur mesure et formulaire de contact`,
+            `PME ${prices.kmu} : 2 à 5 pages, formulaire de contact et prise de rendez-vous, bases SEO`,
+            `Professional dès ${prices.professional} : dès 6 pages, boutique en ligne ou fonctions spéciales`,
+            `Hébergement : ${prices.hosting}, ${prices.hostingSeo} avec SEO ou ${prices.rundum} avec modifications courantes par mois, résiliable chaque mois`,
           ],
         },
         {
@@ -258,7 +258,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Y a-t-il des coûts récurrents en plus de la création ?",
-          a: `Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Chez Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Le nom de domaine figure séparément dans l'offre.`,
+          a: `Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Chez Webnova, l'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. Le nom de domaine figure séparément dans l'offre.`,
         },
         {
           q: "Puis-je commencer petit et agrandir mon site plus tard ?",

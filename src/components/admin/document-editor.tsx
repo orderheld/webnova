@@ -82,7 +82,7 @@ export function DocumentEditor({
       unit: p.unit,
       unitPrice: p.price,
       productId: p.id,
-      ...(kind === "quote" && p.interval ? { recurring: p.interval, firstYearIncluded: p.interval === "jahr" } : {}),
+      ...(kind === "quote" && p.interval ? { recurring: p.interval, firstYearIncluded: false } : {}),
     };
     // replace a single empty starter line
     const items = v.items.filter((it) => !isPriced(it) || it.title.trim() || it.unitPrice);
@@ -193,7 +193,7 @@ export function DocumentEditor({
                         className="rounded-md border border-line bg-surface px-1.5 py-0.5 text-[12.5px]"
                         value={it.recurring ?? ""}
                         disabled={locked}
-                        onChange={(e) => setItem(i, { recurring: (e.target.value || null) as BillingInterval | null, firstYearIncluded: e.target.value ? (it.firstYearIncluded ?? true) : undefined })}
+                        onChange={(e) => setItem(i, { recurring: (e.target.value || null) as BillingInterval | null, firstYearIncluded: e.target.value ? (it.firstYearIncluded ?? false) : undefined })}
                         aria-label="Wiederkehrend"
                       >
                         <option value="">einmalig</option>

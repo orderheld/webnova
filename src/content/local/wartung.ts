@@ -62,7 +62,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Was kostet die Website-Wartung?",
-            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für Webseiten anderer Anbieter hängt der Preis vom System, der Grösse und dem gewünschten Umfang ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
+            a: `Für Webseiten von Webnova gibt es Hosting ab ${prices.hosting} pro Monat, monatlich kündbar, mit laufenden kleinen Änderungen für ${prices.rundum}. Für Webseiten anderer Anbieter hängt der Preis vom System, der Grösse und dem gewünschten Umfang ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
           },
         ],
       },
@@ -121,7 +121,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Quel est le coût de la maintenance d'un site à Granges ?",
-            a: `Pour les sites créés par Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Pour les sites d'autres prestataires, le prix dépend du système, de la taille du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
+            a: `Pour les sites créés par Webnova, l'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois, et coûte ${prices.rundum} avec les petites modifications courantes. Pour les sites d'autres prestataires, le prix dépend du système, de la taille du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
           },
         ],
       },
@@ -187,7 +187,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Mit welchen Kosten muss ich rechnen?",
-            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr inbegriffen. Bei Webseiten anderer Anbieter hängt der Aufwand vom System, der Anzahl Sprachen und dem gewünschten Umfang ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
+            a: `Für Webseiten von Webnova kostet das Hosting ab ${prices.hosting} pro Monat und ist monatlich kündbar. Bei Webseiten anderer Anbieter hängt der Aufwand vom System, der Anzahl Sprachen und dem gewünschten Umfang ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -246,7 +246,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Combien coûte la maintenance ?",
-            a: `Pour les sites créés par Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois, compris la première année. Pour les sites d'autres prestataires, cela dépend du système, du nombre de langues et des prestations souhaitées. Après un premier entretien gratuit, vous recevez une offre claire.`,
+            a: `Pour les sites créés par Webnova, l'hébergement coûte dès ${prices.hosting} par mois et se résilie chaque mois. Pour les sites d'autres prestataires, cela dépend du système, du nombre de langues et des prestations souhaitées. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -313,7 +313,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Wie wird der Preis für die Wartung festgelegt?",
-            a: `Für Webseiten von Webnova gilt ein fester Preis: Hosting und Wartung kosten ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für andere Webseiten richtet er sich nach System und benötigten Leistungen. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
+            a: `Für Webseiten von Webnova gelten feste Preise: Hosting ${prices.hosting}, Hosting + SEO ${prices.hostingSeo} oder Rundum ${prices.rundum} pro Monat, monatlich kündbar. Für andere Webseiten richtet er sich nach System und benötigten Leistungen. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -373,7 +373,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Comment le prix de la maintenance est-il fixé ?",
-            a: `Pour les sites créés par Webnova, le prix est fixe : l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Pour les autres sites, il dépend du système et des prestations nécessaires. Après un premier entretien gratuit, vous recevez une offre claire.`,
+            a: `Pour les sites créés par Webnova, les prix sont fixes : Hébergement ${prices.hosting}, Hébergement + SEO ${prices.hostingSeo} ou Tout compris ${prices.rundum} par mois, résiliable chaque mois. Pour les autres sites, il dépend du système et des prestations nécessaires. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -439,7 +439,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Was kostet die Website-Wartung für ein KMU in Bern?",
-            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für bestehende Webseiten anderer Anbieter hängt der Preis von System, Umfang und gewünschten Leistungen ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
+            a: `Für Webseiten von Webnova gibt es drei Hosting-Pakete von ${prices.hosting} bis ${prices.rundum} pro Monat, monatlich kündbar. Für bestehende Webseiten anderer Anbieter hängt der Preis von System, Umfang und gewünschten Leistungen ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
           },
         ],
       },
@@ -498,7 +498,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Quel budget prévoir pour la maintenance d'un site ?",
-            a: `Pour les sites créés par Webnova, comptez ${prices.care} par mois pour l'hébergement et la maintenance, compris la première année. Pour les sites d'autres prestataires, cela dépend du système, de l'ampleur du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
+            a: `Pour les sites créés par Webnova, il existe trois formules d'hébergement de ${prices.hosting} à ${prices.rundum} par mois, résiliables chaque mois. Pour les sites d'autres prestataires, cela dépend du système, de l'ampleur du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
           },
         ],
       },

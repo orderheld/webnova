@@ -34,7 +34,7 @@ export const wartung: Service = {
         },
         {
           title: "Hosting",
-          text: "Auf Wunsch übernehmen wir das Hosting Ihrer Webseite inklusive Domain und E-Mail-Einrichtung.",
+          text: "Auf Wunsch übernehmen wir das Hosting Ihrer Webseite und richten Domain und E-Mail ein. Die Domain steht als eigene Position in der Offerte.",
         },
         {
           title: "Inhaltliche Anpassungen",
@@ -129,7 +129,7 @@ export const wartung: Service = {
         },
         {
           title: "Hébergement",
-          text: "Sur demande, nous hébergeons votre site et nous occupons du nom de domaine et des adresses e-mail.",
+          text: "Sur demande, nous hébergeons votre site et configurons le nom de domaine et les adresses e-mail. Le nom de domaine figure comme poste séparé dans le devis.",
         },
         {
           title: "Modifications de contenu",

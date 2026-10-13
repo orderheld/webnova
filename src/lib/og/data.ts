@@ -5,7 +5,7 @@ import { problems } from "@/content/problems";
 import { references } from "@/content/references";
 import { localServices } from "@/content/local";
 import { standalonePages } from "@/content/pages";
-import { carePrice, chf, packagePrice } from "@/content/pricing";
+import { prices } from "@/content/pricing";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
@@ -41,8 +41,8 @@ export function ogData(locale: Locale, file: string): OgData | undefined {
     }
     case "pricing":
       return locale === "de"
-        ? { eyebrow: d.nav.pricing, title: `Webseiten ab ${chf(packagePrice("starter"))}, Onlineshops ab ${chf(packagePrice("shop"))}, Wartung ${chf(carePrice)} pro Monat` }
-        : { eyebrow: d.nav.pricing, title: `Sites dès ${chf(packagePrice("starter"))}, boutiques dès ${chf(packagePrice("shop"))}, maintenance ${chf(carePrice)} par mois` };
+        ? { eyebrow: d.nav.pricing, title: `Onepager ${prices.starter}, Webseite bis 5 Seiten ${prices.kmu}, Hosting ab ${prices.hosting} pro Monat` }
+        : { eyebrow: d.nav.pricing, title: `Site d'une page ${prices.starter}, site jusqu'à 5 pages ${prices.kmu}, hébergement dès ${prices.hosting} par mois` };
     case "city":
     case "citySeo": {
       const city = cities.find((c) => c.key === entry.key)!;

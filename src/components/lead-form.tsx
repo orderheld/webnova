@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState, useSyncExternalStore, useTransition } from "react";
-import { fromPrice, pricePackages, type PricePackage } from "@/content/pricing";
+import { packagePriceLabel, pricePackages, type PricePackage } from "@/content/pricing";
 import type { Locale } from "@/content/types";
 import type { Dict } from "@/i18n/dict";
 import { submitLead } from "@/lib/leads/actions";
@@ -72,7 +72,7 @@ export function LeadForm({
   const packageId = useSyncExternalStore(noSubscribe, readPackage, () => null);
   const [packageDropped, setPackageDropped] = useState(false);
   const pkg: PricePackage | undefined = hasPreset || packageDropped ? undefined : pricePackages.find((x) => x.id === packageId);
-  const pkgLabel = pkg ? `${packageWord[locale]}: ${pkg.name[locale]}, ${fromPrice(locale, pkg.price)}` : "";
+  const pkgLabel = pkg ? `${pkg.id === "demo" ? "" : `${packageWord[locale]}: `}${pkg.name[locale]}, ${packagePriceLabel(locale, pkg)}` : "";
   // Chosen service and step; until the visitor picks, a preset or the package decides.
   const [picked, setServices] = useState<Service[] | null>(hasPreset ? preset : null);
   const services = picked ?? (pkg ? [pkg.service] : []);

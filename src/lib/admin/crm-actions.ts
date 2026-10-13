@@ -185,7 +185,7 @@ export async function convertLeadAction(id: number, _: FormState, fd: FormData):
       unit: p.unit,
       unitPrice: p.price,
       productId: p.id,
-      ...(p.interval ? { recurring: p.interval, firstYearIncluded: p.interval === "jahr" } : {}),
+      ...(p.interval ? { recurring: p.interval, firstYearIncluded: false } : {}),
     }));
     const vatRate = s.vatEnabled ? s.vatRate : 0;
     const number = await nextNumber("quote", s.quotePrefix);

@@ -38,7 +38,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "users", title: "Ein Ansprechpartner", text: "Vom Erstgespräch bis nach dem Launch: persönlich, direkt und auf Deutsch oder Französisch." },
       ],
       faq: [
-        { q: "Was kostet eine neue Webseite?", a: `Webseiten gibt es bei uns ab ${prices.starter}, Onlineshops ab ${prices.shop}. Wie viel genau, hängt von Umfang und Funktionen ab. Nach einem kurzen Gespräch erhalten Sie eine transparente Offerte, ohne versteckte Kosten.` },
+        { q: "Was kostet eine neue Webseite?", a: `Ein Onepager kostet bei uns ${prices.starter}, eine Webseite mit 2 bis 5 Seiten ${prices.kmu}, jeweils einmalig. Grössere Projekte und Onlineshops offerieren wir ab ${prices.professional}. Hosting gibt es ab ${prices.hosting} pro Monat, monatlich kündbar. Nach einem kurzen Gespräch erhalten Sie eine transparente Offerte, ohne versteckte Kosten.` },
         { q: "Wie schnell geht es?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Den genauen Zeitplan legen wir gemeinsam fest." },
         { q: "Ich habe bereits eine Webseite. Lohnt sich ein Redesign?", a: "Oft ja. Wir prüfen Ihre bestehende Seite und zeigen Ihnen, wo das grösste Potenzial liegt, inklusive Weiterleitungen, damit Ihre Google-Rankings erhalten bleiben." },
       ],
@@ -61,7 +61,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "users", title: "Un seul interlocuteur", text: "Du premier entretien à la mise en ligne et au-delà : personnel, direct, en français ou en allemand." },
       ],
       faq: [
-        { q: "Combien coûte un nouveau site ?", a: `Nos sites internet commencent à ${prices.starter}, les boutiques en ligne à ${prices.shop}. Le prix exact dépend de l'envergure et des fonctions. Après un court échange, vous recevez un devis transparent, sans coûts cachés.` },
+        { q: "Combien coûte un nouveau site ?", a: `Chez nous, un site d'une page coûte ${prices.starter} et un site de 2 à 5 pages ${prices.kmu}, en paiement unique. Les projets plus grands et les boutiques en ligne sont proposés dès ${prices.professional}. L'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. Après un court échange, vous recevez un devis transparent, sans coûts cachés.` },
         { q: "Combien de temps faut-il ?", a: "Un site typique de PME est en ligne en quelques semaines. Nous fixons ensemble le calendrier précis." },
         { q: "J'ai déjà un site. Une refonte vaut-elle la peine ?", a: "Souvent oui. Nous analysons votre site actuel et vous montrons où se trouve le plus grand potentiel, redirections comprises pour conserver votre référencement." },
       ],
