@@ -1,9 +1,9 @@
 import type { Locale, Localized } from "./types";
 
 /*
- * Public prices, set by Ferhat on 2026-10-13: a paid design demo credited on order, website packages paid once at
- * the level of the regional competition plus the VAT it charges (never below it and never the same number as a
- * competitor), hosting optional per month. Webnova is not subject to VAT: the prices are final, no MWST is added.
+ * Public prices, set by Ferhat on 2026-10-13 (10:06: «immer "ab" preise nennen», the Starter package cheap): a paid
+ * design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
+ * month. Webnova is not subject to VAT: the prices are final, no MWST is added.
  * The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts): change both together.
  * Every price on the site (Preise page, service and industry pages, FAQ answers, llms.txt) is built from this file.
  */
@@ -55,7 +55,8 @@ export const pricePackages: PricePackage[] = [
   {
     id: "starter",
     name: { de: "Starter", fr: "Starter" },
-    price: 1090,
+    price: 890,
+    from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     forWhom: {
@@ -71,7 +72,8 @@ export const pricePackages: PricePackage[] = [
   {
     id: "kmu",
     name: { de: "KMU", fr: "PME" },
-    price: 2990,
+    price: 2790,
+    from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     recommended: true,
@@ -104,7 +106,8 @@ export const pricePackages: PricePackage[] = [
   {
     id: "professional",
     name: { de: "Professional", fr: "Professional" },
-    price: 5390,
+    price: 4800,
+    from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     forWhom: {
@@ -120,7 +123,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "individuell",
     name: { de: "Individuell", fr: "Sur mesure" },
-    price: 7090,
+    price: 6700,
     from: true,
     note: { de: "individuell offeriert", fr: "sur devis" },
     service: "webdesign",
@@ -154,7 +157,7 @@ export const careTiers: CareTier[] = [
   {
     id: "hosting",
     name: { de: "Hosting", fr: "Hébergement" },
-    price: 45,
+    price: 39,
     items: {
       de: ["Hosting mit SSL-Zertifikat", "Tägliche Backups", "Technische Updates und Sicherheit", "Persönlicher Support"],
       fr: ["Hébergement avec certificat SSL", "Sauvegardes quotidiennes", "Mises à jour techniques et sécurité", "Support personnel"],
@@ -180,8 +183,8 @@ export const careTiers: CareTier[] = [
   },
 ];
 
-/** Google Business Profile: setup once, care optional per month. */
-export const gbpPrice = { setup: 290, monthly: 55 };
+/** Google Business Profile: setup once, care optional per month. The setup is a starting price, the care a fixed monthly price. */
+export const gbpPrice = { setup: 390, monthly: 55 };
 
 export function packagePrice(id: PackageId): number {
   return pricePackages.find((p) => p.id === id)!.price;
@@ -240,7 +243,7 @@ export function priceLine(locale: Locale, topic: PriceTopic): string {
     case "care":
       return de ? `Hosting ${fromPrice(locale, hostingFrom)} pro Monat` : `Hébergement ${fromPrice(locale, hostingFrom)} par mois`;
     case "gbp":
-      return de ? `Einrichtung ${chf(gbpPrice.setup)}, Betreuung ${chf(gbpPrice.monthly)} pro Monat` : `Mise en place ${chf(gbpPrice.setup)}, suivi ${chf(gbpPrice.monthly)} par mois`;
+      return de ? `Einrichtung ${fromPrice(locale, gbpPrice.setup)}, Betreuung ${chf(gbpPrice.monthly)} pro Monat` : `Mise en place ${fromPrice(locale, gbpPrice.setup)}, suivi ${chf(gbpPrice.monthly)} par mois`;
   }
 }
 
@@ -260,7 +263,7 @@ export function industryPriceLines(locale: Locale, industryKey: string): string[
   return industryKey === "detailhandel" ? [priceLine(locale, "website"), priceLine(locale, "shop")] : [priceLine(locale, "website")];
 }
 
-/** Formatted prices for page texts, e.g. `ab ${prices.starter}` -> "ab CHF 600". */
+/** Formatted amounts for page texts, without "ab": the texts add "ab" / "dès" themselves, e.g. `ab ${prices.starter}`. */
 export const prices = {
   demo: chf(packagePrice("demo")),
   starter: chf(packagePrice("starter")),
@@ -274,9 +277,9 @@ export const prices = {
   gbpMonthly: chf(gbpPrice.monthly),
 };
 
-/** The three fixed-price packages in one phrase, for FAQ answers and guides. */
+/** The three standard packages in one phrase with their starting prices, for FAQ answers and guides. */
 export function packageSummary(locale: Locale): string {
-  const { starter, kmu, professional } = prices;
+  const [starter, kmu, professional] = (["starter", "kmu", "professional"] as const).map((id) => packagePriceLabel(locale, pricePackages.find((p) => p.id === id)!));
   return locale === "de"
     ? `Starter (Onepager) ${starter}, KMU (bis 5 Seiten) ${kmu} und Professional (bis 10 Seiten) ${professional}`
     : `Starter (une page) ${starter}, PME (jusqu'à 5 pages) ${kmu} et Professional (jusqu'à 10 pages) ${professional}`;
@@ -297,7 +300,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
       case "care":
         return `Für Webseiten von Webnova gibt es drei Hosting-Pakete, monatlich und jederzeit kündbar: Hosting ${hosting} pro Monat mit SSL, täglichen Backups und Updates, Hosting + SEO ${hostingSeo} und Rundum ${rundum} mit laufenden kleinen Änderungen. Ab der Aufschaltung testen Sie das Hosting ${hostingTrialDays} Tage gratis, beim Paket KMU sind Hosting und SEO ${kmuFreeMonths} Monate gratis. Die Domain steht separat in der Offerte. Für Webseiten anderer Anbieter richtet sich der Preis nach System und Umfang, Sie erhalten nach dem kostenlosen Erstgespräch eine Offerte.`;
       case "gbp":
-        return `Bei Google ist das Profil kostenlos. Die Einrichtung durch uns kostet ${chf(gbpPrice.setup)} einmalig, die freiwillige Betreuung ${chf(gbpPrice.monthly)} pro Monat. In den Webseiten-Paketen KMU und Professional ist die Einrichtung bereits enthalten.`;
+        return `Bei Google ist das Profil kostenlos. Die Einrichtung durch uns kostet einmalig ${fromPrice(locale, gbpPrice.setup)}, die freiwillige Betreuung ${chf(gbpPrice.monthly)} pro Monat. In den Webseiten-Paketen KMU und Professional ist die Einrichtung bereits enthalten.`;
     }
   }
   const hostingLine = `L'hébergement commence à ${hosting} par mois, résiliable chaque mois.`;
@@ -311,6 +314,6 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
     case "care":
       return `Pour les sites créés par Webnova, il existe trois formules d'hébergement, mensuelles et résiliables en tout temps : Hébergement ${hosting} par mois avec SSL, sauvegardes quotidiennes et mises à jour, Hébergement + SEO ${hostingSeo} et Tout compris ${rundum} avec les petites modifications courantes. Dès la mise en ligne, vous testez l'hébergement gratuitement pendant ${hostingTrialDays} jours, avec la formule PME l'hébergement avec SEO est offert ${kmuFreeMonths} mois. Le nom de domaine figure séparément dans le devis. Pour les sites d'autres prestataires, le prix dépend du système et de l'ampleur : vous recevez un devis après le premier entretien gratuit.`;
     case "gbp":
-      return `Chez Google, la fiche est gratuite. La mise en place par nos soins coûte ${chf(gbpPrice.setup)} une fois, le suivi facultatif ${chf(gbpPrice.monthly)} par mois. Dans les formules PME et Professional pour les sites internet, la mise en place est déjà comprise.`;
+      return `Chez Google, la fiche est gratuite. La mise en place par nos soins coûte à partir de ${chf(gbpPrice.setup)} en paiement unique, le suivi facultatif ${chf(gbpPrice.monthly)} par mois. Dans les formules PME et Professional pour les sites internet, la mise en place est déjà comprise.`;
   }
 }

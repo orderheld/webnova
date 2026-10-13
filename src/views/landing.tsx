@@ -38,7 +38,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "users", title: "Ein Ansprechpartner", text: "Vom Erstgespräch bis nach dem Launch: persönlich, direkt und auf Deutsch oder Französisch." },
       ],
       faq: [
-        { q: "Was kostet eine neue Webseite?", a: `Ein Onepager kostet bei uns ${prices.starter}, eine Webseite mit bis zu 5 Seiten ${prices.kmu} und eine mit bis zu 10 Seiten ${prices.professional}, jeweils einmalig. Onlineshops und grössere Projekte offerieren wir ab ${prices.shop}. Hosting gibt es ab ${prices.hosting} pro Monat, monatlich kündbar. Nach einem kurzen Gespräch erhalten Sie eine transparente Offerte, ohne versteckte Kosten.` },
+        { q: "Was kostet eine neue Webseite?", a: `Ein Onepager kostet bei uns ab ${prices.starter}, eine Webseite mit bis zu 5 Seiten ab ${prices.kmu} und eine mit bis zu 10 Seiten ab ${prices.professional}, jeweils einmalig. Onlineshops und grössere Projekte offerieren wir ab ${prices.shop}. Hosting gibt es ab ${prices.hosting} pro Monat, monatlich kündbar. Nach einem kurzen Gespräch erhalten Sie eine transparente Offerte, ohne versteckte Kosten.` },
         { q: "Wie schnell geht es?", a: "Eine typische KMU-Webseite ist in wenigen Wochen online. Den genauen Zeitplan legen wir gemeinsam fest." },
         { q: "Ich habe bereits eine Webseite. Lohnt sich ein Redesign?", a: "Oft ja. Wir prüfen Ihre bestehende Seite und zeigen Ihnen, wo das grösste Potenzial liegt, inklusive Weiterleitungen, damit Ihre Google-Rankings erhalten bleiben." },
       ],
@@ -61,7 +61,7 @@ const content: Record<string, Record<Locale, Lp>> = {
         { icon: "users", title: "Un seul interlocuteur", text: "Du premier entretien à la mise en ligne et au-delà : personnel, direct, en français ou en allemand." },
       ],
       faq: [
-        { q: "Combien coûte un nouveau site ?", a: `Chez nous, un site d'une page coûte ${prices.starter}, un site jusqu'à 5 pages ${prices.kmu} et un site jusqu'à 10 pages ${prices.professional}, en paiement unique. Les boutiques en ligne et les projets plus grands sont proposés dès ${prices.shop}. L'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. Après un court échange, vous recevez un devis transparent, sans coûts cachés.` },
+        { q: "Combien coûte un nouveau site ?", a: `Chez nous, un site d'une page coûte à partir de ${prices.starter}, un site jusqu'à 5 pages à partir de ${prices.kmu} et un site jusqu'à 10 pages à partir de ${prices.professional}, en paiement unique. Les boutiques en ligne et les projets plus grands sont proposés dès ${prices.shop}. L'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. Après un court échange, vous recevez un devis transparent, sans coûts cachés.` },
         { q: "Combien de temps faut-il ?", a: "Un site typique de PME est en ligne en quelques semaines. Nous fixons ensemble le calendrier précis." },
         { q: "J'ai déjà un site. Une refonte vaut-elle la peine ?", a: "Souvent oui. Nous analysons votre site actuel et vous montrons où se trouve le plus grand potentiel, redirections comprises pour conserver votre référencement." },
       ],

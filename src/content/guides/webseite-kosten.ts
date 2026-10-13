@@ -25,7 +25,7 @@ export const webseiteKosten: Guide = {
         "Mehrsprachigkeit braucht neben Übersetzungen auch eine saubere technische Umsetzung mit eigenen URLs.",
         "Vergleichen Sie Offerten Punkt für Punkt und achten Sie auf laufende Kosten nach dem Launch.",
         "Eine verlässliche Offerte entsteht erst, wenn Ziele, Funktionen und vorhandene Inhalte klar sind.",
-        `Bei Webnova kostet ein Onepager ${prices.starter}, eine Webseite mit bis zu 5 Seiten ${prices.kmu}, eine mit bis zu 10 Seiten ${prices.professional}, Onlineshops und grössere Projekte ab ${prices.shop}. Hosting gibt es ab ${prices.hosting} pro Monat.`,
+        `Bei Webnova kostet ein Onepager ab ${prices.starter}, eine Webseite mit bis zu 5 Seiten ab ${prices.kmu}, eine mit bis zu 10 Seiten ab ${prices.professional}, Onlineshops und grössere Projekte ab ${prices.shop}. Hosting gibt es ab ${prices.hosting} pro Monat.`,
       ],
       sections: [
         {
@@ -105,9 +105,9 @@ export const webseiteKosten: Guide = {
           ],
           bullets: [
             `Design-Demo ${prices.demo}: Entwurf Ihrer Startseite, bei Auftrag angerechnet`,
-            `Starter ${prices.starter}: Onepager mit eigenem Design und Kontaktformular`,
-            `KMU ${prices.kmu}: bis 5 Seiten, Kontaktformular und Online-Termine, Google-Unternehmensprofil`,
-            `Professional ${prices.professional}: bis 10 Seiten, Designkonzept, Blog oder News, CMS`,
+            `Starter ab ${prices.starter}: Onepager mit eigenem Design und Kontaktformular`,
+            `KMU ab ${prices.kmu}: bis 5 Seiten, Kontaktformular und Online-Termine, Google-Unternehmensprofil`,
+            `Professional ab ${prices.professional}: bis 10 Seiten, Designkonzept, Blog oder News, CMS`,
             `Individuell ab ${prices.shop}: Onlineshop, Web-App oder mehr als 10 Seiten`,
             `Hosting: ${prices.hosting}, ${prices.hostingSeo} mit SEO oder ${prices.rundum} mit laufenden Änderungen pro Monat, monatlich kündbar`,
           ],
@@ -154,7 +154,7 @@ export const webseiteKosten: Guide = {
         "Le multilinguisme demande, en plus des traductions, une réalisation technique propre avec des URL distinctes.",
         "Comparez les devis point par point et tenez compte des coûts courants après la mise en ligne.",
         "Un devis fiable n'est possible que lorsque objectifs, fonctions et contenus disponibles sont clairs.",
-        `Chez Webnova, un site d'une page coûte ${prices.starter}, un site jusqu'à 5 pages ${prices.kmu}, un site jusqu'à 10 pages ${prices.professional}, les boutiques en ligne et les projets plus grands dès ${prices.shop}. L'hébergement commence à ${prices.hosting} par mois.`,
+        `Chez Webnova, un site d'une page coûte à partir de ${prices.starter}, un site jusqu'à 5 pages à partir de ${prices.kmu}, un site jusqu'à 10 pages à partir de ${prices.professional}, les boutiques en ligne et les projets plus grands dès ${prices.shop}. L'hébergement commence à ${prices.hosting} par mois.`,
       ],
       sections: [
         {
@@ -234,9 +234,9 @@ export const webseiteKosten: Guide = {
           ],
           bullets: [
             `Démo design ${prices.demo} : maquette de votre page d'accueil, déduite à la commande`,
-            `Starter ${prices.starter} : site d'une page avec design sur mesure et formulaire de contact`,
-            `PME ${prices.kmu} : jusqu'à 5 pages, formulaire de contact et rendez-vous en ligne, fiche Google`,
-            `Professional ${prices.professional} : jusqu'à 10 pages, concept graphique, blog ou actualités, CMS`,
+            `Starter dès ${prices.starter} : site d'une page avec design sur mesure et formulaire de contact`,
+            `PME dès ${prices.kmu} : jusqu'à 5 pages, formulaire de contact et rendez-vous en ligne, fiche Google`,
+            `Professional dès ${prices.professional} : jusqu'à 10 pages, concept graphique, blog ou actualités, CMS`,
             `Sur mesure dès ${prices.shop} : boutique en ligne, application web ou plus de 10 pages`,
             `Hébergement : ${prices.hosting}, ${prices.hostingSeo} avec SEO ou ${prices.rundum} avec modifications courantes par mois, résiliable chaque mois`,
           ],
