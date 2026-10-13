@@ -12,6 +12,7 @@ import { kassensystemRetail } from "./kassensystem-retail";
 import { websiteKmu } from "./website-kmu";
 import { firmenwebsite } from "./firmenwebsite";
 import { localSeo } from "./local-seo";
+import { googleProfil } from "./google-profil";
 import { kiSichtbarkeit } from "./ki-sichtbarkeit";
 
 export const services: Service[] = [
@@ -22,6 +23,7 @@ export const services: Service[] = [
   onlineshop,
   seo,
   localSeo,
+  googleProfil,
   kiSichtbarkeit,
   onlineMarketing,
   branding,

@@ -18,6 +18,7 @@ export const serviceArt: Record<string, { kind: ArtKind; sample?: SampleKey; bef
   onlineshop: { kind: "shop" },
   seo: { kind: "seo" },
   "local-seo": { kind: "local" },
+  "google-profil": { kind: "local" },
   "ki-sichtbarkeit": { kind: "ai" },
   "online-marketing": { kind: "ads" },
   branding: { kind: "brand" },

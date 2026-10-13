@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { googleProfil } from "./src/content/services/google-profil";
 import { referencesOnRequest, showReferences, site } from "./src/lib/site";
 
 /*
@@ -72,6 +73,14 @@ const nextConfig: NextConfig = {
       // Short links for review requests (e-mails, WhatsApp, business cards): webnova.ch/bewertung and /avis open the
       // Google review form of the business profile. Temporary (307), so the target can still change.
       ...(site.google.review ? ["/bewertung", "/avis"].map((source) => ({ source, destination: site.google.review, permanent: false })) : []),
+      // Short links in the QR code of the postcard to newly founded companies: webnova.ch/karte and /carte open the
+      // Google profile service with a campaign code (Admin > Besucher shows them as «Postkarte»). Temporary (307),
+      // so the target can change without reprinting the cards.
+      ...(["de", "fr"] as const).map((locale) => ({
+        source: locale === "de" ? "/karte" : "/carte",
+        destination: `/${locale}/${googleProfil.content[locale].slug}?utm_source=postkarte&utm_medium=print&utm_campaign=neugruendung`,
+        permanent: false,
+      })),
       // References on request (src/lib/site.ts): the project pages lead to the overview for now (307).
       // Listed before the old-URL map, so the old Dersut address does not take two hops.
       ...(showReferences && referencesOnRequest

@@ -4,7 +4,7 @@ export const googleUnternehmensprofil: Guide = {
   key: "google-unternehmensprofil",
   date: "2026-10-08",
   readingMinutes: 9,
-  related: ["seo", "online-marketing"],
+  related: ["google-profil", "seo", "online-marketing"],
   relatedGuides: ["lokales-seo-kmu", "geo-ki-suche", "kmu-webseite-checkliste"],
   cities: ["bern", "biel", "solothurn", "grenchen"],
   content: {
@@ -85,7 +85,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Profil und Webseite zusammen denken",
           paragraphs: [
             "Das Profil allein reicht selten. Google gleicht die Angaben mit Ihrer Webseite und mit Verzeichnissen wie local.ch und search.ch ab. Identische Firmendaten, eine Kontaktseite mit Adresse und Karte sowie Seiten zu Ihren Leistungen und Regionen stärken die Bekanntheit. Wie das im Detail funktioniert, erklärt unser Ratgeber [Lokales SEO für KMU](guide:lokales-seo-kmu).",
-            "Werten Sie im Profil regelmässig aus, wie oft Sie gefunden werden, wie viele Anrufe und Routenanfragen entstehen und über welche Suchbegriffe Menschen Sie finden. Gerne prüfen wir Ihr Profil im Rahmen unserer [SEO-Betreuung](service:seo) für Betriebe in der ganzen Schweiz, zum Beispiel in [Bern](citySeo:bern), [Biel/Bienne](citySeo:biel), [Solothurn](citySeo:solothurn) oder [Grenchen](citySeo:grenchen).",
+            "Werten Sie im Profil regelmässig aus, wie oft Sie gefunden werden, wie viele Anrufe und Routenanfragen entstehen und über welche Suchbegriffe Menschen Sie finden. Fehlt Ihnen die Zeit, [richten wir Ihr Google-Unternehmensprofil ein](service:google-profil) und betreuen es laufend. Gerne prüfen wir Ihr Profil auch im Rahmen unserer [SEO-Betreuung](service:seo) für Betriebe in der ganzen Schweiz, zum Beispiel in [Bern](citySeo:bern), [Biel/Bienne](citySeo:biel), [Solothurn](citySeo:solothurn) oder [Grenchen](citySeo:grenchen).",
           ],
         },
       ],
@@ -185,7 +185,7 @@ export const googleUnternehmensprofil: Guide = {
           h2: "Penser fiche et site internet ensemble",
           paragraphs: [
             "La fiche seule suffit rarement. Google compare ses informations avec votre site et avec des annuaires comme local.ch et search.ch. Des coordonnées identiques, une page de contact avec adresse et carte ainsi que des pages sur vos prestations et vos régions renforcent votre notoriété. Notre article [Référencement local pour PME](guide:lokales-seo-kmu) explique le fonctionnement en détail.",
-            "Analysez régulièrement dans la fiche combien de fois vous êtes trouvé, combien d'appels et de demandes d'itinéraire en résultent et avec quelles recherches. Nous vérifions volontiers votre fiche dans le cadre de notre [accompagnement SEO](service:seo), pour les entreprises de toute la Suisse, par exemple à [Berne](citySeo:bern), [Bienne](citySeo:biel), [Soleure](citySeo:solothurn) ou [Granges](citySeo:grenchen).",
+            "Analysez régulièrement dans la fiche combien de fois vous êtes trouvé, combien d'appels et de demandes d'itinéraire en résultent et avec quelles recherches. Si le temps vous manque, [nous créons votre fiche Google Business Profile](service:google-profil) et en assurons le suivi. Nous vérifions aussi volontiers votre fiche dans le cadre de notre [accompagnement SEO](service:seo), pour les entreprises de toute la Suisse, par exemple à [Berne](citySeo:bern), [Bienne](citySeo:biel), [Soleure](citySeo:solothurn) ou [Granges](citySeo:grenchen).",
           ],
         },
       ],
