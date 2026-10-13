@@ -201,14 +201,14 @@ export function PricingPage({ locale }: { locale: Locale }) {
     ...pricePackages.map((p) => ({
       "@type": "Offer",
       name: p.id === "demo" ? p.name[locale] : `${t.offerName} ${p.name[locale]}`,
-      description: p.features[locale].join(", "),
+      description: p.features[locale].join(" · "),
       url: `${site.url}${url}#${p.id}`,
       priceSpecification: p.from ? { "@type": "PriceSpecification", minPrice: p.price, priceCurrency: "CHF" } : { "@type": "PriceSpecification", price: p.price, priceCurrency: "CHF" },
     })),
     ...careTiers.map((c) => ({
       "@type": "Offer",
       name: c.name[locale],
-      description: c.items[locale].join(", "),
+      description: c.items[locale].join(" · "),
       url: `${site.url}${url}#laufend`,
       priceSpecification: monthly(c.price),
     })),

@@ -192,7 +192,7 @@ export const grenchen: City = {
         {
           h2: "Google Unternehmensprofil, Webseite und Bewertungen",
           paragraphs: [
-            "Das Google Unternehmensprofil ist für lokale Rankings der wichtigste Hebel. Wir richten es vollständig ein oder überarbeiten es: richtige Kategorien, Leistungen, Öffnungszeiten, Fotos und eine identische Adresse wie auf Ihrer Webseite und in Verzeichnissen wie local.ch oder search.ch. Zudem zeigen wir Ihnen, wie Sie regelmässig echte Bewertungen von zufriedenen Kunden erhalten und professionell darauf antworten.",
+            "Das Google Unternehmensprofil ist für lokale Rankings der wichtigste Hebel. Wir richten es vollständig ein oder überarbeiten es: richtige Kategorien, Leistungen, Öffnungszeiten, Fotos und eine identische Adresse wie auf Ihrer Webseite und in Verzeichnissen wie local.ch oder search.ch. Zudem zeigen wir Ihnen, wie Sie regelmässig echte Bewertungen Ihrer Kundschaft erhalten und professionell darauf antworten.",
             "Auf der Webseite optimieren wir Seitentitel, Texte, Ladezeit und Struktur, damit Google versteht, was Sie anbieten und wo. Technische Fehler, fehlende Meta-Beschreibungen oder langsame Bilder beheben wir. Für Industrie- und Zulieferbetriebe aus Grenchen, die überregional verkaufen, entwickeln wir zusätzlich Inhalte für Fachbegriffe und mehrere Sprachen, damit auch Einkäufer ausserhalb der Region Sie finden.",
           ],
           bullets: [
@@ -259,7 +259,7 @@ export const grenchen: City = {
         {
           h2: "Profil d'entreprise Google, site internet et avis",
           paragraphs: [
-            "Le profil d'entreprise Google est le levier le plus puissant du référencement local. Nous le créons ou le complétons : catégories adaptées, prestations, horaires, photos et adresse strictement identique à celle de votre site et des annuaires comme local.ch ou search.ch. Nous vous montrons aussi comment obtenir régulièrement de vrais avis de clients satisfaits et comment y répondre de manière professionnelle.",
+            "Le profil d'entreprise Google est le levier le plus puissant du référencement local. Nous le créons ou le complétons : catégories adaptées, prestations, horaires, photos et adresse strictement identique à celle de votre site et des annuaires comme local.ch ou search.ch. Nous vous montrons aussi comment obtenir régulièrement de vrais avis de vos clients et comment y répondre de manière professionnelle.",
             "Sur votre site, nous optimisons les titres, les textes, la vitesse de chargement et la structure afin que Google comprenne ce que vous proposez et où. Pour les entreprises industrielles de Granges qui vendent au-delà de la région, nous développons aussi des contenus techniques et multilingues, pour être visibles auprès d'acheteurs en Suisse romande et ailleurs.",
           ],
           bullets: [

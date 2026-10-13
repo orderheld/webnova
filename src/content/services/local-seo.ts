@@ -34,7 +34,7 @@ export const localSeo: Service = {
         },
         {
           title: "Bewertungen mit System",
-          text: "Ein einfacher Ablauf, damit zufriedene Kundschaft eine Bewertung hinterlässt, und Vorlagen für sachliche Antworten.",
+          text: "Ein einfacher Ablauf, damit Ihre Kundschaft regelmässig Bewertungen hinterlässt, und Vorlagen für sachliche Antworten.",
         },
         {
           title: "Strukturierte Daten",
@@ -233,7 +233,7 @@ export const localSeo: Service = {
         },
         {
           title: "Des avis avec méthode",
-          text: "Un déroulement simple pour que les clients satisfaits laissent un avis, et des modèles de réponses factuelles.",
+          text: "Un déroulement simple pour que vos clients laissent régulièrement un avis, et des modèles de réponses factuelles.",
         },
         {
           title: "Données structurées",

@@ -17,13 +17,13 @@ const texts = {
   de: {
     hello: (name: string) => (name ? `Grüezi ${name}` : "Grüezi"),
     subject: "Ihre Meinung zu unserer Zusammenarbeit",
-    body: "Herzlichen Dank für die angenehme Zusammenarbeit. Wenn Ihnen unsere Arbeit gefallen hat, würde ich mich sehr über eine kurze Bewertung auf Google freuen. Das dauert nur eine Minute:",
+    body: "Herzlichen Dank für die angenehme Zusammenarbeit. Ich würde mich sehr freuen, wenn Sie Ihre ehrliche Meinung kurz auf Google teilen. Das dauert nur eine Minute:",
     bye: "Herzliche Grüsse",
   },
   fr: {
     hello: (name: string) => (name ? `Bonjour ${name}` : "Bonjour"),
     subject: "Votre avis sur notre collaboration",
-    body: "Merci beaucoup pour cette agréable collaboration. Si notre travail vous a plu, un court avis sur Google me ferait très plaisir. Cela ne prend qu'une minute :",
+    body: "Merci beaucoup pour cette agréable collaboration. Je serais très heureux si vous partagiez votre avis sincère sur Google. Cela ne prend qu'une minute :",
     bye: "Meilleures salutations",
   },
 };
@@ -45,7 +45,7 @@ export function ReviewRequestCard({ language, person }: { language: string; pers
   return (
     <Card title="Google-Bewertung">
       <p className="text-[13.5px] leading-relaxed text-ink-soft">
-        Zufriedene Kunden um eine Bewertung bitten. Bewertungen schaffen Vertrauen bei neuen Anfragen und helfen in Google Maps. Der Text ist auf{" "}
+        Jeden Kunden nach Projektabschluss um eine Bewertung bitten, nicht nur die zufriedensten (Google-Richtlinie). Bewertungen schaffen Vertrauen und helfen in Google Maps. Der Text ist auf{" "}
         {locale === "fr" ? "Französisch" : "Deutsch"} vorbereitet und lässt sich vor dem Senden anpassen.
       </p>
       {wa || person.email ? (
