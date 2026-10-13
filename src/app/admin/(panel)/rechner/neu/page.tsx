@@ -12,12 +12,19 @@ export const metadata = { title: "Neue Kalkulation" };
 
 type LeadForCalc = { services: string[]; budget: string | null; details: LeadDetails | null };
 
-/** Package suggestion from the lead's services, page count and budget. */
+/** Rough page count per answer of the request form ("5-10" is the bucket of older leads). */
+const pageCount: Record<string, number> = { "1": 1, "2-5": 5, "6-8": 8, "5-10": 10, "9-10": 10 };
+
+/** Package suggestion from the lead's services, page count, languages and budget. */
 function suggestPackage(lead?: LeadForCalc) {
   if (!lead) return undefined;
-  if (lead.services.includes("shop")) return "shop";
+  if (lead.services.includes("shop")) return "individuell";
   const pages = lead.details?.webdesign?.pages ?? lead.details?.redesign?.pages;
-  if (pages === "10+" || pages === "5-10") return "professional";
+  const languages = lead.details?.webdesign?.languages;
+  // More than 10 pages or three and more languages are Individuell, KMU goes up to 8 pages.
+  if (pages === "10+" || (Array.isArray(languages) && languages.length > 2)) return "individuell";
+  if (pages === "9-10" || pages === "5-10") return "professional";
+  if (pages === "6-8") return "kmu";
   if (pages === "1") return "starter";
   if (lead.budget === "b1") return "starter";
   if (lead.budget === "b3" || lead.budget === "b4") return "professional";
@@ -31,8 +38,9 @@ function suggestAddons(cfg: CalculatorConfig, lead?: LeadForCalc): CalcLine[] {
   const list = (v: string | string[] | undefined) => (Array.isArray(v) ? v : v ? [v] : []);
   const features = list(d.webdesign?.features);
   const wanted: [string, number][] = [];
+  // The second language is priced per page; three and more languages make the project Individuell (no add-on).
   const languages = list(d.webdesign?.languages).length;
-  if (languages > 1) wanted.push(["language", languages - 1]);
+  if (languages === 2) wanted.push(["language", pageCount[String(d.webdesign?.pages)] ?? 5]);
   if (features.includes("booking") || features.includes("reservation")) wanted.push(["booking", 1]);
   if (features.includes("blog")) wanted.push(["blog", 1]);
   if (features.includes("shop") && !lead.services.includes("shop")) wanted.push(["shopModule", 1]);

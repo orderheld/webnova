@@ -8,8 +8,7 @@ import {
   chf,
   costAnswer,
   domainYearly,
-  extraPagePrice,
-  starterMaxPages,
+  extrasNote,
   fromPrice,
   gbpPrice,
   billingNote,
@@ -29,7 +28,7 @@ export const pricingText = {
   de: {
     title: "Preise",
     metaTitle: "Preise: Was kostet eine Webseite?",
-    metaDesc: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Alle Preise in CHF.`,
+    metaDesc: `Onepager ab ${prices.starter}, bis 5 Seiten ab ${prices.kmu}, bis 10 Seiten ab ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat.`,
     h1: "Preise für Webseiten und Onlineshops",
     subline: "Einmal bezahlt, ohne versteckte Kosten.",
     lead: "Ihre Webseite bezahlen Sie einmal. Hosting buchen Sie nur, wenn Sie es möchten, monatlich und jederzeit kündbar. Die genaue Offerte erhalten Sie nach einem kostenlosen Erstgespräch.",
@@ -81,7 +80,7 @@ export const pricingText = {
       { q: "Was kostet eine Webseite bei Webnova?", a: costAnswer("de", "website") },
       {
         q: "Was ist im Paketpreis enthalten?",
-        a: `Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}, bis höchstens ${starterMaxPages} Seiten. So sehen Sie vor dem Start, was Ihre Webseite kostet.`,
+        a: `Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte. ${extrasNote.de} So sehen Sie vor dem Start, was Ihre Webseite kostet.`,
       },
       {
         q: "Was ist die Design-Demo?",
@@ -104,7 +103,7 @@ export const pricingText = {
   fr: {
     title: "Tarifs",
     metaTitle: "Tarifs : combien coûte un site internet ?",
-    metaDesc: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting}/mois. Tous les prix en CHF.`,
+    metaDesc: `Site d'une page dès ${prices.starter}, jusqu'à 5 pages dès ${prices.kmu}, jusqu'à 10 pages dès ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting}/mois.`,
     h1: "Tarifs des sites internet et boutiques en ligne",
     subline: "Payé une fois, sans coûts cachés.",
     lead: "Vous payez votre site une seule fois. L'hébergement, vous le prenez seulement si vous le souhaitez, au mois et résiliable en tout temps. Vous recevez le devis exact après un premier entretien gratuit.",
@@ -156,7 +155,7 @@ export const pricingText = {
       { q: "Combien coûte un site internet chez Webnova ?", a: costAnswer("fr", "website") },
       {
         q: "Qu'est-ce qui est compris dans le prix de la formule ?",
-        a: `Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}, jusqu'à ${starterMaxPages} pages au maximum. Vous savez ainsi avant le début ce que coûte votre site.`,
+        a: `Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis. ${extrasNote.fr} Vous savez ainsi avant le début ce que coûte votre site.`,
       },
       {
         q: "Qu'est-ce que la démo design ?",

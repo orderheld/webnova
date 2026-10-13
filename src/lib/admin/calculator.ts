@@ -1,6 +1,6 @@
 /**
- * Price calculator built around fixed packages plus add-ons (websites from CHF 890, extra pages CHF 500, shops and larger projects
- * from CHF 6'700) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
+ * Price calculator built around fixed packages plus add-ons (websites from CHF 890, extra pages CHF 500, second language CHF 140
+ * per page, shops and larger projects from CHF 6'600) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
  * The package prices are also published on the website (src/content/pricing.ts): change both together.
  */
@@ -61,7 +61,7 @@ export const defaultCalculatorConfig: CalculatorConfig = {
     {
       id: "kmu",
       name: "Webseite KMU",
-      description: "Bis 5 Seiten, eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen",
+      description: "Bis 5 Seiten (weitere Seiten je CHF 500 bis 8 Seiten), eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen",
       price: 2790,
       hours: 24,
     },
@@ -69,20 +69,20 @@ export const defaultCalculatorConfig: CalculatorConfig = {
       id: "professional",
       name: "Webseite Professional",
       description: "Bis 10 Seiten, Designkonzept mit Animationen, CMS, Blog/News, erweiterte Google-Grundlagen, Google-Unternehmensprofil, Schulung",
-      price: 5000,
+      price: 4950,
       hours: 44,
     },
     {
       id: "individuell",
-      name: "Individuell (Shop, Web-App, 10+ Seiten)",
-      description: "Onlineshop mit TWINT und Karte, Web-App oder Kundenbereich, mehr als 10 Seiten, Anbindungen",
+      name: "Individuell (Shop, Web-App, 10+ Seiten, 3+ Sprachen)",
+      description: "Onlineshop mit TWINT und Karte, Web-App oder Kundenbereich, mehr als 10 Seiten, drei und mehr Sprachen, Anbindungen",
       price: 6600,
       hours: 58,
     },
   ],
   addons: [
     { id: "page", name: "Zusätzliche Seite", description: "Gestaltung und Umsetzung pro Seite", price: 500, hours: 2, unit: "Seiten" },
-    { id: "language", name: "Zusätzliche Sprache", description: "Mehrsprachigkeit inkl. Sprachumschalter, ohne Übersetzung", price: 600, hours: 5, unit: "Sprachen" },
+    { id: "language", name: "Zweite Sprache", description: "Pro Seite, inkl. Sprachumschalter, ohne Übersetzung", price: 140, hours: 1, unit: "Seiten" },
     { id: "shopModule", name: "Shop-Funktion", description: "Kleiner Shop in der Webseite, TWINT und Karte", price: 2500, hours: 20, unit: "Pauschal" },
     { id: "products", name: "Produkte erfassen", description: "Pro Produkt inkl. Bild und Varianten", price: 15, hours: 0.2, unit: "Produkte" },
     { id: "booking", name: "Online-Buchung / Termine", description: "Buchungs- oder Terminsystem einbinden", price: 600, hours: 5, unit: "Pauschal" },
@@ -96,7 +96,7 @@ export const defaultCalculatorConfig: CalculatorConfig = {
     { id: "newsletter", name: "Newsletter-Anbindung", description: "Anmeldeformular und Anbindung an Mailchimp oder Brevo", price: 300, hours: 2.5, unit: "Pauschal" },
   ],
   recurring: [
-    { id: "hosting", name: "Hosting", description: "Hosting mit SSL, tägliche Backups, Updates, monatlich kündbar", price: 39, interval: "monat", defaultOn: true },
+    { id: "hosting", name: "Hosting", description: "Hosting mit SSL, tägliche Backups, Updates, monatlich kündbar", price: 42, interval: "monat", defaultOn: true },
     { id: "hostingSeo", name: "Hosting + SEO", description: "Hosting mit laufender Suchmaschinenoptimierung, monatlich kündbar", price: 65, interval: "monat", defaultOn: false },
     { id: "rundum", name: "Hosting Rundum", description: "Hosting, SEO, Betreuung des Google-Unternehmensprofils und laufende kleine Änderungen, monatlich kündbar", price: 95, interval: "monat", defaultOn: false },
     { id: "domain", name: "Domain .ch", description: "Registrierung und Verwaltung", price: 20, interval: "jahr", defaultOn: true },

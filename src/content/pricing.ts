@@ -3,9 +3,9 @@ import type { Locale, Localized } from "./types";
 /*
  * Public prices, set by Ferhat on 2026-10-13 (10:06: «immer "ab" preise nennen», the Starter package cheap; 14:00 the
  * price review: Google care in Rundum, no demo refund, domain amount; 14:41 «sicher ein paket unter 1000 franken haben
- * ... etwas höher als webxon sein ca 100 fr. jeweils»: Starter 890 up to 3 pages at 500 each, Professional ab 5'000,
- * Individuell ab 6'600): a paid
- * design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
+ * ... etwas höher als webxon sein ca 100 fr. jeweils»: Starter 890 up to 3 pages at 500 each, Individuell ab 6'600;
+ * 16:29 «ok» to the price thread's gaps: Professional ab 4'950 (15:37 «wollen wir ab 4850.- machen professionell?», kept
+ * above webxon), KMU up to 8 pages at 500 each, a second language at 140 per page, hosting 42): a paid design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
  * month. Nothing is free for a period (13:17 «ich möchte alles verrechnen können»): hosting is billed from the launch.
  * The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts): change both together.
  * Every price on the site (Preise page, service and industry pages, FAQ answers, llms.txt) is built from this file.
@@ -35,6 +35,23 @@ export interface PricePackage {
 export const extraPagePrice = 500;
 /** Starter stops here; from one page more the package KMU applies. */
 export const starterMaxPages = 3;
+/** Pages in the KMU price; up to kmuMaxPages each further page costs extraPagePrice, from one more Professional applies. */
+export const kmuPages = 5;
+export const kmuMaxPages = 8;
+/** Second language for Starter, KMU and Professional, per page, without the translation. Three or more languages: Individuell. */
+export const secondLanguagePagePrice = 140;
+
+/** Card line of Starter, KMU and Professional for the second language. */
+export const secondLanguageLine: Localized<string> = {
+  de: `Zweite Sprache (z. B. Französisch): ${chf(secondLanguagePagePrice)} pro Seite`,
+  fr: `Deuxième langue (p. ex. allemand) : ${chf(secondLanguagePagePrice)} par page`,
+};
+
+/** Extra pages and the second language in two sentences, for FAQ answers, the cost guide and llms.txt. */
+export const extrasNote: Localized<string> = {
+  de: `Jede weitere Seite kostet ${chf(extraPagePrice)}: im Starter bis ${starterMaxPages} Seiten, im KMU bis ${kmuMaxPages} Seiten. Eine zweite Sprache kostet ${chf(secondLanguagePagePrice)} pro Seite, die Übersetzung liefern Sie oder wir offerieren sie separat.`,
+  fr: `Chaque page supplémentaire coûte ${chf(extraPagePrice)} : avec Starter jusqu'à ${starterMaxPages} pages, avec PME jusqu'à ${kmuMaxPages} pages. Une deuxième langue coûte ${chf(secondLanguagePagePrice)} par page, vous fournissez la traduction ou nous la proposons séparément.`,
+};
 /** Approximate yearly cost of a .ch domain, billed separately. */
 export const domainYearly = 20;
 
@@ -67,8 +84,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Une page avec l'essentiel : pour les nouvelles entreprises, les indépendants et les offres claires.",
     },
     features: {
-      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online", `Bis ${starterMaxPages} Seiten: jede weitere Seite ${chf(extraPagePrice)}`],
-      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines", `Jusqu'à ${starterMaxPages} pages : chaque page supplémentaire ${chf(extraPagePrice)}`],
+      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online", `Bis ${starterMaxPages} Seiten: jede weitere Seite ${chf(extraPagePrice)}`, secondLanguageLine.de],
+      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines", `Jusqu'à ${starterMaxPages} pages : chaque page supplémentaire ${chf(extraPagePrice)}`, secondLanguageLine.fr],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
   },
@@ -86,20 +103,22 @@ export const pricePackages: PricePackage[] = [
     },
     features: {
       de: [
-        "Bis 5 Seiten",
+        `Bis ${kmuPages} Seiten, jede weitere Seite ${chf(extraPagePrice)} bis ${kmuMaxPages} Seiten`,
         "Eigenes Design mit dezenten Bewegungen",
         "Kontaktformular und Online-Termine",
         "Google-Unternehmensprofil eingerichtet",
         "Google-Grundlagen und Besucherzahlen ohne Cookies",
         "In der Regel in rund 3 Wochen online",
+        secondLanguageLine.de,
       ],
       fr: [
-        "Jusqu'à 5 pages",
+        `Jusqu'à ${kmuPages} pages, chaque page supplémentaire ${chf(extraPagePrice)} jusqu'à ${kmuMaxPages} pages`,
         "Design propre avec mouvements discrets",
         "Formulaire de contact et rendez-vous en ligne",
         "Fiche Google Business Profile créée",
         "Bases Google et visites mesurées sans cookies",
         "En ligne en général en 3 semaines environ",
+        secondLanguageLine.fr,
       ],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
@@ -107,7 +126,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "professional",
     name: { de: "Professional", fr: "Professional" },
-    price: 5000,
+    price: 4950,
     from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
@@ -116,8 +135,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Pour les entreprises avec plusieurs offres, sites ou beaucoup de contenu.",
     },
     features: {
-      de: ["Bis 10 Seiten", "Designkonzept mit Animationen", "Inhalte selbst bearbeiten (CMS)", "Blog oder News", "Erweiterte Google-Grundlagen", "Google-Unternehmensprofil eingerichtet", "Schulung bei der Übergabe"],
-      fr: ["Jusqu'à 10 pages", "Concept graphique avec animations", "Contenus modifiables vous-même (CMS)", "Blog ou actualités", "Bases Google avancées", "Fiche Google Business Profile créée", "Formation à la remise"],
+      de: ["Bis 10 Seiten", "Designkonzept mit Animationen", "Inhalte selbst bearbeiten (CMS)", "Blog oder News", "Erweiterte Google-Grundlagen", "Google-Unternehmensprofil eingerichtet", "Schulung bei der Übergabe", secondLanguageLine.de],
+      fr: ["Jusqu'à 10 pages", "Concept graphique avec animations", "Contenus modifiables vous-même (CMS)", "Blog ou actualités", "Bases Google avancées", "Fiche Google Business Profile créée", "Formation à la remise", secondLanguageLine.fr],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
   },
@@ -133,8 +152,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Pour les boutiques en ligne, les applications web et les sites de plus de 10 pages.",
     },
     features: {
-      de: ["Onlineshop mit TWINT und Karte", "Web-App, Buchungssystem oder Kundenbereich", "Mehr als 10 Seiten oder mehrere Sprachen", "Verbindung mit Ihrer Kasse und anderen Programmen", "Zeitplan nach Umfang", "Preis nach Aufwand, schriftlich offeriert"],
-      fr: ["Boutique en ligne avec TWINT et carte", "Application web, réservations ou espace client", "Plus de 10 pages ou plusieurs langues", "Liaison avec votre caisse et d'autres logiciels", "Calendrier selon l'ampleur", "Prix selon le travail, devis écrit"],
+      de: ["Onlineshop mit TWINT und Karte", "Web-App, Buchungssystem oder Kundenbereich", "Mehr als 10 Seiten oder drei und mehr Sprachen", "Verbindung mit Ihrer Kasse und anderen Programmen", "Zeitplan nach Umfang", "Preis nach Aufwand, schriftlich offeriert"],
+      fr: ["Boutique en ligne avec TWINT et carte", "Application web, réservations ou espace client", "Plus de 10 pages ou trois langues et plus", "Liaison avec votre caisse et d'autres logiciels", "Calendrier selon l'ampleur", "Prix selon le travail, devis écrit"],
     },
     cta: { de: "Offerte anfragen", fr: "Demander un devis" },
   },
@@ -158,7 +177,7 @@ export const careTiers: CareTier[] = [
   {
     id: "hosting",
     name: { de: "Hosting", fr: "Hébergement" },
-    price: 39,
+    price: 42,
     items: {
       de: ["Hosting mit SSL-Zertifikat", "Tägliche Backups", "Technische Updates und Sicherheit", "Persönlicher Support"],
       fr: ["Hébergement avec certificat SSL", "Sauvegardes quotidiennes", "Mises à jour techniques et sécurité", "Support personnel"],
@@ -291,8 +310,8 @@ export const prices = {
 export function packageSummary(locale: Locale): string {
   const [starter, kmu, professional] = (["starter", "kmu", "professional"] as const).map((id) => packagePriceLabel(locale, pricePackages.find((p) => p.id === id)!));
   return locale === "de"
-    ? `Starter (Onepager) ${starter}, KMU (bis 5 Seiten) ${kmu} und Professional (bis 10 Seiten) ${professional}`
-    : `Starter (une page) ${starter}, PME (jusqu'à 5 pages) ${kmu} et Professional (jusqu'à 10 pages) ${professional}`;
+    ? `Starter (Onepager) ${starter}, KMU (bis ${kmuPages} Seiten, erweiterbar auf ${kmuMaxPages}) ${kmu} und Professional (bis 10 Seiten) ${professional}`
+    : `Starter (une page) ${starter}, PME (jusqu'à ${kmuPages} pages, extensible à ${kmuMaxPages}) ${kmu} et Professional (jusqu'à 10 pages) ${professional}`;
 }
 
 /** Answer to "Was kostet ...?" in FAQs, built from the prices above. */
@@ -302,7 +321,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
     const hostingLine = `Hosting gibt es ab ${hosting} pro Monat, monatlich kündbar.`;
     switch (topic) {
       case "website":
-        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}, bis höchstens ${starterMaxPages} Seiten; ab ${starterMaxPages + 1} Seiten gilt das Paket KMU. Onlineshops, Web-Apps und grössere Auftritte offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
+        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. ${extrasNote.de} Ab ${starterMaxPages + 1} Seiten gilt das Paket KMU, ab ${kmuMaxPages + 1} Seiten Professional. Onlineshops, Web-Apps, grössere Auftritte und Webseiten in drei und mehr Sprachen offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
       case "redesign":
         return `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: ${packageSummary("de")}, grössere Projekte ab ${shop}. Die Übernahme Ihrer bisherigen Inhalte und Weiterleitungen der alten Adressen stehen als eigene Position in der Offerte. ${hostingLine}`;
       case "shop":
@@ -316,7 +335,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
   const hostingLine = `L'hébergement commence à ${hosting} par mois, résiliable chaque mois.`;
   switch (topic) {
     case "website":
-      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}, jusqu'à ${starterMaxPages} pages au maximum ; dès ${starterMaxPages + 1} pages, la formule PME s'applique. Les boutiques en ligne, applications web et sites plus grands sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
+      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. ${extrasNote.fr} Dès ${starterMaxPages + 1} pages, la formule PME s'applique, dès ${kmuMaxPages + 1} pages la formule Professional. Les boutiques en ligne, applications web, sites plus grands et sites en trois langues ou plus sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
     case "redesign":
       return `Une refonte suit les mêmes formules qu'un nouveau site : ${packageSummary("fr")}, les projets plus grands dès ${shop}. La reprise de vos contenus actuels et les redirections des anciennes adresses figurent comme poste séparé dans le devis. ${hostingLine}`;
     case "shop":
