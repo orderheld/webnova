@@ -7,7 +7,7 @@ const allPrices = { de: "Alle Preise", fr: "Tous les tarifs" };
 
 /**
  * Price line with a link to the price list: on the dark page heroes (`dark`) and in light sections
- * such as the sector preview. `lines` are short texts like "Webseiten ab CHF 2’000", joined with " · ".
+ * such as the sector preview. `lines` are short texts like "Webseiten ab CHF 600", joined with " · ".
  */
 export function PriceHint({ locale, lines, dark = false, className = "" }: { locale: Locale; lines: string[]; dark?: boolean; className?: string }) {
   if (!hasRoute("pricing") || !lines.length) return null;

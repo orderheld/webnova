@@ -1,6 +1,6 @@
 /**
- * Price calculator built around fixed packages plus add-ons (websites from CHF 2'000 to about CHF 10'000)
- * and the recurring fees billed from year 2. Pure functions, safe in client components.
+ * Price calculator built around fixed packages plus add-ons (websites from CHF 600, larger projects from
+ * CHF 2'500) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
  * The package prices are also published on the website (src/content/pricing.ts): change both together.
  */
@@ -48,36 +48,29 @@ export interface CalculatorConfig {
 
 export const defaultCalculatorConfig: CalculatorConfig = {
   targetRate: 110,
-  minTotal: 2000,
+  minTotal: 600,
   maxTotal: 10000,
   packages: [
     {
       id: "starter",
       name: "Webseite Starter",
-      description: "Onepager oder Webseite bis 3 Seiten, responsives Design, Kontaktformular, Basis-SEO, Go-live",
-      price: 2000,
-      hours: 16,
+      description: "Onepager, individuelles Design, für Handy und Computer, Kontaktformular, Go-live in 1 bis 2 Wochen",
+      price: 600,
+      hours: 6,
     },
     {
       id: "kmu",
       name: "Webseite KMU",
-      description: "Bis 6 Seiten, individuelles Design, CMS, Kontaktformular, Onpage-SEO, Google Unternehmensprofil, Schulung",
-      price: 3900,
-      hours: 30,
+      description: "2 bis 5 Seiten, individuelles Design mit Animationen, Kontaktformular und Terminbuchung, SEO-Grundlagen, Besucherstatistik, Hosting mit SEO 3 Monate gratis",
+      price: 1390,
+      hours: 14,
     },
     {
       id: "professional",
       name: "Webseite Professional",
-      description: "Bis 12 Seiten, Designkonzept, CMS, Blog/News, erweiterte SEO-Grundlagen, Animationen, Schulung",
-      price: 6200,
-      hours: 48,
-    },
-    {
-      id: "shop",
-      name: "Onlineshop",
-      description: "Shop mit bis zu 50 Produkten, TWINT und Karte, Versand, MWST, Rechtstexte, Kundenkonto, Schulung",
-      price: 7900,
-      hours: 62,
+      description: "Ab 6 Seiten, Onlineshop, Buchungssystem oder Kundenbereich, Zahlung mit TWINT und Karte, Anbindungen",
+      price: 2500,
+      hours: 24,
     },
   ],
   addons: [
@@ -96,8 +89,9 @@ export const defaultCalculatorConfig: CalculatorConfig = {
     { id: "newsletter", name: "Newsletter-Anbindung", description: "Anmeldeformular und Anbindung an Mailchimp oder Brevo", price: 300, hours: 2.5, unit: "Pauschal" },
   ],
   recurring: [
-    { id: "hosting", name: "Hosting & SSL", description: "Schweizer Hosting, SSL-Zertifikat, tägliche Backups", price: 240, interval: "jahr", defaultOn: true },
-    { id: "maintenance", name: "Wartung & Updates", description: "Updates, Sicherheit, kleine Anpassungen", price: 480, interval: "jahr", defaultOn: true },
+    { id: "hosting", name: "Hosting", description: "Hosting mit SSL, tägliche Backups, Updates, monatlich kündbar", price: 39, interval: "monat", defaultOn: true },
+    { id: "hostingSeo", name: "Hosting + SEO", description: "Hosting mit laufender Suchmaschinenoptimierung, monatlich kündbar", price: 59, interval: "monat", defaultOn: false },
+    { id: "rundum", name: "Hosting Rundum", description: "Hosting, SEO und laufende kleine Änderungen, monatlich kündbar", price: 89, interval: "monat", defaultOn: false },
     { id: "domain", name: "Domain .ch", description: "Registrierung und Verwaltung", price: 25, interval: "jahr", defaultOn: true },
   ],
 };
@@ -138,7 +132,7 @@ export const isPerUnit = (unit: string) => !!unit && unit !== "Pauschal";
 
 export const packageLine = (p: CalcPackage): CalcLine => ({ id: p.id, name: p.name, description: p.description, qty: 1, unit: "Pauschal", price: p.price, hours: p.hours });
 export const addonLine = (a: CalcAddon, qty = 1): CalcLine => ({ id: a.id, name: a.name, description: a.description, qty, unit: a.unit, price: a.price, hours: a.hours });
-export const recurringLine = (r: CalcRecurring): CalcRecurringLine => ({ id: r.id, name: r.name, description: r.description, price: r.price, interval: r.interval, fromYear2: true });
+export const recurringLine = (r: CalcRecurring): CalcRecurringLine => ({ id: r.id, name: r.name, description: r.description, price: r.price, interval: r.interval, fromYear2: false });
 
 export function newCalculation(cfg: CalculatorConfig, packageId?: string): CalcState {
   const p = cfg.packages.find((x) => x.id === packageId) ?? cfg.packages[1] ?? cfg.packages[0];

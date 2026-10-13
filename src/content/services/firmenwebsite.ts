@@ -166,7 +166,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Was kostet es, eine Firmenwebsite erstellen zu lassen?",
-          a: `Eine Firmenwebsite kostet bei Webnova ab ${prices.starter} (Starter, bis 3 Seiten), ab ${prices.kmu} (KMU, bis 6 Seiten) oder ab ${prices.professional} (Professional, bis 12 Seiten). Weitere Sprachen, Texte und Bilder kommen je nach Bedarf als eigene Positionen dazu. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.`,
+          a: `Eine Firmenwebsite kostet bei Webnova ${prices.starter} als Onepager (Starter), ${prices.kmu} mit 2 bis 5 Seiten (KMU) oder ab ${prices.professional} für grössere Auftritte (Professional). Weitere Sprachen, Texte und Bilder kommen je nach Bedarf als eigene Positionen dazu. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.`,
         },
         {
           q: "Welche Angaben gehören ins Impressum einer Firmenwebsite?",
@@ -364,7 +364,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Combien coûte la création d'un site d'entreprise ?",
-          a: `Chez Webnova, un site d'entreprise coûte dès ${prices.starter} (Starter, jusqu'à 3 pages), dès ${prices.kmu} (PME, jusqu'à 6 pages) ou dès ${prices.professional} (Professional, jusqu'à 12 pages). Langues supplémentaires, textes et images s'ajoutent selon vos besoins comme postes séparés. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.`,
+          a: `Chez Webnova, un site d'entreprise coûte ${prices.starter} sur une page (Starter), ${prices.kmu} avec 2 à 5 pages (PME) ou dès ${prices.professional} pour une présence plus grande (Professional). Langues supplémentaires, textes et images s'ajoutent selon vos besoins comme postes séparés. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.`,
         },
         {
           q: "Que doivent contenir les mentions légales d'un site d'entreprise ?",

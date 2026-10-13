@@ -62,7 +62,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign?",
-            a: `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: Starter ab ${prices.starter}, KMU ab ${prices.kmu} und Professional ab ${prices.professional}. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine klare Offerte, in der genau beschrieben ist, was enthalten ist.`,
+            a: `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: Starter ${prices.starter}, KMU ${prices.kmu} und Professional ab ${prices.professional}. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine klare Offerte, in der genau beschrieben ist, was enthalten ist.`,
           },
         ],
       },
@@ -121,7 +121,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet ?",
-            a: `Une refonte suit les mêmes formules qu'un nouveau site : Starter dès ${prices.starter}, PME dès ${prices.kmu} et Professional dès ${prices.professional}. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre claire qui détaille précisément ce qui est inclus.`,
+            a: `Une refonte suit les mêmes formules qu'un nouveau site : Starter ${prices.starter}, PME ${prices.kmu} et Professional dès ${prices.professional}. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre claire qui détaille précisément ce qui est inclus.`,
           },
         ],
       },
@@ -315,7 +315,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Redesign für einen Betrieb in Solothurn?",
-            a: `Für ein Redesign gelten unsere Webseiten-Pakete: Starter ab ${prices.starter}, KMU ab ${prices.kmu} und Professional ab ${prices.professional}. Was dazukommt, hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
+            a: `Für ein Redesign gelten unsere Webseiten-Pakete: Starter ${prices.starter}, KMU ${prices.kmu} und Professional ab ${prices.professional}. Was dazukommt, hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -375,7 +375,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte pour une entreprise soleuroise ?",
-            a: `Une refonte suit nos formules site internet : Starter dès ${prices.starter}, PME dès ${prices.kmu} et Professional dès ${prices.professional}. Le reste dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre claire.`,
+            a: `Une refonte suit nos formules site internet : Starter ${prices.starter}, PME ${prices.kmu} et Professional dès ${prices.professional}. Le reste dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -443,7 +443,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign in Bern?",
-            a: `Die Pakete beginnen bei ${prices.starter} für Starter, ${prices.kmu} für KMU und ${prices.professional} für Professional. Wie viel genau, hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
+            a: `Die Pakete kosten ${prices.starter} für Starter, ${prices.kmu} für KMU und ab ${prices.professional} für Professional. Wie viel genau, hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -503,7 +503,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet à Berne ?",
-            a: `Les formules commencent à ${prices.starter} pour Starter, ${prices.kmu} pour PME et ${prices.professional} pour Professional. Le prix exact dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre claire.`,
+            a: `Les formules coûtent ${prices.starter} pour Starter, ${prices.kmu} pour PME et dès ${prices.professional} pour Professional. Le prix exact dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },

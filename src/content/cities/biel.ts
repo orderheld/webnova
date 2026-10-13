@@ -77,7 +77,7 @@ export const biel: City = {
         },
         {
           q: "Was kostet eine Webseite in Biel?",
-          a: `Webseiten gibt es bei Webnova ab ${prices.starter} (Starter), ${prices.kmu} (KMU) und ${prices.professional} (Professional). In Biel lohnt sich oft eine zweite Sprachversion, sie steht als eigene Position in der Offerte. Nach einer kostenlosen Erstberatung erhalten Sie eine Offerte, die genau auf Ihr Projekt zugeschnitten ist.`,
+          a: `Webseiten gibt es bei Webnova für ${prices.starter} (Starter, Onepager), ${prices.kmu} (KMU, 2 bis 5 Seiten) und ab ${prices.professional} (Professional). In Biel lohnt sich oft eine zweite Sprachversion, sie steht als eigene Position in der Offerte. Nach einer kostenlosen Erstberatung erhalten Sie eine Offerte, die genau auf Ihr Projekt zugeschnitten ist.`,
         },
         {
           q: "Schreiben Sie die französischen Texte selbst?",
@@ -153,7 +153,7 @@ export const biel: City = {
         },
         {
           q: "Combien coûte un site internet à Bienne ?",
-          a: `Chez Webnova, les sites internet coûtent dès ${prices.starter} (Starter), ${prices.kmu} (PME) et ${prices.professional} (Professional). À Bienne, une deuxième version linguistique est souvent utile : elle figure comme poste séparé dans le devis. Après un premier conseil gratuit, vous recevez une offre détaillée et sans engagement.`,
+          a: `Chez Webnova, les sites internet coûtent ${prices.starter} (Starter, une page), ${prices.kmu} (PME, 2 à 5 pages) et dès ${prices.professional} (Professional). À Bienne, une deuxième version linguistique est souvent utile : elle figure comme poste séparé dans le devis. Après un premier conseil gratuit, vous recevez une offre détaillée et sans engagement.`,
         },
         {
           q: "Rédigez-vous vous-mêmes les textes allemands ?",
