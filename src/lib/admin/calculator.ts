@@ -1,5 +1,5 @@
 /**
- * Price calculator built around fixed packages plus add-ons (websites from CHF 890, extra pages CHF 290, shops and larger projects
+ * Price calculator built around fixed packages plus add-ons (websites from CHF 890, extra pages CHF 500, shops and larger projects
  * from CHF 6'700) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
  * The package prices are also published on the website (src/content/pricing.ts): change both together.
@@ -69,19 +69,19 @@ export const defaultCalculatorConfig: CalculatorConfig = {
       id: "professional",
       name: "Webseite Professional",
       description: "Bis 10 Seiten, Designkonzept mit Animationen, CMS, Blog/News, erweiterte Google-Grundlagen, Google-Unternehmensprofil, Schulung",
-      price: 5200,
+      price: 5000,
       hours: 44,
     },
     {
       id: "individuell",
       name: "Individuell (Shop, Web-App, 10+ Seiten)",
       description: "Onlineshop mit TWINT und Karte, Web-App oder Kundenbereich, mehr als 10 Seiten, Anbindungen",
-      price: 6700,
+      price: 6600,
       hours: 58,
     },
   ],
   addons: [
-    { id: "page", name: "Zusätzliche Seite", description: "Gestaltung und Umsetzung pro Seite", price: 290, hours: 2, unit: "Seiten" },
+    { id: "page", name: "Zusätzliche Seite", description: "Gestaltung und Umsetzung pro Seite", price: 500, hours: 2, unit: "Seiten" },
     { id: "language", name: "Zusätzliche Sprache", description: "Mehrsprachigkeit inkl. Sprachumschalter, ohne Übersetzung", price: 600, hours: 5, unit: "Sprachen" },
     { id: "shopModule", name: "Shop-Funktion", description: "Kleiner Shop in der Webseite, TWINT und Karte", price: 2500, hours: 20, unit: "Pauschal" },
     { id: "products", name: "Produkte erfassen", description: "Pro Produkt inkl. Bild und Varianten", price: 15, hours: 0.2, unit: "Produkte" },

@@ -443,7 +443,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign in Bern?",
-            a: `Die Pakete kosten ${prices.starter} für Starter, ${prices.kmu} für KMU und ${prices.professional} für Professional. Wie viel genau, hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
+            a: `Die Pakete kosten ab ${prices.starter} für Starter, ab ${prices.kmu} für KMU und ab ${prices.professional} für Professional. Wie viel genau, hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -503,7 +503,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet à Berne ?",
-            a: `Les formules coûtent ${prices.starter} pour Starter, ${prices.kmu} pour PME et ${prices.professional} pour Professional. Le prix exact dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre claire.`,
+            a: `Les formules coûtent dès ${prices.starter} pour Starter, dès ${prices.kmu} pour PME et dès ${prices.professional} pour Professional. Le prix exact dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },

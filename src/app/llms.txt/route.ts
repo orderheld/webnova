@@ -1,5 +1,5 @@
 import { guides } from "@/content/guides";
-import { careTiers, chf, domainNote, extraPagePrice, fromPrice, gbpPrice, packagePriceLabel, prices, vatNote, websitePackages } from "@/content/pricing";
+import { careTiers, chf, domainNote, extraPagePrice, fromPrice, gbpPrice, packagePriceLabel, prices, starterMaxPages, vatNote, websitePackages } from "@/content/pricing";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { hasRoute, href } from "@/lib/routes";
@@ -16,7 +16,7 @@ const text: Record<Locale, { summary: string; about: string; services: string; g
   de: {
     summary:
       "Webdesign-Agentur für KMU in der ganzen Schweiz: Webseiten erstellen, erneuern und betreuen, dazu SEO, Onlineshops und Kassensysteme. Auf Deutsch und Französisch.",
-    about: `${site.name} (${site.legalName}) erstellt Webseiten für Schweizer KMU. Ihr Ansprechpartner ist Ferhat Demir. Preise, einmalig: Design-Demo der Startseite ${prices.demo} (bei Auftrag angerechnet); ${websitePackages.map((p) => `${p.name.de} ${packagePriceLabel("de", p)}`).join(", ")} (Onlineshops, Web-Apps und mehr als 10 Seiten), jede weitere Seite ${chf(extraPagePrice)}. Hosting freiwillig und monatlich kündbar: ${careTiers.map((c) => `${c.name.de} ${chf(c.price)}`).join(", ")} pro Monat. Google-Unternehmensprofil einmalig ${fromPrice("de", gbpPrice.setup)}, Betreuung ${chf(gbpPrice.monthly)} pro Monat (im Rundum enthalten). ${domainNote.de} ${vatNote.de} Die genaue Offerte folgt nach einem kostenlosen Erstgespräch.`,
+    about: `${site.name} (${site.legalName}) erstellt Webseiten für Schweizer KMU. Ihr Ansprechpartner ist Ferhat Demir. Preise, einmalig: Design-Demo der Startseite ${prices.demo} (bei Auftrag angerechnet); ${websitePackages.map((p) => `${p.name.de} ${packagePriceLabel("de", p)}`).join(", ")} (Onlineshops, Web-Apps und mehr als 10 Seiten); im Starter jede weitere Seite ${chf(extraPagePrice)}, bis ${starterMaxPages} Seiten. Hosting freiwillig und monatlich kündbar: ${careTiers.map((c) => `${c.name.de} ${chf(c.price)}`).join(", ")} pro Monat. Google-Unternehmensprofil einmalig ${fromPrice("de", gbpPrice.setup)}, Betreuung ${chf(gbpPrice.monthly)} pro Monat (im Rundum enthalten). ${domainNote.de} ${vatNote.de} Die genaue Offerte folgt nach einem kostenlosen Erstgespräch.`,
     services: "Leistungen",
     guides: "Ratgeber",
     company: "Unternehmen",
@@ -31,7 +31,7 @@ const text: Record<Locale, { summary: string; about: string; services: string; g
   fr: {
     summary:
       "Agence web pour les PME de toute la Suisse : création, refonte et maintenance de sites internet, ainsi que SEO, boutiques en ligne et systèmes de caisse. En français et en allemand.",
-    about: `${site.name} (${site.legalName}) crée des sites internet pour les PME suisses. Votre interlocuteur est Ferhat Demir. Tarifs, paiement unique : démo design de la page d'accueil ${prices.demo} (déduite à la commande) ; ${websitePackages.map((p) => `${p.name.fr} ${packagePriceLabel("fr", p)}`).join(", ")} (boutiques en ligne, applications web et plus de 10 pages), chaque page supplémentaire ${chf(extraPagePrice)}. Hébergement facultatif et résiliable chaque mois : ${careTiers.map((c) => `${c.name.fr} ${chf(c.price)}`).join(", ")} par mois. Fiche Google Business Profile ${fromPrice("fr", gbpPrice.setup)} en paiement unique, suivi ${chf(gbpPrice.monthly)} par mois (compris dans Tout compris). ${domainNote.fr} ${vatNote.fr} Le devis exact suit un premier entretien gratuit.`,
+    about: `${site.name} (${site.legalName}) crée des sites internet pour les PME suisses. Votre interlocuteur est Ferhat Demir. Tarifs, paiement unique : démo design de la page d'accueil ${prices.demo} (déduite à la commande) ; ${websitePackages.map((p) => `${p.name.fr} ${packagePriceLabel("fr", p)}`).join(", ")} (boutiques en ligne, applications web et plus de 10 pages) ; avec Starter, chaque page supplémentaire ${chf(extraPagePrice)}, jusqu'à ${starterMaxPages} pages. Hébergement facultatif et résiliable chaque mois : ${careTiers.map((c) => `${c.name.fr} ${chf(c.price)}`).join(", ")} par mois. Fiche Google Business Profile ${fromPrice("fr", gbpPrice.setup)} en paiement unique, suivi ${chf(gbpPrice.monthly)} par mois (compris dans Tout compris). ${domainNote.fr} ${vatNote.fr} Le devis exact suit un premier entretien gratuit.`,
     services: "Prestations",
     guides: "Conseils",
     company: "Entreprise",
