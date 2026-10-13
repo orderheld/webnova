@@ -2,7 +2,9 @@ import type { Locale, Localized } from "./types";
 
 /*
  * Public prices, set by Ferhat on 2026-10-13 (10:06: «immer "ab" preise nennen», the Starter package cheap; 14:00 the
- * price review: extra page 290, Professional ab 5'200, Google care in Rundum, no demo refund, domain amount): a paid
+ * price review: Google care in Rundum, no demo refund, domain amount; 14:41 «sicher ein paket unter 1000 franken haben
+ * ... etwas höher als webxon sein ca 100 fr. jeweils»: Starter 890 up to 3 pages at 500 each, Professional ab 5'000,
+ * Individuell ab 6'600): a paid
  * design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
  * month. Nothing is free for a period (13:17 «ich möchte alles verrechnen können»): hosting is billed from the launch.
  * Webnova is not subject to VAT: the prices are final, no MWST is added.
@@ -30,8 +32,10 @@ export interface PricePackage {
   cta: Localized<string>;
 }
 
-/** Each page beyond the package scope, e.g. a second page for Starter. */
-export const extraPagePrice = 290;
+/** Each page beyond the package scope, e.g. a second or third page for Starter. */
+export const extraPagePrice = 500;
+/** Starter stops here; from one page more the package KMU applies. */
+export const starterMaxPages = 3;
 /** Approximate yearly cost of a .ch domain, billed separately. */
 export const domainYearly = 20;
 
@@ -64,8 +68,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Une page avec l'essentiel : pour les nouvelles entreprises, les indépendants et les offres claires.",
     },
     features: {
-      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online", `Jede weitere Seite ${chf(extraPagePrice)}`],
-      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines", `Chaque page supplémentaire ${chf(extraPagePrice)}`],
+      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online", `Bis ${starterMaxPages} Seiten: jede weitere Seite ${chf(extraPagePrice)}`],
+      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines", `Jusqu'à ${starterMaxPages} pages : chaque page supplémentaire ${chf(extraPagePrice)}`],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
   },
@@ -104,7 +108,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "professional",
     name: { de: "Professional", fr: "Professional" },
-    price: 5200,
+    price: 5000,
     from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
@@ -121,7 +125,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "individuell",
     name: { de: "Individuell", fr: "Sur mesure" },
-    price: 6700,
+    price: 6600,
     from: true,
     note: { de: "individuell offeriert", fr: "sur devis" },
     service: "webdesign",
@@ -296,7 +300,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
     const hostingLine = `Hosting gibt es ab ${hosting} pro Monat, monatlich kündbar.`;
     switch (topic) {
       case "website":
-        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}. Onlineshops, Web-Apps und grössere Auftritte offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
+        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}, bis höchstens ${starterMaxPages} Seiten; ab ${starterMaxPages + 1} Seiten gilt das Paket KMU. Onlineshops, Web-Apps und grössere Auftritte offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
       case "redesign":
         return `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: ${packageSummary("de")}, grössere Projekte ab ${shop}. Die Übernahme Ihrer bisherigen Inhalte und Weiterleitungen der alten Adressen stehen als eigene Position in der Offerte. ${hostingLine}`;
       case "shop":
@@ -310,7 +314,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
   const hostingLine = `L'hébergement commence à ${hosting} par mois, résiliable chaque mois.`;
   switch (topic) {
     case "website":
-      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}. Les boutiques en ligne, applications web et sites plus grands sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
+      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}, jusqu'à ${starterMaxPages} pages au maximum ; dès ${starterMaxPages + 1} pages, la formule PME s'applique. Les boutiques en ligne, applications web et sites plus grands sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
     case "redesign":
       return `Une refonte suit les mêmes formules qu'un nouveau site : ${packageSummary("fr")}, les projets plus grands dès ${shop}. La reprise de vos contenus actuels et les redirections des anciennes adresses figurent comme poste séparé dans le devis. ${hostingLine}`;
     case "shop":

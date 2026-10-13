@@ -9,6 +9,7 @@ import {
   costAnswer,
   domainYearly,
   extraPagePrice,
+  starterMaxPages,
   fromPrice,
   gbpPrice,
   billingNote,
@@ -80,7 +81,7 @@ export const pricingText = {
       { q: "Was kostet eine Webseite bei Webnova?", a: costAnswer("de", "website") },
       {
         q: "Was ist im Paketpreis enthalten?",
-        a: `Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte, jede weitere Seite zum Beispiel mit ${chf(extraPagePrice)}. So sehen Sie vor dem Start, was Ihre Webseite kostet.`,
+        a: `Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}, bis höchstens ${starterMaxPages} Seiten. So sehen Sie vor dem Start, was Ihre Webseite kostet.`,
       },
       {
         q: "Was ist die Design-Demo?",
@@ -156,7 +157,7 @@ export const pricingText = {
       { q: "Combien coûte un site internet chez Webnova ?", a: costAnswer("fr", "website") },
       {
         q: "Qu'est-ce qui est compris dans le prix de la formule ?",
-        a: `Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis, par exemple ${chf(extraPagePrice)} par page supplémentaire. Vous savez ainsi avant le début ce que coûte votre site.`,
+        a: `Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}, jusqu'à ${starterMaxPages} pages au maximum. Vous savez ainsi avant le début ce que coûte votre site.`,
       },
       {
         q: "Qu'est-ce que la démo design ?",
