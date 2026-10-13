@@ -67,7 +67,7 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Bewertungen aktiv sammeln und beantworten",
           paragraphs: [
-            "Kundenbewertungen beeinflussen sowohl die Sichtbarkeit im Local Pack als auch die Entscheidung der Suchenden. Ein Profil mit vielen aktuellen und echten Bewertungen schafft Vertrauen. Bitten Sie zufriedene Kundinnen und Kunden aktiv um eine Bewertung, zum Beispiel nach einem abgeschlossenen Auftrag, per E-Mail mit direktem Link oder mit einem QR-Code an der Theke.",
+            "Kundenbewertungen beeinflussen sowohl die Sichtbarkeit im Local Pack als auch die Entscheidung der Suchenden. Ein Profil mit vielen aktuellen und echten Bewertungen schafft Vertrauen. Bitten Sie Ihre Kundinnen und Kunden aktiv um eine Bewertung, alle und nicht nur die zufriedensten, zum Beispiel nach einem abgeschlossenen Auftrag, per E-Mail mit direktem Link oder mit einem QR-Code an der Theke.",
             "Beantworten Sie alle Bewertungen, auch die kritischen. Eine sachliche, freundliche Antwort auf eine negative Bewertung zeigt anderen Interessierten, dass Sie Rückmeldungen ernst nehmen. Kaufen Sie niemals Bewertungen und schreiben Sie keine eigenen: Das verstösst gegen die Richtlinien von Google und kann im schlimmsten Fall zur Sperrung Ihres Profils führen. Setzen Sie stattdessen auf einen einfachen, regelmässigen Ablauf.",
           ],
         },
@@ -183,7 +183,7 @@ export const lokalesSeoKmu: Guide = {
         {
           h2: "Récolter des avis clients et y répondre",
           paragraphs: [
-            "Les avis clients influencent à la fois la visibilité dans le Local Pack et la décision des internautes. Une fiche avec de nombreux avis récents et authentiques inspire confiance. Demandez activement un avis à vos clients satisfaits, par exemple après un mandat terminé, par e-mail avec un lien direct ou grâce à un code QR au comptoir.",
+            "Les avis clients influencent à la fois la visibilité dans le Local Pack et la décision des internautes. Une fiche avec de nombreux avis récents et authentiques inspire confiance. Demandez activement un avis à vos clients, à tous et pas seulement aux plus satisfaits, par exemple après un mandat terminé, par e-mail avec un lien direct ou grâce à un code QR au comptoir.",
             "Répondez à tous les avis, y compris aux critiques. Une réponse factuelle et aimable à un avis négatif montre aux autres internautes que vous prenez les retours au sérieux. N'achetez jamais d'avis et n'en rédigez pas vous-même : c'est contraire aux règles de Google et peut, dans le pire des cas, entraîner la suspension de votre fiche. Misez plutôt sur une démarche simple et régulière.",
           ],
         },

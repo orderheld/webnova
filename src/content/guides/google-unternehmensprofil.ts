@@ -22,7 +22,7 @@ export const googleUnternehmensprofil: Guide = {
         "Google ordnet lokale Ergebnisse nach Relevanz, Entfernung und Bekanntheit. Relevanz und Bekanntheit können Sie beeinflussen.",
         "Verwenden Sie Ihren echten Firmennamen ohne zusätzliche Suchbegriffe und wählen Sie die Hauptkategorie sehr bewusst.",
         "Leistungen, Beschreibung, aktuelle Öffnungszeiten und echte Fotos machen das Profil vollständig und vertrauenswürdig.",
-        "Bitten Sie zufriedene Kundschaft aktiv um Bewertungen und beantworten Sie jede Bewertung sachlich.",
+        "Bitten Sie alle Kundinnen und Kunden aktiv um Bewertungen und beantworten Sie jede Bewertung sachlich.",
         "Profil, Website und Verzeichnisse müssen dieselben Firmendaten zeigen.",
       ],
       sources: [
@@ -73,7 +73,7 @@ export const googleUnternehmensprofil: Guide = {
         {
           h2: "Schritt 5: Bewertungen gewinnen und beantworten",
           paragraphs: [
-            "Bewertungen beeinflussen sowohl das Ranking als auch die Entscheidung der Suchenden. Bitten Sie zufriedene Kundinnen und Kunden aktiv darum, idealerweise direkt nach einem gelungenen Auftrag. Am einfachsten geht das mit dem Bewertungslink aus dem Profil, per E-Mail, SMS oder als QR-Code auf Rechnung, Visitenkarte oder Theke.",
+            "Bewertungen beeinflussen sowohl das Ranking als auch die Entscheidung der Suchenden. Bitten Sie Ihre Kundinnen und Kunden aktiv darum, idealerweise direkt nach Abschluss eines Auftrags, und zwar alle, nicht nur die zufriedensten: Gezieltes Auswählen verbietet Google. Am einfachsten geht das mit dem Bewertungslink aus dem Profil, per E-Mail, SMS oder als QR-Code auf Rechnung, Visitenkarte oder Theke.",
             "Beantworten Sie jede Bewertung freundlich und sachlich, auch kritische. Eine gute Antwort auf eine negative Bewertung kann mehr überzeugen als viele positive. Kaufen Sie keine Bewertungen und schreiben Sie keine selbst: Google erkennt solche Muster und kann Bewertungen löschen oder das Profil einschränken.",
           ],
           bullets: [
@@ -122,7 +122,7 @@ export const googleUnternehmensprofil: Guide = {
         "Google classe les résultats locaux selon la pertinence, la distance et la notoriété. Vous pouvez influencer la pertinence et la notoriété.",
         "Utilisez votre vrai nom d'entreprise sans mots-clés ajoutés et choisissez la catégorie principale avec soin.",
         "Prestations, description, horaires à jour et vraies photos rendent la fiche complète et digne de confiance.",
-        "Demandez activement des avis à vos clients satisfaits et répondez à chaque avis de façon factuelle.",
+        "Demandez activement des avis à tous vos clients et répondez à chaque avis de façon factuelle.",
         "La fiche, le site et les annuaires doivent afficher les mêmes données d'entreprise.",
       ],
       sources: [
@@ -173,7 +173,7 @@ export const googleUnternehmensprofil: Guide = {
         {
           h2: "Étape 5 : obtenir des avis et y répondre",
           paragraphs: [
-            "Les avis influencent à la fois le classement et la décision des internautes. Demandez-les activement à vos clients satisfaits, idéalement juste après un mandat réussi. Le plus simple est d'utiliser le lien d'avis de la fiche, par e-mail, SMS ou sous forme de code QR sur la facture, la carte de visite ou le comptoir.",
+            "Les avis influencent à la fois le classement et la décision des internautes. Demandez-les activement à vos clients, idéalement juste après la fin d'un mandat, et à tous, pas seulement aux plus satisfaits : Google interdit cette sélection. Le plus simple est d'utiliser le lien d'avis de la fiche, par e-mail, SMS ou sous forme de code QR sur la facture, la carte de visite ou le comptoir.",
             "Répondez à chaque avis de manière aimable et factuelle, y compris aux critiques. Une bonne réponse à un avis négatif peut convaincre davantage que bien des avis positifs. N'achetez jamais d'avis et n'en rédigez pas vous-même : Google détecte ces pratiques et peut supprimer des avis ou restreindre la fiche.",
           ],
           bullets: [

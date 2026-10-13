@@ -28,14 +28,15 @@ import {
 
 const homeMeta = {
   de: {
-    title: "Webdesign Agentur Schweiz: Webseite erstellen lassen | Webnova",
+    // Region only in title and description (SEO check 2026-10-13, Ferhat's go 14:56); H1 and texts stay Switzerland-wide.
+    title: "Webdesign Agentur Schweiz: Grenchen, Biel, Solothurn | Webnova",
     description:
-      "Webseite erstellen lassen: Webdesign aus einer Hand, schnell, mobil und bei Google sichtbar. Für Unternehmen in der ganzen Schweiz. Kostenlose Erstberatung.",
+      "Webseite erstellen lassen: Webdesign aus einer Hand, schnell, mobil und bei Google sichtbar. Aus Grenchen für Biel, Solothurn, Bern und die ganze Schweiz.",
   },
   fr: {
-    title: "Agence web Suisse : création de site internet | Webnova",
+    title: "Agence web Suisse : site internet à Granges, Bienne | Webnova",
     description:
-      "Faire créer le site internet de votre entreprise : sur mesure, rapide, mobile et visible sur Google. Partout en Suisse. Premier conseil gratuit.",
+      "Faire créer le site de votre entreprise : sur mesure, rapide, mobile et visible sur Google. Depuis Granges pour Bienne, Soleure, Berne et toute la Suisse.",
   },
 };
 
