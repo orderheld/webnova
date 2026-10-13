@@ -98,6 +98,8 @@ export function ContactList({ locale, hours = false, dark = false, className = "
           <dt className={lab}>{t.address}</dt>
           <dd className={`text-[15.5px] leading-relaxed ${dark ? "text-white/85" : "text-ink-soft"}`}>
             <address className="not-italic">
+              <span className={`font-medium ${dark ? "text-white" : "text-ink"}`}>{site.name}</span>
+              <br />
               {site.address.street}
               <br />
               {site.address.zip} {site.address.city}

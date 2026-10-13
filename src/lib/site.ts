@@ -37,7 +37,7 @@ export const site = {
     canton: "SO",
     country: "CH",
   },
-  geo: { lat: 47.1925, lng: 7.3878 },
+  geo: { lat: 47.19384, lng: 7.39933 }, // Bettlachstrasse 45 (swisstopo)
   // Social profiles in display order: footer, contact lists, thank-you page, e-mails, llms.txt and the sameAs list
   // for Google. No Facebook: Ferhat named Instagram and LinkedIn as his channels (2026-10-09).
   social: [
