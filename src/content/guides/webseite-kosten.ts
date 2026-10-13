@@ -1,4 +1,4 @@
-import { costAnswer, prices } from "../pricing";
+import { costAnswer, domainNote, prices } from "../pricing";
 import type { Guide } from "../types";
 
 export const webseiteKosten: Guide = {
@@ -131,7 +131,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Gibt es neben der Erstellung laufende Kosten?",
-          a: `Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Bei Webnova gibt es Hosting ab ${prices.hosting} pro Monat, monatlich kündbar. Die Domain weisen wir in der Offerte separat aus.`,
+          a: `Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Bei Webnova gibt es Hosting ab ${prices.hosting} pro Monat, monatlich kündbar. ${domainNote.de}`,
         },
         {
           q: "Kann ich klein starten und die Webseite später erweitern?",
@@ -260,7 +260,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Y a-t-il des coûts récurrents en plus de la création ?",
-          a: `Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Chez Webnova, l'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. Le nom de domaine figure séparément dans l'offre.`,
+          a: `Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Chez Webnova, l'hébergement commence à ${prices.hosting} par mois, résiliable chaque mois. ${domainNote.fr}`,
         },
         {
           q: "Puis-je commencer petit et agrandir mon site plus tard ?",

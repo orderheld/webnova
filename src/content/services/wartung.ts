@@ -1,5 +1,5 @@
 import type { Service } from "../types";
-import { costAnswer } from "../pricing";
+import { costAnswer, domainNote } from "../pricing";
 
 export const wartung: Service = {
   key: "wartung",
@@ -34,7 +34,7 @@ export const wartung: Service = {
         },
         {
           title: "Hosting",
-          text: "Auf Wunsch übernehmen wir das Hosting Ihrer Webseite und richten Domain und E-Mail ein. Die Domain steht als eigene Position in der Offerte.",
+          text: `Auf Wunsch übernehmen wir das Hosting Ihrer Webseite und richten Domain und E-Mail ein. ${domainNote.de}`,
         },
         {
           title: "Inhaltliche Anpassungen",
@@ -129,7 +129,7 @@ export const wartung: Service = {
         },
         {
           title: "Hébergement",
-          text: "Sur demande, nous hébergeons votre site et configurons le nom de domaine et les adresses e-mail. Le nom de domaine figure comme poste séparé dans le devis.",
+          text: `Sur demande, nous hébergeons votre site et configurons le nom de domaine et les adresses e-mail. ${domainNote.fr}`,
         },
         {
           title: "Modifications de contenu",
