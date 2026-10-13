@@ -37,8 +37,10 @@ const urlQ = (key = "url"): Question => ({
 
 const pagesOptions: Opt[] = [
   { v: "1", de: "1 Seite (Onepager)", fr: "1 page (one-pager)" },
-  { v: "2-5", de: "Bis 5 Seiten", fr: "Jusqu'à 5 pages" },
-  { v: "5-10", de: "5 bis 10 Seiten", fr: "5 à 10 pages" },
+  { v: "2-5", de: "2 bis 5 Seiten", fr: "2 à 5 pages" },
+  // Buckets follow the packages (2026-10-13): KMU up to 8 pages, Professional up to 10. Older leads may still hold "5-10".
+  { v: "6-8", de: "6 bis 8 Seiten", fr: "6 à 8 pages" },
+  { v: "9-10", de: "9 bis 10 Seiten", fr: "9 à 10 pages" },
   { v: "10+", de: "Mehr als 10", fr: "Plus de 10" },
   unknown,
 ];

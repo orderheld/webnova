@@ -1,5 +1,5 @@
 import type { Service } from "../types";
-import { prices } from "../pricing";
+import { chf, prices, secondLanguagePagePrice } from "../pricing";
 
 export const firmenwebsite: Service = {
   key: "firmenwebsite",
@@ -166,7 +166,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Was kostet es, eine Firmenwebsite erstellen zu lassen?",
-          a: `Eine Firmenwebsite kostet bei Webnova ab ${prices.starter} als Onepager (Starter), ab ${prices.kmu} mit bis zu 5 Seiten (KMU) oder ab ${prices.professional} mit bis zu 10 Seiten (Professional). Weitere Sprachen, Texte und Bilder kommen je nach Bedarf als eigene Positionen dazu. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.`,
+          a: `Eine Firmenwebsite kostet bei Webnova ab ${prices.starter} als Onepager (Starter), ab ${prices.kmu} mit bis zu 5 Seiten (KMU) oder ab ${prices.professional} mit bis zu 10 Seiten (Professional). Eine zweite Sprache kostet ${chf(secondLanguagePagePrice)} pro Seite, Texte und Bilder kommen je nach Bedarf als eigene Positionen dazu. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.`,
         },
         {
           q: "Welche Angaben gehören ins Impressum einer Firmenwebsite?",
@@ -364,7 +364,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Combien coûte la création d'un site d'entreprise ?",
-          a: `Chez Webnova, un site d'entreprise coûte à partir de ${prices.starter} sur une page (Starter), à partir de ${prices.kmu} avec jusqu'à 5 pages (PME) ou à partir de ${prices.professional} avec jusqu'à 10 pages (Professional). Langues supplémentaires, textes et images s'ajoutent selon vos besoins comme postes séparés. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.`,
+          a: `Chez Webnova, un site d'entreprise coûte à partir de ${prices.starter} sur une page (Starter), à partir de ${prices.kmu} avec jusqu'à 5 pages (PME) ou à partir de ${prices.professional} avec jusqu'à 10 pages (Professional). Une deuxième langue coûte ${chf(secondLanguagePagePrice)} par page, textes et images s'ajoutent selon vos besoins comme postes séparés. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.`,
         },
         {
           q: "Que doivent contenir les mentions légales d'un site d'entreprise ?",

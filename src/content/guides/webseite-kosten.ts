@@ -1,4 +1,4 @@
-import { costAnswer, domainNote, prices } from "../pricing";
+import { chf, costAnswer, domainNote, kmuMaxPages, prices, secondLanguagePagePrice } from "../pricing";
 import type { Guide } from "../types";
 
 export const webseiteKosten: Guide = {
@@ -106,9 +106,10 @@ export const webseiteKosten: Guide = {
           bullets: [
             `Design-Demo ${prices.demo}: Entwurf Ihrer Startseite, bei Auftrag angerechnet`,
             `Starter ab ${prices.starter}: Onepager mit eigenem Design und Kontaktformular`,
-            `KMU ab ${prices.kmu}: bis 5 Seiten, Kontaktformular und Online-Termine, Google-Unternehmensprofil`,
+            `KMU ab ${prices.kmu}: bis 5 Seiten (erweiterbar auf ${kmuMaxPages}), Kontaktformular und Online-Termine, Google-Unternehmensprofil`,
             `Professional ab ${prices.professional}: bis 10 Seiten, Designkonzept, Blog oder News, CMS`,
-            `Individuell ab ${prices.shop}: Onlineshop, Web-App oder mehr als 10 Seiten`,
+            `Individuell ab ${prices.shop}: Onlineshop, Web-App, mehr als 10 Seiten oder drei und mehr Sprachen`,
+            `Zweite Sprache: ${chf(secondLanguagePagePrice)} pro Seite, die Übersetzung liefern Sie oder wir offerieren sie separat`,
             `Hosting: ${prices.hosting}, ${prices.hostingSeo} mit SEO oder ${prices.rundum} mit laufenden Änderungen pro Monat, monatlich kündbar`,
           ],
         },
@@ -235,9 +236,10 @@ export const webseiteKosten: Guide = {
           bullets: [
             `Démo design ${prices.demo} : maquette de votre page d'accueil, déduite à la commande`,
             `Starter dès ${prices.starter} : site d'une page avec design sur mesure et formulaire de contact`,
-            `PME dès ${prices.kmu} : jusqu'à 5 pages, formulaire de contact et rendez-vous en ligne, fiche Google`,
+            `PME dès ${prices.kmu} : jusqu'à 5 pages (extensible à ${kmuMaxPages}), formulaire de contact et rendez-vous en ligne, fiche Google`,
             `Professional dès ${prices.professional} : jusqu'à 10 pages, concept graphique, blog ou actualités, CMS`,
-            `Sur mesure dès ${prices.shop} : boutique en ligne, application web ou plus de 10 pages`,
+            `Sur mesure dès ${prices.shop} : boutique en ligne, application web, plus de 10 pages ou trois langues et plus`,
+            `Deuxième langue : ${chf(secondLanguagePagePrice)} par page, vous fournissez la traduction ou nous la proposons séparément`,
             `Hébergement : ${prices.hosting}, ${prices.hostingSeo} avec SEO ou ${prices.rundum} avec modifications courantes par mois, résiliable chaque mois`,
           ],
         },
