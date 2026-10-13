@@ -106,7 +106,7 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
           <div>
             <p className={colTitle}>{t.office}</p>
             <address className="text-[15px] not-italic leading-relaxed text-white/80">
-              <span className="font-medium text-white">{site.name}</span>
+              <span className="block font-medium text-white">{site.name}</span>
               <span className="block text-[13px] text-white/55">{site.legalName}</span>
               {site.address.street}
               <br />
