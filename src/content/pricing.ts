@@ -1,11 +1,11 @@
 import type { Locale, Localized } from "./types";
 
 /*
- * Public prices, set by Ferhat on 2026-10-13 (a paid design demo credited on order, website packages paid once
- * at the level of the regional competition, never below it, hosting optional per month). Webnova is not
- * subject to VAT: the prices are final, no MWST is added. The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts):
- * change both together. Every price on the site (Preise page, service and industry pages, FAQ answers,
- * llms.txt) is built from this file.
+ * Public prices, set by Ferhat on 2026-10-13: a paid design demo credited on order, website packages paid once at
+ * the level of the regional competition plus the VAT it charges (never below it and never the same number as a
+ * competitor), hosting optional per month. Webnova is not subject to VAT: the prices are final, no MWST is added.
+ * The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts): change both together.
+ * Every price on the site (Preise page, service and industry pages, FAQ answers, llms.txt) is built from this file.
  */
 
 export type PackageId = "demo" | "starter" | "kmu" | "professional" | "individuell";
@@ -55,7 +55,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "starter",
     name: { de: "Starter", fr: "Starter" },
-    price: 990,
+    price: 1090,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     forWhom: {
@@ -71,7 +71,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "kmu",
     name: { de: "KMU", fr: "PME" },
-    price: 2690,
+    price: 2990,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     recommended: true,
@@ -104,7 +104,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "professional",
     name: { de: "Professional", fr: "Professional" },
-    price: 4900,
+    price: 5390,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
     forWhom: {
@@ -120,7 +120,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "individuell",
     name: { de: "Individuell", fr: "Sur mesure" },
-    price: 6500,
+    price: 7090,
     from: true,
     note: { de: "individuell offeriert", fr: "sur devis" },
     service: "webdesign",
@@ -154,7 +154,7 @@ export const careTiers: CareTier[] = [
   {
     id: "hosting",
     name: { de: "Hosting", fr: "Hébergement" },
-    price: 39,
+    price: 45,
     items: {
       de: ["Hosting mit SSL-Zertifikat", "Tägliche Backups", "Technische Updates und Sicherheit", "Persönlicher Support"],
       fr: ["Hébergement avec certificat SSL", "Sauvegardes quotidiennes", "Mises à jour techniques et sécurité", "Support personnel"],
@@ -163,7 +163,7 @@ export const careTiers: CareTier[] = [
   {
     id: "seo",
     name: { de: "Hosting + SEO", fr: "Hébergement + SEO" },
-    price: 59,
+    price: 65,
     items: {
       de: ["Alles aus Hosting", "Wir arbeiten laufend an Ihrer Sichtbarkeit bei Google"],
       fr: ["Tout l'hébergement", "Nous travaillons en continu à votre visibilité sur Google"],
@@ -172,7 +172,7 @@ export const careTiers: CareTier[] = [
   {
     id: "rundum",
     name: { de: "Rundum", fr: "Tout compris" },
-    price: 89,
+    price: 95,
     items: {
       de: ["Alles aus Hosting + SEO", "Kleine Änderungen machen wir laufend für Sie", "Ein Ansprechpartner für alles"],
       fr: ["Tout l'hébergement + SEO", "Nous faisons les petites modifications pour vous", "Un seul interlocuteur pour tout"],
@@ -181,7 +181,7 @@ export const careTiers: CareTier[] = [
 ];
 
 /** Google Business Profile: setup once, care optional per month. */
-export const gbpPrice = { setup: 290, monthly: 49 };
+export const gbpPrice = { setup: 290, monthly: 55 };
 
 export function packagePrice(id: PackageId): number {
   return pricePackages.find((p) => p.id === id)!.price;

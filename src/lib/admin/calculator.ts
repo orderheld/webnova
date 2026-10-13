@@ -1,6 +1,6 @@
 /**
- * Price calculator built around fixed packages plus add-ons (websites from CHF 990, shops and larger projects
- * from CHF 6'500) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
+ * Price calculator built around fixed packages plus add-ons (websites from CHF 1'090, shops and larger projects
+ * from CHF 7'090) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
  * The package prices are also published on the website (src/content/pricing.ts): change both together.
  */
@@ -48,35 +48,35 @@ export interface CalculatorConfig {
 
 export const defaultCalculatorConfig: CalculatorConfig = {
   targetRate: 110,
-  minTotal: 990,
+  minTotal: 1090,
   maxTotal: 15000,
   packages: [
     {
       id: "starter",
       name: "Webseite Starter",
       description: "Onepager, individuelles Design für Handy und Computer, Kontaktformular, Google-Grundlagen, Go-live in 1 bis 2 Wochen",
-      price: 990,
+      price: 1090,
       hours: 9,
     },
     {
       id: "kmu",
       name: "Webseite KMU",
       description: "Bis 5 Seiten, eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen, Hosting mit SEO 3 Monate gratis",
-      price: 2690,
+      price: 2990,
       hours: 24,
     },
     {
       id: "professional",
       name: "Webseite Professional",
       description: "Bis 10 Seiten, Designkonzept mit Animationen, CMS, Blog/News, erweiterte Google-Grundlagen, Google-Unternehmensprofil, Schulung",
-      price: 4900,
+      price: 5390,
       hours: 44,
     },
     {
       id: "individuell",
       name: "Individuell (Shop, Web-App, 10+ Seiten)",
       description: "Onlineshop mit TWINT und Karte, Web-App oder Kundenbereich, mehr als 10 Seiten, Anbindungen",
-      price: 6500,
+      price: 7090,
       hours: 58,
     },
   ],
@@ -96,9 +96,9 @@ export const defaultCalculatorConfig: CalculatorConfig = {
     { id: "newsletter", name: "Newsletter-Anbindung", description: "Anmeldeformular und Anbindung an Mailchimp oder Brevo", price: 300, hours: 2.5, unit: "Pauschal" },
   ],
   recurring: [
-    { id: "hosting", name: "Hosting", description: "Hosting mit SSL, tägliche Backups, Updates, monatlich kündbar", price: 39, interval: "monat", defaultOn: true },
-    { id: "hostingSeo", name: "Hosting + SEO", description: "Hosting mit laufender Suchmaschinenoptimierung, monatlich kündbar", price: 59, interval: "monat", defaultOn: false },
-    { id: "rundum", name: "Hosting Rundum", description: "Hosting, SEO und laufende kleine Änderungen, monatlich kündbar", price: 89, interval: "monat", defaultOn: false },
+    { id: "hosting", name: "Hosting", description: "Hosting mit SSL, tägliche Backups, Updates, monatlich kündbar", price: 45, interval: "monat", defaultOn: true },
+    { id: "hostingSeo", name: "Hosting + SEO", description: "Hosting mit laufender Suchmaschinenoptimierung, monatlich kündbar", price: 65, interval: "monat", defaultOn: false },
+    { id: "rundum", name: "Hosting Rundum", description: "Hosting, SEO und laufende kleine Änderungen, monatlich kündbar", price: 95, interval: "monat", defaultOn: false },
     { id: "domain", name: "Domain .ch", description: "Registrierung und Verwaltung", price: 25, interval: "jahr", defaultOn: true },
   ],
 };
