@@ -3,6 +3,8 @@ import type { SVGProps } from "react";
 /** Admin-only icon set (independent of the public site icons). 24px grid, stroke icons. */
 const paths: Record<string, React.ReactNode> = {
   home: (<><path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10" /></>),
+  postcard: (<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M15 8.5h3v3.5h-3ZM6 10h5M6 13.5h6M13 8v8" /></>),
+  printer: (<><path d="M7 9V3h10v6" /><rect x="3" y="9" width="18" height="8" rx="2" /><path d="M7 14h10v7H7Z" /></>),
   inbox: (<><path d="M3 13h5l1.5 3h5L16 13h5" /><path d="M5 5h14l2 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6Z" /></>),
   kanban: (<><rect x="3" y="4" width="5" height="16" rx="1.5" /><rect x="10" y="4" width="5" height="10" rx="1.5" /><rect x="17" y="4" width="4" height="13" rx="1.5" /></>),
   users: (<><circle cx="9" cy="8" r="3.5" /><path d="M2 20a7 7 0 0 1 14 0M16 4.5a3.5 3.5 0 0 1 0 7M22 20a7 7 0 0 0-4-6.3" /></>),

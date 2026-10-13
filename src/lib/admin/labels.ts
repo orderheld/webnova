@@ -112,6 +112,8 @@ export const expenseCategoryLabels: Record<string, string> = {
 
 export const units = ["Pauschal", "Std.", "Stk.", "Seiten", "Tag", "Monat", "Quartal", "Jahr"];
 
+export const postcardStatusLabels: Record<string, string> = { offen: "Offen", versendet: "Versendet", ausgelassen: "Ausgelassen" };
+
 /*
  * Status tones in the corporate palette: Schieferblau tints for open work, muted green / ochre /
  * red only for outcomes that need attention. No other hues, so badges never compete with the logo.
@@ -154,6 +156,10 @@ const tones: Record<string, string> = {
   aktiv: tone.success,
   pausiert: tone.warn,
   gekuendigt: tone.neutral,
+  // postcards
+  offen: tone.info,
+  versendet: tone.success,
+  ausgelassen: tone.neutral,
 };
 
 /** Bar colour per pipeline stage: one Schieferblau ramp from light (early) to dark (late). */
@@ -172,6 +178,7 @@ const allLabels: Record<string, string> = {
   ...invoiceStatusLabels,
   ...projectStatusLabels,
   ...subscriptionStatusLabels,
+  ...postcardStatusLabels,
 };
 
 export const statusTone = (s: string) => tones[s] ?? tone.neutral;

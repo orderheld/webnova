@@ -528,6 +528,49 @@ export const pushSubscriptions = pgTable("push_subscriptions", {
   visitorSentAt: timestamp("visitor_sent_at", { withTimezone: true }),
 });
 
+/* ───────────── Postcards to newly registered companies ───────────── */
+
+export const postcardStatuses = ["offen", "versendet", "ausgelassen"] as const;
+export type PostcardStatus = (typeof postcardStatuses)[number];
+
+/**
+ * Companies newly entered in the commercial register (SHAB rubric HR01) that get webnova's A6 postcard.
+ * Every Monday the admin picks up to 100 from last week's entries (lib/admin/postcards.ts); Ferhat prints
+ * their address labels, sticks them on the cards and marks them as sent. The UID is unique, so a company
+ * never lands on a second list.
+ */
+export const postcardRecipients = pgTable(
+  "postcard_recipients",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    /** list the company belongs to, ISO week of its SHAB publication, e.g. "2026-W41" */
+    week: text("week").notNull(),
+    shabId: text("shab_id").notNull(),
+    /** CHE-123.456.789 */
+    uid: text("uid").notNull().unique(),
+    name: text("name").notNull(),
+    /** eCH-0097 code, e.g. "0107" (GmbH) */
+    legalForm: text("legal_form").notNull(),
+    /** street and number, or the post office box */
+    street: text("street").notNull(),
+    zip: text("zip").notNull(),
+    town: text("town").notNull(),
+    canton: text("canton").notNull(),
+    /** language of the register entry and of the card to send: de | fr */
+    language: text("language").notNull(),
+    purpose: text("purpose").notNull().default(""),
+    publishedOn: date("published_on").notNull(),
+    /** how well the company fits (small local business, industry), higher first */
+    score: integer("score").notNull().default(0),
+    status: text("status").$type<PostcardStatus>().notNull().default("offen"),
+    /** last time its label was in a printed label file */
+    labelPrintedAt: timestamp("label_printed_at", { withTimezone: true }),
+    sentAt: timestamp("sent_at", { withTimezone: true }),
+  },
+  (t) => [index("postcard_recipients_week_idx").on(t.week, t.status)],
+);
+
 export type Lead = typeof leads.$inferSelect;
 export type Customer = typeof customers.$inferSelect;
 export type Quote = typeof quotes.$inferSelect;
@@ -546,3 +589,4 @@ export type Payment = typeof payments.$inferSelect;
 export type InvoiceReminder = typeof invoiceReminders.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
 export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;
+export type PostcardRecipient = typeof postcardRecipients.$inferSelect;
