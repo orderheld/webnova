@@ -14,6 +14,7 @@ import {
   kmuFreeMonths,
   pricePackages,
   prices,
+  websitePackages,
   swissNumber,
   vatNote,
 } from "@/content/pricing";
@@ -27,7 +28,7 @@ export const pricingText = {
   de: {
     title: "Preise",
     metaTitle: "Preise: Was kostet eine Webseite?",
-    metaDesc: `Onepager ${prices.starter}, Webseite bis 5 Seiten ${prices.kmu}, grössere Projekte ab ${prices.professional}. Hosting ab ${prices.hosting} pro Monat, monatlich kündbar. Endpreise, keine MWST.`,
+    metaDesc: `Onepager ${prices.starter}, bis 5 Seiten ${prices.kmu}, bis 10 Seiten ${prices.professional}, Onlineshops ab ${prices.shop}. Hosting ab ${prices.hosting} pro Monat. Endpreise, keine MWST.`,
     h1: "Preise für Webseiten und Onlineshops",
     subline: "Einmal bezahlt, ohne versteckte Kosten.",
     lead: "Ihre Webseite bezahlen Sie einmal. Hosting buchen Sie nur, wenn Sie es möchten, monatlich und jederzeit kündbar. Die genaue Offerte erhalten Sie nach einem kostenlosen Erstgespräch.",
@@ -49,6 +50,7 @@ export const pricingText = {
       care: `Betreuung auf Wunsch: ${prices.gbpMonthly} pro Monat`,
       items: ["Profil einrichten oder übernehmen", "Bestätigung bei Google", "Logo, Fotos und alle Angaben", "Bewertungen mit System"],
       careText: "Die Betreuung umfasst Beiträge, Antworten auf Bewertungen, die Pflege der Angaben und eine kurze Auswertung jeden Monat.",
+      note: "In den Paketen KMU und Professional ist die Einrichtung enthalten.",
       more: "Mehr zum Google-Profil",
     },
     extrasEyebrow: "Extras",
@@ -106,7 +108,7 @@ export const pricingText = {
   fr: {
     title: "Tarifs",
     metaTitle: "Tarifs : combien coûte un site internet ?",
-    metaDesc: `Site d'une page ${prices.starter}, site jusqu'à 5 pages ${prices.kmu}, projets plus grands dès ${prices.professional}. Hébergement dès ${prices.hosting} par mois, résiliable. Prix finaux, sans TVA.`,
+    metaDesc: `Site d'une page ${prices.starter}, jusqu'à 5 pages ${prices.kmu}, jusqu'à 10 pages ${prices.professional}, boutiques dès ${prices.shop}. Hébergement dès ${prices.hosting} par mois. Prix finaux, sans TVA.`,
     h1: "Tarifs des sites internet et boutiques en ligne",
     subline: "Payé une fois, sans coûts cachés.",
     lead: "Vous payez votre site une seule fois. L'hébergement, vous le prenez seulement si vous le souhaitez, au mois et résiliable en tout temps. Vous recevez le devis exact après un premier entretien gratuit.",
@@ -128,6 +130,7 @@ export const pricingText = {
       care: `Suivi sur demande : ${prices.gbpMonthly} par mois`,
       items: ["Création ou reprise de la fiche", "Validation auprès de Google", "Logo, photos et toutes les informations", "Avis clients avec méthode"],
       careText: "Le suivi comprend des publications, les réponses aux avis, la mise à jour des informations et un bref rapport chaque mois.",
+      note: "Dans les formules PME et Professional, la mise en place est comprise.",
       more: "En savoir plus sur la fiche Google",
     },
     extrasEyebrow: "Options",
@@ -190,6 +193,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
   const t = pricingText[locale];
   const url = href(locale, "pricing");
   const request = href(locale, "request");
+  const demo = pricePackages.find((p) => p.id === "demo");
   const crumbs = [
     { name: d.common.home, url: href(locale, "home") },
     { name: t.title, url },
@@ -253,15 +257,14 @@ export function PricingPage({ locale }: { locale: Locale }) {
         <SectionHead id="pakete-title" eyebrow={t.packagesEyebrow} title={t.packagesTitle} lead={t.packagesLead} />
         {/* On desktop the cards share their rows (subgrid), so prices, lists and buttons line up. */}
         <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {pricePackages.map((p) => {
+          {websitePackages.map((p) => {
             const rec = p.recommended;
-            const demo = p.id === "demo";
             return (
               <li
                 key={p.id}
                 id={p.id}
                 className={`relative flex scroll-mt-28 flex-col rounded-3xl p-6 sm:p-7 lg:row-span-6 lg:grid lg:grid-rows-subgrid lg:gap-y-0 ${
-                  rec ? "stage-night text-white shadow-lift ring-1 ring-night" : demo ? "bg-bright-soft ring-1 ring-line" : "bg-white shadow-xs ring-1 ring-line"
+                  rec ? "stage-night text-white shadow-lift ring-1 ring-night" : "bg-white shadow-xs ring-1 ring-line"
                 }`}
               >
                 {rec && (
@@ -276,7 +279,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
                   <span className="font-display text-[40px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{swissNumber(p.price)}</span>
                 </p>
                 <p className={`mt-2 text-[13.5px] ${rec ? "text-white/60" : "text-muted"}`}>{p.note[locale]}</p>
-                <ul className={`mt-6 space-y-2.5 border-t pt-6 ${rec ? "border-white/15" : demo ? "border-accent/15" : "border-line"}`}>
+                <ul className={`mt-6 space-y-2.5 border-t pt-6 ${rec ? "border-white/15" : "border-line"}`}>
                   {p.features[locale].map((f) => (
                     <li key={f} className={`flex gap-2.5 text-[14.5px] leading-snug ${rec ? "text-white/85" : "text-ink-soft"}`}>
                       <Icon name="check" className={`mt-0.5 h-4 w-4 shrink-0 ${rec ? "text-accent-light" : "text-bright"}`} strokeWidth={2.5} />
@@ -293,6 +296,29 @@ export function PricingPage({ locale }: { locale: Locale }) {
             );
           })}
         </ol>
+        {demo && (
+          <div id="demo" className="mt-5 grid scroll-mt-28 gap-6 rounded-3xl bg-bright-soft p-6 ring-1 ring-line sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)_auto] lg:items-center lg:gap-10">
+            <div>
+              <h3 className="font-display text-[22px] font-semibold tracking-[-0.01em]">{demo.name[locale]}</h3>
+              <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">{demo.forWhom[locale]}</p>
+              <p className="mt-4 flex flex-wrap items-baseline gap-x-2">
+                <span className="font-display text-[34px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{chf(demo.price)}</span>{" "}
+                <span className="text-[14px] text-muted">{demo.note[locale]}</span>
+              </p>
+            </div>
+            <ul className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+              {demo.features[locale].map((f) => (
+                <li key={f} className="flex gap-2.5 text-[14.5px] leading-snug text-ink-soft">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-bright" strokeWidth={2.5} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href={`${request}?paket=${demo.id}`} variant="ghost" className="w-full lg:w-auto">
+              {demo.cta[locale]}
+            </ButtonLink>
+          </div>
+        )}
         <p className="mt-8 flex items-start gap-2.5 text-[15px] leading-relaxed text-ink-soft">
           <Icon name="shield" className="mt-0.5 h-5 w-5 shrink-0 text-bright" />
           {vatNote[locale]}
@@ -339,6 +365,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
               note={t.gbp.care}
               items={t.gbp.items}
               text={t.gbp.careText}
+              foot={t.gbp.note}
               more={hasRoute("service:google-profil") ? { href: href(locale, "service:google-profil"), label: t.gbp.more } : undefined}
             />
           </div>

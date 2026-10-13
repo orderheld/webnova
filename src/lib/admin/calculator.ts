@@ -1,6 +1,6 @@
 /**
- * Price calculator built around fixed packages plus add-ons (websites from CHF 600, larger projects from
- * CHF 2'500) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
+ * Price calculator built around fixed packages plus add-ons (websites from CHF 990, shops and larger projects
+ * from CHF 6'500) and optional recurring fees (hosting per month, cancellable). Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
  * The package prices are also published on the website (src/content/pricing.ts): change both together.
  */
@@ -48,29 +48,36 @@ export interface CalculatorConfig {
 
 export const defaultCalculatorConfig: CalculatorConfig = {
   targetRate: 110,
-  minTotal: 600,
-  maxTotal: 10000,
+  minTotal: 990,
+  maxTotal: 15000,
   packages: [
     {
       id: "starter",
       name: "Webseite Starter",
-      description: "Onepager, individuelles Design, für Handy und Computer, Kontaktformular, Go-live in 1 bis 2 Wochen",
-      price: 600,
-      hours: 6,
+      description: "Onepager, individuelles Design für Handy und Computer, Kontaktformular, Google-Grundlagen, Go-live in 1 bis 2 Wochen",
+      price: 990,
+      hours: 9,
     },
     {
       id: "kmu",
       name: "Webseite KMU",
-      description: "2 bis 5 Seiten, individuelles Design mit Animationen, Kontaktformular und Terminbuchung, SEO-Grundlagen, Besucherstatistik, Hosting mit SEO 3 Monate gratis",
-      price: 1390,
-      hours: 14,
+      description: "Bis 5 Seiten, eigenes Design, Kontaktformular und Online-Termine, Google-Unternehmensprofil, Google-Grundlagen, Besucherzahlen, Hosting mit SEO 3 Monate gratis",
+      price: 2690,
+      hours: 24,
     },
     {
       id: "professional",
       name: "Webseite Professional",
-      description: "Ab 6 Seiten, Onlineshop, Buchungssystem oder Kundenbereich, Zahlung mit TWINT und Karte, Anbindungen",
-      price: 2500,
-      hours: 24,
+      description: "Bis 10 Seiten, Designkonzept mit Animationen, CMS, Blog/News, erweiterte Google-Grundlagen, Google-Unternehmensprofil, Schulung",
+      price: 4900,
+      hours: 44,
+    },
+    {
+      id: "individuell",
+      name: "Individuell (Shop, Web-App, 10+ Seiten)",
+      description: "Onlineshop mit TWINT und Karte, Web-App oder Kundenbereich, mehr als 10 Seiten, Anbindungen",
+      price: 6500,
+      hours: 58,
     },
   ],
   addons: [
