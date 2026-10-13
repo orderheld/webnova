@@ -1,9 +1,10 @@
+import { costAnswer, prices } from "../pricing";
 import type { Guide } from "../types";
 
 export const webseiteKosten: Guide = {
   key: "webseite-kosten",
   date: "2026-10-06",
-  updated: "2026-10-08",
+  updated: "2026-10-13",
   readingMinutes: 8,
   related: ["webdesign", "website-redesign", "onlineshop"],
   relatedGuides: ["webseite-erstellen-ablauf", "baukasten-oder-agentur", "webagentur-waehlen"],
@@ -14,16 +15,17 @@ export const webseiteKosten: Guide = {
       meta: {
         title: "Was kostet eine Webseite? Die 7 Preisfaktoren",
         description:
-          "Was kostet eine Webseite in der Schweiz? Wir erklären die 7 Faktoren, die den Preis bestimmen, und wie Sie zu einer passenden Offerte kommen.",
+          "Was kostet eine Webseite in der Schweiz? Die 7 Preisfaktoren erklärt, dazu unsere Pakete ab CHF 2’000 als Richtwert. So kommen Sie zur passenden Offerte.",
       },
       h1: "Was kostet eine Webseite? Die 7 Faktoren, die den Preis bestimmen",
-      lead: "Auf die Frage nach den Kosten einer Webseite gibt es keine seriöse Pauschalantwort. Wer versteht, welche Faktoren den Aufwand bestimmen, kann Offerten besser vergleichen und sein Budget gezielt einsetzen.",
+      lead: `Was eine Webseite kostet, hängt von sieben Faktoren ab. Wer sie kennt, kann Offerten besser vergleichen und sein Budget gezielt einsetzen. Bei Webnova beginnen Webseiten bei ${prices.starter}.`,
       keyTakeaways: [
         "Den Aufwand bestimmen vor allem Umfang, Design, Inhalte, Funktionen, SEO, das Redaktionssystem und die laufende Wartung.",
         "Inhalte wie Texte und Fotos werden bei der Planung am häufigsten unterschätzt.",
         "Mehrsprachigkeit braucht neben Übersetzungen auch eine saubere technische Umsetzung mit eigenen URLs.",
         "Vergleichen Sie Offerten Punkt für Punkt und achten Sie auf laufende Kosten nach dem Launch.",
         "Eine verlässliche Offerte entsteht erst, wenn Ziele, Funktionen und vorhandene Inhalte klar sind.",
+        `Bei Webnova kosten Webseiten ab ${prices.starter}, Onlineshops ab ${prices.shop}, Hosting und Wartung ${prices.care} pro Monat.`,
       ],
       sections: [
         {
@@ -97,17 +99,30 @@ export const webseiteKosten: Guide = {
           ],
         },
         {
+          h2: "Was kostet eine Webseite bei Webnova?",
+          paragraphs: [
+            "Damit Sie die Faktoren oben einordnen können, hier unsere Pakete als Richtwert. Die Preise gelten einmalig für die Erstellung, in Schweizer Franken. Alle Details finden Sie auf unserer [Preisseite](pricing).",
+          ],
+          bullets: [
+            `Starter ab ${prices.starter}: Onepager oder bis 3 Seiten, Kontaktformular, Basis-SEO`,
+            `KMU ab ${prices.kmu}: bis 6 Seiten, individuelles Design, CMS, Onpage-SEO, Google-Unternehmensprofil`,
+            `Professional ab ${prices.professional}: bis 12 Seiten, Designkonzept, Blog oder News, erweiterte SEO-Grundlagen`,
+            `Onlineshop ab ${prices.shop}: bis 50 Produkte, TWINT und Karte, Versand, Kundenkonto`,
+            `Hosting und Wartung: ${prices.care} pro Monat, im ersten Jahr inbegriffen`,
+          ],
+        },
+        {
           h2: "So erhalten Sie eine verlässliche Offerte",
           paragraphs: [
-            "Weil jedes Projekt anders ist, veröffentlichen wir keine Pauschalpreise. Eine seriöse Offerte entsteht erst, wenn klar ist, was Ihre Webseite leisten soll. Je besser Sie Ziele, gewünschte Funktionen und vorhandene Inhalte beschreiben, desto genauer lässt sich der Aufwand einschätzen. Achten Sie beim Vergleich mehrerer Offerten darauf, dass tatsächlich dieselben Leistungen enthalten sind.",
+            "Die Pakete zeigen, womit Sie rechnen können. Eine verlässliche Offerte entsteht, wenn klar ist, was Ihre Webseite leisten soll. Je besser Sie Ziele, gewünschte Funktionen und vorhandene Inhalte beschreiben, desto genauer lässt sich der Aufwand einschätzen. Achten Sie beim Vergleich mehrerer Offerten darauf, dass tatsächlich dieselben Leistungen enthalten sind.",
             "Bei Webnova besprechen wir Ihr Vorhaben zuerst in einem unverbindlichen Gespräch. Danach erhalten Sie eine individuelle Offerte, die transparent aufzeigt, welche Leistungen enthalten sind und welche laufenden Kosten anfallen. Fragen Sie jetzt Ihre unverbindliche Offerte an. Wir melden uns persönlich bei Ihnen und beantworten gerne alle offenen Fragen.",
           ],
         },
       ],
       faq: [
         {
-          q: "Warum veröffentlicht Webnova keine Preise?",
-          a: "Weil sich Webseiten in Umfang, Design, Inhalten und Funktionen stark unterscheiden. Ein Pauschalpreis wäre für einfache Projekte zu hoch oder würde bei grösseren Projekten wichtige Leistungen weglassen. Mit einer individuellen Offerte bezahlen Sie genau das, was Sie brauchen.",
+          q: "Was kostet eine Webseite bei Webnova?",
+          a: costAnswer("de", "website"),
         },
         {
           q: "Welche Angaben braucht es für eine Offerte?",
@@ -115,7 +130,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Gibt es neben der Erstellung laufende Kosten?",
-          a: "Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Wir weisen diese in der Offerte separat aus, damit Sie Ihr Budget realistisch planen können.",
+          a: `Ja. Hosting, Domain, Updates, Backups und allfällige Anpassungen verursachen laufende Kosten. Bei Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Die Domain weisen wir in der Offerte separat aus.`,
         },
         {
           q: "Kann ich klein starten und die Webseite später erweitern?",
@@ -128,16 +143,17 @@ export const webseiteKosten: Guide = {
       meta: {
         title: "Combien coûte un site internet ? Les 7 facteurs",
         description:
-          "Combien coûte un site internet en Suisse ? Découvrez les 7 facteurs qui déterminent le prix et comment obtenir une offre adaptée à votre projet.",
+          "Combien coûte un site internet en Suisse ? Les 7 facteurs de prix expliqués, avec nos formules dès CHF 2’000 comme repère. Obtenez une offre adaptée.",
       },
       h1: "Combien coûte un site internet ? Les 7 facteurs qui déterminent le prix",
-      lead: "Il n'existe pas de réponse forfaitaire sérieuse à la question du prix d'un site internet. En comprenant les facteurs qui influencent le travail, vous comparez mieux les offres et investissez votre budget là où il compte.",
+      lead: `Le prix d'un site internet dépend de sept facteurs. En les connaissant, vous comparez mieux les offres et investissez votre budget là où il compte. Chez Webnova, les sites internet commencent à ${prices.starter}.`,
       keyTakeaways: [
         "L'effort dépend surtout de l'ampleur, du design, des contenus, des fonctions, du SEO, du système de gestion et de la maintenance.",
         "Les contenus comme les textes et les photos sont le plus souvent sous-estimés lors de la planification.",
         "Le multilinguisme demande, en plus des traductions, une réalisation technique propre avec des URL distinctes.",
         "Comparez les devis point par point et tenez compte des coûts courants après la mise en ligne.",
         "Un devis fiable n'est possible que lorsque objectifs, fonctions et contenus disponibles sont clairs.",
+        `Chez Webnova, les sites internet coûtent dès ${prices.starter}, les boutiques en ligne dès ${prices.shop}, l'hébergement et la maintenance ${prices.care} par mois.`,
       ],
       sections: [
         {
@@ -211,17 +227,30 @@ export const webseiteKosten: Guide = {
           ],
         },
         {
+          h2: "Combien coûte un site internet chez Webnova ?",
+          paragraphs: [
+            "Pour situer les facteurs ci-dessus, voici nos formules comme repère. Les prix s'entendent une fois pour la création, en francs suisses. Tous les détails figurent sur notre [page des tarifs](pricing).",
+          ],
+          bullets: [
+            `Starter dès ${prices.starter} : one-page ou jusqu'à 3 pages, formulaire de contact, SEO de base`,
+            `PME dès ${prices.kmu} : jusqu'à 6 pages, design sur mesure, CMS, SEO on-page, fiche Google Business Profile`,
+            `Professional dès ${prices.professional} : jusqu'à 12 pages, concept graphique, blog ou actualités, bases SEO avancées`,
+            `Boutique en ligne dès ${prices.shop} : jusqu'à 50 produits, TWINT et carte, livraison, compte client`,
+            `Hébergement et maintenance : ${prices.care} par mois, compris la première année`,
+          ],
+        },
+        {
           h2: "Comment obtenir une offre fiable",
           paragraphs: [
-            "Comme chaque projet est différent, nous ne publions pas de prix forfaitaires. Une offre sérieuse n'est possible que lorsque l'on sait ce que votre site doit accomplir. Plus vous décrivez précisément vos objectifs, les fonctions souhaitées et les contenus existants, plus l'estimation sera juste. Lorsque vous comparez plusieurs offres, vérifiez qu'elles comprennent bien les mêmes prestations.",
+            "Les formules montrent à quoi vous attendre. Une offre fiable est possible lorsque l'on sait ce que votre site doit accomplir. Plus vous décrivez précisément vos objectifs, les fonctions souhaitées et les contenus existants, plus l'estimation sera juste. Lorsque vous comparez plusieurs offres, vérifiez qu'elles comprennent bien les mêmes prestations.",
             "Chez Webnova, nous discutons d'abord de votre projet lors d'un entretien sans engagement. Vous recevez ensuite une offre individuelle qui indique clairement les prestations comprises et les coûts récurrents. Demandez dès maintenant votre offre sans engagement : nous vous recontactons personnellement et répondons volontiers à toutes vos questions.",
           ],
         },
       ],
       faq: [
         {
-          q: "Pourquoi Webnova ne publie-t-elle pas de prix ?",
-          a: "Parce que les sites internet varient fortement en ampleur, en design, en contenus et en fonctions. Un prix forfaitaire serait trop élevé pour un projet simple ou omettrait des prestations importantes pour un projet plus vaste. Avec une offre individuelle, vous payez exactement ce dont vous avez besoin.",
+          q: "Combien coûte un site internet chez Webnova ?",
+          a: costAnswer("fr", "website"),
         },
         {
           q: "De quelles informations avez-vous besoin pour une offre ?",
@@ -229,7 +258,7 @@ export const webseiteKosten: Guide = {
         },
         {
           q: "Y a-t-il des coûts récurrents en plus de la création ?",
-          a: "Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Nous les indiquons séparément dans l'offre pour que vous puissiez planifier votre budget de manière réaliste.",
+          a: `Oui. Hébergement, nom de domaine, mises à jour, sauvegardes et éventuelles adaptations entraînent des coûts récurrents. Chez Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Le nom de domaine figure séparément dans l'offre.`,
         },
         {
           q: "Puis-je commencer petit et agrandir mon site plus tard ?",

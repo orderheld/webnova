@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { costAnswer } from "../pricing";
 
 export const wartung: Service = {
   key: "wartung",
@@ -94,7 +95,7 @@ export const wartung: Service = {
         },
         {
           q: "Was kostet die Website-Wartung?",
-          a: "Das richtet sich nach Ihrer Webseite und dem gewünschten Leistungsumfang. Nach einer kostenlosen Erstberatung erhalten Sie eine unverbindliche Offerte.",
+          a: costAnswer("de", "care"),
         },
       ],
       ctaTitle: "Ihre Webseite in guten Händen",
@@ -189,7 +190,7 @@ export const wartung: Service = {
         },
         {
           q: "Combien coûte la maintenance d'un site ?",
-          a: "Cela dépend de votre site et des prestations souhaitées. Après un premier conseil gratuit, vous recevez une offre sans engagement.",
+          a: costAnswer("fr", "care"),
         },
       ],
       ctaTitle: "Votre site entre de bonnes mains",

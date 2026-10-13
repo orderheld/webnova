@@ -190,7 +190,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Kassensystem in Biel?",
-            a: "Es gibt keinen Pauschalpreis, weil jeder Betrieb andere Geräte und Funktionen braucht. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
+            a: "Das hängt davon ab, welche Geräte und Funktionen Ihr Betrieb braucht. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
           },
         ],
       },
@@ -250,7 +250,7 @@ export const kassensystemLocal: LocalService[] = [
           },
           {
             q: "Quel est le prix d'un système de caisse à Bienne ?",
-            a: "Il n'existe pas de prix forfaitaire, car chaque établissement a besoin d'autres appareils et fonctions. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            a: "Cela dépend des appareils et des fonctions dont votre établissement a besoin. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },

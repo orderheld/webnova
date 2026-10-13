@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { costAnswer } from "../pricing";
 
 export const websiteRedesign: Service = {
   key: "website-redesign",
@@ -85,7 +86,7 @@ export const websiteRedesign: Service = {
         },
         {
           q: "Was kostet ein Website-Redesign?",
-          a: "Der Aufwand hängt von Umfang, Inhalten und gewünschten Funktionen ab. Nach einer kostenlosen Erstberatung erhalten Sie eine unverbindliche Offerte für Ihr Projekt.",
+          a: costAnswer("de", "redesign"),
         },
         {
           q: "Bleibt meine Webseite während des Redesigns online?",
@@ -175,7 +176,7 @@ export const websiteRedesign: Service = {
         },
         {
           q: "Combien coûte une refonte de site internet ?",
-          a: "Le budget dépend de l'ampleur, des contenus et des fonctionnalités souhaitées. Après un premier conseil gratuit, vous recevez une offre sans engagement.",
+          a: costAnswer("fr", "redesign"),
         },
         {
           q: "Mon site reste-t-il en ligne pendant la refonte ?",

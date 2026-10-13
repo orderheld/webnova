@@ -5,13 +5,14 @@ import { routes, type RouteEntry } from "@/lib/routes";
 import { site } from "@/lib/site";
 
 /** Last content update of the site pages. Bump when page texts change substantially. */
-const SITE_UPDATED = "2026-10-08";
+const SITE_UPDATED = "2026-10-13";
 
 const prio: Record<string, number> = {
   home: 1,
   service: 0.9,
   city: 0.8,
   services: 0.8,
+  pricing: 0.8,
   citySeo: 0.7,
   localService: 0.7,
   regions: 0.7,

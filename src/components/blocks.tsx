@@ -183,7 +183,9 @@ export function FaqList({ locale, faq, id }: { locale: Locale; faq: Faq[]; id?: 
                   <Icon name="plus" className="h-4 w-4" />
                 </span>
               </summary>
-              <p className="-mt-1 max-w-2xl pb-6 text-[16px] leading-relaxed text-ink-soft">{f.a}</p>
+              <p className="-mt-1 max-w-2xl pb-6 text-[16px] leading-relaxed text-ink-soft">
+                <RichText text={f.a} locale={locale} />
+              </p>
             </details>
           ))}
         </div>

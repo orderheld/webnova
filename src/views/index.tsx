@@ -19,6 +19,7 @@ import { GuidePage, GuidesPage } from "./guide";
 import { IndustriesPage, IndustryPage, ProblemPage } from "./industry";
 import { LandingPage, lpMeta } from "./landing";
 import { ServicePage, ServicesPage } from "./service";
+import { PricingPage, pricingText } from "./pricing";
 import { StandalonePageView } from "./standalone";
 import { standalonePages } from "@/content/pages";
 
@@ -30,6 +31,8 @@ export function pageMeta(locale: Locale, entry: RouteEntry): Metadata {
       return m({ title: d.servicesMetaTitle, description: d.servicesMetaDesc });
     case "service":
       return m(services.find((s) => s.key === entry.key)!.content[locale].meta);
+    case "pricing":
+      return m({ title: pricingText[locale].metaTitle, description: pricingText[locale].metaDesc });
     case "regions":
       return m({ title: d.regionsMetaTitle, description: d.regionsMetaDesc });
     case "city":
@@ -94,6 +97,8 @@ export function renderPage(locale: Locale, entry: RouteEntry) {
       return <ServicesPage locale={locale} />;
     case "service":
       return <ServicePage locale={locale} serviceKey={entry.key} />;
+    case "pricing":
+      return <PricingPage locale={locale} />;
     case "regions":
       return <RegionsPage locale={locale} />;
     case "city":

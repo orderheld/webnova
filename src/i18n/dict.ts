@@ -5,6 +5,7 @@ const de = {
   skip: "Zum Inhalt springen",
   nav: {
     services: "Leistungen",
+    pricing: "Preise",
     pos: "Kassensystem",
     regions: "Standorte",
     references: "Referenzen",
@@ -220,6 +221,7 @@ const fr: Dict = {
   skip: "Aller au contenu",
   nav: {
     services: "Services",
+    pricing: "Tarifs",
     pos: "Système de caisse",
     regions: "Régions",
     references: "Références",

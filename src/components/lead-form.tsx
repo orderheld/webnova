@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useRef, useState, useTransition } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore, useTransition } from "react";
+import { fromPrice, pricePackages, type PricePackage } from "@/content/pricing";
 import type { Locale } from "@/content/types";
 import type { Dict } from "@/i18n/dict";
 import { submitLead } from "@/lib/leads/actions";
@@ -24,10 +25,18 @@ const serviceIcons: Record<Service, string> = {
 
 const STEPS = 2;
 
+const packageWord = { de: "Paket", fr: "Formule" };
+
+// The package chosen on the price list (/anfrage?paket=kmu). Read from the address in the browser;
+// the server render has none, so the form starts there on step 1 and switches after hydration.
+const noSubscribe = () => () => {};
+const readPackage = () => new URLSearchParams(window.location.search).get("paket");
+
 /**
  * Short project request: step 1 picks the service with one tap, step 2 asks for
  * name, optional company, e-mail (required), optional phone and message.
- * Industry pages pass a preset service and start directly on step 2.
+ * Industry pages pass a preset service and start directly on step 2. A package chosen on the price
+ * list (/anfrage?paket=kmu) does the same and is sent along at the top of the message.
  */
 export function LeadForm({
   locale,
@@ -59,8 +68,16 @@ export function LeadForm({
   useEffect(() => {
     startedAt.current = Date.now();
   }, []);
-  const [services, setServices] = useState<Service[]>(preset);
-  const [step, setStep] = useState(preset.length > 0 ? 1 : 0);
+  const hasPreset = preset.length > 0;
+  const packageId = useSyncExternalStore(noSubscribe, readPackage, () => null);
+  const [packageDropped, setPackageDropped] = useState(false);
+  const pkg: PricePackage | undefined = hasPreset || packageDropped ? undefined : pricePackages.find((x) => x.id === packageId);
+  const pkgLabel = pkg ? `${packageWord[locale]}: ${pkg.name[locale]}, ${fromPrice(locale, pkg.price)}` : "";
+  // Chosen service and step; until the visitor picks, a preset or the package decides.
+  const [picked, setServices] = useState<Service[] | null>(hasPreset ? preset : null);
+  const services = picked ?? (pkg ? [pkg.service] : []);
+  const [stepState, setStep] = useState<number | null>(hasPreset ? 1 : null);
+  const step = stepState ?? (pkg ? 1 : 0);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -95,6 +112,7 @@ export function LeadForm({
   }
 
   function pick(o: Service) {
+    if (pkg && o !== pkg.service) setPackageDropped(true);
     setServices([o]);
     go(1);
   }
@@ -131,7 +149,7 @@ export function LeadForm({
           email: email.trim(),
           phone: phone.trim(),
           preferredContact: null,
-          message,
+          message: pkg ? `${pkgLabel}\n\n${message}`.trim() : message,
           website2,
           pageUrl: window.location.pathname,
           startedAt: startedAt.current,
@@ -220,6 +238,12 @@ export function LeadForm({
       {step === 1 && (
         <>
           <div className="mb-5 flex flex-wrap items-center gap-2">
+            {pkg && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5 text-[13px] font-medium text-white">
+                <Icon name="tag" className="h-3.5 w-3.5" />
+                {pkgLabel}
+              </span>
+            )}
             {selected.map((o) => (
               <span key={o} className="inline-flex items-center gap-1.5 rounded-full bg-bright-soft px-3 py-1.5 text-[13px] font-medium text-accent">
                 <Icon name={serviceIcons[o]} className="h-3.5 w-3.5 text-bright" />

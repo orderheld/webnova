@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { prices } from "../pricing";
 
 export const websiteKmu: Service = {
   key: "website-kmu",
@@ -166,7 +167,7 @@ export const websiteKmu: Service = {
       faq: [
         {
           q: "Was kostet eine Website für KMU?",
-          a: "Das hängt von Umfang, Sprachen, Funktionen und Inhalten ab. Wir nennen keine Pauschalpreise, sondern erstellen nach einem kostenlosen Erstgespräch eine unverbindliche Offerte. Welche Faktoren den Aufwand bestimmen, erklärt unser Ratgeber «Was kostet eine Webseite?».",
+          a: `Unser Paket KMU mit bis zu 6 Seiten, individuellem Design, CMS, Onpage-SEO und eingerichtetem Google-Unternehmensprofil kostet ab ${prices.kmu}. Für einen kleinen Auftritt gibt es Starter ab ${prices.starter}, für viele Seiten Professional ab ${prices.professional}. Hosting und Wartung kosten ${prices.care} pro Monat und sind im ersten Jahr inbegriffen. Welche Faktoren den Preis bestimmen, erklärt unser Ratgeber «Was kostet eine Webseite?».`,
         },
         {
           q: "Wie lange dauert es, bis die Website online ist?",
@@ -369,7 +370,7 @@ export const websiteKmu: Service = {
       faq: [
         {
           q: "Combien coûte un site internet pour PME ?",
-          a: "Cela dépend de l'ampleur, des langues, des fonctions et des contenus. Nous ne donnons pas de forfait, mais un devis sans engagement après un premier entretien gratuit. Notre guide « Combien coûte un site internet ? » explique les facteurs de coût.",
+          a: `Notre formule PME, avec jusqu'à 6 pages, un design sur mesure, un CMS, le SEO on-page et la fiche Google Business Profile créée, coûte dès ${prices.kmu}. Pour une petite présence, Starter commence à ${prices.starter}, pour beaucoup de pages Professional à ${prices.professional}. L'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris la première année. Notre guide « Combien coûte un site internet ? » explique les facteurs de coût.`,
         },
         {
           q: "Combien de temps faut-il pour mettre le site en ligne ?",

@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ButtonLink } from "./button";
 import { Icon } from "./icons";
+import { PriceHint } from "./price-hint";
 import { SectorTabs } from "./sector-tabs";
 import { Art } from "./service-art";
 import { samples } from "./visuals";
 import { industries } from "@/content/industries";
 import { industryChip, industrySample } from "@/content/industries/samples";
+import { industryPriceLines } from "@/content/pricing";
 import type { Industry, Locale } from "@/content/types";
 import { href } from "@/lib/routes";
 
@@ -28,7 +30,7 @@ const tx = {
 
 /**
  * Sector preview: one chip per industry, and for the chosen one its sample design as scroll videos
- * (desktop and phone) next to what such a website does. `keys` limits and orders the industries,
+ * (desktop and phone) next to what such a website does and what it costs. `keys` limits and orders the industries,
  * e.g. so the home page leaves out the samples it already shows elsewhere.
  */
 export function SectorShowcase({ locale, keys }: { locale: Locale; keys?: string[] }) {
@@ -57,7 +59,8 @@ export function SectorShowcase({ locale, keys }: { locale: Locale; keys?: string
               </li>
             ))}
           </ul>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <PriceHint locale={locale} lines={industryPriceLines(locale, ind.key)} className="mt-7" />
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
             <ButtonLink href={href(locale, "request")}>{t.request}</ButtonLink>
             <Link href={href(locale, `industry:${ind.key}`)} className="link-arrow">
               {t.more}

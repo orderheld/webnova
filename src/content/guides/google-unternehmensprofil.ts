@@ -1,3 +1,4 @@
+import { prices } from "../pricing";
 import type { Guide } from "../types";
 
 export const googleUnternehmensprofil: Guide = {
@@ -92,7 +93,7 @@ export const googleUnternehmensprofil: Guide = {
       faq: [
         {
           q: "Kostet das Google-Unternehmensprofil etwas?",
-          a: "Nein, das Profil ist kostenlos. Kosten entstehen nur, wenn Sie zusätzlich Werbung schalten oder die Pflege an eine Agentur übergeben.",
+          a: `Nein, das Profil ist kostenlos. Kosten entstehen nur, wenn Sie zusätzlich Werbung schalten oder Einrichtung und Pflege einer Agentur übergeben. Bei Webnova kostet die [Einrichtung](service:google-profil) ${prices.gbpSetup} einmalig, die freiwillige Betreuung ${prices.gbpMonthly} pro Monat.`,
         },
         {
           q: "Kann ich ein Profil ohne Ladenlokal erstellen?",
@@ -192,7 +193,7 @@ export const googleUnternehmensprofil: Guide = {
       faq: [
         {
           q: "La fiche d'établissement Google est-elle payante ?",
-          a: "Non, la fiche est gratuite. Des coûts n'apparaissent que si vous diffusez de la publicité ou confiez son entretien à une agence.",
+          a: `Non, la fiche est gratuite. Des coûts n'apparaissent que si vous diffusez de la publicité ou confiez sa création et son entretien à une agence. Chez Webnova, la [mise en place](service:google-profil) coûte ${prices.gbpSetup} une fois, le suivi facultatif ${prices.gbpMonthly} par mois.`,
         },
         {
           q: "Puis-je créer une fiche sans local commercial ?",

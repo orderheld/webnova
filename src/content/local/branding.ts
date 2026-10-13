@@ -62,7 +62,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein neues Logo oder Corporate Design?",
-            a: "Wir veröffentlichen keine Pauschalpreise, weil jedes Projekt anders ist. Sie erhalten eine individuelle, klare Offerte nach kostenlosem Erstgespräch.",
+            a: "Das hängt vom Umfang ab, vom Logo allein bis zum ganzen Corporate Design. Sie erhalten eine individuelle, klare Offerte nach kostenlosem Erstgespräch.",
           },
         ],
       },
@@ -122,7 +122,7 @@ export const brandingLocal: LocalService[] = [
           },
           {
             q: "Combien coûte un logo ou une identité visuelle ?",
-            a: "Nous ne publions pas de tarifs forfaitaires, car chaque projet est différent. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            a: "Cela dépend de l'ampleur, du logo seul à l'identité visuelle complète. Vous recevez une offre individuelle et claire après un premier entretien gratuit.",
           },
         ],
       },
