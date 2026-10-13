@@ -26,7 +26,7 @@ export const serviceGroupIds: { key: string; label: Localized<string>; ids: stri
   {
     key: "visibility",
     label: { de: "Sichtbarkeit & Marketing", fr: "Visibilité & marketing" },
-    ids: ["service:seo", "service:local-seo", "service:ki-sichtbarkeit", "service:online-marketing", "page:website-check"],
+    ids: ["service:seo", "service:local-seo", "service:google-profil", "service:ki-sichtbarkeit", "service:online-marketing", "page:website-check"],
   },
   {
     key: "commerce",

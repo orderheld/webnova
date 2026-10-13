@@ -80,6 +80,7 @@ const knownSources: [RegExp, string][] = [
   [/perplexity/, "Perplexity"],
   [/(^|\.)local\.ch$/, "local.ch"],
   [/(^|\.)search\.ch$/, "search.ch"],
+  [/^postkarte\b/, "Postkarte"],
 ];
 
 /** "www.google.ch" -> "Google"; null -> "Direkt". */

@@ -128,7 +128,7 @@ export const localSeo: Service = {
           h2: "Das Google-Unternehmensprofil richtig pflegen",
           paragraphs: [
             "Das Profil ist das Herzstück von Local SEO. Wichtig sind die richtige Hauptkategorie, sinnvolle Zusatzkategorien, eine Beschreibung in Ihren eigenen Worten, die Leistungen mit kurzen Erklärungen, aktuelle Öffnungszeiten inklusive Feiertagen und Fotos, die Ihren Betrieb wirklich zeigen. Der Link zur Website sollte auf die passendste Seite führen, nicht zwingend auf die Startseite.",
-            "Eine Schritt-für-Schritt-Anleitung finden Sie im Ratgeber [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil). Wenn Ihnen dafür die Zeit fehlt, übernehmen wir die Einrichtung und die laufende Pflege.",
+            "Eine Schritt-für-Schritt-Anleitung finden Sie im Ratgeber [Google-Unternehmensprofil optimieren](guide:google-unternehmensprofil). Wenn Ihnen dafür die Zeit fehlt, übernehmen wir die [Einrichtung und die laufende Pflege Ihres Profils](service:google-profil).",
           ],
         },
         {
@@ -327,7 +327,7 @@ export const localSeo: Service = {
           h2: "Bien entretenir sa fiche Google",
           paragraphs: [
             "La fiche est le cœur du référencement local. Il faut la bonne catégorie principale, des catégories secondaires pertinentes, une description avec vos propres mots, les prestations avec de courtes explications, des horaires à jour y compris les jours fériés et des photos qui montrent vraiment votre entreprise. Le lien vers le site doit mener à la page la plus pertinente, pas forcément à l'accueil.",
-            "Vous trouverez un guide pas à pas dans [Optimiser sa fiche Google Business Profile](guide:google-unternehmensprofil). Si le temps vous manque, nous prenons en charge la configuration et l'entretien.",
+            "Vous trouverez un guide pas à pas dans [Optimiser sa fiche Google Business Profile](guide:google-unternehmensprofil). Si le temps vous manque, nous prenons en charge la [mise en place et l'entretien de votre fiche](service:google-profil).",
           ],
         },
         {
