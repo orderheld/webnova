@@ -1,5 +1,7 @@
 import { ButtonLink } from "@/components/button";
-import { CardLink, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose, TrustList, callLabel } from "@/components/blocks";
+import { Breadcrumbs, CardLink, ContactPerson, CtaBand, CtaCard, FaqList, FeatureGrid, PageHero, Prose, callLabel } from "@/components/blocks";
+import { Icon } from "@/components/icons";
+import { WordBand } from "@/components/word-band";
 import { WebsiteCheckForm } from "@/components/website-check-form";
 import { ImpressumGenerator } from "@/components/impressum-generator";
 import { guides } from "@/content/guides";
@@ -18,6 +20,10 @@ const ui = {
     formTitle: "Website-Check anfragen",
     formText: "Geben Sie im Formular Ihre Website-Adresse an und schreiben Sie in die Nachricht «Website-Check». Wählen Sie bei den Leistungen, was am ehesten passt.",
     orRequest: "Lieber das ausführliche Anfrageformular?",
+    question: "Wie gut ist Ihre Website wirklich",
+    heroLead: "Senden Sie uns die Adresse. Ferhat Demir sieht sich Ihre Website persönlich an und sagt Ihnen, was gut ist und was sich zuerst lohnt.",
+    checker: "Prüft Ihre Website persönlich",
+    points: ["Antwort innert 1 Arbeitstag", "Kein automatischer Report"],
     tool: "Generator",
     moreGuides: "Passende Ratgeber",
   },
@@ -27,6 +33,10 @@ const ui = {
     formTitle: "Demander l'analyse gratuite",
     formText: "Indiquez l'adresse de votre site dans le formulaire et écrivez « Analyse de site » dans le message. Pour les prestations, choisissez ce qui correspond le mieux.",
     orRequest: "Vous préférez le formulaire de demande complet ?",
+    question: "Votre site est-il vraiment à la hauteur",
+    heroLead: "Envoyez-nous son adresse. Ferhat Demir examine personnellement votre site et vous dit ce qui fonctionne et ce qui vaut la peine en premier.",
+    checker: "Examine votre site personnellement",
+    points: ["Réponse sous 1 jour ouvrable", "Pas de rapport automatique"],
     tool: "Générateur",
     moreGuides: "Conseils utiles",
   },
@@ -82,29 +92,20 @@ export function StandalonePageView({ locale, pageKey }: { locale: Locale; pageKe
       />
       <JsonLd data={faqLd(c.faq)} />
 
-      <PageHero
-        eyebrow={c.eyebrow}
-        title={c.h1}
-        lead={c.lead}
-        crumbs={[crumbs[0], { name: c.navLabel }]}
-        aside={
-          isTool ? undefined : (
-            <div id={FORM_ID} className="scroll-mt-24">
-              <WebsiteCheckForm locale={locale} thanksHref={href(locale, "thanks")} privacyHref={href(locale, "legal:datenschutz")} />
-            </div>
-          )
-        }
-      >
-        <div className="mt-9 flex flex-wrap gap-3">
-          <ButtonLink href={`#${isTool ? TOOL_ID : FORM_ID}`} variant="accent" className={isTool ? "" : "lg:hidden"}>
-            {isTool ? t.toTool : t.toForm}
-          </ButtonLink>
-          <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false} icon="phone">
-            {callLabel(locale)}
-          </ButtonLink>
-        </div>
-        {!isTool && <TrustList locale={locale} dark className="mt-8 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:space-y-0" />}
-      </PageHero>
+      {isTool ? (
+        <PageHero eyebrow={c.eyebrow} title={c.h1} lead={c.lead} crumbs={[crumbs[0], { name: c.navLabel }]}>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <ButtonLink href={`#${TOOL_ID}`} variant="accent">
+              {t.toTool}
+            </ButtonLink>
+            <ButtonLink href={site.phoneHref} variant="ghostLight" arrow={false} icon="phone">
+              {callLabel(locale)}
+            </ButtonLink>
+          </div>
+        </PageHero>
+      ) : (
+        <CheckHero locale={locale} crumbs={[crumbs[0], { name: c.navLabel }]} label={c.navLabel} />
+      )}
 
       {isTool && (
         <section id={TOOL_ID} className="container-x scroll-mt-24 pt-14 md:pt-20">
@@ -113,8 +114,12 @@ export function StandalonePageView({ locale, pageKey }: { locale: Locale; pageKe
         </section>
       )}
 
+      {!isTool && <WordBand locale={locale} className="pt-6 md:pt-10" />}
+
       <section className="container-x section-y">
         <h2 className="h-section mb-10 max-w-3xl">{c.pointsTitle}</h2>
+        {/* The full introduction: the hero only carries a short version next to the address bar. */}
+        {!isTool && <p className="lead -mt-4 mb-10 max-w-3xl">{c.lead}</p>}
         <FeatureGrid items={c.points} />
       </section>
 
@@ -181,5 +186,52 @@ export function StandalonePageView({ locale, pageKey }: { locale: Locale; pageKe
       )}
       <CtaBand locale={locale} />
     </>
+  );
+}
+
+/**
+ * Website check hero (nordpixel look): dark and centred, the question as the big headline with the "?" in the
+ * light brand blue, the address bar of the form, and the person who checks the site. The H1 keeps the page
+ * keyword ("Kostenloser Website-Check") as its first line. Ends in a white curve into the word band.
+ */
+function CheckHero({ locale, crumbs, label }: { locale: Locale; crumbs: { name: string; url?: string }[]; label: string }) {
+  const t = ui[locale];
+  return (
+    <section className="under-header curve-bottom relative isolate overflow-hidden bg-[#0f1a26] text-white">
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(55%_60%_at_50%_0%,rgb(59_99_133/0.35),transparent_70%),radial-gradient(40%_40%_at_85%_80%,rgb(36_64_90/0.45),transparent_70%)]" />
+      <div className="container-x pb-32 pt-8 text-center md:pb-44 md:pt-10">
+        <div className="flex justify-center [&_nav]:mb-10 md:[&_nav]:mb-12">
+          <Breadcrumbs items={crumbs} dark />
+        </div>
+        <h1>
+          <span className="eyebrow-light text-[13px] tracking-[0.3em]">
+            {label}
+            <span className="sr-only">: </span>
+          </span>
+          <span className="mx-auto mt-6 block max-w-[14ch] text-balance font-display text-[clamp(2.6rem,7vw,5.6rem)] font-bold leading-[1.02] tracking-[-0.03em]">
+            {t.question}
+            {locale === "fr" ? "\u00a0" : ""}
+            <span className="text-[#8fb0cf]">?</span>
+          </span>
+        </h1>
+        <p className="mx-auto mt-7 max-w-xl text-[17px] leading-relaxed text-white/75 md:text-[19px]">{t.heroLead}</p>
+        <div id={FORM_ID} className="mx-auto mt-10 max-w-[680px] scroll-mt-28">
+          <WebsiteCheckForm locale={locale} thanksHref={href(locale, "thanks")} privacyHref={href(locale, "legal:datenschutz")} />
+        </div>
+        <div className="mt-10 flex flex-col items-center justify-center gap-x-8 gap-y-4 sm:flex-row">
+          <div className="text-left">
+            <ContactPerson locale={locale} dark role={t.checker} />
+          </div>
+          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-[14px] text-white/75 sm:justify-start">
+            {t.points.map((p) => (
+              <li key={p} className="flex items-center gap-1.5">
+                <Icon name="check" className="h-3.5 w-3.5 text-accent-light" strokeWidth={3} />
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 }

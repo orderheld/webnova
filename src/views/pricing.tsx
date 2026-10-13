@@ -254,7 +254,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
                 <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5">
                   <span className={`text-[15px] font-medium ${rec ? "text-white/75" : "text-ink-soft"}`}>
                     {t.from} CHF
-                  </span>
+                  </span>{" "}
                   <span className="font-display text-[40px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{swissNumber(p.price)}</span>
                 </p>
                 <p className={`mt-2 text-[13.5px] ${rec ? "text-white/60" : "text-muted"}`}>{t.once}</p>
@@ -381,7 +381,7 @@ function PriceCard({
         <h3 className="font-display text-[21px] font-semibold tracking-[-0.01em]">{name}</h3>
       </div>
       <p className="mt-6 flex flex-wrap items-baseline gap-x-2">
-        <span className="font-display text-[36px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{price}</span>
+        <span className="font-display text-[36px] font-semibold leading-none tracking-[-0.02em] tabular-nums">{price}</span>{" "}
         <span className="text-[15px] text-muted">{per}</span>
       </p>
       <p className="mt-3 text-[15px] font-medium text-accent">{note}</p>
