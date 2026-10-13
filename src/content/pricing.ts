@@ -30,10 +30,6 @@ export interface PricePackage {
 
 /** Days within which the demo is refunded on request if no website order follows. */
 export const guaranteeDays = 30;
-/** Days of free hosting from the launch, without automatic renewal. */
-export const hostingTrialDays = 30;
-/** Months of free hosting with SEO in the package KMU. */
-export const kmuFreeMonths = 3;
 
 export const pricePackages: PricePackage[] = [
   {
@@ -89,7 +85,6 @@ export const pricePackages: PricePackage[] = [
         "Google-Unternehmensprofil eingerichtet",
         "Google-Grundlagen und Besucherzahlen ohne Cookies",
         "In der Regel in rund 3 Wochen online",
-        `Die ersten ${kmuFreeMonths} Monate Hosting mit SEO kosten nichts`,
       ],
       fr: [
         "Jusqu'à 5 pages",
@@ -98,7 +93,6 @@ export const pricePackages: PricePackage[] = [
         "Fiche Google Business Profile créée",
         "Bases Google et visites mesurées sans cookies",
         "En ligne en général en 3 semaines environ",
-        `Les ${kmuFreeMonths} premiers mois d'hébergement avec SEO sont offerts`,
       ],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
@@ -223,10 +217,10 @@ export const vatNote: Localized<string> = {
   fr: "Tous les prix en CHF. Webnova n'est pas assujettie à la TVA, aucune TVA ne s'y ajoute.",
 };
 
-/** The fine print for the money-back guarantee and the free hosting test. */
+/** The fine print for the demo money-back guarantee and when hosting is billed (Ferhat 13:17: no free periods). */
 export const guaranteeNote: Localized<string> = {
-  de: `Zur Design-Demo: Sie erhalten die Rechnung, wenn die Demo fertig ist. Bestellen Sie die Webseite nicht innert ${guaranteeDays} Tagen, zahlen wir Ihnen die ${chf(packagePrice("demo"))} zurück, wenn Sie uns das kurz mitteilen. Zum Hosting: Die ersten ${hostingTrialDays} Tage nach der Aufschaltung kosten nichts. Danach läuft es nur weiter, wenn Sie ein Hosting-Paket wählen, sonst entstehen keine Kosten.`,
-  fr: `Démo design : vous recevez la facture quand la démo est prête. Si vous ne commandez pas le site dans les ${guaranteeDays} jours, nous vous remboursons les ${chf(packagePrice("demo"))} sur simple message. Hébergement : les ${hostingTrialDays} premiers jours après la mise en ligne ne coûtent rien. Ensuite, il ne continue que si vous choisissez une formule, sinon aucun frais.`,
+  de: `Zur Design-Demo: Sie erhalten die Rechnung, wenn die Demo fertig ist. Bestellen Sie die Webseite nicht innert ${guaranteeDays} Tagen, zahlen wir Ihnen die ${chf(packagePrice("demo"))} zurück, wenn Sie uns das kurz mitteilen. Zum Hosting: Es wird ab der Aufschaltung monatlich verrechnet und ist auf Ende Monat kündbar.`,
+  fr: `Démo design : vous recevez la facture quand la démo est prête. Si vous ne commandez pas le site dans les ${guaranteeDays} jours, nous vous remboursons les ${chf(packagePrice("demo"))} sur simple message. Hébergement : il est facturé chaque mois dès la mise en ligne et résiliable pour la fin du mois.`,
 };
 
 export type PriceTopic = "website" | "shop" | "redesign" | "care" | "gbp";
@@ -298,7 +292,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
       case "shop":
         return `Onlineshops offerieren wir bei Webnova individuell ab ${shop}. Der genaue Preis hängt von Sortiment, Zahlungsarten wie TWINT und Karte, Versand und Anbindungen ab. Sie erhalten ihn nach einem kostenlosen Erstgespräch in einer schriftlichen Offerte. ${hostingLine}`;
       case "care":
-        return `Für Webseiten von Webnova gibt es drei Hosting-Pakete, monatlich und jederzeit kündbar: Hosting ${hosting} pro Monat mit SSL, täglichen Backups und Updates, Hosting + SEO ${hostingSeo} und Rundum ${rundum} mit laufenden kleinen Änderungen. Ab der Aufschaltung testen Sie das Hosting ${hostingTrialDays} Tage gratis, beim Paket KMU sind Hosting und SEO ${kmuFreeMonths} Monate gratis. Die Domain steht separat in der Offerte. Für Webseiten anderer Anbieter richtet sich der Preis nach System und Umfang, Sie erhalten nach dem kostenlosen Erstgespräch eine Offerte.`;
+        return `Für Webseiten von Webnova gibt es drei Hosting-Pakete, monatlich und jederzeit kündbar: Hosting ${hosting} pro Monat mit SSL, täglichen Backups und Updates, Hosting + SEO ${hostingSeo} und Rundum ${rundum} mit laufenden kleinen Änderungen. Verrechnet wird ab der Aufschaltung. Die Domain steht separat in der Offerte. Für Webseiten anderer Anbieter richtet sich der Preis nach System und Umfang, Sie erhalten nach dem kostenlosen Erstgespräch eine Offerte.`;
       case "gbp":
         return `Bei Google ist das Profil kostenlos. Die Einrichtung durch uns kostet einmalig ${fromPrice(locale, gbpPrice.setup)}, die freiwillige Betreuung ${chf(gbpPrice.monthly)} pro Monat. In den Webseiten-Paketen KMU und Professional ist die Einrichtung bereits enthalten.`;
     }
@@ -312,7 +306,7 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
     case "shop":
       return `Chez Webnova, les boutiques en ligne sont proposées sur devis dès ${shop}. Le prix exact dépend de l'assortiment, des moyens de paiement comme TWINT et carte, de la livraison et des interfaces. Vous le recevez dans un devis écrit après un premier entretien gratuit. ${hostingLine}`;
     case "care":
-      return `Pour les sites créés par Webnova, il existe trois formules d'hébergement, mensuelles et résiliables en tout temps : Hébergement ${hosting} par mois avec SSL, sauvegardes quotidiennes et mises à jour, Hébergement + SEO ${hostingSeo} et Tout compris ${rundum} avec les petites modifications courantes. Dès la mise en ligne, vous testez l'hébergement gratuitement pendant ${hostingTrialDays} jours, avec la formule PME l'hébergement avec SEO est offert ${kmuFreeMonths} mois. Le nom de domaine figure séparément dans le devis. Pour les sites d'autres prestataires, le prix dépend du système et de l'ampleur : vous recevez un devis après le premier entretien gratuit.`;
+      return `Pour les sites créés par Webnova, il existe trois formules d'hébergement, mensuelles et résiliables en tout temps : Hébergement ${hosting} par mois avec SSL, sauvegardes quotidiennes et mises à jour, Hébergement + SEO ${hostingSeo} et Tout compris ${rundum} avec les petites modifications courantes. La facturation commence à la mise en ligne. Le nom de domaine figure séparément dans le devis. Pour les sites d'autres prestataires, le prix dépend du système et de l'ampleur : vous recevez un devis après le premier entretien gratuit.`;
     case "gbp":
       return `Chez Google, la fiche est gratuite. La mise en place par nos soins coûte à partir de ${chf(gbpPrice.setup)} en paiement unique, le suivi facultatif ${chf(gbpPrice.monthly)} par mois. Dans les formules PME et Professional pour les sites internet, la mise en place est déjà comprise.`;
   }
