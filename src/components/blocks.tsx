@@ -56,7 +56,7 @@ export function PageHero({
   backdrop?: React.ReactNode;
 }) {
   return (
-    <section className="stage-night under-header relative isolate overflow-hidden text-white">
+    <section className="stage-night relative isolate overflow-hidden text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(60%_70%_at_85%_10%,#000,transparent)]" />
       <div className="container-x pb-16 pt-8 md:pb-24 md:pt-10">
         {crumbs && <Breadcrumbs items={crumbs} dark />}

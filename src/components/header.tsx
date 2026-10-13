@@ -159,167 +159,162 @@ export function Header({ nav, logo, logoLight, tone = "dark" }: { nav: NavData; 
 
   return (
     <>
-      {/* Floating white bar (nordpixel look): inset from the edges, rounded, with a soft night-tinted shadow.
-          The wrapper is transparent, so dark page heroes that run up under it (utility under-header) show around it. */}
-      <header id="top" className="sticky top-0 z-50 px-3 pt-3 sm:px-4 lg:px-5 lg:pt-4">
-        <div
-          className={`mx-auto max-w-[1440px] rounded-2xl text-ink ring-1 transition-[background-color,box-shadow] duration-300 ${
-            scrolled || openMenu
-              ? "bg-white/95 shadow-[0_18px_40px_-20px_rgb(27_45_62/0.38)] ring-line/80 backdrop-blur-xl"
-              : "bg-white shadow-[0_12px_32px_-20px_rgb(27_45_62/0.32)] ring-line/60"
-          }`}
-        >
-          <div className="relative flex h-16 items-center justify-between gap-6 pl-4 pr-2.5 sm:pl-6 sm:pr-3 lg:h-[72px] lg:pl-7 lg:pr-4">
-            <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
-              {dk ? (logoLight ?? logo) : logo}
-            </Link>
+      <header
+        id="top"
+        className={`sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
+          dk
+            ? `text-white ${scrolled || openMenu ? "border-white/10 bg-night/95 backdrop-blur-xl" : "border-transparent bg-night"}`
+            : `text-ink ${scrolled || openMenu ? "border-line bg-bg/95 backdrop-blur-xl" : "border-transparent bg-bg"}`
+        }`}
+      >
+        <div className="container-x relative flex h-[72px] items-center justify-between gap-6">
+          <Link href={nav.home} aria-label="Webnova" className="shrink-0" onClick={() => setOpenFor(null)}>
+            {dk ? (logoLight ?? logo) : logo}
+          </Link>
 
-            <nav ref={navRef} className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1 self-stretch`} aria-label={de ? "Hauptnavigation" : "Navigation principale"}>
-              <Dropdown label={nav.servicesLabel} active={pathname.startsWith(nav.servicesHref)} dark={dk} {...menuProps("services")}>
-                <div className="grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 lg:grid-cols-3">
-                  {nav.serviceGroups.map((g, i) => (
-                    <MenuGroup key={g.key} group={g} start={serviceStarts[i]} detailed />
-                  ))}
-                </div>
-                <MenuFooter>
-                  <Link href={nav.servicesHref} className="link-arrow">
-                    {nav.allServicesLabel}
-                    <Icon name="arrow" className="h-4 w-4" />
-                  </Link>
-                  <span className="flex items-center gap-6 text-[14px] text-ink-soft">
-                    <a href={nav.phone.href} className="inline-flex items-center gap-2 hover:text-accent">
-                      <Icon name="phone" className="h-4 w-4 text-bright" /> {nav.phone.label}
-                    </a>
-                    <a href={`mailto:${nav.email}`} className="hover:text-accent">
-                      {nav.email}
-                    </a>
-                  </span>
-                </MenuFooter>
-              </Dropdown>
-
-              <Dropdown label={nav.industriesLabel} active={pathname.startsWith(nav.industriesHref)} dark={dk} {...menuProps("industries")}>
-                <div className="grid gap-10 px-8 pb-8 pt-7 lg:grid-cols-12">
-                  <div className="lg:col-span-8">
-                    <p className="label mb-3">{nav.industriesLabel}</p>
-                    <ul className="grid grid-cols-2 gap-x-8 border-t border-line">
-                      {nav.industries.map((s, i) => (
-                        <li key={s.href}>
-                          <MenuLink item={s} n={i + 1} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex flex-col gap-2 border-l border-line pl-8 lg:col-span-4">
-                    <p className="label mb-2">{nav.problemsLabel}</p>
-                    <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.01em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</p>
-                    <p className="text-[14.5px] leading-relaxed text-ink-soft">
-                      {de ? "Keine Anfragen, nicht gefunden, veraltet oder zu langsam: die häufigsten Anliegen und wie wir sie lösen." : "Pas de demandes, introuvable, dépassé ou trop lent : les cas les plus fréquents et nos solutions."}
-                    </p>
-                    <Link href={nav.problemsHref} className="link-arrow mt-auto pt-3">
-                      {nav.problemsLabel}
-                      <Icon name="arrow" className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-                <MenuFooter>
-                  <Link href={nav.industriesHref} className="link-arrow">
-                    {nav.allIndustriesLabel}
-                    <Icon name="arrow" className="h-4 w-4" />
-                  </Link>
-                </MenuFooter>
-              </Dropdown>
-
-              <Dropdown label={nav.resourcesLabel} active={pathname.startsWith(nav.resourcesHref)} dark={dk} {...menuProps("resources")}>
-                <div className={`grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 ${nav.resourceGroups.length >= 3 ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
-                  {nav.resourceGroups.map((g, i) => (
-                    <div key={g.key} className={nav.resourceGroups.length >= 3 ? (i === 0 ? "lg:col-span-6" : "lg:col-span-3") : ""}>
-                      <MenuGroup group={g} start={0} />
-                    </div>
-                  ))}
-                </div>
-              </Dropdown>
-
-              {/* Only as many plain links as fit next to the three menus (1240px container): one from lg,
-                  three from xl (see `bar` in buildNav). The others stay one click away in the "Ratgeber"
-                  menu, the fullscreen menu and the footer. */}
-              {nav.links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  aria-current={pathname === l.href ? "page" : undefined}
-                  className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3 ${
-                    l.bar === "lg" ? "" : l.bar === "xl" ? "hidden xl:block" : "hidden"
-                  } ${
-                    pathname === l.href
-                      ? dk
-                        ? "font-medium text-white underline decoration-accent-light decoration-[1.5px] underline-offset-[10px]"
-                        : "font-medium text-accent underline decoration-accent decoration-[1.5px] underline-offset-[10px]"
-                      : dk
-                        ? "text-white/75 hover:!text-white"
-                        : "text-ink-soft"
-                  }`}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2">
-              {/* Language switch: both languages always visible, the current one highlighted. */}
-              <div className="flex items-center rounded-full bg-bg-2 p-1 text-[12.5px] font-semibold ring-1 ring-inset ring-line">
-                {(["de", "fr"] as const).map((l) =>
-                  l === nav.locale ? (
-                    <span key={l} aria-current="true" className="rounded-full bg-accent px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-white">
-                      {l}
-                    </span>
-                  ) : (
-                    <Link
-                      key={l}
-                      href={switchHref}
-                      // Few visitors switch language: no prefetch of the other language's page on every page view.
-                      prefetch={false}
-                      hrefLang={l}
-                      lang={l}
-                      aria-label={l === "fr" ? "FR, Français" : "DE, Deutsch"}
-                      className="rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-ink-soft transition-colors hover:text-accent"
-                    >
-                      {l}
-                    </Link>
-                  ),
-                )}
+          <nav ref={navRef} className={`${minimal ? "hidden" : "hidden lg:flex"} items-center gap-1 self-stretch`} aria-label={de ? "Hauptnavigation" : "Navigation principale"}>
+            <Dropdown label={nav.servicesLabel} active={pathname.startsWith(nav.servicesHref)} dark={dk} {...menuProps("services")}>
+              <div className="grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 lg:grid-cols-3">
+                {nav.serviceGroups.map((g, i) => (
+                  <MenuGroup key={g.key} group={g} start={serviceStarts[i]} detailed />
+                ))}
               </div>
-              {/* Phone only in the reduced landing-page header: next to the full navigation it no longer fits the 1240px container. */}
-              <a
-                href={nav.phone.href}
-                className={`${minimal ? "hidden sm:flex" : "hidden"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
-              >
-                <Icon name="phone" className="h-4 w-4 text-bright" />
-                {nav.phone.label}
-              </a>
-              <Link
-                href={minimal ? "#formular" : nav.cta.href}
-                className={`group hidden items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] font-medium transition-colors sm:inline-flex ${dk ? "bg-white text-accent hover:bg-bright-soft" : "bg-accent text-white hover:bg-night"}`}
-              >
-                {nav.cta.label}
-                <Icon name="arrow" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
-              <button
-                ref={menuButtonRef}
-                type="button"
-                onClick={() => setOpenFor(open ? null : pathname)}
-                className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-xl border pl-3.5 pr-4 text-[14px] font-semibold transition-colors max-[399px]:px-3.5 ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
-                aria-expanded={open}
-                aria-controls="mobile-menu"
-              >
-                <span aria-hidden="true" className="grid grid-cols-2 gap-[3px]">
-                  <span className="h-[5px] w-[5px] rounded-[1.5px] bg-current" />
-                  <span className="h-[5px] w-[5px] rounded-[1.5px] bg-current" />
-                  <span className="h-[5px] w-[5px] rounded-[1.5px] bg-current" />
-                  <span className="h-[5px] w-[5px] rounded-[1.5px] bg-current" />
+              <MenuFooter>
+                <Link href={nav.servicesHref} className="link-arrow">
+                  {nav.allServicesLabel}
+                  <Icon name="arrow" className="h-4 w-4" />
+                </Link>
+                <span className="flex items-center gap-6 text-[14px] text-ink-soft">
+                  <a href={nav.phone.href} className="inline-flex items-center gap-2 hover:text-accent">
+                    <Icon name="phone" className="h-4 w-4 text-bright" /> {nav.phone.label}
+                  </a>
+                  <a href={`mailto:${nav.email}`} className="hover:text-accent">
+                    {nav.email}
+                  </a>
                 </span>
-                <span className="max-[399px]:sr-only">{nav.menuLabel}</span>
-              </button>
+              </MenuFooter>
+            </Dropdown>
+
+            <Dropdown label={nav.industriesLabel} active={pathname.startsWith(nav.industriesHref)} dark={dk} {...menuProps("industries")}>
+              <div className="grid gap-10 px-8 pb-8 pt-7 lg:grid-cols-12">
+                <div className="lg:col-span-8">
+                  <p className="label mb-3">{nav.industriesLabel}</p>
+                  <ul className="grid grid-cols-2 gap-x-8 border-t border-line">
+                    {nav.industries.map((s, i) => (
+                      <li key={s.href}>
+                        <MenuLink item={s} n={i + 1} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-col gap-2 border-l border-line pl-8 lg:col-span-4">
+                  <p className="label mb-2">{nav.problemsLabel}</p>
+                  <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.01em]">{de ? "Lieber beim Problem starten?" : "Plutôt partir du problème ?"}</p>
+                  <p className="text-[14.5px] leading-relaxed text-ink-soft">
+                    {de ? "Keine Anfragen, nicht gefunden, veraltet oder zu langsam: die häufigsten Anliegen und wie wir sie lösen." : "Pas de demandes, introuvable, dépassé ou trop lent : les cas les plus fréquents et nos solutions."}
+                  </p>
+                  <Link href={nav.problemsHref} className="link-arrow mt-auto pt-3">
+                    {nav.problemsLabel}
+                    <Icon name="arrow" className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+              <MenuFooter>
+                <Link href={nav.industriesHref} className="link-arrow">
+                  {nav.allIndustriesLabel}
+                  <Icon name="arrow" className="h-4 w-4" />
+                </Link>
+              </MenuFooter>
+            </Dropdown>
+
+            <Dropdown label={nav.resourcesLabel} active={pathname.startsWith(nav.resourcesHref)} dark={dk} {...menuProps("resources")}>
+              <div className={`grid gap-x-10 gap-y-8 px-8 pb-8 pt-7 ${nav.resourceGroups.length >= 3 ? "lg:grid-cols-12" : "lg:grid-cols-2"}`}>
+                {nav.resourceGroups.map((g, i) => (
+                  <div key={g.key} className={nav.resourceGroups.length >= 3 ? (i === 0 ? "lg:col-span-6" : "lg:col-span-3") : ""}>
+                    <MenuGroup group={g} start={0} />
+                  </div>
+                ))}
+              </div>
+            </Dropdown>
+
+            {/* Only as many plain links as fit next to the three menus (1240px container): one from lg,
+                three from xl (see `bar` in buildNav). The others stay one click away in the "Ratgeber"
+                menu, the fullscreen menu and the footer. */}
+            {nav.links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={pathname === l.href ? "page" : undefined}
+                className={`whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors hover:text-accent xl:px-3.5 ${
+                  l.bar === "lg" ? "" : l.bar === "xl" ? "hidden xl:block" : "hidden"
+                } ${
+                  pathname === l.href
+                    ? dk
+                      ? "font-medium text-white underline decoration-accent-light decoration-[1.5px] underline-offset-[10px]"
+                      : "font-medium text-accent underline decoration-accent decoration-[1.5px] underline-offset-[10px]"
+                    : dk
+                      ? "text-white/75 hover:!text-white"
+                      : "text-ink-soft"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            {/* Language switch: both languages always visible, the current one highlighted. */}
+            <div className="flex items-center rounded-full bg-bg-2 p-1 text-[12.5px] font-semibold ring-1 ring-inset ring-line">
+              {(["de", "fr"] as const).map((l) =>
+                l === nav.locale ? (
+                  <span key={l} aria-current="true" className="rounded-full bg-accent px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-white">
+                    {l}
+                  </span>
+                ) : (
+                  <Link
+                    key={l}
+                    href={switchHref}
+                    // Few visitors switch language: no prefetch of the other language's page on every page view.
+                    prefetch={false}
+                    hrefLang={l}
+                    lang={l}
+                    aria-label={l === "fr" ? "FR, Français" : "DE, Deutsch"}
+                    className="rounded-full px-2.5 py-1.5 uppercase leading-none tracking-[0.08em] text-ink-soft transition-colors hover:text-accent"
+                  >
+                    {l}
+                  </Link>
+                ),
+              )}
             </div>
+            {/* Phone only in the reduced landing-page header: next to the full navigation it no longer fits the 1240px container. */}
+            <a
+              href={nav.phone.href}
+              className={`${minimal ? "hidden sm:flex" : "hidden"} items-center gap-2 whitespace-nowrap px-3 py-2 text-[14px] transition-colors ${dk ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-accent"}`}
+            >
+              <Icon name="phone" className="h-4 w-4 text-bright" />
+              {nav.phone.label}
+            </a>
+            <Link
+              href={minimal ? "#formular" : nav.cta.href}
+              className={`group hidden items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] font-medium transition-colors sm:inline-flex ${dk ? "bg-white text-accent hover:bg-bright-soft" : "bg-accent text-white hover:bg-night"}`}
+            >
+              {nav.cta.label}
+              <Icon name="arrow" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => setOpenFor(open ? null : pathname)}
+              className={`${minimal ? "hidden" : "flex lg:hidden"} h-11 items-center gap-2.5 rounded-full border pl-4 pr-3.5 text-[14px] font-medium transition-colors max-[399px]:px-3.5 ${dk ? "border-white/20 bg-white/5 text-white hover:border-white/50" : "border-line bg-white text-ink hover:border-accent/40"}`}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+            >
+              <span className="max-[399px]:sr-only">{nav.menuLabel}</span>
+              <span aria-hidden="true" className="flex w-4 flex-col gap-[5px]">
+                <span className="h-[1.5px] w-full bg-current" />
+                <span className="h-[1.5px] w-2/3 self-end bg-current" />
+              </span>
+            </button>
           </div>
         </div>
       </header>
@@ -553,7 +548,7 @@ function Dropdown({
             window.setTimeout(() => panelRef.current?.querySelector<HTMLElement>("a")?.focus(), 60);
           }
         }}
-        className={`flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors xl:px-3 ${
+        className={`flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[15px] transition-colors xl:px-3.5 ${
           dark ? (open || active ? "text-white" : "text-white/75 hover:text-white") : open || active ? "text-accent" : "text-ink-soft hover:text-accent"
         }`}
       >
@@ -565,7 +560,7 @@ function Dropdown({
       <div
         ref={panelRef}
         id={panelId}
-        className={`absolute inset-x-0 top-full pt-2.5 transition-[opacity,visibility,transform] duration-200 ${
+        className={`absolute inset-x-5 top-full transition-[opacity,visibility,transform] duration-200 sm:inset-x-8 ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         }`}
       >
