@@ -1,6 +1,5 @@
 import { ButtonLink } from "@/components/button";
 import Image from "next/image";
-import { DesignCards } from "@/components/design-cards";
 import { ContactPerson, CtaBand, FeatureGrid, HeroCtas, PageHero, Prose, TrustList } from "@/components/blocks";
 import { Icon } from "@/components/icons";
 import { ContactList, PortraitCard } from "@/components/editorial";
@@ -93,7 +92,6 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
           <ReferenceCard key={r.key} r={r} locale={locale} large priority={i < 2} />
         ))}
       </section>
-      <DesignCards locale={locale} className="pb-24 pt-8 md:pb-32 md:pt-12" />
       <CtaBand locale={locale} />
     </>
   );
@@ -125,7 +123,6 @@ function ReferencesOnRequest({ locale }: { locale: Locale }) {
           <ReferenceTeaserCard key={r.teaserImage ?? i} r={r} locale={locale} badge={p.referencesRequestBadge} priority={i < 2} />
         ))}
       </section>
-      <DesignCards locale={locale} className="pb-24 pt-8 md:pb-32 md:pt-12" />
       <CtaBand locale={locale} />
     </>
   );

@@ -47,8 +47,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Voyez votre nouvelle page d'accueil avant de vous décider.",
     },
     features: {
-      de: ["Entwurf Ihrer Startseite", "Mit Ihrem Logo, Ihren Farben und Inhalten", "Als Bild zum Anschauen, noch keine fertige Webseite", "Bei Auftrag voll angerechnet", `${guaranteeDays} Tage Geld-zurück-Garantie`],
-      fr: ["Maquette de votre page d'accueil", "Avec votre logo, vos couleurs et vos contenus", "En image, pas encore un site en ligne", "Entièrement déduite à la commande", `Garantie de remboursement de ${guaranteeDays} jours`],
+      de: ["Ihre künftige Startseite, gestaltet von uns", "In Ihren Farben und mit Ihrem Logo", "Zum Anschauen, programmiert wird erst nach Ihrem OK", "Wird bei Auftrag vom Preis abgezogen", `Geld zurück, wenn innert ${guaranteeDays} Tagen kein Auftrag folgt`],
+      fr: ["Votre future page d'accueil, conçue par nous", "Dans vos couleurs et avec votre logo", "À regarder, le développement suit votre accord", "Déduite du prix à la commande", `Remboursée si aucune commande dans les ${guaranteeDays} jours`],
     },
     cta: { de: "Demo anfragen", fr: "Demander la démo" },
   },
@@ -76,25 +76,25 @@ export const pricePackages: PricePackage[] = [
     service: "webdesign",
     recommended: true,
     forWhom: {
-      de: "Der komplette Auftritt für Ihren Betrieb, gemacht für mehr Anfragen.",
-      fr: "La présence complète de votre entreprise, faite pour plus de demandes.",
+      de: "Mehrere Seiten für Betriebe, die über ihre Webseite Anfragen gewinnen wollen.",
+      fr: "Plusieurs pages pour les entreprises qui veulent obtenir des demandes par leur site.",
     },
     features: {
       de: [
-        "2 bis 5 Seiten, jede individuell gestaltet",
-        "Individuelles Design mit feinen Animationen",
-        "Kontaktformular und Terminbuchung",
-        "SEO-Grundlagen und Besucherstatistik ohne Cookies",
+        "2 bis 5 Seiten",
+        "Eigenes Design mit dezenten Bewegungen",
+        "Kontaktformular und Online-Termine",
+        "Google-Grundlagen und Besucherzahlen ohne Cookies",
         "In der Regel in rund 3 Wochen online",
-        `Hosting mit SEO ${kmuFreeMonths} Monate gratis, danach CHF 59 pro Monat`,
+        `Die ersten ${kmuFreeMonths} Monate Hosting mit SEO kosten nichts`,
       ],
       fr: [
-        "2 à 5 pages, chacune conçue sur mesure",
-        "Design sur mesure avec animations discrètes",
-        "Formulaire de contact et prise de rendez-vous",
-        "Bases SEO et statistiques de visites sans cookies",
+        "2 à 5 pages",
+        "Design propre avec mouvements discrets",
+        "Formulaire de contact et rendez-vous en ligne",
+        "Bases Google et visites mesurées sans cookies",
         "En ligne en général en 3 semaines environ",
-        `Hébergement avec SEO offert ${kmuFreeMonths} mois, ensuite CHF 59 par mois`,
+        `Les ${kmuFreeMonths} premiers mois d'hébergement avec SEO sont offerts`,
       ],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
@@ -107,12 +107,12 @@ export const pricePackages: PricePackage[] = [
     note: { de: "individuell offeriert", fr: "sur devis" },
     service: "webdesign",
     forWhom: {
-      de: "Wenn Ihr Betrieb mehr braucht: viele Seiten, einen Onlineshop oder besondere Funktionen.",
-      fr: "Quand votre entreprise a besoin de plus : beaucoup de pages, une boutique en ligne ou des fonctions spéciales.",
+      de: "Für grössere Auftritte, Onlineshops und Funktionen nach Mass.",
+      fr: "Pour les présences plus grandes, les boutiques en ligne et les fonctions sur mesure.",
     },
     features: {
-      de: ["Ab 6 Seiten", "Onlineshop, Buchungssystem oder Kundenbereich", "Zahlung mit TWINT und Karte", "Anbindung an Kasse und andere Systeme", "Zeitplan nach Umfang", "Offerte nach einem kurzen Gespräch"],
-      fr: ["Dès 6 pages", "Boutique en ligne, système de réservation ou espace client", "Paiement par TWINT et carte", "Liaison avec la caisse et d'autres systèmes", "Calendrier selon l'ampleur", "Devis après un court entretien"],
+      de: ["Ab 6 Seiten", "Shop, Reservationen oder Login für Kunden", "Zahlung mit TWINT und Karte", "Verbindung mit Ihrer Kasse und anderen Programmen", "Zeitplan nach Umfang", "Preis nach Aufwand, schriftlich offeriert"],
+      fr: ["Dès 6 pages", "Boutique, réservations ou accès client", "Paiement par TWINT et carte", "Liaison avec votre caisse et d'autres logiciels", "Calendrier selon l'ampleur", "Prix selon le travail, devis écrit"],
     },
     cta: { de: "Offerte anfragen", fr: "Demander un devis" },
   },
@@ -147,8 +147,8 @@ export const careTiers: CareTier[] = [
     name: { de: "Hosting + SEO", fr: "Hébergement + SEO" },
     price: 59,
     items: {
-      de: ["Alles aus Hosting", "Laufende Suchmaschinenoptimierung", "Damit Sie bei Google besser gefunden werden"],
-      fr: ["Tout l'hébergement", "Optimisation continue pour les moteurs de recherche", "Pour être mieux trouvé sur Google"],
+      de: ["Alles aus Hosting", "Wir arbeiten laufend an Ihrer Sichtbarkeit bei Google"],
+      fr: ["Tout l'hébergement", "Nous travaillons en continu à votre visibilité sur Google"],
     },
   },
   {
@@ -156,8 +156,8 @@ export const careTiers: CareTier[] = [
     name: { de: "Rundum", fr: "Tout compris" },
     price: 89,
     items: {
-      de: ["Alles aus Hosting + SEO", "Laufende kleine Änderungen inbegriffen", "Ausführlichere SEO-Betreuung"],
-      fr: ["Tout l'hébergement + SEO", "Petites modifications courantes comprises", "Suivi SEO plus poussé"],
+      de: ["Alles aus Hosting + SEO", "Kleine Änderungen machen wir laufend für Sie", "Ein Ansprechpartner für alles"],
+      fr: ["Tout l'hébergement + SEO", "Nous faisons les petites modifications pour vous", "Un seul interlocuteur pour tout"],
     },
   },
 ];
@@ -204,8 +204,8 @@ export const vatNote: Localized<string> = {
 
 /** The fine print for the money-back guarantee and the free hosting test. */
 export const guaranteeNote: Localized<string> = {
-  de: `Geld-zurück-Garantie: Die Design-Demo verrechnen wir, sobald sie fertig ist. Erteilen Sie innert ${guaranteeDays} Tagen nach Erhalt der Demo keinen Auftrag für die Webseite, erstatten wir Ihnen die ${chf(packagePrice("demo"))} auf Wunsch vollständig zurück, eine kurze Nachricht genügt. Kostenlos testen: Das Hosting testen Sie ab der Aufschaltung Ihrer Webseite ${hostingTrialDays} Tage gratis, ohne automatische Verlängerung. Wählen Sie danach kein Hosting-Paket, endet der Test einfach, und es entstehen keine Kosten.`,
-  fr: `Garantie de remboursement : nous facturons la démo design une fois terminée. Si vous ne commandez pas le site dans les ${guaranteeDays} jours qui suivent la remise de la démo, nous vous remboursons entièrement les ${chf(packagePrice("demo"))} sur demande, un court message suffit. Essai gratuit : vous testez l'hébergement gratuitement pendant ${hostingTrialDays} jours dès la mise en ligne de votre site, sans renouvellement automatique. Si vous ne choisissez ensuite aucune formule d'hébergement, l'essai prend simplement fin, sans frais.`,
+  de: `Zur Design-Demo: Sie erhalten die Rechnung, wenn die Demo fertig ist. Bestellen Sie die Webseite nicht innert ${guaranteeDays} Tagen, zahlen wir Ihnen die ${chf(packagePrice("demo"))} zurück, wenn Sie uns das kurz mitteilen. Zum Hosting: Die ersten ${hostingTrialDays} Tage nach der Aufschaltung kosten nichts. Danach läuft es nur weiter, wenn Sie ein Hosting-Paket wählen, sonst entstehen keine Kosten.`,
+  fr: `Démo design : vous recevez la facture quand la démo est prête. Si vous ne commandez pas le site dans les ${guaranteeDays} jours, nous vous remboursons les ${chf(packagePrice("demo"))} sur simple message. Hébergement : les ${hostingTrialDays} premiers jours après la mise en ligne ne coûtent rien. Ensuite, il ne continue que si vous choisissez une formule, sinon aucun frais.`,
 };
 
 export type PriceTopic = "website" | "shop" | "redesign" | "care" | "gbp";
