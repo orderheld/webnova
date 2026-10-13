@@ -7,10 +7,11 @@ import {
   careTiers,
   chf,
   costAnswer,
+  domainYearly,
+  extraPagePrice,
   fromPrice,
   gbpPrice,
-  guaranteeDays,
-  guaranteeNote,
+  billingNote,
   pricePackages,
   prices,
   websitePackages,
@@ -42,14 +43,14 @@ export const pricingText = {
     runningLead: `Für Webseiten, die wir gebaut haben. Verrechnet wird monatlich ab der Aufschaltung, jedes Paket kündigen Sie auf Ende Monat.`,
     perMonth: "pro Monat",
     once: "einmalig",
-    careFoot: "Die Domain läuft auf Ihren Namen und steht als eigene Position in der Offerte. Für Webseiten anderer Anbieter erhalten Sie eine eigene Offerte.",
+    careFoot: `Die Domain läuft auf Ihren Namen und kostet ca. ${chf(domainYearly)} pro Jahr, separat verrechnet. Für Webseiten anderer Anbieter erhalten Sie eine eigene Offerte.`,
     careMore: "Mehr zur Wartung",
     gbp: {
       name: "Google-Unternehmensprofil",
       care: `Betreuung auf Wunsch: ${prices.gbpMonthly} pro Monat`,
       items: ["Profil einrichten oder übernehmen", "Bestätigung bei Google", "Logo, Fotos und alle Angaben", "Bewertungen mit System"],
       careText: "Die Betreuung umfasst Beiträge, Antworten auf Bewertungen, die Pflege der Angaben und eine kurze Auswertung jeden Monat.",
-      note: "In den Paketen KMU und Professional ist die Einrichtung enthalten.",
+      note: `Im Hosting-Paket Rundum ist die Betreuung dabei. Bei den Paketen KMU und Professional ist die Einrichtung Teil des Paketpreises.`,
       more: "Mehr zum Google-Profil",
     },
     extrasEyebrow: "Extras",
@@ -79,20 +80,16 @@ export const pricingText = {
       { q: "Was kostet eine Webseite bei Webnova?", a: costAnswer("de", "website") },
       {
         q: "Was ist im Paketpreis enthalten?",
-        a: "Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte. So sehen Sie vor dem Start, was Ihre Webseite kostet.",
+        a: `Der Paketpreis gilt für den beschriebenen Umfang. Brauchen Sie mehr Seiten, eine zweite Sprache, Texte von uns oder zusätzliche Funktionen, steht das als eigene Position in der Offerte, jede weitere Seite zum Beispiel mit ${chf(extraPagePrice)}. So sehen Sie vor dem Start, was Ihre Webseite kostet.`,
       },
       {
         q: "Was ist die Design-Demo?",
         a: `Für ${prices.demo} gestalten wir die Startseite, wie Ihre neue Webseite aussehen würde, in Ihren Farben und mit Ihrem Logo. Sie sehen sie als Bild, programmiert wird erst, wenn Sie die Webseite bestellen. Dann ziehen wir die ${prices.demo} vom Preis ab.`,
       },
-      {
-        q: "Was, wenn mir die Demo nicht zusagt?",
-        a: `Dann zahlen Sie nichts. Bestellen Sie die Webseite nicht innert ${guaranteeDays} Tagen nach Erhalt der Demo, zahlen wir Ihnen die ${prices.demo} zurück. Eine kurze Nachricht an uns reicht, eine Begründung brauchen wir nicht.`,
-      },
       { q: "Was kostet ein Onlineshop?", a: costAnswer("de", "shop") },
       {
         q: "Welche laufenden Kosten kommen dazu?",
-        a: `Hosting ist freiwillig und monatlich kündbar: Hosting ${prices.hosting}, Hosting + SEO ${prices.hostingSeo} oder Rundum ${prices.rundum} pro Monat. Verrechnet wird ab der Aufschaltung. Die Domain läuft auf Ihren Namen und steht separat in der Offerte.`,
+        a: `Hosting ist freiwillig und monatlich kündbar: Hosting ${prices.hosting}, Hosting + SEO ${prices.hostingSeo} oder Rundum ${prices.rundum} pro Monat. Rundum enthält auch die Betreuung Ihres Google-Unternehmensprofils. Verrechnet wird ab der Aufschaltung. Die Domain läuft auf Ihren Namen, kostet ca. ${chf(domainYearly)} pro Jahr und wird separat verrechnet.`,
       },
       { q: "Kommt noch MWST dazu?", a: "Nein. Webnova ist nicht mehrwertsteuerpflichtig. Die Preise auf dieser Seite sind Endpreise, es kommt keine MWST dazu." },
       { q: "Was kostet das Google-Unternehmensprofil?", a: costAnswer("de", "gbp") },
@@ -122,14 +119,14 @@ export const pricingText = {
     runningLead: `Pour les sites que nous avons réalisés. Facturation mensuelle dès la mise en ligne, chaque formule se résilie pour la fin du mois.`,
     perMonth: "par mois",
     once: "paiement unique",
-    careFoot: "Le nom de domaine est à votre nom et figure comme poste séparé dans le devis. Pour les sites d'autres prestataires, vous recevez une offre séparée.",
+    careFoot: `Le nom de domaine est à votre nom et coûte env. ${chf(domainYearly)} par an, facturé séparément. Pour les sites d'autres prestataires, vous recevez une offre séparée.`,
     careMore: "En savoir plus sur la maintenance",
     gbp: {
       name: "Fiche Google Business Profile",
       care: `Suivi sur demande : ${prices.gbpMonthly} par mois`,
       items: ["Création ou reprise de la fiche", "Validation auprès de Google", "Logo, photos et toutes les informations", "Avis clients avec méthode"],
       careText: "Le suivi comprend des publications, les réponses aux avis, la mise à jour des informations et un bref rapport chaque mois.",
-      note: "Dans les formules PME et Professional, la mise en place est comprise.",
+      note: `La formule d'hébergement Tout compris inclut le suivi. Dans les formules PME et Professional, la mise en place fait partie du prix de la formule.`,
       more: "En savoir plus sur la fiche Google",
     },
     extrasEyebrow: "Options",
@@ -159,20 +156,16 @@ export const pricingText = {
       { q: "Combien coûte un site internet chez Webnova ?", a: costAnswer("fr", "website") },
       {
         q: "Qu'est-ce qui est compris dans le prix de la formule ?",
-        a: "Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis. Vous savez ainsi avant le début ce que coûte votre site.",
+        a: `Le prix de la formule vaut pour l'ampleur décrite. Si vous avez besoin de pages supplémentaires, d'une deuxième langue, de textes rédigés par nous ou de fonctions en plus, cela figure comme poste séparé dans le devis, par exemple ${chf(extraPagePrice)} par page supplémentaire. Vous savez ainsi avant le début ce que coûte votre site.`,
       },
       {
         q: "Qu'est-ce que la démo design ?",
         a: `Pour ${prices.demo}, nous concevons la page d'accueil telle que votre nouveau site la montrerait, dans vos couleurs et avec votre logo. Vous la voyez en image, le développement ne commence que si vous commandez le site. Les ${prices.demo} sont alors déduits du prix.`,
       },
-      {
-        q: "Et si la démo ne me convient pas ?",
-        a: `Alors vous ne payez rien. Si vous ne commandez pas le site dans les ${guaranteeDays} jours après la remise de la démo, nous vous remboursons les ${prices.demo}. Un court message suffit, sans justification.`,
-      },
       { q: "Combien coûte une boutique en ligne ?", a: costAnswer("fr", "shop") },
       {
         q: "Quels coûts récurrents s'ajoutent ?",
-        a: `L'hébergement est facultatif et résiliable chaque mois : Hébergement ${prices.hosting}, Hébergement + SEO ${prices.hostingSeo} ou Tout compris ${prices.rundum} par mois. La facturation commence à la mise en ligne. Le nom de domaine est à votre nom et figure séparément dans le devis.`,
+        a: `L'hébergement est facultatif et résiliable chaque mois : Hébergement ${prices.hosting}, Hébergement + SEO ${prices.hostingSeo} ou Tout compris ${prices.rundum} par mois. Tout compris inclut aussi le suivi de votre fiche Google Business Profile. La facturation commence à la mise en ligne. Le nom de domaine est à votre nom, coûte env. ${chf(domainYearly)} par an et est facturé séparément.`,
       },
       { q: "Faut-il ajouter la TVA ?", a: "Non. Webnova n'est pas assujettie à la TVA. Les prix de cette page sont des prix finaux, aucune TVA ne s'y ajoute." },
       { q: "Combien coûte la fiche Google Business Profile ?", a: costAnswer("fr", "gbp") },
@@ -405,7 +398,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
       <FaqSection locale={locale} faq={t.faq} />
 
       <div className="container-x mt-10">
-        <p className="max-w-4xl text-[13px] leading-relaxed text-muted">{guaranteeNote[locale]}</p>
+        <p className="max-w-4xl text-[13px] leading-relaxed text-muted">{billingNote[locale]}</p>
       </div>
 
       <div className="pt-20 md:pt-28">

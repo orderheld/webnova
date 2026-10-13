@@ -1,9 +1,11 @@
 import type { Locale, Localized } from "./types";
 
 /*
- * Public prices, set by Ferhat on 2026-10-13 (10:06: «immer "ab" preise nennen», the Starter package cheap): a paid
+ * Public prices, set by Ferhat on 2026-10-13 (10:06: «immer "ab" preise nennen», the Starter package cheap; 14:00 the
+ * price review: extra page 290, Professional ab 5'200, Google care in Rundum, no demo refund, domain amount): a paid
  * design demo credited on order, website packages paid once and shown as starting prices, hosting optional per
- * month. Webnova is not subject to VAT: the prices are final, no MWST is added.
+ * month. Nothing is free for a period (13:17 «ich möchte alles verrechnen können»): hosting is billed from the launch.
+ * Webnova is not subject to VAT: the prices are final, no MWST is added.
  * The packages are the defaults of the admin calculator (src/lib/admin/calculator.ts): change both together.
  * Every price on the site (Preise page, service and industry pages, FAQ answers, llms.txt) is built from this file.
  */
@@ -28,8 +30,10 @@ export interface PricePackage {
   cta: Localized<string>;
 }
 
-/** Days within which the demo is refunded on request if no website order follows. */
-export const guaranteeDays = 30;
+/** Each page beyond the package scope, e.g. a second page for Starter. */
+export const extraPagePrice = 290;
+/** Approximate yearly cost of a .ch domain, billed separately. */
+export const domainYearly = 20;
 
 export const pricePackages: PricePackage[] = [
   {
@@ -43,8 +47,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Voyez votre nouvelle page d'accueil avant de vous décider.",
     },
     features: {
-      de: ["Ihre künftige Startseite, gestaltet von uns", "In Ihren Farben und mit Ihrem Logo", "Zum Anschauen, programmiert wird erst nach Ihrem OK", "Wird bei Auftrag vom Preis abgezogen", `Geld zurück, wenn innert ${guaranteeDays} Tagen kein Auftrag folgt`],
-      fr: ["Votre future page d'accueil, conçue par nous", "Dans vos couleurs et avec votre logo", "À regarder, le développement suit votre accord", "Déduite du prix à la commande", `Remboursée si aucune commande dans les ${guaranteeDays} jours`],
+      de: ["Ihre künftige Startseite, gestaltet von uns", "In Ihren Farben und mit Ihrem Logo", "Zum Anschauen, programmiert wird erst nach Ihrem OK", "Wird bei Auftrag vom Preis abgezogen"],
+      fr: ["Votre future page d'accueil, conçue par nous", "Dans vos couleurs et avec votre logo", "À regarder, le développement suit votre accord", "Déduite du prix à la commande"],
     },
     cta: { de: "Demo anfragen", fr: "Demander la démo" },
   },
@@ -60,8 +64,8 @@ export const pricePackages: PricePackage[] = [
       fr: "Une page avec l'essentiel : pour les nouvelles entreprises, les indépendants et les offres claires.",
     },
     features: {
-      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online"],
-      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines"],
+      de: ["Onepager: eine Seite mit allen Infos", "Individuelles Design für Handy und Computer", "Kontaktformular", "Google-Grundlagen", "In der Regel in 1 bis 2 Wochen online", `Jede weitere Seite ${chf(extraPagePrice)}`],
+      fr: ["One-page : une page avec toutes les infos", "Design sur mesure pour mobile et ordinateur", "Formulaire de contact", "Bases Google", "En ligne en général en 1 à 2 semaines", `Chaque page supplémentaire ${chf(extraPagePrice)}`],
     },
     cta: { de: "Paket anfragen", fr: "Demander cette formule" },
   },
@@ -100,7 +104,7 @@ export const pricePackages: PricePackage[] = [
   {
     id: "professional",
     name: { de: "Professional", fr: "Professional" },
-    price: 4800,
+    price: 5200,
     from: true,
     note: { de: "einmalig", fr: "paiement unique" },
     service: "webdesign",
@@ -171,13 +175,13 @@ export const careTiers: CareTier[] = [
     name: { de: "Rundum", fr: "Tout compris" },
     price: 95,
     items: {
-      de: ["Alles aus Hosting + SEO", "Kleine Änderungen machen wir laufend für Sie", "Ein Ansprechpartner für alles"],
-      fr: ["Tout l'hébergement + SEO", "Nous faisons les petites modifications pour vous", "Un seul interlocuteur pour tout"],
+      de: ["Alles aus Hosting + SEO", "Betreuung Ihres Google-Unternehmensprofils", "Kleine Änderungen machen wir laufend für Sie", "Ein Ansprechpartner für alles"],
+      fr: ["Tout l'hébergement + SEO", "Suivi de votre fiche Google Business Profile", "Nous faisons les petites modifications pour vous", "Un seul interlocuteur pour tout"],
     },
   },
 ];
 
-/** Google Business Profile: setup once, care optional per month. The setup is a starting price, the care a fixed monthly price. */
+/** Google Business Profile: setup once, care optional per month (also part of the Rundum tier). The setup is a starting price, the care a fixed monthly price. */
 export const gbpPrice = { setup: 390, monthly: 55 };
 
 export function packagePrice(id: PackageId): number {
@@ -217,10 +221,16 @@ export const vatNote: Localized<string> = {
   fr: "Tous les prix en CHF. Webnova n'est pas assujettie à la TVA, aucune TVA ne s'y ajoute.",
 };
 
-/** The fine print for the demo money-back guarantee and when hosting is billed (Ferhat 13:17: no free periods). */
-export const guaranteeNote: Localized<string> = {
-  de: `Zur Design-Demo: Sie erhalten die Rechnung, wenn die Demo fertig ist. Bestellen Sie die Webseite nicht innert ${guaranteeDays} Tagen, zahlen wir Ihnen die ${chf(packagePrice("demo"))} zurück, wenn Sie uns das kurz mitteilen. Zum Hosting: Es wird ab der Aufschaltung monatlich verrechnet und ist auf Ende Monat kündbar.`,
-  fr: `Démo design : vous recevez la facture quand la démo est prête. Si vous ne commandez pas le site dans les ${guaranteeDays} jours, nous vous remboursons les ${chf(packagePrice("demo"))} sur simple message. Hébergement : il est facturé chaque mois dès la mise en ligne et résiliable pour la fin du mois.`,
+/** Domain line for price texts: amount per year, billed separately. */
+export const domainNote: Localized<string> = {
+  de: `Die Domain kostet ca. ${chf(domainYearly)} pro Jahr und wird separat verrechnet.`,
+  fr: `Le nom de domaine coûte env. ${chf(domainYearly)} par an et est facturé séparément.`,
+};
+
+/** The fine print under the prices: when the demo and hosting are billed, and the domain. */
+export const billingNote: Localized<string> = {
+  de: `Zur Design-Demo: Sie erhalten die Rechnung, wenn die Demo fertig ist. Bestellen Sie danach die Webseite, ziehen wir die ${chf(packagePrice("demo"))} vom Preis ab. Zum Hosting: Es wird ab der Aufschaltung monatlich verrechnet und ist auf Ende Monat kündbar. ${domainNote.de}`,
+  fr: `Démo design : vous recevez la facture quand la démo est prête. Si vous commandez ensuite le site, nous déduisons les ${chf(packagePrice("demo"))} du prix. Hébergement : il est facturé chaque mois dès la mise en ligne et résiliable pour la fin du mois. ${domainNote.fr}`,
 };
 
 export type PriceTopic = "website" | "shop" | "redesign" | "care" | "gbp";
@@ -286,28 +296,28 @@ export function costAnswer(locale: Locale, topic: PriceTopic): string {
     const hostingLine = `Hosting gibt es ab ${hosting} pro Monat, monatlich kündbar.`;
     switch (topic) {
       case "website":
-        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. Onlineshops, Web-Apps und grössere Auftritte offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
+        return `Die Webseiten-Pakete bei Webnova kosten einmalig: ${packageSummary("de")}. Im Starter kostet jede weitere Seite ${chf(extraPagePrice)}. Onlineshops, Web-Apps und grössere Auftritte offerieren wir individuell ab ${shop}. ${hostingLine} Möchten Sie Ihre Startseite zuerst sehen, erhalten Sie für ${demo} eine Design-Demo, die bei Auftrag angerechnet wird.`;
       case "redesign":
         return `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: ${packageSummary("de")}, grössere Projekte ab ${shop}. Die Übernahme Ihrer bisherigen Inhalte und Weiterleitungen der alten Adressen stehen als eigene Position in der Offerte. ${hostingLine}`;
       case "shop":
         return `Onlineshops offerieren wir bei Webnova individuell ab ${shop}. Der genaue Preis hängt von Sortiment, Zahlungsarten wie TWINT und Karte, Versand und Anbindungen ab. Sie erhalten ihn nach einem kostenlosen Erstgespräch in einer schriftlichen Offerte. ${hostingLine}`;
       case "care":
-        return `Für Webseiten von Webnova gibt es drei Hosting-Pakete, monatlich und jederzeit kündbar: Hosting ${hosting} pro Monat mit SSL, täglichen Backups und Updates, Hosting + SEO ${hostingSeo} und Rundum ${rundum} mit laufenden kleinen Änderungen. Verrechnet wird ab der Aufschaltung. Die Domain steht separat in der Offerte. Für Webseiten anderer Anbieter richtet sich der Preis nach System und Umfang, Sie erhalten nach dem kostenlosen Erstgespräch eine Offerte.`;
+        return `Für Webseiten von Webnova gibt es drei Hosting-Pakete, monatlich und jederzeit kündbar: Hosting ${hosting} pro Monat mit SSL, täglichen Backups und Updates, Hosting + SEO ${hostingSeo} und Rundum ${rundum} mit laufenden kleinen Änderungen und der Betreuung Ihres Google-Unternehmensprofils. Verrechnet wird ab der Aufschaltung. ${domainNote.de} Für Webseiten anderer Anbieter richtet sich der Preis nach System und Umfang, Sie erhalten nach dem kostenlosen Erstgespräch eine Offerte.`;
       case "gbp":
-        return `Bei Google ist das Profil kostenlos. Die Einrichtung durch uns kostet einmalig ${fromPrice(locale, gbpPrice.setup)}, die freiwillige Betreuung ${chf(gbpPrice.monthly)} pro Monat. In den Webseiten-Paketen KMU und Professional ist die Einrichtung bereits enthalten.`;
+        return `Bei Google ist das Profil kostenlos. Die Einrichtung durch uns kostet einmalig ${fromPrice(locale, gbpPrice.setup)}, die freiwillige Betreuung ${chf(gbpPrice.monthly)} pro Monat. Im Hosting-Paket Rundum (${rundum} pro Monat) gehört die Betreuung dazu. Bei den Webseiten-Paketen KMU und Professional ist die Einrichtung Teil des Paketpreises.`;
     }
   }
   const hostingLine = `L'hébergement commence à ${hosting} par mois, résiliable chaque mois.`;
   switch (topic) {
     case "website":
-      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. Les boutiques en ligne, applications web et sites plus grands sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
+      return `Les formules site internet de Webnova se paient une fois : ${packageSummary("fr")}. Avec Starter, chaque page supplémentaire coûte ${chf(extraPagePrice)}. Les boutiques en ligne, applications web et sites plus grands sont proposés sur devis dès ${shop}. ${hostingLine} Si vous voulez d'abord voir votre page d'accueil, une démo design coûte ${demo} et elle est déduite à la commande.`;
     case "redesign":
       return `Une refonte suit les mêmes formules qu'un nouveau site : ${packageSummary("fr")}, les projets plus grands dès ${shop}. La reprise de vos contenus actuels et les redirections des anciennes adresses figurent comme poste séparé dans le devis. ${hostingLine}`;
     case "shop":
       return `Chez Webnova, les boutiques en ligne sont proposées sur devis dès ${shop}. Le prix exact dépend de l'assortiment, des moyens de paiement comme TWINT et carte, de la livraison et des interfaces. Vous le recevez dans un devis écrit après un premier entretien gratuit. ${hostingLine}`;
     case "care":
-      return `Pour les sites créés par Webnova, il existe trois formules d'hébergement, mensuelles et résiliables en tout temps : Hébergement ${hosting} par mois avec SSL, sauvegardes quotidiennes et mises à jour, Hébergement + SEO ${hostingSeo} et Tout compris ${rundum} avec les petites modifications courantes. La facturation commence à la mise en ligne. Le nom de domaine figure séparément dans le devis. Pour les sites d'autres prestataires, le prix dépend du système et de l'ampleur : vous recevez un devis après le premier entretien gratuit.`;
+      return `Pour les sites créés par Webnova, il existe trois formules d'hébergement, mensuelles et résiliables en tout temps : Hébergement ${hosting} par mois avec SSL, sauvegardes quotidiennes et mises à jour, Hébergement + SEO ${hostingSeo} et Tout compris ${rundum} avec les petites modifications courantes et le suivi de votre fiche Google Business Profile. La facturation commence à la mise en ligne. ${domainNote.fr} Pour les sites d'autres prestataires, le prix dépend du système et de l'ampleur : vous recevez un devis après le premier entretien gratuit.`;
     case "gbp":
-      return `Chez Google, la fiche est gratuite. La mise en place par nos soins coûte à partir de ${chf(gbpPrice.setup)} en paiement unique, le suivi facultatif ${chf(gbpPrice.monthly)} par mois. Dans les formules PME et Professional pour les sites internet, la mise en place est déjà comprise.`;
+      return `Chez Google, la fiche est gratuite. La mise en place par nos soins coûte à partir de ${chf(gbpPrice.setup)} en paiement unique, le suivi facultatif ${chf(gbpPrice.monthly)} par mois. La formule d'hébergement Tout compris (${rundum} par mois) comprend le suivi. Dans les formules PME et Professional pour les sites internet, la mise en place fait partie du prix de la formule.`;
   }
 }
