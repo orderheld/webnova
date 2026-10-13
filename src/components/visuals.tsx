@@ -1,9 +1,11 @@
 import Image from "next/image";
 import type { Locale } from "@/content/types";
+import { SampleVideo } from "./sample-video";
 
 /**
  * Webnova's own visuals: device frames with the fictional sample designs from /public/visuals
- * (rendered from our own HTML, never client work), and small UI cards. Server components, CSS only.
+ * (rendered from our own HTML, never client work), and small UI cards. Server components, CSS only;
+ * the optional scroll videos are the one client part (SampleVideo).
  */
 
 export type SampleKey =
@@ -56,12 +58,28 @@ export function sampleSrc(key: SampleKey, locale: Locale, mobile = false) {
   return `/visuals/site-${key}${mobile ? "-mobile" : ""}${locale === "fr" ? "-fr" : ""}.webp`;
 }
 
+/** Samples with a scroll video in /public/videos (the full one-page version of the design, desktop and phone). */
+const videoSamples = new Set<SampleKey>(["coiffeur", "restaurant", "schreinerei", "treuhand", "fitness", "cafe", "praxis", "immobilien", "garage", "laden"]);
+
+/**
+ * Video sources of a sample design, or undefined when it has none (the "hero" and "alt-" designs):
+ * AV1 first (about half the size, Chrome, Firefox, Android and newer Apple devices), H.264 for all others.
+ */
+export function sampleVideo(key: SampleKey, locale: Locale, mobile = false) {
+  if (!videoSamples.has(key)) return undefined;
+  const base = `/videos/site-${key}${mobile ? "-mobile" : ""}${locale === "fr" ? "-fr" : ""}`;
+  return [
+    { src: `${base}.av1.mp4`, type: `video/mp4; codecs="av01.0.0${mobile ? 4 : 5}M.08"` },
+    { src: `${base}.mp4`, type: "video/mp4" },
+  ];
+}
+
 export function sampleAlt(key: SampleKey, locale: Locale) {
   const n = samples[key].name;
   return `${exampleLabel[locale]}: ${samples[key].industry[locale]} (${typeof n === "string" ? n : n[locale]}, ${locale === "de" ? "fiktive Marke" : "marque fictive"})`;
 }
 
-/** Desktop browser window with a sample design inside. */
+/** Desktop browser window with a sample design inside; `video` scrolls through the whole page where the sample has a video. */
 export function BrowserFrame({
   sample,
   locale,
@@ -69,6 +87,7 @@ export function BrowserFrame({
   sizes = "(min-width: 1024px) 640px, 92vw",
   priority = false,
   dark = false,
+  video = false,
 }: {
   sample: SampleKey;
   locale: Locale;
@@ -76,7 +95,9 @@ export function BrowserFrame({
   sizes?: string;
   priority?: boolean;
   dark?: boolean;
+  video?: boolean;
 }) {
+  const clip = video ? sampleVideo(sample, locale) : undefined;
   return (
     // Container query: small frames (e.g. the before/after scene) drop the balancing spacer, so the address fits.
     <div className={`@container overflow-hidden rounded-xl shadow-[0_40px_80px_-30px_rgb(10_22_34/0.55),0_0_0_1px_rgb(27_45_62/0.08)] ${dark ? "bg-night-2" : "bg-white"} ${className}`}>
@@ -89,13 +110,29 @@ export function BrowserFrame({
       </div>
       <div className="relative aspect-[16/10]">
         <Image src={sampleSrc(sample, locale)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
+        {clip && <SampleVideo key={clip[0].src} sources={clip} />}
       </div>
     </div>
   );
 }
 
 /** Phone with the mobile version of a sample design: a modern smartphone with thin bezels, side keys and an island. */
-export function PhoneFrame({ sample, locale, className = "", sizes = "220px", priority = false }: { sample: SampleKey; locale: Locale; className?: string; sizes?: string; priority?: boolean }) {
+export function PhoneFrame({
+  sample,
+  locale,
+  className = "",
+  sizes = "220px",
+  priority = false,
+  video = false,
+}: {
+  sample: SampleKey;
+  locale: Locale;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+  video?: boolean;
+}) {
+  const clip = video ? sampleVideo(sample, locale, true) : undefined;
   return (
     <div className={`relative ${className}`}>
       {/* side keys */}
@@ -106,6 +143,7 @@ export function PhoneFrame({ sample, locale, className = "", sizes = "220px", pr
       <div className="relative rounded-[17%/8%] bg-[linear-gradient(145deg,#3a4652,#11181f_45%,#2a3540)] p-[3.2%] shadow-[0_40px_70px_-25px_rgb(10_22_34/0.6),inset_0_0_0_1px_rgb(255_255_255/0.12)]">
         <div className="relative aspect-[9/19.5] overflow-hidden rounded-[14%/6.6%] bg-black">
           <Image src={sampleSrc(sample, locale, true)} alt={sampleAlt(sample, locale)} fill sizes={sizes} preload={priority} className="object-cover object-top" />
+          {clip && <SampleVideo key={clip[0].src} sources={clip} />}
           <span aria-hidden="true" className="absolute left-1/2 top-[1.6%] h-[3.4%] w-[31%] -translate-x-1/2 rounded-full bg-black" />
         </div>
       </div>

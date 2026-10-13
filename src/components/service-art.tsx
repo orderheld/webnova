@@ -141,6 +141,7 @@ export function Art({
   dark = false,
   className = "aspect-[5/4]",
   city,
+  video = false,
 }: {
   kind: ArtKind;
   locale: Locale;
@@ -151,6 +152,8 @@ export function Art({
   dark?: boolean;
   className?: string;
   city?: string;
+  /** Website scene: play the sample's scroll videos in both frames. */
+  video?: boolean;
 }) {
   const t = tx[locale];
   return (
@@ -158,10 +161,10 @@ export function Art({
       {kind === "website" && (
         <>
           <div className="absolute left-[7%] top-[10%] w-[78%]">
-            <BrowserFrame sample={sample} locale={locale} sizes="(min-width: 1024px) 420px, 75vw" />
+            <BrowserFrame sample={sample} locale={locale} sizes="(min-width: 1024px) 420px, 75vw" video={video} />
           </div>
           <div className="absolute bottom-[7%] right-[6%] w-[24%]">
-            <PhoneFrame sample={sample} locale={locale} sizes="140px" />
+            <PhoneFrame sample={sample} locale={locale} sizes="140px" video={video} />
           </div>
         </>
       )}

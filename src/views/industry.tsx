@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button";
 import { CardLink, CtaBand, FaqList, FeatureGrid, HeroCtas, PageHero, Prose, callLabel } from "@/components/blocks";
+import { SectorShowcase } from "@/components/sector-showcase";
 import { Art, ServiceArt } from "@/components/service-art";
-import type { SampleKey } from "@/components/visuals";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
 import { ReferenceCard } from "@/components/reference-card";
@@ -10,6 +10,7 @@ import { ContactSection, FaqSection, FitSection, LocationsSection, ProcessSectio
 import { serviceFaqTemplates, topUpFaq } from "@/content/structure";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
+import { industrySample } from "@/content/industries/samples";
 import { industryUi } from "@/content/industries/ui";
 import { problems } from "@/content/problems";
 import { references } from "@/content/references";
@@ -98,10 +99,18 @@ export function IndustriesPage({ locale, focus }: { locale: Locale; focus: "indu
         title={isProblems ? u.problemsH1 : u.hubH1}
         lead={isProblems ? u.problemsLead : u.hubLead}
         crumbs={[crumbs[0], { name: self }]}
-        aside={isProblems ? <Art kind="seo" locale={locale} dark /> : <Art kind="website" sample="restaurant" locale={locale} dark />}
+        aside={isProblems ? <Art kind="seo" locale={locale} dark /> : <Art kind="website" sample="hero" locale={locale} dark />}
       >
         <HeroCtas locale={locale} />
       </PageHero>
+      {/* Sector preview first: every industry's sample design as scroll videos (the hero shows the neutral design, so no sample appears twice). */}
+      {!isProblems && (
+        <section className="container-x pt-20 md:pt-28">
+          <SectionHead eyebrow={u.previewEyebrow} title={u.previewTitle} lead={u.previewLead}>
+            <SectorShowcase locale={locale} />
+          </SectionHead>
+        </section>
+      )}
       <section className="container-x py-20 md:py-28">{isProblems ? problemsBlock : industriesBlock}</section>
       <section className="bg-bg-2 py-20 md:py-28">
         <div className="container-x">{isProblems ? industriesBlock : problemsBlock}</div>
@@ -346,25 +355,11 @@ function HeroButtons({ locale }: { locale: Locale }) {
   );
 }
 
-/** Every industry has its own fictional sample design (Ferhat, 2026-10-08: never e.g. a coiffeur on Fitness). */
-const industrySample: Record<string, SampleKey> = {
-  "coiffeur-beauty": "coiffeur",
-  fitness: "fitness",
-  gastronomie: "restaurant",
-  "cafe-baeckerei": "cafe",
-  handwerk: "schreinerei",
-  autogewerbe: "garage",
-  immobilien: "immobilien",
-  treuhand: "treuhand",
-  praxis: "praxis",
-  detailhandel: "laden",
-};
-
-/** Hero visual for an industry page: the sample design of that industry, or the shop scene. */
+/** Hero visual for an industry page: the sample design of that industry as scroll videos, or the shop scene. */
 function industryArt(key: string, locale: Locale) {
   const sample = industrySample[key];
   if (!sample) return <Art kind="shop" locale={locale} dark />;
-  return <Art kind="website" sample={sample} locale={locale} dark />;
+  return <Art kind="website" sample={sample} locale={locale} dark video />;
 }
 
 function CheckCard({ title, items, locale, numbered = false }: { title: string; items: string[]; locale: Locale; numbered?: boolean }) {
