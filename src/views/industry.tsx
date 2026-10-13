@@ -5,12 +5,14 @@ import { SectorShowcase } from "@/components/sector-showcase";
 import { Art, ServiceArt } from "@/components/service-art";
 import { Icon } from "@/components/icons";
 import { LeadForm } from "@/components/lead-form";
+import { PriceHint } from "@/components/price-hint";
 import { ReferenceCard } from "@/components/reference-card";
 import { ContactSection, FaqSection, FitSection, LocationsSection, ProcessSection } from "@/components/sections";
 import { serviceFaqTemplates, topUpFaq } from "@/content/structure";
 import { guides } from "@/content/guides";
 import { industries } from "@/content/industries";
 import { industrySample } from "@/content/industries/samples";
+import { costAnswer, industryPriceLines } from "@/content/pricing";
 import { industryUi } from "@/content/industries/ui";
 import { problems } from "@/content/problems";
 import { references } from "@/content/references";
@@ -164,6 +166,7 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
         aside={industryArt(ind.key, locale)}
       >
         <HeroButtons locale={locale} />
+        <PriceHint locale={locale} lines={industryPriceLines(locale, ind.key)} dark className="mt-6" />
       </PageHero>
 
       <section className="container-x py-20 md:py-28">
@@ -217,6 +220,7 @@ export function IndustryPage({ locale, industryKey }: { locale: Locale; industry
             c.navLabel,
             false,
             locale === "de" ? `Was kostet eine Webseite für ${c.navLabel}?` : `Combien coûte un site pour le secteur ${c.navLabel} ?`,
+            costAnswer(locale, "website"),
           ),
           9,
         )}

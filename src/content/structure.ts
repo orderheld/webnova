@@ -284,10 +284,17 @@ const DURATION = /wie lange|dauer|combien de temps|délai/i;
 const GOOGLE = /google|gefunden|seo|référencement|trouvé/i;
 const WORK_WITH = /arbeiten sie (mit|für)|firmen in|warum eine webagentur|travaillez-vous (avec|pour)|pourquoi choisir/i;
 
-/** Generic questions for a service page; `name` is the service's nav label. */
-export function serviceFaqTemplates(locale: Locale, name: string, pos: boolean, costQuestion?: string): FaqTemplate[] {
-  const list = serviceFaqAll(locale, name, pos);
-  return costQuestion ? list.map((t) => (t.match === COST ? { ...t, q: costQuestion } : t)) : list;
+/**
+ * Generic questions for a service page; `name` is the service's nav label. `costQuestion` and
+ * `costAnswer` replace the generic cost question, e.g. with the published prices (src/content/pricing.ts).
+ */
+export function serviceFaqTemplates(locale: Locale, name: string, pos: boolean, costQuestion?: string, costAnswer?: string): FaqTemplate[] {
+  return withCost(serviceFaqAll(locale, name, pos), costQuestion, costAnswer);
+}
+
+function withCost(list: FaqTemplate[], q?: string, a?: string): FaqTemplate[] {
+  if (!q && !a) return list;
+  return list.map((t) => (t.match === COST ? { ...t, q: q ?? t.q, a: a ?? t.a } : t));
 }
 
 function serviceFaqAll(locale: Locale, name: string, pos: boolean): FaqTemplate[] {
@@ -296,7 +303,7 @@ function serviceFaqAll(locale: Locale, name: string, pos: boolean): FaqTemplate[
       {
         match: COST,
         q: `Was kostet ${name} bei Webnova?`,
-        a: "Wir nennen bewusst keine Pauschalpreise, weil Umfang, Funktionen und Inhalte bei jedem Projekt anders sind. Nach dem kostenlosen Erstgespräch erhalten Sie eine schriftliche Offerte, die genau beschreibt, was enthalten ist. Erst wenn Sie zustimmen, beginnen wir mit der Arbeit.",
+        a: "Das hängt von Umfang, Funktionen und Inhalten ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine schriftliche Offerte, die genau beschreibt, was enthalten ist. Erst wenn Sie zustimmen, beginnen wir mit der Arbeit.",
       },
       {
         match: MEET,
@@ -348,7 +355,7 @@ function serviceFaqAll(locale: Locale, name: string, pos: boolean): FaqTemplate[
     {
       match: COST,
       q: `Combien coûte un projet « ${name} » chez Webnova ?`,
-      a: "Nous ne donnons volontairement pas de prix forfaitaires, car l'étendue, les fonctions et les contenus varient d'un projet à l'autre. Après un premier entretien gratuit, vous recevez un devis écrit qui décrit précisément ce qui est inclus. Nous ne commençons qu'avec votre accord.",
+      a: "Cela dépend de l'étendue, des fonctions et des contenus. Après un premier entretien gratuit, vous recevez un devis écrit qui décrit précisément ce qui est inclus. Nous ne commençons qu'avec votre accord.",
     },
     {
       match: MEET,
@@ -397,9 +404,12 @@ function serviceFaqAll(locale: Locale, name: string, pos: boolean): FaqTemplate[
   ];
 }
 
-/** Local questions for a city page; `topic` is what the page is about, e.g. "eine Webseite" or "einen Onlineshop". */
-export function cityFaqTemplates(locale: Locale, city: string, topic: string, pos = false): FaqTemplate[] {
-  const all = cityFaqAll(locale, city, topic);
+/**
+ * Local questions for a city page; `topic` is what the page is about, e.g. "eine Webseite" or "einen Onlineshop".
+ * `costAnswer` replaces the generic cost answer, e.g. with the published prices.
+ */
+export function cityFaqTemplates(locale: Locale, city: string, topic: string, pos = false, costAnswer?: string): FaqTemplate[] {
+  const all = withCost(cityFaqAll(locale, city, topic), undefined, costAnswer);
   // A cash register page does not need the website-only questions.
   if (!pos) return all;
   const posOnly: FaqTemplate[] =
@@ -452,7 +462,7 @@ function cityFaqAll(locale: Locale, city: string, topic: string): FaqTemplate[] 
       {
         match: COST,
         q: `Was kostet ${topic} in ${city}?`,
-        a: "Das hängt von Umfang, Funktionen und Inhalten ab, darum nennen wir keine Pauschalpreise. Nach dem kostenlosen Erstgespräch erhalten Sie eine schriftliche Offerte mit allen Leistungen. Erst mit Ihrer Zustimmung beginnen wir.",
+        a: "Das hängt von Umfang, Funktionen und Inhalten ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine schriftliche Offerte mit allen Leistungen. Erst mit Ihrer Zustimmung beginnen wir.",
       },
       {
         match: KEYWORD,
@@ -500,7 +510,7 @@ function cityFaqAll(locale: Locale, city: string, topic: string): FaqTemplate[] 
     {
       match: COST,
       q: `Combien coûte ${topic} à ${city} ?`,
-      a: "Cela dépend de l'étendue, des fonctions et des contenus, c'est pourquoi nous ne donnons pas de prix forfaitaires. Après un premier entretien gratuit, vous recevez un devis écrit détaillé. Nous ne commençons qu'avec votre accord.",
+      a: "Cela dépend de l'étendue, des fonctions et des contenus. Après un premier entretien gratuit, vous recevez un devis écrit détaillé. Nous ne commençons qu'avec votre accord.",
     },
     {
       match: KEYWORD,

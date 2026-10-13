@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { costAnswer } from "../pricing";
 
 // Setup and care of the Google Business Profile as a service of its own (Ferhat, 2026-10-12:
 // "google business einträge aufsetzen, günstig und schnell mit betreuung"). Local SEO stays the broader service.
@@ -151,7 +152,7 @@ export const googleProfil: Service = {
       faq: [
         {
           q: "Was kostet ein Google-Unternehmensprofil?",
-          a: "Bei Google ist das Profil kostenlos. Für die Einrichtung durch uns und die freiwillige Betreuung erhalten Sie vorab einen klaren, günstigen Preis.",
+          a: costAnswer("de", "gbp"),
         },
         {
           q: "Wie lange dauert die Einrichtung?",
@@ -325,7 +326,7 @@ export const googleProfil: Service = {
       faq: [
         {
           q: "Combien coûte une fiche Google Business Profile ?",
-          a: "Chez Google, la fiche est gratuite. Pour la mise en place par nos soins et le suivi facultatif, vous recevez à l'avance un prix clair et avantageux.",
+          a: costAnswer("fr", "gbp"),
         },
         {
           q: "Combien de temps dure la mise en place ?",

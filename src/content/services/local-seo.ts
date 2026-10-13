@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { prices } from "../pricing";
 
 export const localSeo: Service = {
   key: "local-seo",
@@ -166,7 +167,7 @@ export const localSeo: Service = {
         },
         {
           q: "Was kostet Local SEO?",
-          a: "Der Aufwand hängt vom Zustand Ihres Profils, der Anzahl Standorte und der Konkurrenz ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche Offerte, einmalig oder als laufende Betreuung.",
+          a: `Der Aufwand hängt vom Zustand Ihres Profils, der Anzahl Standorte und der Konkurrenz ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche Offerte, einmalig oder als laufende Betreuung. Brauchen Sie nur das Google-Unternehmensprofil, kostet die Einrichtung ${prices.gbpSetup} einmalig.`,
         },
         {
           q: "Wie schnell wirkt Local SEO?",
@@ -365,7 +366,7 @@ export const localSeo: Service = {
         },
         {
           q: "Combien coûte le référencement local ?",
-          a: "L'effort dépend de l'état de votre fiche, du nombre de sites et de la concurrence. Après un premier entretien gratuit, vous recevez un devis sans engagement, ponctuel ou pour un suivi régulier.",
+          a: `L'effort dépend de l'état de votre fiche, du nombre de sites et de la concurrence. Après un premier entretien gratuit, vous recevez un devis sans engagement, ponctuel ou pour un suivi régulier. Si vous avez seulement besoin de la fiche Google Business Profile, la mise en place coûte ${prices.gbpSetup} une fois.`,
         },
         {
           q: "En combien de temps le référencement local agit-il ?",

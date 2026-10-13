@@ -1,4 +1,5 @@
 import { guides } from "@/content/guides";
+import { carePrice, chf, gbpPrice, packagePrice, pricePackages } from "@/content/pricing";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { hasRoute, href } from "@/lib/routes";
@@ -15,11 +16,12 @@ const text: Record<Locale, { summary: string; about: string; services: string; g
   de: {
     summary:
       "Webdesign-Agentur für KMU in der ganzen Schweiz: Webseiten erstellen, erneuern und betreuen, dazu SEO, Onlineshops und Kassensysteme. Auf Deutsch und Französisch.",
-    about: `${site.name} (${site.legalName}) erstellt Webseiten für Schweizer KMU. Ihr Ansprechpartner ist Ferhat Demir. Preise werden nicht veröffentlicht, jedes Projekt erhält eine persönliche Offerte.`,
+    about: `${site.name} (${site.legalName}) erstellt Webseiten für Schweizer KMU. Ihr Ansprechpartner ist Ferhat Demir. Preise: Webseiten-Pakete ${pricePackages.filter((p) => p.service === "webdesign").map((p) => `${p.name.de} ab ${chf(p.price)}`).join(", ")}; Onlineshop ab ${chf(packagePrice("shop"))}; Hosting und Wartung ${chf(carePrice)} pro Monat (im ersten Jahr inbegriffen); Google-Unternehmensprofil ${chf(gbpPrice.setup)} einmalig, Betreuung ${chf(gbpPrice.monthly)} pro Monat. Die genaue Offerte folgt nach einem kostenlosen Erstgespräch.`,
     services: "Leistungen",
     guides: "Ratgeber",
     company: "Unternehmen",
     pages: [
+      ["pricing", "Preise"],
       ["about", "Über uns"],
       ["contact", "Kontakt"],
       ["request", "Projekt anfragen"],
@@ -29,11 +31,12 @@ const text: Record<Locale, { summary: string; about: string; services: string; g
   fr: {
     summary:
       "Agence web pour les PME de toute la Suisse : création, refonte et maintenance de sites internet, ainsi que SEO, boutiques en ligne et systèmes de caisse. En français et en allemand.",
-    about: `${site.name} (${site.legalName}) crée des sites internet pour les PME suisses. Votre interlocuteur est Ferhat Demir. Les prix ne sont pas publiés, chaque projet reçoit une offre personnalisée.`,
+    about: `${site.name} (${site.legalName}) crée des sites internet pour les PME suisses. Votre interlocuteur est Ferhat Demir. Tarifs : formules site internet ${pricePackages.filter((p) => p.service === "webdesign").map((p) => `${p.name.fr} dès ${chf(p.price)}`).join(", ")} ; boutique en ligne dès ${chf(packagePrice("shop"))} ; hébergement et maintenance ${chf(carePrice)} par mois (compris la première année) ; fiche Google Business Profile ${chf(gbpPrice.setup)} une fois, suivi ${chf(gbpPrice.monthly)} par mois. Le devis exact suit un premier entretien gratuit.`,
     services: "Prestations",
     guides: "Conseils",
     company: "Entreprise",
     pages: [
+      ["pricing", "Tarifs"],
       ["about", "À propos"],
       ["contact", "Contact"],
       ["request", "Demander un projet"],

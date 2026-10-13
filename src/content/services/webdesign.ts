@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { costAnswer } from "../pricing";
 
 export const webdesign: Service = {
   key: "webdesign",
@@ -78,7 +79,7 @@ export const webdesign: Service = {
       faq: [
         {
           q: "Was kostet es, eine Webseite erstellen zu lassen?",
-          a: "Das hängt vom Umfang, den Funktionen und den Inhalten ab. Deshalb nennen wir keine Pauschalpreise, sondern erstellen Ihnen nach einem kostenlosen Erstgespräch eine unverbindliche Offerte, die genau auf Ihr Projekt zugeschnitten ist.",
+          a: costAnswer("de", "website"),
         },
         {
           q: "Wie lange dauert die Erstellung einer Homepage?",
@@ -173,7 +174,7 @@ export const webdesign: Service = {
       faq: [
         {
           q: "Combien coûte la création d'un site internet ?",
-          a: "Tout dépend de l'ampleur du projet, des fonctionnalités et des contenus. Plutôt qu'un prix forfaitaire, nous vous proposons un premier conseil gratuit, suivi d'une offre sans engagement adaptée à vos besoins.",
+          a: costAnswer("fr", "website"),
         },
         {
           q: "Combien de temps faut-il pour créer un site ?",

@@ -2,6 +2,7 @@
  * Price calculator built around fixed packages plus add-ons (websites from CHF 2'000 to about CHF 10'000)
  * and the recurring fees billed from year 2. Pure functions, safe in client components.
  * The defaults below are only the starting point: they are edited under Rechner > Preise and stored in settings.
+ * The package prices are also published on the website (src/content/pricing.ts): change both together.
  */
 import type { BillingInterval } from "@/db/schema";
 

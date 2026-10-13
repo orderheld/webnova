@@ -144,7 +144,8 @@ export function faqLd(faq: { q: string; a: string }[]) {
     mainEntity: faq.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      // Answers may hold inline links written as [label](route-id); the structured data gets the plain label.
+      acceptedAnswer: { "@type": "Answer", text: f.a.replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1") },
     })),
   };
 }

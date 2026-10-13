@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { costAnswer } from "../pricing";
 
 export const onlineshop: Service = {
   key: "onlineshop",
@@ -73,7 +74,7 @@ export const onlineshop: Service = {
       faq: [
         {
           q: "Was kostet es, einen Onlineshop erstellen zu lassen?",
-          a: "Das hängt von Sortiment, Funktionen und Anbindungen ab. Nach einer kostenlosen Erstberatung erhalten Sie eine unverbindliche Offerte, die genau auf Ihr Vorhaben passt.",
+          a: costAnswer("de", "shop"),
         },
         {
           q: "Kann ich TWINT im Onlineshop anbieten?",
@@ -163,7 +164,7 @@ export const onlineshop: Service = {
       faq: [
         {
           q: "Combien coûte la création d'une boutique en ligne ?",
-          a: "Cela dépend de l'assortiment, des fonctionnalités et des intégrations. Après un premier conseil gratuit, vous recevez une offre sans engagement adaptée à votre projet.",
+          a: costAnswer("fr", "shop"),
         },
         {
           q: "Puis-je proposer TWINT sur ma boutique ?",

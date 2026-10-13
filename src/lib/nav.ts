@@ -100,6 +100,7 @@ function resourceGroups(locale: Locale): NavGroup[] {
     .slice(0, 5)
     .map((g) => ({ label: guideLabel(g.content[locale].h1), href: href(locale, `guide:${g.key}`), icon: "file" }));
   const agency: NavItem[] = [
+    { label: d.nav.pricing, href: href(locale, "pricing"), icon: "tag" },
     { label: d.nav.about, href: href(locale, "about"), icon: "users" },
     ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references"), icon: "layout" }] : []),
     // Not in the desktop bar (no room next to Kontakt), so the regions hub is reachable here.
@@ -140,10 +141,11 @@ export function buildNav(locale: Locale): NavData {
     resourcesHref: href(locale, "guides"),
     resourceGroups: resourceGroups(locale),
     // `bar`: from which width a link also sits in the desktop bar next to the three menus (1176px of
-    // room): References from lg, About and Contact from xl. Regions stays in menus and the footer.
+    // room): Prices from lg, About and Contact from xl. Regions stays in menus and the footer.
     links: [
+      { label: d.nav.pricing, href: href(locale, "pricing"), bar: "lg" as const },
       { label: d.nav.regions, href: href(locale, "regions") },
-      ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references"), bar: "lg" as const }] : []),
+      ...(showReferences ? [{ label: d.nav.references, href: href(locale, "references"), bar: "xl" as const }] : []),
       { label: d.nav.about, href: href(locale, "about"), bar: "xl" as const },
       { label: d.nav.contact, href: href(locale, "contact"), bar: "xl" as const },
     ],
@@ -176,7 +178,12 @@ export function buildFooter(locale: Locale): FooterColumn[] {
   return [
     {
       title: d.footer.services,
-      links: [...byKey("website"), ...byKey("commerce"), { label: d.nav.allServices, href: href(locale, "services") }],
+      links: [
+        ...byKey("website"),
+        ...byKey("commerce"),
+        { label: d.nav.allServices, href: href(locale, "services") },
+        { label: d.nav.pricing, href: href(locale, "pricing") },
+      ],
     },
     {
       title: locale === "de" ? "Sichtbarkeit" : "Visibilité",

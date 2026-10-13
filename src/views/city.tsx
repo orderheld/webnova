@@ -13,6 +13,7 @@ import {
   ServicesGrid,
 } from "@/components/sections";
 import { problems } from "@/content/problems";
+import { costAnswer, servicePriceTopic } from "@/content/pricing";
 import { cityFaqTemplates, structure, topUpFaq } from "@/content/structure";
 import { cities } from "@/content/cities";
 import { guides } from "@/content/guides";
@@ -200,7 +201,12 @@ export function CityPage({
     .filter((g, i, a) => a.indexOf(g) === i)
     .slice(0, 3);
   const topicKey = variant === "local" ? serviceKey! : variant;
-  const faq = topUpFaq(c.faq, cityFaqTemplates(locale, cityName, cityTopic[topicKey]?.[locale] ?? cityTopic.webdesign[locale], pos), 10);
+  const priceTopic = servicePriceTopic[topicKey];
+  const faq = topUpFaq(
+    c.faq,
+    cityFaqTemplates(locale, cityName, cityTopic[topicKey]?.[locale] ?? cityTopic.webdesign[locale], pos, priceTopic && costAnswer(locale, priceTopic)),
+    10,
+  );
   const problemKeys = problems.filter((p) => p.services.some((k) => serviceKeys.includes(k))).map((p) => p.key);
 
   return (

@@ -1,4 +1,5 @@
 import type { LocalService } from "../types";
+import { prices } from "../pricing";
 
 export const onlineshopLocal: LocalService[] = [
   // ───────────────────────────── GRENCHEN ─────────────────────────────
@@ -62,7 +63,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Onlineshop?",
-            a: "Das hängt von Sortiment, Funktionen und Anbindungen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Ein Onlineshop kostet bei Webnova ab ${prices.shop}, mit bis zu 50 Produkten, TWINT und Karte, Versand und Kundenkonto. Was dazukommt, hängt von Sortiment, Funktionen und Anbindungen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -122,7 +123,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une boutique en ligne ?",
-            a: "Cela dépend de l'assortiment, des fonctions et des interfaces. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Chez Webnova, une boutique en ligne coûte dès ${prices.shop}, avec jusqu'à 50 produits, TWINT et carte, livraison et compte client. Le reste dépend de l'assortiment, des fonctions et des interfaces. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -248,7 +249,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Quel budget prévoir pour une boutique en ligne ?",
-            a: "Nous ne travaillons pas avec des forfaits standard. Après un premier entretien gratuit, vous recevez une offre individuelle et claire, adaptée à votre assortiment et aux deux langues.",
+            a: `Comptez dès ${prices.shop} pour une boutique jusqu'à 50 produits, avec TWINT et carte, livraison et compte client. La deuxième langue et les fonctions en plus figurent comme postes séparés dans votre offre, adaptée à votre assortiment.`,
           },
         ],
       },
@@ -315,7 +316,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Mit welchen Kosten muss ich für einen Webshop rechnen?",
-            a: "Das hängt von Sortiment und Funktionen ab, etwa Gutscheine, Kassenanbindung oder Versand. Sie erhalten nach dem kostenlosen Erstgespräch eine individuelle, klare Offerte.",
+            a: `Ein Onlineshop beginnt bei ${prices.shop}, mit bis zu 50 Produkten, TWINT und Karte, Versand und Kundenkonto. Zusätze wie Gutscheine oder die Anbindung an Ihre Kasse stehen als eigene Positionen in der Offerte, die Sie nach dem kostenlosen Erstgespräch erhalten.`,
           },
         ],
       },
@@ -374,7 +375,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Combien coûte la création d'une boutique en ligne ?",
-            a: "Le prix dépend de l'assortiment et des fonctions, comme les bons cadeaux, la liaison avec la caisse ou la livraison. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Une boutique en ligne commence à ${prices.shop}, avec jusqu'à 50 produits, TWINT et carte, livraison et compte client. Les options comme les bons cadeaux ou la liaison avec la caisse figurent comme postes séparés dans l'offre que vous recevez après un premier entretien gratuit.`,
           },
         ],
       },
@@ -442,7 +443,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Wie wird der Preis für einen Berner Webshop festgelegt?",
-            a: "Wir arbeiten nicht mit Pauschalpaketen. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte, die genau beschreibt, was enthalten ist.",
+            a: `Ausgangspunkt ist unser Paket Onlineshop ab ${prices.shop} mit bis zu 50 Produkten, TWINT und Karte, Versand und Kundenkonto. Was Sie darüber hinaus brauchen, steht als eigene Position in der Offerte, die Sie nach dem kostenlosen Erstgespräch erhalten.`,
           },
         ],
       },
@@ -502,7 +503,7 @@ export const onlineshopLocal: LocalService[] = [
           },
           {
             q: "Comment le prix d'une boutique en ligne est-il fixé ?",
-            a: "Nous ne proposons pas de forfaits. Après un premier entretien gratuit, vous recevez une offre individuelle et claire qui décrit précisément ce qui est inclus.",
+            a: `Le point de départ est notre formule boutique en ligne dès ${prices.shop}, avec jusqu'à 50 produits, TWINT et carte, livraison et compte client. Ce dont vous avez besoin en plus figure comme poste séparé dans l'offre que vous recevez après un premier entretien gratuit.`,
           },
         ],
       },

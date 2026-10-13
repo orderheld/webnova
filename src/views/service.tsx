@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CardLink, CtaBand, CtaCard, FeatureGrid, HeroCtas, PageHero, Prose } from "@/components/blocks";
 import { Icon } from "@/components/icons";
+import { PriceHint } from "@/components/price-hint";
 import { ServiceArt } from "@/components/service-art";
 import {
   BenefitsSection,
@@ -21,6 +22,7 @@ import { industryUi } from "@/content/industries/ui";
 import { problems } from "@/content/problems";
 import { services } from "@/content/services";
 import { localServices } from "@/content/local";
+import { costAnswer, priceLine, servicePriceTopic } from "@/content/pricing";
 import type { Locale } from "@/content/types";
 import { serviceFaqTemplates, serviceSublines, structure, topUpFaq } from "@/content/structure";
 import { getDict } from "@/i18n/dict";
@@ -128,7 +130,8 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
     .filter((g) => g.related.includes(s.key))
     .sort((a, b) => a.related.indexOf(s.key) - b.related.indexOf(s.key))
     .slice(0, 3);
-  const faq = topUpFaq(c.faq, serviceFaqTemplates(locale, c.navLabel, pos), 10);
+  const priceTopic = servicePriceTopic[s.key];
+  const faq = topUpFaq(c.faq, serviceFaqTemplates(locale, c.navLabel, pos, undefined, priceTopic && costAnswer(locale, priceTopic)), 10);
   const benefits = c.benefits ?? (pos ? st.posBenefits : d.home.why);
   const hasProcess = !pos || Boolean(c.process);
   return (
@@ -160,6 +163,7 @@ export function ServicePage({ locale, serviceKey }: { locale: Locale; serviceKey
         aside={<ServiceArt service={s.key} locale={locale} dark />}
       >
         <HeroCtas locale={locale} note />
+        {priceTopic && <PriceHint locale={locale} lines={[priceLine(locale, priceTopic)]} dark className="mt-6" />}
       </PageHero>
 
 

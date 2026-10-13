@@ -1,4 +1,5 @@
 import type { LocalService } from "../types";
+import { prices } from "../pricing";
 
 export const wartungLocal: LocalService[] = [
   // ---------------------------------------------------------------- Grenchen
@@ -61,7 +62,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Was kostet die Website-Wartung?",
-            a: "Das hängt vom System, der Grösse Ihrer Website und dem gewünschten Umfang ab. Pauschalpreise publizieren wir nicht. Sie erhalten eine individuelle, klare Offerte nach dem kostenlosen Erstgespräch.",
+            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für Webseiten anderer Anbieter hängt der Preis vom System, der Grösse und dem gewünschten Umfang ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
           },
         ],
       },
@@ -120,7 +121,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Quel est le coût de la maintenance d'un site à Granges ?",
-            a: "Il dépend du système, de la taille du site et des prestations souhaitées. Nous ne publions pas de forfaits : vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            a: `Pour les sites créés par Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Pour les sites d'autres prestataires, le prix dépend du système, de la taille du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
           },
         ],
       },
@@ -186,7 +187,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Mit welchen Kosten muss ich rechnen?",
-            a: "Der Aufwand hängt vom System, der Anzahl Sprachen und dem gewünschten Umfang ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr inbegriffen. Bei Webseiten anderer Anbieter hängt der Aufwand vom System, der Anzahl Sprachen und dem gewünschten Umfang ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -245,7 +246,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Combien coûte la maintenance ?",
-            a: "Cela dépend du système, du nombre de langues et des prestations souhaitées. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Pour les sites créés par Webnova, l'hébergement et la maintenance coûtent ${prices.care} par mois, compris la première année. Pour les sites d'autres prestataires, cela dépend du système, du nombre de langues et des prestations souhaitées. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -312,7 +313,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Wie wird der Preis für die Wartung festgelegt?",
-            a: "Er richtet sich nach Ihrer Website und den Leistungen, die Sie benötigen. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Für Webseiten von Webnova gilt ein fester Preis: Hosting und Wartung kosten ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für andere Webseiten richtet er sich nach System und benötigten Leistungen. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -372,7 +373,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Comment le prix de la maintenance est-il fixé ?",
-            a: "Il dépend de votre site et des prestations dont vous avez besoin. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Pour les sites créés par Webnova, le prix est fixe : l'hébergement et la maintenance coûtent ${prices.care} par mois et sont compris dans le prix du projet la première année. Pour les autres sites, il dépend du système et des prestations nécessaires. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -438,7 +439,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Was kostet die Website-Wartung für ein KMU in Bern?",
-            a: "Das hängt von System, Umfang und gewünschten Leistungen ab. Wir veröffentlichen keine Preise: Sie erhalten nach dem kostenlosen Erstgespräch eine individuelle, klare Offerte.",
+            a: `Für Webseiten von Webnova kosten Hosting und Wartung ${prices.care} pro Monat, im ersten Jahr sind sie im Projektpreis inbegriffen. Für bestehende Webseiten anderer Anbieter hängt der Preis von System, Umfang und gewünschten Leistungen ab. Sie erhalten nach dem kostenlosen Erstgespräch eine klare Offerte.`,
           },
         ],
       },
@@ -497,7 +498,7 @@ export const wartungLocal: LocalService[] = [
           },
           {
             q: "Quel budget prévoir pour la maintenance d'un site ?",
-            a: "Cela dépend du système, de l'ampleur du site et des prestations souhaitées. Nous ne publions pas de tarifs : vous recevez une offre individuelle et claire après un premier entretien gratuit.",
+            a: `Pour les sites créés par Webnova, comptez ${prices.care} par mois pour l'hébergement et la maintenance, compris la première année. Pour les sites d'autres prestataires, cela dépend du système, de l'ampleur du site et des prestations souhaitées : vous recevez une offre claire après un premier entretien gratuit.`,
           },
         ],
       },

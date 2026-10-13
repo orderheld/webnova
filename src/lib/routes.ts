@@ -14,6 +14,7 @@ export type RouteKind =
   | "home"
   | "services"
   | "service"
+  | "pricing"
   | "regions"
   | "city"
   | "citySeo"
@@ -58,6 +59,7 @@ function buildRoutes(): RouteEntry[] {
   const r: RouteEntry[] = [
     page("home", "", ""),
     page("services", "leistungen", "services"),
+    page("pricing", "preise", "tarifs"),
     page("industries", "branchen", "secteurs"),
     page("problems", "loesungen", "solutions"),
     page("regions", "standorte", "regions"),

@@ -1,4 +1,5 @@
 import type { Service } from "../types";
+import { prices } from "../pricing";
 
 export const firmenwebsite: Service = {
   key: "firmenwebsite",
@@ -165,7 +166,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Was kostet es, eine Firmenwebsite erstellen zu lassen?",
-          a: "Der Aufwand hängt von Anzahl Seiten, Sprachen, Funktionen und davon ab, ob Texte und Bilder vorhanden sind. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.",
+          a: `Eine Firmenwebsite kostet bei Webnova ab ${prices.starter} (Starter, bis 3 Seiten), ab ${prices.kmu} (KMU, bis 6 Seiten) oder ab ${prices.professional} (Professional, bis 12 Seiten). Weitere Sprachen, Texte und Bilder kommen je nach Bedarf als eigene Positionen dazu. Nach einem kostenlosen Erstgespräch erhalten Sie eine unverbindliche, transparente Offerte.`,
         },
         {
           q: "Welche Angaben gehören ins Impressum einer Firmenwebsite?",
@@ -363,7 +364,7 @@ export const firmenwebsite: Service = {
       faq: [
         {
           q: "Combien coûte la création d'un site d'entreprise ?",
-          a: "L'effort dépend du nombre de pages, des langues, des fonctions et de la disponibilité des textes et images. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.",
+          a: `Chez Webnova, un site d'entreprise coûte dès ${prices.starter} (Starter, jusqu'à 3 pages), dès ${prices.kmu} (PME, jusqu'à 6 pages) ou dès ${prices.professional} (Professional, jusqu'à 12 pages). Langues supplémentaires, textes et images s'ajoutent selon vos besoins comme postes séparés. Après un premier entretien gratuit, vous recevez un devis transparent et sans engagement.`,
         },
         {
           q: "Que doivent contenir les mentions légales d'un site d'entreprise ?",

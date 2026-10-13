@@ -1,4 +1,5 @@
 import type { LocalService } from "../types";
+import { prices } from "../pricing";
 
 export const redesignLocal: LocalService[] = [
   // ---------------------------------------------------------------- Grenchen
@@ -61,7 +62,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign?",
-            a: "Jedes Redesign ist anders. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine individuelle, klare Offerte, in der genau beschrieben ist, was enthalten ist.",
+            a: `Für eine erneuerte Webseite gelten dieselben Pakete wie für eine neue: Starter ab ${prices.starter}, KMU ab ${prices.kmu} und Professional ab ${prices.professional}. Nach einem kostenlosen Erstgespräch und einem Blick auf Ihre heutige Webseite erhalten Sie eine klare Offerte, in der genau beschrieben ist, was enthalten ist.`,
           },
         ],
       },
@@ -120,7 +121,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet ?",
-            a: "Chaque refonte est différente. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre individuelle et claire, qui détaille précisément ce qui est inclus.",
+            a: `Une refonte suit les mêmes formules qu'un nouveau site : Starter dès ${prices.starter}, PME dès ${prices.kmu} et Professional dès ${prices.professional}. Après un premier entretien gratuit et un examen de votre site actuel, vous recevez une offre claire qui détaille précisément ce qui est inclus.`,
           },
         ],
       },
@@ -187,7 +188,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein zweisprachiges Website-Redesign in Biel?",
-            a: "Der Aufwand hängt vom Umfang beider Sprachversionen und vom Zustand der heutigen Inhalte ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Die Pakete beginnen bei ${prices.starter}, die zweite Sprachversion kommt als eigene Position dazu. Wie viel, hängt vom Umfang beider Sprachversionen und vom Zustand der heutigen Inhalte ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -246,7 +247,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte bilingue à Bienne ?",
-            a: "Tout dépend de l'ampleur des deux versions et de l'état des contenus actuels. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Les formules commencent à ${prices.starter}, la deuxième version linguistique s'ajoute comme poste séparé. Son prix dépend de l'ampleur des deux versions et de l'état des contenus actuels. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -314,7 +315,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Redesign für einen Betrieb in Solothurn?",
-            a: "Das hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Für ein Redesign gelten unsere Webseiten-Pakete: Starter ab ${prices.starter}, KMU ab ${prices.kmu} und Professional ab ${prices.professional}. Was dazukommt, hängt vom Umfang, den Inhalten und den gewünschten Funktionen ab. Nach dem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -374,7 +375,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte pour une entreprise soleuroise ?",
-            a: "Cela dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Une refonte suit nos formules site internet : Starter dès ${prices.starter}, PME dès ${prices.kmu} et Professional dès ${prices.professional}. Le reste dépend de l'ampleur, des contenus et des fonctions souhaitées. Après le premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },
@@ -442,7 +443,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Was kostet ein Website-Redesign in Bern?",
-            a: "Der Aufwand hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine individuelle, klare Offerte.",
+            a: `Die Pakete beginnen bei ${prices.starter} für Starter, ${prices.kmu} für KMU und ${prices.professional} für Professional. Wie viel genau, hängt vom Umfang Ihrer bestehenden Webseite und von der Anzahl Sprachen ab. Nach einem kostenlosen Erstgespräch erhalten Sie eine klare Offerte.`,
           },
         ],
       },
@@ -502,7 +503,7 @@ export const redesignLocal: LocalService[] = [
           },
           {
             q: "Combien coûte une refonte de site internet à Berne ?",
-            a: "Cela dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre individuelle et claire.",
+            a: `Les formules commencent à ${prices.starter} pour Starter, ${prices.kmu} pour PME et ${prices.professional} pour Professional. Le prix exact dépend de l'ampleur de votre site actuel et du nombre de langues. Après un premier entretien gratuit, vous recevez une offre claire.`,
           },
         ],
       },

@@ -5,13 +5,14 @@ import { problems } from "@/content/problems";
 import { references } from "@/content/references";
 import { localServices } from "@/content/local";
 import { standalonePages } from "@/content/pages";
+import { carePrice, chf, packagePrice } from "@/content/pricing";
 import { services } from "@/content/services";
 import type { Locale } from "@/content/types";
 import { getDict } from "@/i18n/dict";
 import { routes, type RouteEntry, type RouteKind } from "@/lib/routes";
 
 /** Route kinds that get their own social preview image. Everything else uses the generic one. */
-const ownImage: RouteKind[] = ["service", "city", "citySeo", "localService", "guide", "industry", "problem", "page", "reference"];
+const ownImage: RouteKind[] = ["service", "pricing", "city", "citySeo", "localService", "guide", "industry", "problem", "page", "reference"];
 
 export interface OgData {
   eyebrow: string;
@@ -38,6 +39,10 @@ export function ogData(locale: Locale, file: string): OgData | undefined {
       const c = services.find((s) => s.key === entry.key)!.content[locale];
       return { eyebrow: c.navLabel, title: c.h1 };
     }
+    case "pricing":
+      return locale === "de"
+        ? { eyebrow: d.nav.pricing, title: `Webseiten ab ${chf(packagePrice("starter"))}, Onlineshops ab ${chf(packagePrice("shop"))}, Wartung ${chf(carePrice)} pro Monat` }
+        : { eyebrow: d.nav.pricing, title: `Sites dès ${chf(packagePrice("starter"))}, boutiques dès ${chf(packagePrice("shop"))}, maintenance ${chf(carePrice)} par mois` };
     case "city":
     case "citySeo": {
       const city = cities.find((c) => c.key === entry.key)!;
