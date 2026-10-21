@@ -64,7 +64,7 @@ export const contentDates: Record<string, string> = {
   "problems/online-verkaufen.ts": "2026-10-08",
   "problems/veraltet.ts": "2026-10-08",
   "problems/zu-langsam.ts": "2026-10-08",
-  "references.ts": "2026-10-08",
+  "references.ts": "2026-10-21",
   "services/branding.ts": "2026-10-08",
   "services/firmenwebsite.ts": "2026-10-13",
   "services/google-profil.ts": "2026-10-13",
