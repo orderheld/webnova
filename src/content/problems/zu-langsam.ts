@@ -72,7 +72,7 @@ export const zuLangsam: Problem = {
         {
           h2: "Geschwindigkeit ist ein Rankingfaktor",
           paragraphs: [
-            "Google misst, wie schnell und stabil Webseiten für echte Nutzer laden, und berücksichtigt das bei der Platzierung. Eine schnelle Seite ist deshalb nicht nur angenehmer, sondern auch besser sichtbar. Vor allem aber bleiben Besucher länger und fragen häufiger an. Wie Google die Ladezeit misst und wie Sie Ihre eigene Seite prüfen, erklärt unser Ratgeber [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
+            "Google misst, wie schnell und stabil Webseiten für echte Nutzer laden, und berücksichtigt das bei der Platzierung. Eine schnelle Seite ist deshalb nicht nur angenehmer, sondern auch besser sichtbar. Vor allem aber bleiben Besucher länger und fragen häufiger an. Welche Werte Google genau erfasst und wie Sie Ihre eigene Seite prüfen, zeigt unser Ratgeber [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
             "Unsere eigenen Webseiten bauen wir mit moderner Technik, bei der Seiten vorab erzeugt und schlank ausgeliefert werden. Dieselben Prinzipien wenden wir bei Ihrer Seite an, ob mit gezielter Optimierung oder einem Neuaufbau.",
           ],
         },

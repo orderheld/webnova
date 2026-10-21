@@ -136,7 +136,7 @@ export const websiteRedesign: Service = {
           h2: "Quand une refonte devient nécessaire",
           paragraphs: [
             "Beaucoup de sites ont grandi au fil des ans : des pages ajoutées, des extensions installées, un design resté figé. Résultat : des temps de chargement trop longs, une navigation confuse et un affichage peu convaincant sur smartphone. Si les demandes se font rares ou si vous hésitez à donner l'adresse de votre site, il est temps d'agir.",
-            "Il y a aussi des raisons techniques : un système de gestion de contenu obsolète, des mises à jour de sécurité qui manquent ou une politique de confidentialité qui ne respecte pas la nouvelle loi sur la protection des données (nLPD). Une refonte sur une base moderne règle tout cela d'un coup. C'est aussi l'occasion d'affiner vos contenus et d'aligner le site sur vos objectifs actuels. Une refonte est aussi le moment idéal pour améliorer l'accessibilité, voir notre guide [Site internet accessible](guide:barrierefreie-website).",
+            "Il y a aussi des raisons techniques : un système de gestion de contenu obsolète, des mises à jour de sécurité qui manquent ou une politique de confidentialité qui ne respecte pas la nouvelle loi sur la protection des données (nLPD). Une refonte sur une base moderne règle tout cela d'un coup. C'est aussi l'occasion d'affiner vos contenus et d'aligner le site sur vos objectifs actuels. Enfin, l'accessibilité ne s'améliore jamais aussi facilement que lors d'une refonte : notre guide [Site internet accessible](guide:barrierefreie-website) explique par où commencer.",
           ],
           bullets: [
             "Le site est difficile à utiliser sur smartphone",

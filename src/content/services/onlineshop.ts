@@ -52,7 +52,7 @@ export const onlineshop: Service = {
         {
           h2: "Funktionen, die im Alltag zählen",
           paragraphs: [
-            "Im Alltag muss Ihr Shop vor allem zuverlässig laufen. Bestellungen kommen übersichtlich an, Lagerbestände sind aktuell, Rechnungen und Bestätigungen gehen automatisch an Ihre Kunden. Wir binden die Zahlungsarten an, die in der Schweiz erwartet werden, und richten Versand, Abholung und Mehrwertsteuer korrekt ein. Einen Überblick über TWINT, Preisangaben und Informationspflichten in der Schweiz gibt unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz).",
+            "Im Alltag muss Ihr Shop vor allem zuverlässig laufen. Bestellungen kommen übersichtlich an, Lagerbestände sind aktuell, Rechnungen und Bestätigungen gehen automatisch an Ihre Kunden. Wir binden die Zahlungsarten an, die in der Schweiz erwartet werden, und richten Versand, Abholung und Mehrwertsteuer korrekt ein. Einen Überblick über TWINT, Preisangaben und Informationspflichten gibt unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz).",
             "Wenn Sie zusätzlich ein Ladengeschäft führen, lässt sich der Onlineshop mit einem Kassensystem verbinden. So behalten Sie Sortiment und Bestand an einem Ort im Griff. Doppelte Erfassung und Fehlbestände gehören damit der Vergangenheit an, und Sie sparen im Alltag spürbar Zeit.",
           ],
           bullets: [
