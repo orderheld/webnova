@@ -124,7 +124,7 @@ export const websiteKmu: Service = {
           paragraphs: [
             "Ein kleines oder mittleres Unternehmen hat selten eine eigene Marketingabteilung. Die Website muss deshalb ohne ständige Betreuung funktionieren und trotzdem aktuell wirken. Sie soll die wichtigsten Fragen beantworten, Vertrauen aufbauen und Interessenten zu einem Anruf, einer Nachricht oder einer Anfrage führen. Für Imagefilme, verschachtelte Menüs oder Effekte ohne Zweck ist in diesem Alltag wenig Platz.",
             "Ebenso wichtig ist die Region. Viele KMU arbeiten in einem klaren Einzugsgebiet, oft auch zweisprachig. Eine Website für KMU zeigt deshalb deutlich, wo Sie tätig sind, in welchen Sprachen Sie beraten und wie man Sie am schnellsten erreicht. Diese Angaben sind nicht nur für Menschen wichtig, sondern auch für Google und zunehmend für KI-Suchen, die Unternehmen anhand klarer Fakten einordnen.",
-            "Schliesslich zählt die Pflege. Wenn das Ändern von Öffnungszeiten oder eines Teamfotos eine halbe Stunde dauert, passiert es nicht. Wir bauen Websites so, dass alltägliche Anpassungen einfach sind und grössere Änderungen sauber geplant werden können.",
+            "Schliesslich zählt die Pflege. Wenn das Ändern von Öffnungszeiten oder eines Teamfotos eine halbe Stunde dauert, passiert es nicht. Wir bauen Websites so, dass alltägliche Anpassungen einfach sind und grössere Änderungen sauber geplant werden können. Ob dafür ein Homepage-Baukasten genügt oder eine Agentur die bessere Wahl ist, zeigt der Vergleich [Homepage-Baukasten oder Webagentur](guide:baukasten-oder-agentur).",
           ],
         },
         {
@@ -327,7 +327,7 @@ export const websiteKmu: Service = {
           paragraphs: [
             "Une petite ou moyenne entreprise a rarement un service marketing. Le site doit donc fonctionner sans suivi permanent tout en restant actuel. Il répond aux questions principales, inspire confiance et mène les visiteurs vers un appel, un message ou une demande. Dans ce quotidien, il y a peu de place pour des menus imbriqués ou des effets sans but.",
             "La région compte tout autant. Beaucoup de PME travaillent dans une zone bien définie, souvent dans deux langues. Un site de PME indique clairement où vous intervenez, dans quelles langues vous conseillez et comment vous joindre rapidement. Ces informations servent aux visiteurs, mais aussi à Google et de plus en plus aux recherches par IA, qui classent les entreprises à partir de faits clairs.",
-            "Enfin, la mise à jour. Si changer des horaires ou une photo d'équipe prend une demi-heure, cela ne se fait pas. Nous construisons des sites où les modifications courantes sont simples et où les évolutions plus importantes se planifient proprement.",
+            "Enfin, la mise à jour. Si changer des horaires ou une photo d'équipe prend une demi-heure, cela ne se fait pas. Nous construisons des sites où les modifications courantes sont simples et où les évolutions plus importantes se planifient proprement. Un créateur de site suffit-il, ou une agence est-elle le meilleur choix ? Le comparatif [Créateur de site ou agence web](guide:baukasten-oder-agentur) vous aide à décider.",
           ],
         },
         {

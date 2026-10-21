@@ -72,7 +72,7 @@ export const zuLangsam: Problem = {
         {
           h2: "Geschwindigkeit ist ein Rankingfaktor",
           paragraphs: [
-            "Google misst, wie schnell und stabil Webseiten für echte Nutzer laden, und berücksichtigt das bei der Platzierung. Eine schnelle Seite ist deshalb nicht nur angenehmer, sondern auch besser sichtbar. Vor allem aber bleiben Besucher länger und fragen häufiger an.",
+            "Google misst, wie schnell und stabil Webseiten für echte Nutzer laden, und berücksichtigt das bei der Platzierung. Eine schnelle Seite ist deshalb nicht nur angenehmer, sondern auch besser sichtbar. Vor allem aber bleiben Besucher länger und fragen häufiger an. Welche Werte Google genau erfasst und wie Sie Ihre eigene Seite prüfen, zeigt unser Ratgeber [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
             "Unsere eigenen Webseiten bauen wir mit moderner Technik, bei der Seiten vorab erzeugt und schlank ausgeliefert werden. Dieselben Prinzipien wenden wir bei Ihrer Seite an, ob mit gezielter Optimierung oder einem Neuaufbau.",
           ],
         },
@@ -162,7 +162,7 @@ export const zuLangsam: Problem = {
         {
           h2: "La vitesse est un facteur de classement",
           paragraphs: [
-            "Google mesure à quelle vitesse et avec quelle stabilité les pages se chargent pour de vrais utilisateurs, et en tient compte dans le classement. Un site rapide est donc non seulement plus agréable, mais aussi plus visible. Surtout, les visiteurs restent plus longtemps et vous contactent plus souvent.",
+            "Google mesure à quelle vitesse et avec quelle stabilité les pages se chargent pour de vrais utilisateurs, et en tient compte dans le classement. Un site rapide est donc non seulement plus agréable, mais aussi plus visible. Surtout, les visiteurs restent plus longtemps et vous contactent plus souvent. Notre guide [Core Web Vitals expliqués simplement](guide:core-web-vitals) montre comment Google mesure la vitesse et comment tester votre propre site.",
             "Nous construisons nos propres sites avec une technique moderne où les pages sont générées à l'avance et livrées de façon légère. Nous appliquons les mêmes principes à votre site, par une optimisation ciblée ou une reconstruction.",
           ],
         },

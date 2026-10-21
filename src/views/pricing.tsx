@@ -95,7 +95,7 @@ export const pricingText = {
       { q: "Gibt es versteckte Kosten?", a: "Nein. Vor dem Start erhalten Sie eine schriftliche Offerte mit allen Positionen, auch den laufenden Kosten. Wir beginnen erst, wenn Sie zugestimmt haben." },
       {
         q: "Kann ich klein starten und später ausbauen?",
-        a: "Ja. Sie können mit Starter beginnen und später Seiten, eine zweite Sprache oder einen Shop ergänzen, ohne die Webseite neu bauen zu müssen.",
+        a: "Ja. Sie können mit Starter beginnen und später Seiten, eine zweite Sprache oder einen Shop ergänzen, ohne die Webseite neu bauen zu müssen. Ob für den Anfang auch ein Baukasten reicht, zeigt unser Vergleich [Homepage-Baukasten oder Webagentur](guide:baukasten-oder-agentur).",
       },
     ] as Faq[],
     offerName: "Webseite",
@@ -170,7 +170,7 @@ export const pricingText = {
       { q: "Y a-t-il des coûts cachés ?", a: "Non. Avant le début, vous recevez un devis écrit avec tous les postes, y compris les coûts récurrents. Nous ne commençons qu'avec votre accord." },
       {
         q: "Puis-je commencer petit et agrandir plus tard ?",
-        a: "Oui. Vous pouvez commencer avec Starter, puis ajouter des pages, une deuxième langue ou une boutique sans reconstruire le site.",
+        a: "Oui. Vous pouvez commencer avec Starter, puis ajouter des pages, une deuxième langue ou une boutique sans reconstruire le site. Pour savoir si un créateur de site suffirait au départ, lisez notre comparatif [Créateur de site ou agence web](guide:baukasten-oder-agentur).",
       },
     ] as Faq[],
     offerName: "Site internet",

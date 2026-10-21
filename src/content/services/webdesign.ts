@@ -50,7 +50,7 @@ export const webdesign: Service = {
           h2: "Webseite erstellen lassen: Ihr digitales Aushängeschild",
           paragraphs: [
             "Ihre Webseite ist oft der erste Kontakt mit neuen Kunden. In wenigen Sekunden entscheidet sich, ob jemand bleibt oder zurück zu Google geht. Darum verbinden wir ein klares, modernes Design mit verständlichen Texten und einer Navigation, die ohne Umwege zum Ziel führt: zur Anfrage, zum Anruf oder zum Kauf.",
-            "Als Webdesign-Agentur arbeiten wir für Unternehmen in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann.",
+            "Als Webdesign-Agentur arbeiten wir für Unternehmen in der ganzen Schweiz. Ob Handwerksbetrieb, Praxis, Dienstleister oder Verein: Wir erstellen Ihre Homepage so, dass sie zu Ihrem Angebot passt und mit Ihrem Unternehmen wachsen kann. Was Webagentur, Website-Agentur und Webdesign-Agentur unterscheidet, lesen Sie im Ratgeber [Webagentur, Website- oder Webdesign-Agentur](guide:webagentur-unterschied). Und wenn Sie zwischen einem Baukasten und einer Agentur schwanken, hilft unser ehrlicher Vergleich [Homepage-Baukasten oder Webagentur](guide:baukasten-oder-agentur).",
           ],
         },
         {
@@ -72,7 +72,7 @@ export const webdesign: Service = {
           h2: "Moderne Technik, die man nicht sieht, aber spürt",
           paragraphs: [
             "Eine gute Homepage überzeugt nicht nur optisch. Unter der Oberfläche sorgen moderne Technologien dafür, dass Seiten fast ohne Wartezeit laden und stabil laufen. Bilder werden automatisch optimiert, der Code bleibt schlank. Das spüren Ihre Besucher, und Google bewertet schnelle Seiten besser.",
-            "Gleichzeitig legen wir die Grundlagen für Suchmaschinenoptimierung: sinnvolle Überschriften, saubere URLs, strukturierte Daten und eine Sitemap. Datenschutz nach nDSG ist kein Nachgedanke, sondern Teil der Umsetzung. So erhalten Sie eine Website, die heute funktioniert und sich morgen einfach erweitern lässt.",
+            "Gleichzeitig legen wir die Grundlagen für Suchmaschinenoptimierung: sinnvolle Überschriften, saubere URLs, strukturierte Daten und eine Sitemap. Datenschutz nach nDSG ist kein Nachgedanke, sondern Teil der Umsetzung. So erhalten Sie eine Website, die heute funktioniert und sich morgen einfach erweitern lässt. Wie eine Website für alle gut nutzbar wird, auch für Menschen mit Seh- oder motorischen Einschränkungen, zeigt unser Ratgeber [Barrierefreie Website](guide:barrierefreie-website).",
           ],
         },
       ],
@@ -145,7 +145,7 @@ export const webdesign: Service = {
           h2: "Votre site internet, votre meilleure vitrine",
           paragraphs: [
             "Pour beaucoup de clients, votre site est le premier contact avec votre entreprise. Quelques secondes suffisent pour convaincre ou pour perdre un visiteur. C'est pourquoi nous associons un design moderne à des textes clairs et à une navigation simple, qui mène directement à l'essentiel : une demande, un appel ou un achat.",
-            "Notre agence accompagne des entreprises dans toute la Suisse. Artisans, cabinets, prestataires de services ou associations : nous créons un site adapté à votre activité, capable d'évoluer avec vous.",
+            "Notre agence accompagne des entreprises dans toute la Suisse. Artisans, cabinets, prestataires de services ou associations : nous créons un site adapté à votre activité, capable d'évoluer avec vous. Si les termes agence web, agence de création de sites et agence de webdesign vous semblent flous, notre guide [Agence web, création de sites ou webdesign](guide:webagentur-unterschied) fait le point. Et si vous hésitez entre un créateur de site en ligne et une agence, notre comparatif honnête [Créateur de site ou agence web](guide:baukasten-oder-agentur) vous aide à choisir.",
           ],
         },
         {
@@ -167,7 +167,7 @@ export const webdesign: Service = {
           h2: "Une technologie moderne au service de vos résultats",
           paragraphs: [
             "Un bon site ne se juge pas qu'à son apparence. En coulisses, des technologies récentes assurent un affichage quasi instantané et un fonctionnement fiable. Les images sont optimisées automatiquement et le code reste léger. Vos visiteurs le ressentent, et Google favorise les sites rapides.",
-            "Nous posons aussi les bases du référencement naturel : titres pertinents, adresses propres, données structurées et plan du site. La protection des données selon la nLPD fait partie intégrante du projet. Vous obtenez ainsi un site efficace aujourd'hui et simple à faire évoluer demain.",
+            "Nous posons aussi les bases du référencement naturel : titres pertinents, adresses propres, données structurées et plan du site. La protection des données selon la nLPD fait partie intégrante du projet. Vous obtenez ainsi un site efficace aujourd'hui et simple à faire évoluer demain. Notre guide [Site internet accessible](guide:barrierefreie-website) montre en outre comment rendre un site facile à utiliser pour tous, notamment pour les personnes ayant une déficience visuelle ou motrice.",
           ],
         },
       ],

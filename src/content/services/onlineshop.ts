@@ -52,7 +52,7 @@ export const onlineshop: Service = {
         {
           h2: "Funktionen, die im Alltag zählen",
           paragraphs: [
-            "Im Alltag muss Ihr Shop vor allem zuverlässig laufen. Bestellungen kommen übersichtlich an, Lagerbestände sind aktuell, Rechnungen und Bestätigungen gehen automatisch an Ihre Kunden. Wir binden die Zahlungsarten an, die in der Schweiz erwartet werden, und richten Versand, Abholung und Mehrwertsteuer korrekt ein.",
+            "Im Alltag muss Ihr Shop vor allem zuverlässig laufen. Bestellungen kommen übersichtlich an, Lagerbestände sind aktuell, Rechnungen und Bestätigungen gehen automatisch an Ihre Kunden. Wir binden die Zahlungsarten an, die in der Schweiz erwartet werden, und richten Versand, Abholung und Mehrwertsteuer korrekt ein. Einen Überblick über TWINT, Preisangaben und Informationspflichten gibt unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz).",
             "Wenn Sie zusätzlich ein Ladengeschäft führen, lässt sich der Onlineshop mit einem Kassensystem verbinden. So behalten Sie Sortiment und Bestand an einem Ort im Griff. Doppelte Erfassung und Fehlbestände gehören damit der Vergangenheit an, und Sie sparen im Alltag spürbar Zeit.",
           ],
           bullets: [
@@ -142,7 +142,7 @@ export const onlineshop: Service = {
         {
           h2: "Des fonctions utiles au quotidien",
           paragraphs: [
-            "Au quotidien, votre boutique doit surtout être fiable. Les commandes arrivent de façon claire, les stocks sont à jour, confirmations et factures partent automatiquement. Nous intégrons les moyens de paiement attendus en Suisse et configurons correctement livraison, retrait et TVA.",
+            "Au quotidien, votre boutique doit surtout être fiable. Les commandes arrivent de façon claire, les stocks sont à jour, confirmations et factures partent automatiquement. Nous intégrons les moyens de paiement attendus en Suisse et configurons correctement livraison, retrait et TVA. Notre guide [Boutique en ligne en Suisse](guide:onlineshop-schweiz) donne un aperçu de TWINT, de l'indication des prix et des obligations d'information.",
             "Si vous avez aussi un magasin, la boutique en ligne peut être reliée à un système de caisse. Vous gérez ainsi assortiment et stock au même endroit. Fini les doubles saisies et les ruptures de stock imprévues : vous gagnez un temps précieux au quotidien.",
           ],
           bullets: [

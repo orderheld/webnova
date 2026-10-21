@@ -30,7 +30,7 @@ export const onlineshopLocal: LocalService[] = [
             h2: "Was wir für Ihren Shop in Grenchen umsetzen",
             paragraphs: [
               "Für Hersteller und Zulieferer planen wir Shops, die zu technischen Produkten passen: Artikelnummern, Datenblätter zum Download, Varianten nach Mass oder Material und auf Wunsch ein geschützter Bereich für Geschäftskunden mit eigenen Konditionen. Bestellungen lassen sich für Ihre Buchhaltung exportieren. Weil viele Grenchner Firmen in die Romandie liefern, richten wir den Shop bei Bedarf zweisprachig ein, mit sauber getrennten Produkttexten auf Deutsch und Französisch.",
-              "Für Läden, Manufakturen und Gewerbebetriebe steht etwas anderes im Vordergrund: ein ansprechender Auftritt, einfache Pflege und Zahlungsarten, die hier jeder kennt. Wir binden TWINT und Kartenzahlung über einen Zahlungsanbieter an, richten Versand, Abholung und Mehrwertsteuer ein und verbinden den Shop auf Wunsch mit Ihrem Kassensystem. So stimmen Bestand im Laden und Bestand online überein, ohne doppelte Erfassung. Die Pflege erledigen Sie danach selbst.",
+              "Für Läden, Manufakturen und Gewerbebetriebe steht etwas anderes im Vordergrund: ein ansprechender Auftritt, einfache Pflege und Zahlungsarten, die hier jeder kennt. Wir binden TWINT und Kartenzahlung über einen Zahlungsanbieter an, richten Versand, Abholung und Mehrwertsteuer ein und verbinden den Shop auf Wunsch mit Ihrem Kassensystem. So stimmen Bestand im Laden und Bestand online überein, ohne doppelte Erfassung. Die Pflege erledigen Sie danach selbst. Welche Regeln für Preisangaben, AGB und Datenschutz in Schweizer Shops gelten, fasst unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz) zusammen.",
             ],
             bullets: [
               "Geschäftskunden-Bereich mit eigenen Konditionen",
@@ -90,7 +90,7 @@ export const onlineshopLocal: LocalService[] = [
             h2: "Ce que nous réalisons pour votre e-shop",
             paragraphs: [
               "Pour les fabricants et sous-traitants, nous concevons des boutiques adaptées aux produits techniques : références, fiches techniques à télécharger, variantes selon dimensions ou matière, et si besoin un espace réservé aux clients professionnels avec leurs propres conditions. Comme de nombreuses entreprises de Granges livrent en Suisse romande, la boutique peut être bilingue, avec des descriptions rédigées en français et non traduites mot à mot.",
-              "Pour les commerces, ateliers et artisans, l'essentiel est ailleurs : une présentation attrayante, une gestion simple et des moyens de paiement familiers. Nous intégrons TWINT et les cartes via un prestataire de paiement, configurons livraison, retrait et TVA, et pouvons relier la boutique à votre caisse. Le stock du magasin et celui de l'e-shop restent ainsi identiques, sans double saisie ni mauvaise surprise.",
+              "Pour les commerces, ateliers et artisans, l'essentiel est ailleurs : une présentation attrayante, une gestion simple et des moyens de paiement familiers. Nous intégrons TWINT et les cartes via un prestataire de paiement, configurons livraison, retrait et TVA, et pouvons relier la boutique à votre caisse. Le stock du magasin et celui de l'e-shop restent ainsi identiques, sans double saisie ni mauvaise surprise. Les règles suisses sur l'indication des prix, les CG et la protection des données sont résumées dans notre guide [Boutique en ligne en Suisse](guide:onlineshop-schweiz).",
             ],
             bullets: [
               "Espace clients professionnels avec conditions propres",
@@ -150,7 +150,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Biel kauft zweisprachig ein",
             paragraphs: [
-              "Ein Laden in der Bieler Innenstadt spricht selbstverständlich Deutsch und Französisch. Online sieht das oft anders aus: Produkttexte gibt es nur in einer Sprache, die Bestellbestätigung kommt auf Deutsch, die AGB fehlen auf Französisch. Für die Kundschaft ist das ein Grund, den Kauf abzubrechen. Ein Onlineshop für Biel muss deshalb vom Warenkorb bis zur Versandmail in beiden Sprachen funktionieren, und zwar gleichwertig.",
+              "Ein Laden in der Bieler Innenstadt spricht selbstverständlich Deutsch und Französisch. Online sieht das oft anders aus: Produkttexte gibt es nur in einer Sprache, die Bestellbestätigung kommt auf Deutsch, die AGB fehlen auf Französisch. Für die Kundschaft ist das ein Grund, den Kauf abzubrechen. Ein Onlineshop für Biel muss deshalb vom Warenkorb bis zur Versandmail in beiden Sprachen funktionieren, und zwar gleichwertig. Was ein Schweizer Shop sonst noch braucht, von TWINT bis zur Datenschutzerklärung, zeigt unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz).",
               "Gleichzeitig ist Biel mehr als ein lokaler Markt. Als Uhrenmetropole und Standort zahlreicher Design- und Technologiefirmen ist die Stadt für Marken bekannt, die in der ganzen Schweiz und darüber hinaus verkaufen. Dazu kommen Produzenten aus dem Seeland und vom Bielersee, deren Wein, Gemüse oder Spezialitäten Gäste nach dem Besuch gerne online nachbestellen. Für all diese Betriebe ist ein eigener Shop ein direkter Verkaufskanal.",
             ],
           },
@@ -209,7 +209,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "À Bienne, on achète dans sa langue",
             paragraphs: [
-              "Dans un magasin du centre de Bienne, personne ne s'étonne d'être servi en français ou en allemand. En ligne, c'est souvent moins réussi : fiches produits dans une seule langue, confirmation de commande en allemand, conditions générales absentes en français. Pour un client francophone, c'est une raison suffisante d'abandonner son panier. Une boutique biennoise doit donc fonctionner dans les deux langues, du catalogue jusqu'à l'e-mail d'expédition.",
+              "Dans un magasin du centre de Bienne, personne ne s'étonne d'être servi en français ou en allemand. En ligne, c'est souvent moins réussi : fiches produits dans une seule langue, confirmation de commande en allemand, conditions générales absentes en français. Pour un client francophone, c'est une raison suffisante d'abandonner son panier. Une boutique biennoise doit donc fonctionner dans les deux langues, du catalogue jusqu'à l'e-mail d'expédition. Ce dont une boutique suisse a encore besoin, de TWINT à la déclaration de confidentialité, est présenté dans notre guide [Boutique en ligne en Suisse](guide:onlineshop-schweiz).",
               "Bienne est aussi bien plus qu'un marché local. Métropole horlogère et terre d'entreprises du design et de la technologie, la ville abrite des marques qui vendent dans toute la Suisse et à l'étranger. S'y ajoutent les producteurs du Seeland et des rives du lac de Bienne : vins, légumes, spécialités que les visiteurs aiment commander à nouveau après leur passage. Pour eux, leur propre boutique est un canal de vente direct.",
             ],
           },
@@ -296,7 +296,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Ihr Shop-Projekt in Solothurn: persönlich und Schritt für Schritt",
             paragraphs: [
-              "Im kostenlosen Erstgespräch kommen wir zu Ihnen in die Altstadt oder treffen Sie in Ihrem Betrieb in der Umgebung. Wir sehen uns Ihr Sortiment an, besprechen Abholung, Versand und Zahlungsarten und klären, welche Produkte zum Start online gehen. Anschliessend erhalten Sie eine klare Offerte. Viele Shops starten bewusst mit einer Auswahl der beliebtesten Produkte und wachsen danach Schritt für Schritt, wenn sich zeigt, was online gut ankommt.",
+              "Im kostenlosen Erstgespräch kommen wir zu Ihnen in die Altstadt oder treffen Sie in Ihrem Betrieb in der Umgebung. Wir sehen uns Ihr Sortiment an, besprechen Abholung, Versand und Zahlungsarten und klären, welche Produkte zum Start online gehen. Anschliessend erhalten Sie eine klare Offerte. Viele Shops starten bewusst mit einer Auswahl der beliebtesten Produkte und wachsen danach Schritt für Schritt, wenn sich zeigt, was online gut ankommt. Zur Vorbereitung auf das Erstgespräch eignet sich unser Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz), der auch Preisangaben und Informationspflichten erklärt.",
               "Für die Produktfotos kommen wir auf Wunsch in Ihr Geschäft, denn echte Bilder aus Ihrem Laden wirken glaubwürdiger als Katalogfotos. Nach den Tests und einer Schulung geht der Shop live. Vor Weihnachten, zu Ostern oder rund um grosse Anlässe in der Stadt unterstützen wir Sie mit Aktionen, Gutscheincodes und Kampagnen. Wartung und Sicherheitsupdates übernehmen wir auf Wunsch laufend, damit Sie sich auf Ihr Geschäft konzentrieren können.",
             ],
           },
@@ -355,7 +355,7 @@ export const onlineshopLocal: LocalService[] = [
           {
             h2: "Votre projet à Soleure, étape par étape",
             paragraphs: [
-              "Pour le premier conseil gratuit, nous venons vous voir dans la vieille ville ou vous rencontrons dans votre entreprise des environs. Nous regardons votre assortiment, discutons du retrait, de la livraison et des moyens de paiement, et choisissons les produits à mettre en ligne au départ. Vous recevez ensuite une offre claire. Beaucoup de commerces commencent volontairement par une sélection, puis élargissent.",
+              "Pour le premier conseil gratuit, nous venons vous voir dans la vieille ville ou vous rencontrons dans votre entreprise des environs. Nous regardons votre assortiment, discutons du retrait, de la livraison et des moyens de paiement, et choisissons les produits à mettre en ligne au départ. Vous recevez ensuite une offre claire. Beaucoup de commerces commencent volontairement par une sélection, puis élargissent. Pour préparer ce premier rendez-vous, vous pouvez consulter notre guide [Boutique en ligne en Suisse](guide:onlineshop-schweiz), qui présente aussi l'indication des prix et les obligations d'information.",
               "Sur demande, nous réalisons les photos de produits dans votre magasin, car des images authentiques inspirent davantage confiance que des visuels de catalogue. Après les tests et une formation, la boutique est mise en ligne. Avant Noël, à Pâques ou lors des grands événements soleurois, nous vous aidons avec des actions, des codes promo et des campagnes. Maintenance et mises à jour peuvent être assurées en continu.",
             ],
           },
@@ -410,7 +410,7 @@ export const onlineshopLocal: LocalService[] = [
             h2: "Was wir für Ihren Berner Onlineshop entwickeln",
             paragraphs: [
               "Am Anfang steht die Positionierung: Für welche Produkte und Suchbegriffe haben Sie echte Chancen, und wie heben Sie sich ab? Darauf bauen wir Kategorien, Produktseiten und Texte auf. Für Läden in der Altstadt, in der Länggasse oder im Breitenrain kombinieren wir den Shop mit lokalen Lieferoptionen und Abholung im Geschäft. Produzenten aus dem Bern-Mittelland erhalten Abos, Hofabholung oder Lieferung in festen Zonen.",
-              "Für Verbände, Vereine und Organisationen setzen wir Shops um, die nüchtern und verständlich sind: Publikationen, Tickets, Kursanmeldungen oder Mitgliederbeiträge, mit Bezahlung per Karte, TWINT oder auf Rechnung. Wir achten auf Barrierearmut, gute Lesbarkeit und eine französische Version, wenn Ihre Mitglieder aus der ganzen Schweiz kommen. Bestelldaten lassen sich exportieren und in Ihre bestehenden Abläufe übernehmen, etwa in die Mitgliederverwaltung oder die Buchhaltung Ihrer Geschäftsstelle.",
+              "Für Verbände, Vereine und Organisationen setzen wir Shops um, die nüchtern und verständlich sind: Publikationen, Tickets, Kursanmeldungen oder Mitgliederbeiträge, mit Bezahlung per Karte, TWINT oder auf Rechnung. Wir achten auf Barrierearmut, gute Lesbarkeit und eine französische Version, wenn Ihre Mitglieder aus der ganzen Schweiz kommen. Bestelldaten lassen sich exportieren und in Ihre bestehenden Abläufe übernehmen, etwa in die Mitgliederverwaltung oder die Buchhaltung Ihrer Geschäftsstelle. Welche Informationspflichten für Schweizer Onlineshops gelten, lesen Sie in unserem Ratgeber [Onlineshop in der Schweiz](guide:onlineshop-schweiz).",
             ],
             bullets: [
               "Positionierung und Shop-Struktur für Ihre Nische",
@@ -470,7 +470,7 @@ export const onlineshopLocal: LocalService[] = [
             h2: "Ce que nous développons pour votre boutique bernoise",
             paragraphs: [
               "Nous commençons par votre positionnement : sur quels produits et quelles recherches avez-vous de vraies chances, et en quoi êtes-vous différent ? Catégories, fiches produits et textes en découlent. Pour un magasin de la vieille ville ou de la Länggasse, nous combinons la boutique avec la livraison dans le quartier ou le retrait en magasin. Un producteur de la région peut proposer abonnements, paniers ou retrait à la ferme.",
-              "Pour les associations et organisations, nous réalisons des boutiques sobres et accessibles : publications, billets, inscriptions à des cours ou cotisations, payables par carte, TWINT ou sur facture. Nous veillons à la lisibilité et à l'accessibilité, ainsi qu'à des versions française et allemande cohérentes lorsque vos membres viennent de toute la Suisse. Les commandes s'exportent facilement vers vos outils existants, comme la gestion des membres ou la comptabilité.",
+              "Pour les associations et organisations, nous réalisons des boutiques sobres et accessibles : publications, billets, inscriptions à des cours ou cotisations, payables par carte, TWINT ou sur facture. Nous veillons à la lisibilité et à l'accessibilité, ainsi qu'à des versions française et allemande cohérentes lorsque vos membres viennent de toute la Suisse. Les commandes s'exportent facilement vers vos outils existants, comme la gestion des membres ou la comptabilité. Les obligations d'information des boutiques suisses sont présentées dans notre guide [Boutique en ligne en Suisse](guide:onlineshop-schweiz).",
             ],
             bullets: [
               "Positionnement et structure adaptés à votre créneau",

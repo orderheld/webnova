@@ -49,7 +49,7 @@ export const wartung: Service = {
         {
           h2: "Warum Website-Wartung kein Luxus ist",
           paragraphs: [
-            "Eine Webseite ist kein Druckprospekt, der einmal fertig ist. Software entwickelt sich weiter, Sicherheitslücken werden entdeckt und Browser ändern sich. Ohne regelmässige Pflege wird eine Website mit der Zeit langsamer, anfälliger und im schlimmsten Fall unbrauchbar. Viele Probleme fallen erst auf, wenn bereits Kunden betroffen sind.",
+            "Eine Webseite ist kein Druckprospekt, der einmal fertig ist. Software entwickelt sich weiter, Sicherheitslücken werden entdeckt und Browser ändern sich. Ohne regelmässige Pflege wird eine Website mit der Zeit langsamer, anfälliger und im schlimmsten Fall unbrauchbar. Viele Probleme fallen erst auf, wenn bereits Kunden betroffen sind. Wie Sie selbst prüfen, ob Ihre Seite langsamer geworden ist, zeigt unser Ratgeber [Core Web Vitals verständlich erklärt](guide:core-web-vitals).",
             "Mit einer professionellen Website-Wartung vermeiden Sie solche Überraschungen. Wir halten Ihre Webseite technisch aktuell, sichern sie regelmässig und reagieren, wenn etwas nicht stimmt. Sie wissen, dass Ihr digitales Aushängeschild zuverlässig funktioniert. Und Sie müssen sich nicht selbst mit Updates, Fehlermeldungen oder Sicherheitswarnungen beschäftigen.",
           ],
         },
@@ -144,7 +144,7 @@ export const wartung: Service = {
         {
           h2: "Pourquoi la maintenance est indispensable",
           paragraphs: [
-            "Un site internet n'est pas une brochure imprimée une fois pour toutes. Les logiciels évoluent, des failles de sécurité apparaissent, les navigateurs changent. Sans entretien régulier, un site devient plus lent, plus vulnérable et, dans le pire des cas, inutilisable. Souvent, on ne s'en rend compte que lorsque des clients sont déjà touchés.",
+            "Un site internet n'est pas une brochure imprimée une fois pour toutes. Les logiciels évoluent, des failles de sécurité apparaissent, les navigateurs changent. Sans entretien régulier, un site devient plus lent, plus vulnérable et, dans le pire des cas, inutilisable. Souvent, on ne s'en rend compte que lorsque des clients sont déjà touchés. Notre guide [Core Web Vitals expliqués simplement](guide:core-web-vitals) montre comment vérifier vous-même si votre site a ralenti.",
             "Une maintenance professionnelle vous évite ces mauvaises surprises. Nous maintenons votre site à jour, le sauvegardons régulièrement et intervenons dès que quelque chose cloche. Vous avez l'esprit tranquille : votre vitrine en ligne fonctionne. Et vous n'avez plus à vous soucier des mises à jour, messages d'erreur ou alertes de sécurité.",
           ],
         },

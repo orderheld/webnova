@@ -13,7 +13,7 @@ export const biel: City = {
       name: "Biel",
       slug: "webdesign-biel",
       meta: {
-        title: "Webdesign Biel/Bienne: Webseite erstellen lassen",
+        title: "Webagentur Biel/Bienne: Webdesign & Webseiten",
         description:
           "Webdesign in Biel/Bienne: zweisprachige Webseiten, Onlineshops und SEO für KMU aus Biel und dem Seeland. Jetzt kostenlose Erstberatung anfragen.",
       },
