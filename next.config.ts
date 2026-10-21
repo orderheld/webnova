@@ -30,6 +30,10 @@ const nextConfig: NextConfig = {
     "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png", "./src/lib/admin/fonts/**"],
   },
   poweredByHeader: false,
+  // Next's own trailing-slash redirect runs before every custom redirect, so old addresses like /ueber-uns/ took two
+  // hops. It is switched off and rebuilt as the last entry of redirects() below; the sources above it match with or
+  // without the slash at the end, so /ueber-uns/ now leads straight to /de/ueber-uns.
+  skipTrailingSlashRedirect: true,
   // Branded 404 for unmatched URLs (src/app/global-not-found.tsx); the app has several root layouts.
   experimental: { globalNotFound: true },
   async redirects() {
@@ -43,6 +47,8 @@ const nextConfig: NextConfig = {
       ["/branding-grafikdesign", "/de/branding-grafikdesign"],
       ["/online-marketing", "/de/online-marketing"],
       ["/partner-freelancer", "/de/ueber-uns"],
+      // The proxy adds /de as well, but only after the trailing-slash redirect: listed here, /leistungen/ takes one hop.
+      ["/leistungen", "/de/leistungen"],
       ["/impressum", "/de/impressum"],
       ["/datenschutzerklaerung", "/de/datenschutz"],
       // More old URLs that still had Google impressions (Search Console export, 3 months to 2026-10-06).
@@ -56,6 +62,12 @@ const nextConfig: NextConfig = {
       ["/category/:slug*", "/de/ratgeber"],
       ["/seo-in-2026-what-businesses-need-to-focus-on-now", "/de/ratgeber/lokales-seo-fuer-kmu"],
       ["/why-your-website-is-your-most-powerful-marketing-asset", "/de/ratgeber/was-eine-kmu-webseite-braucht"],
+      // Old theme sections Google still knows (SEO check 2026-10-21); /template-pages/*, /checkout and /wp-* stay 404.
+      ["/services", "/de/leistungen"],
+      ["/services/online-marketing", "/de/online-marketing"],
+      ["/services/:path*", "/de/leistungen"],
+      ["/blog-post-categories/:path*", "/de/ratgeber"],
+      ["/case-studies/:path*", "/de/referenzen"],
       // Reference renamed to its real domain dersut.ch (2026-10-08)
       ["/de/referenzen/dersut-kaffee", "/de/referenzen/dersut"],
       ["/fr/references/dersut-kaffee", "/fr/references/dersut"],
@@ -90,6 +102,8 @@ const nextConfig: NextConfig = {
           ]
         : []),
       ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
+      // Next's trailing-slash redirect (skipTrailingSlashRedirect above): every other /path/ goes to /path (308).
+      { source: "/:path+/", destination: "/:path+", permanent: true },
     ];
   },
   async headers() {
