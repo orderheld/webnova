@@ -106,7 +106,7 @@ export function ReferenceTeaserCard({
             <span className="ml-2 h-[18px] w-28 rounded-full bg-bg-2" />
           </div>
           <div className="relative aspect-[16/9.5] overflow-hidden lg:aspect-auto lg:h-[250px]">
-            {r.teaserImage && (
+            {r.teaserImage ? (
               <Image
                 src={r.teaserImage}
                 alt=""
@@ -115,6 +115,16 @@ export function ReferenceTeaserCard({
                 loading={priority ? "eager" : undefined}
                 fetchPriority={priority ? "high" : undefined}
                 className="object-cover object-top"
+              />
+            ) : (
+              // No screenshot yet: a soft wash in the project's own colours instead of an empty frame.
+              <span
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background: `radial-gradient(60% 70% at 30% 45%, color-mix(in srgb, ${r.colors.fg} 22%, transparent), transparent 70%), radial-gradient(45% 60% at 75% 55%, color-mix(in srgb, ${r.colors.accent} 16%, transparent), transparent 70%), ${r.colors.bg}`,
+                  filter: "blur(18px)",
+                }}
               />
             )}
             <span className="absolute inset-0 grid place-items-center">
