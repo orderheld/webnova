@@ -97,6 +97,15 @@ export function ReferencesPage({ locale }: { locale: Locale }) {
   );
 }
 
+/**
+ * Which teaser cards span two columns so every row is full: on two columns the first card when the count is odd,
+ * on three columns the first and, if needed, the second to last (seven cards: 2+1, 1+1+1, 2+1).
+ */
+function teaserSpan(i: number, n: number): { md: boolean; lg: boolean } {
+  const extra = (3 - (n % 3)) % 3;
+  return { md: n % 2 === 1 && i === 0, lg: (extra >= 1 && i === 0) || (extra === 2 && i === n - 2) };
+}
+
 /** References on request: blurred previews without names, and the way to ask for them. */
 function ReferencesOnRequest({ locale }: { locale: Locale }) {
   const d = getDict(locale);
@@ -117,11 +126,22 @@ function ReferencesOnRequest({ locale }: { locale: Locale }) {
           </ButtonLink>
         </div>
       </PageHero>
-      <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2">
+      <section className="container-x relative z-10 -mt-10 grid gap-5 pb-24 md:grid-cols-2 lg:grid-cols-3">
         {/* Neutral React keys: keys end up in the page payload, client names must not. */}
-        {references.map((r, i) => (
-          <ReferenceTeaserCard key={r.teaserImage ?? i} r={r} locale={locale} badge={p.referencesRequestBadge} priority={i < 2} />
-        ))}
+        {references.map((r, i) => {
+          const span = teaserSpan(i, references.length);
+          return (
+            <ReferenceTeaserCard
+              key={r.teaserImage ?? i}
+              r={r}
+              locale={locale}
+              badge={p.referencesRequestBadge}
+              priority={i < 2}
+              wide={span.lg}
+              className={`${span.md ? "md:col-span-2" : ""} ${span.lg ? "lg:col-span-2" : "lg:col-span-1"}`}
+            />
+          );
+        })}
       </section>
       <CtaBand locale={locale} />
     </>
