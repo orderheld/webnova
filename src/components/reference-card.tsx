@@ -76,12 +76,27 @@ export function ReferenceCard({ r, locale, large = false, priority = false }: { 
 
 /**
  * Blurred preview while references are shown on request (referencesOnRequest in src/lib/site.ts): a
- * pre-blurred screenshot (teaserImage), no name, address or link, only field and scope.
+ * pre-blurred screenshot (teaserImage), no name, address or link, only field and scope. `wide` cards span two
+ * columns of the grid; all previews share one height on large screens so the rows line up.
  */
-export function ReferenceTeaserCard({ r, locale, badge, priority = false }: { r: Reference; locale: Locale; badge: string; priority?: boolean }) {
+export function ReferenceTeaserCard({
+  r,
+  locale,
+  badge,
+  priority = false,
+  wide = false,
+  className = "",
+}: {
+  r: Reference;
+  locale: Locale;
+  badge: string;
+  priority?: boolean;
+  wide?: boolean;
+  className?: string;
+}) {
   const c = r.content[locale];
   return (
-    <div className="card flex h-full flex-col overflow-hidden">
+    <div className={`card flex h-full flex-col overflow-hidden ${className}`}>
       <div className="relative overflow-hidden bg-bg-2 p-3 pb-0 sm:p-5 sm:pb-0">
         <div className="relative overflow-hidden rounded-t-[16px] border border-b-0 border-line bg-surface">
           <div aria-hidden="true" className="flex items-center gap-1.5 px-3.5 py-2.5">
@@ -90,13 +105,13 @@ export function ReferenceTeaserCard({ r, locale, badge, priority = false }: { r:
             <span className="h-2 w-2 rounded-full bg-line" />
             <span className="ml-2 h-[18px] w-28 rounded-full bg-bg-2" />
           </div>
-          <div className="relative aspect-[16/9.5] overflow-hidden">
+          <div className="relative aspect-[16/9.5] overflow-hidden lg:aspect-auto lg:h-[250px]">
             {r.teaserImage && (
               <Image
                 src={r.teaserImage}
                 alt=""
                 fill
-                sizes="(min-width: 1024px) 600px, 100vw"
+                sizes={wide ? "(min-width: 1024px) 800px, 100vw" : "(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"}
                 loading={priority ? "eager" : undefined}
                 fetchPriority={priority ? "high" : undefined}
                 className="object-cover object-top"
@@ -111,7 +126,16 @@ export function ReferenceTeaserCard({ r, locale, badge, priority = false }: { r:
           </div>
         </div>
       </div>
-      <p className="px-6 py-5 text-[15px] font-medium sm:px-7">{c.teaser ?? c.industry}</p>
+      <div className="flex flex-1 flex-col gap-3 px-6 py-5 sm:px-7">
+        <p className="text-[15px] font-medium">{c.teaser ?? c.industry}</p>
+        <ul className="flex flex-wrap gap-1.5">
+          {c.scope.slice(0, 3).map((s) => (
+            <li key={s} className="rounded-full bg-bright-soft px-2.5 py-1 text-[12px] font-medium text-accent">
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
