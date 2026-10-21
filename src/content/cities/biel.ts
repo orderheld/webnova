@@ -167,7 +167,7 @@ export const biel: City = {
       name: "Biel",
       slug: "seo-biel",
       meta: {
-        title: "SEO Biel: Suchmaschinenoptimierung Biel/Bienne",
+        title: "SEO Agentur Biel/Bienne: Suchmaschinenoptimierung",
         description:
           "SEO in Biel/Bienne: zweisprachige Suchmaschinenoptimierung und Google Unternehmensprofil für KMU. Kostenlose Erstberatung bei Webnova.",
       },

@@ -162,7 +162,7 @@ export const bern: City = {
       name: "Bern",
       slug: "seo-bern",
       meta: {
-        title: "SEO Bern: Suchmaschinenoptimierung für KMU",
+        title: "SEO Agentur Bern: Suchmaschinenoptimierung",
         description:
           "SEO in Bern: Suchmaschinenoptimierung, lokales SEO und Google Unternehmensprofil für Berner KMU. Transparent und persönlich. Kostenlose Erstberatung.",
       },

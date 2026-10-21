@@ -174,7 +174,7 @@ export const grenchen: City = {
       name: "Grenchen",
       slug: "seo-grenchen",
       meta: {
-        title: "SEO Grenchen: Suchmaschinenoptimierung",
+        title: "SEO Agentur Grenchen: Suchmaschinenoptimierung",
         description:
           "SEO in Grenchen: lokale Suchmaschinenoptimierung und Google Unternehmensprofil für KMU aus der Uhrenstadt. Kostenlose Erstberatung bei Webnova.",
       },
