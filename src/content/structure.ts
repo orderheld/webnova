@@ -467,7 +467,7 @@ function cityFaqAll(locale: Locale, city: string, topic: string): FaqTemplate[] 
       {
         match: KEYWORD,
         q: `Webagentur oder Webdesign-Agentur in ${city}: Worauf sollten wir achten?`,
-        a: "Die Begriffe Webagentur, Website-Agentur und Webdesign-Agentur meinen im Alltag dasselbe. Achten Sie lieber auf eine feste Ansprechperson, eine klare Offerte, echte Referenzen, schnelle Technik und darauf, dass Webseite und Daten danach Ihnen gehören.",
+        a: "Die Begriffe Webagentur, Website-Agentur und Webdesign-Agentur meinen im Alltag dasselbe. Achten Sie lieber auf eine feste Ansprechperson, eine klare Offerte, echte Referenzen, schnelle Technik und darauf, dass Webseite und Daten danach Ihnen gehören. Unser Ratgeber [Webagentur, Website- oder Webdesign-Agentur](guide:webagentur-unterschied) erklärt, was hinter den einzelnen Begriffen steckt.",
       },
       {
         match: LANG,
@@ -515,7 +515,7 @@ function cityFaqAll(locale: Locale, city: string, topic: string): FaqTemplate[] 
     {
       match: KEYWORD,
       q: `Choisir une agence web à ${city} : à quoi faut-il faire attention ?`,
-      a: "Agence web, agence de création de sites ou agence de webdesign désignent la même chose. Regardez plutôt s'il y a un interlocuteur fixe, un devis clair, de vraies références, une technique rapide et si le site et les données vous appartiennent ensuite.",
+      a: "Agence web, agence de création de sites ou agence de webdesign désignent la même chose. Regardez plutôt s'il y a un interlocuteur fixe, un devis clair, de vraies références, une technique rapide et si le site et les données vous appartiennent ensuite. Notre guide [Agence web, création de sites ou webdesign](guide:webagentur-unterschied) explique ce qui se cache derrière chaque appellation.",
     },
     {
       match: LANG,

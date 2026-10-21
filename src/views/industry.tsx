@@ -427,7 +427,7 @@ function ProseWithAside({ locale, sections, ctaTitle, ctaText }: { locale: Local
   return (
     <section className="container-x grid gap-12 py-12 md:py-16 lg:grid-cols-12">
       <div className="lg:col-span-8">
-        <Prose sections={sections} />
+        <Prose sections={sections} locale={locale} />
       </div>
       <aside className="lg:col-span-4 lg:pt-14">
         <div className="sticky top-28 overflow-hidden rounded-3xl bg-surface p-8 shadow-card ring-1 ring-line">
