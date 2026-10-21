@@ -158,7 +158,7 @@ export const solothurn: City = {
       name: "Solothurn",
       slug: "seo-solothurn",
       meta: {
-        title: "SEO Solothurn: Suchmaschinenoptimierung",
+        title: "SEO Agentur Solothurn: Suchmaschinenoptimierung",
         description:
           "SEO in Solothurn: lokale Suchmaschinenoptimierung und Google Unternehmensprofil für Gastronomie, Handel und KMU. Kostenlose Erstberatung.",
       },
