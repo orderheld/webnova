@@ -11,6 +11,7 @@ import { escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/email";
 import { logActivity } from "./billing";
 import { type FormState, parseForm, zOptId, zText } from "./form";
 import { newPreviewToken, previewFileBuffer, previewPdf, previewUrl } from "./previews";
+import { type Proposal, proposalSchema } from "./proposal";
 import { getSettings } from "./settings";
 
 const previewSchema = z.object({
@@ -133,5 +134,41 @@ export async function sendPreviewAction(id: number, fd: FormData): Promise<{ err
   await db().update(schema.previews).set({ sentAt: new Date(), sentTo: to, updatedAt: new Date() }).where(eq(schema.previews.id, id));
   if (p.customerId) await logActivity(`Vorschau «${p.title}» an ${to} gesendet`, { customerId: p.customerId }, "email");
   await flashDone("Gesendet");
+  return { ok: true };
+}
+
+const proposalSections: Record<string, string> = {
+  date: "Datum",
+  validDays: "Gültigkeit",
+  recipient: "Für",
+  accent: "Akzentfarbe",
+  cover: "Titelseite",
+  situation: "Ausgangslage",
+  concept: "Konzept",
+  desktop: "Screenshots Computer",
+  mobile: "Screenshots Handy",
+  gallery: "Bildwelt",
+  structure: "Aufbau",
+  plan: "Vorgehen",
+  after: "Nach Ihrer Zusage",
+  price: "Investition",
+  next: "Nächste Schritte",
+};
+
+/** Saves the texts, pictures and price of the PDF proposal (Admin > Vorschauen > PDF-Vorschlag). */
+export async function saveProposalAction(id: number, input: Proposal): Promise<{ error?: string; ok?: boolean }> {
+  await requireAdmin();
+  const r = proposalSchema.safeParse(input);
+  if (!r.success) {
+    const issue = r.error.issues[0];
+    const section = proposalSections[String(issue?.path[0])] ?? "Eingabe";
+    return { error: `${section}: ${issue?.code === "too_big" ? "zu lang oder zu viele Einträge" : "ungültige Angabe"}.` };
+  }
+  const [row] = await db()
+    .update(schema.previews)
+    .set({ proposal: r.data, updatedAt: new Date() })
+    .where(eq(schema.previews.id, id))
+    .returning({ id: schema.previews.id });
+  if (!row) return { error: "Vorschau nicht gefunden." };
   return { ok: true };
 }

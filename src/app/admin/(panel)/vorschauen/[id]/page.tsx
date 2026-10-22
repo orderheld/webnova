@@ -176,7 +176,10 @@ export default async function PreviewDetail({ params }: { params: Promise<{ id: 
                   <a href={`/api/admin/vorschauen/${p.id}/pdf`} target="_blank" className={btnSm.ghost}>
                     <Icon name="external" className="h-3.5 w-3.5" /> Öffnen
                   </a>
-                  <PreviewFileButton id={p.id} kind="pdf" label="Ersetzen" />
+                  <Link href={`/admin/vorschauen/${p.id}/vorschlag`} className={btnSm.ghost}>
+                    <Icon name="edit" className="h-3.5 w-3.5" /> {p.proposal ? "Vorschlag bearbeiten" : "Im Admin erstellen"}
+                  </Link>
+                  <PreviewFileButton id={p.id} kind="pdf" label="Eigenes hochladen" />
                   <form action={deletePreviewPdfAction.bind(null, p.id)}>
                     <ConfirmButton message="PDF entfernen?" className={btnSm.danger}>
                       Entfernen
@@ -186,8 +189,18 @@ export default async function PreviewDetail({ params }: { params: Promise<{ id: 
               </>
             ) : (
               <>
-                <p className="mb-3 text-[14px] text-muted">Noch kein PDF. Es geht mit der E-Mail an den Kunden.</p>
-                <PreviewFileButton id={p.id} kind="pdf" label="PDF hochladen" />
+                <p className="mb-3 text-[14px] text-muted">
+                  Noch kein PDF. Erstelle den Vorschlag mit Screenshots und Preis hier im Admin, oder lade ein eigenes PDF hoch. Es geht mit der E-Mail an
+                  den Kunden.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {p.version > 0 && (
+                    <Link href={`/admin/vorschauen/${p.id}/vorschlag`} className={btnSm.dark}>
+                      <Icon name="file" className="h-3.5 w-3.5" /> {p.proposal ? "Vorschlag bearbeiten" : "PDF-Vorschlag erstellen"}
+                    </Link>
+                  )}
+                  <PreviewFileButton id={p.id} kind="pdf" label="Eigenes PDF hochladen" />
+                </div>
               </>
             )}
           </Card>
