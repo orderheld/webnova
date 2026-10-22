@@ -46,6 +46,11 @@ export interface CompanySettings {
   subscriptionLeadDays: number;
   subscriptionInvoiceTitle: string;
   subscriptionIntro: string;
+  // client previews (Admin > Vorschauen): {anrede}, {link}, {absender}; the chat text also {pdf}
+  previewEmailText: string;
+  previewEmailTextFr: string;
+  previewChatText: string;
+  previewChatTextFr: string;
 }
 
 export const defaultSettings: CompanySettings = {
@@ -93,6 +98,14 @@ export const defaultSettings: CompanySettings = {
   subscriptionLeadDays: 14,
   subscriptionInvoiceTitle: "Wiederkehrende Leistungen",
   subscriptionIntro: "Gerne stellen wir Ihnen die wiederkehrenden Leistungen für die folgende Periode in Rechnung:",
+  previewEmailText:
+    "{anrede}\n\nVielen Dank für das angenehme Gespräch. Wie besprochen sende ich Ihnen meinen Vorschlag für Ihren neuen Webauftritt.\n\nHier sehen Sie die Vorschau der Startseite:\n{link}\n\nAm besten schauen Sie die Seite zuerst am Computer an und scrollen langsam durch. Auf dem Handy öffnen Sie einfach denselben Link.\n\nIm angehängten PDF finden Sie das Konzept, den Aufbau der Seiten, den Ablauf und den Preis.\n\nLogo, Bilder und Texte sind in der Vorschau noch Platzhalter und werden durch Ihre eigenen ersetzt.\n\nWenn Sie sich eine Zusammenarbeit vorstellen können, bespreche ich die nächsten Schritte gerne persönlich mit Ihnen. Wann würde es Ihnen passen?\n\nFreundliche Grüsse\n{absender}",
+  previewEmailTextFr:
+    "{anrede}\n\nMerci beaucoup pour notre agréable échange. Comme convenu, je vous envoie ma proposition pour votre nouveau site web.\n\nVoici l'aperçu de la page d'accueil :\n{link}\n\nLe mieux est de regarder la page d'abord sur un ordinateur et de la faire défiler lentement. Sur votre téléphone, il suffit d'ouvrir le même lien.\n\nDans le PDF ci-joint, vous trouverez le concept, la structure des pages, le déroulement et le prix.\n\nLe logo, les images et les textes de l'aperçu sont encore provisoires et seront remplacés par les vôtres.\n\nSi une collaboration vous intéresse, je serai heureux d'en discuter avec vous de vive voix. Quand cela vous conviendrait-il ?\n\nMeilleures salutations\n{absender}",
+  previewChatText:
+    "{anrede}\n\nVielen Dank nochmals für das angenehme Gespräch. Wie versprochen sende ich Ihnen meinen Vorschlag für Ihren Webauftritt.\n\nVorschau der Startseite:\n{link}\n\nAm besten schauen Sie die Seite zuerst am Computer an und scrollen langsam. Auf dem Handy öffnen Sie einfach denselben Link.\n\n{pdf}\n\nWenn Sie sich eine Zusammenarbeit vorstellen können, bespreche ich die nächsten Schritte gerne persönlich mit Ihnen. Wann würde es Ihnen passen?\n\nFreundliche Grüsse\n{absender}\nWebnova",
+  previewChatTextFr:
+    "{anrede}\n\nMerci encore pour notre agréable échange. Comme promis, je vous envoie ma proposition pour votre site web.\n\nAperçu de la page d'accueil :\n{link}\n\nLe mieux est de regarder la page d'abord sur un ordinateur et de la faire défiler lentement. Sur votre téléphone, il suffit d'ouvrir le même lien.\n\n{pdf}\n\nSi une collaboration vous intéresse, je serai heureux d'en discuter avec vous de vive voix. Quand cela vous conviendrait-il ?\n\nMeilleures salutations\n{absender}\nWebnova",
 };
 
 /** Company settings; cached per request, so layout and page share one query. */

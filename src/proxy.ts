@@ -11,6 +11,13 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // A client preview opens at /vorschau/<token>/: its files use relative paths, which need the slash at the end.
+  if (pathname === "/vorschau" || pathname.startsWith("/vorschau/")) {
+    if (!/^\/vorschau\/[^/]+$/.test(pathname)) return NextResponse.next();
+    // A plain URL: nextUrl would drop the slash again (no trailingSlash in next.config).
+    return NextResponse.redirect(new URL(`${pathname}/${request.nextUrl.search}`, request.url), 308);
+  }
+
   if (pathname === "/" || !/^\/(de|fr)(\/|$)/.test(pathname)) {
     const accept = request.headers.get("accept-language") ?? "";
     const lang = /^\s*fr/i.test(accept) ? "fr" : "de";
@@ -24,7 +31,8 @@ export async function proxy(request: NextRequest) {
 export const config = {
   // /de and /fr paths are left out: the proxy only let them through, and skipping it saves a proxy run
   // before every page view. (Server Functions posted to these pages skip it too; it never checked them.)
+  // Client previews (/vorschau/<token>/...) skip it too: static sites with any file type and no /de prefix.
   matcher: [
-    "/((?!(?:de|fr)(?:/|$)|api|_next/static|_next/image|favicon.ico|icon|apple-icon|opengraph-image|sitemap.xml|robots.txt|manifest.webmanifest|admin-sw.js|og/|icons/|logo.png|.*\\.(?:png|jpg|jpeg|svg|webp|ico|txt|xml|pdf|webmanifest|woff2?|mp4)$).*)",
+    "/((?!(?:de|fr)(?:/|$)|vorschau/[^/]+/|api|_next/static|_next/image|favicon.ico|icon|apple-icon|opengraph-image|sitemap.xml|robots.txt|manifest.webmanifest|admin-sw.js|og/|icons/|logo.png|.*\\.(?:png|jpg|jpeg|svg|webp|ico|txt|xml|pdf|webmanifest|woff2?|mp4)$).*)",
   ],
 };

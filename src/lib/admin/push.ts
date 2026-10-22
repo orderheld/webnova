@@ -99,6 +99,17 @@ export async function pushNewLead(message: PushMessage) {
   }
 }
 
+/** A client opened a preview (Admin > Vorschauen): the devices with «Neue Anfragen», it is just as worth a call. Never throws. */
+export async function pushPreviewOpened(message: PushMessage) {
+  if (!hasDb()) return;
+  try {
+    const rows = await db().select().from(schema.pushSubscriptions).where(eq(schema.pushSubscriptions.leads, true));
+    await deliver(rows, message, { ttl: 6 * 60 * 60, urgency: "high" });
+  } catch (err) {
+    console.error("[push] preview", err);
+  }
+}
+
 /**
  * First page view of a visitor today: every device with «Besucher» switched on, at most one visitor message per
  * device and minute (claimed in one update, so parallel server instances cannot both send). Never throws.

@@ -58,6 +58,8 @@ const paths: Record<string, React.ReactNode> = {
   smartphone: (<><rect x="7" y="2.5" width="10" height="19" rx="2" /><path d="M11 18h2" /></>),
   tablet: (<><rect x="4.5" y="3" width="15" height="18" rx="2" /><path d="M11 18h2" /></>),
   monitor: (<><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></>),
+  upload: (<><path d="M12 15V3M7 8l5-5 5 5" /><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4" /></>),
+  eye: (<><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>),
 };
 
 export function Icon({ name, ...props }: { name: string } & SVGProps<SVGSVGElement>) {

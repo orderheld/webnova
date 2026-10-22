@@ -57,6 +57,15 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
           {area("quoteEmailText", "E-Mail-Text ({name}, {nummer}, {absender})", 7)}
         </div>
       </Card>
+      <Card title="Texte Vorschau">
+        <div className="space-y-4">
+          {area("previewEmailText", "E-Mail Deutsch ({anrede}, {link}, {absender})", 9)}
+          {area("previewEmailTextFr", "E-Mail Französisch", 9)}
+          {area("previewChatText", "WhatsApp Deutsch ({anrede}, {link}, {pdf}, {absender})", 7)}
+          {area("previewChatTextFr", "WhatsApp Französisch", 7)}
+          <p className="text-[12.5px] text-muted">Ohne PDF lässt die E-Mail den Absatz weg, in dem «PDF» vorkommt.</p>
+        </div>
+      </Card>
       <Card title="Texte Rechnung">
         <div className="space-y-4">
           {area("invoiceIntro", "Einleitung")}

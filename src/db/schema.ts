@@ -1,6 +1,7 @@
 import {
   type AnyPgColumn,
   boolean,
+  customType,
   date,
   index,
   integer,
@@ -10,6 +11,7 @@ import {
   serial,
   text,
   timestamp,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 
 /** CRM pipeline stages, in board order. */
@@ -571,6 +573,84 @@ export const postcardRecipients = pgTable(
   (t) => [index("postcard_recipients_week_idx").on(t.week, t.status)],
 );
 
+/* ───────────── Client previews ───────────── */
+
+/** Raw bytes; node-postgres returns bytea as a Buffer. */
+const bytea = customType<{ data: Buffer; driverData: Buffer }>({ dataType: () => "bytea" });
+
+/**
+ * A design draft for a possible client, uploaded as a ZIP in Admin > Vorschauen and served at
+ * webnova.ch/vorschau/<token>/ (never in search engines). The token is random, so the client's name never appears
+ * in a public link. A new upload gets the next version and replaces the files only once it is complete, so the link
+ * keeps working while it uploads.
+ */
+export const previews = pgTable("previews", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  /** 10 random characters a-z0-9, the only part of the public link */
+  token: text("token").notNull().unique(),
+  /** internal name, e.g. the brand of the draft */
+  title: text("title").notNull(),
+  customerId: integer("customer_id").references(() => customers.id, { onDelete: "set null" }),
+  /** how the client is greeted in the e-mail and WhatsApp text, e.g. "Herr Muster" */
+  contactName: text("contact_name").notNull().default(""),
+  contactEmail: text("contact_email").notNull().default(""),
+  contactPhone: text("contact_phone").notNull().default(""),
+  /** language of the texts to the client: de | fr */
+  language: text("language").notNull().default("de"),
+  note: text("note").notNull().default(""),
+  /** switched off: the link shows «nicht mehr verfügbar», the files stay */
+  active: boolean("active").notNull().default(true),
+  /** version of the files the link serves; 0 until the first upload is complete */
+  version: integer("version").notNull().default(0),
+  fileCount: integer("file_count").notNull().default(0),
+  totalBytes: integer("total_bytes").notNull().default(0),
+  /** proposal PDF attached to the e-mail (a preview_files row of kind "pdf") */
+  pdfFileId: integer("pdf_file_id"),
+  /** openings of the start page by the client (not by the admin, not by link-preview bots) */
+  views: integer("views").notNull().default(0),
+  firstViewedAt: timestamp("first_viewed_at", { withTimezone: true }),
+  lastViewedAt: timestamp("last_viewed_at", { withTimezone: true }),
+  sentAt: timestamp("sent_at", { withTimezone: true }),
+  sentTo: text("sent_to"),
+});
+
+/** One file of a preview (a page, image, font, video) or its proposal PDF, stored in 1 MB chunks. */
+export const previewFiles = pgTable(
+  "preview_files",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    previewId: integer("preview_id")
+      .notNull()
+      .references(() => previews.id, { onDelete: "cascade" }),
+    /** "site" (served under the link) or "pdf" (proposal, only for the admin and the e-mail) */
+    kind: text("kind").$type<"site" | "pdf">().notNull().default("site"),
+    /** upload the file belongs to; site files are served only for previews.version */
+    version: integer("version").notNull(),
+    /** path inside the ZIP without the top folder, e.g. "index.html" or "media/film.webm" */
+    path: text("path").notNull(),
+    contentType: text("content_type").notNull(),
+    size: integer("size").notNull(),
+    chunkCount: integer("chunk_count").notNull(),
+  },
+  (t) => [uniqueIndex("preview_files_path_idx").on(t.previewId, t.kind, t.version, t.path)],
+);
+
+export const previewChunks = pgTable(
+  "preview_chunks",
+  {
+    id: serial("id").primaryKey(),
+    fileId: integer("file_id")
+      .notNull()
+      .references(() => previewFiles.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    data: bytea("data").notNull(),
+  },
+  (t) => [uniqueIndex("preview_chunks_seq_idx").on(t.fileId, t.seq)],
+);
+
 export type Lead = typeof leads.$inferSelect;
 export type Customer = typeof customers.$inferSelect;
 export type Quote = typeof quotes.$inferSelect;
@@ -590,3 +670,5 @@ export type InvoiceReminder = typeof invoiceReminders.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
 export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;
 export type PostcardRecipient = typeof postcardRecipients.$inferSelect;
+export type Preview = typeof previews.$inferSelect;
+export type PreviewFile = typeof previewFiles.$inferSelect;

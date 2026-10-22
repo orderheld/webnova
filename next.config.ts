@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { googleProfil } from "./src/content/services/google-profil";
+import { previewSecurityHeaders } from "./src/lib/admin/preview-files";
 import { referencesOnRequest, showReferences, site } from "./src/lib/site";
 
 /*
@@ -103,7 +104,9 @@ const nextConfig: NextConfig = {
         : []),
       ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
       // Next's trailing-slash redirect (skipTrailingSlashRedirect above): every other /path/ goes to /path (308).
-      { source: "/:path+/", destination: "/:path+", permanent: true },
+      // Client previews keep their slash (src/proxy.ts adds it), because their files use relative paths.
+      // The path starts with a character other than a slash, so //host/ never becomes a redirect to //host.
+      { source: "/:path((?!vorschau/)[^/\\\\].*)/", destination: "/:path", permanent: true },
     ];
   },
   async headers() {
@@ -124,6 +127,11 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
       })),
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      // Client previews (src/app/vorschau, uploaded in Admin > Vorschauen): noindex and the sandbox, see preview-files.ts.
+      {
+        source: "/vorschau/:path*",
+        headers: Object.entries(previewSecurityHeaders).map(([key, value]) => ({ key, value })),
+      },
       // Service worker of the admin app (push notifications): always fetched fresh, and it loads nothing itself.
       {
         source: "/admin-sw.js",
