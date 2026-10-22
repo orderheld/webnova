@@ -25,10 +25,13 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   // pdfkit reads its font metrics from disk at runtime, so it must not be bundled. The PDFs also read the logo and the Inter font files from disk.
-  serverExternalPackages: ["pdfkit", "swissqrbill"],
+  // The PDF proposals of client previews run Chromium (@sparticuz/chromium unpacks its bin folder at runtime) and
+  // read their fonts, portrait and logo from src/lib/admin/proposal-assets.
+  serverExternalPackages: ["pdfkit", "swissqrbill", "@sparticuz/chromium", "puppeteer-core"],
   outputFileTracingIncludes: {
     "/admin/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png", "./src/lib/admin/fonts/**"],
     "/api/**": ["./node_modules/pdfkit/js/data/**", "./src/lib/admin/logo-print.png", "./src/lib/admin/fonts/**"],
+    "/api/admin/vorschauen/*/vorschlag/*": ["./node_modules/@sparticuz/chromium/bin/**", "./src/lib/admin/proposal-assets/**"],
   },
   poweredByHeader: false,
   // Next's own trailing-slash redirect runs before every custom redirect, so old addresses like /ueber-uns/ took two

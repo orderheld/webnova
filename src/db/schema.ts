@@ -13,6 +13,7 @@ import {
   timestamp,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
+import type { Proposal } from "../lib/admin/proposal";
 
 /** CRM pipeline stages, in board order. */
 export const leadStatuses = ["neu", "kontaktiert", "gespraech", "offerte", "gewonnen", "verloren"] as const;
@@ -614,9 +615,11 @@ export const previews = pgTable("previews", {
   lastViewedAt: timestamp("last_viewed_at", { withTimezone: true }),
   sentAt: timestamp("sent_at", { withTimezone: true }),
   sentTo: text("sent_to"),
+  /** texts, screenshots and price of the PDF proposal made in the admin (src/lib/admin/proposal.ts) */
+  proposal: jsonb("proposal").$type<Proposal>(),
 });
 
-/** One file of a preview (a page, image, font, video) or its proposal PDF, stored in 1 MB chunks. */
+/** One file of a preview (a page, image, font, video), its proposal PDF or a screenshot, stored in 1 MB chunks. */
 export const previewFiles = pgTable(
   "preview_files",
   {
@@ -625,8 +628,8 @@ export const previewFiles = pgTable(
     previewId: integer("preview_id")
       .notNull()
       .references(() => previews.id, { onDelete: "cascade" }),
-    /** "site" (served under the link) or "pdf" (proposal, only for the admin and the e-mail) */
-    kind: text("kind").$type<"site" | "pdf">().notNull().default("site"),
+    /** "site" (served under the link), "pdf" (proposal, only for the admin and the e-mail) or "shot" (screenshot for the proposal) */
+    kind: text("kind").$type<"site" | "pdf" | "shot">().notNull().default("site"),
     /** upload the file belongs to; site files are served only for previews.version */
     version: integer("version").notNull(),
     /** path inside the ZIP without the top folder, e.g. "index.html" or "media/film.webm" */
