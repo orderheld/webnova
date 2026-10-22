@@ -132,7 +132,7 @@ export default async function PreviewDetail({ params }: { params: Promise<{ id: 
           {p.version > 0 && (
             <Card title="Dateien" actions={<PreviewFileButton id={p.id} kind="site" label="Neue Version hochladen" />}>
               <p className="text-[14px] text-ink-soft">
-                Version {p.version} · {p.fileCount} Dateien · {mb(p.totalBytes)}. Eine neue Version ersetzt die Dateien, der Link bleibt gleich.
+                Version {p.version} · {p.fileCount} {p.fileCount === 1 ? "Datei" : "Dateien"} · {mb(p.totalBytes)}. Eine neue Version ersetzt die Dateien, der Link bleibt gleich.
               </p>
               <details className="mt-3 text-[13px]">
                 <summary className="cursor-pointer text-bright hover:text-accent">Alle Dateien anzeigen</summary>
@@ -159,8 +159,8 @@ export default async function PreviewDetail({ params }: { params: Promise<{ id: 
               ]}
             />
             <p className="mt-3 text-[12.5px] leading-relaxed text-muted">
-              Zählt, wenn jemand die Startseite öffnet. Deine eigenen Aufrufe (im Admin angemeldet) und Link-Vorschauen von WhatsApp zählen nicht. Beim
-              Öffnen kommt eine Mitteilung aufs Handy.
+              Zählt jeden Besuch der Vorschau einmal, auch wenn der Kunde dazwischen neu lädt; nach 30 Minuten Pause zählt der nächste. Deine eigenen
+              Aufrufe (im Admin angemeldet) und Link-Vorschauen von WhatsApp zählen nicht. Bei jedem Besuch kommt eine Mitteilung aufs Handy.
             </p>
           </Card>
 

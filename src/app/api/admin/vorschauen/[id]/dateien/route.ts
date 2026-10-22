@@ -37,31 +37,39 @@ export async function POST(req: Request, ctx: RouteContext<"/api/admin/vorschaue
   }
 
   const f = schema.previewFiles;
-  let version: number;
-  if (kind === "site") {
-    version = preview.version + 1;
-    // leftovers of an upload that never finished
-    await db().delete(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "site"), gt(f.version, preview.version)));
-  } else {
-    const [last] = await db().select({ v: max(f.version) }).from(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "pdf")));
-    version = (last?.v ?? 0) + 1;
-    await db()
-      .delete(f)
-      .where(and(eq(f.previewId, preview.id), eq(f.kind, "pdf"), preview.pdfFileId ? ne(f.id, preview.pdfFileId) : undefined));
-  }
-  const rows = await db()
-    .insert(f)
-    .values(
-      list.map((x) => ({
-        previewId: preview.id,
-        kind,
-        version,
-        path: x.path,
-        contentType: previewContentType(x.path),
-        size: x.size,
-        chunkCount: Math.ceil(x.size / PREVIEW_CHUNK),
-      })),
-    )
-    .returning({ id: f.id, path: f.path, chunks: f.chunkCount });
-  return Response.json({ version, files: rows });
+  const p = schema.previews;
+  // Under the preview's row lock, like /fertig: the switch to a new version never sees half of another upload.
+  const started = await db().transaction(async (tx) => {
+    const [current] = await tx.select({ version: p.version, pdfFileId: p.pdfFileId }).from(p).where(eq(p.id, preview.id)).for("update");
+    if (!current) return null;
+    let version: number;
+    if (kind === "site") {
+      version = current.version + 1;
+      // leftovers of an upload that never finished
+      await tx.delete(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "site"), gt(f.version, current.version)));
+    } else {
+      const [last] = await tx.select({ v: max(f.version) }).from(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "pdf")));
+      version = (last?.v ?? 0) + 1;
+      await tx
+        .delete(f)
+        .where(and(eq(f.previewId, preview.id), eq(f.kind, "pdf"), current.pdfFileId ? ne(f.id, current.pdfFileId) : undefined));
+    }
+    const rows = await tx
+      .insert(f)
+      .values(
+        list.map((x) => ({
+          previewId: preview.id,
+          kind,
+          version,
+          path: x.path,
+          contentType: previewContentType(x.path),
+          size: x.size,
+          chunkCount: Math.ceil(x.size / PREVIEW_CHUNK),
+        })),
+      )
+      .returning({ id: f.id, path: f.path, chunks: f.chunkCount });
+    return { version, files: rows };
+  });
+  if (!started) return Response.json({ error: "Vorschau nicht gefunden." }, { status: 404 });
+  return Response.json(started);
 }

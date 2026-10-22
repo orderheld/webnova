@@ -19,8 +19,8 @@ export async function POST(req: Request, ctx: RouteContext<"/api/admin/vorschaue
   const c = schema.previewChunks;
 
   // files of the upload whose chunks are not all stored yet
-  const incomplete = (where: ReturnType<typeof and>) =>
-    db()
+  const incomplete = (q: Pick<ReturnType<typeof db>, "select">, where: ReturnType<typeof and>) =>
+    q
       .select({ path: f.path })
       .from(f)
       .leftJoin(c, eq(c.fileId, f.id))
@@ -31,20 +31,26 @@ export async function POST(req: Request, ctx: RouteContext<"/api/admin/vorschaue
   if (body?.kind === "site" && typeof body.version === "number" && body.version > preview.version) {
     const version = body.version;
     const ofVersion = and(eq(f.previewId, preview.id), eq(f.kind, "site"), eq(f.version, version));
-    const missing = await incomplete(ofVersion);
-    if (missing.length) return Response.json({ error: `Noch nicht vollständig: ${missing.slice(0, 3).map((m) => m.path).join(", ")}` }, { status: 409 });
-    const [stats] = await db()
-      .select({ n: sql<number>`count(*)::int`, bytes: sql<number>`coalesce(sum(${f.size}), 0)::int`, index: sql<boolean>`bool_or(${f.path} = 'index.html')` })
-      .from(f)
-      .where(ofVersion);
-    if (!stats?.index) return Response.json({ error: "Die Startseite index.html fehlt." }, { status: 400 });
-    await db().transaction(async (tx) => {
+    // Under the preview's row lock, which POST /dateien takes as well: a parallel upload cannot swap the files between
+    // the check and the switch.
+    const error = await db().transaction(async (tx) => {
+      const [locked] = await tx.select({ version: schema.previews.version }).from(schema.previews).where(eq(schema.previews.id, preview.id)).for("update");
+      if (!locked || locked.version >= version) return "Diese Version ist schon online.";
+      const missing = await incomplete(tx, ofVersion);
+      if (missing.length) return `Noch nicht vollständig: ${missing.slice(0, 3).map((m) => m.path).join(", ")}`;
+      const [stats] = await tx
+        .select({ n: sql<number>`count(*)::int`, bytes: sql<number>`coalesce(sum(${f.size}), 0)::int`, index: sql<boolean>`bool_or(${f.path} = 'index.html')` })
+        .from(f)
+        .where(ofVersion);
+      if (!stats?.index) return "Die Startseite index.html fehlt.";
       await tx
         .update(schema.previews)
         .set({ version, fileCount: stats.n, totalBytes: stats.bytes, updatedAt: new Date() })
         .where(eq(schema.previews.id, preview.id));
       await tx.delete(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "site"), ne(f.version, version)));
+      return null;
     });
+    if (error) return Response.json({ error }, { status: 409 });
     await flashDone(preview.version === 0 ? "Vorschau ist online" : "Neue Version ist online");
     return Response.json({ url: previewUrl(preview.token) });
   }
@@ -54,7 +60,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/admin/vorschaue
     const ofFile = and(eq(f.id, fileId), eq(f.previewId, preview.id), eq(f.kind, "pdf"));
     const [file] = await db().select({ id: f.id }).from(f).where(ofFile);
     if (!file) return Response.json({ error: "PDF nicht gefunden." }, { status: 404 });
-    if ((await incomplete(ofFile)).length) return Response.json({ error: "Das PDF ist noch nicht vollständig." }, { status: 409 });
+    if ((await incomplete(db(), ofFile)).length) return Response.json({ error: "Das PDF ist noch nicht vollständig." }, { status: 409 });
     await db().transaction(async (tx) => {
       await tx.update(schema.previews).set({ pdfFileId: fileId, updatedAt: new Date() }).where(eq(schema.previews.id, preview.id));
       await tx.delete(f).where(and(eq(f.previewId, preview.id), eq(f.kind, "pdf"), ne(f.id, fileId)));

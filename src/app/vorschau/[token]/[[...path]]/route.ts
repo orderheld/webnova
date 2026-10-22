@@ -1,14 +1,14 @@
 import { and, eq, sql } from "drizzle-orm";
 import { after, type NextRequest } from "next/server";
 import { db, hasDb, schema } from "@/db";
-import { cleanPreviewPath, isMedia, PREVIEW_PART } from "@/lib/admin/preview-files";
-import { isBot, isPreviewToken, previewFileStream } from "@/lib/admin/previews";
+import { cleanPreviewPath, isMedia, PREVIEW_PART, previewSecurityHeaders } from "@/lib/admin/preview-files";
+import { isBot, isPreviewToken, parseRange, previewFileStream } from "@/lib/admin/previews";
 import { pushPreviewOpened } from "@/lib/admin/push";
 import { currentAdmin } from "@/lib/auth";
 
 /*
  * Client previews from Admin > Vorschauen: webnova.ch/vorschau/<token>/ serves the files of the current upload from
- * the database. next.config.ts adds noindex and the CSP sandbox to every response here (the preview's scripts run
+ * the database. Every response carries noindex and the CSP sandbox (previewSecurityHeaders: the preview's scripts run
  * without access to webnova.ch), src/proxy.ts adds the slash after the token, which relative paths need.
  */
 
@@ -25,6 +25,8 @@ export async function HEAD(req: NextRequest, ctx: Ctx) {
 async function serve(req: NextRequest, ctx: Ctx, head: boolean): Promise<Response> {
   const { token, path = [] } = await ctx.params;
   if (!hasDb() || !isPreviewToken(token)) return unavailable(head);
+  // Empty segments (/vorschau/<token>//) slip past next.config's path rules and are never a file of the preview.
+  if (path.some((s) => s === "" || s.includes("/") || s.includes("\\"))) return notFound(head);
   const folder = path.length === 0 || req.nextUrl.pathname.endsWith("/");
   const rel = cleanPreviewPath(folder ? [...path, "index.html"].join("/") : path.join("/"));
   if (!rel) return notFound(head);
@@ -45,61 +47,40 @@ async function serve(req: NextRequest, ctx: Ctx, head: boolean): Promise<Respons
         .select({ id: f.id })
         .from(f)
         .where(and(eq(f.previewId, row.preview.id), eq(f.kind, "site"), eq(f.version, row.preview.version), eq(f.path, `${rel}/index.html`)));
-      if (sub) return Response.redirect(new URL(`${req.nextUrl.pathname}/${req.nextUrl.search}`, req.url), 308);
+      if (sub) return respond(null, 308, { Location: `${req.nextUrl.pathname}/${req.nextUrl.search}` });
     }
     return notFound(head);
   }
 
   // A new upload gets new file ids, so the id is a safe validator: the browser re-checks and gets 304 while unchanged.
   const etag = `"wn-${file.id}"`;
-  const headers = new Headers({ "Content-Type": file.contentType, "Accept-Ranges": "bytes", ETag: etag, "Cache-Control": "no-cache" });
-  if (req.headers.get("if-none-match")?.split(/\s*,\s*/).includes(etag)) return new Response(null, { status: 304, headers });
+  const headers: Record<string, string> = { "Content-Type": file.contentType, "Accept-Ranges": "bytes", ETag: etag, "Cache-Control": "no-cache" };
+  // Every opening of the start page counts, also a return visit that the browser answers from its cache (304).
+  if (!head && path.length === 0 && !req.headers.has("range")) after(() => countView(req, row.preview));
+  if (req.headers.get("if-none-match")?.split(/\s*,\s*/).includes(etag)) return respond(null, 304, headers);
 
   const range = parseRange(req.headers.get("range"), file.size);
-  if (range === "invalid") {
-    headers.set("Content-Range", `bytes */${file.size}`);
-    return new Response(null, { status: 416, headers });
-  }
-
-  if (!head && !range && rel === "index.html" && path.length === 0) after(() => countView(req, row.preview));
-
-  if (file.size === 0) {
-    headers.set("Content-Length", "0");
-    return new Response(null, { status: 200, headers });
-  }
+  if (range === "invalid") return respond(null, 416, { ...headers, "Content-Range": `bytes */${file.size}` });
+  if (file.size === 0) return respond(null, 200, { ...headers, "Content-Length": "0" });
   // One response carries at most PREVIEW_PART: a longer range is answered in part, the player asks for the rest.
   // Videos and audio also get the first part when they ask without a range, then continue with ranges.
   const partial = range ?? (isMedia(rel) && file.size > PREVIEW_PART ? { start: 0, end: file.size - 1 } : null);
   if (partial) {
     const end = Math.min(partial.end, partial.start + PREVIEW_PART - 1);
-    headers.set("Content-Range", `bytes ${partial.start}-${end}/${file.size}`);
-    headers.set("Content-Length", String(end - partial.start + 1));
-    return new Response(head ? null : previewFileStream(file.id, partial.start, end), { status: 206, headers });
+    const part = { "Content-Range": `bytes ${partial.start}-${end}/${file.size}`, "Content-Length": String(end - partial.start + 1) };
+    return respond(head ? null : previewFileStream(file.id, partial.start, end), 206, { ...headers, ...part });
   }
-  headers.set("Content-Length", String(file.size));
-  return new Response(head ? null : previewFileStream(file.id, 0, file.size - 1), { status: 200, headers });
+  return respond(head ? null : previewFileStream(file.id, 0, file.size - 1), 200, { ...headers, "Content-Length": String(file.size) });
 }
 
-/** A single byte range (bytes=a-b, a- or -n); several ranges are answered with the whole file. */
-function parseRange(header: string | null, size: number): { start: number; end: number } | "invalid" | null {
-  const m = header?.match(/^bytes=(\d*)-(\d*)$/);
-  if (!m || (!m[1] && !m[2])) return null;
-  let start: number;
-  let end: number;
-  if (!m[1]) {
-    start = Math.max(0, size - Number(m[2]));
-    end = size - 1;
-  } else {
-    start = Number(m[1]);
-    end = m[2] ? Math.min(Number(m[2]), size - 1) : size - 1;
-  }
-  if (start >= size || start > end) return "invalid";
-  return { start, end };
+function respond(body: BodyInit | null, status: number, headers: Record<string, string>) {
+  return new Response(body, { status, headers: { ...headers, ...previewSecurityHeaders } });
 }
 
 /**
  * An opening of the start page by the client: not by Ferhat (signed in to the admin), not by link previews of
- * WhatsApp or mail scanners, not by prefetches. The first opening of a visit (30 minutes) sends a push.
+ * WhatsApp or mail scanners, not by prefetches. A visit ends after 30 minutes without an opening; only its first
+ * opening counts and sends a push, so clicking back to the start page or reloading adds nothing.
  */
 async function countView(req: NextRequest, preview: { id: number; title: string }) {
   try {
@@ -107,16 +88,17 @@ async function countView(req: NextRequest, preview: { id: number; title: string 
     if (isBot(req.headers.get("user-agent") ?? "") || (dest && dest !== "document")) return;
     if (/prefetch|prerender/i.test(req.headers.get("sec-purpose") ?? req.headers.get("purpose") ?? "")) return;
     if (await currentAdmin()) return;
-    const result = await db().execute<{ views: number; prev: Date | string | null }>(sql`
-      with old as (select ${schema.previews.lastViewedAt} as prev from ${schema.previews} where ${schema.previews.id} = ${preview.id})
-      update ${schema.previews}
-      set views = views + 1, first_viewed_at = coalesce(first_viewed_at, now()), last_viewed_at = now()
-      where ${schema.previews.id} = ${preview.id}
-      returning views, (select prev from old) as prev`);
-    const r = result.rows[0];
-    if (!r) return;
-    const prev = r.prev ? new Date(r.prev).getTime() : 0;
-    if (Date.now() - prev < 30 * 60_000) return;
+    const p = schema.previews;
+    // The condition is checked again after a parallel opening's update, so two tabs at once count and push once.
+    const [r] = await db()
+      .update(p)
+      .set({ views: sql`${p.views} + 1`, firstViewedAt: sql`coalesce(${p.firstViewedAt}, now())`, lastViewedAt: sql`now()` })
+      .where(and(eq(p.id, preview.id), sql`(${p.lastViewedAt} is null or ${p.lastViewedAt} < now() - interval '30 minutes')`))
+      .returning({ views: p.views });
+    if (!r) {
+      await db().update(p).set({ lastViewedAt: sql`now()` }).where(eq(p.id, preview.id));
+      return;
+    }
     await pushPreviewOpened({
       title: "Vorschau geöffnet",
       body: `${preview.title} · ${r.views === 1 ? "zum ersten Mal" : `${r.views}. Öffnung`}`,
@@ -140,9 +122,9 @@ function unavailable(head: boolean) {
     "Vorschau nicht verfügbar",
     "<h1>Diese Vorschau ist nicht mehr verfügbar.</h1><p>Cet aperçu n’est plus disponible.</p>",
   );
-  return new Response(head ? null : html, { status: 404, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
+  return respond(head ? null : html, 404, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
 }
 
 function notFound(head: boolean) {
-  return new Response(head ? null : "Nicht gefunden", { status: 404, headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
+  return respond(head ? null : "Nicht gefunden", 404, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" });
 }

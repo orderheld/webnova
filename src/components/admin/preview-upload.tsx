@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { Preview } from "@/db/schema";
 import { createPreviewAction, savePreviewAction } from "@/lib/admin/preview-actions";
-import { isMedia, mb, PREVIEW_CHUNK, PREVIEW_MAX_PDF, PREVIEW_PART, previewFilesFromZip, type PreviewUploadFile } from "@/lib/admin/preview-files";
+import { mb, PREVIEW_CHUNK, PREVIEW_MAX_PDF, previewFilesFromZip, type PreviewUploadFile } from "@/lib/admin/preview-files";
 import type { Option } from "@/lib/admin/queries";
 import { ActionForm, Submit } from "./action-form";
 import { Spinner, toast } from "./feedback";
@@ -26,7 +26,10 @@ async function api<T>(url: string, init: RequestInit): Promise<T> {
   return json as T;
 }
 
-/** Sends the files of one upload and finishes it. Four parts at a time, each tried up to three times. */
+/**
+ * Sends the files of one upload and finishes it. Four parts at a time, each tried up to three times; when one part
+ * fails for good, the other workers stop too, so nothing keeps uploading behind the error message.
+ */
 async function uploadFiles(id: number, kind: "site" | "pdf", files: PreviewUploadFile[], onProgress: (done: number, total: number) => void) {
   const json = { "Content-Type": "application/json" };
   const started = await api<{ version: number; files: { id: number; path: string; chunks: number }[] }>(`/api/admin/vorschauen/${id}/dateien`, {
@@ -40,21 +43,26 @@ async function uploadFiles(id: number, kind: "site" | "pdf", files: PreviewUploa
   let done = 0;
   onProgress(0, total);
   let next = 0;
+  const abort = new AbortController();
   const worker = async () => {
-    while (next < parts.length) {
+    while (next < parts.length && !abort.signal.aborted) {
       const part = parts[next++];
       const body = part.data.slice(part.seq * PREVIEW_CHUNK, (part.seq + 1) * PREVIEW_CHUNK);
       for (let attempt = 1; ; attempt++) {
         try {
-          await api(`/api/admin/vorschauen/${id}/dateien/${part.fileId}/${part.seq}`, { method: "PUT", body });
+          await api(`/api/admin/vorschauen/${id}/dateien/${part.fileId}/${part.seq}`, { method: "PUT", body, signal: abort.signal });
           break;
         } catch (err) {
-          if (attempt >= 3) throw err;
+          if (abort.signal.aborted) return;
+          if (attempt >= 3) {
+            abort.abort();
+            throw err;
+          }
           await new Promise((r) => setTimeout(r, attempt * 1500));
         }
       }
       done += body.length;
-      onProgress(done, total);
+      if (!abort.signal.aborted) onProgress(done, total);
     }
   };
   await Promise.all(Array.from({ length: Math.min(4, parts.length) }, worker));
@@ -65,7 +73,7 @@ async function uploadFiles(id: number, kind: "site" | "pdf", files: PreviewUploa
   });
 }
 
-/** Unpacks and checks the ZIP in the browser; warns about big files that would load slowly. */
+/** Unpacks and checks the ZIP in the browser. */
 async function readZip(file: File) {
   let entries: Record<string, Uint8Array>;
   try {
@@ -75,8 +83,6 @@ async function readZip(file: File) {
   }
   const r = previewFilesFromZip(entries);
   if ("error" in r) throw new Error(r.error);
-  const big = r.files.filter((f) => f.data.length > PREVIEW_PART && !isMedia(f.path));
-  if (big.length) toast(`Grosse Datei, lädt eventuell nicht: ${big[0].path} (${mb(big[0].data.length)})`, "info");
   return r.files;
 }
 
@@ -161,6 +167,8 @@ export function PreviewNewForm({ customers }: { customers: Option[] }) {
   const [progress, setProgress] = useState<Progress>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // After a failed upload the next try continues with the same preview instead of creating a second one.
+  const created = useRef<{ id: number; siteDone: boolean } | null>(null);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -176,11 +184,18 @@ export function PreviewNewForm({ customers }: { customers: Option[] }) {
       setProgress({ done: 0, total: zip.size, label: "ZIP wird geprüft …" });
       const files = await readZip(zip);
       const pdfFiles = pdf instanceof File && pdf.size > 0 ? await readPdf(pdf) : null;
-      const created = await createPreviewAction(fd);
-      if (!created.id) throw new Error(created.error ?? "Vorschau konnte nicht angelegt werden.");
-      await uploadFiles(created.id, "site", files, (done, total) => setProgress({ done, total, label: "Vorschau wird hochgeladen …" }));
-      if (pdfFiles) await uploadFiles(created.id, "pdf", pdfFiles, (done, total) => setProgress({ done, total, label: "PDF wird hochgeladen …" }));
-      router.push(`/admin/vorschauen/${created.id}`);
+      if (!created.current) {
+        const res = await createPreviewAction(fd);
+        if (!res.id) throw new Error(res.error ?? "Vorschau konnte nicht angelegt werden.");
+        created.current = { id: res.id, siteDone: false };
+      }
+      const { id } = created.current;
+      if (!created.current.siteDone) {
+        await uploadFiles(id, "site", files, (done, total) => setProgress({ done, total, label: "Vorschau wird hochgeladen …" }));
+        created.current.siteDone = true;
+      }
+      if (pdfFiles) await uploadFiles(id, "pdf", pdfFiles, (done, total) => setProgress({ done, total, label: "PDF wird hochgeladen …" }));
+      router.push(`/admin/vorschauen/${id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
       setBusy(false);

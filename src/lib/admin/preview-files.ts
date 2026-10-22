@@ -3,16 +3,29 @@
  * browser and the API that stores them, so both check the same limits and paths.
  */
 
-/** Size of one stored chunk and of one upload request (Vercel accepts at most 4.5 MB per request). */
+/** Size of one stored chunk and of one upload request (Vercel accepts at most 4.5 MB per request body). */
 export const PREVIEW_CHUNK = 1024 * 1024;
 export const PREVIEW_MAX_FILES = 600;
 export const PREVIEW_MAX_BYTES = 80 * 1024 * 1024;
 export const PREVIEW_MAX_PDF = 15 * 1024 * 1024;
 /**
- * A function response may carry about 4.5 MB: larger files only load in parts (Range requests), which videos and
- * audio do by themselves. The upload form warns about other files above this size.
+ * Largest part of a file in one answer to a Range request, and the first part of a video or audio file asked for
+ * without one: players fetch the rest in further requests, so a long film never holds one function call for minutes.
  */
 export const PREVIEW_PART = 4 * 1024 * 1024;
+
+/**
+ * Headers of every preview response (next.config.ts for /vorschau/*, and the route itself for URLs those path rules
+ * miss): never in search engines, and the sandbox runs the preview as an opaque origin, so its scripts cannot read
+ * webnova.ch cookies or call the admin. Fonts and modules it loads from its own folder therefore need CORS.
+ */
+export const previewSecurityHeaders: Record<string, string> = {
+  "X-Robots-Tag": "noindex, nofollow, noarchive",
+  "Content-Security-Policy": "sandbox allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads allow-presentation",
+  "Access-Control-Allow-Origin": "*",
+  "Referrer-Policy": "no-referrer",
+  "X-Content-Type-Options": "nosniff",
+};
 
 const types: Record<string, string> = {
   html: "text/html; charset=utf-8",
@@ -67,12 +80,33 @@ export const isMedia = (path: string) => /^(video|audio)\//.test(previewContentT
  * control characters, hidden files and folders (.git, .DS_Store) and system junk from Mac and Windows ZIPs.
  */
 export function cleanPreviewPath(raw: string): string | null {
-  const path = raw.replace(/\\/g, "/").replace(/^\.?\/+/, "");
+  // NFC: macOS writes "ä" as "a" plus a combining mark, browsers request the composed form.
+  const path = raw.normalize("NFC").replace(/\\/g, "/").replace(/^\.?\/+/, "");
   if (!path || path.length > 300 || path.endsWith("/") || /[\u0000-\u001f\u007f]/.test(path)) return null;
   const parts = path.split("/");
   if (parts.some((p) => p === "" || p === "." || p === ".." || p.startsWith("."))) return null;
   if (parts[0] === "__MACOSX" || /^(thumbs\.db|desktop\.ini)$/i.test(parts[parts.length - 1])) return null;
   return path;
+}
+
+/** Upper half of code page 850, which Windows uses for ZIP entry names in Western Europe. */
+const cp850 =
+  "ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúñÑªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎÏ┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´\u00ad±‗¾¶§÷¸°¨·¹³²■\u00a0";
+
+/**
+ * fflate reads an entry name as Latin-1 unless the ZIP marks it as UTF-8, which macOS and Windows often leave out:
+ * "Bäckerei.jpg" would arrive as "BaÌ\u0088ckerei.jpg" and never match the page's link. The bytes are read again as
+ * UTF-8; failing that, control characters (0x80-0x9F, where code page 850 keeps ä, ö, ü, é, è, à) show a Windows name.
+ */
+function zipEntryName(name: string): string {
+  if (!/[\u0080-\u00ff]/.test(name) || /[^\u0000-\u00ff]/.test(name)) return name;
+  const bytes = Uint8Array.from(name, (c) => c.charCodeAt(0));
+  try {
+    return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  } catch {
+    if (!/[\u0080-\u009f]/.test(name)) return name;
+    return Array.from(bytes, (b) => (b < 0x80 ? String.fromCharCode(b) : cp850[b - 0x80])).join("");
+  }
 }
 
 export interface PreviewUploadFile {
@@ -89,7 +123,7 @@ export function previewFilesFromZip(entries: Record<string, Uint8Array>): { file
   let skipped = 0;
   for (const [name, data] of Object.entries(entries)) {
     if (name.endsWith("/")) continue;
-    const path = cleanPreviewPath(name);
+    const path = cleanPreviewPath(zipEntryName(name));
     if (path) files.push({ path, data });
     else skipped++;
   }

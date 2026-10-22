@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { googleProfil } from "./src/content/services/google-profil";
+import { previewSecurityHeaders } from "./src/lib/admin/preview-files";
 import { referencesOnRequest, showReferences, site } from "./src/lib/site";
 
 /*
@@ -104,7 +105,8 @@ const nextConfig: NextConfig = {
       ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
       // Next's trailing-slash redirect (skipTrailingSlashRedirect above): every other /path/ goes to /path (308).
       // Client previews keep their slash (src/proxy.ts adds it), because their files use relative paths.
-      { source: "/:path((?!vorschau/).+)/", destination: "/:path", permanent: true },
+      // The path starts with a character other than a slash, so //host/ never becomes a redirect to //host.
+      { source: "/:path((?!vorschau/)[^/\\\\].*)/", destination: "/:path", permanent: true },
     ];
   },
   async headers() {
@@ -125,20 +127,10 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
       })),
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
-      // Client previews (src/app/vorschau, uploaded in Admin > Vorschauen): never in search engines. The sandbox runs
-      // them as an opaque origin, so their scripts cannot read webnova.ch cookies or call the admin; fonts and modules
-      // they load from their own folder therefore need CORS.
+      // Client previews (src/app/vorschau, uploaded in Admin > Vorschauen): noindex and the sandbox, see preview-files.ts.
       {
         source: "/vorschau/:path*",
-        headers: [
-          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
-          {
-            key: "Content-Security-Policy",
-            value: "sandbox allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads allow-presentation",
-          },
-          { key: "Access-Control-Allow-Origin", value: "*" },
-          { key: "Referrer-Policy", value: "no-referrer" },
-        ],
+        headers: Object.entries(previewSecurityHeaders).map(([key, value]) => ({ key, value })),
       },
       // Service worker of the admin app (push notifications): always fetched fresh, and it loads nothing itself.
       {

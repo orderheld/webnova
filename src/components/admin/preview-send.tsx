@@ -25,7 +25,10 @@ export function PreviewSendDialog({
   const [done, setDone] = useState(false);
   const [pending, start] = useTransition();
 
-  function submit(fd: FormData) {
+  // onSubmit instead of a form action: React resets a form after its action, which would undo the edited text on an error.
+  function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
     setError(null);
     start(async () => {
       const res = await sendPreviewAction(id, fd);
@@ -44,7 +47,7 @@ export function PreviewSendDialog({
       {open && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-ink/40 p-4 backdrop-blur-sm" onClick={() => setOpen(false)}>
           <form
-            action={submit}
+            onSubmit={submit}
             onClick={(e) => e.stopPropagation()}
             className="max-h-[92vh] w-full max-w-xl space-y-4 overflow-y-auto rounded-2xl bg-surface p-5 shadow-lift"
           >
