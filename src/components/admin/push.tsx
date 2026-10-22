@@ -259,7 +259,8 @@ export function PushSettings({ devices, publicKey }: { devices: PushDevice[]; pu
     <Card title="Mitteilungen" id="mitteilungen" className="mt-6 scroll-mt-24">
       <p className="text-[14px] leading-relaxed text-muted">
         Neue Anfragen und neue Besucher auf webnova.ch kommen als Mitteilung auf jedes Gerät, das Mitteilungen erlaubt hat. Beide sind eingeschaltet
-        und lassen sich pro Gerät abschalten. Besucher-Mitteilungen kommen einmal pro Besucher und Tag, höchstens eine pro Minute.
+        und lassen sich pro Gerät abschalten. Besucher-Mitteilungen kommen einmal pro Besucher und Tag, höchstens eine pro Minute. Wenn ein Kunde
+        eine Vorschau öffnet, kommt die Mitteilung mit den neuen Anfragen.
       </p>
 
       <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl bg-bg px-4 py-3 text-[14px]">

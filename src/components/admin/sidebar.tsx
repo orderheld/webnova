@@ -32,6 +32,7 @@ const groups: { label?: string; items: { href: string; label: string; icon: stri
       { href: "/admin/pipeline", label: "Pipeline", icon: "kanban", count: "followUps", warn: true },
       { href: "/admin/postkarten", label: "Postkarten", icon: "postcard" },
       { href: "/admin/kunden", label: "Kunden", icon: "users" },
+      { href: "/admin/vorschauen", label: "Vorschauen", icon: "monitor" },
       { href: "/admin/offerten", label: "Offerten", icon: "file" },
       { href: "/admin/rechner", label: "Rechner", icon: "calc" },
     ],

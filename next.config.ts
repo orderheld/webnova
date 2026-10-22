@@ -103,7 +103,8 @@ const nextConfig: NextConfig = {
         : []),
       ...map.map(([source, destination]) => ({ source, destination, permanent: true })),
       // Next's trailing-slash redirect (skipTrailingSlashRedirect above): every other /path/ goes to /path (308).
-      { source: "/:path+/", destination: "/:path+", permanent: true },
+      // Client previews keep their slash (src/proxy.ts adds it), because their files use relative paths.
+      { source: "/:path((?!vorschau/).+)/", destination: "/:path", permanent: true },
     ];
   },
   async headers() {
@@ -124,6 +125,21 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
       })),
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      // Client previews (src/app/vorschau, uploaded in Admin > Vorschauen): never in search engines. The sandbox runs
+      // them as an opaque origin, so their scripts cannot read webnova.ch cookies or call the admin; fonts and modules
+      // they load from their own folder therefore need CORS.
+      {
+        source: "/vorschau/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+          {
+            key: "Content-Security-Policy",
+            value: "sandbox allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads allow-presentation",
+          },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+        ],
+      },
       // Service worker of the admin app (push notifications): always fetched fresh, and it loads nothing itself.
       {
         source: "/admin-sw.js",
