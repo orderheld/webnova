@@ -13,6 +13,7 @@ import {
   languageRow,
   packagePages,
   packageRow,
+  pagesLabel,
   planFor,
   type Proposal,
   proposalDate,
@@ -311,7 +312,7 @@ export function ProposalForm({
         </div>
       </Card>
 
-      <Card title="Konzept" actions={<span className="text-[12.5px] text-muted">Der Aufbau der Startseite, Abschnitt für Abschnitt</span>}>
+      <Card title="Konzept" actions={<span className="text-[12.5px] text-muted">Der Aufbau der Startseite, ohne Abschnitte fällt die Seite weg</span>}>
         <div className="space-y-4">
           <div className="grid gap-4 lg:grid-cols-2">
             <Field label="Titel">
@@ -468,7 +469,7 @@ export function ProposalForm({
                 ))}
               </select>
             </Field>
-            <Field label="Sprachen" hint={`jede weitere: ${packagePages[p.price.packageId]} Seiten × ${chf(secondLanguagePagePrice)}`}>
+            <Field label="Sprachen" hint={`jede weitere: ${pagesLabel("de", packagePages[p.price.packageId])} × ${chf(secondLanguagePagePrice)}`}>
               <select
                 className="input"
                 value={languages}

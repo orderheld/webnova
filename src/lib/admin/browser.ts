@@ -10,13 +10,18 @@ import puppeteer, { type Browser } from "puppeteer-core";
  * On Vercel it is the Chromium of @sparticuz/chromium (unpacked to /tmp on the first call, next.config.ts ships its
  * bin folder with the routes); CHROMIUM_PATH points to another Chromium, e.g. on a Mac for local work.
  *
- * Chromium itself has no way out: every connection goes to a proxy that does not exist, loopback included, and new
- * windows are blocked. What a page may load comes only through request interception (proposal-shots.ts), which
- * fetches public files with fetchPublic below.
+ * Chromium itself has no way out: every connection goes to a proxy that does not exist, loopback included, WebRTC may
+ * only use that proxy (so it sends no UDP), and new windows are blocked. What a page may load comes only through
+ * request interception (proposal-shots.ts), which fetches public files with fetchPublic below.
  */
 
 const blockedFlags = new Set(["--disable-web-security", "--allow-running-insecure-content", "--disable-popup-blocking"]);
-const isolation = ["--proxy-server=http://127.0.0.1:9", "--proxy-bypass-list=<-loopback>", "--block-new-web-contents"];
+const isolation = [
+  "--proxy-server=http://127.0.0.1:9",
+  "--proxy-bypass-list=<-loopback>",
+  "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+  "--block-new-web-contents",
+];
 
 /**
  * Starts a browser for one task and always closes it again, also when the task fails. Without WebGL, Chromium draws

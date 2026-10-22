@@ -75,7 +75,7 @@ export const proposalLabels = {
       price: ["Investition", "Fixpreis, keine Überraschungen"],
       next: ["Nächste Schritte", "Wir freuen uns auf Sie"],
     },
-    structurePages: (n: number) => `${n} Seiten, alles mit einem Klick`,
+    structurePages: (n: number) => `${pagesLabel("de", n)}, alles mit einem Klick`,
     desktopNote: "Die ganze Startseite sehen Sie über den Link, den Sie von uns erhalten haben. Am besten zuerst am Computer öffnen und langsam scrollen.",
     mobileNote: "Auf dem Handy öffnen Sie einfach denselben Link. Jeder Abschnitt ist für das Hochformat angeordnet, nicht nur verkleinert.",
     features: "Funktionen",
@@ -108,7 +108,7 @@ export const proposalLabels = {
       price: ["Investissement", "Prix fixe, sans surprises"],
       next: ["Prochaines étapes", "Au plaisir de travailler avec vous"],
     },
-    structurePages: (n: number) => `${n} pages, tout en un clic`,
+    structurePages: (n: number) => `${pagesLabel("fr", n)}, tout en un clic`,
     desktopNote: "Vous voyez toute la page d'accueil grâce au lien que nous vous avons envoyé. Le mieux est de l'ouvrir d'abord sur un ordinateur et de faire défiler lentement.",
     mobileNote: "Sur votre téléphone, il suffit d'ouvrir le même lien. Chaque section est disposée pour le format portrait, pas seulement réduite.",
     features: "Fonctions",
@@ -142,6 +142,11 @@ export function accentParts(s: string): { text: string; accent: boolean }[] {
   return s.split(/\*([^*]+)\*/).map((t, i) => ({ text: t, accent: i % 2 === 1 })).filter((p) => p.text);
 }
 
+/** "1 Seite", "5 Seiten" / "1 page", "5 pages". */
+export function pagesLabel(locale: Locale, n: number) {
+  return locale === "de" ? `${n} ${n === 1 ? "Seite" : "Seiten"}` : `${n} page${n === 1 ? "" : "s"}`;
+}
+
 /** Row of a package in the calculation; Individuell names no features, its scope is agreed per client. */
 export function packageRow(locale: Locale, packageId: PackageId, pages: number): Proposal["price"]["rows"][number] {
   const p = pricePackages.find((x) => x.id === packageId)!;
@@ -150,7 +155,7 @@ export function packageRow(locale: Locale, packageId: PackageId, pages: number):
     return { label: de ? `Paket ${p.name.de}, Umfang gemäss Absprache` : `Formule ${p.name.fr}, périmètre selon entente`, amount: p.price };
   }
   const summary = p.features[locale].filter((f) => !/sprache|langue|seite|page|woche|semaine|zeitplan|calendrier|preis|prix/i.test(f)).slice(0, 4).join(", ");
-  const size = de ? `${pages} ${pages === 1 ? "Seite" : "Seiten"}` : `${pages} page${pages === 1 ? "" : "s"}`;
+  const size = pagesLabel(locale, pages);
   return { label: de ? `Paket ${p.name.de} (${size}): ${summary}` : `Formule ${p.name.fr} (${size}) : ${summary}`, amount: p.price };
 }
 
@@ -159,7 +164,7 @@ export function languageRow(locale: Locale, pages: number, languages: number): P
   const extra = languages - 1;
   if (extra < 1) return null;
   const de = locale === "de";
-  const size = de ? `${pages} ${pages === 1 ? "Seite" : "Seiten"}` : `${pages} page${pages === 1 ? "" : "s"}`;
+  const size = pagesLabel(locale, pages);
   const times = `${size} × ${extra > 1 ? `${extra} × ` : ""}${chf(secondLanguagePagePrice)}`;
   return {
     label: de
