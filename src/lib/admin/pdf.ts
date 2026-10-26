@@ -28,10 +28,8 @@ const WIDTH = RIGHT - LEFT;
 const FOOTER_Y = PAGE_H - 19 * MM;
 /** content must end above this line */
 const CONTENT_BOTTOM = FOOTER_Y - 7 * MM;
-/** with the QR-bill (105 mm) the footer moves up above the perforation */
+/** the QR-bill (105 mm) sits at the bottom of its own page */
 const QR_TOP = PAGE_H - SwissQRBill.height;
-const QR_FOOTER_Y = QR_TOP - 12 * MM;
-const QR_CONTENT_BOTTOM = QR_FOOTER_Y - 2 * MM;
 
 /* Corporate design (globals.css): ink, soft ink, muted grey, hairlines, Schieferblau and its lighter logo blue. */
 const INK = "#1c232b";
@@ -429,18 +427,22 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
       qr.attachTo(pdf, 0, QR_TOP);
     }
 
-    /* ── Footer with company details and page numbers on every page ── */
+    /* ── Footer with company details on every page but the QR-bill's (it carries the account itself), page numbers on all ── */
     const range = pdf.bufferedPageRange();
     for (let i = range.start; i < range.start + range.count; i++) {
       pdf.switchToPage(i);
       pdf.page.margins.bottom = 0;
-      footer(pdf, s, i === qrPage ? QR_FOOTER_Y : FOOTER_Y, i - range.start + 1, range.count);
+      footer(pdf, s, i !== qrPage, i - range.start + 1, range.count);
     }
     pdf.end();
   });
 }
 
-function footer(pdf: Pdf, s: CompanySettings, top: number, page: number, pages: number) {
+function footer(pdf: Pdf, s: CompanySettings, details: boolean, page: number, pages: number) {
+  // page number top right, next to the logo (continuation pages: beside the running header)
+  pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(`Seite ${page}/${pages}`, RIGHT - 30 * MM, 15 * MM, { width: 30 * MM, align: "right", lineBreak: false });
+  if (!details) return;
+  const top = FOOTER_Y;
   pdf.moveTo(LEFT, top).lineTo(RIGHT, top).strokeColor(RULE).lineWidth(0.5).stroke();
   const cols: string[][] = [
     [s.companyName, s.street, `${s.zip} ${s.city}`],
@@ -455,8 +457,6 @@ function footer(pdf: Pdf, s: CompanySettings, top: number, page: number, pages: 
     pdf.text(col.join("\n"), x, top + 2.2 * MM, { width: widths[i] - 3 * MM, lineGap: 0.8, lineBreak: true });
     x += widths[i];
   });
-  // page number top right, next to the logo (continuation pages: beside the running header)
-  pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(`Seite ${page}/${pages}`, RIGHT - 30 * MM, 15 * MM, { width: 30 * MM, align: "right", lineBreak: false });
 }
 
 const fmtPct = (n: number) => String(Number(n)).replace(/\.0+$/, "");
