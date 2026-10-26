@@ -461,6 +461,9 @@ export async function saveSettingsAction(_: unknown, fd: FormData): Promise<{ ok
   next.iban = next.iban.replace(/\s+/g, "").toUpperCase();
   if (next.iban && (!/^(CH|LI)\d{19}$/.test(next.iban) || !isIBANValid(next.iban)))
     return { error: "Bitte eine gültige Schweizer IBAN eingeben (CH + 19 Ziffern)." };
+  next.bic = next.bic.replace(/\s+/g, "").toUpperCase();
+  if (next.bic && !/^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/.test(next.bic))
+    return { error: "Bitte einen gültigen BIC eingeben (8 oder 11 Zeichen, z.B. RAIFCH22)." };
   for (const k of ["quotePrefix", "invoicePrefix", "creditPrefix"] as const) {
     next[k] = next[k].replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 6) || cur[k];
   }

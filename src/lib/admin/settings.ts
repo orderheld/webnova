@@ -17,6 +17,8 @@ export interface CompanySettings {
   website: string;
   iban: string;
   bankName: string;
+  /** shown in the document footer for payments from abroad */
+  bic: string;
   /** company UID, shown in the document footer */
   uid: string;
   vatNumber: string;
@@ -65,6 +67,7 @@ export const defaultSettings: CompanySettings = {
   website: "webnova.ch",
   iban: "",
   bankName: "",
+  bic: "",
   uid: "CHE-439.891.660",
   vatNumber: "",
   vatEnabled: false,
