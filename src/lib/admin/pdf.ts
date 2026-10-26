@@ -446,7 +446,7 @@ function footer(pdf: Pdf, s: CompanySettings, top: number, page: number, pages: 
     [s.companyName, s.street, `${s.zip} ${s.city}`],
     [s.phone && `Tel. ${s.phone}`, s.email, s.website],
     [s.uid && `UID ${s.uid}`, s.vatEnabled && s.vatNumber ? `MWST-Nr. ${s.vatNumber}` : ""],
-    [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`],
+    [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`, s.bic && `BIC ${s.bic}`],
   ].map((col) => col.filter((x): x is string => !!x && !!x.trim()));
   const widths = [42, 42, 36, 53].map((w) => w * MM);
   let x = LEFT;

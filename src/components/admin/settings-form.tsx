@@ -36,6 +36,7 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
         <div className="grid gap-4 sm:grid-cols-2">
           {input("iban", "IBAN (für QR-Rechnung)", "text", "sm:col-span-2")}
           {input("bankName", "Bank (Fusszeile)")}
+          {input("bic", "BIC / SWIFT (Fusszeile)")}
           {input("uid", "UID (CHE-…)")}
           {input("hourlyRate", "Stundensatz CHF (Rechner)", "number")}
           {input("paymentTermDays", "Zahlungsfrist (Tage)", "number")}
