@@ -8,6 +8,7 @@ import type { Dict } from "@/i18n/dict";
 import { submitLead } from "@/lib/leads/actions";
 import { serviceOptions } from "@/lib/leads/options";
 import { Icon } from "./icons";
+import { useFormToken } from "./use-form-token";
 
 type Service = (typeof serviceOptions)[number];
 
@@ -60,14 +61,11 @@ export function LeadForm({
 }) {
   const router = useRouter();
   const uid = useId();
-  const startedAt = useRef(0);
+  const formToken = useFormToken();
   const topRef = useRef<HTMLParagraphElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const moved = useRef(false);
-  useEffect(() => {
-    startedAt.current = Date.now();
-  }, []);
   const hasPreset = preset.length > 0;
   const packageId = useSyncExternalStore(noSubscribe, readPackage, () => null);
   const [packageDropped, setPackageDropped] = useState(false);
@@ -135,6 +133,7 @@ export function LeadForm({
     setError(null);
     startTransition(async () => {
       try {
+        const token = await formToken.get();
         const res = await submitLead({
           locale,
           source,
@@ -152,7 +151,7 @@ export function LeadForm({
           message: pkg ? `${pkgLabel}\n\n${message}`.trim() : message,
           website2,
           pageUrl: window.location.pathname,
-          startedAt: startedAt.current,
+          token,
         });
         if (res.ok) router.push(thanksHref);
         else setError(t.error);
@@ -177,7 +176,7 @@ export function LeadForm({
   );
 
   return (
-    <form onSubmit={submit} className={`relative rounded-2xl border border-line p-5 shadow-lift sm:p-9 ${card}`} noValidate>
+    <form onSubmit={submit} onFocus={formToken.start} onPointerDown={formToken.start} className={`relative rounded-2xl border border-line p-5 shadow-lift sm:p-9 ${card}`} noValidate>
       <div className="mb-6 sm:mb-7">
         <div className="flex items-center justify-between gap-3 text-[13px]">
           <p ref={topRef} tabIndex={-1} aria-live="polite" className="scroll-mt-28 whitespace-nowrap font-semibold uppercase tracking-[0.1em] text-bright outline-none">

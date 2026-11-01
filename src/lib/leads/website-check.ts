@@ -1,12 +1,12 @@
 "use server";
 
-import { headers } from "next/headers";
 import { after } from "next/server";
 import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
 import { pushNewLead } from "@/lib/admin/push";
 import { adminInbox, escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/email";
 import { site } from "@/lib/site";
+import { screenSubmission } from "./spam";
 
 /**
  * The quick website check: one step (URL, name, e-mail, optional phone and note), stored as a
@@ -28,20 +28,12 @@ const checkSchema = z.object({
   note: z.string().trim().max(300).optional().default(""),
   pageUrl: z.string().max(300).optional().default(""),
   // spam protection
-  website2: z.string().max(0).optional().default(""), // honeypot, must stay empty
-  startedAt: z.number(),
+  website2: z.string().max(500).optional().default(""), // honeypot, must stay empty
+  token: z.string().max(60).optional(),
 });
 
 export type WebsiteCheckInput = z.input<typeof checkSchema>;
 
-const hits = new Map<string, number[]>();
-function rateLimited(ip: string) {
-  const now = Date.now();
-  const arr = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
-  arr.push(now);
-  hits.set(ip, arr);
-  return arr.length > 5;
-}
 
 async function safeSend(args: Parameters<typeof sendMail>[0]) {
   try {
@@ -57,15 +49,35 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
   if (!parsed.success) return { ok: false, field: String(parsed.error.issues[0]?.path[0] ?? "") };
   const v = parsed.data;
 
-  // Bots fill the honeypot or submit within 3 seconds: pretend success, store nothing.
-  if (v.website2 || Date.now() - v.startedAt < 3000) return { ok: true };
-
-  const h = await headers();
-  const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (rateLimited(ip)) return { ok: false };
 
   const url = /^https?:\/\//i.test(v.websiteUrl) ? v.websiteUrl : `https://${v.websiteUrl}`;
   const message = v.note ? `Website-Check: ${v.note}` : "Website-Check angefragt";
+
+  const row = {
+    source: "website-check",
+    locale: v.locale,
+    name: v.name,
+    company: v.company || null,
+    email: v.email,
+    phone: v.phone || null,
+    preferredContact: v.phone ? "phone" : "email",
+    services: ["check"],
+    details: null,
+    hasWebsite: true,
+    websiteUrl: url,
+    message,
+    pageUrl: v.pageUrl || null,
+  };
+
+  // Spam: pretend success (bots learn nothing), no push, no mail; kept in Admin > Spam-Filter.
+  const screen = await screenSubmission({
+    form: "website-check",
+    token: v.token,
+    honeypot: v.website2,
+    fields: { name: v.name, company: v.company, email: v.email, phone: v.phone, message: v.note },
+    row,
+  });
+  if (screen.spam) return { ok: true };
 
   let leadId: number | undefined;
   let stored = false;
@@ -73,21 +85,7 @@ export async function submitWebsiteCheck(input: WebsiteCheckInput): Promise<{ ok
     try {
       const [created] = await db()
         .insert(schema.leads)
-        .values({
-          source: "website-check",
-          locale: v.locale,
-          name: v.name,
-          company: v.company || null,
-          email: v.email,
-          phone: v.phone || null,
-          preferredContact: v.phone ? "phone" : "email",
-          services: ["check"],
-          details: null,
-          hasWebsite: true,
-          websiteUrl: url,
-          message,
-          pageUrl: v.pageUrl || null,
-        })
+        .values({ ...row, ipHash: screen.visitor })
         .returning({ id: schema.leads.id });
       leadId = created?.id;
       stored = true;

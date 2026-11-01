@@ -28,6 +28,7 @@ const paths: Record<string, React.ReactNode> = {
   menu: (<><path d="M4 7h16M4 12h16M4 17h16" /></>),
   close: (<><path d="M6 6l12 12M18 6 6 18" /></>),
   trash: (<><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></>),
+  shield: (<><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6Z" /><path d="m9 12 2 2 4-4" /></>),
   send: (<><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z" /></>),
   download: (<><path d="M12 3v12M7 10l5 5 5-5M5 21h14" /></>),
   copy: (<><rect x="8" y="8" width="13" height="13" rx="2" /><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" /></>),

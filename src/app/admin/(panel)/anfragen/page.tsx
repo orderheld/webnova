@@ -30,7 +30,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
   const sortKey = (sp.sort ?? "erstellt") as keyof typeof sortCols;
   const col = sortCols[sortKey] ?? l.createdAt;
   const dir = sp.dir === "asc" ? "asc" : sp.dir === "desc" ? "desc" : sortKey === "erstellt" ? "desc" : "asc";
-  const [rows, counts] = await Promise.all([
+  const [rows, counts, [spam]] = await Promise.all([
     db()
       .select()
       .from(l)
@@ -38,6 +38,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
       .orderBy(dir === "asc" ? sql`${col} asc nulls last` : sql`${col} desc nulls last`, desc(l.id))
       .limit(500),
     db().select({ s: l.status, n: sql<number>`count(*)::int` }).from(l).groupBy(l.status),
+    db().select({ n: sql<number>`count(*)::int` }).from(schema.leadSpam),
   ]);
   const count = (s: string) => counts.find((c) => c.s === s)?.n ?? 0;
   const base = "/admin/anfragen";
@@ -51,6 +52,9 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
         sub="Anfragen aus dem Webformular und eigene Akquise an einem Ort"
         actions={
           <>
+            <LinkButton href="/admin/anfragen/spam" variant="ghost" icon="shield">
+              Spam-Filter{spam?.n ? ` (${spam.n})` : ""}
+            </LinkButton>
             <LinkButton href="/admin/pipeline" variant="ghost" icon="kanban">
               Pipeline
             </LinkButton>
