@@ -57,6 +57,8 @@ export const leads = pgTable("leads", {
   value: numeric("value", { precision: 12, scale: 2, mode: "number" }),
   followUpAt: date("follow_up_at", { mode: "string" }),
   lostReason: text("lost_reason"),
+  /** keyed daily hash of the sender's IP (never the IP itself), only for the rate limit of the web forms */
+  ipHash: text("ip_hash"),
 },
   (t) => [
     index("leads_status_idx").on(t.status),
@@ -506,6 +508,32 @@ export const contactClicks = pgTable(
     visitor: text("visitor").notNull(),
   },
   (t) => [index("contact_clicks_created_idx").on(t.createdAt)],
+);
+
+/* ───────────── Spam filter of the web forms ───────────── */
+
+/**
+ * Submissions of the request form and the website check that the spam filter blocked (see
+ * src/lib/leads/spam.ts). Kept 30 days; Admin > Leads & Anfragen > Spam-Filter can take one over as a lead.
+ */
+export const leadSpam = pgTable(
+  "lead_spam",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    /** anfrage | website-check */
+    form: text("form").notNull(),
+    score: integer("score").notNull(),
+    reasons: text("reasons").array().notNull().default([]),
+    /** same keyed daily hash as leads.ip_hash */
+    visitor: text("visitor"),
+    name: text("name").notNull(),
+    email: text("email"),
+    message: text("message"),
+    /** the prepared leads row, inserted as is when Ferhat marks it as no spam */
+    row: jsonb("row").$type<Record<string, unknown>>().notNull(),
+  },
+  (t) => [index("lead_spam_created_idx").on(t.createdAt), index("lead_spam_visitor_idx").on(t.visitor)],
 );
 
 /* ───────────── Push notifications of the admin app ───────────── */

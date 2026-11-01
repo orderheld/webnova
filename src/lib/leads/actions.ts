@@ -1,6 +1,5 @@
 "use server";
 
-import { headers } from "next/headers";
 import { after } from "next/server";
 import { z } from "zod";
 import { db, hasDb, schema } from "@/db";
@@ -9,6 +8,7 @@ import { adminInbox, escapeHtml, mailColors, mailLayout, sendMail } from "@/lib/
 import { site } from "@/lib/site";
 import { describeDetails } from "./details";
 import { parseDetails } from "./details-parse";
+import { screenSubmission } from "./spam";
 import {
   budgetOptions,
   companySizeOptions,
@@ -38,21 +38,12 @@ const leadSchema = z.object({
   message: z.string().max(4000).optional().default(""),
   pageUrl: z.string().max(300).optional().default(""),
   // spam protection
-  website2: z.string().max(0).optional().default(""), // honeypot, must stay empty
-  startedAt: z.number(),
+  website2: z.string().max(500).optional().default(""), // honeypot, must stay empty
+  token: z.string().max(60).optional(),
 });
 
 export type LeadInput = z.input<typeof leadSchema>;
 
-// naive in-memory rate limit per instance
-const hits = new Map<string, number[]>();
-function rateLimited(ip: string) {
-  const now = Date.now();
-  const arr = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60_000);
-  arr.push(now);
-  hits.set(ip, arr);
-  return arr.length > 5;
-}
 
 /** A mail failure (network, missing key) must never lose a lead that is already stored. */
 async function safeSend(args: Parameters<typeof sendMail>[0]) {
@@ -69,12 +60,6 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
   if (!parsed.success) return { ok: false };
   const v = parsed.data;
 
-  // Bots fill the honeypot or submit within 3 seconds: pretend success, store nothing.
-  if (v.website2 || Date.now() - v.startedAt < 3000) return { ok: true };
-
-  const h = await headers();
-  const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (rateLimited(ip)) return { ok: false };
 
   const services = [...new Set(v.services)];
   const details = parseDetails(v.details, services);
@@ -99,11 +84,21 @@ export async function submitLead(input: LeadInput): Promise<{ ok: boolean }> {
     pageUrl: v.pageUrl || null,
   };
 
+  // Spam: pretend success (bots learn nothing), no push, no mail; kept in Admin > Spam-Filter.
+  const screen = await screenSubmission({
+    form: "anfrage",
+    token: v.token,
+    honeypot: v.website2,
+    fields: { name: v.name, company: v.company, email: v.email, phone: v.phone, message: v.message },
+    row,
+  });
+  if (screen.spam) return { ok: true };
+
   let leadId: number | undefined;
   let stored = false;
   if (hasDb()) {
     try {
-      const [created] = await db().insert(schema.leads).values(row).returning({ id: schema.leads.id });
+      const [created] = await db().insert(schema.leads).values({ ...row, ipHash: screen.visitor }).returning({ id: schema.leads.id });
       leadId = created?.id;
       stored = true;
     } catch (e) {

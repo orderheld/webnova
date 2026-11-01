@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { Locale } from "@/content/types";
 import { submitWebsiteCheck } from "@/lib/leads/website-check";
 import { Icon } from "./icons";
+import { useFormToken } from "./use-form-token";
 
 const t = {
   de: {
@@ -55,7 +56,7 @@ const lab = "mb-1.5 block text-[13.5px] font-medium text-ink-soft";
 export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: Locale; thanksHref: string; privacyHref: string }) {
   const c = t[locale];
   const router = useRouter();
-  const startedAt = useRef(0);
+  const formToken = useFormToken();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -64,6 +65,7 @@ export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: 
     const f = new FormData(e.currentTarget);
     setBusy(true);
     setError("");
+    const token = await formToken.get();
     const res = await submitWebsiteCheck({
       locale,
       websiteUrl: String(f.get("url") ?? ""),
@@ -74,7 +76,7 @@ export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: 
       note: String(f.get("note") ?? ""),
       pageUrl: window.location.pathname,
       website2: String(f.get("website2") ?? ""),
-      startedAt: startedAt.current || Date.now(),
+      token,
     }).catch(() => ({ ok: false, field: "" }));
     if (res.ok) {
       router.push(`${thanksHref}?check=1`);
@@ -87,9 +89,8 @@ export function WebsiteCheckForm({ locale, thanksHref, privacyHref }: { locale: 
   return (
     <form
       onSubmit={onSubmit}
-      onFocus={() => {
-        if (!startedAt.current) startedAt.current = Date.now();
-      }}
+      onFocus={formToken.start}
+      onPointerDown={formToken.start}
       className="relative rounded-3xl bg-white p-6 text-ink shadow-[0_40px_80px_-30px_rgb(10_22_34/0.6)] ring-1 ring-black/5 sm:p-8"
     >
       <h2 className="font-display text-[clamp(1.35rem,2.2vw,1.65rem)] font-semibold leading-[1.25]">{c.title}</h2>
