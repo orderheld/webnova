@@ -312,12 +312,13 @@ export function DocumentEditor({
         </div>
         <div className="rounded-2xl bg-night p-5 text-white sm:p-6">
           <dl className="space-y-2 text-[15px]">
-            <Row k="Zwischentotal" v={chf(t.subtotal)} />
+            {(v.discountPercent > 0 || v.vatRate <= 0) && <Row k="Zwischentotal" v={chf(t.subtotal)} />}
             {v.discountPercent > 0 && <Row k={`Rabatt ${v.discountPercent}%`} v={`– ${chf(t.discount)}`} />}
+            {v.vatRate > 0 && <Row k="Total exkl. MWST" v={chf(t.net)} />}
             {v.vatRate > 0 && <Row k={`MWST ${v.vatRate}%`} v={chf(t.vat)} />}
           </dl>
           <div className="mt-4 flex items-end justify-between border-t border-white/15 pt-4">
-            <span className="text-white/60">{credit ? "Gutschrift CHF" : kind === "quote" ? "Einmalig CHF" : "Total CHF"}</span>
+            <span className="text-white/60">{credit ? "Gutschrift CHF" : kind === "quote" ? (v.vatRate > 0 ? "Einmalig inkl. MWST CHF" : "Einmalig CHF") : v.vatRate > 0 ? "Total inkl. MWST CHF" : "Total CHF"}</span>
             <span className="text-[30px] font-semibold tracking-tight tabular-nums">{chf(t.total)}</span>
           </div>
           {recurring.length > 0 && (

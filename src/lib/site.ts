@@ -25,6 +25,10 @@ export interface SocialProfile {
 export const site = {
   name: "Webnova",
   legalName: "webnova solutions F. Demir",
+  uid: "CHE-439.891.660",
+  // MWST-registered since 2026-11: Impressum, footer, JSON-LD, quote and invoice PDFs.
+  vatNumber: "CHE-439.891.660 MWST",
+  vatNumberFr: "CHE-439.891.660 TVA",
   url: siteUrl,
   email: "kontakt@webnova.ch",
   phone: "+41 32 543 80 96",

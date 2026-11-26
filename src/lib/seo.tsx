@@ -65,6 +65,7 @@ export function organizationLd(locale: Locale, areaServed: string[]) {
     "@id": orgId,
     name: site.name,
     legalName: site.legalName,
+    vatID: site.vatNumber,
     url: `${site.url}/${locale}`,
     description:
       locale === "de"
