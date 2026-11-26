@@ -32,7 +32,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Unternehmensidentifikation",
-          paragraphs: ["UID: CHE-439.891.660"],
+          paragraphs: ["UID: CHE-439.891.660", "MWST-Nr.: CHE-439.891.660 MWST"],
         },
         {
           h2: "Haftungsausschluss",
@@ -79,7 +79,7 @@ export const legal: Record<"impressum" | "datenschutz", Localized<LegalPage>> = 
         },
         {
           h2: "Identification de l'entreprise",
-          paragraphs: ["IDE : CHE-439.891.660"],
+          paragraphs: ["IDE : CHE-439.891.660", "N° TVA : CHE-439.891.660 TVA"],
         },
         {
           h2: "Exclusion de responsabilité",

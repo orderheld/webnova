@@ -135,7 +135,7 @@ export function Footer({ locale, switchMap }: { locale: Locale; switchMap: Recor
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-start justify-between gap-4 py-6 text-[13px] text-white/55 lg:flex-row lg:items-center">
           <p>
-            © {year} {site.legalName} · {d.footer.rights}
+            © {year} {site.legalName} · {locale === "de" ? `MWST-Nr. ${site.vatNumber}` : `N° TVA ${site.vatNumberFr}`} · {d.footer.rights}
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {legalCol.links.map((l) => (

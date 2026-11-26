@@ -69,8 +69,9 @@ export const defaultSettings: CompanySettings = {
   bankName: "",
   bic: "",
   uid: "CHE-439.891.660",
-  vatNumber: "",
-  vatEnabled: false,
+  // MWST-registered since 2026-11 (Ferhat): new quotes and invoices get MWST on top of the net prices.
+  vatNumber: site.vatNumber,
+  vatEnabled: true,
   vatRate: 8.1,
   hourlyRate: 120,
   paymentTermDays: 30,

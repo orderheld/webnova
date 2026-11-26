@@ -312,9 +312,10 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
 
       const rows: TotalRow[] = [];
       const hasDiscount = d.discountPercent > 0;
-      if (hasDiscount || d.vatRate > 0) rows.push({ k: "Zwischentotal", v: chf(t.subtotal) });
+      // With MWST the net amount is labelled «Total exkl. MWST»; «Zwischentotal» only appears before a discount.
+      if (hasDiscount) rows.push({ k: "Zwischentotal", v: chf(t.subtotal) });
       if (hasDiscount) rows.push({ k: `Rabatt ${fmtPct(d.discountPercent)}%`, v: `-${chf(t.discount)}` });
-      if (hasDiscount && d.vatRate > 0) rows.push({ k: "Total exkl. MWST", v: chf(t.net) });
+      if (d.vatRate > 0) rows.push({ k: "Total exkl. MWST", v: chf(t.net) });
       if (d.vatRate > 0) rows.push({ k: `MWST ${fmtPct(d.vatRate)}% auf CHF ${chf(t.net)}`, v: chf(t.vat) });
       const rounding = round2(t.total - t.net - t.vat);
       if (Math.abs(rounding) >= 0.01) rows.push({ k: "Rundung", v: chf(rounding) });
@@ -334,7 +335,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
         y = ensure(y + 7 * MM, 32 * MM);
         pdf.font(F.display).fontSize(11).fillColor(INK).text("Wiederkehrende Kosten", LEFT, y);
         y = pdf.y + 0.5 * MM;
-        pdf.font(F.regular).fontSize(8).fillColor(MUTED).text("Nicht im Total enthalten. Verrechnung jeweils im Voraus.", LEFT, y, { width: WIDTH });
+        pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(d.vatRate > 0 ? `Nicht im Total enthalten. Beträge exkl. MWST ${fmtPct(d.vatRate)}%, Verrechnung jeweils im Voraus.` : "Nicht im Total enthalten. Verrechnung jeweils im Voraus.", LEFT, y, { width: WIDTH });
         y = pdf.y + 4.6 * MM;
         pdf.save().rect(LEFT, y - 1.6 * MM, WIDTH, 6.2 * MM).fill(TINT).restore();
         pdf.font(F.bold).fontSize(7.5).fillColor(ACCENT);
@@ -447,7 +448,8 @@ function footer(pdf: Pdf, s: CompanySettings, details: boolean, page: number, pa
   const cols: string[][] = [
     [s.companyName, s.street, `${s.zip} ${s.city}`],
     [s.phone && `Tel. ${s.phone}`, s.email, s.website],
-    [s.uid && `UID ${s.uid}`, s.vatEnabled && s.vatNumber ? `MWST-Nr. ${s.vatNumber}` : ""],
+    // The MWST number contains the UID (CHE-… MWST), so the UID line is only shown without MWST.
+    s.vatEnabled && s.vatNumber ? [`MWST-Nr. ${s.vatNumber}`] : [s.uid && `UID ${s.uid}`],
     [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`, s.bic && `BIC ${s.bic}`],
   ].map((col) => col.filter((x): x is string => !!x && !!x.trim()));
   const widths = [42, 42, 36, 53].map((w) => w * MM);

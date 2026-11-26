@@ -238,12 +238,12 @@ export function packagePriceLabel(locale: Locale, p: PricePackage): string {
 }
 
 /**
- * The note shown next to the prices. Ferhat 2026-10-13 15:39: «Bitte nirgendwo erwähnen, dass ich nicht
- * mehrwertsteuerpflichtig bin»: no word on MWST anywhere (not «exkl.», not «inkl.»), only the currency.
+ * The note shown next to the prices. Webnova is MWST-registered since 2026-11 (replaces the old «no word on MWST»
+ * rule of 2026-10-13): all prices on the site are net, MWST is added on quotes and invoices.
  */
 export const currencyNote: Localized<string> = {
-  de: "Alle Preise in CHF.",
-  fr: "Tous les prix en CHF.",
+  de: "Alle Preise in CHF, exkl. MWST.",
+  fr: "Tous les prix en CHF, hors TVA.",
 };
 
 /** Domain line for price texts: amount per year, billed separately. */

@@ -192,6 +192,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
     "@type": "UnitPriceSpecification",
     price,
     priceCurrency: "CHF",
+    valueAddedTaxIncluded: false,
     referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
   });
   const offers = [
@@ -200,7 +201,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
       name: p.id === "demo" ? p.name[locale] : `${t.offerName} ${p.name[locale]}`,
       description: p.features[locale].join(" · "),
       url: `${site.url}${url}#${p.id}`,
-      priceSpecification: p.from ? { "@type": "PriceSpecification", minPrice: p.price, priceCurrency: "CHF" } : { "@type": "PriceSpecification", price: p.price, priceCurrency: "CHF" },
+      priceSpecification: p.from ? { "@type": "PriceSpecification", minPrice: p.price, priceCurrency: "CHF", valueAddedTaxIncluded: false } : { "@type": "PriceSpecification", price: p.price, priceCurrency: "CHF", valueAddedTaxIncluded: false },
     })),
     ...careTiers.map((c) => ({
       "@type": "Offer",
@@ -209,7 +210,7 @@ export function PricingPage({ locale }: { locale: Locale }) {
       url: `${site.url}${url}#laufend`,
       priceSpecification: monthly(c.price),
     })),
-    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, priceSpecification: [{ "@type": "PriceSpecification", minPrice: gbpPrice.setup, priceCurrency: "CHF" }, monthly(gbpPrice.monthly)] },
+    { "@type": "Offer", name: t.gbp.name, url: `${site.url}${url}#laufend`, priceSpecification: [{ "@type": "PriceSpecification", minPrice: gbpPrice.setup, priceCurrency: "CHF", valueAddedTaxIncluded: false }, monthly(gbpPrice.monthly)] },
   ];
 
   return (
