@@ -384,7 +384,12 @@ export async function sendDocumentAction(kind: PdfKind, id: number, fd: FormData
     subject,
     html,
     text,
-    replyTo: await getSettings().then((s) => (kind === "quote" ? s.email : s.billingEmail || s.email)),
+    // Invoices and reminders come from the accounting mailbox «Webnova Buchhaltung» (set up 2026-11-27), quotes from the default sender.
+    ...(await getSettings().then((s) =>
+      kind !== "quote" && s.billingEmail
+        ? { from: `Webnova Buchhaltung <${s.billingEmail}>`, replyTo: `Webnova Buchhaltung <${s.billingEmail}>` }
+        : { replyTo: s.email },
+    )),
     attachments: [{ filename: `${pdf.filename}.pdf`, content: pdf.buffer }],
   });
   if (!res.ok) return { error: `Versand fehlgeschlagen: ${res.error}` };
