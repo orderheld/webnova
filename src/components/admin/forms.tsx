@@ -303,7 +303,7 @@ export function SubscriptionForm({
             ))}
           </select>
         </Field>
-        <Field label="Betrag pro Intervall CHF *">
+        <Field label="Betrag pro Intervall CHF exkl. MWST *">
           <input name="amount" required inputMode="decimal" defaultValue={s?.amount ?? ""} className="input" data-pick="price" />
         </Field>
         <Field label="Intervall">
