@@ -297,6 +297,7 @@ export default async function InvoiceDetail({ params, searchParams }: { params: 
           vatRate: i.vatRate,
           issueDate: i.issueDate,
           secondDate: i.dueDate,
+          servicePeriod: i.servicePeriod ?? "",
         }}
       />
     </>

@@ -29,6 +29,7 @@ export function SettingsForm({ s }: { s: CompanySettings }) {
           {input("city", "Ort")}
           {input("email", "E-Mail", "email")}
           {input("phone", "Telefon")}
+          {input("billingEmail", "E-Mail auf Rechnungen (Buchhaltung)", "email", "sm:col-span-2")}
           {input("website", "Webseite", "text", "sm:col-span-2")}
         </div>
       </Card>

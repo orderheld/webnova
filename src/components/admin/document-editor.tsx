@@ -23,6 +23,8 @@ export interface DocInitial {
   vatRate: number;
   issueDate: string;
   secondDate: string;
+  /** invoices only: date or period of the service */
+  servicePeriod?: string;
   quoteId?: number | null;
   leadId?: number | null;
 }
@@ -133,9 +135,14 @@ export function DocumentEditor({
         <Field label={kind === "quote" ? "Gültig bis" : credit ? "Datum Erstattung" : "Zahlbar bis"}>
           <input type="date" className="input" value={v.secondDate} disabled={locked} onChange={(e) => set("secondDate", e.target.value)} />
         </Field>
-        <Field label="Titel / Projekt" className="md:col-span-3">
+        <Field label="Titel / Projekt" className={kind === "invoice" ? "md:col-span-2" : "md:col-span-3"}>
           <input className="input" value={v.title} disabled={locked} placeholder="z. B. Neue Webseite Muster AG" onChange={(e) => set("title", e.target.value)} />
         </Field>
+        {kind === "invoice" && (
+          <Field label="Leistungszeitraum">
+            <input className="input" value={v.servicePeriod ?? ""} disabled={locked} placeholder="z. B. November 2026" onChange={(e) => set("servicePeriod", e.target.value)} />
+          </Field>
+        )}
         <Field label="Projekt verknüpfen">
           <select className="input" value={v.projectId ?? ""} disabled={locked} onChange={(e) => set("projectId", e.target.value ? Number(e.target.value) : null)}>
             <option value="">Keins</option>
