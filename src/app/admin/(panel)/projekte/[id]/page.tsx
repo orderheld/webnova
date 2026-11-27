@@ -22,6 +22,7 @@ import {
   setProjectStatusAction,
   toggleTaskAction,
 } from "@/lib/admin/project-actions";
+import { projectNumber } from "@/lib/admin/doc-numbers";
 import { projectStatusLabels } from "@/lib/admin/labels";
 import { chf, fmtDate, fmtHours, todayIso } from "@/lib/admin/money";
 import { allProjectOptions, customerName, customerOptions, productOptions, routeId } from "@/lib/admin/queries";
@@ -70,6 +71,7 @@ export default async function ProjectDetail({ params, searchParams }: { params: 
         badge={<Badge status={p.status} label={projectStatusLabels[p.status]} />}
         sub={
           <>
+            {projectNumber(p.id)} ·{" "}
             <Link href={`/admin/kunden/${c.id}`} className="hover:text-accent">
               {customerName(c)}
             </Link>

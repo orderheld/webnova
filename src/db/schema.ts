@@ -138,6 +138,8 @@ export const quotes = pgTable("quotes", {
   sentAt: timestamp("sent_at", { withTimezone: true }),
   leadId: integer("lead_id").references(() => leads.id, { onDelete: "set null" }),
   projectId: integer("project_id").references((): AnyPgColumn => projects.id, { onDelete: "set null" }),
+  /** customer number as printed on documents issued before the number ranges were raised (2026-11-27); null = current number */
+  customerNumber: text("customer_number"),
   notes: text("notes"),
 },
   (t) => [
@@ -182,6 +184,8 @@ export const invoices = pgTable("invoices", {
   /** sum of recorded payments, kept in sync by the payment actions */
   paidAmount: numeric("paid_amount", { precision: 12, scale: 2, mode: "number" }).notNull().default(0),
   reminderLevel: integer("reminder_level").notNull().default(0),
+  /** customer number as printed on documents issued before the number ranges were raised (2026-11-27); null = current number */
+  customerNumber: text("customer_number"),
   notes: text("notes"),
 },
   (t) => [

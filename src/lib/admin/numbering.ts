@@ -2,10 +2,13 @@ import "server-only";
 import { like } from "drizzle-orm";
 import { db, schema } from "@/db";
 
-/** First sequence number of each year, so documents never start at 001. */
-export const FIRST_NUMBER = 1001;
+/**
+ * First sequence number of each year (raised from 1001 on 2026-11-27). Documents already issued keep
+ * their number; the gap is allowed, Swiss law only requires unique, traceable numbers.
+ */
+export const FIRST_NUMBER = 2417;
 
-/** Next document number like OF-2026-1001 / RE-2026-1014 / GS-2026-1002 (credit notes live in the invoices table). */
+/** Next document number like OF-2026-2417 / RE-2026-2430 / GS-2026-2418 (credit notes live in the invoices table). */
 export async function nextNumber(kind: "quote" | "invoice" | "credit", prefix: string) {
   const year = new Date().getFullYear();
   const base = `${prefix}-${year}-`;
