@@ -299,7 +299,6 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     if (d.legacy) {
       if (d.projectName) info.push(["Projekt", d.projectName]);
     } else if (d.projectId) info.push(["Projektnummer", projectNumber(d.projectId)]);
-    if (s.owner) info.push(["Ihr Ansprechpartner", s.owner]);
     const boxX = 116 * MM;
     const boxW = RIGHT - boxX;
     const pad = 3.6 * MM;
@@ -498,8 +497,8 @@ function footer(pdf: Pdf, s: CompanySettings, details: boolean, page: number, pa
   const cols: [string, string[]][] = (
     [
       ["Anschrift", [s.companyName, s.street, `${s.zip} ${s.city}`]],
-      // The printed documents name no website and no phone number, only the accounting address (Ferhat 2026-11-27).
-      ["Kontakt", [s.owner, s.billingEmail || s.email]],
+      // The printed documents name no website, phone number or contact person, only the accounting address (Ferhat 2026-11-27).
+      ["Kontakt", [s.billingEmail || s.email]],
       // The MWST number contains the UID (CHE-… MWST), so the UID line is only shown without MWST.
       ["Mehrwertsteuer", s.vatEnabled && s.vatNumber ? [s.vatNumber] : [s.uid && `UID ${s.uid}`]],
       ["Bankverbindung", [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`, s.bic && `BIC ${s.bic}`]],
