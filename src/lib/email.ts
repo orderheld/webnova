@@ -69,6 +69,8 @@ export interface SendArgs {
   html: string;
   text?: string;
   replyTo?: string;
+  /** overrides the default sender, e.g. "Webnova Buchhaltung <buchhaltung@webnova.ch>" (domain must be verified at Resend) */
+  from?: string;
   attachments?: { filename: string; content: Buffer }[];
 }
 
@@ -79,7 +81,7 @@ export async function sendMail(args: SendArgs): Promise<{ ok: true; id?: string 
     return { ok: false, error: "RESEND_API_KEY ist nicht gesetzt." };
   }
   const { data, error } = await r.emails.send({
-    from: fromAddress(),
+    from: args.from || fromAddress(),
     to: args.to,
     subject: args.subject,
     html: args.html,
