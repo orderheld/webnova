@@ -11,6 +11,9 @@ export function CustomerForm({ customer }: { customer?: Customer }) {
         <Field label="Firma" className="sm:col-span-2">
           <input name="company" defaultValue={c?.company ?? ""} className="input" />
         </Field>
+        <Field label="Adresszusatz / Abteilung (optional)" className="sm:col-span-2">
+          <input name="addressAddition" defaultValue={c?.addressAddition ?? ""} className="input" placeholder="z. B. Buchhaltung" />
+        </Field>
         <Field label="Vorname">
           <input name="firstName" defaultValue={c?.firstName ?? ""} className="input" />
         </Field>

@@ -129,7 +129,7 @@ export default async function CustomerDetail({ params, searchParams }: { params:
               rows={[
                 ["E-Mail", c.email ? <a href={`mailto:${c.email}`} className="text-accent hover:underline">{c.email}</a> : "–"],
                 ["Telefon", c.phone ? <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="text-accent hover:underline">{c.phone}</a> : "–"],
-                ["Adresse", [c.street, [c.zip, c.city].filter(Boolean).join(" "), c.country !== "CH" ? c.country : ""].filter(Boolean).join(", ") || "–"],
+                ["Adresse", [c.addressAddition, c.street, [c.zip, c.city].filter(Boolean).join(" "), c.country !== "CH" ? c.country : ""].filter(Boolean).join(", ") || "–"],
                 ["Webseite", c.website ? <a href={c.website.startsWith("http") ? c.website : `https://${c.website}`} target="_blank" rel="noreferrer" className="text-accent hover:underline">{c.website.replace(/^https?:\/\//, "")}</a> : "–"],
                 ["Branche", c.industry || "–"],
                 ["UID", c.vatNumber || "–"],
