@@ -52,6 +52,7 @@ export async function logoutAction() {
 function customerValues(fd: FormData) {
   return {
     company: orNull(str(fd, "company")),
+    addressAddition: orNull(str(fd, "addressAddition")),
     firstName: orNull(str(fd, "firstName")),
     lastName: orNull(str(fd, "lastName")),
     email: orNull(str(fd, "email")),
@@ -352,8 +353,13 @@ export async function quoteToInvoiceAction(quoteId: number) {
 }
 
 function fillTemplate(tpl: string, vars: Record<string, string>) {
-  return tpl.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+  // An empty {name} takes the space before it along, so «Guten Tag {name}» becomes «Guten Tag».
+  return tpl.replace(/( ?)\{(\w+)\}/g, (_, sp: string, k: string) => (vars[k] ? sp + vars[k] : k === "name" ? "" : sp));
 }
+
+/** Full name only when both first and last name are known, otherwise "" (salutation then reads plain «Guten Tag»). */
+const fullName = (p?: { firstName: string | null; lastName: string | null } | null) =>
+  p?.firstName?.trim() && p?.lastName?.trim() ? `${p.firstName.trim()} ${p.lastName.trim()}` : "";
 
 export async function sendDocumentAction(kind: PdfKind, id: number, fd: FormData): Promise<{ error?: string; ok?: boolean }> {
   await requireAdmin();
@@ -425,8 +431,7 @@ export async function mailDraft(kind: PdfKind, id: number) {
   if (!doc) return null;
   const [c] = await db().select().from(schema.customers).where(eq(schema.customers.id, doc.customerId));
   const [primary] = await db().select().from(schema.contacts).where(eq(schema.contacts.customerId, doc.customerId)).orderBy(schema.contacts.id);
-  const contactName = primary?.isPrimary ? [primary.firstName, primary.lastName].filter(Boolean).join(" ") : "";
-  const name = contactName || [c?.firstName, c?.lastName].filter(Boolean).join(" ") || c?.company || "";
+  const name = (primary?.isPrimary ? fullName(primary) : "") || fullName(c);
   const isCredit = "kind" in doc && doc.kind === "gutschrift";
   const amount = reminder && "paidAmount" in doc ? round2(doc.total - doc.paidAmount + reminder.fee) : doc.total;
   const vars = {

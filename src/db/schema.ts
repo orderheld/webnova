@@ -71,6 +71,8 @@ export const customers = pgTable("customers", {
   id: serial("id").primaryKey(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   company: text("company"),
+  /** optional department / address addition, printed as its own line below the company */
+  addressAddition: text("address_addition"),
   firstName: text("first_name"),
   lastName: text("last_name"),
   email: text("email"),

@@ -248,6 +248,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     const person = d.contactName || [c.firstName, c.lastName].filter(Boolean).join(" ");
     const addr = [
       c.company,
+      c.company ? c.addressAddition : "",
       c.company && person ? person : !c.company ? person : "",
       c.street,
       [c.zip, c.city].filter(Boolean).join(" "),
