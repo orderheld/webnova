@@ -73,6 +73,25 @@ function registerFonts(pdf: Pdf) {
   F.display = "WN-Display";
 }
 
+/*
+ * Inter's kerning pulls digits and dots together («27.11.2026» reads as «2711.2026»), so all text is set
+ * without kerning; amount columns additionally use tabular figures so the digits line up.
+ */
+const NO_KERN = { kern: false } as const;
+const TNUM = { kern: false, tnum: true } as unknown as PDFKit.Mixins.OpenTypeFeatures[];
+function plainSpacing(pdf: Pdf) {
+  const p = pdf as unknown as Record<"text" | "widthOfString" | "heightOfString", (...a: unknown[]) => unknown>;
+  for (const m of ["text", "widthOfString", "heightOfString"] as const) {
+    const orig = p[m].bind(pdf);
+    p[m] = (...args: unknown[]) => {
+      const last = args[args.length - 1];
+      if (last && typeof last === "object") args[args.length - 1] = { features: NO_KERN, ...last };
+      else args.push({ features: NO_KERN });
+      return orig(...args);
+    };
+  }
+}
+
 export type PdfKind = "quote" | "invoice" | "reminder";
 
 interface Doc {
@@ -224,6 +243,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     pdf.on("end", () => resolve(Buffer.concat(chunks)));
     pdf.on("error", reject);
     registerFonts(pdf);
+    plainSpacing(pdf);
 
     const headline = d.kind === "reminder" ? label : `${label} ${d.number}`;
     const logo = logoImage();
@@ -311,7 +331,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     pdf.save().roundedRect(boxX, boxTop, boxW, boxH, 3).fill(TINT).restore();
     let iy = boxTop + pad;
     info.forEach(([k, v], i) => {
-      pdf.font(F.regular).fontSize(7.5).fillColor(MUTED).text(k, boxX + pad, iy + 0.7, { width: labelW - 1 * MM, lineBreak: false });
+      pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(k, boxX + pad, iy + 0.4, { width: labelW - 1 * MM, lineBreak: false });
       pdf
         .font(i === 0 ? F.bold : F.regular)
         .fontSize(8.5)
@@ -393,7 +413,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
           const ty = pdf.y;
           pdf.font(F.regular).fontSize(9).fillColor(INK);
           pdf.text(intervalLabels[it.recurring!] ?? "", RIGHT - 60 * MM, y, { width: 28 * MM });
-          pdf.text(chf(lineTotal(it)), RIGHT - 30 * MM, y, { width: 30 * MM, align: "right" });
+          pdf.text(chf(lineTotal(it)), RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", features: TNUM });
           pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(descr, LEFT, ty + 0.5, { width: w });
           y = pdf.y + 2 * MM;
           pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
@@ -510,10 +530,10 @@ function footer(pdf: Pdf, s: CompanySettings, details: boolean, page: number, pa
   let x = LEFT;
   cols.forEach(([h, col], i) => {
     pdf.font(F.bold).fontSize(6.5).fillColor(ACCENT).text(h.toUpperCase(), x, top + 2.6 * MM, { width: widths[i] - 2 * MM, characterSpacing: 0.4, lineBreak: false });
-    pdf.font(F.regular).fontSize(7).fillColor(TEXT).text(col.join("\n"), x, top + 6 * MM, { width: widths[i] - 2 * MM, lineGap: 0.9 });
+    pdf.font(F.regular).fontSize(7.5).fillColor(TEXT).text(col.join("\n"), x, top + 6 * MM, { width: widths[i] - 2 * MM, lineGap: 1 });
     x += widths[i];
   });
-  pdf.font(F.regular).fontSize(6.5).fillColor(MUTED).text(pageLabel, LEFT, PAGE_H - 7.5 * MM, { width: WIDTH, align: "right", lineBreak: false });
+  pdf.font(F.regular).fontSize(7).fillColor(MUTED).text(pageLabel, LEFT, PAGE_H - 7 * MM, { width: WIDTH, align: "right", lineBreak: false });
 }
 
 /** Payment details panel: thin Schieferblau bar on the left, label/value rows, optional note. */
@@ -589,7 +609,7 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
     } else {
       pdf.font(F.bold).fontSize(9);
       h = pdf.heightOfString(it.title, { width: descrW });
-      if (it.description) h += pdf.font(F.regular).fontSize(8).heightOfString(it.description, { width: descrW, lineGap: 0.5 }) + 0.8 * MM;
+      if (it.description) h += pdf.font(F.regular).fontSize(8.5).heightOfString(it.description, { width: descrW, lineGap: 0.5 }) + 0.8 * MM;
       h += 3.4 * MM;
     }
     if (y + h > CONTENT_BOTTOM) {
@@ -613,13 +633,13 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
     pos++;
     pdf.font(F.regular).fontSize(9).fillColor(MUTED).text(String(pos), COL.pos.x, y, { width: COL.pos.w, lineBreak: false });
     pdf.fillColor(INK);
-    pdf.text(fmtQty(it.quantity), n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false });
+    pdf.text(fmtQty(it.quantity), n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false, features: TNUM });
     pdf.text(it.unit || "", n.unit + 3 * MM, y, { width: COL.unit.w - 3 * MM, lineBreak: false, ellipsis: true });
-    pdf.text(chf(Number(it.unitPrice) || 0), n.price, y, { width: COL.price.w, align: "right", lineBreak: false });
-    if (showDisc) pdf.text(it.discount ? fmtPct(it.discount) : "", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
-    pdf.text(chf(lineTotal(it)), n.total, y, { width: COL.total.w, align: "right", lineBreak: false });
+    pdf.text(chf(Number(it.unitPrice) || 0), n.price, y, { width: COL.price.w, align: "right", lineBreak: false, features: TNUM });
+    if (showDisc) pdf.text(it.discount ? fmtPct(it.discount) : "", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false, features: TNUM });
+    pdf.text(chf(lineTotal(it)), n.total, y, { width: COL.total.w, align: "right", lineBreak: false, features: TNUM });
     pdf.font(F.bold).fontSize(9).fillColor(INK).text(it.title, COL.descr.x, y, { width: descrW });
-    if (it.description) pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(it.description, COL.descr.x, pdf.y + 0.8 * MM, { width: descrW, lineGap: 0.5 });
+    if (it.description) pdf.font(F.regular).fontSize(8.5).fillColor(MUTED).text(it.description, COL.descr.x, pdf.y + 0.8 * MM, { width: descrW, lineGap: 0.5 });
     y = pdf.y + 1.7 * MM;
     pdf.moveTo(LEFT, y).lineTo(RIGHT, y).strokeColor(RULE).lineWidth(0.4).stroke();
     y += 1.7 * MM;
@@ -659,14 +679,14 @@ function totalsBlock(pdf: Pdf, rows: TotalRow[], y: number, x: number) {
       pdf.save().roundedRect(x, y, RIGHT - x, h, 2).fill(ACCENT).restore();
       pdf.font(F.bold).fontSize(10).fillColor("#ffffff");
       pdf.text(r.k, x + 3 * MM, y + 2.1 * MM, { width: RIGHT - x - 36 * MM });
-      pdf.text(r.v, RIGHT - 33 * MM, y + 2.1 * MM, { width: 30 * MM, align: "right", lineBreak: false });
+      pdf.text(r.v, RIGHT - 33 * MM, y + 2.1 * MM, { width: 30 * MM, align: "right", lineBreak: false, features: TNUM });
       y += h + 2 * MM;
       continue;
     }
     pdf.font(F.regular).fontSize(9).fillColor(TEXT);
     pdf.text(r.k, x, y, { width: RIGHT - x - 32 * MM });
     const ky = pdf.y;
-    pdf.fillColor(INK).text(r.v, RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", lineBreak: false });
+    pdf.fillColor(INK).text(r.v, RIGHT - 30 * MM, y, { width: 30 * MM, align: "right", lineBreak: false, features: TNUM });
     y = Math.max(ky, y + 4.6 * MM) + 0.6 * MM;
   }
   return y;
