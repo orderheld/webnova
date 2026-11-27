@@ -123,7 +123,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
             { label: "Abo", key: "titel" },
             { label: "Kunde", key: "kunde" },
             { label: "Art" },
-            { label: "Betrag", key: "betrag", align: "right" },
+            { label: "Betrag exkl. MWST", key: "betrag", align: "right" },
             { label: "Intervall" },
             { label: "Beginn" },
             { label: "Nächste Verrechnung", key: "naechste" },
