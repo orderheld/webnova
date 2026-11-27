@@ -475,9 +475,10 @@ const COL = {
   disc: { w: 15 * MM },
   total: { w: 23 * MM },
 };
-const numCols = () => {
+/** The «Rabatt %» column only takes space when at least one position has a discount. */
+const numCols = (showDisc = true) => {
   const total = RIGHT - COL.total.w;
-  const disc = total - COL.disc.w;
+  const disc = total - (showDisc ? COL.disc.w : 0);
   const price = disc - COL.price.w;
   const unit = price - COL.unit.w;
   const qty = unit - COL.qty.w;
@@ -485,7 +486,8 @@ const numCols = () => {
 };
 
 function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => number) {
-  const n = numCols();
+  const showDisc = items.some((it) => (it.type ?? "item") === "item" && Number(it.discount) > 0);
+  const n = numCols(showDisc);
   const descrW = n.qty - COL.descr.x - 3 * MM;
   const header = () => {
     pdf.save().rect(LEFT, y - 1.6 * MM, WIDTH, 6.2 * MM).fill(TINT).restore();
@@ -495,7 +497,7 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
     pdf.text("Menge", n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false });
     pdf.text("Einheit", n.unit + 3 * MM, y, { width: COL.unit.w - 3 * MM, lineBreak: false });
     pdf.text("Preis", n.price, y, { width: COL.price.w, align: "right", lineBreak: false });
-    pdf.text("Rabatt %", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
+    if (showDisc) pdf.text("Rabatt %", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
     pdf.text("Total CHF", n.total - 1.5 * MM, y, { width: COL.total.w, align: "right", lineBreak: false });
     y += 4.6 * MM;
     y += 2 * MM;
@@ -541,7 +543,7 @@ function itemsTable(pdf: Pdf, items: LineItem[], y: number, newPage: () => numbe
     pdf.text(fmtQty(it.quantity), n.qty, y, { width: COL.qty.w, align: "right", lineBreak: false });
     pdf.text(it.unit || "", n.unit + 3 * MM, y, { width: COL.unit.w - 3 * MM, lineBreak: false, ellipsis: true });
     pdf.text(chf(Number(it.unitPrice) || 0), n.price, y, { width: COL.price.w, align: "right", lineBreak: false });
-    pdf.text(it.discount ? fmtPct(it.discount) : "", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
+    if (showDisc) pdf.text(it.discount ? fmtPct(it.discount) : "", n.disc, y, { width: COL.disc.w, align: "right", lineBreak: false });
     pdf.text(chf(lineTotal(it)), n.total - 1.5 * MM, y, { width: COL.total.w, align: "right", lineBreak: false });
     pdf.font(F.bold).fontSize(9).fillColor(INK).text(it.title, COL.descr.x, y, { width: descrW });
     if (it.description) pdf.font(F.regular).fontSize(8).fillColor(MUTED).text(it.description, COL.descr.x, pdf.y + 0.8 * MM, { width: descrW, lineGap: 0.5 });
