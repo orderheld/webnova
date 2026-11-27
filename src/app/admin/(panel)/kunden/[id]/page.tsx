@@ -16,6 +16,7 @@ import { archiveCustomerAction, deleteCustomerAction } from "@/lib/admin/actions
 import { openAmount, yearlyValue } from "@/lib/admin/billing";
 import { deleteContactAction } from "@/lib/admin/crm-actions";
 import { expenseCategoryLabels, leadStageLabels } from "@/lib/admin/labels";
+import { customerNumber } from "@/lib/admin/doc-numbers";
 import { chf, fmtDate } from "@/lib/admin/money";
 import { allProjectOptions, customerName, customerOptions, productOptions, routeId, templateOptions } from "@/lib/admin/queries";
 import { getSettings } from "@/lib/admin/settings";
@@ -68,7 +69,7 @@ export default async function CustomerDetail({ params, searchParams }: { params:
         back={{ href: "/admin/kunden", label: "Kunden" }}
         title={name}
         badge={c.archived ? <Badge status="abgelehnt" label="Archiviert" /> : undefined}
-        sub={[c.company ? [c.firstName, c.lastName].filter(Boolean).join(" ") : null, [c.zip, c.city].filter(Boolean).join(" "), `Kunde seit ${fmtDate(c.createdAt)}`].filter(Boolean).join(" · ")}
+        sub={[`Kunden-Nr. ${customerNumber(c.id)}`, c.company ? [c.firstName, c.lastName].filter(Boolean).join(" ") : null, [c.zip, c.city].filter(Boolean).join(" "), `Kunde seit ${fmtDate(c.createdAt)}`].filter(Boolean).join(" · ")}
         actions={
           <>
             <Modal label="Projekt" title="Neues Projekt" icon="plus" wide>
