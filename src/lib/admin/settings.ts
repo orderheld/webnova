@@ -13,6 +13,8 @@ export interface CompanySettings {
   city: string;
   country: string;
   email: string;
+  /** shown on invoices, quotes and reminders and used as reply-to for invoice and reminder mails */
+  billingEmail: string;
   phone: string;
   website: string;
   iban: string;
@@ -63,6 +65,7 @@ export const defaultSettings: CompanySettings = {
   city: site.address.city,
   country: "CH",
   email: site.email,
+  billingEmail: "buchhaltung@webnova.ch",
   phone: site.phone,
   website: "webnova.ch",
   iban: "",

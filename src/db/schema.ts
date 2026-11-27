@@ -170,6 +170,8 @@ export const invoices = pgTable("invoices", {
   total: numeric("total", { precision: 12, scale: 2, mode: "number" }).notNull().default(0),
   issueDate: date("issue_date", { mode: "string" }).notNull(),
   dueDate: date("due_date", { mode: "string" }).notNull(),
+  /** date or period of the service (Art. 26 MWSTG), e.g. «November 2026»; printed when set */
+  servicePeriod: text("service_period"),
   status: text("status").$type<InvoiceStatus>().notNull().default("entwurf"),
   sentAt: timestamp("sent_at", { withTimezone: true }),
   paidAt: date("paid_at", { mode: "string" }),

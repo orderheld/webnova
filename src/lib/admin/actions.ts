@@ -136,6 +136,7 @@ const docSchema = z.object({
   vatRate: z.coerce.number().min(0).max(30).default(0),
   issueDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   secondDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).or(z.literal("")),
+  servicePeriod: z.string().trim().max(120).default(""),
 });
 
 export type DocPayload = z.input<typeof docSchema>;
@@ -214,6 +215,7 @@ export async function saveInvoiceAction(id: number | null, payload: DocPayload &
     total,
     issueDate: v.issueDate,
     dueDate: v.secondDate || addDaysIso(v.issueDate, 30),
+    servicePeriod: v.servicePeriod || null,
   };
   if (id) {
     const [cur] = await db().select().from(schema.invoices).where(eq(schema.invoices.id, id));
@@ -382,7 +384,7 @@ export async function sendDocumentAction(kind: PdfKind, id: number, fd: FormData
     subject,
     html,
     text,
-    replyTo: (await getSettings()).email,
+    replyTo: await getSettings().then((s) => (kind === "quote" ? s.email : s.billingEmail || s.email)),
     attachments: [{ filename: `${pdf.filename}.pdf`, content: pdf.buffer }],
   });
   if (!res.ok) return { error: `Versand fehlgeschlagen: ${res.error}` };

@@ -86,6 +86,8 @@ interface Doc {
   vatRate: number;
   issueDate: string;
   secondDate: string | null; // valid until / due date
+  /** invoices and credit notes: date or period of the service */
+  servicePeriod?: string | null;
   customer: Customer;
   contactName?: string;
   projectName?: string;
@@ -265,6 +267,7 @@ function buildPdf(d: Doc, s: CompanySettings): Promise<Buffer> {
     info.push(["Datum", fmtDate(d.issueDate)]);
     if (d.kind === "quote" && d.secondDate) info.push(["Gültig bis", fmtDate(d.secondDate)]);
     if (d.kind === "invoice") info.push(["Zahlbar bis", fmtDate(d.secondDate)]);
+    if ((d.kind === "invoice" || d.kind === "credit") && d.servicePeriod?.trim()) info.push(["Leistungszeitraum", d.servicePeriod.trim()]);
     if (d.kind === "reminder") info.push(["Neue Frist", fmtDate(d.secondDate)]);
     if (d.kind === "credit" && d.refNumber) info.push(["Zu Rechnung", d.refNumber]);
     info.push(["Kundennummer", customerNumber(c.id)]);
@@ -448,7 +451,8 @@ function footer(pdf: Pdf, s: CompanySettings, details: boolean, page: number, pa
   pdf.moveTo(LEFT, top).lineTo(RIGHT, top).strokeColor(RULE).lineWidth(0.5).stroke();
   const cols: string[][] = [
     [s.companyName, s.street, `${s.zip} ${s.city}`],
-    [s.phone && `Tel. ${s.phone}`, s.email, s.website],
+    // Documents show the accounting address and no phone number (Ferhat 2026-11-27).
+    [s.billingEmail || s.email, s.website],
     // The MWST number contains the UID (CHE-… MWST), so the UID line is only shown without MWST.
     s.vatEnabled && s.vatNumber ? [`MWST-Nr. ${s.vatNumber}`] : [s.uid && `UID ${s.uid}`],
     [s.bankName, s.iban && `IBAN ${fmtIban(s.iban)}`, s.bic && `BIC ${s.bic}`],
